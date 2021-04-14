@@ -1,2 +1,2 @@
-# CMPN203-Software-Engineering
-This is the repo for a Flicker clone software engineering project that we're going to be working on throughout this semester
+# Flickr-Returns
+This is the repo for a Flicker clone software engineering project that we're going to be working on throughout the Spring 2021 semester
