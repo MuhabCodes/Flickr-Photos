@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doctest": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs"
+    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\mohamed.afifi\\Desktop\\Afifi_Documents"
   },
   "keywords": [],
   "author": "",
