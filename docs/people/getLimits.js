@@ -27,7 +27,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
+ *       "error": "limitNotFound",
  *        "status_code":404
  *     }
   
