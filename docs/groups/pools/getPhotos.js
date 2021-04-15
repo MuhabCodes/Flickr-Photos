@@ -9,7 +9,7 @@
  * @apiSuccess (Success 200) {Object[]} photoList A list containing the photos from a given group.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParam  {String} api_key Your API application key.
+ *  
  * @apiParam  {String} [tag] A tag to filter the pool with.(maximum 1 tag)
  * @apiParam  {String} user_id This filters the photos to only return photos by that user.
  * @apiParam  {Number} [page=1] The page of results to return.

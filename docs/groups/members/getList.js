@@ -6,7 +6,7 @@
  * 
  * @apiDescription Get a list of the members of a group.
  * 
- * @apiParam  {String} api_key Your API application key.
+ *  
  * @apiParam  {String} group_id The group that we want to get the members of.
  * @apiParam  {Number} [memberTypes] Comma separated list of member types. 1: member, 2: moderator, 3:admin.
  * @apiParam  {Number} [per_page=100] Number of members per page.

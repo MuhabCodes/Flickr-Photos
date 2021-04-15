@@ -9,7 +9,7 @@
  * @apiSuccess (Success 200) {Object[]} groupList A list containing the groups to which you can add photos.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParam  {String} api_key Your API application key.
+ *  
  * @apiParam  {Number} [page=1] The page of results to return.
  * @apiParam  {Number} [per_page=400] The number of groups per page that can be returned.
  * 

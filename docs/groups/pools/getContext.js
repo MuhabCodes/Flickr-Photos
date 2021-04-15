@@ -9,7 +9,7 @@
  * @apiSuccess (Success 200) {Object[]} photoList A list containing the context pictures.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParam  {String} api_key Your API application key.
+ *  
  * @apiParam  {String} photo_id The id of the photo.
  * @apiParam  {String} group_id The id of the group where the photo exists.
  * 

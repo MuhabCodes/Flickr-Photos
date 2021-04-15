@@ -6,7 +6,7 @@
  * 
  * @apiDescription Remove a photo to a group's pool.
  * 
- * @apiParam  {String} api_key Your API application key
+ *  
  * @apiParam  {String} group_id The id of the group to add the photo to.
  * @apiParam  {String} photo_id The id of the photo to add. Photo must belong to the calling user.
  * 

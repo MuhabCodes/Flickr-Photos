@@ -8,7 +8,7 @@
  * 
  * @apiSuccess (Success 410) {Number} statusCode The status code.
  * 
- * @apiParam  {String} api_key Your API application key
+ *  
  * @apiParam  {String} photo_id The id of the photo to add a person to.
  * @apiParam  {String} user_id The id of the user to add to the photo.
  * 
