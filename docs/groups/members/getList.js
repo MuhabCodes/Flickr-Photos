@@ -35,14 +35,14 @@
  *        "status_code":404
  *     }
  * 
- *  @apiError (Error 404) {Number} status_code The status code
- *  @apiError (Error 404) {String} PhotoNotFound The photo isn't found
- * 
  * @apiError (Error 401) {Number} status_code The status code
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * 
  * 
- * @apiSuccess (Success 200) {Number} StatusCode all the member of the group mentioned
- * @apiSuccess (Success 200) {String[]} memberList all the member of the group mentioned
+ *  @apiError (Error 404) {Number} status_code The status code
+ *  @apiError (Error 404) {String} PhotoNotFound The photo isn't found
+ * 
+ * @apiSuccess (Success 200) {Number} statusCode all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
  *  
  */
