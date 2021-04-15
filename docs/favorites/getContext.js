@@ -10,7 +10,7 @@
  * @apiParam  {String} photoId The id of the photo to fetch the context for
  * @apiParam  {String} userId The user who counts the photo as favorite
  
-* @apiSuccess (Success 200) {Object[]} photos Photos Returned yo user
+* @apiSuccess (Success 200) {Object[]} photos Photos Returned to user
 *@apiSuccess (Success 200) {Number} statusCode The status code
 
 *@apiError (Error 400) {Number} statusCode The status code
