@@ -3,7 +3,7 @@
  * @api {POST} /galleries/:galleryId/removePhoto Remove a photo from a gallery.
  * @apiName RemovePhoto
  * @apiGroup Galleries
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission author
  *
  *

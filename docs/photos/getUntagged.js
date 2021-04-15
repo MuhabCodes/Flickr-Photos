@@ -3,7 +3,7 @@
  * @api {GET} /photos/getUntagged Returns a list of your photos with no tags.
  * @apiName GetUntagged
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission none
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request

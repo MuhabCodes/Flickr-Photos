@@ -3,7 +3,7 @@
  * @api {GET} /photos/getWithoutGeoData Returns a list of your not geo-tagged photos
  * @apiName GetWithoutGeoData
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission author
  *
  *

@@ -3,7 +3,7 @@
  * @api {POST} /photos/:photoID/removeTag Remove a tag from a photo.
  * @apiName RemoveTag
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission author
  *
  *

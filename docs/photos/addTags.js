@@ -1,9 +1,9 @@
 /**
  *
- * @api {POST} /photos/:photoID title
+ * @api {POST} /photos/:photoID addTag
  * @apiName addTag
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission author
  *
  * @apiParam  {Number} photoId The id of the photo to add tags to
