@@ -1,6 +1,6 @@
 /**
  * 
- *@api {GET} /photos.comments/getRecentForContacts getRecentForContacts
+ *@api {GET} /photos/comments/getRecentForContacts getRecentForContacts
 
 * @apiGroup photos.comments
 * @apiVersion  1.0.0

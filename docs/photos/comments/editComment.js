@@ -1,6 +1,6 @@
 /**
  * 
- * @api {PUT} /photos.comments/:photoId editcomment
+ * @api {PUT} /photos/comments/:photoId editcomment
  *
  * @apiGroup photos.comments
  * @apiVersion  1.0.0

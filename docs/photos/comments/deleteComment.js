@@ -1,6 +1,6 @@
 /**
  * 
- * @api {DELETE} /photos.comments/:photoId deleteComment
+ * @api {DELETE} /photos/comments/:photoId deleteComment
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Delete a comment as the currently authenticated user.
