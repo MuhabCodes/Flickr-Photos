@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /people/:user_id/photosof getPhotosOf
+ * @api {GET} /people/:userId/photosof getPhotosOf
  * @apiDescription Returns a list of photos containing a particular Flickr member.
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} user_id ID of user you want find photos of
+ * @apiParam  {String} userId ID of user you want find photos of
  * @apiParam  {String} [owner_id] ID of a Flickr member. This will restrict the list of photos to those taken by that member.
  * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, date_person_added, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o
  * @apiParam  {String} [per_page] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
@@ -30,14 +30,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "photoNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
 
  * 

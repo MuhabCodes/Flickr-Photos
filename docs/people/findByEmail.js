@@ -1,12 +1,12 @@
 /**
  * 
- * @api {Get} /people/:user_id/email findByEmail
+ * @api {Get} /people/:userId/email findByEmail
  * @apiDescription find ID of a user given their Email
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} find_email Email of the User you want to Find
+ * @apiParam  {String} findEmail Email of the User you want to Find
  * 
  * 
  * @apiSuccess (Success 200) {string} userID of user you want to find
@@ -22,14 +22,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "userNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
 
  */

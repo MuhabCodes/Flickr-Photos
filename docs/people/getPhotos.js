@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /people/:user_id/photos getPhotos
+ * @api {GET} /people/:userId/photos getPhotos
  * @apiDescription Return photos from the given user's photostream. Only photos visible to the calling user will be returned
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} user_id ID of user whose photos will be returned
+ * @apiParam  {String} userId ID of user whose photos will be returned
  * @apiParam  {String} [safe_search] safe search setting 1 for safe, 2 for moderate, 3 for restricted
  * @apiParam  {String} [min_upload_date] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
  * @apiParam  {String} [max_upload_date] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
@@ -53,14 +53,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "photoNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
  * 

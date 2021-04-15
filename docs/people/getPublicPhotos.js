@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /people/:user_id/public/photos getPublicPhotos
+ * @api {GET} /people/:userId/public/photos getPublicPhotos
  * @apiName apiName
  * @apiGroup people
  * @apiDescription Get a list of public photos for the given user.
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} user_id ID of user you want to get public photos for
+ * @apiParam  {String} userId ID of user you want to get public photos for
  * @apiParam  {String} [safe_search] Safe search setting:
 1 for safe.
 2 for moderate.
@@ -35,14 +35,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "photoOrUserNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
 
  * 

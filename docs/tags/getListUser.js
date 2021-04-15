@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /tags/:user_id/taglist getListUser
+ * @api {GET} /tags/:userId/taglist getListUser
  * @apiDescription Get the tag list for a given user (or the currently logged in user).
  * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} [user_id] ID of the user to fetch the tag list for
+ * @apiParam  {String} [userId] ID of the user to fetch the tag list for
  * 
  * 
  * 
@@ -22,14 +22,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "userNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
  */

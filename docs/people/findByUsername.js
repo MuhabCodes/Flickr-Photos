@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/find/username findByUserame
+ * @api {GET} /people/find/:username findByUserame
  * 
  * @apiGroup people
  * @apiDescription find ID of a user given their Username
@@ -24,14 +24,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "userNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
 */

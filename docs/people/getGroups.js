@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /people/:user_id/groups getGroups
+ * @api {GET} /people/:userId/groups getGroups
  * @apiDescription Returns the list of groups a user is a member of.
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} user_id user id you want to fetch groups he is member of
+ * @apiParam  {String} userId user id you want to fetch groups he is member of
  * @apiParam  {String} [extras] description
  * 
  * @apiSuccess (Success 200) {Object[]} groupList user is a member of
@@ -24,14 +24,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "userNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
 
  * 

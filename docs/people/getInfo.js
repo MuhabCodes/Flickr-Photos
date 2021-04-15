@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /people/get/info getInfo
+ * @api {GET} /people/info getInfo
  * @apiDescription Get information about a user
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} user_id userID you want to get information about
+ * @apiParam  {String} userId userID you want to get information about
  * 
  * @apiSuccess (Success 200) {Object[]} userInfo of the user you want info about
  * @apiSuccess (Success 200) {Number} statusCode The status code
@@ -23,14 +23,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "userNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
  */

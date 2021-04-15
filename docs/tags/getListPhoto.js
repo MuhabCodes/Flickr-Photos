@@ -1,12 +1,12 @@
 /**
  * 
- * @api {GET} /tags/:photo_id/taglist getListPhoto
+ * @api {GET} /tags/:photoId/taglist getListPhoto
  * @apiDescription Get the tag list for a given photo
  * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} photo_id The id of the photo to return tags for
+ * @apiParam  {String} photoId The id of the photo to return tags for
  * 
  * 
  * 
@@ -22,14 +22,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "photoNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
  */
