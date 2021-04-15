@@ -1,6 +1,6 @@
 /**
  * 
- * @api {get} /groups/:group_id/getInfo getInfo
+ * @api {get} /groups/:groupId/getInfo getInfo
  * @apiName groups
  * @apiGroup groups
  * @apiVersion  1.0.0
@@ -8,13 +8,12 @@
  * @apiDescription Get information about a group.
  * 
  * 
- * @apiParam  {String} api_key Your API application key.
- * @apiParam  {String} group_id The NSID of the group to fetch information for.
- * @apiParam  {String} [group_path_alias] The path alias of the group. One of this or the group_id param is required
+ * //TODO: Camel case correction
+ * @apiParam  {String} groupId The NSID of the group to fetch information for.
+ * @apiParam  {String} [group_path_alias] The path alias of the group. One of this or the groupId param is required
  * @apiParam  {String} [lang] The language of the group name and description to fetch. If the language is not found, the primary language of the group will be returned. Valid values are the same as in feeds.
  * 
- * 
- 
+ *  // TODO: Wrong variable name
  * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
@@ -28,7 +27,8 @@
  
 * @apiError (Error 404) {String} error Informs the caller of the missing object.
 * @apiError (Error 404) {Number} statusCode The status code
- 
+*
+* // TODO : photoNotFound is not appropriate for the error
 * @apiErrorExample {json} Error-404:
 *     HTTP/1.1 404 Not Found
 *     {

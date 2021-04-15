@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST}  /photos/geo/setLocation/photo_id/:photo_id/lat/:lat/lon/:lon setLocation
+ * @api {POST}  /photos/geo/setLocation/photoId/:photoId/lat/:lat/lon/:lon setLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
@@ -9,8 +9,8 @@
  * 
  * 
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo to set location data for.
+ * 
+ * @apiParam  {String} photoId The id of the photo to set location data for.
  * @apiParam  {String} lat The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} lon The longitude whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} [accuracy] Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. Defaults to 16 if not specified.

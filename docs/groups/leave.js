@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /groups/:group_id/leave leave
+ * @api {POST} /groups/:groupId/leave leave
  * @apiName groups
  * @apiGroup groups
  * @apiVersion  1.0.0
@@ -11,9 +11,9 @@ If the user is the only administrator left, and there are other members, the old
 If the user is the last person in the group, the group will be deleted.
 
  * 
- * @apiParam  {String} api_key Your API application key.
- * @apiParam  {String} group_id The NSID of the Group to leave
- * @apiParam  {String} [delete_photos] Delete all photos by this user from the group
+ * 
+ * @apiParam  {String} groupId The NSID of the Group to leave
+ * @apiParam  {Boolean} [deletePhotos] Delete all photos by this user from the group
  * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code

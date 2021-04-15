@@ -1,12 +1,12 @@
 /**
  * 
- * @api {get} /groups/browse Browse
+ * @api {get} /groups/browse browse
  * @apiGroup groups
  * @apiVersion  1.0.0
  * @apiDescription Browse the group category tree, finding groups and sub-categories.
  * 
- * @apiParam  {String} api_key Your API application key.
- * @apiParam  {String} [cat_id] The category id to fetch a list of groups and sub-categories for. If not specified, it defaults to zero, the root of the category tree.
+ * 
+ * @apiParam  {String} [catId] The category id to fetch a list of groups and sub-categories for. If not specified, it defaults to zero, the root of the category tree.
  * 
  * 
  * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned

@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /photos/geo/getPerms/photo_id/:photo_id getPerms
+ * @api {GET} /photos/geo/getPerms/photoId/:photoId getPerms
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo to get permissions for.
+ * 
+ * @apiParam  {String} photoId The id of the photo to get permissions for.
  * 
  * 
  * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned

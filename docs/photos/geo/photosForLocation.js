@@ -7,7 +7,7 @@
  * @apiDescription Return a list of photos for the calling user at a specific latitude, longitude and accuracy
  * 
  * 
- * @apiParam  {String} api_key Your API application key
+ * 
  * @apiParam  {String} lat The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} lon The longitude whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} [accuracy] Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. Defaults to 16 if not specified.

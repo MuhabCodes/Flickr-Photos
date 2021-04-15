@@ -1,14 +1,14 @@
 /**
  * 
- * @api {get} /urls/getGroup/:group_id getGroup
+ * @api {get} /urls/getGroup/:groupId getGroup
  * @apiName urls
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
  * 
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} group_id The NSID of the group to fetch the url for.
+ * 
+ * @apiParam  {String} groupId The NSID of the group to fetch the url for.
  * 
  * 
  * @apiSuccess (Success 200) {Object} memberList all the member of the group mentioned
@@ -45,7 +45,7 @@
  * 
  * @apiParamExample  {type} Request-Example:
  * {
- *     group_id : "12"
+ *     groupId : "12"
  * }
  * 
  * 

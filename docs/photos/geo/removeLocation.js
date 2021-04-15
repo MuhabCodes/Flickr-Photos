@@ -1,13 +1,13 @@
 /**
  * 
- * @api {POST} /photos/geo/getLocation/photo_id/:photo_id getLocation
+ * @api {POST} /photos/geo/getLocation/photoId/:photoId getLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * @apiDescription Removes the geo data associated with a photo.
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo you want to remove location data from.
+ * 
+ * @apiParam  {String} photoId The id of the photo you want to remove location data from.
  * 
  *  @apiSuccess (Success 200) {Number} statusCode The status code
  * 

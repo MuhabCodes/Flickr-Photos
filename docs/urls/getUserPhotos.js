@@ -6,8 +6,8 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} [group_id] The NSID of the user to fetch the url for. If omitted, the calling user is assumed.
+ * 
+ * @apiParam  {String} [groupId] The NSID of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
  * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned

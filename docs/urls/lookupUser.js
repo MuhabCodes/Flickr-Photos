@@ -6,7 +6,7 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} api_key Your API application key.
+ * 
  * @apiParam  {String} url The url to the user's profile or photos page.
  * 
 * 

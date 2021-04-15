@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /photos/geo/getLocation/photo_id/:photo_id getLocation
+ * @api {GET} /photos/geo/getLocation/photoId/:photoId getLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo you want to retrieve location data for.
+ * 
+ * @apiParam  {String} photoId The id of the photo you want to retrieve location data for.
  * @apiParam  {String} [extras] Extra flags.
  * 
  * 
