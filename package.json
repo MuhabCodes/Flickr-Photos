@@ -9,7 +9,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\ESC\\Desktop\\Documentation"
+    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\ESC\\Desktop\\Documentation",
+    "nodemon:docs": "npx nodemon --exec \"npm run doctest\" ./docs/*.js"
   },
   "keywords": [],
   "author": "",
