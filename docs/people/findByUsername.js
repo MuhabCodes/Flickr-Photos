@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /people/:username findByUserame
+ * @api {GET} /people/:userName findByUserame
  * 
  * @apiGroup people
- * @apiDescription find ID of a user given their Username
+ * @apiDescription find ID of a user given their userName
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} username Username of the user you want to find
+ * @apiParam  {String} userName userName of the user you want to find
  * 
  * @apiSuccess (Success 200) {string} userID of user you want to find
  * @apiSuccess (Success 200) {Number} statusCode The status code

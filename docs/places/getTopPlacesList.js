@@ -1,11 +1,11 @@
 /**
  * 
- * @api {GET} /places/:place_type_id getTopPlacesList
+ * @api {GET} /places/:placeTypeId getTopPlacesList
  * @apiDescription Return the top 100 most geotagged places for a day.
  * @apiGroup places
  * @apiVersion  1.0.0
  * 
- * @apiParam  {String} place_type_id The numeric ID for a specific place type to cluster photos by.
+ * @apiParam  {String} placeTypeId The numeric ID for a specific place type to cluster photos by.
 
 Valid place type IDs are :
 22: neighbourhood
@@ -14,8 +14,8 @@ Valid place type IDs are :
 12: country
 29: continent
  * @apiParam  {String} [date] A valid date in YYYY-MM-DD format. The default is yesterday.
- * @apiParam  {String} [place_id] Limit your query to only those top places belonging to a specific Flickr Places identifier.
- * @apiParam  {String} [woe_id] Limit your query to only those top places belonging to a specific Where on Earth (WOE) identifier.
+ * @apiParam  {String} [placeId] Limit your query to only those top places belonging to a specific Flickr Places identifier.
+ * @apiParam  {String} [woeId] Limit your query to only those top places belonging to a specific Where on Earth (WOE) identifier.
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} geoPlacesTags list of top 100 geotagged places for a day.

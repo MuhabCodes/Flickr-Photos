@@ -7,12 +7,12 @@
  * 
  * 
  * @apiParam  {String} userId ID of user whose photos will be returned
- * @apiParam  {String} [safe_search] safe search setting 1 for safe, 2 for moderate, 3 for restricted
- * @apiParam  {String} [min_upload_date] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
- * @apiParam  {String} [max_upload_date] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
- * @apiParam  {String} [min_taken_date] Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime
- * @apiParam  {String} [max_taken_date] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
- * @apiParam  {String} [content_type] Content Type setting:
+ * @apiParam  {String} [safeSearch] safe search setting 1 for safe, 2 for moderate, 3 for restricted
+ * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [minTakenDate] Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime
+ * @apiParam  {String} [maxTakenDate] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * @apiParam  {String} [contentType] Content Type setting:
 1 for photos only.
 2 for screenshots only.
 3 for 'other' only.
@@ -31,7 +31,7 @@
 
  * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o
  * 
- * @apiParam  {String} [per_page] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
+ * @apiParam  {String} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
  * @apiParam  {String} [page] The page of results to return. If this argument is omitted, it defaults to 1.
  * 
  * 
