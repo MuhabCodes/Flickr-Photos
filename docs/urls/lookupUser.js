@@ -5,12 +5,12 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Returns a user NSID, given the url to a user's photos or profile.
  * 
  * @apiParam  {String} url The url to the user's profile or photos page.
  * 
 * 
- * @apiSuccess (Success 200) {Object} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} Returns a user NSID
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
@@ -42,16 +42,7 @@
  * 
  * 
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+
  * 
  * 
  */

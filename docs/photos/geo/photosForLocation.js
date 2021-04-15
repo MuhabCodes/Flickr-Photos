@@ -45,18 +45,8 @@
 *     }
 
 
- * 
- * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+
+
  * 
  * 
  */

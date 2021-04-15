@@ -57,16 +57,6 @@ The default context for geotagged photos is 0, or "not defined"
 *     }
 
 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
- * 
+
  * 
  */

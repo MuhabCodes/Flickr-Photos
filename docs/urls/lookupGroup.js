@@ -5,7 +5,7 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Returns a group NSID, given the url to a group's page or photo pool.
  * 
  * @apiParam  {Boolean} isPublic 1 to set viewing permissions for the photo's location data to public, 0 to set it to private.
  * @apiParam  {Boolean} isContact 1 to set viewing permissions for the photo's location data to contacts, 0 to set it to private.
@@ -14,7 +14,7 @@
  * @apiParam  {String} photoId The id of the photo to get permissions for.
  *  
  * 
- * @apiSuccess (Success 200) {Object} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} a group NSID
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
@@ -45,17 +45,7 @@
 
  * 
  * 
- * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+
  * 
  * 
  */

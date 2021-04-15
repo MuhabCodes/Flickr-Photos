@@ -52,17 +52,6 @@ The current list of context IDs is :
 
  * 
  * 
- * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
- * 
+ 
  * 
  */

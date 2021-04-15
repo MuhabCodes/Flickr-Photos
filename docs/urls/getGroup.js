@@ -6,12 +6,12 @@
  * @apiVersion  1.0.0
  * 
  * 
- * 
+ * @apiDescription Returns the url to a group's page.
  * 
  * @apiParam  {String} groupId The NSID of the group to fetch the url for.
  * 
  * 
- * @apiSuccess (Success 200) {Object} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} the url to a group's page.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
@@ -42,18 +42,7 @@
 *     }
 
  * 
- * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     groupId : "12"
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
- * 
+
  * 
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found

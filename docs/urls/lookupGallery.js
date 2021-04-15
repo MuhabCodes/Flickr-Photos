@@ -5,13 +5,13 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Returns gallery info, by url.
  * 
  * @apiParam  {String} url The gallery's URL.
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} gallery info, by url.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
@@ -46,16 +46,7 @@
  * 
  * 
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+ 
  * 
  * 
  */

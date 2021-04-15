@@ -5,12 +5,12 @@
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Get permissions for who may view geo data for a photo.
  * 
  * @apiParam  {String} photoId The id of the photo to get permissions for.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object[]} permissions for who may view geo data for a photo.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  *
  * 
@@ -41,16 +41,6 @@
 *     }
  
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
- * 
+
  * 
  */

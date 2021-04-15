@@ -5,12 +5,12 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Returns the url to a user's photos.
  * 
  * @apiParam  {String} [groupId] The NSID of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} the url to a user's photos.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
@@ -42,16 +42,7 @@
 
  * 
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+ 
  * 
  * 
  */

@@ -5,14 +5,14 @@
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * 
- * 
+ * @apiDescription Get the geo data (latitude and longitude and the accuracy level) for a photo.
  * 
  * @apiParam  {String} photoId The id of the photo you want to retrieve location data for.
  * @apiParam  {String} [extras] Extra flags.
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object} the geo data (latitude and longitude and the accuracy level) for a photo.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
@@ -43,16 +43,5 @@
 *     }
 
 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
- * 
  * 
  */
