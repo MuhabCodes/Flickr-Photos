@@ -1,6 +1,6 @@
 /**
  * 
- * @api {PUT} /photos/comments/:photoId editcomment
+ * @api {PUT} /photos/:photoId/comments/:commentId editComment
  *
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
@@ -8,7 +8,7 @@
  * 
  * 
  * @apiParam  {String} apiKey Your API application key
-* @apiParam  {String} comment_id The id of the comment to edit.
+* @apiParam  {String} commentId The id of the comment to edit.
 *
 * @apiParam  {String} comment_text Update the comment to this text.
 *

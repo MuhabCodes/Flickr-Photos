@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /photos/comments/:photoId addcomment
+ * @api {POST} /photos/:photoId/comments/ addcomment
  *
  * @apiGroup photos.comments
  * @apiVersion  1.0.0

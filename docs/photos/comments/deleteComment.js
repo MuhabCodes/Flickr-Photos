@@ -1,12 +1,12 @@
 /**
  * 
- * @api {DELETE} /photos/comments/:photoId deleteComment
+ * @api {DELETE} /photos/:photoId/comments/:commentId deleteComment
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Delete a comment as the currently authenticated user.
 * 
 * @apiParam  {String} apiKey Your API application key.
-* @apiParam  {String} comment_id The id of the comment to delete.
+* @apiParam  {String} commentId The id of the comment to delete.
 *
 * 
 *@apiSuccess (Success 410) {Number} statusCode The status code
