@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /photos/people/add addPerson
+ * @api {POST} /photos/:photo_id/people/:user_id addPerson
  * @apiGroup photos.people
  * @apiVersion  1.0.0
  * 
@@ -15,5 +15,15 @@
  * @apiParam  {Number} [person_w] the width (in pixel) of the box around the person
  * @apiParam  {Number} [person_h] the height (in pixel)of the box around the person
  * 
+ * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
+ * 
+ * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+ * @apiError (Error 400) {Number} statusCode The status code
+ * 
+ * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
+ * @apiError (Error 401) {Number} statusCode The status code.
+ * 
+ * @apiError (Error 404) {String} error Informs the caller of the missing object.
+ * @apiError (Error 404) {Number} statusCode The status code
  */
