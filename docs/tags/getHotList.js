@@ -1,20 +1,18 @@
 /**
  * 
- * @api {GET} /cameras/:brand/model getBrandModels
- * @apiDescription Retrieve all the models for a given camera brand.
- * @apiGroup cameras
+ * @api {GET} /tags/hottags getHotList
+ * @apiDescription Returns a list of hot tags for the given period.
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} brand brand of the camera
+ * @apiParam  {String} [period] The period for which to fetch hot tags. Valid values are day and week (defaults to day).
+ * @apiParam  {String} [count] The number of tags to return. Defaults to 20. Maximum allowed value is 200.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraModels all models of the passed camera brand
+ * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} hotTagsList list of all hot tags required
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -24,7 +22,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
+ *       "error": "tagNotFound",
  *        "status_code":404
  *     }
   
@@ -34,6 +32,5 @@
  *       "error": "Unauthorized User",
  *        "status_code":401
  *     }
-
  * 
  */

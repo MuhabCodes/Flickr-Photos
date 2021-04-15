@@ -1,20 +1,17 @@
 /**
  * 
- * @api {GET} /cameras/:brand/model getBrandModels
- * @apiDescription Retrieve all the models for a given camera brand.
- * @apiGroup cameras
+ * @api {GET} /tags/:photo_id/taglist getListPhoto
+ * @apiDescription Get the tag list for a given photo
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} brand brand of the camera
+ * @apiParam  {String} photo_id The id of the photo to return tags for
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraModels all models of the passed camera brand
+ * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -34,6 +31,5 @@
  *       "error": "Unauthorized User",
  *        "status_code":401
  *     }
-
  * 
  */

@@ -7,23 +7,17 @@
  * @apiGroup people
  * @apiVersion 1.0.0
  * 
- * @apiParam  {String} api_key Your API application key
+ * 
  * @apiParam  {String} user_id ID of user you want to get groups for
  * @apiParam  {String} [invitation_only] Include public groups that require an invitation or administrator approval to join.
  * 
  * @apiSuccess (Success 200) {Object[]}  userGroups all groups mentioned user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
  * 
  * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+ * 
+ * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
  * @apiError (Error 404) {String} error Informs the caller of the missing object.

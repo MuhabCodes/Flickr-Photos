@@ -5,7 +5,7 @@
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
- * @apiParam  {String} api_key Your API application key
+ * 
  * @apiParam  {String} user_id ID of user whose photos will be returned
  * @apiParam  {String} [safe_search] safe search setting 1 for safe, 2 for moderate, 3 for restricted
  * @apiParam  {String} [min_upload_date] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
@@ -39,16 +39,10 @@
  * @apiSuccess (Success 200) {Object[]}  userPhotos all photos of user mentioned
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
+ *  
  * 
  * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+ * 
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

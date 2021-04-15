@@ -1,20 +1,18 @@
 /**
  * 
- * @api {GET} /cameras/:brand/model getBrandModels
- * @apiDescription Retrieve all the models for a given camera brand.
- * @apiGroup cameras
+ * @api {GET} /tags/frequent getMostFrequentlyUsed
+ * 
+ *
+ * @apiDescription Returns a list of most frequently used tags for a user.
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} brand brand of the camera
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraModels all models of the passed camera brand
+ * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} frequentTags list of all frequently used tags 
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -24,7 +22,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
+ *       "error": "tagNotFound",
  *        "status_code":404
  *     }
   
@@ -34,6 +32,5 @@
  *       "error": "Unauthorized User",
  *        "status_code":401
  *     }
-
  * 
  */

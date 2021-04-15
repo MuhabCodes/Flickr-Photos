@@ -1,20 +1,17 @@
 /**
  * 
- * @api {GET} /cameras/:brand/model getBrandModels
- * @apiDescription Retrieve all the models for a given camera brand.
- * @apiGroup cameras
+ * @api {GET} /tags/:tag/:cluster_id/photos getClusterPhotos
+ * @apiDescription Returns the first 24 photos for a given tag cluster
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} brand brand of the camera
+ * @apiParam  {String} tag The tag that this cluster belongs to
+ * @apiParam  {String} cluster_id The top three tags for the cluste
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraModels all models of the passed camera brand
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} photoTag list of first 24 photos of the given tag cluster
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -24,7 +21,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
+ *       "error": "tagOrClusterNotFound",
  *        "status_code":404
  *     }
   
@@ -34,6 +31,5 @@
  *       "error": "Unauthorized User",
  *        "status_code":401
  *     }
-
  * 
  */

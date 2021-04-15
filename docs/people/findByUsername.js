@@ -6,7 +6,7 @@
  * @apiDescription find ID of a user given their Username
  * @apiVersion  1.0.0
  * 
- * @apiParam  {String} api_key Your API application key
+ * 
  * @apiParam  {String} username Username of the user you want to find
  * 
  * @apiSuccess (Success 200) {string} userID of user you want to find
@@ -16,16 +16,10 @@
  * @apiError (Error 401) {Number} statusCode The status code
  * @apiError (Error 404) {String} error Informs the caller of the missing object.
  * @apiError (Error 404) {Number} statusCode The status code 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
+ *  
  * 
  * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * } 
+ *  
   @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
