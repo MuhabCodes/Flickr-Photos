@@ -15,4 +15,7 @@
  * //TODO : Add request example with the list thing
  * // i.e. the first optional argument.
  * 
+ * @apiSuccess (Successful Requests) {String[]} 200:OK Contains all the member of the group mentioned
+ * 
+ * @apiError  400:BadRequest The server could not understand the request due to invalid syntax.
  */
