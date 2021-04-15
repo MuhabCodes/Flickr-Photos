@@ -3,7 +3,7 @@
  * @api {GET} /galleries/:gallery_id Get information about a gallery
  * @apiName GetInfo
  * @apiGroup Galleries
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission none
  *
  *

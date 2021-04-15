@@ -3,7 +3,7 @@
  * @api {POST} /photos Add a new photo
  * @apiName addPhoto
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission none
  *
  *

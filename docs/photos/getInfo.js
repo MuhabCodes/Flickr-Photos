@@ -3,7 +3,7 @@
  * @api {GET} /photos/:photo_id Get the information of a certain photo
  * @apiName GetPhotoInfo
  * @apiGroup Photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  * @apiPermission author
  *
  *
