@@ -6,10 +6,22 @@
   "dependencies": {
     "apidoc": "^0.27.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "watch": {
+    "test": {
+      "extensions": "js",
+      "patterns": [
+        "docs",
+        "docs/*",
+        "docs/*/*"
+      ]
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "doctest": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs"
+    "doctest": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs",
+    "nodemon:docs": "npx nodemon --exec \"npm run doctest\" ./docs/*.js"
   },
   "keywords": [],
   "author": "",
