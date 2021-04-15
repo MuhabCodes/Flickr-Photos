@@ -1,6 +1,6 @@
 /**
  * 
- * @api {DELETE} /photos/:photo_id/people/:user_id/coords deleteCoords
+ * @api {DELETE} /photos/:photoId/people/:userId/coords deleteCoords
  * @apiGroup photos.people
  * @apiVersion  1.0.0
  * 
@@ -8,9 +8,9 @@
  * 
  * @apiSuccess (Success 410) {Number} statusCode The status code.
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo to add a person to.
- * @apiParam  {String} user_id The id of the user to add to the photo.
+ *  
+ * @apiParam  {String} photoId The id of the photo to add a person to.
+ * @apiParam  {String} userId The id of the user to add to the photo.
  * 
  *  
  * 
