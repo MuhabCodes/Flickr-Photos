@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /groups/members/getList getList
+ * @api {GET} /groups/:group_id/members getList
  * @apiGroup groups.members
  * @apiVersion  1.0.0
  * 
@@ -15,35 +15,30 @@
  * //TODO : Add request example with the list thing
  * // i.e. the first optional argument.
  * 
+ * @apiSuccess (Success 200) {Number} statusCode all the member of the group mentioned
+ * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
+ * 
+ * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+ *@apiError (Error 400) {Number} statusCode The status code
+ *
+ * @apiError (Error 401) {String} error The user doesn't have permission to do this action
+ * @apiError (Error 401) {Number} statusCode The status code
+ *
+ *
+ * @apiError (Error 404) {String} error Informs the caller of the missing object.
+ * @apiError (Error 404) {Number} statusCode The status code
+ *
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "PhotoNotFound",
+ *       "error": "groupNotFound",
  *        "status_code":404
  *     }
  *
- * 
- *     @apiErrorExample {json} Error-404:
- *     HTTP/1.1 404 Not Found
+ * @apiErrorExample {json} Error-401:
+ *     HTTP/1.1 401 Unauthorized
  *     {
- *       "error": "PhotoNotFound",
- *        "status_code":404
+ *       "error": "Unauthorized User",
+ *        "status_code":401
  *     }
- * @apiErrorExample {json} Error-404:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "PhotoNotFound",
- *        "status_code":404
- *     }
- * 
- * @apiError (Error 401) {Number} status_code The status code
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * 
- * 
- *  @apiError (Error 404) {Number} status_code The status code
- *  @apiError (Error 404) {String} PhotoNotFound The photo isn't found
- * 
- * @apiSuccess (Success 200) {Number} statusCode all the member of the group mentioned
- * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
- *  
  */
