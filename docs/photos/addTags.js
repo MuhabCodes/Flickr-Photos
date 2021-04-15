@@ -1,35 +1,32 @@
 /**
  *
- * @api {DELETE} /photos/:photoId Delete a photo from flickr.
- * @apiName DeletePhoto
+ * @api {POST} /photos/:photoID title
+ * @apiName addTag
  * @apiGroup Photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.0.1
  * @apiPermission author
  *
+ * @apiParam  {Number} photoId The id of the photo to add tags to
+ * @apiParam  {Object[]} tags The tags to add to the photo.
+ * @apiParam  {String} token The user authentication token
  *
- * @apiParam  {Number} photoId The id of the photo to be deleted
- * @apiParam  {String} token User authorization token
- *
- * @apiExample Example usage:
- * curl -i http://localhost/photos/314
- *
- * @apiSuccess (Success 410) {Number} statusCode The status code
- * @apiError (Error 404) {String} error The photo isn't found
- * @apiError (Error 404) {Number} statusCode The status code
+ * @apiSuccess (Success 200) {Number} statusCode The status code of the request
+ * @apiError (Error 404) {Number} statusCode The status code of the request
+ * @apiError (Error 404) {String} error The photo is not found
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 314,
- *      "token":"9rug237g0dh2cn"
+ *     "photoId" : 456,
+ *      "tags": [{...},{...},...],
+ *      "token":"iudbfgubr2"
  * }
  *
  *
  * @apiSuccessExample {json} Success-Response:
- *      HTTP/1.1 410 Gone
  * {
- *      "statusCode":410
+ *     "statusCode" : 200
  * }
  *
  * @apiErrorExample {json} Error-404:
@@ -45,6 +42,5 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
- *
  *
  */

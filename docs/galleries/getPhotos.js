@@ -1,30 +1,36 @@
 /**
  *
- * @api {GET} /galleries/:gallery_id Return the list of photos for a gallery
+ * @api {GET} /galleries/:galleryId Return the list of photos for a gallery
  * @apiName GetPhotos
  * @apiGroup Galleries
  * @apiVersion 1.0.0
  * @apiPermission none
  *
  *
- * @apiParam  {Number} gallery_id The id of the gallery
+ * @apiParam  {Number} galleryId The id of the gallery
  *
- * @apiSuccess (Success 200) {Boolean} success The request is handled successfully
- * @apiSuccess (Success 200) {Number} status_code The status_code
+ * @apiSuccess (Success 200) {Number} statusCode The statusCode
  * @apiSuccess (Success 200) {Object[]} photos Array of photos within the gallery
+ * @apiError (Error 404) {String} error The gallery isn't found
+ * @apiError (Error 404) {Number} statusCode The status code
  *
  * @apiParamExample  {type} Request-Example:
  * {
- *     "gallery_id" : 13
+ *     "galleryId" : 13
  * }
  *
  *
  * @apiSuccessExample {type} Success-Response:
  * {
- *     "success" : true,
- *      "status_code":200,
+ *      "statusCode":200,
  *      "photos":[{...},{...},...]
  * }
  *
+ *  @apiErrorExample {json} Error-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "GalleryNotFound",
+ *        "statusCode":404
+ *     }
  *
  */
