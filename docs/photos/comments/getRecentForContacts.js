@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /photos.comments/getRecentForContacts
+ *@api {GET} /photos.comments/getRecentForContacts getRecentForContacts
 
 * @apiGroup photos.comments
 * @apiVersion  1.0.0
@@ -23,7 +23,7 @@
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "commentNotFound",
 *        "status_code":404
 *     }
 *@apiErrorExample {json} Error-401
