@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /favorites/photos/:photoId/user/:photoId getContext
+ * @api {GET} /favorites/photos/:photoId/user/:userId getContext
  * 
  * @apiGroup favorites
  * @apiVersion  1.0.0
