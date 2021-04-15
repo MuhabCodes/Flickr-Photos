@@ -1,5 +1,5 @@
 /**
- *
+ * //TODO: Change this into a DELETE instead of POST
  * @api {POST} /photos/:photoID/removeTag Remove a tag from a photo.
  * @apiName RemoveTag
  * @apiGroup Photos

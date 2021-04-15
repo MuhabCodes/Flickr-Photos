@@ -1,5 +1,5 @@
 /**
- *
+ * //TODO: Change this into a DELETE instead of POST
  * @api {POST} /galleries/:galleryId/removePhoto Remove a photo from a gallery.
  * @apiName RemovePhoto
  * @apiGroup Galleries
