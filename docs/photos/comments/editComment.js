@@ -7,7 +7,7 @@
  * @apiDescription Edit the text of a comment as the currently authenticated user.
  * 
  * 
- * @apiParam  {String} apiKey Your API application key
+*
 * @apiParam  {String} commentId The id of the comment to edit.
 *
 * @apiParam  {String} comment_text Update the comment to this text.

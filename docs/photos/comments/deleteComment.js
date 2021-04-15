@@ -5,7 +5,7 @@
  * @apiVersion  1.0.0
  * @apiDescription Delete a comment as the currently authenticated user.
 * 
-* @apiParam  {String} apiKey Your API application key.
+*
 * @apiParam  {String} commentId The id of the comment to delete.
 *
 * 

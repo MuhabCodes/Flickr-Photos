@@ -6,7 +6,7 @@
 * @apiVersion  1.0.0
 * @apiDescription Adds a photo to a user's favorites list.
 * 
-*@apiParam  {String} apiKey Your API application key
+*
 *@apiParam  {String} photoId The id of the photo to add to the user's favorites
 * 
 *@apiSuccess (Success 200) {Number} statusCode The status code

@@ -6,11 +6,11 @@
  * @apiVersion  1.0.0
  * @apiDescription Returns a list of the user's favorite photos. Only photos which the calling user has permission to see are returned.
  * 
- * //TODO : change to camel case
- * @apiParam  {String} apiKey Your API application key
+ * 
+ *
  * @apiParam  {String} userId The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.
- * @apiParam  {Date} [min_fave_date] Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.
- * @apiParam  {Date} [max_fave_date] Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.
+ * @apiParam  {Date} [minFaveDate] Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.
+ * @apiParam  {Date} [maxFaveDate] Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.
  * @apiParam  {Number} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
  * @apiParam  {Number} [page] The page of results to return. If this argument is omitted, it defaults to 1
  * 

@@ -6,7 +6,7 @@
  * @apiVersion  1.0.0
  * 
  * @apiDescription Removes a photo from a user's favorites list.
- * @apiParam  {String} apiKey Your API application key
+ *
  * 
  * @apiParam {String} photoId The id of the photo to remove from the user's favorites.
  * 

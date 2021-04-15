@@ -6,7 +6,7 @@
 * @apiVersion  1.0.0
 * 
 * 
-* @apiParam  {String} apiKey Your API application key
+*
 * @apiParam  {Date} [date_lastcomment] Limits the resultset to photos that have been commented on since this date. The date should be in the form of a Unix timestamp.
 * @apiParam  {Number} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
 * @apiParam  {Number} [page] The page of results to return. If this argument is omitted, it defaults to 1.

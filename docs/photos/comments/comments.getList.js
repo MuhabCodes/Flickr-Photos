@@ -6,7 +6,7 @@
  * @apiDescription Returns the comments for a photo
  * 
  * 
- * @apiParam  {String} apiKey Your API application key. 
+ *
  * @apiParam  {String} photoId The id of the photo to fetch comments for.
  * @apiParam  {Date} [min_comment_date] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
  * @apiParam  {Date} [max_comment_date] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
