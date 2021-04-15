@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /tags/:tag/:cluster_id/photos getClusterPhotos
+ * @api {GET} /tags/:tag/:clusterId/photos getClusterPhotos
  * @apiDescription Returns the first 24 photos for a given tag cluster
  * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
  * @apiParam  {String} tag The tag that this cluster belongs to
- * @apiParam  {String} cluster_id The top three tags for the cluste
+ * @apiParam  {String} clusterId The top three tags for the cluste
  * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code

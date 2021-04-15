@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/:userId/public/photos getPublicPhotos
+ * @api {GET} /people/:userId/photos/public getPublicPhotos
  * @apiName apiName
  * @apiGroup people
  * @apiDescription Get a list of public photos for the given user.

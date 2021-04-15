@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/:userId/public/groups getPublicGroups
+ * @api {GET} /people/:userId/groups/public getPublicGroups
  * @apiDescription Returns the list of public groups a user is a member of.
  * 
  * @apiName apiName

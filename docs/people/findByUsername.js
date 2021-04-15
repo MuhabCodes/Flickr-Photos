@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/find/:username findByUserame
+ * @api {GET} /people/:username findByUserame
  * 
  * @apiGroup people
  * @apiDescription find ID of a user given their Username

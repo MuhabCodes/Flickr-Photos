@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/info getInfo
+ * @api {GET} /people/:userId/info getInfo
  * @apiDescription Get information about a user
  * @apiGroup people
  * @apiVersion  1.0.0

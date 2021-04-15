@@ -1,15 +1,15 @@
 /**
  * 
- * @api {Get} /people/:userId/email findByEmail
+ * @api {Get} /people/:email findByEmail
  * @apiDescription find ID of a user given their Email
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} findEmail Email of the User you want to Find
+ * @apiParam  {String} email Email of the User you want to Find
  * 
  * 
- * @apiSuccess (Success 200) {string} userID of user you want to find
+ * @apiSuccess (Success 200) {string} userID The Id of user you want to find
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
