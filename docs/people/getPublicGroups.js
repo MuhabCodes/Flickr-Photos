@@ -9,7 +9,7 @@
  * 
  * 
  * @apiParam  {String} userId ID of user you want to get groups for
- * @apiParam  {String} [invitation_only] Include public groups that require an invitation or administrator approval to join.
+ * @apiParam  {String} [invitationOnly] Include public groups that require an invitation or administrator approval to join.
  * 
  * @apiSuccess (Success 200) {Object[]}  userGroups all groups mentioned user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
