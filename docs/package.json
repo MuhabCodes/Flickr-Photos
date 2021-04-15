@@ -23,7 +23,6 @@
 
     "doctest": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs",
     "nodemon:docs": "npx nodemon --exec \"npm run doctest\" ./docs/*.js"
-
   },
   "keywords": [],
   "author": "",
