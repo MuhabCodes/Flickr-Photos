@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /groups/:group_id/pools/photos getPhotos
+ * @api {GET} /groups/:groupId/pools/photos getPhotos
  * @apiGroup groups.pools
  * @apiVersion  1.0.0
  * 
@@ -9,11 +9,10 @@
  * @apiSuccess (Success 200) {Object[]} photoList A list containing the photos from a given group.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- *  
+ * @apiParam  {String} userId This filters the photos to only return photos by that user.
  * @apiParam  {String} [tag] A tag to filter the pool with.(maximum 1 tag)
- * @apiParam  {String} user_id This filters the photos to only return photos by that user.
  * @apiParam  {Number} [page=1] The page of results to return.
- * @apiParam  {Number} [per_page=100] The number of groups per page that can be returned.
+ * @apiParam  {Number} [perPage=100] The number of groups per page that can be returned.
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code

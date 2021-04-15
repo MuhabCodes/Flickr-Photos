@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /photos/:photo_id/people getPeopleList
+ * @api {GET} /photos/:photoId/people getPeopleList
  * @apiGroup photos.people
  * @apiVersion  1.0.0
  * 
  * @apiDescription Get a list of people in a given photo.
  * 
  *  
- * @apiParam  {String} photo_id The id of the photo.
+ * @apiParam  {String} photoId The id of the photo.
  * 
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.

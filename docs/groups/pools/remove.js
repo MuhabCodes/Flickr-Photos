@@ -1,14 +1,14 @@
 /**
  * 
- * @api {delete} /groups/:group_id/photos/:photo_id addPhoto
+ * @api {delete} /groups/:groupId/photos/:photoId addPhoto
  * @apiGroup groups.pools
  * @apiVersion  1.0.0
  * 
  * @apiDescription Remove a photo to a group's pool.
  * 
  *  
- * @apiParam  {String} group_id The id of the group to add the photo to.
- * @apiParam  {String} photo_id The id of the photo to add. Photo must belong to the calling user.
+ * @apiParam  {String} groupId The id of the group to add the photo to.
+ * @apiParam  {String} photoId The id of the photo to add. Photo must belong to the calling user.
  * 
  * @apiSuccess (Success 410) {Number} statusCode The status code
  * 
