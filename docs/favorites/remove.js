@@ -1,14 +1,14 @@
 /**
  * 
- * @api {DELETE} /favorites/:photo_id removeFavorite
+ * @api {DELETE} /favorites/:photoId removeFavorite
  * 
  * @apiGroup favorites
  * @apiVersion  1.0.0
  * 
  * @apiDescription Removes a photo from a user's favorites list.
- * @apiParam  {String} api_key Your API application key
+ * @apiParam  {String} apiKey Your API application key
  * 
- * @apiParam {String} photo_id The id of the photo to remove from the user's favorites.
+ * @apiParam {String} photoId The id of the photo to remove from the user's favorites.
  * 
  * 
  *@apiSuccess (Success 410) {Number} statusCode The status code

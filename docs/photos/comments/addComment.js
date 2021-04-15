@@ -1,15 +1,15 @@
 /**
  * 
- * @api {POST} /photos.comments/:photo_id addcomment
+ * @api {POST} /photos.comments/:photoId addcomment
  *
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Add comment to a photo as the currently authenticated user.
  * 
  * 
- * @apiParam  {String} api_key Your API application key.
+ * @apiParam  {String} apiKey Your API application key.
  * 
- * @apiParam  {String} photo_id The id of the photo to add a comment to.
+ * @apiParam  {String} photoId The id of the photo to add a comment to.
  * @apiParam  {String} comment_text Text of the comment
  * 
  *@apiSuccess (Success 200) {Number} statusCode The status code

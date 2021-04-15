@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /profile/:user_id getProfile
+ * @api {GET} /profile/:userId getProfile
 
  * @apiGroup profile
  * @apiVersion 1.0.0
  * 
  * 
- * @apiParam  {string} api_key Your API application key
- * @apiParam  {String} user_id The NSID of the user to fetch profile information for.
+ * @apiParam  {string} apiKey Your API application key
+ * @apiParam  {String} userId The NSID of the user to fetch profile information for.
  * @apiDescription Returns specified user's profile info, respecting profile privacy settings
 *@apiSuccess (Success 200) {Object[]} profileInfo  Profile info required
 *@apiSuccess (Success 200) {Number} statusCode The status code

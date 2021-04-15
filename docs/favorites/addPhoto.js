@@ -1,13 +1,13 @@
 /**
 * 
-* @api {Post} /favorites/:photo_id addPhoto
+* @api {Post} /favorites/:photoId addPhoto
 *
 * @apiGroup favorites
 * @apiVersion  1.0.0
 * @apiDescription Adds a photo to a user's favorites list.
 * 
-*@apiParam  {String} api_key Your API application key
-*@apiParam  {String} photo_id The id of the photo to add to the user's favorites
+*@apiParam  {String} apiKey Your API application key
+*@apiParam  {String} photoId The id of the photo to add to the user's favorites
 * 
 *@apiSuccess (Success 200) {Number} statusCode The status code
 *

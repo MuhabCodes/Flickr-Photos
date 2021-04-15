@@ -1,14 +1,14 @@
 /**
  * 
- * @api {GET} /favorites/photos/:photo_id/user/:photo_id getContext
+ * @api {GET} /favorites/photos/:photoId/user/:photoId getContext
  * 
  * @apiGroup favorites
  * @apiVersion  1.0.0
  * @apiDescription Returns next and previous favorites for a photo in a user's favorites.
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo to fetch the context for
- * @apiParam  {String} user_id The user who counts the photo as favorite
+ * @apiParam  {String} apiKey Your API application key
+ * @apiParam  {String} photoId The id of the photo to fetch the context for
+ * @apiParam  {String} userId The user who counts the photo as favorite
  
 * @apiSuccess (Success 200) {Object[]} photos Photos Returned yo user
 *@apiSuccess (Success 200) {Number} statusCode The status code
