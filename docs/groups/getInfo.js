@@ -3,7 +3,7 @@
  * @api {get} /groups/getInfo getInfo
  * @apiName groups
  * @apiGroup groups
- * @apiVersion  1.1.0
+ * @apiVersion  1.0.0
  * 
  * @apiDescription Get information about a group.
  * 

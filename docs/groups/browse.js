@@ -1,9 +1,8 @@
 /**
  * 
  * @api {get} /groups/browse Browse
- * @apiName groups
  * @apiGroup groups
- * @apiVersion  1.1.0
+ * @apiVersion  1.0.0
  * @apiDescription Browse the group category tree, finding groups and sub-categories.
  * 
  * @apiParam  {String} api_key Your API application key.

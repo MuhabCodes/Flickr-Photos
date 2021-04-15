@@ -3,7 +3,7 @@
  * @api {get} /groups/joinRequest joinRequest
  * @apiName groups
  * @apiGroup groups
- * @apiVersion  1.1.0
+ * @apiVersion  1.0.0
  * @apiDescription Request to join a group that is invitation-only.
  * 
  * 

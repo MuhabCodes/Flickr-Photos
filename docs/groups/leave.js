@@ -3,7 +3,7 @@
  * @api {get} /groups/leave leave
  * @apiName groups
  * @apiGroup groups
- * @apiVersion  1.1.0
+ * @apiVersion  1.0.0
  * @apiDescription Leave a group.
 
 If the user is the only administrator left, and there are other members, the oldest member will be promoted to administrator.
