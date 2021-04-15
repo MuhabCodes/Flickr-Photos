@@ -4,7 +4,7 @@
  * @apiName GetWithoutGeoData
  * @apiGroup Photos
  * @apiVersion  0.0.1
- * @apiPermissin author
+ * @apiPermission author
  *
  *
  * @apiParam  {String} token The authorization token of the user

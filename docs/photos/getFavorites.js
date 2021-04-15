@@ -4,7 +4,7 @@
  * @apiName GetFavorites
  * @apiGroup Photos
  * @apiVersion  0.0.1
- * @apiPermissin none
+ * @apiPermission none
  *
  *
  * @apiParam  {Number} photoId The id of the photo to add tags to
