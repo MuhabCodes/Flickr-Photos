@@ -94,14 +94,14 @@ Multiple machine tags may be queried by passing a comma-separated list. The numb
 *     HTTP/1.1 404 Not Found
 *     {
 *       "error": "photoNotFound",
-*        "status_code":404
+*        "statusCode":404
 *     }
  
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 
  * 
