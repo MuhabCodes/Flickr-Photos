@@ -8,7 +8,7 @@
  * 
  * @apiDescription Returns the url to a group's page.
  * 
- * @apiParam  {String} groupId The NSID of the group to fetch the url for.
+ * @apiParam  {String} groupId The Id of the group to fetch the url for.
  * 
  * 
  * @apiSuccess (Success 200) {Object} groupPageUrl the url to a group's page.
