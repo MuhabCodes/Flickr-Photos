@@ -19,7 +19,7 @@ Valid place type IDs are :
 
 
  * @apiParam  {String} [placeType] A specific place type to cluster photos by.
-(The "placeType" argument has been deprecated in favor of the "place_type_id" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
+(The "placeType" argument has been deprecated in favor of the "placeTypeId" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
 )
 
 Valid place types are :
