@@ -21,7 +21,7 @@
 6 for photos and 'other'.
 7 for photos, screenshots, and 'other' (all).
 
- *@apiParam  {String} [privacy_filter] Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:
+ *@apiParam  {String} [privacyFilter] Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:
 1 public photos
 2 private photos visible to friends
 3 private photos visible to family
