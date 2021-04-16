@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /groups/:groupId/leave leave
+ * @api {DELETE} /groups/:groupId/leave leave
  * @apiName groups
  * @apiGroup groups
  * @apiVersion  1.0.0
