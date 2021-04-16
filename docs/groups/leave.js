@@ -12,7 +12,7 @@ If the user is the last person in the group, the group will be deleted.
 
  * 
  * 
- * @apiParam  {String} groupId The NSID of the Group to leave
+ * @apiParam  {String} groupId The Id of the Group to leave
  * @apiParam  {Boolean} [deletePhotos] Delete all photos by this user from the group
  * 
  * 

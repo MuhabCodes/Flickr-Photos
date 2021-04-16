@@ -5,7 +5,7 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * @apiDescription Returns a group NSID, given the url to a group's page or photo pool.
+ * @apiDescription Returns a group Id, given the url to a group's page or photo pool.
  * 
  * @apiParam  {String} url The url to the group page
  * 

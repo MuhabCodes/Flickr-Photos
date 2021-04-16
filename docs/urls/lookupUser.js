@@ -5,7 +5,7 @@
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
- * @apiDescription Returns a user NSID, given the url to a user's photos or profile.
+ * @apiDescription Returns a user Id, given the url to a user's photos or profile.
  * 
  * @apiParam  {String} url The url to the user's profile or photos page.
  * 
