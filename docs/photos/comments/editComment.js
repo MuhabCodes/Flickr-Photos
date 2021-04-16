@@ -5,12 +5,12 @@
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Edit the text of a comment as the currently authenticated user.
- * 
+ *
  * 
 *
 * @apiParam  {String} commentId The id of the comment to edit.
 *
-* @apiParam  {String} comment_text Update the comment to this text.
+* @apiParam  {String} commentText Update the comment to this text.
 *
 *@apiSuccess (Success 200) {Number} statusCode The status code
 * 
