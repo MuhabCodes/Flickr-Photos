@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST}  /photos/geo/setContext/photoId/:photoId/context/:context setContext
+ * @api {POST}  /photos/:photoId/geo/context/:context setContext
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0

@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /photos/geo/getPerms/photoId/:photoId getPerms
+ * @api {GET} /photos/:photoId/geo/perms getPerms
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0

@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /photos/geo/getLocation/photoId/:photoId getLocation
+ * @api {GET} /photos/:photoId/geo/location getLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0

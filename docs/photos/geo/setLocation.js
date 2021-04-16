@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST}  /photos/geo/setLocation/photoId/:photoId/lat/:lat/lon/:lon setLocation
+ * @api {POST}  /photos/:photoId/geo/location/lat/:lat/lon/:lon setLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
@@ -60,3 +60,5 @@ The default context for geotagged photos is 0, or "not defined"
 
  * 
  */
+
+//TODO : query params in url

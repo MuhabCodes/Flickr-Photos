@@ -1,6 +1,6 @@
 /**
  * 
- * @api {get} /urls/getGroup/:groupId getGroup
+ * @api {get} /urls/groups/:groupId getGroup
  * @apiName urls
  * @apiGroup urls
  * @apiVersion  1.0.0

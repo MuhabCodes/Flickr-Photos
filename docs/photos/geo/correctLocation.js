@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /photos/geo/correctLocation/photoId/:photoId/foursquareId/:foursquareId correctLocation
+ * @api {POST} /photos/:photoId/geo/correctLocation/foursquareId/:foursquareId correctLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0

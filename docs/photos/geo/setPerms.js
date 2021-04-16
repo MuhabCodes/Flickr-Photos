@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} photos/geo/setPerms/isPublic/:isPublic/isContact/:isContact/isFriend/:isFriend/isFamily/:isFamily/photoId/:photoId setPerms
+ * @api {POST} photos/:photoId/geo/perms/isPublic/:isPublic/isContact/:isContact/isFriend/:isFriend/isFamily/:isFamily setPerms
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
