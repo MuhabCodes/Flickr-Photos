@@ -7,13 +7,13 @@
  * @apiPermission author
  *
  *
- * @apiParam  {Number} photoId The id of the photo to get information for.
+ * @apiParam  {String} photoId The id of the photo to get information for.
  * @apiParam  {String} token User authorization token
  *
  * @apiExample Example usage:
  * curl -i http://localhost/photos/314
  *
- * @apiSuccess (Success 200) {Number} authorId The id of the author of this photo
+ * @apiSuccess (Success 200) {String} authorId The id of the author of this photo
  * @apiSuccess (Success 200) {String} title The title of the image
  * @apiSuccess (Success 200) {String} description The description given to the image
  * @apiSuccess (Success 200) {Date} captureDate The date that the photo was captured on
@@ -33,14 +33,14 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 314,
+ *     "photoId" : "fh4ub34",
  *      "token":"9rug237g0dh2cn"
  * }
  *
  *
  * @apiSuccessExample {json} Success-Response:
  * {
- *      "authorId" : 12,
+ *      "authorId" : "fob43vb21",
  *      "title":"Blue Lake",
  *      "description":"A fantastic view on the lake",
  *      "captureDate":"1-1-2021",

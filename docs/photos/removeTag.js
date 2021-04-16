@@ -8,8 +8,8 @@
  * @apiPermission author
  *
  *
- * @apiParam  {Number} photoId The id of the photo
- * @apiParam  {Number} tagId The tag to remove from the photo
+ * @apiParam  {String} photoId The id of the photo
+ * @apiParam  {String} tagId The tag to remove from the photo
  * @apiParam  {String} token The authorization token of the user
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
@@ -21,8 +21,8 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 123,
- *      "tagId":43,
+ *     "photoId" : "hsdf3422",
+ *      "tagId":"hsdf7657",
  *      "token":"shif0843"
  * }
  *

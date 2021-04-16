@@ -6,7 +6,7 @@
  * @apiVersion  0.0.1
  *
  *
- * @apiParam  {Number} photoId The id of the photo to fetch the context for.
+ * @apiParam  {String} photoId The id of the photo to fetch the context for.
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object} prevPhoto The previous photo in the photostream
@@ -16,7 +16,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 854
+ *     "photoId" : "dsfbhu234"
  * }
  *
  *

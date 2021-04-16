@@ -7,8 +7,8 @@
  * @apiPermission author
  *
  *
- * @apiParam  {Number} galleryId The ID of the gallery to remove a photo from
- * @apiParam  {Number} photoId The ID of the photo to remove from the gallery
+ * @apiParam  {String} galleryId The ID of the gallery to remove a photo from
+ * @apiParam  {String} photoId The ID of the photo to remove from the gallery
  * @apiParam  {String} token The authorization token of the user
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
@@ -20,8 +20,8 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 123,
- *      "galleryId":43,
+ *     "photoId" : "spjfi234",
+ *      "galleryId":"spjfi23445fr",
  *      "token":"shif0843"
  * }
  *

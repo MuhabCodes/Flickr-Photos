@@ -6,7 +6,7 @@
  * @apiVersion 1.0.0
  * @apiPermission author
  *
- * @apiParam  {Number} photoId The id of the photo to add tags to
+ * @apiParam  {String} photoId The id of the photo to add tags to
  * @apiParam  {Object[]} tags The tags to add to the photo.
  * @apiParam  {String} token The user authentication token
  *
@@ -18,7 +18,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 456,
+ *     "photoId" : "fihsd9234",
  *      "tags": [{...},{...},...],
  *      "token":"iudbfgubr2"
  * }

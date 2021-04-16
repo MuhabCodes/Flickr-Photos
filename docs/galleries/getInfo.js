@@ -7,10 +7,10 @@
  * @apiPermission none
  *
  *
- * @apiParam  {Number} galleryId The id of the gallery
+ * @apiParam  {String} galleryId The id of the gallery
  *
- * @apiSuccess (Success 200) {Number} authorId The id of the author of this photo
- * @apiSuccess (Success 200) {Number} photoId The id of the primary photo
+ * @apiSuccess (Success 200) {String} authorId The id of the author of this photo
+ * @apiSuccess (Success 200) {String} photoId The id of the primary photo
  * @apiSuccess (Success 200) {String} title The title of the gallery
  * @apiSuccess (Success 200) {String} description The description given to the gallery
  * @apiSuccess (Success 200) {Date} updateDate The date that the gallery was updated
@@ -22,14 +22,14 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "galleryId" : 12
+ *     "galleryId" : "fdshgy234"
  * }
  *
  *
  * @apiSuccessExample {json} Success-Response:
  * {
- *     "authorId" : 13,
- *      "photoId":15,
+ *     "authorId" : "asdgfyvwer32",
+ *      "photoId":"asdgfyvwer3231234",
  *      "title":"My Gallery",
  *      "description":"The gallery description",
  *      "updateDate":"1-1-2010",

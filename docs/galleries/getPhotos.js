@@ -7,7 +7,7 @@
  * @apiPermission none
  *
  *
- * @apiParam  {Number} galleryId The id of the gallery
+ * @apiParam  {String} galleryId The id of the gallery
  *
  * @apiSuccess (Success 200) {Number} statusCode The statusCode
  * @apiSuccess (Success 200) {Object[]} photos Array of photos within the gallery
@@ -16,7 +16,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "galleryId" : 13
+ *     "galleryId" : "dshfnug24"
  * }
  *
  *

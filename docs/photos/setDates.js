@@ -6,7 +6,7 @@
  * @apiVersion  0.0.1
  *
  *
- * @apiParam  {Number} photoId The id of the photo
+ * @apiParam  {String} photoId The id of the photo
  * @apiParam  {Date} uploadDate The upload date of the photo
  * @apiParam  {Date} captureDate The capture date of the photo
  *
@@ -16,7 +16,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 458,
+ *     "photoId" : "aifygv223",
  *      "uploadDate":"1-2-2020",
  *      "captureDate":"1-2-2019"
  * }

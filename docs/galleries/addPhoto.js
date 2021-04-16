@@ -7,8 +7,8 @@
  * @apiPermission author
  *
  *
- * @apiParam  {Number} galleryId The id of the gallery
- * @apiParam  {Number} photoId The id of the photo to be added
+ * @apiParam  {String} galleryId The id of the gallery
+ * @apiParam  {String} photoId The id of the photo to be added
  * @apiParam  {String} token User authorization token
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code
@@ -20,8 +20,8 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "galleryId" : 1234,
- *      "photoId":45,
+ *     "galleryId" : "fsdihanub4",
+ *      "photoId":"niavf234",
  *      "token":"987gv324"
  * }
  *

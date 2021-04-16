@@ -7,7 +7,7 @@
  * @apiPermission none
  *
  *
- * @apiParam  {Number} photoId The id of the photo to add tags to
+ * @apiParam  {String} photoId The id of the photo to add tags to
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object[]} users Users that have this photo in their favorites
@@ -16,7 +16,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 123
+ *     "photoId" : "dsofbyi32"
  * }
  *
  *

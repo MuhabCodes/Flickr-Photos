@@ -6,7 +6,7 @@
  * @apiVersion  0.0.1
  *
  *
- * @apiParam  {Number} photoId The photo to return information for.
+ * @apiParam  {String} photoId The photo to return information for.
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object[]} groups The groups that the photo belongs to
@@ -16,7 +16,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 8573
+ *     "photoId" : "fdasbi32"
  * }
  *
  *

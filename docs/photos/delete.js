@@ -7,7 +7,7 @@
  * @apiPermission author
  *
  *
- * @apiParam  {Number} photoId The id of the photo to be deleted
+ * @apiParam  {String} photoId The id of the photo to be deleted
  * @apiParam  {String} token User authorization token
  *
  * @apiExample Example usage:
@@ -21,7 +21,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : 314,
+ *     "photoId" : "dfhioart23",
  *      "token":"9rug237g0dh2cn"
  * }
  *
