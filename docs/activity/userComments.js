@@ -6,8 +6,8 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} perPage Number of items to return per page. If this argument is omitted, it defaults to 10. The maximum allowed value is 50.
- * @apiParam  {String} page The page of results to return. If this argument is omitted, it defaults to 1.
+ * @apiParam  {String} [perPage=10] Number of items to return per page.
+ * @apiParam  {String} [page=1] The page of results to return. 
  * 
  * @apiSuccess (Success 200) {Object[]} activityList list of all recent activites of mentioned user
  * @apiSuccess (Success 200) {Number} statusCode The status code

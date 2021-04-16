@@ -5,9 +5,9 @@
  * @apiGroup activity
  * @apiVersion  1.0.0
  * 
- * @apiParam  {String} timeFrame The timeframe in which to return updates for. This can be specified in days ('2d') or hours ('4h'). The default behavoir is to return changes since the beginning of the previous user session.
- * @apiParam  {String} perPage Number of items to return per page. If this argument is omitted, it defaults to 10. The maximum allowed value is 50.
- * @apiParam  {String} page The page of results to return. If this argument is omitted, it defaults to 1.
+ * @apiParam  {String} [timeFrame] The timeframe in which to return updates for. This can be specified in days ('2d') or hours ('4h'). The default behavoir is to return changes since the beginning of the previous user session.
+ * @apiParam  {String} [perPage=10] Number of items to return per page.The maximum allowed value is 50.
+ * @apiParam  {String} [page=1] The page of results to return.
  * 
  * @apiSuccess (Success 200) {Object[]} activityPhotosList list of all recent photos activites of mentioned user
  * @apiSuccess (Success 200) {Number} statusCode The status code
