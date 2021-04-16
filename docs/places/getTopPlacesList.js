@@ -13,7 +13,7 @@ Valid place type IDs are :
 8: region
 12: country
 29: continent
- * @apiParam  {String} [date] A valid date in YYYY-MM-DD format. The default is yesterday.
+ * @apiParam  {String} [date=yesterday] A valid date in YYYY-MM-DD format.
  * @apiParam  {String} [placeId] Limit your query to only those top places belonging to a specific Flickr Places identifier.
  * @apiParam  {String} [woeId] Limit your query to only those top places belonging to a specific Where on Earth (WOE) identifier.
  * 

@@ -5,7 +5,7 @@
  * @apiGroup activity
  * @apiVersion  1.0.0
  * 
- * @apiParam  {String} [timeFrame] The timeframe in which to return updates for. This can be specified in days ('2d') or hours ('4h'). The default behavoir is to return changes since the beginning of the previous user session.
+ * @apiParam  {String} [timeFrame] The timeframe in which to return updates for. This can be specified in days ('2d') or hours ('4h'). The  behavoir is to return changes since the beginning of the previous user session.
  * @apiParam  {String} [perPage=10] Number of items to return per page.The maximum allowed value is 50.
  * @apiParam  {String} [page=1] The page of results to return.
  * 

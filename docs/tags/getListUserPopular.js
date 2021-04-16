@@ -7,7 +7,7 @@
  * 
  * 
  * @apiParam  {String} [userId] ID of the user to fetch the tag list for
- * @apiParam  {String} [count] Number of popular tags to return. defaults to 10 when this argument is not present.
+ * @apiParam  {String} [count=10] Number of popular tags to return
  * 
  * 
  * 
