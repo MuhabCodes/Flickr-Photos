@@ -1,7 +1,7 @@
 /**
  *
- * @api {GET} /photos/:photoId Returns the list of people who have favorited a given photo
- * @apiName GetFavorites
+ * @api {GET} /photos/:photoId GetFavorites
+ * @apiDescription Returns the list of people who have favorited a given photo
  * @apiGroup Photos
  * @apiVersion  0.0.1
  * @apiPermissin none

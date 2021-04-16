@@ -1,7 +1,7 @@
 /**
  *
- * @api {POST} /photos Add a new photo
- * @apiName addPhoto
+ * @api {POST} /photos AddPhoto
+ * @apiDescription Add a new photo
  * @apiGroup Photos
  * @apiVersion 1.0.0
  * @apiPermission none
@@ -23,7 +23,7 @@
  * @apiSuccess (Success 201) {Number} statusCode The status code
  *
  *
- * @apiParamExample  {type} Request-Example:
+ * @apiParamExample  {json} Request-Example:
  * {
  *      "authorId" : 12,
  *      "title":"Blue Lake",

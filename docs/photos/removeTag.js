@@ -1,7 +1,7 @@
 /**
  *
- * @api {POST} /photos/:photoID/removeTag Remove a tag from a photo.
- * @apiName RemoveTag
+ * @api {PUT} /photos/:photoID/removeTag RemoveTag
+ * @apiDescription Remove a tag from a photo.
  * @apiGroup Photos
  * @apiVersion  0.0.1
  * @apiPermission author

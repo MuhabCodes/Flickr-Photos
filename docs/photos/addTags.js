@@ -1,7 +1,7 @@
 /**
  *
- * @api {POST} /photos/:photoID title
- * @apiName addTag
+ * @api {POST} /photos/:photoID AddTag
+ * @apiDescription Add tags to the photo
  * @apiGroup Photos
  * @apiVersion  0.0.1
  * @apiPermission author

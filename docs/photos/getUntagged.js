@@ -1,7 +1,7 @@
 /**
  *
- * @api {GET} /photos/getUntagged Returns a list of your photos with no tags.
- * @apiName GetUntagged
+ * @api {GET} /photos/getUntagged GetUntagged
+ * @apiDescription Returns a list of your photos with no tags.
  * @apiGroup Photos
  * @apiVersion  0.0.1
  * @apiPermisson none
@@ -13,7 +13,7 @@
  *
  *
  *
- * @apiSuccessExample {type} Success-Response:
+ * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
  *      "photos":[{...},{...},...]

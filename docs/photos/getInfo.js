@@ -1,7 +1,7 @@
 /**
  *
- * @api {GET} /photos/:photoId Get the information of a certain photo
- * @apiName GetPhotoInfo
+ * @api {GET} /photos/:photoId GetPhotoInfo
+ * @apiDescription Get the information of a certain photo
  * @apiGroup Photos
  * @apiVersion 1.0.0
  * @apiPermission author

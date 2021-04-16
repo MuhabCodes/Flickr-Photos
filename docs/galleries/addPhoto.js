@@ -1,7 +1,7 @@
 /**
  *
- * @api {POST} /galleries/:galleryId Add a new photo to a gallery
- * @apiName addPhotoToGallery
+ * @api {POST} /galleries/:galleryId AddPhotoToGallery
+ * @apiDescription Add a new photo to a gallery
  * @apiGroup Galleries
  * @apiVersion 1.0.0
  * @apiPermission author

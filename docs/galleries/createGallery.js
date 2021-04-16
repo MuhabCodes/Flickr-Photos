@@ -1,7 +1,7 @@
 /**
  *
- * @api {POST} /galleries Create a new gallery
- * @apiName CreateGallery
+ * @api {POST} /galleries CreateGallery
+ * @apiDescription Create a new gallery
  * @apiGroup Galleries
  * @apiVersion 1.0.0
  * @apiPermission author

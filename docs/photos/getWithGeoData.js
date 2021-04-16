@@ -1,7 +1,7 @@
 /**
  *
- * @api {GET} /photos/getWithGeoData Returns a list of your geo-tagged photos
- * @apiName GetWithGeoData
+ * @api {GET} /photos/getWithGeoData GetWithGeoData
+ * @apiDescription Returns a list of your geo-tagged photos
  * @apiGroup Photos
  * @apiVersion  0.0.1
  * @apiPermissin author

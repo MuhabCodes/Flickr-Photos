@@ -1,7 +1,7 @@
 /**
  *
- * @api {GET} /galleries/:galleryId Get information about a gallery
- * @apiName GetInfo
+ * @api {GET} /galleries/:galleryId GetInfo
+ * @apiDescription Get information about a gallery
  * @apiGroup Galleries
  * @apiVersion 1.0.0
  * @apiPermission none
@@ -38,7 +38,7 @@
  *      "photoSecret":"fu9g9233"
  * }
  *
- * * @apiErrorExample {json} Error-404:
+ *  @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "GalleryNotFound",
