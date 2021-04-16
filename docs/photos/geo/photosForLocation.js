@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /photos/geo/getLocation/lat/:lat/lon/:lon getLocation
+ * @api {GET} /photos/geo/photosForLocation/lat/:lat/lon/:lon photosForLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
@@ -17,6 +17,7 @@
  * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccess (Success 200) {Object[]} photos a list of photos for the calling user at a specific latitude, longitude and accuracy
  * 
  *  
  * @apiError (Error 400) {Number} statusCode The status code

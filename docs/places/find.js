@@ -13,7 +13,7 @@ The flickr.places.find method is not a geocoder. It will round up to the nearest
  * 
  * @apiParam  {String} query The query string to use for place ID lookups
  * 
- * @apiSuccess (Success 200) {Object[]} Return a list of place IDs
+ * @apiSuccess (Success 200) {Object[]} placeIds Return a list of place IDs
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

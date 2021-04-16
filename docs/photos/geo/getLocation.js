@@ -12,7 +12,7 @@
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object} the geo data (latitude and longitude and the accuracy level) for a photo.
+ * @apiSuccess (Success 200) {Object} geoData the geo data (latitude and longitude and the accuracy level) for a photo.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

@@ -10,7 +10,7 @@ This method has been deprecated. It won't be removed but you should use flickr.p
  * 
  * @apiParam  {String} placeId A Flickr Places ID
  * 
- *@apiSuccess (Success 200) {Object} Places information
+ *@apiSuccess (Success 200) {Object} placesInfo Places information
  *@apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

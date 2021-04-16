@@ -11,7 +11,7 @@
  * @apiParam  {String} groupId The NSID of the group to fetch the url for.
  * 
  * 
- * @apiSuccess (Success 200) {Object} the url to a group's page.
+ * @apiSuccess (Success 200) {Object} groupPageUrl the url to a group's page.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

@@ -17,7 +17,7 @@
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} a list of the top 100 unique tags for a Flickr Places or Where on Earth
+ * @apiSuccess (Success 200) {Object[]} topUniqueTags a list of the top 100 unique tags for a Flickr Places or Where on Earth
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

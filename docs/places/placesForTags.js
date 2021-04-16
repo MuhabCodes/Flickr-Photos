@@ -17,7 +17,7 @@ Valid place type IDs are :
 29: continent
 
 
- * @apiParam  {String} [placeType] A specific place type to cluster photos by.
+ * @apiParam  {String} [placeType]  A specific place type to cluster photos by.
 (The "placeType" argument has been deprecated in favor of the "placeTypeId" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
 )
 
@@ -74,7 +74,7 @@ Multiple machine tags may be queried by passing a comma-separated list. The numb
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} a list of the top 100 unique places clustered by a given placetype for set of tags or machine tags.
+ * @apiSuccess (Success 200) {Object[]} topUniquePlaces a list of the top 100 unique places clustered by a given placetype for set of tags or machine tags.
  *@apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *

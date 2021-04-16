@@ -15,9 +15,8 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- *  
-@apiError (Error 400) {Number} statusCode The status code
-*@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+ *@apiError (Error 400) {Number} statusCode The status code
+ *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  
  
 @apiError (Error 401) {String} error The user doesn't have permission to do this action

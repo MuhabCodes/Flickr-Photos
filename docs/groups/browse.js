@@ -9,7 +9,7 @@
  * @apiParam  {String} [catId] The category id to fetch a list of groups and sub-categories for. If not specified, it defaults to zero, the root of the category tree.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]}  finding groups and sub-categories off the group category tree
+ * @apiSuccess (Success 200) {Object[]} groups finding groups and sub-categories off the group category tree
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code

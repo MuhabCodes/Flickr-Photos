@@ -10,7 +10,7 @@
  * @apiParam  {String} [userId] The NSID of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
- * @apiSuccess (Success 200) {Object} the url to a user's profile.
+ * @apiSuccess (Success 200) {Object} userProfileUrl the url to a user's profile.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

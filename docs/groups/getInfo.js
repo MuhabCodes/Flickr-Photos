@@ -14,7 +14,7 @@
  * @apiParam  {String} [lang] The language of the group name and description to fetch. If the language is not found, the primary language of the group will be returned. Valid values are the same as in feeds.
  * 
  *  // TODO: Wrong variable name
- * @apiSuccess (Success 200) {Object} Get information about a group.
+ * @apiSuccess (Success 200) {Object} groupInfo Get information about a group.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code

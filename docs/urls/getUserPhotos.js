@@ -10,7 +10,7 @@
  * @apiParam  {String} [groupId] The NSID of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
- * @apiSuccess (Success 200) {Object} the url to a user's photos.
+ * @apiSuccess (Success 200) {Object} userPhotosUrl the url to a user's photos.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

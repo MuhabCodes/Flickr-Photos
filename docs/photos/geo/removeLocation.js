@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /photos/geo/getLocation/photoId/:photoId getLocation
+ * @api {DELETE} /photos/geo/removeLocation/photoId/:photoId removeLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0

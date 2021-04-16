@@ -14,7 +14,7 @@
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} a list of locations with public photos
+ * @apiSuccess (Success 200) {Object[]} locations a list of locations with public photos
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

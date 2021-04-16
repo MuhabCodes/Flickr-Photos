@@ -10,7 +10,7 @@
  * @apiParam  {String} photoId The id of the photo to get permissions for.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} permissions for who may view geo data for a photo.
+ * @apiSuccess (Success 200) {Object[]} perms permissions for who may view geo data for a photo.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  *
  * 

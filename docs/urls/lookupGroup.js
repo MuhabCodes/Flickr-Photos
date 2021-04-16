@@ -14,7 +14,7 @@
  * @apiParam  {String} photoId The id of the photo to get permissions for.
  *  
  * 
- * @apiSuccess (Success 200) {Object} a group NSID
+ * @apiSuccess (Success 200) {Object} groupNsid a group NSID
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code

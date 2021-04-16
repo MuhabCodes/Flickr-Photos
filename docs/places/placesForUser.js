@@ -54,7 +54,7 @@ For example if you only have 3 photos taken in the locality of Montreal (WOE ID 
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} a list of the top 100 unique places clustered by a given placetype for a user.
+ * @apiSuccess (Success 200) {Object[]} topUniquePlaces a list of the top 100 unique places clustered by a given placetype for a user.
 *@apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *
