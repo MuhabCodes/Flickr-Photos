@@ -10,7 +10,7 @@
  * @apiParam  {String} url The url to the user's profile or photos page.
  * 
 * 
- * @apiSuccess (Success 200) {Object} userNsid Returns a user NSID
+ * @apiSuccess (Success 200) {Object} userId The user id.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
