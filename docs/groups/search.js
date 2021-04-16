@@ -10,11 +10,11 @@
  * 
  * 
  * @apiParam  {String} text The text to search for.
- * @apiParam  {String} [perPage] Number of groups to return per page. If this argument is ommited, it defaults to 100. The maximum allowed value is 500.
- * @apiParam  {String} [page] The page of results to return. If this argument is ommited, it defaults to 1.
+ * @apiParam  {String} [perPage=100] Number of groups to return per page. The maximum allowed value is 500.
+ * @apiParam  {String} [page=1] The page of results to return.
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} groups. (18+ groups will only be returned for authenticated calls where the authenticated user is over 18.) 
+ * @apiSuccess (Success 200) {Object[]} groups List of groups found (18+ groups will only be returned for authenticated calls where the authenticated user is over 18.) 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
