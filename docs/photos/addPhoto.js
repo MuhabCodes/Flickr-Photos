@@ -2,7 +2,7 @@
  *
  * @api {POST} /photos AddPhoto
  * @apiDescription Add a new photo
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion 1.0.0
  * @apiPermission none
  *

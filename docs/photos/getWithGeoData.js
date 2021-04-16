@@ -2,7 +2,7 @@
  *
  * @api {GET} /photos/getWithGeoData GetWithGeoData
  * @apiDescription Returns a list of your geo-tagged photos
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion 1.0.0
  * @apiPermission author
  *
@@ -10,7 +10,7 @@
  * @apiParam  {String} token The authorization token of the user
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
- * @apiSuccess (Success 200) {Object[]} photos Photos that have geo tags
+ * @apiSuccess (Success 200) {Object[]} photos photos that have geo tags
  * @apiError (Error 404) {Number} statusCode The status code of the request
  * @apiError (Error 404) {String} error There are no photos with geo tags
  *

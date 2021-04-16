@@ -2,7 +2,7 @@
  *
  * @api {GET} /photos/:photoId/getContext GetContext
  * @apiDescription Returns next and previous photos for a photo in a photostream.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion  0.0.1
  *
  *

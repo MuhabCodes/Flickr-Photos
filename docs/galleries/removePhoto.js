@@ -2,7 +2,7 @@
  *
  * @api {PUT} /galleries/:galleryId/removePhoto RemovePhoto
  * @apiDescription Remove a photo from a gallery.
- * @apiGroup Galleries
+ * @apiGroup galleries
  * @apiVersion 1.0.0
  * @apiPermission author
  *

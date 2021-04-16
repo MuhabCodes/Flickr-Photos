@@ -2,7 +2,7 @@
  *
  * @api {GET} /photos/:photoId/getGroups GetGroups
  * @apiDescription Returns all visible groups and groups the photo belongs to.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion  0.0.1
  *
  *

@@ -2,7 +2,7 @@
  *
  * @api {DELETE} /photos/:photoId DeletePhoto
  * @apiDescription Delete a photo from flickr.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion 1.0.0
  * @apiPermission author
  *

@@ -2,7 +2,7 @@
  *
  * @api {GET} /photos/recentlyUpdated RecentlyUpdated
  * @apiDescription Return a list of your photos that have been recently created or which have been recently modified.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion  0.0.1
  *
  *
