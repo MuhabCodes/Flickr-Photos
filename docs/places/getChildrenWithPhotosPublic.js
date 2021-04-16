@@ -11,10 +11,10 @@
  * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
  *
  * 
- *  @apiSuccess (200) {type} name description
  * 
  * 
- * * @apiSuccess (Success 200) {Object[]} a list of locations with public photos
+ * 
+ * @apiSuccess (Success 200) {Object[]} a list of locations with public photos
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 

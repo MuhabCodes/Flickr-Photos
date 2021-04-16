@@ -53,7 +53,7 @@ continent
 
  * 
  * @apiSuccess (Success 200) {Object[]} all the locations of a matching place type for a bounding box.
-*@apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *
  *  
