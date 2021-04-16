@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /cameras/:brand/model getBrandModels
+ * @api {GET} /cameras/:brand/models getBrandModels
  * @apiDescription Retrieve all the models for a given camera brand.
  * @apiGroup cameras
  * @apiVersion  1.0.0
