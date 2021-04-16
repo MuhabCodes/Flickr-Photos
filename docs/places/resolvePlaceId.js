@@ -1,6 +1,6 @@
 /**
  * 
-  * @api {get} /places/resolvePlaceId/placeId/:placeId resolvePlaceId
+  * @api {get} /places/:placeId/resolvePlaceId resolvePlaceId
  * @apiName places
  * @apiGroup places
  * @apiVersion  1.0.0
@@ -30,7 +30,7 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 @apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "placeNotFound",
 *        "statusCode":404
 *     }
  

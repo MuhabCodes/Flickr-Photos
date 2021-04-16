@@ -36,7 +36,7 @@ The flickr.places.find method is not a geocoder. It will round up to the nearest
 @apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "invalidQuery",
 *        "statusCode":404
 *     }
  

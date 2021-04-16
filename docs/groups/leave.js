@@ -33,7 +33,7 @@ If the user is the last person in the group, the group will be deleted.
 * @apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "groupNotFound",
 *        "statusCode":404
 *     }
  
