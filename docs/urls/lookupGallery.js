@@ -11,7 +11,7 @@
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object} galleryInfo gallery info, by url.
+ * @apiSuccess (Success 200) {Object} galleryInfo gallery info by url.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 400) {Number} statusCode The status code
