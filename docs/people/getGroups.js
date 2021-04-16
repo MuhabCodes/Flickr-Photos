@@ -5,7 +5,7 @@
  * @apiGroup people
  * @apiVersion  1.0.0
  * 
- * 
+ * // TODO : Add description for extras parameter
  * @apiParam  {String} userId user id you want to fetch groups he is member of
  * @apiParam  {String} [extras] description
  * 
