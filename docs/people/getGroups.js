@@ -9,7 +9,7 @@
  * @apiParam  {String} userId user id you want to fetch groups he is member of
  * @apiParam  {String} [extras] description
  * 
- * @apiSuccess (Success 200) {Object[]} groupList user is a member of
+ * @apiSuccess (Success 200) {Object[]} groupList The groups that the user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *  

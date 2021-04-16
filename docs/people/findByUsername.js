@@ -7,9 +7,9 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} userName userName of the user you want to find
+ * @apiParam  {String} userName The username of the user you want to find
  * 
- * @apiSuccess (Success 200) {String} userID  Id of user you want to find
+ * @apiSuccess (Success 200) {String} userID  The id of user you want to find
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
