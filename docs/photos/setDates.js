@@ -1,6 +1,6 @@
 /**
  *
- * @api {PUT} /photos/:photoId/dates SetDates
+ * @api {PUT} /photos/:photoId/dates setDates
  * @apiDescription Set one or both of the dates for a photo.
  * @apiGroup photos
  * @apiVersion 1.0.0
