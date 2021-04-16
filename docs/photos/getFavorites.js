@@ -3,8 +3,8 @@
  * @api {GET} /photos/:photoId GetFavorites
  * @apiDescription Returns the list of people who have favorited a given photo
  * @apiGroup Photos
- * @apiVersion  0.0.1
- * @apiPermissin none
+ * @apiVersion 1.0.0
+ * @apiPermission none
  *
  *
  * @apiParam  {Number} photoId The id of the photo to add tags to

@@ -3,8 +3,8 @@
  * @api {GET} /photos/getWithGeoData GetWithGeoData
  * @apiDescription Returns a list of your geo-tagged photos
  * @apiGroup Photos
- * @apiVersion  0.0.1
- * @apiPermissin author
+ * @apiVersion 1.0.0
+ * @apiPermission author
  *
  *
  * @apiParam  {String} token The authorization token of the user
