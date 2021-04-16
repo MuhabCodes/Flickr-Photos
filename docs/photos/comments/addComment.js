@@ -10,7 +10,7 @@
  *
  * 
  * @apiParam  {String} photoId The id of the photo to add a comment to.
- * @apiParam  {String} comment_text Text of the comment
+ * @apiParam  {String} commentText Text of the comment
  * 
  *@apiSuccess (Success 200) {Number} statusCode The status code
  *
@@ -30,14 +30,14 @@
 *     HTTP/1.1 404 Not Found
 *     {
 *       "error": "commentNotFound",
-*        "status_code":404
+*        "statusCode":404
 *     }
  
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 
  * 

@@ -1,15 +1,15 @@
 /**
  * 
- * @api {DELETE} /groups.discuss.replies/:group_Id/:topic_ID  delete
+ * @api {DELETE} /groups/:groupId/discuss/:topicId/replies/:replyId  delete
  *
  * @apiGroup groups.discuss.replies
  * @apiVersion  1.0.0
  * 
  * @apiDescription Delete a reply from a group topic.
 * 
- * @apiParam  {String} group_Id Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.
- * @apiParam  {String} topic_Id The ID of the topic to post a comment to.
- * @apiParam  {String} reply_Id  The message to post to the topic.
+ * @apiParam  {String} groupId Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.
+ * @apiParam  {String} topicId The ID of the topic to post a comment to.
+ * @apiParam  {String} replyId  The message to post to the topic.
  *@apiSuccess (Success 410) {Number} statusCode The status code
  *@apiError (Error 400) {Number} statusCode The status code
  *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
@@ -26,14 +26,14 @@
 *     HTTP/1.1 404 Not Found
 *     {
 *       "error": "discussionNotFound",
-*        "status_code":404
+*        "statusCode":404
 *     }
  
 @apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
  *
  * 
