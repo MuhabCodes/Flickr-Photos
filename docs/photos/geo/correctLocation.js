@@ -1,6 +1,6 @@
 /**
  * 
- * @api {POST} /photos/geo/correctLocation/photoId/:photoId/foursquare_id/:foursquare_id correctLocation
+ * @api {POST} /photos/geo/correctLocation/photoId/:photoId/foursquareId/:foursquareId correctLocation
  * @apiName photos
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
@@ -9,8 +9,8 @@
  * 
  * @apiParam  {String} photoId The ID of the photo whose WOE location is being corrected.
  * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woe_id] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} foursquare_id The venue ID for a Foursquare location. (If not passed in with correction, any existing foursquare venue will be removed).
+ * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} foursquareId The venue ID for a Foursquare location. (If not passed in with correction, any existing foursquare venue will be removed).
  * 
  * 
  * * @apiSuccess (Success 200) {Number} statusCode The status code

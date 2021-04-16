@@ -10,7 +10,7 @@
  * 
  * 
  * @apiParam  {String} text The text to search for.
- * @apiParam  {String} [per_page] Number of groups to return per page. If this argument is ommited, it defaults to 100. The maximum allowed value is 500.
+ * @apiParam  {String} [perPage] Number of groups to return per page. If this argument is ommited, it defaults to 100. The maximum allowed value is 500.
  * @apiParam  {String} [page] The page of results to return. If this argument is ommited, it defaults to 1.
  * 
  * 

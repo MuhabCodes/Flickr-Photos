@@ -8,12 +8,12 @@
  * @apiDescription Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID
  * 
  * 
- * @apiParam  {String} [woe_id] A Where on Earth identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [place_id] A Flickr Places identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [min_upload_date] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
- * @apiParam  {String} [max_upload_date] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
- * @apiParam  {String} [min_taken_date] Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.
- * @apiParam  {String} [max_taken_date] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * @apiParam  {String} [woeId] A Where on Earth identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [minTakenDate] Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * @apiParam  {String} [maxTakenDate] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
  * 
  * 
  * 

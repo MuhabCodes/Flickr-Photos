@@ -8,7 +8,7 @@
  * @apiDescription Return a list of the top 100 unique places clustered by a given placetype for a user.
  * 
  * 
- * @apiParam  {String} [place_type_id] The numeric ID for a specific place type to cluster photos by.
+ * @apiParam  {String} [placeTypeId] The numeric ID for a specific place type to cluster photos by.
 
 Valid place type IDs are :
 22: neighbourhood
@@ -18,8 +18,8 @@ Valid place type IDs are :
 29: continent
 
 
- * @apiParam  {String} [place_type] A specific place type to cluster photos by.
-(The "place_type" argument has been deprecated in favor of the "place_type_id" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
+ * @apiParam  {String} [placeType] A specific place type to cluster photos by.
+(The "placeType" argument has been deprecated in favor of the "placeTypeId" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
 )
 
 Valid place types are :
@@ -32,11 +32,11 @@ continent
 (While optional, you must pass either a valid place type or place type ID.)
 
 
- * @apiParam  {String} [woe_id] TA Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (WOE ID 23424977).
+ * @apiParam  {String} [woeId] TA Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (WOE ID 23424977).
 
 (While optional, you must pass either a valid Places ID or a WOE ID.)
 
- * @apiParam  {String} [place_id] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
+ * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
 
 (While optional, you must pass either a valid Places ID or a WOE ID.)
 
@@ -46,11 +46,11 @@ continent
 
 For example if you only have 3 photos taken in the locality of Montreal (WOE ID 3534) but your threshold is set to 5 then those photos will be "rolled up" and included instead with a place record for the region of Quebec (WOE ID 2344924).
 
- * @apiParam  {String} [min_upload_date] Minimum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
- * @apiParam  {String} [max_upload_date] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
  * 
- * @apiParam  {String} [min_taken_date] Minimum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
- * * @apiParam  {String} [max_taken_date] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * @apiParam  {String} [minTakenDate] Minimum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * * @apiParam  {String} [maxTakenDate] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
  * 
  * 
  * 

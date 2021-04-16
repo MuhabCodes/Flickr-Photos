@@ -8,7 +8,7 @@
  * @apiDescription Find Flickr Places information by Place ID.
 This method has been deprecated. It won't be removed but you should use flickr.places.getInfo instead.
  * 
- * @apiParam  {String} place_id A Flickr Places ID
+ * @apiParam  {String} placeId A Flickr Places ID
  * 
  *@apiSuccess (Success 200) {Object} Places information
  *@apiSuccess (Success 200) {Number} statusCode The status code

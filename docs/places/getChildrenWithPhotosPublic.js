@@ -7,8 +7,8 @@
  * 
  * @apiDescription Return a list of locations with public photos that are parented by a Where on Earth (WOE) or Places ID.
  * 
- * @apiParam  {String} [place_id] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woe_id] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
  *
  * 
  *  @apiSuccess (200) {type} name description

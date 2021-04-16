@@ -17,7 +17,7 @@ continent: 1500km (932mi)
 
 
  * 
- * @apiParam  {String} [place_type_id] The numeric ID for a specific place type to cluster photos by.
+ * @apiParam  {String} [placeTypeId] The numeric ID for a specific place type to cluster photos by.
 
 Valid place type IDs are :
 22: neighbourhood
@@ -28,10 +28,10 @@ Valid place type IDs are :
 
 
 
- * @apiParam  {String} [bbox]A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched. The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
+ * @apiParam  {String} [bbox] A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched. The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
 
- * @apiParam  {String} [place_type] A specific place type to cluster photos by.
-(The "place_type" argument has been deprecated in favor of the "place_type_id" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
+ * @apiParam  {String} [placeType] A specific place type to cluster photos by.
+(The "placeType" argument has been deprecated in favor of the "placeTypeId" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
 )
 
 Valid place types are :
@@ -45,7 +45,7 @@ continent
 
 
 
- * @apiParam  {String} [place_id] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
+ * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
 
 (While optional, you must pass either a valid Places ID or a WOE ID.)
 
