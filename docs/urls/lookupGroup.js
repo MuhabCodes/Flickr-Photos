@@ -1,18 +1,13 @@
 /**
  * 
- * @api {get} /urls/lookupGroup/isPublic/:isPublic/isContact/:isContact/isFriend/:isFriend/isFamily/:isFamily/photoId/:photoId lookupGroup
+ * @api {get} /urls/group/:url lookupGroup
  * @apiName urls
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
  * @apiDescription Returns a group NSID, given the url to a group's page or photo pool.
  * 
- * @apiParam  {Boolean} isPublic 1 to set viewing permissions for the photo's location data to public, 0 to set it to private.
- * @apiParam  {Boolean} isContact 1 to set viewing permissions for the photo's location data to contacts, 0 to set it to private.
- * @apiParam  {Boolean} isFriend 1 to set viewing permissions for the photo's location data to friends, 0 to set it to private.
- * @apiParam  {Boolean} isFamily 1 to set viewing permissions for the photo's location data to family, 0 to set it to private.
- * @apiParam  {String} photoId The id of the photo to get permissions for.
- *  
+ * @apiParam  {String} url The url to the group page
  * 
  * @apiSuccess (Success 200) {Object} groupNsid a group NSID
  * @apiSuccess (Success 200) {Number} statusCode The status code
@@ -49,3 +44,4 @@
  * 
  * 
  */
+//TODO : query params in url
