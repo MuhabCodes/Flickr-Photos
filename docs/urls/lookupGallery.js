@@ -1,6 +1,6 @@
 /**
  * 
- * @api {get} /urls/lookupGallery/url lookupGallery
+ * @api {get} /urls/:url/lookupGallery/ lookupGallery
  * @apiName urls
  * @apiGroup urls
  * @apiVersion  1.0.0
@@ -28,7 +28,7 @@
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "urlNotFound",
 *        "statusCode":404
 *     }
  

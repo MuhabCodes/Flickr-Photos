@@ -93,7 +93,7 @@ Multiple machine tags may be queried by passing a comma-separated list. The numb
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "tagNotFound",
 *        "statusCode":404
 *     }
  

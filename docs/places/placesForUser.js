@@ -73,7 +73,7 @@ For example if you only have 3 photos taken in the locality of Montreal (WOE ID 
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "userNotFound",
 *        "statusCode":404
 *     }
  

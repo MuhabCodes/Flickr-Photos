@@ -42,7 +42,7 @@ It will also truncate latitudes and longitudes to three decimal points.
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
+*       "error": "wrongLatitudeOrLatitde",
 *        "statusCode":404
 *     }
  
