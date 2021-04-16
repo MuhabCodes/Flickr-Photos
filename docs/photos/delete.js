@@ -1,6 +1,6 @@
 /**
  *
- * @api {DELETE} /photos/:photoId DeletePhoto
+ * @api {DELETE} /photos/:photoId deletePhoto
  * @apiDescription Delete a photo from flickr.
  * @apiGroup photos
  * @apiVersion 1.0.0

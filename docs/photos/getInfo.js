@@ -1,6 +1,6 @@
 /**
  *
- * @api {GET} /photos/:photoId GetPhotoInfo
+ * @api {GET} /photos/:photoId/info getPhotoInfo
  * @apiDescription Get the information of a certain photo
  * @apiGroup photos
  * @apiVersion 1.0.0

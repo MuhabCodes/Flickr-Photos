@@ -1,9 +1,9 @@
 /**
  *
- * @api {GET} /photos/getPopular GetPopular
+ * @api {GET} /photos/popular getPopular
  * @apiDescription Returns a list of popular photos
  * @apiGroup photos
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  *
  *
  *

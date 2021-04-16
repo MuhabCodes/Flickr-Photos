@@ -1,6 +1,6 @@
 /**
  *
- * @api {GET} /photos/getUntagged GetUntagged
+ * @api {GET} /photos/untagged getUntagged
  * @apiDescription Returns a list of your photos with no tags.
  * @apiGroup photos
  * @apiVersion 1.0.0

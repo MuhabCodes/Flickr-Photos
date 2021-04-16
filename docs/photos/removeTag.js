@@ -1,6 +1,6 @@
 /**
  *
- * @api {PUT} /photos/:photoID/removeTag RemoveTag
+ * @api {PUT} /photos/:photoID/tags/:tagId removeTag
  * @apiDescription Remove a tag from a photo.
 
  * @apiGroup photos
