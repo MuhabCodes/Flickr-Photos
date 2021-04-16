@@ -8,8 +8,8 @@
  * 
  *
  * @apiParam  {String} photoId The id of the photo to fetch comments for.
- * @apiParam  {Date} [min_comment_date] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
- * @apiParam  {Date} [max_comment_date] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
+ * @apiParam  {Date} [minCommentDate] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
+ * @apiParam  {Date} [maxCommentDate] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
  *
  *@apiSuccess (Success 200) {Object[]} commentsList List of all Comments 
 *@apiSuccess (Success 200) {Number} statusCode The status code

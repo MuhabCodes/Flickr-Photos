@@ -1,6 +1,6 @@
 /**
  * ass_dds
- * @api {GET} /groups/:groupId/discuss/:topicId/replies  getInfo
+ * @api {GET} /groups/:groupId/discuss/:topicId/replies  getList
  *
  * @apiGroup groups.discuss.replies
  * @apiVersion  1.0.0
@@ -8,7 +8,7 @@
  * 
  * @apiParam  {String} groupId Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.
  * @apiParam  {String} topicId The ID of the topic to post a comment to.
- * @apiParam  {String} perPage  Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
+ * @apiParam  {String} [perPage]  Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
  * @apiParam  {String} [page] The page of results to return. If this argument is omitted, it defaults to 1.
  * @apiDescription Get a list of replies from a group discussion topic.
  *
