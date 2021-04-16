@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /profile/:user_id getProfile
+ * @api {GET} /profile/:userId getProfile
 
  * @apiGroup profile
  * @apiVersion 1.0.0
  * 
  * 
- * @apiParam  {string} api_key Your API application key
- * @apiParam  {String} user_id The NSID of the user to fetch profile information for.
+*
+ * @apiParam  {String} userId The NSID of the user to fetch profile information for.
  * @apiDescription Returns specified user's profile info, respecting profile privacy settings
 *@apiSuccess (Success 200) {Object[]} profileInfo  Profile info required
 *@apiSuccess (Success 200) {Number} statusCode The status code
@@ -21,15 +21,15 @@
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
-*        "status_code":404
+*       "error": "profileNotFound",
+*        "statusCode":404
 *     }
  
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 
  * 

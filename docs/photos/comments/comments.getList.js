@@ -1,13 +1,13 @@
 /**
  * 
- * @api {GET} /photos.comments/:photo_id getList
+ * @api {GET} /photos/:photoId/comments getList
  * @apiGroup photos.comments
  * @apiVersion 1.0.0
  * @apiDescription Returns the comments for a photo
  * 
  * 
- * @apiParam  {String} api_key Your API application key. 
- * @apiParam  {String} photo_id The id of the photo to fetch comments for.
+ *
+ * @apiParam  {String} photoId The id of the photo to fetch comments for.
  * @apiParam  {Date} [min_comment_date] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
  * @apiParam  {Date} [max_comment_date] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
  *
@@ -22,14 +22,14 @@
 *@apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
-*        "status_code":404
+*       "error": "commentNotFound",
+*        "statusCode":404
 *     }
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 * 
 * 

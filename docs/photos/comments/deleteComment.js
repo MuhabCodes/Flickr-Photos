@@ -1,12 +1,12 @@
 /**
  * 
- * @api {DELETE} /photos.comments/:photo_id deleteComment
+ * @api {DELETE} /photos/:photoId/comments/:commentId deleteComment
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Delete a comment as the currently authenticated user.
 * 
-* @apiParam  {String} api_key Your API application key.
-* @apiParam  {String} comment_id The id of the comment to delete.
+*
+* @apiParam  {String} commentId The id of the comment to delete.
 *
 * 
 *@apiSuccess (Success 410) {Number} statusCode The status code
@@ -25,15 +25,15 @@
 @apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
-*        "status_code":404
+*       "error": "commentNotFound",
+*        "statusCode":404
 *     }
  
 @apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 *
 *

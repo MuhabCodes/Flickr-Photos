@@ -1,16 +1,16 @@
 /**
  * 
- * @api {GET} /favorites/photos/:photo_id/user/:photo_id getContext
+ * @api {GET} /favorites/photos/:photoId/user/:userId getContext
  * 
  * @apiGroup favorites
  * @apiVersion  1.0.0
  * @apiDescription Returns next and previous favorites for a photo in a user's favorites.
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} photo_id The id of the photo to fetch the context for
- * @apiParam  {String} user_id The user who counts the photo as favorite
- 
-* @apiSuccess (Success 200) {Object[]} photos Photos Returned yo user
+
+ * @apiParam  {String} photoId The id of the photo to fetch the context for
+ * @apiParam  {String} userId The user who counts the photo as favorite
+ *
+* @apiSuccess (Success 200) {Object[]} photos Photos Returned to user
 *@apiSuccess (Success 200) {Number} statusCode The status code
 
 *@apiError (Error 400) {Number} statusCode The status code
@@ -28,13 +28,13 @@
 *     HTTP/1.1 404 Not Found
 *     {
 *       "error": "photoNotFound",
-*        "status_code":404
+*        "statusCode":404
 *     }
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 *
 *

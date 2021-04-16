@@ -1,16 +1,16 @@
 /**
  * 
- * @api {POST} /photos.comments/:photo_id addcomment
+ * @api {POST} /photos/:photoId/comments/ addComment
  *
  * @apiGroup photos.comments
  * @apiVersion  1.0.0
  * @apiDescription Add comment to a photo as the currently authenticated user.
  * 
  * 
- * @apiParam  {String} api_key Your API application key.
+ *
  * 
- * @apiParam  {String} photo_id The id of the photo to add a comment to.
- * @apiParam  {String} comment_text Text of the comment
+ * @apiParam  {String} photoId The id of the photo to add a comment to.
+ * @apiParam  {String} commentText Text of the comment
  * 
  *@apiSuccess (Success 200) {Number} statusCode The status code
  *
@@ -29,15 +29,15 @@
 @apiErrorExample {json} Error-404
 *     HTTP/1.1 404 Not Found
 *     {
-*       "error": "photoNotFound",
-*        "status_code":404
+*       "error": "commentNotFound",
+*        "statusCode":404
 *     }
  
 *@apiErrorExample {json} Error-401
 *     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
-*        "status_code":401
+*        "statusCode":401
 *     }
 
  * 
