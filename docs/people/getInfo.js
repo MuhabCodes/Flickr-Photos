@@ -8,7 +8,7 @@
  * 
  * @apiParam  {String} userId userID you want to get information about
  * 
- * @apiSuccess (Success 200) {Object[]} userInfo of the user you want info about
+ * @apiSuccess (Success 200) {Object[]} userInfo The user information of the user you want info about
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *  

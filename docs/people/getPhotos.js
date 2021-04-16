@@ -6,7 +6,7 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} userId ID of user whose photos will be returned
+ * @apiParam  {String} userId The ID of user whose photos will be returned
  * @apiParam  {String} [safeSearch] safe search setting 1 for safe, 2 for moderate, 3 for restricted
  * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
  * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
@@ -31,8 +31,8 @@
 
  * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, dateUpload, dateTaken, ownerName, iconServer, originalFormat, lastUpdate, geo, tags, machineTags, oDims, views, media, pathAlias, urlSq, urlT, urlS, urlQ, urlM, urlN, urlZ, urlC, urlL, urlO
  * 
- * @apiParam  {String} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
- * @apiParam  {String} [page] The page of results to return. If this argument is omitted, it defaults to 1.
+ * @apiParam  {String} [perPage=100] Number of photos to return per page. The maximum allowed value is 500.
+ * @apiParam  {String} [page=1] The page of results to return.
  * 
  * 
  * 

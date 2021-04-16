@@ -15,8 +15,8 @@
 
 
  * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, dateUpload, dateTaken, ownerName, iconServer, originalFormat, lastUpdate, geo, tags, machineTags, oDims, views, media, pathAlias, urlSq, urlT, urlS, urlQ, urlM, urlN, urlZ, urlC, urlL, urlO
- * @apiParam  {String} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
- * @apiParam  {String} [page] The page of results to return. If this argument is omitted, it defaults to 1.
+ * @apiParam  {String} [perPage=100] Number of photos to return per page. The maximum allowed value is 500.
+ * @apiParam  {String} [page=1] The page of results to return.
  * 
  * 
  * @apiSuccess (Success 200) {Object[]}  userPhotos all public photos of the mentioned user 

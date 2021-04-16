@@ -10,7 +10,7 @@
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} limitList photos and videos limits
+ * @apiSuccess (Success 200) {Object[]} limitList A list of photos and videos limits
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
