@@ -1,6 +1,6 @@
 /**
  *
- * @api {GET} /galleries/:galleryId GetPhotos
+ * @api {GET} /galleries/:galleryId/photos getPhotos
  * @apiDescription Return the list of photos for a gallery
  * @apiGroup galleries
  * @apiVersion 1.0.0

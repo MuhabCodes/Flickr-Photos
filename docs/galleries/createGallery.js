@@ -1,6 +1,6 @@
 /**
  *
- * @api {POST} /galleries CreateGallery
+ * @api {POST} /galleries createGallery
  * @apiDescription Create a new gallery
  * @apiGroup galleries
  * @apiVersion 1.0.0
