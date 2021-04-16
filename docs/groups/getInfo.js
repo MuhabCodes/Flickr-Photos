@@ -28,7 +28,7 @@
 * @apiError (Error 404) {String} error Informs the caller of the missing object.
 * @apiError (Error 404) {Number} statusCode The status code
 *
-* // TODO : photoNotFound is not appropriate for the error
+*
 * @apiErrorExample {json} Error-404:
 *     HTTP/1.1 404 Not Found
 *     {
