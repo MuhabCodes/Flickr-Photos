@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /tags/:tag getClusters
+ * @api {GET} /tags/:tag/clusters getClusters
  * @apiDescription Gives you a list of tag clusters for the given tag.
  * @apiGroup tags
  * @apiVersion  1.0.0

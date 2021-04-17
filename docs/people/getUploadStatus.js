@@ -1,7 +1,7 @@
 /**
  * 
  * @api {GET} /people/uploadstatus getUploadStatus
- * @apiName apiName
+ * 
  * @apiDescription Returns information for the calling user related to photo uploads.
  * @apiGroup people
  * @apiVersion  1.0.0
