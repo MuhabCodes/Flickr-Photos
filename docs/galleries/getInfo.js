@@ -1,8 +1,8 @@
 /**
  *
- * @api {GET} /galleries/:galleryId GetInfo
+ * @api {GET} /galleries/:galleryId/info getInfo
  * @apiDescription Get information about a gallery
- * @apiGroup Galleries
+ * @apiGroup galleries
  * @apiVersion 1.0.0
  * @apiPermission none
  *

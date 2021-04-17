@@ -1,13 +1,13 @@
 /**
  *
- * @api {GET} /photos/getUntagged GetUntagged
+ * @api {GET} /photos/untagged getUntagged
  * @apiDescription Returns a list of your photos with no tags.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion 1.0.0
  * @apiPermission none
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
- * @apiSuccess (Success 200) {Object[]} photos Photos that don't have tags
+ * @apiSuccess (Success 200) {Object[]} photos photos that don't have tags
  * @apiError (Error 404) {Number} statusCode The status code of the request
  * @apiError (Error 404) {String} error There are no photos without tags
  *
