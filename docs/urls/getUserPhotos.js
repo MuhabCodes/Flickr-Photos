@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /urls/userphotos getUserPhotos
- * @apiName urls
+ * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 

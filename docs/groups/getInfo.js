@@ -1,7 +1,6 @@
 /**
  * 
  * @api {get} /groups/:groupId/info getInfo
- * @apiName groups
  * @apiGroup groups
  * @apiVersion  1.0.0
  * 

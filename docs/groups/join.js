@@ -1,7 +1,7 @@
 /**
  * 
  * @api {POST} /groups/:groupId/join join
- * @apiName groups
+ * 
  * @apiGroup groups
  * @apiVersion  1.0.0
  * @apiDescription Join a public group as a member.

@@ -1,7 +1,7 @@
 /**
  * 
  * @api {POST}  /photos/:photoId/geo/context/:context setContext
- * @apiName photos
+ * 
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * @apiDescription Indicate the state of a photo's geotagginess beyond latitude and longitude.

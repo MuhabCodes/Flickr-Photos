@@ -1,7 +1,7 @@
 /**
  * 
  * @api {POST} photos/:photoId/geo/perms/isPublic/:isPublic/isContact/:isContact/isFriend/:isFriend/isFamily/:isFamily setPerms
- * @apiName photos
+ * 
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * @apiDescription Set the permission for who may view the geo data associated with a photo.

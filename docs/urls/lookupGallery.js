@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /urls/gallery/:url lookupGallery
- * @apiName urls
+ * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 

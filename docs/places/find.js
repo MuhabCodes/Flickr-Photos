@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /places/query/:query find
- * @apiName places
+ * 
  * @apiGroup places
  * @apiVersion  1.0.0
  * 

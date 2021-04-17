@@ -1,7 +1,7 @@
 /**
  * 
  * @api {POST}  /photos/:photoId/geo/location/lat/:lat/lon/:lon setLocation
- * @apiName photos
+ * 
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * @apiDescription Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo. Before users may assign location data to a photo they must define who, by default, may view that information.

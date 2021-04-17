@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /urls/user/:url lookupUser
- * @apiName urls
+ * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 

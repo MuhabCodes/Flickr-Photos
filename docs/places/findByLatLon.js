@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /places/findByLatLon/lat/:lat/lon/:lon findByLatitudeLongitude
- * @apiName apiName
+ * 
  * @apiGroup places
  * @apiVersion  1.0.0
  * 

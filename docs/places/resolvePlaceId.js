@@ -1,7 +1,7 @@
 /**
  * 
   * @api {get} /places/:placeId/resolvePlaceId resolvePlaceId
- * @apiName places
+ * 
  * @apiGroup places
  * @apiVersion  1.0.0
  * 

@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /urls/userprofile getUserProfile
- * @apiName urls
+ * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 

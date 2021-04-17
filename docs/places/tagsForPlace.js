@@ -1,7 +1,7 @@
 /**
  * 
  * @api {get} /places/tagsForPlace title
- * @apiName places
+ * 
  * @apiGroup places
  * @apiVersion  1.0.0
  * 

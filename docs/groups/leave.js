@@ -1,7 +1,7 @@
 /**
  * 
  * @api {DELETE} /groups/:groupId/leave leave
- * @apiName groups
+ * 
  * @apiGroup groups
  * @apiVersion  1.0.0
  * @apiDescription Leave a group.
