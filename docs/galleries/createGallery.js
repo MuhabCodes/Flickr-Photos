@@ -9,7 +9,7 @@
  *
  * @apiParam  {String} token User authorization token
  * @apiParam  {String} title The title of the gallery
- * @apiParam  {String} description The description of the gallery
+ * @apiParam  {String} [description] The description of the gallery
  *
  *
  * @apiSuccess (Success 201) {Number} statusCode The status code

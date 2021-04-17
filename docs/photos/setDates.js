@@ -7,8 +7,8 @@
  *
  *
  * @apiParam  {String} photoId The id of the photo
- * @apiParam  {Date} uploadDate The upload date of the photo
- * @apiParam  {Date} captureDate The capture date of the photo
+ * @apiParam  {Date} [uploadDate] The upload date of the photo
+ * @apiParam  {Date} [captureDate] The capture date of the photo
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiError (Error 404) {String} error The photo isn't found

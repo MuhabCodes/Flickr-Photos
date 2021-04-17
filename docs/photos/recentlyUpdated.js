@@ -6,7 +6,7 @@
  * @apiVersion 1.0.0
  *
  *
- * @apiParam  {Date} minDate The date after which the modification occurred
+ * @apiParam  {Date} [minDate=<Current Date>] The date after which the modification occurred
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object[]} photos The photos that have been recently modified
