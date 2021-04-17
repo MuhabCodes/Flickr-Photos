@@ -1,6 +1,6 @@
 /**
  * 
- * @api {delete} /groups/:groupId/photos/:photoId addPhoto
+ * @api {delete} /groups/:groupId/photos/:photoId removePhoto
  * @apiGroup groups.pools
  * @apiVersion  1.0.0
  * 

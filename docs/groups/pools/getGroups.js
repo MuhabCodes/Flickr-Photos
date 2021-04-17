@@ -1,17 +1,21 @@
 /**
  * 
  * @api {GET} /groups/:groupId/pools/photo/:photoId/context getGroups
+ * 
  * @apiGroup groups.pools
+ * 
  * @apiVersion  1.0.0
  * 
  * @apiDescription Get the groups where you can post photos.
+ * 
+ * @apiParam  {Number} [page=1] The page of results to return.
+ * @apiParam  {Number} [perPage=400] The number of groups per page that can be returned.
  * 
  * @apiSuccess (Success 200) {Object[]} groupList A list containing the groups to which you can add photos.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *  
- * @apiParam  {Number} [page=1] The page of results to return.
- * @apiParam  {Number} [perPage=400] The number of groups per page that can be returned.
+ * 
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code

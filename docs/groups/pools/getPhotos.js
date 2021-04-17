@@ -6,13 +6,14 @@
  * 
  * @apiDescription Get a list of pool photos for a given group.
  * 
- * @apiSuccess (Success 200) {Object[]} photoList A list containing the photos from a given group.
- * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
  * @apiParam  {String} userId This filters the photos to only return photos by that user.
  * @apiParam  {String} [tag] A tag to filter the pool with.(maximum 1 tag)
  * @apiParam  {Number} [page=1] The page of results to return.
  * @apiParam  {Number} [perPage=100] The number of groups per page that can be returned.
+ * 
+ * @apiSuccess (Success 200) {Object[]} photoList A list containing the photos from a given group.
+ * @apiSuccess (Success 200) {Number} statusCode The status code
+ * 
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code
