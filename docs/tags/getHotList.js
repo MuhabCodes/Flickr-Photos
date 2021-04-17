@@ -6,7 +6,7 @@
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} [period=day] The period for which to fetch hot tags. Valid values are day and week.
+ * @apiParam  {String} [period="day"] The period for which to fetch hot tags. Valid values are day and week.
  * @apiParam  {String} [count=20] The number of tags to return. Maximum allowed value is 200.
  * 
  * 
