@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /tags/:userId/taglist/popular getListUserPopular
+ * @api {GET} /tags/:userId/popular getListUserPopular
  * @apiDescription Get the popular tags for a given user (or the currently logged in user).
  * @apiGroup tags
  * @apiVersion  1.0.0

@@ -1,17 +1,17 @@
 /**
  * 
- * @api {GET} /tags/:photoId/taglist getListPhoto
- * @apiDescription Get the tag list for a given photo
+ * @api {GET} /tags/:userId getListUser
+ * @apiDescription Get the tag list for a given user (or the currently logged in user).
  * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
- * @apiParam  {String} photoId The id of the photo to return tags for
+ * @apiParam  {String} [userId] ID of the user to fetch the tag list for
  * 
  * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
+ * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned user
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -21,7 +21,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
+ *       "error": "userNotFound",
  *        "statusCode":404
  *     }
   

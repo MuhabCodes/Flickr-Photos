@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /tags/:userId/taglist/raw getListUserRaw
+ * @api {GET} /tags/:userId/raw getListUserRaw
  * @apiDescription Get the raw versions of a given tag (or all tags) for the currently logged-in user.
  * @apiGroup tags
  * @apiVersion  1.0.0
