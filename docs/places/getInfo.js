@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /places/location/info getInfo
+ * @api {GET} /places/:placeId/location/info getInfo
  * @apiDescription Get informations about a place.
  * @apiGroup places
  * @apiVersion  1.0.0
