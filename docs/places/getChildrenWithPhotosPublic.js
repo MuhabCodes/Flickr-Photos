@@ -22,7 +22,7 @@
  *       "error": "photoNotFound",
  *        "status_code":404
  *     }
-  
+ * 
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {

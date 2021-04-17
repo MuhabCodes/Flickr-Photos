@@ -1,0 +1,90 @@
+/**
+ * 
+ * @api {get} /places/placesForUser placesForUser
+ * 
+ * @apiGroup places
+ * @apiVersion  1.0.0
+ * 
+ * @apiDescription Return a list of the top 100 unique places clustered by a given placetype for a user.
+ * 
+ * 
+ * @apiParam  {String} [placeTypeId] The numeric ID for a specific place type to cluster photos by.
+
+Valid place type IDs are :
+22: neighbourhood
+7: locality
+8: region
+12: country
+29: continent
+
+
+ * @apiParam  {String} [placeType] A specific place type to cluster photos by.
+(The "placeType" argument has been deprecated in favor of the "placeTypeId" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the flickr.places.getPlaceTypes method. (While optional, you must pass either a valid place type or place type ID.)
+)
+
+Valid place types are :
+neighbourhood (and neighborhood)
+locality
+region
+country
+continent
+
+(While optional, you must pass either a valid place type or place type ID.)
+
+
+ * @apiParam  {String} [woeId] TA Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (WOE ID 23424977).
+
+(While optional, you must pass either a valid Places ID or a WOE ID.)
+
+ * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
+
+(While optional, you must pass either a valid Places ID or a WOE ID.)
+
+ * 
+ * 
+ * @apiParam  {String} [threshold] The minimum number of photos that a place type must have to be included. If the number of photos is lowered then the parent place type for that place will be used.
+
+For example if you only have 3 photos taken in the locality of Montreal (WOE ID 3534) but your threshold is set to 5 then those photos will be "rolled up" and included instead with a place record for the region of Quebec (WOE ID 2344924).
+
+ * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
+ * 
+ * @apiParam  {String} [minTakenDate] Minimum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * * @apiParam  {String} [maxTakenDate] Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+ * 
+ * 
+ * 
+ * @apiSuccess (Success 200) {Object[]} topUniquePlaces a list of the top 100 unique places clustered by a given placetype for a user.
+*@apiSuccess (Success 200) {Number} statusCode The status code
+ * 
+ *
+ *  
+*@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+*@apiError (Error 400) {Number} statusCode The status code
+ 
+ 
+*@apiError (Error 401) {String} error The user doesn't have permission to do this action
+*@apiError (Error 401) {Number} statusCode The status code
+
+ 
+*@apiError (Error 404) {String} error Informs the caller of the missing object.
+*@apiError (Error 404) {Number} statusCode The status code
+ 
+*@apiErrorExample {json} Error-404
+*     HTTP/1.1 404 Not Found
+*     {
+*       "error": "userNotFound",
+*        "statusCode":404
+*     }
+ 
+*@apiErrorExample {json} Error-401
+*     HTTP/1.1 401 Unauthorized
+*     {
+*       "error": "Unauthorized User",
+*        "statusCode":401
+*     }
+
+ * 
+ * 
+ *  
+ */

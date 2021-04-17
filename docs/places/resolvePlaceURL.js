@@ -1,19 +1,23 @@
 /**
  * 
- * @api {get} /urls/group/:url lookupGroup
+  * @api {get} /places/:url/resolvePlaceURL resolvePlaceURL
  * 
- * @apiGroup urls
+ * @apiGroup places
  * @apiVersion  1.0.0
  * 
- * @apiDescription Returns a group Id, given the url to a group's page or photo pool.
+ * @apiDescription Find Flickr Places information by Place URL.
+This method has been deprecated. It won't be removed but you should use flickr.places.getInfoByUrl instead
  * 
- * @apiParam  {String} url The url to the group page or photo pool.
+ * @apiParam  {String} url A Flickr Places url (Flickr Place URLs are of the form /country/region/city)
  * 
- * @apiSuccess (Success 200) {Object} groupId The group id.
- * @apiSuccess (Success 200) {Number} statusCode The status code
+ *@apiSuccess (Success 200) {Object} placesInfo Places information
+ *@apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiError (Error 400) {Number} statusCode The status code
+ * 
+ * 
+
 *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+*@apiError (Error 400) {Number} statusCode The status code
  
  
 @apiError (Error 401) {String} error The user doesn't have permission to do this action
@@ -36,12 +40,7 @@
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
- 
-
- * 
- * 
 
  * 
  * 
  */
-//TODO : query params in url
