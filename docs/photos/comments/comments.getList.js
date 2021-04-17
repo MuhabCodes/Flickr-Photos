@@ -1,7 +1,7 @@
 /**
  * 
  * @api {GET} /photos/:photoId/comments getList
- * @apiGroup photos.comments
+ * @apiGroup photos-comments
  * @apiVersion 1.0.0
  * @apiDescription Returns the comments for a photo
  * 

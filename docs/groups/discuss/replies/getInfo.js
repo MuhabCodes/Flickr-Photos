@@ -2,7 +2,7 @@
  * 
  * @api {GET} /groups/:groupId/discuss/:topicId/replies/:replyId/info getInfo
  *
- * @apiGroup groups.discuss.replies
+ * @apiGroup groups-discuss-replies
  * @apiVersion  1.0.0
  * 
  * 

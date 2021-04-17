@@ -2,7 +2,7 @@
  * 
  * @api {POST} /photos/:photoId/comments/ addComment
  *
- * @apiGroup photos.comments
+ * @apiGroup photos-comments
  * @apiVersion  1.0.0
  * @apiDescription Add comment to a photo as the currently authenticated user.
  * 

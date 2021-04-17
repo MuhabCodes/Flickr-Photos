@@ -2,7 +2,7 @@
 * 
 * @api {PUT} /groups/:groupId/discuss/:topicId/replies/:replyId  edit
 *
-* @apiGroup groups.discuss.replies
+* @apiGroup groups-discuss-replies
 * @apiVersion  1.0.0
 * 
 * @apiDescription Edit a topic reply.

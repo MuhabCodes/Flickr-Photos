@@ -1,7 +1,7 @@
 /**
  * 
  * @api {GET} /groups/:groupId/pools/photos getPhotos
- * @apiGroup groups.pools
+ * @apiGroup groups-pools
  * @apiVersion  1.0.0
  * 
  * @apiDescription Get a list of pool photos for a given group.

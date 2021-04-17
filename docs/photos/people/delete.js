@@ -1,7 +1,7 @@
 /**
  * 
  * @api {DELETE} /photo/:photoId/people/:userId delete
- * @apiGroup photos.people
+ * @apiGroup photos-people
  * @apiVersion  1.0.0
  * 
  * @apiDescription Removes a person from a photo

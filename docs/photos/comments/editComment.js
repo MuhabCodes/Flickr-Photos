@@ -2,7 +2,7 @@
  * 
  * @api {PUT} /photos/:photoId/comments/:commentId editComment
  *
- * @apiGroup photos.comments
+ * @apiGroup photos-comments
  * @apiVersion  1.0.0
  * @apiDescription Edit the text of a comment as the currently authenticated user.
  *

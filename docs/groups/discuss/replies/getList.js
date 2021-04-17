@@ -2,7 +2,7 @@
  * ass_dds
  * @api {GET} /groups/:groupId/discuss/:topicId/replies  getList
  *
- * @apiGroup groups.discuss.replies
+ * @apiGroup groups-discuss-replies
  * @apiVersion  1.0.0
  * 
  * 

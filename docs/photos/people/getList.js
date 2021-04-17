@@ -1,7 +1,7 @@
 /**
  * 
  * @api {GET} /photos/:photoId/people getPeopleList
- * @apiGroup photos.people
+ * @apiGroup photos-people
  * @apiVersion  1.0.0
  * 
  * @apiDescription Get a list of people in a given photo.

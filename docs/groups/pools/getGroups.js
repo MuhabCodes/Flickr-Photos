@@ -2,7 +2,7 @@
  * 
  * @api {GET} /groups/:groupId/pools/photo/:photoId/context getGroups
  * 
- * @apiGroup groups.pools
+ * @apiGroup groups-pools
  * 
  * @apiVersion  1.0.0
  * 
