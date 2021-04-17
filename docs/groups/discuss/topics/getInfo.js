@@ -3,7 +3,7 @@
  * @api {GET} /groups/:groupId/discuss/topics/:topicId/info getInfo
  * @apiDescription Get information about a group discussion topic.
  * @apiGroup groups-discuss-topics
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  *
  *
  * @apiParam  {String} groupId The NSID or path alias of the group to add a topic to.

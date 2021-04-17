@@ -3,7 +3,7 @@
  * @api {POST} /groups/:groupId/discuss/topics addTopics
  * @apiDescription Post a new discussion topic to a group.
  * @apiGroup groups-discuss-topics
- * @apiVersion  0.0.1
+ * @apiVersion 1.0.0
  *
  *
  * @apiParam  {String} groupId The NSID or path alias of the group to add a topic to.
