@@ -10,8 +10,8 @@
  * @apiParam {String} authorId The id of the author of this photo
  * @apiParam {String} title The title of the image
  * @apiParam {String} description The description given to the image
- * @apiParam {Date} [captureDate=<Current Date>] The date that the photo was captured on
- * @apiParam {Date} [uploadDate=<Current Date>] The date that the photo was uploaded on
+ * @apiParam {Date} [captureDate="Now"] The date that the photo was captured on
+ * @apiParam {Date} [uploadDate="Now"] The date that the photo was uploaded on
  * @apiParam {Boolean} [isPublic=true] If this photo is public for anyone to see
  * @apiParam {String} secret The secret of this photo
  * @apiParam {Boolean} [favorites=false] If this photo is in the author's favourites
