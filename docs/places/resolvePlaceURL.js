@@ -1,6 +1,6 @@
 /**
  * 
-  * @api {get} /places/resolvePlaceURL/url/:url resolvePlaceURL
+  * @api {get} /places/:url/resolvePlaceURL resolvePlaceURL
  * 
  * @apiGroup places
  * @apiVersion  1.0.0
