@@ -1,8 +1,8 @@
 /**
  *
- * @api {GET} /groups/:groupId/discuss/topics/:topicId getInfo
+ * @api {GET} /groups/:groupId/discuss/topics/:topicId/info getInfo
  * @apiDescription Get information about a group discussion topic.
- * @apiGroup groups.discuss.topics
+ * @apiGroup groups-discuss-topics
  * @apiVersion  0.0.1
  *
  *
