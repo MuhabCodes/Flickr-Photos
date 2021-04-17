@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /people/:userId/photosof getPhotosOf
+ * @api {GET} /people/:userId/photos getPhotosOf
  * @apiDescription Returns a list of photos containing a particular Flickr member.
  * @apiGroup people
  * @apiVersion  1.0.0
