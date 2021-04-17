@@ -2,7 +2,7 @@
  * 
  * @api {POST} /photos/geo/batchCorrectLocation/lat/:lat/lon/:lon/accuracy/:accuracy batchCorrectLocation
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * 
  * @apiDescription Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.

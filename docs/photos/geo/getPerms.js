@@ -2,7 +2,7 @@
  * 
  * @api {GET} /photos/:photoId/geo/perms getPerms
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * 
  * @apiDescription Get permissions for who may view geo data for a photo.

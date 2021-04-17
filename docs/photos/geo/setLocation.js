@@ -2,7 +2,7 @@
  * 
  * @api {POST}  /photos/:photoId/geo/location/lat/:lat/lon/:lon setLocation
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * @apiDescription Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo. Before users may assign location data to a photo they must define who, by default, may view that information.
  * @apiDescription Users can edit this preference at http://www.flickr.com/account/geo/privacy/. If a user has not set this preference, the API method will return an error.

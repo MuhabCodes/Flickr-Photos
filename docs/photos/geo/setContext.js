@@ -2,10 +2,10 @@
  * 
  * @api {POST}  /photos/:photoId/geo/context/:context setContext
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * @apiDescription Indicate the state of a photo's geotagginess beyond latitude and longitude.
- * @apiDescription Note : photos passed to this method must already be geotagged (using the flickr.photos.geo.setLocation method).
+ * @apiDescription Note : photos passed to this method must already be geotagged (using the flickr.photos-geo.setLocation method).
  * 
  * 
  * 

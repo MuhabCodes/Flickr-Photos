@@ -2,7 +2,7 @@
  * 
  * @api {DELETE} /photos/:photoId/geo/location removeLocation
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * @apiDescription Removes the geo data associated with a photo.
  * 

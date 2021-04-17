@@ -2,7 +2,7 @@
  * 
  * @api {POST} /photos/:photoId/geo/correctLocation/foursquareId/:foursquareId correctLocation
  * 
- * @apiGroup photos.geo
+ * @apiGroup photos-geo
  * @apiVersion  1.0.0
  * 
  * 
