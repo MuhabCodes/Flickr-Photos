@@ -8,8 +8,6 @@
  * 
  * 
  * 
- * //TODO : Those booleans will be set in the body as this is a post request
- * //       There is no need to send them in the url
  * @apiParam  {Boolean} isPublic 1 to set viewing permissions for the photo's location data to public, 0 to set it to private.
  * @apiParam  {Boolean} isContact 1 to set viewing permissions for the photo's location data to contacts, 0 to set it to private.
  * @apiParam  {Boolean} isFriend 1 to set viewing permissions for the photo's location data to friends, 0 to set it to private.

@@ -60,5 +60,3 @@ The default context for geotagged photos is 0, or "not defined"
 
  * 
  */
-
-//TODO : query params in url

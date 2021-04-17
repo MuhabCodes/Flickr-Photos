@@ -45,5 +45,3 @@ Batch corrections are processed in a delayed queue so it may take a few minutes 
  * 
  * 
  */
-
-//TODO : query params in url
