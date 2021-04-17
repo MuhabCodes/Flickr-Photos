@@ -2,7 +2,7 @@
  *
  * @api {GET} /groups/:groupId/topics/getList GetList
  * @apiDescription Get a list of discussion topics in a group.
- * @apiGroup Groups
+ * @apiGroup groups.discuss.topics
  * @apiVersion  0.0.1
  *
  *

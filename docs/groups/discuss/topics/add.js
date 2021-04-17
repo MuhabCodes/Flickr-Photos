@@ -2,7 +2,7 @@
  *
  * @api {POST} /groups/:groupId/discuss/topics AddTopics
  * @apiDescription Post a new discussion topic to a group.
- * @apiGroup Groups
+ * @apiGroup groups.discuss.topics
  * @apiVersion  0.0.1
  *
  *
