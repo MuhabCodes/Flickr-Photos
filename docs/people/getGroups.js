@@ -1,27 +1,21 @@
 /**
  * 
- * @api {GET} /people/:user_id/groups getGroups
+ * @api {GET} /people/:userId/groups getGroups
  * @apiDescription Returns the list of groups a user is a member of.
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion 1.0.0
  * 
- * @apiParam  {String} api_key Your API application key
- * @apiParam  {String} user_id user id you want to fetch groups he is member of
- * @apiParam  {String} [extras] description
  * 
- * @apiSuccess (Success 200) {Object[]} groupList user is a member of
+ * @apiParam  {String} userId user id you want to fetch groups he is member of
+ * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: privacy, throttle, restrictions
+ * 
+ * @apiSuccess (Success 200) {Object[]} groupList The groups that the user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- * @apiParamExample  {type} Request-Example:
- * {
- *     property : value
- * }
+ *  
  * 
  * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     property : value
- * }
+ * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
  * @apiError (Error 404) {String} error Informs the caller of the missing object.
@@ -29,15 +23,15 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoNotFound",
- *        "status_code":404
+ *       "error": "userNotFound",
+ *        "statusCode":404
  *     }
   
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
 
  * 

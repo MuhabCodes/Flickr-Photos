@@ -1,19 +1,17 @@
 /**
  * 
- * @api {GET} /cameras/brands getBrands
- * @apiDescription Returns all the brands of cameras that Flickr knows about.
- * @apiGroup cameras
+ * @api {GET} /tags/:photoId getPhotoTags
+ * @apiDescription Get the tag list for a given photo
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
+ * @apiParam  {String} photoId The id of the photo to return tags for
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraBrands all brands of cameras that flicker knows
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -23,7 +21,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "camerasOrBrandNotFound",
+ *       "error": "photoNotFound",
  *        "statusCode":404
  *     }
   
@@ -33,6 +31,5 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
-
  * 
  */

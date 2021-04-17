@@ -1,19 +1,18 @@
 /**
  * 
- * @api {GET} /cameras/brands getBrands
- * @apiDescription Returns all the brands of cameras that Flickr knows about.
- * @apiGroup cameras
+ * @api {GET} /tags/hottags getHotList
+ * @apiDescription Returns a list of hot tags for the given period.
+ * @apiGroup tags
  * @apiVersion  1.0.0
  * 
  * 
+ * @apiParam  {String} [period="day"] The period for which to fetch hot tags. Valid values are day and week.
+ * @apiParam  {String} [count=20] The number of tags to return. Maximum allowed value is 200.
  * 
  * 
  * 
- * @apiSuccess (Success 200) {Object[]} cameraBrands all brands of cameras that flicker knows
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- *  
- * 
+ * @apiSuccess (Success 200) {Object[]} hotTagsList list of all hot tags required
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -23,7 +22,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "camerasOrBrandNotFound",
+ *       "error": "tagNotFound",
  *        "statusCode":404
  *     }
   
@@ -33,6 +32,5 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
-
  * 
  */

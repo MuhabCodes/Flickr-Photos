@@ -1,20 +1,16 @@
 /**
  * 
- * @api {GET} /cameras/brands getBrands
- * @apiDescription Returns all the brands of cameras that Flickr knows about.
- * @apiGroup cameras
+ * @api {GET} /activity/user/comments userComments
+ * @apiDescription Returns a list of recent activity on photos commented on by the calling user
+ * @apiGroup activity
  * @apiVersion  1.0.0
  * 
  * 
+ * @apiParam  {String} [perPage=10] Number of items to return per page.
+ * @apiParam  {String} [page=1] The page of results to return. 
  * 
- * 
- * 
- * @apiSuccess (Success 200) {Object[]} cameraBrands all brands of cameras that flicker knows
+ * @apiSuccess (Success 200) {Object[]} activityList list of all recent activites of mentioned user
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- *  
- * 
- * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
@@ -23,7 +19,7 @@
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "camerasOrBrandNotFound",
+ *       "error": "userNotFound",
  *        "statusCode":404
  *     }
   
@@ -33,6 +29,6 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
-
+ * 
  * 
  */
