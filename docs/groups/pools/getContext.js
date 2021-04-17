@@ -6,12 +6,12 @@
  * 
  * @apiDescription Get the two photos before and after a given photo.
  * 
+ * @apiParam  {String} photoId The id of the photo.
+ * @apiParam  {String} groupId The id of the group where the photo exists.
+ * 
  * @apiSuccess (Success 200) {Object[]} photoList A list containing the context pictures.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
- *  
- * @apiParam  {String} photoId The id of the photo.
- * @apiParam  {String} groupId The id of the group where the photo exists.
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code

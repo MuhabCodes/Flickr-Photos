@@ -12,8 +12,7 @@
  * @apiParam  {Number} [perPage=100] Number of members per page.
  * @apiParam  {Number} [page=1] The page of results to return.
  * 
- * //TODO : Add request example with the list thing
- * // i.e. the first optional argument.
+ * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode all the member of the group mentioned
  * @apiSuccess (Success 200) {Object[]} memberList all the member of the group mentioned
