@@ -3,7 +3,7 @@
  * @api {DELETE} /groups/:groupId/discuss/:topicId/replies/:replyId  delete
  *
  * @apiGroup groups-discuss-replies
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Delete a reply from a group topic.
 * 

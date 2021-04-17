@@ -3,7 +3,7 @@
  * @api {DELETE} /favorites/:photoId removeFavorite
  * 
  * @apiGroup favorites
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Removes a photo from a user's favorites list.
  *

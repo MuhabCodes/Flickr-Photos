@@ -3,7 +3,7 @@
  * @api {GET} /tags/:userId/raw getListUserRaw
  * @apiDescription Get the raw versions of a given tag (or all tags) for the currently logged-in user.
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [userId] ID of the user to fetch the tag list for

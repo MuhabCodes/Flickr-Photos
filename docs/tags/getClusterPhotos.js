@@ -3,7 +3,7 @@
  * @api {GET} /tags/:tag/:clusterId/photos getClusterPhotos
  * @apiDescription Returns the first 24 photos for a given tag cluster
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} tag The tag that this cluster belongs to

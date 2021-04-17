@@ -2,7 +2,7 @@
  * 
  * @api {GET} /groups/:groupId/pools/photo/:photoId/context getContext
  * @apiGroup groups-pools
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Get the two photos before and after a given photo.
  * 

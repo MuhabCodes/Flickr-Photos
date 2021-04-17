@@ -3,7 +3,7 @@
  * @api {GET} /photos/geo/photosForLocation/lat/:lat/lon/:lon photosForLocation
  * 
  * @apiGroup photos-geo
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Return a list of photos for the calling user at a specific latitude, longitude and accuracy
  * 
  * 

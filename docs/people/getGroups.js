@@ -3,7 +3,7 @@
  * @api {GET} /people/:userId/groups getGroups
  * @apiDescription Returns the list of groups a user is a member of.
  * @apiGroup people
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId user id you want to fetch groups he is member of

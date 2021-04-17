@@ -3,7 +3,7 @@
  * @api {DELETE} /groups/:groupId/leave leave
  * 
  * @apiGroup groups
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Leave a group. If the user is the only administrator left, and there are other members, the oldest member will be promoted to administrator.
  * 
  * If the user is the last person in the group, the group will be deleted.

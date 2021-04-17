@@ -3,7 +3,7 @@
  * @api {GET} /activity/user/comments userComments
  * @apiDescription Returns a list of recent activity on photos commented on by the calling user
  * @apiGroup activity
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [perPage=10] Number of items to return per page.

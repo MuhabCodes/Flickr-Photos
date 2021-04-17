@@ -3,7 +3,7 @@
   * @api {get} /places/:url/resolvePlaceURL resolvePlaceURL
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Find Flickr Places information by Place URL.
 This method has been deprecated. It won't be removed but you should use flickr.places.getInfoByUrl instead

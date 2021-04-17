@@ -3,7 +3,7 @@
  * @api {get} /urls/user/:url lookupUser
  * 
  * @apiGroup urls
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Returns a user Id, given the url to a user's photos or profile.
  * 

@@ -3,7 +3,7 @@
  * @api {GET} /tags/:tag/clusters getClusters
  * @apiDescription Gives you a list of tag clusters for the given tag.
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} tag The tag that this cluster belongs to

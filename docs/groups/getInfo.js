@@ -2,7 +2,7 @@
  * 
  * @api {get} /groups/:groupId/info getInfo
  * @apiGroup groups
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Get information about a group.
  * 

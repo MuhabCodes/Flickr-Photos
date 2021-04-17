@@ -3,7 +3,7 @@
  * @api {GET} /cameras/:brand/models getBrandModels
  * @apiDescription Retrieve all the models for a given camera brand.
  * @apiGroup cameras
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} brand brand of the camera

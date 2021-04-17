@@ -3,7 +3,7 @@
  * @api {get} /urls/gallery/:url lookupGallery
  * 
  * @apiGroup urls
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Returns gallery info, by url.
  * 

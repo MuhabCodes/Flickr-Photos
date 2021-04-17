@@ -3,7 +3,7 @@
  * @api {get} /places/query/:query find
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiDescription Return a list of place IDs for a query string.

@@ -3,7 +3,7 @@
  * @api {GET} /places/placetypes/:placeTypeId getTopPlacesList
  * @apiDescription Return the top 100 most geotagged places for a day.
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiParam  {String} placeTypeId The numeric ID for a specific place type to cluster photos by.
  *

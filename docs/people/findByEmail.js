@@ -3,7 +3,7 @@
  * @api {Get} /people/:email findByEmail
  * @apiDescription find ID of a user given their Email
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} email Email of the User you want to Find

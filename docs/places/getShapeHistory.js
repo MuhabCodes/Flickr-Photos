@@ -3,7 +3,7 @@
  * @api {GET} /places/:placeId/shape/history getShapeHistory
  * @apiDescription Return an historical list of all the shape data generated for a Places or Where on Earth (WOE) ID..
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * 

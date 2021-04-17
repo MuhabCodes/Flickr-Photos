@@ -3,7 +3,7 @@
  * @api {POST} /groups/:groupId/join join
  * 
  * @apiGroup groups
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Join a public group as a member.
  * 
  * 

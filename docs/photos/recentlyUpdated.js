@@ -3,7 +3,7 @@
  * @api {GET} /photos/recentlyUpdated getRecentlyUpdated
  * @apiDescription Return a list of your photos that have been recently created or which have been recently modified.
  * @apiGroup photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  *
  *
  * @apiParam  {Date} [minDate=] The date after which the modification occurred

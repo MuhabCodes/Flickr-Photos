@@ -3,7 +3,7 @@
  * @api {GET} /favorites/photos/:photoId/user/:userId getContext
  * 
  * @apiGroup favorites
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Returns next and previous favorites for a photo in a user's favorites.
  * 
 

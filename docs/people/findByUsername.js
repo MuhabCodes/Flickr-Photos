@@ -4,7 +4,7 @@
  * 
  * @apiGroup people
  * @apiDescription find ID of a user given their userName
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userName The username of the user you want to find

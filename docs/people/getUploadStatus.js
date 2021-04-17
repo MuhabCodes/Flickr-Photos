@@ -4,7 +4,7 @@
  * 
  * @apiDescription Returns information for the calling user related to photo uploads.
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * 

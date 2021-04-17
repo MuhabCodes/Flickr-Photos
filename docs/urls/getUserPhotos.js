@@ -3,7 +3,7 @@
  * @api {get} /urls/userphotos getUserPhotos
  * 
  * @apiGroup urls
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Returns the url to a user's photos.
  * 

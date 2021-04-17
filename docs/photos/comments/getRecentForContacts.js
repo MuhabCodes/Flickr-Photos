@@ -3,7 +3,7 @@
  *@api {GET} /photos/comments/getRecentForContacts getRecentForContacts
 
 * @apiGroup photos-comments
-* @apiVersion  1.0.0
+* @apiVersion  0.1.0
 * 
 * 
 *

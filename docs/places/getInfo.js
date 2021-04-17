@@ -3,7 +3,7 @@
  * @api {GET} /places/:placeId/location/info getInfo
  * @apiDescription Get informations about a place.
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)

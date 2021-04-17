@@ -5,7 +5,7 @@
  *
  * @apiDescription Returns a list of tags 'related' to the given tag, based on clustered usage analysis.
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} tag The tag to fetch related tags for.

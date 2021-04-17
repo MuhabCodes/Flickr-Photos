@@ -2,7 +2,7 @@
  * 
  * @api {POST} /groups/:groupId/photos/:photoId addPhoto
  * @apiGroup groups-pools
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Add a photo to a group's pool.
  * 

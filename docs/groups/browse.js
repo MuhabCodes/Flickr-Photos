@@ -2,7 +2,7 @@
  * 
  * @api {get} /groups/browse browse
  * @apiGroup groups
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Browse the group category tree, finding groups and sub-categories.
  * 
  * 

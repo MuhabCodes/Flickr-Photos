@@ -4,7 +4,7 @@
  * 
  * @apiGroup people
  * @apiDescription Get a list of public photos for the given user.
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId ID of user you want to get public photos for

@@ -3,7 +3,7 @@
 * @api {Post} /favorites/:photoId addPhoto
 *
 * @apiGroup favorites
-* @apiVersion  1.0.0
+* @apiVersion  0.1.0
 * @apiDescription Adds a photo to a user's favorites list.
 * 
 *

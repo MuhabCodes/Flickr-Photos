@@ -3,7 +3,7 @@
  * @api {GET} /photos/:photoId/geo/location getLocation
  * 
  * @apiGroup photos-geo
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Get the geo data (latitude and longitude and the accuracy level) for a photo.
  * 

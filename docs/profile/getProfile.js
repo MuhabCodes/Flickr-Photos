@@ -3,7 +3,7 @@
  * @api {GET} /profile/:userId getProfile
 
  * @apiGroup profile
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
 *

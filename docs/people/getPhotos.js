@@ -3,7 +3,7 @@
  * @api {GET} /people/:userId/photos getPhotos
  * @apiDescription Return photos from the given user's photostream. Only photos visible to the calling user will be returned
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId The ID of user whose photos will be returned

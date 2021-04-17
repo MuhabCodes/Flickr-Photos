@@ -3,7 +3,7 @@
  * @api {POST} /groups/:groupId/discuss/:topicId/replies add
  *
  * @apiGroup groups-discuss-replies
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} groupId Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.

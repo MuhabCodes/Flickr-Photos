@@ -3,7 +3,7 @@
  * @api {GET} /places/:url/info getInfoByUrl
  * @apiDescription Lookup information about a place, by its flickr.com/places URL.
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} url A flickr.com/places URL in the form of /country/region/city. For example: /Canada/Quebec/Montreal

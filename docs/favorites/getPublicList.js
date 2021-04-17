@@ -3,7 +3,7 @@
  * @api {GET} /favorites/:userId getPublicList
  * 
  * @apiGroup favorites
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Returns a list of the user's favorite photos. Only photos which the calling user has permission to see are returned.
  * 
  *  

@@ -3,7 +3,7 @@
  * @api {GET} /activity/user/photos userPhotos
  * @apiDescription Returns a list of recent activity on photos belonging to the calling user. Do not poll this method more than once an hour.
  * @apiGroup activity
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiParam  {String} [timeFrame] The timeframe in which to return updates for. This can be specified in days ('2d') or hours ('4h'). The  behavoir is to return changes since the beginning of the previous user session.
  * @apiParam  {String} [perPage=10] Number of items to return per page.The maximum allowed value is 50.

@@ -2,7 +2,7 @@
  * 
  * @api {delete} /groups/:groupId/photos/:photoId removePhoto
  * @apiGroup groups-pools
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Remove a photo to a group's pool.
  * 

@@ -3,7 +3,7 @@
  * @api {get} /groups/search/:text search
  * 
  * @apiGroup groups
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * @apiDescription Search for groups. 18+ groups will only be returned for authenticated calls where the authenticated user is over 18.
  * 
  * 

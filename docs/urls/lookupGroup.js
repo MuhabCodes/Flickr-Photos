@@ -3,7 +3,7 @@
  * @api {get} /urls/group/:url lookupGroup
  * 
  * @apiGroup urls
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Returns a group Id, given the url to a group's page or photo pool.
  * 

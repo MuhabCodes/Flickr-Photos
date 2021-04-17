@@ -3,7 +3,7 @@
  * @api {GET} /tags/:userId getListUser
  * @apiDescription Get the tag list for a given user (or the currently logged in user).
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [userId] ID of the user to fetch the tag list for

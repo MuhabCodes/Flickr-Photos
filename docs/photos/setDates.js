@@ -3,7 +3,7 @@
  * @api {PUT} /photos/:photoId/dates setDates
  * @apiDescription Set one or both of the dates for a photo.
  * @apiGroup photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  *
  *
  * @apiParam  {String} photoId The id of the photo

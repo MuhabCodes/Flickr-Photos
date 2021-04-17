@@ -3,7 +3,7 @@
  * @api {GET} /photos/recent getRecent
  * @apiDescription Returns a list of the latest public photos uploaded to flickr.
  * @apiGroup photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  *
  *
  *

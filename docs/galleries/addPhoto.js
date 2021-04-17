@@ -3,7 +3,7 @@
  * @api {POST} /galleries/:galleryId/photos addPhoto
  * @apiDescription Add a new photo to a gallery
  * @apiGroup galleries
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * @apiPermission author
  *
  *

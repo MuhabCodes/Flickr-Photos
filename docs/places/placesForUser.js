@@ -3,7 +3,7 @@
  * @api {get} /places/placesForUser placesForUser
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Return a list of the top 100 unique places clustered by a given placetype for a user.
  * 

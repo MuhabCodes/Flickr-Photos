@@ -4,7 +4,7 @@
  * @apiDescription Returns the list of public groups a user is a member of.
  * 
  * @apiGroup people
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId ID of user you want to get groups for

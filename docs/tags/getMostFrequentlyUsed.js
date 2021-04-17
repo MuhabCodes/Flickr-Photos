@@ -5,7 +5,7 @@
  *
  * @apiDescription Returns a list of most frequently used tags for a user.
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * 

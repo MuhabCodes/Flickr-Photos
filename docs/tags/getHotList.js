@@ -3,7 +3,7 @@
  * @api {GET} /tags/hottags getHotList
  * @apiDescription Returns a list of hot tags for the given period.
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [period="day"] The period for which to fetch hot tags. Valid values are day and week.

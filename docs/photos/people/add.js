@@ -2,7 +2,7 @@
  * 
  * @api {POST} /photos/:photoId/people/:userId addPerson
  * @apiGroup photos-people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription adds a person to a photo, possibly adding a box around him to include location of the individual in the image.
  * 

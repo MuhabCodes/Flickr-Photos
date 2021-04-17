@@ -3,7 +3,7 @@
  * @api {GET} /places/types getPlaceTypes
  * @apiDescription Fetches a list of available place types for Flickr.
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * 

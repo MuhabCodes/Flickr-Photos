@@ -3,7 +3,7 @@
  * @api {get} /places/placesForBoundingBox placesForBoundingBox
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Return all the locations of a matching place type for a bounding box.
 

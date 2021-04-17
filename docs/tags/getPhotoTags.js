@@ -3,7 +3,7 @@
  * @api {GET} /tags/:photoId getPhotoTags
  * @apiDescription Get the tag list for a given photo
  * @apiGroup tags
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} photoId The id of the photo to return tags for

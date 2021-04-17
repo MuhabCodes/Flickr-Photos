@@ -2,7 +2,7 @@
  * 
  * @api {DELETE} /photos/:photoId/people/:userId/coords deleteCoords
  * @apiGroup photos-people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Delete the bounding box of a person from the photo.
  * 

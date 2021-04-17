@@ -4,7 +4,7 @@
  * @apiDescription Remove a tag from a photo.
 
  * @apiGroup photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * @apiPermission author
  *
  *

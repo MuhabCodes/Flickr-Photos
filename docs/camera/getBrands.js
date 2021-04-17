@@ -3,7 +3,7 @@
  * @api {GET} /cameras/brands getBrands
  * @apiDescription Returns all the brands of cameras that Flickr knows about.
  * @apiGroup cameras
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * 

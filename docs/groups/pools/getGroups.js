@@ -4,7 +4,7 @@
  * 
  * @apiGroup groups-pools
  * 
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Get the groups where you can post photos.
  * 

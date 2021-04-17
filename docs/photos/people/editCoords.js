@@ -2,7 +2,7 @@
  * 
  * @api {PUT} /photos/:photoId/people/:userId/coords editCoords
  * @apiGroup photos-people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Edit the bounding box of an existing person on a photo.
  * 

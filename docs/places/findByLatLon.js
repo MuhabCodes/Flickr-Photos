@@ -3,7 +3,7 @@
  * @api {get} /places/findByLatLon/lat/:lat/lon/:lon findByLatitudeLongitude
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Return a place ID for a latitude, longitude and accuracy triple.
 

@@ -3,7 +3,7 @@
  * @api {GET} /photos/:photoId/context getContext
  * @apiDescription Returns next and previous photos for a photo in a photostream.
  * @apiGroup photos
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  *
  *
  * @apiParam  {String} photoId The id of the photo to fetch the context for.

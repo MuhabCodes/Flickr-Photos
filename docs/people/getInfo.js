@@ -3,7 +3,7 @@
  * @api {GET} /people/:userId/info getInfo
  * @apiDescription Get information about a user
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId userID you want to get information about

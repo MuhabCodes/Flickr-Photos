@@ -3,7 +3,7 @@
  * @api {GET} /galleries/:galleryId/photos getPhotos
  * @apiDescription Return the list of photos for a gallery
  * @apiGroup galleries
- * @apiVersion 1.0.0
+ * @apiVersion  0.1.0
  * @apiPermission none
  *
  *

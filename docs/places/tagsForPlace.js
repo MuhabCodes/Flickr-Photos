@@ -3,7 +3,7 @@
  * @api {get} /places/tagsForPlace tagsForPlace
  * 
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID
  * 

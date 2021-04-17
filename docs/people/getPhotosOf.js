@@ -3,7 +3,7 @@
  * @api {GET} /people/:userId/photosof getPhotosOf
  * @apiDescription Returns a list of photos containing a particular Flickr member.
  * @apiGroup people
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} userId ID of user you want find photos of

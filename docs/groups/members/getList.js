@@ -2,7 +2,7 @@
  * 
  * @api {GET} /groups/:groupId/members getList
  * @apiGroup groups-members
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * @apiDescription Get a list of the members of a group.
  * 

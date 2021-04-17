@@ -3,7 +3,7 @@
  * @api {GET} /places/photos/children/public getChildrenWithPhotosPublic
  * @apiDescription Return a list of locations with public photos that are parented by a Where on Earth (WOE) or Places ID.
  * @apiGroup places
- * @apiVersion  1.0.0
+ * @apiVersion  0.1.0
  * 
  * 
  * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
