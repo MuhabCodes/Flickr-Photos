@@ -7,7 +7,7 @@
  * 
  * 
  * @apiParam  {String} userId user id you want to fetch groups he is member of
- * @apiParam  {String} [extras] description
+ * @apiParam  {String} [extras] A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: privacy, throttle, restrictions
  * 
  * @apiSuccess (Success 200) {Object[]} groupList The groups that the user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
