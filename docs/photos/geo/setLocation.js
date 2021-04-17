@@ -11,8 +11,8 @@
  * 
  * 
  * @apiParam  {String} photoId The id of the photo to set location data for.
- * @apiParam  {String} lat The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
- * @apiParam  {String} lon The longitude whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
+ * @apiParam  {Number} lat The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
+ * @apiParam  {Number} lon The longitude whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} [accuracy] Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. Defaults to 16 if not specified.
  * @apiParam  {String} [context] Context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to indicate that a photo was taken "indoors" or "outdoors".
 

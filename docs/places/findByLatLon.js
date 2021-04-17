@@ -15,8 +15,8 @@ It will also truncate latitudes and longitudes to three decimal points.
  * 
  
 
- * @apiParam  {String} lat The latitude whose valid range is -90 to 90. Anything more than 4 decimal places will be truncated.
- * @apiParam  {String} lon The longitude whose valid range is -180 to 180. Anything more than 4 decimal places will be truncated.
+ * @apiParam  {Number} lat The latitude whose valid range is -90 to 90. Anything more than 4 decimal places will be truncated.
+ * @apiParam  {Number} lon The longitude whose valid range is -180 to 180. Anything more than 4 decimal places will be truncated.
  * @apiParam  {String} [accuracy] Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. The default is 16.
  * 
  * @apiSuccess (Success 200) {Object} placeId a place ID for a latitude, longitude and accuracy triple.

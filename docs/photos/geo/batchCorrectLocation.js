@@ -5,10 +5,12 @@
  * @apiGroup photos.geo
  * @apiVersion  1.0.0
  * 
+ * @apiDescription Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.
+
+Batch corrections are processed in a delayed queue so it may take a few minutes before the changes are reflected in a user's photos.
  * 
- * 
- * @apiParam  {String} lat The latitude of the photos to be update whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
- * @apiParam  {String} lon The longitude of the photos to be updated whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
+ * @apiParam  {Number} lat The latitude of the photos to be update whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
+ * @apiParam  {Number} lon The longitude of the photos to be updated whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
  * @apiParam  {String} accuracy Recorded accuracy level of the photos to be updated. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. Defaults to 16 if not specified.
  * @apiParam  {String} [placeId] A Flickr Places ID.  (While optional, you must pass either a valid Places ID or a WOE ID.)
  * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)    
