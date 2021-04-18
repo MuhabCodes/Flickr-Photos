@@ -1,6 +1,6 @@
 /**
  *
- * @api {PUT} /galleries/:galleryId/photos/:photoId removePhoto
+ * @api {DELETE} /galleries/:galleryId/photos/:photoId removePhoto
  * @apiDescription Remove a photo from a gallery.
  * @apiGroup galleries
  * @apiVersion  0.1.0
