@@ -11,7 +11,7 @@
  * @apiParam  {Number} [page=1] The page of results to return.
  * @apiParam  {Number} [perPage=100] The number of groups per page that can be returned.
  * 
- * @apiSuccess (Success 200) {Object[]} photoList A list containing the photos from a given group.
+ * @apiSuccess (Success 200) {Object[]} photos A list containing the photos from a given group and information for pagination.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
@@ -38,5 +38,24 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
+ * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+ *      "statusCode": 200,
+ *      "photos": {
+ *                      "page": 1,
+ *                      "pages": 1,
+ *                      "perPage": 10,
+ *                      "total": 1,
+ *                      "photoList": [
+ *                                     {
+ *                                       "id": "ag34imgd",
+ *                                       "ownerId": "wfno1g3n",
+ *                                       "title": "Paris",
+ *                                       "ownerName": "Hamada",
+ *                                       "dataCreated" "1089918707"
+ *                                     }   
+ *                                    ]
+ *      }
  * 
  */
