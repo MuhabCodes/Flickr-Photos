@@ -9,7 +9,8 @@
  * @apiParam  {String} photoId The id of the photo.
  * @apiParam  {String} groupId The id of the group where the photo exists.
  * 
- * @apiSuccess (Success 200) {Object[]} photoList A list containing the context pictures.
+ * @apiSuccess (Success 200) {Object} prevPhoto The photo after a given photo in the pool.(might not be returned if the current photo is first the in the pool)
+ * @apiSuccess (Success 200) {Object} nextPhoto The photo before a given photo in the pool.(might not be returned if the current photo is the last in the pool)
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
@@ -35,6 +36,12 @@
  *     {
  *       "error": "Unauthorized User",
  *        "statusCode":401
+ *     }
+ * @apiSuccessExample {json} Success-Response:
+ *    { 
+ *      "statusCode": 200,
+ *      "prevPhoto": {"id": "13nug931b", "title": "The King in the North!!!", "imagePath": "/path/to/photo.png"},
+ *      "nextPhoto": {"id": "fj12fnhj", "title": "Nine naynneeee !!!!", "imagePath": "/path/to/photo2.jpg"}
  *     }
  * 
  */
