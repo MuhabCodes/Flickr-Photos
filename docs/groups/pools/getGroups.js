@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /groups/:groupId/pools/photo/:photoId/context getGroups
+ * @api {GET} /groups/pools/canPost getGroups
  * 
  * @apiGroup groups-pools
  * 
@@ -11,7 +11,7 @@
  * @apiParam  {Number} [page=1] The page of results to return.
  * @apiParam  {Number} [perPage=400] The number of groups per page that can be returned.
  * 
- * @apiSuccess (Success 200) {Object[]} groupList A list containing the groups to which you can add photos.
+ * @apiSuccess (Success 200) {Object[]} groups A list containing the groups to which you can add photos and information about pagination.
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  *  
@@ -40,5 +40,26 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
+ * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+ *      "page": 1,
+ *      "pages": 1,
+ *      "perPage": 10,
+ *      "total": 1,
+ *      "groups": [
+ *                  {
+ *                      "id": "1gn13g@f2f",
+ *                      "name": "Software Engineering",
+ *                      "admin": 0,
+ *                      "photoCount": 20
+ *                  },
+ *                  {
+ *                      "id": "wfqw2r@f2f",
+ *                      "name": "Spongebob Squarepants",
+ *                      "admin": 1,
+ *                      "photoCount": 0
+ *                  }
+ *      }
  * 
  */
