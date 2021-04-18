@@ -10,7 +10,7 @@
  * @apiParam  {String} groupId The id of the group to add the photo to.
  * @apiParam  {String} photoId The id of the photo to add. Photo must belong to the calling user.
  * 
- * @apiSuccess (Success 410) {Number} statusCode The status code
+ * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.

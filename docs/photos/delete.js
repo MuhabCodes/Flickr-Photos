@@ -13,7 +13,7 @@
  * @apiExample Example usage:
  * curl -i http://localhost/photos/314
  *
- * @apiSuccess (Success 410) {Number} statusCode The status code
+ * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiError (Error 404) {String} error The photo isn't found
  * @apiError (Error 404) {Number} statusCode The status code
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
@@ -27,9 +27,9 @@
  *
  *
  * @apiSuccessExample {json} Success-Response:
- *      HTTP/1.1 410 Gone
+ *      HTTP/1.1 200 Gone
  * {
- *      "statusCode":410
+ *      "statusCode":200
  * }
  *
  * @apiErrorExample {json} Error-404:

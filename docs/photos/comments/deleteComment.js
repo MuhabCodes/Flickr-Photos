@@ -9,7 +9,7 @@
 * @apiParam  {String} commentId The id of the comment to delete.
 *
 * 
-*@apiSuccess (Success 410) {Number} statusCode The status code
+*@apiSuccess (Success 200) {Number} statusCode The status code
 * 
 *
 *@apiError (Error 400) {Number} statusCode The status code

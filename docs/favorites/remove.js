@@ -11,7 +11,7 @@
  * @apiParam {String} photoId The id of the photo to remove from the user's favorites.
  * 
  * 
- *@apiSuccess (Success 410) {Number} statusCode The status code
+ *@apiSuccess (Success 200) {Number} statusCode The status code
  *@apiError (Error 400) {Number} statusCode The status code
 *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  

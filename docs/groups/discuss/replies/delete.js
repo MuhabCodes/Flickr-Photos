@@ -10,7 +10,7 @@
  * @apiParam  {String} groupId Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.
  * @apiParam  {String} topicId The ID of the topic to post a comment to.
  * @apiParam  {String} replyId  The message to post to the topic.
- *@apiSuccess (Success 410) {Number} statusCode The status code
+ *@apiSuccess (Success 200) {Number} statusCode The status code
  *@apiError (Error 400) {Number} statusCode The status code
  *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  *

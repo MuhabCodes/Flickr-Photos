@@ -6,7 +6,7 @@
  * 
  * @apiDescription Delete the bounding box of a person from the photo.
  * 
- * @apiSuccess (Success 410) {Number} statusCode The status code.
+ * @apiSuccess (Success 200) {Number} statusCode The status code.
  * 
  *  
  * @apiParam  {String} photoId The id of the photo to add a person to.
