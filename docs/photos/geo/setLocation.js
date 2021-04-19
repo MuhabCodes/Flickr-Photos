@@ -46,8 +46,6 @@ The default context for geotagged photos is 0, or "not defined"
  * @apiError (Error 404) {Number} statusCode The status code
  * 
  * 
- * @apiError (Error 403) {String} Forbidden The server understood the request but refuses to authorize it.
- * @apiError (Error 403) {Number} statusCode The status code
  *
  * 
  * @apiError (Error 408) {String} Request Timeout; the server would like to shut down this unused connection. It is sent on an idle connection by some servers, even without any previous request by the client.
