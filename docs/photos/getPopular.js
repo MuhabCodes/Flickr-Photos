@@ -15,7 +15,7 @@
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *      "photos":"photos":[{
+ *      "photos":[{
  *              "title":"Waterfall",
  *              "uploadDate":"1-2-2020",
  *              "imagePath":"www.example.com/doasf",
