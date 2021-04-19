@@ -14,9 +14,10 @@
  * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
  * @apiSuccessExample {json} Success-Response:
  *    {
+ * "tags": 
  * {
    "photoId": "2619",
-   "tags": [
+   "tagsList": [
       {
          "photoId": "156",
          "author": "12037949754@N01",
