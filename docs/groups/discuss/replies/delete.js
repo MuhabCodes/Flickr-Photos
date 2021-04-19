@@ -36,7 +36,8 @@
 *        "statusCode":401
 *     }
  *
- * 
+ * @apiSuccessExample {json} Success-Response:
+*    "noErrorRequestSucceded"
  *
  * 
  * 
