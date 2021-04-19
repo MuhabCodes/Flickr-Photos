@@ -2,15 +2,12 @@
  *
  * @api {DELETE} /photos/:photoID/tags/:tagId removeTag
  * @apiDescription Remove a tag from a photo.
-
- * @apiGroup photos
+ * @apiGroup Photos
  * @apiVersion  0.1.0
- * @apiPermission author
  *
  *
  * @apiParam  {String} photoId The id of the photo
  * @apiParam  {String} tagId The tag to remove from the photo
- * @apiParam  {String} token The authorization token of the user
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiError (Error 404) {Number} statusCode The status code of the request
@@ -22,8 +19,7 @@
  * @apiParamExample  {json} Request-Example:
  * {
  *     "photoId" : "hsdf3422",
- *      "tagId":"hsdf7657",
- *      "token":"shif0843"
+ *      "tagId":"hsdf7657"
  * }
  *
  *

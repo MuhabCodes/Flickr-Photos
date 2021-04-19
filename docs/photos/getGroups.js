@@ -23,7 +23,10 @@
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *      "groups":[{...},{...},...]
+ *      "groups":[{
+ *          "groupId":"fhn934ub54",
+ *          "name":"group name"
+ *          },{...},...]
  * }
  *
  * @apiErrorExample {json} Error-404:

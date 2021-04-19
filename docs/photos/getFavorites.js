@@ -23,7 +23,12 @@
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *      "users":[{...},{...},...]
+ *      "users":[{
+ *          "username":"John Smith",
+ *          "isPro":false,
+ *          "email":"john@gmail.com",
+ *          "userId":"dfih2345ub"
+ *          },{...},...]
  * }
  *
  * @apiErrorExample {json} Error-404:

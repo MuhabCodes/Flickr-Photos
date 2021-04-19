@@ -33,8 +33,17 @@
  *      "isPublic":true,
  *      "secret":"dfabhfu234",
  *      "favorites":false,
- *      "inPhoto":[{...},{...},...],
- *      "tags":[{...},{...},...],
+ *      "inPhoto":[{
+ *          "username":"John Smith",
+ *          "isPro":false,
+ *          "email":"john@gmail.com",
+ *          "userId":"dfih2345ub"
+ *          },{...},...],
+ *      "tags":[{
+ *          "ownerId":"fdshnaub2",
+ *          "tagText":"submarine",
+ *          "tagId":"diosfbh23b"
+ *          },{...},...],
  *      "cameraName":"Cannon 201cf"
  * }
  *

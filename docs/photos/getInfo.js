@@ -4,11 +4,9 @@
  * @apiDescription Get the information of a certain photo
  * @apiGroup photos
  * @apiVersion  0.1.0
- * @apiPermission author
  *
  *
  * @apiParam  {String} photoId The id of the photo to get information for.
- * @apiParam  {String} token User authorization token
  *
  * @apiExample Example usage:
  * curl -i http://localhost/photos/314
@@ -33,8 +31,7 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "photoId" : "fh4ub34",
- *      "token":"9rug237g0dh2cn"
+ *     "photoId" : "fh4ub34"
  * }
  *
  *
@@ -49,7 +46,12 @@
  *      "secret":"f929gvb4",
  *      "views":150,
  *      "favorites":false,
- *      "inPhoto":[{...},{...},...],
+ *      "inPhoto":[{
+ *          "username":"John Smith",
+ *          "isPro":false,
+ *          "email":"john@gmail.com",
+ *          "userId":"dfih2345ub"
+ *          },{...},...],
  *      "tags":[{...},{...},...],
  *      "cameraName":"Cannon 201cf",
  *      "statusCode":200
