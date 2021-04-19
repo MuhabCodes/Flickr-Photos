@@ -66,7 +66,7 @@
  *    {
 *   "name": "Alt",
 *   "path": "/Alt",
-*   "pathids": "/63",
+*   "pathIds": "/63",
 *   "subcat": [
 *     {
 *         "id": "80",
@@ -81,19 +81,19 @@
 *   ],
 *   "group": [
 *      {
-*         "nsid": "34955637532@N01",
+*         "id": "34955637532@N01",
 *         "name": "Cal's Public Test Group",
 *         "members": "13",
 *         "online": "1",
-*         "chatnsid": "34955637533@N01",
+*         "chatId": "34955637533@N01",
 *         "inchat": "0"
 *      },
 *      {
-*         "nsid": "34158032587@N01",
+*         "id": "34158032587@N01",
 *         "name": "Eric's Alt Group Test",
 *         "members": "3",
 *         "online": "0",
-*         "chatnsid": "34158032588@N01",
+*         "chatId": "34158032588@N01",
 *         "inchat": "0"
 *      }
 *   ]

@@ -66,33 +66,33 @@
 *{
 *   "page": "1",
 *   "pages": "14",
-*   "perpage": "5",
+*   "perPage": "5",
 *   "total": "67",
 *   "group": [
 *      {
-*         "nsid": "3000@N02",
+*         "id": "3000@N02",
 *         "name": "Frito's Test Group",
-*         "eighteenplus": "0"
+*         "eighteenPlus": "0"
 *      },
 *      {
-*         "nsid": "32825757@N00",
+*         "id": "32825757@N00",
 *         "name": "Free for All",
-*         "eighteenplus": "0"
+*         "eighteenPlus": "0"
 *      },
 *      {
-*         "nsid": "33335981560@N01",
+*         "id": "33335981560@N01",
 *         "name": "joly's mothers",
-*         "eighteenplus": "0"
+*         "eighteenPlus": "0"
 *      },
 *      {
-*         "nsid": "33853651681@N01",
+*         "id": "33853651681@N01",
 *         "name": "Wintermute tower",
-*         "eighteenplus": "0"
+*         "eighteenPlus": "0"
 *      },
 *      {
-*         "nsid": "33853651696@N01",
+*         "id": "33853651696@N01",
 *         "name": "Art and Literature Hoedown",
-*         "eighteenplus": "0"
+*         "eighteenPlus": "0"
 *      }
 *   ]
 *}

@@ -72,7 +72,7 @@
  *  "iconserver": "1",
  *  "iconfarm": "1",
  *  "lang": "en-us",
- *  "ispoolmoderated": "0",
+ *  "isPoolModerated": "0",
  *  "name": "GNEverybody",
  *  "description": "The group for GNE players",
  *  "members": "69",
@@ -83,15 +83,15 @@
  *     "remaining": "3"
  *  },
  *  "restrictions": {
- *     "photos_ok": "1",
- *     "videos_ok": "1",
- *     "images_ok": "1",
- *     "screens_ok": "1",
- *     "art_ok": "1",
- *     "safe_ok": "1",
- *     "moderate_ok": "0",
- *     "restricted_ok": "0",
- *     "has_geo": "0"
+ *     "photosOk": "1",
+ *     "videosOk": "1",
+ *     "imagesOk": "1",
+ *     "screensOk": "1",
+ *     "artOk": "1",
+ *     "safeOk": "1",
+ *     "moderateOk": "0",
+ *     "restrictedOk": "0",
+ *     "hasGeo": "0"
  *  }
  *}
  * 
