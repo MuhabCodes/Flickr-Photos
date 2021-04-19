@@ -14,7 +14,7 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} frequentTags list of all frequently used tags 
  * {
-   "stat": "ok",
+   ,
    "who": {
       "userId": "1234",
       "tags": [
