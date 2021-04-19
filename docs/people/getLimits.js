@@ -16,9 +16,9 @@
  *    {
  *         "userId":"1234"
  *         "maxPixels":"1024"
- *         "maxSize":"15728640"
+ *         "maxPhotoSize":"15728640"
  *         "maxDuration":"120"
- *         "maxSize":"15728640"
+ *         "maxVideoSize":"15728640"
  *    }
  * 
  * 

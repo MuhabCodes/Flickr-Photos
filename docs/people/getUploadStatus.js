@@ -11,8 +11,59 @@
  * 
  * @apiSuccess (Success 200) {Object[]} informationList information related to photo upload of the calling user
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- *  
+ * @apiSuccessExample {json} Success-Response:
+ *  {
+   "userId": "12037949754@N01",
+   "isPro": "1",
+   "username": "yousef123",
+   "bandwidth": {
+      "maxBytes": "2147483648",
+      "maxKb": "2097152",
+      "usedBytes": "383724",
+      "usedKb": "374",
+      "remainingBytes": "2147099924",
+      "remainingKb": "2096777"
+   },
+   "filesize": {
+      "maxBytes": "10485760",
+      "maxKb": "10240"
+   },
+   "sets": {
+      "created": "27",
+      "remaining": "lots"
+   },
+   "videos": {
+      "uploaded": "5",
+      "remaining": "lots"
+   }
+}
+
+ * @apiSuccessExample {json} Success-Response:
+ *  {
+   "userId": "12037949754@N01",
+   "isPro": "0",
+   "username": "yousef123",
+   "bandwidth": {
+      "maxBytes": "2147483648",
+      "maxKb": "2097152",
+      "usedBytes": "383724",
+      "usedKb": "374",
+      "remainingBytes": "2147099924",
+      "remainingKb": "2096777"
+   },
+   "filesize": {
+      "maxBytes": "10485760",
+      "maxKb": "10240"
+   },
+   "sets": {
+      "created": "27",
+      "remaining": "lots"
+   },
+   "videos": {
+      "uploaded": "5",
+      "remaining": "0"
+   }
+}  
  * 
  * 
  * 

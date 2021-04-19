@@ -38,7 +38,56 @@
  * 
  * @apiSuccess (Success 200) {Object[]}  userPhotos all photos of user mentioned
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
+ * @apiSuccessExample {json} Success-Response:
+ * {
+   "page": "2",
+   "pages": "15",
+   "perPage": "10",
+   "total": "150",
+   "photo": [
+      {
+         "photoId": "2636",
+         "ownerId": "1234",
+         "secret": "a123456",
+         "server": "2",
+         "title": "test_04",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      },
+      {
+         "photoId": "2637",
+         "ownerId": "1234",
+         "secret": "b123456",
+         "server": "2",
+         "title": "tress",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      },
+      {
+          "photoId": "2638",
+         "ownerId": "1234",
+         "secret": "c123456",
+         "server": "2",
+         "title": "clouds",
+         "isPublic": "0",
+         "isFriend": "1",
+         "isFamily": "1"
+      },
+      {
+         "photoId": "2639",
+         "ownerId": "1234",
+         "secret": "d123456",
+         "server": "2",
+         "title": "test_07",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      }
+   ]
+}
+
  *  
  * 
  * 

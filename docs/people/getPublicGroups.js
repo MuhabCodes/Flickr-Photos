@@ -12,7 +12,30 @@
  * 
  * @apiSuccess (Success 200) {Object[]}  userGroups all groups mentioned user is a member of
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
+ * @apiSuccessExample {json} Success-Response:
+ *   "groups:" [
+   {
+      "groupId": "34427469792@N01",
+      "name": "FlickrCentral",
+      "admin": "0",
+      "eighteenPlus": "0",
+      "invitationOnly": "0"
+   },
+   {
+      "groupId": "37114057624@N01",
+      "name": "Cal's Test Group",
+      "admin": "1",
+      "eighteenPlus": "0",
+      "invitationOnly": "1"
+   },
+   {
+      "groupId": "34955637532@N01",
+      "name": "18+ Group",
+      "admin": "1",
+      "eighteenPlus": "1",
+      "invitationOnly": "0"
+   }
+]
  * 
  * 
  * 
