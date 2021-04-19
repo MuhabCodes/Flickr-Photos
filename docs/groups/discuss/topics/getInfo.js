@@ -25,7 +25,12 @@
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *      "topic":{...}
+ *      "topic":{
+ *          "topicId":"ihbru23b4",
+ *          "subject":"This is a subject",
+ *          "dateCreated":"1-1-2020",
+ *          "dateLastPost":"1-1-2021"
+ *          }
  * }
  *
  *  @apiErrorExample {json} Error-404:
