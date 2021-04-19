@@ -31,6 +31,20 @@
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
+@apiSuccessExample {json} Success-Response:
+*    {
+   "profileId": "85826296@N00",
+   "nsId": "85826296@N00",
+   "showcaseSet": "12357488850955295",
+   "firstName": "Hal",
+   "lastName": "Cenderson",
+   "description": "This is me, this is my story",
+   "website": "http://example.org",
+   "occupation": "Super Conductor",
+   "homeTown": "Melbourne, Australia",
+   "city": "San Francisco",
+   "country": "USA"
+}
 
  * 
  * 
