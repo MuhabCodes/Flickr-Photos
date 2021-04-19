@@ -20,6 +20,21 @@
 
 *@apiError (Error 404) {String} error Informs the caller of the missing object.
 *@apiError (Error 404) {Number} statusCode The status code
+
+ * @apiError (Error 403) {String} Forbidden The server understood the request but refuses to authorize it.
+* @apiError (Error 403) {Number} statusCode The status code
+* @apiError (Error 429) {String} Too Many Requests ; the user has sent too many requests in a given amount of time ("rate limiting").
+* @apiError (Error 429) {Number} statusCode The status code
+
+* @apiError (Error 408) {String} Request Timeout; the server would like to shut down this unused connection. It is sent on an idle connection by some servers, even without any previous request by the client.
+* @apiError (Error 408) {Number} statusCode The status code
+* @apiError (Error 500) {String} The server has encountered a situation it doesn't know how to handle.
+* @apiError (Error 500) {Number} statusCode The status code
+* @apiError (Error 501) {String} The request method is not supported by the server and cannot be handled. 
+* @apiError (Error 501) {Number} statusCode The status code
+
+
+
 *@apiDescription Post a new reply to a group discussion topic.
 
 *@apiErrorExample {json} Error-404
