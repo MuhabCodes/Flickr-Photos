@@ -42,6 +42,26 @@
  *        "statusCode":401
  *     }
  * 
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "stat": "ok",
+   "reply": {
+      "replyId": "72157607082559968",
+      "authorId": "30134652@N05",
+      "authorName": "JAMAL'S ACCOUNT",
+      "isPro": "0",
+      "role": "admin",
+      "iconServer": "0",
+      "iconFarm": "0",
+      "canEdit": "1",
+      "canDelete": "1",
+      "dateCreate": "1337975921",
+      "lastEdit": "0",
+      "message": "...well, too bad."
+   }
+}
+ * 
+ * 
  * 
  * 
  * 

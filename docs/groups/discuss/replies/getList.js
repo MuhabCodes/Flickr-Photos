@@ -36,7 +36,78 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
- *
+ *@apiSuccessExample {json} Success-Response:
+ *    {
+   "stat": "ok",
+   "replies": {
+      "topic": {
+         "topicId": "72157625038324579",
+         "subject": "A long time ago in a galaxy far, far away...",
+         "groupId": "46744914@N00",
+         "iconsServer": "1",
+         "iconFarm": "1",
+         "name": "Tell a story in 5 frames (Visual story telling)",
+         "authorId": "53930889@N04",
+         "authorName": "Smallportfolio_jm08",
+         "role": "member",
+         "authorIconServer": "5169",
+         "authorIconFarm": "6",
+         "canEdit": "0",
+         "canDelete": "0",
+         "canReply": "0",
+         "isSticky": "0",
+         "isLocked": "",
+         "dateCreate": "1287070965",
+         "dateLastPost": "1336905518",
+         "total": "8",
+         "page": "1",
+         "perPage": "3",
+         "pages": "2",
+         "message": "*LOL* The universe is full of Happiness"
+      },
+      "reply": [
+         {
+            "replyId": "72157625163054214",
+            "author": "41380738@N05",
+            "authorName": "BlueRidgeKitties",
+            "role": "member",
+            "iconServer": "2459",
+            "iconFarm": "3",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287071539",
+            "lastEdit": "0",
+            "message": " it seems I Love it."
+         },
+         {
+            "replyId": "72157625163539300",
+            "author": "52101018@N00",
+            "authorName": "pterandon",
+            "role": "admin",
+            "iconServer": "1",
+            "iconFarm": "1",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287076748",
+            "lastEdit": "0",
+            "message": "Great work. Good focus on different aspects of scene in each frame.  Funny ending-- even better that I didn't notice the cat right away!  Being a hopeless Trekkie, I was wondering why Han was doing the Vulcan death grip on one of his allies...."
+         },
+         {
+            "replyId": "72157625040116805",
+            "author": "54830408@N02",
+            "authorName": "tay.grisham",
+            "role": "member",
+            "iconServer": "0",
+            "iconFarm": "0",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287089858",
+            "lastEdit": "0",
+            "message": "On a scale of 1 to 10 of awesome. This is a 15"
+         }
+      ]
+   }
+}
  * 
  *
  * 
