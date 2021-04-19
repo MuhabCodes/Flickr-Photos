@@ -13,8 +13,10 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} frequentTags list of all frequently used tags 
- * {
-   ,
+ * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+   
    "who": {
       "userId": "1234",
       "tags": [
