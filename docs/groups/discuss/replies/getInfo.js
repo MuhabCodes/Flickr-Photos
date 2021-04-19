@@ -44,7 +44,7 @@
  * 
  * @apiSuccessExample {json} Success-Response:
  *    {
-   "stat": "ok",
+ * 
    "reply": {
       "replyId": "72157607082559968",
       "authorId": "30134652@N05",

@@ -33,10 +33,7 @@
 
 * 
 * @apiSuccessExample {json} Success-Response:
-*    "noErrorRequestSucceded"
-* 
-* 
-*
+*    "noSpecificResponse"
 * 
 * 
 *

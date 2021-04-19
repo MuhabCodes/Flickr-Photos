@@ -38,7 +38,7 @@
  *     }
  *@apiSuccessExample {json} Success-Response:
  *    {
-   "stat": "ok",
+   
    "replies": {
       "topic": {
          "topicId": "72157625038324579",
@@ -68,7 +68,7 @@
       "reply": [
          {
             "replyId": "72157625163054214",
-            "author": "41380738@N05",
+            "authorId": "41380738@N05",
             "authorName": "BlueRidgeKitties",
             "role": "member",
             "iconServer": "2459",
@@ -81,7 +81,7 @@
          },
          {
             "replyId": "72157625163539300",
-            "author": "52101018@N00",
+            "authorId": "52101018@N00",
             "authorName": "pterandon",
             "role": "admin",
             "iconServer": "1",
@@ -94,7 +94,7 @@
          },
          {
             "replyId": "72157625040116805",
-            "author": "54830408@N02",
+            "authorId": "54830408@N02",
             "authorName": "tay.grisham",
             "role": "member",
             "iconServer": "0",

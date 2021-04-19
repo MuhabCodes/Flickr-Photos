@@ -39,9 +39,7 @@
  * 
  *
  * 
- * @apiSuccessExample {json} Success-Response:
-*    "noErrorRequestSucceded"
- *
- * 
+* @apiSuccessExample {json} Success-Response:
+*    "noSpecificResponse"
  * 
  */
