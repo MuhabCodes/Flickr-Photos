@@ -16,7 +16,7 @@
  * @apiSuccessExample {json} Success-Response:
  *    {
    "tagSource": "london",
-   "tag": [
+   "tags": [
       "england",
       "thames",
       "tube",
