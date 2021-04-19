@@ -12,6 +12,31 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagCluster list of tag clusters of the given tag
+ * @apiSuccessExample {json} Success-Response:
+ *  
+ * {
+   "source": "cows",
+   "total": "2",
+   "cluster": [
+      {
+         "total": "3",
+         "tag": [
+            "farm",
+            "animals",
+            "cattle"
+         ]
+      },
+      {
+         "total": "3",
+         "tag": [
+            "green",
+            "landscape",
+            "countryside"
+         ]
+      }
+   ]
+}
+ *     
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

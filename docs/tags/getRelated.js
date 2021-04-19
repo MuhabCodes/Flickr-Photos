@@ -13,6 +13,17 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} relatedTags list of all related tags of the mentioned tag
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "tagSource": "london",
+   "tag": [
+      "england",
+      "thames",
+      "tube",
+      "bigben",
+      "uk"
+   ]
+}
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

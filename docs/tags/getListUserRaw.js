@@ -13,6 +13,21 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagsList list of all raw versions of tags of the mentioned user
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "userId": "1234",
+   "tags": {
+      "tag": {
+         "clean": "foo",
+            "tagRaw": [
+            "foo",
+            "Foo",
+            "f:oo"
+         ]
+      }
+   }
+}
+ *   
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

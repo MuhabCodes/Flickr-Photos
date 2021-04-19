@@ -12,6 +12,28 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ * {
+   "photoId": "2619",
+   "tags": [
+      {
+         "photoId": "156",
+         "author": "12037949754@N01",
+         "authorName": "Bees",
+         "tagRaw": "tag 1",
+         "tagText": "tag1"
+      },
+      {
+         "photoId": "157",
+         "author": "12037949754@N01",
+         "authorName": "Bees",
+         "tagRaw": "tag 2",
+         "tagText": "tag2"
+      }
+   ]
+}
+ *    }
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

@@ -13,6 +13,39 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} hotTagsList list of all hot tags required
+ * @apiSuccessExample {json} Success-Response:
+ * 
+ * {
+   "period": "day",
+   "count": "6",
+   "tag": [
+      {
+         "score": "20",
+         "tagText": "northerncalifornia"
+      },
+      {
+         "score": "18",
+         "tagText": "top20"
+      },
+      {
+         "score": "15",
+         "tagText": "keychain"
+      },
+      {
+         "score": "10",
+         "tagText": "zb"
+      },
+      {
+         "score": "9",
+         "tagText": "selfportraittuesday"
+      },
+      {
+         "score": "4",
+         "tagText": "jan06"
+      }
+   ]
+}
+ *     
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

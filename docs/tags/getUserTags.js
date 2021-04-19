@@ -12,7 +12,19 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned user
- * 
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *      {
+     "userId": "1234",
+   "tags": [
+      "gull",
+      "tag1",
+      "tag2",
+      "tags",
+      "test"
+   ]
+}
+ *    }
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code

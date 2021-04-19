@@ -13,6 +13,22 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} frequentTags list of all frequently used tags 
+ * {
+   "stat": "ok",
+   "who": {
+      "userId": "1234",
+      "tags": [
+         {
+            "count": "1",
+            "tagText": "blah"
+         },
+         {
+            "count": "5",
+            "tagText": "publicdomain"
+         }
+      ]
+   }
+}
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

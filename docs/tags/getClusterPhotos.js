@@ -12,6 +12,8 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} photoTag list of first 24 photos of the given tag cluster
+ * @apiSuccessExample {json} Success-Response:
+ *    no response
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
