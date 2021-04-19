@@ -13,11 +13,11 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccessExample {json} Success-Response:
  *    {
- *         "groupId":"1234"
- *         "groupName":"Software-2021"
- *         "members":"120"
- *         "admin":"0"
- *         "invitationOnly":"0"
+ *         "groupId":"1234",
+ *         "groupName":"Software-2021",
+ *         "members":"120",
+ *         "admin":"0",
+ *         "invitationOnly":"0",
  *         "poolCount":"12500"
  *    }
  * 

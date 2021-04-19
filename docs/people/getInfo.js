@@ -14,18 +14,18 @@
  *  
  * @apiSuccessExample {json} Success-Response:
  *    {
- *         "userId":"1234"
- *         "isPro":"1"
- *         "iconFarm":"1"
- *         "iconServer":"122"
- *         "userName":"yousef123"
- *          "realName":"Yousef Qadry"
- *          "location":"Cairo,Egypt"
- *          "profileUrl":"http://www.flickr.com/people/1234"
- *          "photosUrl":"http://www.flickr.com/photos/1234"
+ *         "userId":"1234",
+ *         "isPro":"1",
+ *         "iconFarm":"1",
+ *         "iconServer":"122",
+ *         "userName":"yousef123",
+ *          "realName":"Yousef Qadry",
+ *          "location":"Cairo,Egypt",
+ *          "profileUrl":"http://www.flickr.com/people/1234",
+ *          "photosUrl":"http://www.flickr.com/photos/1234",
  *         "photos":{
- *                     "firstDate":"1071510391"
- *                     "firstDateUploaded":"12-10-2020"
+ *                     "firstDate":"1071510391",
+ *                     "firstDateUploaded":"12-10-2020",
  *                      "count":"150"
  *                  }
  *          

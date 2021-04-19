@@ -14,7 +14,7 @@
  * 
  * @apiSuccessExample {json} Success-Response:
  *    {
- *         "userId":"1234"
+ *         "userId":"1234",
  *         "userName":"yousef123"
  *    }
  * 
