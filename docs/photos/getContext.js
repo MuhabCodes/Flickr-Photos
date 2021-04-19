@@ -23,8 +23,28 @@
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *     "prevPhoto":{...},
- *      "nextPhoto":{...}
+ *     "prevPhoto":{
+ *              "title":"Waterfall",
+ *              "uploadDate":"1-2-2020",
+ *              "imagePath":"www.example.com/doasf",
+ *              "isPublic":true,
+ *              "description" :"This is the description",
+ *              "views":123,
+ *              "captureDate":"1-1-2020",
+ *              "secret":"dfjio324",
+ *              "photoId":"dsphnfio2"
+ *              },
+ *      "nextPhoto":{
+ *              "title":"NYC Silcion valley",
+ *              "uploadDate":"1-2-2020",
+ *              "imagePath":"www.example.com/htfgrwe",
+ *              "isPublic":true,
+ *              "description" :"This is the description",
+ *              "views":1255,
+ *              "captureDate":"1-1-2020",
+ *              "secret":"b349ub5",
+ *              "photoId":"tini34nt"
+ *              }
  * }
  *
  * @apiErrorExample {json} Error-404:
