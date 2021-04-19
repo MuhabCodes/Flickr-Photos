@@ -13,7 +13,6 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccessExample {json} Success-Response:
  *   {
-   ,
    "cameras": {
       "brand": "apple",
       "camera": {
