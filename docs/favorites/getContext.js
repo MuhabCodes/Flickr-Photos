@@ -36,6 +36,25 @@
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
+* @apiSuccessExample {json} Success-Response:
+{
+   "stat": "ok",
+   "count": "3",
+   "prevphoto": {
+      "photoId": "2980",
+      "secret": "973da1e709",
+      "title": "boo!",
+      "url": "/photos/bees/2980/"
+   },
+   "nextphoto": {
+      "photoId": "2985",
+      "secret": "059b664012",
+      "title": "Amsterdam Amstel",
+      "url": "/photos/bees/2985/"
+   }
+}
+
+*
 *
 *
 * 
