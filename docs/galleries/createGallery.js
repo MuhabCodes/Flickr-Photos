@@ -7,7 +7,6 @@
  * @apiPermission author
  *
  *
- * @apiParam  {String} token User authorization token
  * @apiParam  {String} title The title of the gallery
  * @apiParam  {String} [description] The description of the gallery
  *
@@ -18,7 +17,6 @@
  *
  * @apiParamExample  {json} Request-Example:
  * {
- *     "token" : "buysdbf239",
  *     "title":"My Gallery",
  *      "description":"Newly added Gallery"
  * }

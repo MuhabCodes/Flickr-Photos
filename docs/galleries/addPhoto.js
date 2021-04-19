@@ -9,7 +9,6 @@
  *
  * @apiParam  {String} galleryId The id of the gallery
  * @apiParam  {String} photoId The id of the photo to be added
- * @apiParam  {String} token User authorization token
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiError (Error 404) {String} error The gallery isn't found
@@ -21,8 +20,7 @@
  * @apiParamExample  {json} Request-Example:
  * {
  *     "galleryId" : "fsdihanub4",
- *      "photoId":"niavf234",
- *      "token":"987gv324"
+ *      "photoId":"niavf234"
  * }
  *
  *
