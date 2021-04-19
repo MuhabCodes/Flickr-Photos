@@ -33,14 +33,14 @@
 *     }
 * @apiSuccessExample {json} Success-Response:
 *    {
-   "@photo_Id": "109722179",
+   "photo_Id": "109722179",
    "comment": {
       "commentId": "6065-109722179-72057594077818641",
       "authorId": "35468159852@N01",
-      "@authorName": "Rev Dan Catt",
-      "@dateCreate": "1141841470",
-      "@permaLink": "http://www.flickr.com/photos/straup/109722179/#comment72057594077818641",
-      "#text": "Umm, I'm not sure, can I get back to you on that one?"
+      "authorName": "Rev Dan Catt",
+      "dateCreate": "1141841470",
+      "permaLink": "http://www.flickr.com/photos/straup/109722179/#comment72057594077818641",
+      "text": "Umm, I'm not sure, can I get back to you on that one?"
    }
 }
 * 
