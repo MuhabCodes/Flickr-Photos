@@ -1,7 +1,7 @@
 /**
  * 
  * @api {Get} /people/:email findByEmail
- * @apiDescription find ID of a user given their Email
+ * @apiDescription find ID and userName of a user given their Email
  * @apiGroup people
  * @apiVersion  0.1.0
  * 
@@ -9,9 +9,13 @@
  * @apiParam  {String} email Email of the User you want to Find
  * 
  * 
- * @apiSuccess (Success 200) {String} userID The Id of user you want to find
+ * @apiSuccess (Success 200) {String} userId The Id of user you want to find
  * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *         "userId":"1234"
+ *         "userName":"yousef123"
+ *    }
  * 
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action

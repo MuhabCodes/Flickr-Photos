@@ -12,6 +12,14 @@
  * 
  * @apiSuccess (Success 200) {Object[]} limitList A list of photos and videos limits
  * @apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *         "userId":"1234"
+ *         "maxPixels":"1024"
+ *         "maxSize":"15728640"
+ *         "maxDuration":"120"
+ *         "maxSize":"15728640"
+ *    }
  * 
  * 
  * 
