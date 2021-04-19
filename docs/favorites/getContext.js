@@ -38,7 +38,7 @@
 *     }
 * @apiSuccessExample {json} Success-Response:
 {
-   "stat": "ok",
+   
    "count": "3",
    "prevphoto": {
       "photoId": "2980",

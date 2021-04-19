@@ -29,14 +29,11 @@
 *        "statusCode":404
 *     }
 *@apiErrorExample {json} Error-401
-*     HTTP/1.1 401 Unauthorized
 *     {
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
-@apiSuccessExample {json} Success-Response:
-*    "noErrorRequestSucceded"
- * 
+
  *
  * 
  * 

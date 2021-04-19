@@ -38,7 +38,8 @@
 *     }
 *
 * 
-* 
+* @apiSuccessExample {json} Success-Response:
+*    "noSpecificResponse"
 * 
 * 
 */
