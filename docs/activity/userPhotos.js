@@ -19,7 +19,7 @@
       "owner": "12037949754@N01",
       "primary": "6521",
       "secret": "5a3cc65d72",
-      "server": "2",
+      
       "commentsOld": "1",
       "commentsNew": "1",
       "views": "33",
@@ -41,7 +41,7 @@
       "id": "10289",
       "owner": "12037949754@N01",
       "secret": "34da0d3891",
-      "server": "2",
+      
       "commentsOld": "1",
       "commentsNew": "1",
       "notesOld": "0",

@@ -27,7 +27,7 @@
          "photoId": "2636",
          "ownerId": "1234",
          "secret": "a123456",
-         "server": "2",
+         
          "title": "test_04",
          "isPublic": "1",
          "isFriend": "0",
@@ -37,7 +37,7 @@
          "photoId": "2637",
          "ownerId": "5678",
          "secret": "b123456",
-         "server": "2",
+         
          "title": "tress",
          "isPublic": "1",
          "isFriend": "0",
@@ -47,7 +47,7 @@
           "photoId": "2638",
          "ownerId": "1234",
          "secret": "c123456",
-         "server": "2",
+         
          "title": "clouds",
          "isPublic": "0",
          "isFriend": "1",
@@ -57,7 +57,7 @@
          "photoId": "2639",
          "ownerId": "1234",
          "secret": "d123456",
-         "server": "2",
+         
          "title": "test_07",
          "isPublic": "1",
          "isFriend": "0",
