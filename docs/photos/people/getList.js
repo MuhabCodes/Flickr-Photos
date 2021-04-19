@@ -9,6 +9,8 @@
  *  
  * @apiParam  {String} photoId The id of the photo.
  * 
+ * @apiSuccess (Success 200) {Object[]} people Total number of people in the photo and information about them.
+ * @apiSuccess (Success 200) {Number} statusCode The status code.
  * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code
@@ -36,4 +38,13 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
+ * @apiSuccessExample {json} Success-200:
+ *    {
+ *      "total": 1,
+ *      "people": [
+ *                  {"id": "1253153dw","addedBy": "1efgg1@f324$","username": "eddard_winterfell", "realName": "Ned Stark", "x": 50, "y": 250, "w": 100, "h": 300}
+ *                  ]
+ *      
+ *      
+ *    }
  */
