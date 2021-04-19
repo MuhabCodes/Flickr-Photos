@@ -11,6 +11,24 @@
  * 
  * @apiSuccess (Success 200) {Object[]} cameraBrands all brands of cameras that flicker knows
  * @apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "stat": "ok",
+   "brands": [
+      {
+         "id": "canon",
+         "text": "Canon"
+      },
+      {
+         "id": "nikon",
+         "text": "Nikon"
+      },
+      {
+         "id": "apple",
+         "text": "Apple"
+      }
+   ]
+}
  * 
  *  
  * 

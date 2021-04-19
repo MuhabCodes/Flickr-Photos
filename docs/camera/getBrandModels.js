@@ -11,6 +11,25 @@
  * 
  * @apiSuccess (Success 200) {Object[]} cameraModels all models of the passed camera brand
  * @apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccessExample {json} Success-Response:
+ *   {
+   "stat": "ok",
+   "cameras": {
+      "brand": "apple",
+      "camera": {
+         "cameraId": "iphone_9000",
+         "name": "iPhone 9000",
+         "details": {
+            "megaPixels": "22.0",
+            "zoom": "3.0",
+            "lcdSize": "40.5",
+            "storageType": "Flash"
+         }
+         
+         
+      }
+   }
+}
  * 
  * 
  *  
