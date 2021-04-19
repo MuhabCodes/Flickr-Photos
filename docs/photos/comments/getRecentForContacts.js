@@ -32,6 +32,55 @@
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
+@apiSuccessExample {json} Success-Response:
+*    {
+   "@page": "2",
+   "@pages": "89",
+   "@perPage": "10",
+   "@total": "881",
+   "photo": [
+      {
+         "@photoId": "2636",
+         "@ownerId": "47058503995@N01",
+         "@secret": "a123456",
+         "@server": "2",
+         "@title": "test_04",
+         "@isPublic": "1",
+         "@isFriend": "0",
+         "@isFamily": "0"
+      },
+      {
+         "@photoId": "2635",
+         "@ownerId": "47058503995@N01",
+         "@secret": "b123456",
+         "@server": "2",
+         "@title": "test_03",
+         "@isPublic": "0",
+         "@isFriend": "1",
+         "@isFamily": "1"
+      },
+      {
+         "@photoId": "2633",
+         "@ownerId": "47058503995@N01",
+         "@secret": "c123456",
+         "@server": "2",
+         "@title": "test_01",
+         "@isPublic": "1",
+         "@isFriend": "0",
+         "@isFamily": "0"
+      },
+      {
+         "@photoId": "2610",
+         "@ownerId": "12037949754@N01",
+         "@secret": "d123456",
+         "@server": "2",
+         "@title": "00_tall",
+         "@isPublic": "1",
+         "@isFriend": "0",
+         "@isFamily": "0"
+      }
+   ]
+}
  * 
  * 
  */

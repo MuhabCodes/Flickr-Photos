@@ -39,6 +39,10 @@
 *       "error": "Unauthorized User",
 *        "statusCode":401
 *     }
+@apiSuccessExample {json} Success-Response:
+*    {
+   "commentid": "97777-72057594037941949-72057594037942602"
+}
 
  * 
  *
