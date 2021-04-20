@@ -6,9 +6,9 @@
  * @apiVersion  0.1.0
  * 
  * 
- * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} placeId A Flickr Places ID. 
  * 
+ *
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} informationList list of all information about a place 
  * 

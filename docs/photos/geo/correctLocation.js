@@ -8,8 +8,7 @@
  * 
  * 
  * @apiParam  {String} photoId The ID of the photo whose WOE location is being corrected.
- * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} placeId A Flickr Places ID.
  * @apiParam  {String} foursquareId The venue ID for a Foursquare location. (If not passed in with correction, any existing foursquare venue will be removed).
  * 
  * 

@@ -43,9 +43,8 @@ continent
 
 
 
- * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
+ * @apiParam  {String} placeId A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
 
-(While optional, you must pass either a valid Places ID or a WOE ID.)
 
  * 
 

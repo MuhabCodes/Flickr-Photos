@@ -8,8 +8,7 @@
  * @apiDescription Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID
  * 
  * 
- * @apiParam  {String} [woeId] A Where on Earth identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters.(While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} placeId A Flickr Places identifier to use to filter photo clusters.
  * @apiParam  {String} [minUploadDate] Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
  * @apiParam  {String} [maxUploadDate] Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
  * @apiParam  {String} [minTakenDate] Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.

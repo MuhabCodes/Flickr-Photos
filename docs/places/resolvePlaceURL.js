@@ -70,7 +70,6 @@ This method has been deprecated. It won't be removed but you should use flickr.p
    *@apiSuccessExample {json} Success-Response: 
 *   {
 *   "placeId": "kH8dLOubBZRvX_YZ",
-*   "woeId": "2487956",
 *   "latitude": "37.779",
 *   "longitude": "-122.420",
 *   "placeUrl": "/United+States/California/San+Francisco",

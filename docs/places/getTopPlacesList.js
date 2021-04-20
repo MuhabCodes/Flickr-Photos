@@ -21,7 +21,6 @@
  * 
  * @apiParam  {String} [date="yesterday"] A valid date in YYYY-MM-DD format.
  * @apiParam  {String} [placeId] Limit your query to only those top places belonging to a specific Flickr Places identifier.
- * @apiParam  {String} [woeId] Limit your query to only those top places belonging to a specific Where on Earth (WOE) identifier.
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} geoPlacesTags list of top 100 geotagged places for a day.
