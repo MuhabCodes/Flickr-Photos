@@ -11,9 +11,8 @@
  * @apiParam  {String} [placeTypeId] The numeric ID for a specific place type to cluster photos by.
 
 Valid place type IDs are :
-22: neighbourhood
-7: locality
-8: region
+
+8: city
 12: country
 29: continent
 
@@ -23,22 +22,16 @@ Valid place type IDs are :
 )
 
 Valid place types are :
-neighbourhood (and neighborhood)
-locality
-region
+
+city
 country
 continent
 
 (While optional, you must pass either a valid place type or place type ID.)
 
 
- * @apiParam  {String} [woeId] TA Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (WOE ID 23424977).
+ * @apiParam  {String} placeId A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
 
-(While optional, you must pass either a valid Places ID or a WOE ID.)
-
- * @apiParam  {String} [placeId] A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by locality in the United States (Place ID 4KO02SibApitvSBieQ).
-
-(While optional, you must pass either a valid Places ID or a WOE ID.)
 
  * 
  * 
@@ -120,7 +113,7 @@ For example if you only have 3 photos taken in the locality of Montreal (WOE ID 
 *      "placeUrl": "/United+States/California/San+Francisco",
 *      "placeType": "locality",
 *      "photoCount": "156",
-*      "#text": "San Francisco, California"
+*      "text": "San Francisco, California"
 *   }
 *}
 * * 

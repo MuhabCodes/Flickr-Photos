@@ -47,14 +47,14 @@
  *     HTTP/1.1 404 Not Found
  *     {
  *       "error": "photoNotFound",
- *        "status_code":404
+ *        "statusCode":404
  *     }
  * 
  * @apiErrorExample {json} Error-401:
  *     HTTP/1.1 401 Unauthorized
  *     {
  *       "error": "Unauthorized User",
- *        "status_code":401
+ *        "statusCode":401
  *     }
  * 
  * 
@@ -71,7 +71,7 @@
  *        "placeUrl": "/Canada/Quebec/Montreal  /Montreal+Golden+Square+Mile",
  *        "placeType": "neighbourhood",
  *        "photoCount": "2717",
- *        "#text": "Montreal Golden Square Mile, Montreal, QC, CA, Canada"
+ *        "text": "Montreal Golden Square Mile, Montreal, QC, CA, Canada"
  *     },
  *     {
  *        "placeId": "K1rYWmGbB59rwn7lOA",
@@ -80,7 +80,7 @@
  *        "placeUrl": "/Canada/Quebec/Montreal/Downtown+Montr%C3%A9al",
  *        "placeType": "neighbourhood",
  *        "photoCount": "2317",
- *        "#text": "Downtown Montréal, Montreal, QC, CA, Canada"
+ *        "text": "Downtown Montréal, Montreal, QC, CA, Canada"
  *     }
  *  ]
  *}

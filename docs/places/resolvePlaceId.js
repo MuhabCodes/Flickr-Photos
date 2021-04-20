@@ -77,14 +77,14 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *      "latitude": "37.779",
 *      "longitude": "-122.420",
 *      "placeUrl": "/United+States/California/San+Francisco",
-*      "#text": "San Francisco"
+*      "text": "San Francisco"
 *   },
 *   "county": {
 *      "placeId": "hCca8XSYA5nn0X1Sfw",
 *      "latitude": "37.759",
 *      "longitude": "-122.435",
 *      "placeUrl": "/hCca8XSYA5nn0X1Sfw",
-*      "#text": "San Francisco"
+*      "text": "San Francisco"
 *   },
 *   "region": {
 *      "placeId": "SVrAMtCbAphCLAtP",
@@ -92,14 +92,14 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *      "latitude": "37.271",
 *      "longitude": "-119.270",
 *      "placeUrl": "/United+States/California",
-*      "#text": "California"
+*      "text": "California"
 *   },
 *   "country": {
 *      "placeId": "4KO02SibApitvSBieQ",
 *      "latitude": "48.890",
 *      "longitude": "-116.982",
 *      "placeUrl": "/United+States",
-*      "#text": "United States"
+*      "text": "United States"
 *   }
 *}
  * 

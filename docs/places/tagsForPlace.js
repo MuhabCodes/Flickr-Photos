@@ -77,35 +77,35 @@
 *   "tag": [
 *      {
 *         "count": "31775",
-*         "#text": "montreal"
+*         "text": "montreal"
 *      },
 *      {
 *         "count": "20585",
-*         "#text": "canada"
+*         "text": "canada"
 *      },
 *      {
 *         "count": "12319",
-*         "#text": "montréal"
+*         "text": "montréal"
 *      },
 *      {
 *         "count": "12154",
-*         "#text": "quebec"
+*         "text": "quebec"
 *      },
 *      {
 *         "count": "6471",
-*         "#text": "québec"
+*         "text": "québec"
 *      },
 *      {
 *         "count": "2173",
-*         "#text": "sylvainmichaud"
+*         "text": "sylvainmichaud"
 *      },
 *      {
 *         "count": "2091",
-*         "#text": "nikon"
+*         "text": "nikon"
 *      },
 *      {
 *         "count": "1419",
-*         "#text": "festival"
+*         "text": "festival"
 *      }
 *   ]
 *}
