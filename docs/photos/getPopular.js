@@ -9,6 +9,8 @@
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object[]} photos The photos that are popular
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  *
  *
  *
@@ -27,6 +29,13 @@
  *              "photoId":"dsphnfio2"
  *              },{...},...]
  * }
+ *
+ *  @apiErrorExample {json} Error-500:
+ *     HTTP/1.1 500 InternalServerError
+ *     {
+ *       "error": "InternalServerError",
+ *        "statusCode":500
+ *     }
  *
  *
  */

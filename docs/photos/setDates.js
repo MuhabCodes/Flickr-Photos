@@ -13,6 +13,12 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiError (Error 404) {String} error The photo isn't found
  * @apiError (Error 404) {Number} statusCode The status code
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
+ * @apiError (Error 403) {String} error The server understood the request but refuses to authorize it.
+ * @apiError (Error 403) {Number} statusCode The status code
+ * @apiError (Error 401) {String} error The email or password of the user wasn't correct.
+ * @apiError (Error 401) {Number} statusCode The status code.
  *
  * @apiParamExample  {json} Request-Example:
  * {
@@ -33,6 +39,24 @@
  *     {
  *       "error": "PhotoNotFound",
  *        "statusCode":404
+ *     }
+ * @apiErrorExample {json} Error-500:
+ *     HTTP/1.1 500 InternalServerError
+ *     {
+ *       "error": "InternalServerError",
+ *        "statusCode":500
+ *     }
+ * @apiErrorExample {json} Error-403:
+ *     HTTP/1.1 403 Forbidden
+ *     {
+ *       "error": "Forbidden",
+ *        "statusCode":403
+ *     }
+ * @apiErrorExample {json} Error-401:
+ *     HTTP/1.1 401 UserUnauthorized
+ *     {
+ *       "error": "UserUnauthorized",
+ *        "statusCode":401
  *     }
  *
  */
