@@ -9,11 +9,7 @@
  *
  * Valid place type IDs are :
  * 
- * 22: neighbourhood
- * 
- * 7: locality
- * 
- * 8: region
+ * 8: city
  * 
  * 12: country
  * 
