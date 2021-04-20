@@ -27,13 +27,13 @@
  *    }
  * 
  * 
- * @apiError (Error 401) {String} error login failed.  
+ * @apiError (Error 401) {String} error The client must authenticate itself to get the requested response.( client unknown to server)
  * @apiError (Error 401) {Number} statusCode The status code.
  
- * @apiError (Error 403) {String} error The server understood the request but refuses to authorize it(you aren't logged in).
+ * @apiError (Error 403) {String} error The client does not have access rights to the content. (the client's identity is known to the server)
  * @apiError (Error 403) {Number} statusCode The status code
  
- * @apiError (Error 404) {String} error user not found at our application
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code.
  * 
  * 

@@ -12,7 +12,7 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
  * @apiSuccess (Success 200) {Object[]} users Users that have this photo in their favorites
  * @apiError (Error 404) {Number} statusCode The status code of the request
- * @apiError (Error 404) {String} error The photo is not found
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *

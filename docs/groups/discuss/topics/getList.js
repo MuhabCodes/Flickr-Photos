@@ -10,8 +10,7 @@
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} topics The topics that you requested
- * @apiError (Error 404) {String} error The group isn't found
- * @apiError (Error 404) {String} error No topics found
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code

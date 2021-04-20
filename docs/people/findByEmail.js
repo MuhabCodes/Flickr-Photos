@@ -17,11 +17,11 @@
  *         "userName":"yousef123"
  *    }
  * 
- * @apiError (Error 400) {String} error The format for the email isn't correct.
+ * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code.
  
  * 
- * @apiError (Error 404) {String} error The email isn't registered at our application.
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code.
  * 
  * 

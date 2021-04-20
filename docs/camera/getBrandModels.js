@@ -35,7 +35,7 @@
  * 
  * 
  * 
- * @apiError (Error 404) {String} error brand not found at our application
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code.
  * 
  * 
