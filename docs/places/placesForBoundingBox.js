@@ -20,9 +20,8 @@ continent: 1500km (932mi)
  * @apiParam  {String} [placeTypeId] The numeric ID for a specific place type to cluster photos by.
 
 Valid place type IDs are :
-22: neighbourhood
-7: locality
-8: region
+
+8: city
 12: country
 29: continent
 
@@ -35,9 +34,8 @@ Valid place type IDs are :
 )
 
 Valid place types are :
-neighbourhood (and neighborhood)
-locality
-region
+
+city
 country
 continent
 
@@ -117,7 +115,7 @@ continent
 *         "longitude": "-122.412",
 *         "place_url": "/United+States/California/San+Francisco/Downtown",
 *         "place_type":"locality",
-*         "#text": "Downtown, San Francisco, CA, US, United States"
+*         "text": "Downtown, San Francisco, CA, US, United States"
 *      },
 *      {
 *         "place_id": "3KymK1GbCZ41eBVBxg",
@@ -125,7 +123,7 @@ continent
 *         "longitude": "-122.417",
 *         "place_url": "/United+States/California/San+Francisco/Civic+Center",
 *         "place_type":"locality",
-*         "#text": "Civic Center, San Francisco, CA, US, United States"
+*         "text": "Civic Center, San Francisco, CA, US, United States"
 *      },
 *      {
 *         "place_id": "9xdhxY.bAptvBjHo",
@@ -133,7 +131,7 @@ continent
 *         "longitude": "-122.407",
 *         "place_url": "/United+States/California/San+Francisco/Chinatown",
 *         "place_type":"locality",
-*         "#text": "Chinatown, San Francisco, CA, US, United States"
+*         "text": "Chinatown, San Francisco, CA, US, United States"
 *      }
 *   ]
 *}
