@@ -27,7 +27,7 @@
  * @apiError (Error 404) {String} error Informs the caller of the missing object.
  * @apiError (Error 404) {Number} statusCode The status code
  *
- * @apiError (Error 500) {String} error The server The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *
  * @apiErrorExample {json} Error-404:

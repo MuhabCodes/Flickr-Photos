@@ -35,6 +35,7 @@
 
 * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
 * @apiError (Error 500) {Number} statusCode The status code
+*
 * @apiError (Error 501) {String} error The request method is not supported by the server and cannot be handled. 
 * @apiError (Error 501) {Number} statusCode The status code
  * @apiErrorExample {json} Error-404
