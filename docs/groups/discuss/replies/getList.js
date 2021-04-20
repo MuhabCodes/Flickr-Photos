@@ -21,8 +21,22 @@
  * @apiError (Error 401) {String} error The user doesn't have permission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
  * 
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
+ 
+ *  * @apiError (Error 403) {String} Forbidden The server understood the request but refuses to authorize it.
+* @apiError (Error 403) {Number} statusCode The status code
+* @apiError (Error 404) {String} error Informs the caller of the missing object.
  * @apiError (Error 404) {Number} statusCode The status code.
+
+* @apiError (Error 408) {String} Request Timeout; the server would like to shut down this unused connection. It is sent on an idle connection by some servers, even without any previous request by the client.
+* @apiError (Error 408) {Number} statusCode The status code
+* @apiError (Error 429) {String} Too Many Requests ; the user has sent too many requests in a given amount of time ("rate limiting").
+* @apiError (Error 429) {Number} statusCode The status code
+* @apiError (Error 500) {String} The server has encountered a situation it doesn't know how to handle.
+* @apiError (Error 500) {Number} statusCode The status code
+* @apiError (Error 501) {String} The request method is not supported by the server and cannot be handled. 
+* @apiError (Error 501) {Number} statusCode The status code
+ * 
+ * 
  *  
  * @apiErrorExample {json} Error-404
  *     HTTP/1.1 404 Not Found
@@ -36,7 +50,78 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
- *
+ *@apiSuccessExample {json} Success-Response:
+ *    {
+   
+   "replies": {
+      "topic": {
+         "topicId": "72157625038324579",
+         "subject": "A long time ago in a galaxy far, far away...",
+         "groupId": "46744914@N00",
+         "iconsServer": "1",
+         "iconFarm": "1",
+         "name": "Tell a story in 5 frames (Visual story telling)",
+         "authorId": "53930889@N04",
+         "authorName": "Smallportfolio_jm08",
+         "role": "member",
+         "authorIconServer": "5169",
+         "authorIconFarm": "6",
+         "canEdit": "0",
+         "canDelete": "0",
+         "canReply": "0",
+         "isSticky": "0",
+         "isLocked": "",
+         "dateCreate": "1287070965",
+         "dateLastPost": "1336905518",
+         "total": "8",
+         "page": "1",
+         "perPage": "3",
+         "pages": "2",
+         "message": "*LOL* The universe is full of Happiness"
+      },
+      "reply": [
+         {
+            "replyId": "72157625163054214",
+            "authorId": "41380738@N05",
+            "authorName": "BlueRidgeKitties",
+            "role": "member",
+            "iconServer": "2459",
+            "iconFarm": "3",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287071539",
+            "lastEdit": "0",
+            "message": " it seems I Love it."
+         },
+         {
+            "replyId": "72157625163539300",
+            "authorId": "52101018@N00",
+            "authorName": "pterandon",
+            "role": "admin",
+            "iconServer": "1",
+            "iconFarm": "1",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287076748",
+            "lastEdit": "0",
+            "message": "Great work. Good focus on different aspects of scene in each frame.  Funny ending-- even better that I didn't notice the cat right away!  Being a hopeless Trekkie, I was wondering why Han was doing the Vulcan death grip on one of his allies...."
+         },
+         {
+            "replyId": "72157625040116805",
+            "authorId": "54830408@N02",
+            "authorName": "tay.grisham",
+            "role": "member",
+            "iconServer": "0",
+            "iconFarm": "0",
+            "canEdit": "0",
+            "canDelete": "0",
+            "dateCreate": "1287089858",
+            "lastEdit": "0",
+            "message": "On a scale of 1 to 10 of awesome. This is a 15"
+         }
+      ]
+   }
+}
  * 
  *
  * 
