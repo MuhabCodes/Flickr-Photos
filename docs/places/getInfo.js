@@ -6,11 +6,37 @@
  * @apiVersion  0.1.0
  * 
  * 
- * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
+ * @apiParam  {String} placeId A Flickr Places ID.
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} informationList list of all information about a place 
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "placeId": "4hLQygSaBJ92",
+   "latitude": "45.512",
+   "longitude": "-73.554",
+   "placeUrl": "/Canada/Quebec/Montreal",
+   "placeType": "city",
+   "timezone": "America/Toronto",
+   "city": {
+      "placeId": "cFBi9x6bCJ8D5rba1g",
+      
+      "latitude": "45.551",
+      "longitude": "-73.600",
+      "placeUrl": "/cFBi9x6bCJ8D5rba1g",
+      "text": "Montréal"
+   },
+   
+   "country": {
+      "placeId": "EESRy8qbApgaeIkbsA",
+      
+      "latitude": "62.358",
+      "longitude": "-96.582",
+      "placeUrl": "/Canada",
+      "text": "Canada"
+   }
+}
+
  * 
  * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
  * @apiError (Error 401) {Number} statusCode The status code
