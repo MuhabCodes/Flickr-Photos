@@ -7,7 +7,6 @@
  * 
  * 
  * @apiParam  {String} [placeId] A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
- * @apiParam  {String} [woeId] A Where On Earth (WOE) ID. (While optional, you must pass either a valid Places ID or a WOE ID.)
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} locationsList list of all locations with public photos 
@@ -67,7 +66,6 @@
  *  "place": [
  *     {
  *        "placeId": "HznQfdKbB58biy8sdA",
- *        "woeId": "26332794",
  *        "latitude": "45.498",
  *        "longitude": "-73.575",
  *        "placeUrl": "/Canada/Quebec/Montreal  /Montreal+Golden+Square+Mile",
@@ -77,7 +75,6 @@
  *     },
  *     {
  *        "placeId": "K1rYWmGbB59rwn7lOA",
- *        "woeId": "26332799",
  *        "latitude": "45.502",
  *        "longitude": "-73.578",
  *        "placeUrl": "/Canada/Quebec/Montreal/Downtown+Montr%C3%A9al",

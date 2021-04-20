@@ -77,7 +77,6 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *   "placeType": "locality",
 *   "locality": {
 *      "placeId": "kH8dLOubBZRvX_YZ",
-*      "woeId": "2487956",
 *      "latitude": "37.779",
 *      "longitude": "-122.420",
 *      "placeUrl": "/United+States/California/San+Francisco",
@@ -85,7 +84,6 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *   },
 *   "county": {
 *      "placeId": "hCca8XSYA5nn0X1Sfw",
-*      "woeId": "12587707",
 *      "latitude": "37.759",
 *      "longitude": "-122.435",
 *      "placeUrl": "/hCca8XSYA5nn0X1Sfw",
@@ -93,7 +91,6 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *   },
 *   "region": {
 *      "placeId": "SVrAMtCbAphCLAtP",
-*      "woeId": "2347563",
 *      "latitude": "37.271",
 *      "longitude": "-119.270",
 *      "placeUrl": "/United+States/California",
@@ -101,7 +98,6 @@ This method has been deprecated. It won't be removed but you should use flickr.p
 *   },
 *   "country": {
 *      "placeId": "4KO02SibApitvSBieQ",
-*      "woeId": "23424977",
 *      "latitude": "48.890",
 *      "longitude": "-116.982",
 *      "placeUrl": "/United+States",

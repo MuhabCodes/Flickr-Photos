@@ -115,7 +115,6 @@ For example if you only have 3 photos taken in the locality of Montreal (WOE ID 
 *   "total": "1",
 *   "place": {
 *      "placeId": "kH8dLOubBZRvX_YZ",
-*      "woeId": "2487956",
 *      "latitude": "37.779",
 *      "longitude": "-122.420",
 *      "placeUrl": "/United+States/California/San+Francisco",

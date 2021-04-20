@@ -76,7 +76,6 @@ The flickr.places.find method is not a geocoder. It will round up to the nearest
  *  "place": [
  *     {
  *        "placeId": "VrrjuESbApjeFS4.",
- *        "woeId": "2347559",
  *        "latitude": "32.614",
  *        "longitude": "-86.680",
  *        "placeUrl": "/United+States/Alabama",
@@ -85,7 +84,6 @@ The flickr.places.find method is not a geocoder. It will round up to the nearest
  *     },
  *     {
  *        "placeID": "cGHuc0mbApmzEHoP",
- *        "woeId": "2352520",
  *        "latitude": "43.096",
  *        "longitude": "-78.389",
  *        "placeUrl": "/United+States/New+York/Alabama",
@@ -94,7 +92,6 @@ The flickr.places.find method is not a geocoder. It will round up to the nearest
  *     },
  *     {
  *        "placeID": "o4yVPEqYBJvFMP8Q",
- *        "woeId": "1579389",
  *        "latitude": "-26.866",
  *         "longitude": "26.583",
  *         "placeUrl": "/South+Africa/North+West/Alabama",

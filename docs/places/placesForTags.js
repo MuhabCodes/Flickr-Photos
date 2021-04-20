@@ -133,7 +133,6 @@ Multiple machine tags may be queried by passing a comma-separated list. The numb
 *   "total": "1",
 *   "place": {
 *      "placeId": "kH8dLOubBZRvX_YZ",
-*      "woeId": "2487956",
 *      "latitude": "37.779",
 *      "longitude": "-122.420",
 *      "placeUrl": "/United+States/California/San+Francisco",
