@@ -2,7 +2,7 @@
  *
  * @api {DELETE} /photos/:photoID/tags/:tagId removeTag
  * @apiDescription Remove a tag from a photo.
- * @apiGroup Photos
+ * @apiGroup photos
  * @apiVersion  0.1.0
  *
  *
