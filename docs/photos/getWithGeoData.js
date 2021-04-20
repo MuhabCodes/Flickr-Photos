@@ -9,6 +9,8 @@
  * @apiSuccess (Success 200) {Object[]} photos photos that have geo tags
  * @apiError (Error 404) {Number} statusCode The status code of the request
  * @apiError (Error 404) {String} error There are no photos with geo tags
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  *
 
  *
@@ -34,6 +36,13 @@
  *     {
  *       "error": "NoPhotosFound",
  *        "statusCode":404
+ *     }
+ * 
+ *  @apiErrorExample {json} Error-500:
+ *     HTTP/1.1 500 InternalServerError
+ *     {
+ *       "error": "InternalServerError",
+ *        "statusCode":500
  *     }
  *
  *
