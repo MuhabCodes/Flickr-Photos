@@ -21,8 +21,8 @@
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code.
+ * @apiError (Error 403) {String} error The user doesn't have persmission to do this action
+ * @apiError (Error 403) {Number} statusCode The status code.
  * 
  * @apiError (Error 404) {String} error Informs the caller of the missing object.
  * @apiError (Error 404) {Number} statusCode The status code
