@@ -43,4 +43,34 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
+ * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+ *  "page": "1",
+ *  "pages": "1",
+ *  "perpage": "100",
+ *  "total": "33",
+ *  "member": [
+ *     {
+ *        "nsid": "123456@N01",
+ *        "username": "foo",
+ *        "membertype": "2"
+ *     },
+ *     {
+ *        "nsid": "118210@N07",
+ *        "username": "kewlchops666",
+ *        "membertype": "1"
+ *     },
+ *     {
+ *        "nsid": "119377@N07",
+ *        "username": "Alpha Shanan",
+ *        "membertype": "2"
+ *     },
+ *     {
+ *        "nsid": "67783977@N00",
+ *        "username": "fakedunstanp1",
+ *        "membertype": "3"
+ *     }
+ *  ]
+ * }
  */
