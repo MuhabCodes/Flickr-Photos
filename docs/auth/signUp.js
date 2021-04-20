@@ -14,6 +14,8 @@
  * @apiParam  {String} password Password of the new account
  * 
  * 
+ * @apiSuccess (Success 200) {Number} statusCode Indicates the success of the operation.
+ * 
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  * @apiError (Error 400) {Number} statusCode The status code
  * 

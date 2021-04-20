@@ -9,7 +9,7 @@
  * @apiParam  {String} email The email the user uses to login.
  * @apiParam  {String} password The password that corresponds to the email.
  * 
- * @apiSuccess (200) {Number} statusCode Indicates the success of the operation.
+ * @apiSuccess (Success 200) {Number} statusCode Indicates the success of the operation.
  * 
  * 
  * @apiError (Error 400) {String} error The format for the email isn't correct.
