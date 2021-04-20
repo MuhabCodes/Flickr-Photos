@@ -25,10 +25,10 @@
 
 
 
-* @apiError (Error 429) {String} Too Many Requests ; the user has sent too many requests in a given amount of time ("rate limiting").
+* @apiError (Error 429) {String} error Too Many Requests ; the user has sent too many requests in a given amount of time ("rate limiting").
 * @apiError (Error 429) {Number} statusCode The status code
 
-* @apiError (Error 500) {String} The server has encountered a situation it doesn't know how to handle.
+* @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
 * @apiError (Error 500) {Number} statusCode The status code
 
 *@apiErrorExample {json} Error-404
