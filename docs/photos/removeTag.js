@@ -19,11 +19,6 @@
  * @apiError (Error 403) {String} error The client does not have access rights to the content. (the client's identity is known to the server)
  * @apiError (Error 403) {Number} statusCode The status code
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "photoId" : "hsdf3422",
- *      "tagId":"hsdf7657"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

@@ -8,8 +8,6 @@
  *
  * @apiParam  {String} photoId The id of the photo to get information for.
  *
- * @apiExample Example usage:
- * curl -i http://localhost/photos/314
  *
  * @apiSuccess (Success 200) {String} authorId The id of the author of this photo
  * @apiSuccess (Success 200) {String} title The title of the image
@@ -33,10 +31,6 @@
  * @apiError (Error 403) {String} error The client does not have access rights to the content. (the client's identity is known to the server)
  * @apiError (Error 403) {Number} statusCode The status code
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "photoId" : "fh4ub34"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

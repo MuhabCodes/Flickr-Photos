@@ -20,12 +20,6 @@
  * @apiError (Error 401) {String} error The client must authenticate itself to get the requested response.( client unknown to server)
  * @apiError (Error 401) {Number} statusCode The status code.
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "photoId" : "aifygv223",
- *      "uploadDate":"1-2-2020",
- *      "captureDate":"1-2-2019"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

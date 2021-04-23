@@ -26,29 +26,6 @@
  * @apiError (Error 500) {Number} statusCode The status code
  *
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *      "authorId" : "nhuefbh432",
- *      "title":"Blue Lake",
- *      "description":"A fantastic view on the lake",
- *      "captureDate":"1-1-2021",
- *      "uploadDate":"3-1-2021",
- *      "isPublic":true,
- *      "secret":"dfabhfu234",
- *      "favorites":false,
- *      "inPhoto":[{
- *          "username":"John Smith",
- *          "isPro":false,
- *          "email":"john@gmail.com",
- *          "userId":"dfih2345ub"
- *          },{...},...],
- *      "tags":[{
- *          "ownerId":"fdshnaub2",
- *          "tagText":"submarine",
- *          "tagId":"diosfbh23b"
- *          },{...},...],
- *      "cameraName":"Cannon 201cf"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

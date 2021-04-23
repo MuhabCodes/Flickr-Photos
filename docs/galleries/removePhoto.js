@@ -20,11 +20,6 @@
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "photoId" : "spjfi234",
- *      "galleryId":"spjfi23445fr"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

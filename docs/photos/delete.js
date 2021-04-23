@@ -8,8 +8,6 @@
  *
  * @apiParam  {String} photoId The id of the photo to be deleted
  *
- * @apiExample Example usage:
- * curl -i http://localhost/photos/314
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiError (Error 404) {String} error The server can not find the requested resource. 
@@ -21,10 +19,6 @@
  * @apiError (Error 403) {String} error The client does not have access rights to the content. (the client's identity is known to the server)
  * @apiError (Error 403) {Number} statusCode The status code
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "photoId" : "dfhioart23"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:

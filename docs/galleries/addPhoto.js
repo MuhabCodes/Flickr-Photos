@@ -21,11 +21,6 @@
  * @apiError (Error 403) {Number} statusCode The status code
  *
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "galleryId" : "fsdihanub4",
- *      "photoId":"niavf234"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:
