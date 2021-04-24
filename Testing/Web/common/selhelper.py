@@ -183,7 +183,7 @@ class SelHelper(object):
 
         :return: String page URL
         """
-        return self.driver.current_url()
+        return str(self.driver.current_url())
 
     def quit(self):
         """ Close the browser."""
