@@ -6,12 +6,12 @@
  * 
  * @apiDescription This request sends an email to the email supplied to validate it and if validated a user is created.
  * 
- * @apiParam  {String} firstName First name of person
- * @apiParam  {String} lastName Last name of person
- * @apiParam  {Number} age Age of person
- * @apiParam  {String} firstName First name of person
- * @apiParam  {String} email Email address of the person
- * @apiParam  {String} password Password of the new account
+ * @apiParam  (Body) {String} firstName First name of person
+ * @apiParam  (Body) {String} lastName Last name of person
+ * @apiParam  (Body) {Number} age Age of person
+ * @apiParam  (Body) {String} firstName First name of person
+ * @apiParam  (Body) {String} email Email address of the person
+ * @apiParam  (Body) {String} password Password of the new account
  * 
  * 
  * @apiSuccess (Success 200) {Number} statusCode Indicates the success of the operation.

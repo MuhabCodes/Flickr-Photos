@@ -1,14 +1,15 @@
 /**
  * 
- * @api {POST} /login login
+ * @api {POST} /auth/login login
  * @apiGroup auth
- * @apiVersion  0.1.1
+ * @apiVersion  0.1.0
  * 
  * @apiDescription logs a user in returning a token to be used for authorization purposes. The token is sent in an http cookie.
  * 
- * @apiParam  {String} email The email the user uses to login.
- * @apiParam  {String} password The password that corresponds to the email.
+ * @apiParam  (Body) {String} email The email the user uses to login.
+ * @apiParam  (Body) {String} password The password that corresponds to the email.
  * 
+ * @apiSuccess (Success 200) {String} accessToken Token that is used for authentication and authorization of opertaions throughout Flickr
  * @apiSuccess (Success 200) {Number} statusCode Indicates the success of the operation.
  * 
  * 
