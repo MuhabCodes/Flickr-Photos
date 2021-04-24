@@ -28,12 +28,4 @@ const userSchema = new Schema({
   // TODO : Add proper data structure to store following and followers
 });
 
-// Return photos from camera roll depending on permissions( public, friends, family ... and so on)
-// TODO : Complete when photos are ready
-
-// userSchema.virtual('photoStream').get(function getPhotoStream(visitorRelation) {
-//   // populate photos
-//   //cameraRoll.map the photos according to the permission of the viewer.
-// });
-
 module.exports = model('User', userSchema);
