@@ -13,5 +13,21 @@ app.route('/').get((req, res) => {
   res.send('Hello world!');
 });
 
+//AE : ROUTING TO URL , GROUPS
+const urlRoutes=require('./api/routes/urls')
+const groupRoutes=require('./api/routes/groups')
+
+app.use('/groups',groupRoutes);
+app.use('/urls',urlRoutes);
+
+////
+
+
+
+
+app.use(express.json());
+
+
+
 // exporting
 module.exports = app;
