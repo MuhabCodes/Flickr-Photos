@@ -35,3 +35,4 @@ router.get('/groups',(req,res,next)=>{
 })
 
 
+module.exports= router;

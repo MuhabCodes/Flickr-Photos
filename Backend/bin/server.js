@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect(process.env.MONGO_URI,
-    { useNewUrlParser: true })
+  .connect('mongodb+srv://ahmedehabb8:ahmedehabb8@cluster0.hyt1i.mongodb.net/Ahmeds?retryWrites=true&w=majority',
+  {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 // Server Connection

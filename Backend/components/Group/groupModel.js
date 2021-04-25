@@ -1,13 +1,14 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 
-const groupSchema = new Schema({
+const groupSchema =new mongoose.Schema({
   _id : mongoose.Schema.Types.ObjectId,
   url: {
     type: String,
-  },
+  }, //url will be turned virtual just now for testing
 
   // not completed just for testing urls.. 
 });
 
-module.exports = model('Group', groupSchema);
+module.exports = mongoose.model('Group', groupSchema);
+
