@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,6 +20,7 @@ class SelHelper(object):
         - Filling and clearing WebElement elements
         - clicking WebElement elements
         - Closing browser
+        - ...etc
     """
     def __init__(self):
         """ Initialize Helper object's driver to None."""
@@ -89,7 +91,7 @@ class SelHelper(object):
         :param by: Locator strategy example: ID, NAME,.....etc
         :param identifier: string to identify element
         :param max_time: Maximum waiting time
-        :return: A boolean to check if the element is present
+        :return: A boolean to check if the element is present and clickable
         """
         try:
             WebDriverWait(self.driver, max_time).until(
@@ -123,7 +125,7 @@ class SelHelper(object):
         :return: a WebDriver element associated with the given locator
         """
         try:
-            element = self.driver.find_element(by, identifier)
+            element: WebElement = self.driver.find_element(by, identifier)
             return element
         except NoSuchElementException:
             return None
@@ -185,6 +187,14 @@ class SelHelper(object):
     def close(self):
         """ Close the current window."""
         self.driver.close()
+
+    def action_chains(self):
+        """ Create an ActionChains object and return it.
+
+        :return: ActionChains object
+        """
+        actions: ActionChains = ActionChains(self.driver)
+        return actions
 
     @property
     def page_title(self):
