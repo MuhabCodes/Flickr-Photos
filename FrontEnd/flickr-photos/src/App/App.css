@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 110px;
 }
 
 .App-logo {
