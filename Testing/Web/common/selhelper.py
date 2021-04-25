@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import ElementNotInteractableException
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
@@ -96,6 +97,22 @@ class SelHelper(object):
             )
             return True
         except TimeoutException:
+            return False
+
+    def element_interactable(self, by: By, identifier: str):
+        """ Check if the text box element is interactiable (can change it's
+        value).
+
+        :param by: Locator strategy example: ID, NAME,.....etc
+        :param identifier: string to identify element
+        :return:A boolean to check if the element is present
+        """
+        try:
+            element = self.driver.find_element(by, identifier)
+            element.clear()
+            return True
+        except (NoSuchElementException, StaleElementReferenceException,
+                ElementNotInteractableException):
             return False
 
     def find_element(self, by: By, identifier: str):
