@@ -1,0 +1,21 @@
+.homePageFeed
+{
+    display: inline;
+    flex: 2;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+.homePageSideBar
+{
+    width: 300px;
+    display: inline;
+    flex: 1;
+    text-align: right;
+}
+.homePageMain
+{
+    flex-direction: row ;
+    display: flex;
+    margin: auto;
+    max-width: 80%;
+}
