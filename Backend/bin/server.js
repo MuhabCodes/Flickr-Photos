@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect('mongodb+srv://ahmedehabb8:ahmedehabb8@cluster0.hyt1i.mongodb.net/Ahmeds?retryWrites=true&w=majority',
+  .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
   {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
