@@ -1,10 +1,10 @@
-const { resolve } = require('path');
-require('dotenv').config({ path: resolve('../secrets/', '.env') });
+const { join } = require('path');
+require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect('mongodb://mongo:27017/docker-node-mongo',
+  .connect(process.env.MONGO_URI,
     { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
