@@ -10,6 +10,10 @@ const CoverArea = () => (
     >
       <div className="cover-photo-gradient" />
       <div className="cover-content">
+        <button type="button" className="cover-photo-editbutton">
+          <img src="./assets/edit_icon.png" alt="" />
+          edit
+        </button>
         <div
           className="user-cover-avatar"
           style={{ backgroundImage: `url(${avatar})` }}

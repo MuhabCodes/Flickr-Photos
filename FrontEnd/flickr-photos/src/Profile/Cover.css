@@ -52,6 +52,19 @@
     float: left;
     margin: 0 15px 14px 0;
   }
+  .cover-photo-editbutton{
+    position: absolute;
+    right: 0;
+    top: -105px;
+    opacity: 0;
+    margin-left: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: -43px -407px no-repeat;
+    height: 38px;
+    transition: opacity .2s ease,width .2s ease;
+    width: 0;
+  }
   .title-content {
     color: #fff;
     display: inline-block;
