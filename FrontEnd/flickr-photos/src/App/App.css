@@ -1,6 +1,4 @@
-.nav-link{
-  color: white;
-}
+
 .nav-link:hover{
   color:rgba(255,255,255,.75);
 }
@@ -11,6 +9,9 @@
 }
 .navbar-light .navbar-brand{
   color: white;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+  color: grey;
 }
 
 .navbar-brand {
@@ -31,3 +32,6 @@
 	.navbar .nav-item:hover .dropdown-menu{ display: block; }
 	.navbar .nav-item .dropdown-menu{ margin-top:0; }
 }	
+.navbar-light .navbar-nav .nav-link{
+  color: white;
+}

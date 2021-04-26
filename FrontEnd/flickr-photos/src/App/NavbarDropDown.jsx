@@ -9,9 +9,10 @@ import { NavDropdown, Nav, Navbar } from 'react-bootstrap';
 function NavBarDropDown() {
   return (
     <div>
+      <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
-        <div className="collapse navbar-collapse" id="basic-navbar-nav">
-          <NavDropdown title="You">
+        <Nav className="mr-auto">
+          <NavDropdown title="You" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">About</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Photostream </NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Albums</NavDropdown.Item>
@@ -41,7 +42,7 @@ function NavBarDropDown() {
             <NavDropdown.Item href="#action/3.2">Photo Books</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="#link">Get Pro</Nav.Link>
-        </div>
+        </Nav>
       </Navbar.Collapse>
     </div>
   );

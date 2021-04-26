@@ -3,14 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { Navbar } from 'react-bootstrap';
-import NavBarDropDown from './NavbarDropDown';
+import NavDropDown from './NavbarDropDown';
+// import NavBarDropDown from './NavbarDropDown';
 
 // component for the whole navigation bar
 function NavBar() {
   return (
     <div className="App">
-      <Navbar sticky="top" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar collapseOnSelect sticky="top" expand="lg">
+
         <Navbar.Brand href="#home">
           <img
             alt=""
@@ -23,8 +24,7 @@ function NavBar() {
           flickr
         </Navbar.Brand>
 
-        <NavBarDropDown />
-
+        <NavDropDown />
       </Navbar>
     </div>
   );
