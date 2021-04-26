@@ -3,6 +3,9 @@ import {
   Navbar, NavDropdown, Nav,
 } from 'react-bootstrap';
 
+// The ExploreNavbar.jsx will include a function 'ExploreNavbar' that returns the html tags and
+// properties to make up this navbar using bootstrap.
+
 function ExploreNavBar() {
   return (
     <Navbar bg="light" expand="lg" fixed="top">
