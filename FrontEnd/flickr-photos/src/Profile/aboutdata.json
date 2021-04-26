@@ -1,0 +1,16 @@
+{
+    "aboutbio": [
+        {
+            "userid": 1,
+            "bio": "this is my flickr account to display all photos i take"
+        },
+        {
+            "userid": 2,
+            "bio": "I' trying something new here with all of my pics, let's see if this works"
+        },
+        {
+            "userid": 3,
+            "bio": ""
+        }
+    ]
+}
