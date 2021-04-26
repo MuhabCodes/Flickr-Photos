@@ -34,7 +34,7 @@ router.post('/addGroup',(req,res,next)=>{
 
     const group=new Group({
         _id: _id ,
-        url : 'http:localhost:3000/groups/'+_id
+        url : 'http://localhost:3000/groups/'+_id
     });
 
     group.save()

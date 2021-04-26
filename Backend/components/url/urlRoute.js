@@ -2,9 +2,11 @@ const express =require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
+const Group =require('../Group/groupModel');
 
 
-router.get('/groups',(req,res,next)=>{
+// Function returns url to a certain group 
+router.get('/groups/:groupId',(req,res,next)=>{
 
     const groupId = req.params.groupId;
 
@@ -16,13 +18,18 @@ router.get('/groups',(req,res,next)=>{
     {
         Group.findById(groupId).exec()
         .then(doc=>{
-            res.status(200).json({
-                group: doc,
-                request:{ // just showing him how to get all groups 
-                    type: "GET",
-                    url: 'http://localhost:3000/groups'
-                }  
-            })
+            if(doc){
+                res.status(200).json({
+                    id :doc._id,
+                    url: doc.url,
+                })
+            }else
+            {
+                res.status(404).json({
+                    message:"Group not found"
+                });
+            }
+
         })
         .catch(err=>{
             res.status(500).json({
