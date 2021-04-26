@@ -27,6 +27,8 @@ router.get('/',(req,res,next)=>{
 
 })
 
+
+// AE :: NOT MY FUNCTION BUT TESTING
 router.post('/addGroup',(req,res,next)=>{
 
     const _id = new mongoose.Types.ObjectId(); 
@@ -34,6 +36,7 @@ router.post('/addGroup',(req,res,next)=>{
 
     const group=new Group({
         _id: _id ,
+        name:req.body.name, 
         url : 'http://localhost:3000/groups/'+_id
     });
 

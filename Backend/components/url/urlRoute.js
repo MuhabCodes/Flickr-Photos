@@ -52,7 +52,12 @@ router.get('/groups/:groupId',(req,res,next)=>{
 router.get('/user',(req,res,next)=>{
 
     const url = req.body.url;
-    let url_split = url.split('/'); 
+
+    // flickr's url contain id of element specified not (username) so i will extract id from url
+
+    let url_split = url.split('/');  //split url components whenever it encounter '/' into an array  
+
+    // examples
     // if url = "https://www.flickr.com/people/192738037@N02/"
     // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02', '' ]
 
@@ -86,7 +91,7 @@ router.get('/user',(req,res,next)=>{
             }else
             {
                 res.status(404).json({
-                    message:"Group not found"
+                    message:"User not found"
                 });
             }
 
@@ -101,6 +106,69 @@ router.get('/user',(req,res,next)=>{
 
 })
 
+
+// TODO :: discuss that ????
+// i change a change here r.t. our api as we used to sent whole user's url in as url parameter
+// i made this function as if its sent in body (more realistic !!)  
+router.get('/group',(req,res,next)=>{
+
+    const url = req.body.url;
+
+    // flickr's url contain id of element specified
+
+    let url_split = url.split('/');  //split url components whenever it encounter '/' into an array  
+
+    // examples
+    // if url = "https://www.flickr.com/people/192738037@N02/"
+    // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02', '' ]
+
+    // if url = "https://www.flickr.com/people/192738037@N02"
+    // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02' ]
+
+    // if last element in array is'' we would take one before otherwise last one will be id
+    if(url_split[url_split.length -1] ===''){
+        _id = url_split[url_split.length -2];
+    }else
+    {
+        _id = url_split[url_split.length -1];
+    }
+    // done extracting id 
+
+    if(!mongoose.isValidObjectId(_id)){
+        return res.status(404).json({
+            error: "Invalid groupId"
+        })   
+    }else
+    {
+
+        Group.findById(_id).exec()
+        .then(doc=>{
+            console.log(doc);
+            if(doc){
+                res.status(200).json({
+                    id :doc._id,
+                    name:doc.name 
+                    // TODO its groupName in api which is unuseful it should be name only as i know i'm in group
+                })
+            }else
+            {
+                res.status(404).json({
+                    message:"Group not found"
+                });
+            }
+
+        })
+        .catch(err=>{
+            res.status(500).json({
+                error:err
+            })
+        });
+
+
+    }
+  
+
+})
 
 
 
