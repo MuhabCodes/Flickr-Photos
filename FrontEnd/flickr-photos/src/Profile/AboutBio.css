@@ -1,0 +1,50 @@
+.bio-container{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    color: #212124;
+    line-height: 14px;
+    position: relative;
+}
+.bio-body{
+    line-height: 14px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    max-width: 865px;
+    max-height: 190px;
+    overflow: hidden;
+    position: relative;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.bio-body p{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+.edit-button-img{
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    fill: currentColor;
+    overflow: hidden;
+    color: #999;
+}
+.edit-button{
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #006dac;
+    background-color: white;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    z-index: 81;
+}
+.divider{
+    clear: both;
+    border-top: 1px solid #e3e3e3;
+}
+#button{
+    display: none;
+}

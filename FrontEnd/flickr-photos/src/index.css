@@ -16,3 +16,5 @@ code {
 }
 @import "./Profile/Cover.css";
 @import "./Profile/SubNavBar.css";
+@import "./Profile/ProfileContainer.css";
+@import "./Profile/AboutBio.css";
