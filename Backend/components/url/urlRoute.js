@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Group =require('../Group/groupModel');
+const User =require('../User/userModel');
 
 
 // Function returns url to a certain group 
@@ -11,8 +12,8 @@ router.get('/groups/:groupId',(req,res,next)=>{
     const groupId = req.params.groupId;
 
     if(!mongoose.isValidObjectId(groupId)){
-        res.status(404).json({
-            error: "Invalid GroupId"
+        return res.status(404).json({
+            error: "Invalid groupId"
         })   
     }else
     {
@@ -40,6 +41,67 @@ router.get('/groups/:groupId',(req,res,next)=>{
     }
 
 })
+
+
+
+// Function returns id,username to a certain user 
+
+// TODO :: discuss that ????
+// i change a change here r.t. our api as we used to sent whole user's url in as url parameter
+// i made this function as if its sent in body (more realistic !!)    
+router.get('/user',(req,res,next)=>{
+
+    const url = req.body.url;
+    let url_split = url.split('/'); 
+    // if url = "https://www.flickr.com/people/192738037@N02/"
+    // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02', '' ]
+
+    // if url = "https://www.flickr.com/people/192738037@N02"
+    // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02' ]
+
+    // if last element in array is'' we would take one before otherwise last one will be id
+    if(url_split[url_split.length -1] ===''){
+        _id = url_split[url_split.length -2];
+    }else
+    {
+        _id = url_split[url_split.length -1];
+    }
+    // done extracting id 
+
+
+    if(!mongoose.isValidObjectId(_id)){
+        return res.status(404).json({
+            error: "Invalid userId"
+        })   
+    }else
+    {
+        User.findById(_id).exec()
+        .then(doc=>{
+            if(doc){
+                res.status(200).json({
+                    id :doc._id,
+                    email: doc.email, /// TODO :should be deleted and be username only but for purpose of testing
+                  //username: doc.username,
+                })
+            }else
+            {
+                res.status(404).json({
+                    message:"Group not found"
+                });
+            }
+
+        })
+        .catch(err=>{
+            res.status(500).json({
+                error:err
+            })
+        });
+
+    }
+
+})
+
+
 
 
 module.exports= router;

@@ -25,6 +25,8 @@ const userSchema = new Schema({
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
+  // TODO AE: need username,_id required for my part.
+
   // TODO : Add proper data structure to store following and followers
 });
 
