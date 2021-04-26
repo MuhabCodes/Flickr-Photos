@@ -8,17 +8,14 @@ exports.getUserByEmail = async function getWithEmail({ email }) {
 
 exports.createNewUser = async function createUser({
   email, password, firstName, lastName, age,
-}, next) {
-  try {
-    // password encryption
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const userObj = new User({
-      email,
-      password: hashedPassword, // TODO : add Person Id with firstName, lastName and age
-    });
-    // Adding user to db
-    await userObj.save();
-  } catch (err) {
-    next(err);
-  }
+}) {
+  // password encryption
+  const hashedPassword = await bcrypt.hash(password, 10);
+  // create user object
+  const userObj = new User({
+    email,
+    password: hashedPassword, // TODO : add Person Id with firstName, lastName and age
+  });
+  // create user in db
+  await userObj.save();
 };
