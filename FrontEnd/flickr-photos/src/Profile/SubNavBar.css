@@ -54,6 +54,7 @@
   transition: border-bottom 0.1s linear;
 }
 .sub-nav-links a {
+  outline: none;
   cursor: pointer;
   text-decoration: none;
   display: flex;
