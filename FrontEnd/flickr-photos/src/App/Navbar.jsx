@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { Navbar, Form, FormControl } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import NavDropDown from './NavbarDropDown';
 // import NavBarDropDown from './NavbarDropDown';
 
@@ -26,20 +26,6 @@ function NavBar() {
         </Navbar.Brand>
 
         <NavDropDown />
-        <div className="icon-bar d-flex justify-content-end">
-          <Form inline>
-            <FormControl type="text" placeholder="Photos, people, or group" className="mr-sm-2" />
-            <a href="#home">
-              <i className="fas fa-cloud-upload-alt" />
-              {' '}
-            </a>
-            <a href="#home">
-              <i className="fas fa-bell" />
-              {' '}
-            </a>
-          </Form>
-
-        </div>
 
       </Navbar>
 
