@@ -1,6 +1,10 @@
 // const bcrypt = require('bcrypt');
+const { join } = require('path');
 const userDAL = require('../User/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
+const { sendConfirmationEmail } = require('./Services/sendEmail.js');
+const { decryptToken } = require('./Services/decryptToken');
+require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
   const { body } = req;
@@ -17,7 +21,8 @@ exports.register = async function registerUser(
   if (!user) {
     // create user after checking for email and password
     try {
-      await userDAL.createNewUser(body);
+      const userObj = await userDAL.createNewUser(body);
+      await sendConfirmationEmail(userObj);
       res.status(201).send({ statusCode: 201 });
     } catch (err) {
       res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the registration process' });
@@ -25,5 +30,17 @@ exports.register = async function registerUser(
   } else {
     // say that an email is sent but don't send for security purposes
     next();
+  }
+};
+
+exports.confirmUser = async function confirmUser(req, res) {
+  const { confirmationToken } = req.params;
+  try {
+    const decoded = await decryptToken(confirmationToken, process.env.CONFIRMATION_KEY);
+    await userDAL.activateUser(decoded.userId);
+    res.status(201).send({ statusCode: 201, message: 'The account is now activated' });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };

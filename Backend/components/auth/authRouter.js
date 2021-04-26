@@ -21,4 +21,12 @@ authRouter.route('/register').post(async (req, res, next) => {
   }
 });
 
+authRouter.route('/confirmation/:confirmationToken').post(async (req, res) => {
+  try {
+    await authController.confirmUser(req, res);
+  } catch (error) {
+    res.status(500).send({ statusCode: 500 });
+  }
+});
+
 module.exports = authRouter;

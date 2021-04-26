@@ -17,5 +17,15 @@ exports.createNewUser = async function createUser({
     password: hashedPassword, // TODO : add Person Id with firstName, lastName and age
   });
   // create user in db
-  await userObj.save();
+  const user = await userObj.save();
+  return user;
+};
+
+module.exports.activateUser = async function activateUser(id) {
+  const user = await User.findById(id);
+  if (user && !(user.isActivated)) {
+    await User.updateOne({ _id: id }, { $set: { isActivated: true } });
+  } else {
+    throw Error(JSON.stringify({ statusCode: 410, error: 'This resource is gone from the server.' }));
+  }
 };
