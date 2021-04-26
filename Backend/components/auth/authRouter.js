@@ -3,8 +3,12 @@ const authController = require('./authController');
 
 const authRouter = Router();
 
-authRouter.route('/login').post((req, res) => {
-  // placeholder
+authRouter.route('/login').post(async (req, res, next) => {
+  try {
+    await authController.login(req, res, next);
+  } catch (err) {
+    res.status(500).send({ statusCode: 500 });
+  }
 });
 
 authRouter.route('/register').post(async (req, res, next) => {

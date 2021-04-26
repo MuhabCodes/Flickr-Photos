@@ -1,12 +1,12 @@
+// const bcrypt = require('bcrypt');
 const userDAL = require('../User/userDAL');
+const { verifyPassword } = require('./Services/verifyPassword');
 
-exports.login = async function loginUser({ email, password }) {
-  try {
-    // placeholder
-    console.log(email, password);
-  } catch (error) {
-    // placeholder
-  }
+exports.login = async function loginUser(req, res) {
+  const { body } = req;
+  verifyPassword(body)
+    .then((token) => res.status(201).send({ statusCode: 201, token }))
+    .catch(() => res.status(401).send({ statusCode: 401, error: 'The user is unauthorized' }));
 };
 
 exports.register = async function registerUser(
