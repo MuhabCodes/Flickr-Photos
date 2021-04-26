@@ -8,12 +8,12 @@
     line-height: 14px;
     padding-top: 40px;
     padding-bottom: 20px;
-    max-width: 865px;
-    max-height: 190px;
+    height: auto;
     overflow: hidden;
     position: relative;
     padding-left: 10%;
     padding-right: 10%;
+    display: inline-block;
 }
 .bio-body p{
     font-size: 16px;
@@ -45,6 +45,19 @@
     clear: both;
     border-top: 1px solid #e3e3e3;
 }
-#button{
+#more{
     display: none;
+}
+#readbtn{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 120px;
+    margin-bottom: 20px;
 }
