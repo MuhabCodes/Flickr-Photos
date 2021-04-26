@@ -20,3 +20,7 @@
   font-size: 1.6rem;
   padding-top: 2px;
 }
+
+.navbar-light .navbar-brand:hover{
+  color: white;
+}
