@@ -1,8 +1,10 @@
 import React from 'react';
+
 import edit from './assets/edit_icon.png';
 
 const AboutBio = () => {
   function Read() {
+    //  Read function that checks whether user wants to expand or collapse the text area
     const dots = document.getElementById('dots');
     const moreText = document.getElementById('more');
     const btnText = document.getElementById('readbtn');
@@ -19,6 +21,7 @@ const AboutBio = () => {
   }
   return (
     <div className="bio-container">
+      {/* edit bio button for user */}
       <button type="button" className="edit-button">
         <img src={edit} alt="" className="edit-button-img" />
       </button>
