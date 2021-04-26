@@ -113,7 +113,6 @@ router.get('/user',(req,res,next)=>{
 router.get('/group',(req,res,next)=>{
 
     const url = req.body.url;
-
     // flickr's url contain id of element specified
 
     let url_split = url.split('/');  //split url components whenever it encounter '/' into an array  
