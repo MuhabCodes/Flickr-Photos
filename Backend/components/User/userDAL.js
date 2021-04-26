@@ -14,7 +14,7 @@ exports.createNewUser = async function createUser({
   // create user object
   const userObj = new User({
     email,
-    password: hashedPassword, 
+    password: hashedPassword,
     displayName,
     // TODO : add Person Id with firstName, lastName and age
   });
