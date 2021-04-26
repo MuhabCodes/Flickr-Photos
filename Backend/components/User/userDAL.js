@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('./userModel');
 
-exports.getUserByEmail = async function getWithEmail({ email }) {
+exports.getUserByEmail = async function getWithEmail(email) {
   const userObj = await User.findOne({ email });
   return userObj;
 };

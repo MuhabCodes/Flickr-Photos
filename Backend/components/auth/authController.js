@@ -13,7 +13,7 @@ exports.register = async function registerUser(
   req, res, next,
 ) {
   const { body } = req;
-  const user = await userDAL.getUserByEmail(body);
+  const user = await userDAL.getUserByEmail(body.email);
   if (!user) {
     // create user after checking for email and password
     try {
