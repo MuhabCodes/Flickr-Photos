@@ -26,6 +26,7 @@ const AboutBio = () => {
         <img src={edit} alt="" className="edit-button-img" />
       </button>
       <div className="bio-body">
+        {}
         <p>lets see how this acts and looks</p>
         <p>snother line just to see</p>
         <p>

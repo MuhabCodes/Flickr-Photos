@@ -20,6 +20,8 @@
     line-height: 24px;
     font-weight: 400;
     margin: 0;
+    transition:max-height 0.15s ease-out;
+
 }
 .edit-button-img{
     cursor: pointer;
@@ -60,4 +62,5 @@
     cursor: pointer;
     margin-left: 120px;
     margin-bottom: 20px;
+    
 }
