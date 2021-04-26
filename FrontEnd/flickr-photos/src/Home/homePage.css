@@ -28,3 +28,42 @@
     align-items: center;
     justify-content: space-between;
 }
+.homeFeedColumnContent 
+{
+    text-align: center;
+}
+.noFollowingErrorDiv
+{
+    color: #212124;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+.errorMessagediv
+{
+    text-align: center;
+}
+.errorFollowingTitle
+{
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.5em;
+    margin: 0 0 12px;
+}
+.errorFollowingMessage
+{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 24px;
+}
+.feedPeopleToFollow
+{
+    position: relative;
+    margin-bottom: 32px;
+}
+.feedItems 
+{
+    display: flex;
+}

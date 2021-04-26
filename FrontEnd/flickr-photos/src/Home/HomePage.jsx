@@ -15,6 +15,20 @@ const HomePage = () => {
             ad
           </div>
         </div>
+        <div className="homeFeedColumnContent">
+          <div className="noFollowingErrorDiv">
+            <div className="errorMessagediv">
+              <h2 className="errorFollowingTitle">There are no posts from the people you follow right now.</h2>
+              <p className="errorFollowingMessage">
+                Check out the recommended photographers below and start following people
+                to see their content here.
+              </p>
+            </div>
+          </div>
+          <div className="feedPeopleToFollow">
+            <div className="feedItems" />
+          </div>
+        </div>
       </div>
       <div className="homePageSideBar">
         This is SideBar
