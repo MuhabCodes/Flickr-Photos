@@ -11,6 +11,7 @@ function NavBar() {
   return (
     <div className="App">
       <Navbar collapseOnSelect sticky="top" expand="lg">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Brand href="#home">
           <img
@@ -25,7 +26,20 @@ function NavBar() {
         </Navbar.Brand>
 
         <NavDropDown />
+        <div className="icon-bar">
+          <a href="#home">
+            <i className="fas fa-cloud-upload-alt" />
+            {' '}
+          </a>
+          <a href="#home">
+            <i className="fas fa-bell" />
+            {' '}
+          </a>
+
+        </div>
+
       </Navbar>
+
     </div>
   );
 }

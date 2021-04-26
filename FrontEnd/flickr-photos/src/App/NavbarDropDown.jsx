@@ -9,8 +9,7 @@ import { NavDropdown, Nav, Navbar } from 'react-bootstrap';
 function NavBarDropDown() {
   return (
     <div>
-      <Navbar.Toggle aria-controls="basic-navbar-nav " />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="You" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">About</NavDropdown.Item>

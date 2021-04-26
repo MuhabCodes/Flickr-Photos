@@ -5,8 +5,12 @@
 
 .navbar{
   background-color: #212124;
-  
+ 
 }
+.App{
+  position: relative;
+}
+
 .navbar-light .navbar-brand{
   color: white;
 }
@@ -34,4 +38,21 @@
 }	
 .navbar-light .navbar-nav .nav-link{
   color: white;
+}
+
+.icon-bar{ 
+  font-size: 25px; 
+  position: absolute;
+  right: 120px;
+  
+  
+}
+
+.icon-bar a{
+  color: white;
+  margin-right: 15px;
+}
+
+.icon-bar a:hover{
+  color: grey;
 }
