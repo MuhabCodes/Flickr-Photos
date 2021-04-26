@@ -2,12 +2,13 @@ import React from 'react';
 
 import './App.css';
 import CoverArea from '../Profile/Cover';
-import '../Profile/Cover.css';
+import SubNavBar from '../Profile/SubNavBar';
 
 function App() {
   return (
     <div className="App">
       <CoverArea />
+      <SubNavBar />
     </div>
   );
 }
