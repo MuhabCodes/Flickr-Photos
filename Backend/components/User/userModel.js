@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -25,14 +26,13 @@ const userSchema = new Schema({
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
-  
+
   // TODO AE: need username,_id required for my part.
-  _id : mongoose.Schema.Types.ObjectId,
-  username : {
-    type : String,
+  _id: mongoose.Schema.Types.ObjectId,
+  username: {
+    type: String,
     required: [true, 'Username field is required'],
   },
-  
 
   // TODO : Add proper data structure to store following and followers
 });
