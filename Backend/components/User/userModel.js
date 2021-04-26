@@ -11,6 +11,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  displayName: {
+    type: String,
+    required: true,
+  },
   isActivated: {
     type: Boolean,
     default: false,
