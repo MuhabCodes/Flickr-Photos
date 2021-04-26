@@ -44,7 +44,8 @@ router.get('/groups/:groupId',(req,res,next)=>{
 
 
 
-// Function returns id,username to a certain user 
+
+// Function (urls - lookupUser) ;; returns id,username to a certain user 
 
 // TODO :: discuss that ????
 // i change a change here r.t. our api as we used to sent whole user's url in as url parameter
@@ -107,6 +108,7 @@ router.get('/user',(req,res,next)=>{
 })
 
 
+// Function urls - lookupGroup // Returns a group Id, given the url to a group's page or photo pool.
 // TODO :: discuss that ????
 // i change a change here r.t. our api as we used to sent whole user's url in as url parameter
 // i made this function as if its sent in body (more realistic !!)  
@@ -165,9 +167,59 @@ router.get('/group',(req,res,next)=>{
 
 
     }
-  
-
 })
+
+
+
+// Function (getUserProfile) - Returns the url to a user's profile.
+// The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
+router.get('/userprofile',(req,res,next)=>{
+
+    const _id = req.body._id;
+    
+    // will follow this convention /profile/:userId  
+
+    if(_id)  
+    {
+        // will check if its valid format or not
+        if(mongoose.isValidObjectId(_id))
+        {
+            User.findById(_id)
+                .exec()
+                .then(user =>{
+                    if(user){
+                        // successfuly found ... 
+                        res.status(200).json({
+                            "id": _id,  
+                            "url": "http://www.flickr.com/people/"+_id
+                            //TODO profile means about page ? / and url checking
+                        })
+                    }else
+                    {
+                        res.status(404).json({
+                            message : "User not found"
+                        })
+                    }
+                })
+                .catch(err=>{
+                    res.status(500).json({
+                        error : err
+                    })
+                })
+        }else
+        {
+            res.status(404).json({
+                message : "Invalid userId "
+            })
+        }
+    }else // if its not sent in body , return calling user 
+    {
+        // TODO GET LOGGED IN USER / WILL ASK HOSNY ABOUT IT 
+
+
+    }
+})
+
 
 
 
