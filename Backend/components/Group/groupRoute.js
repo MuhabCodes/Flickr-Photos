@@ -10,7 +10,20 @@ const Group =require('./groupModel');
 
 // just testing requests
 router.get('/',(req,res,next)=>{
-    
+
+    Group.find()
+        .exec()
+        .then(docs=>{
+                res.status(200).json({
+                    groupCount: docs.length,
+                    groups:docs
+                })
+        })
+        .catch(err=>{
+            res.status(500).json({
+                error:err
+            })
+        })
 
 })
 
