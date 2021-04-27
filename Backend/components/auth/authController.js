@@ -8,9 +8,13 @@ require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
   const { body } = req;
-  verifyPassword(body)
-    .then((token) => res.status(201).send({ statusCode: 201, token }))
-    .catch(() => res.status(401).send({ statusCode: 401, error: 'The user is unauthorized' }));
+  try {
+    const token = await verifyPassword(body);
+    res.status(201).send({ statusCode: 201, token });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
 };
 
 exports.register = async function registerUser(
@@ -20,13 +24,9 @@ exports.register = async function registerUser(
   const user = await userDAL.getUserByEmail(body.email);
   if (!user) {
     // create user after checking for email and password
-    try {
-      const userObj = await userDAL.createNewUser(body);
-      await sendConfirmationEmail(userObj);
-      res.status(201).send({ statusCode: 201 });
-    } catch (err) {
-      res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the registration process' });
-    }
+    const userObj = await userDAL.createNewUser(body);
+    await sendConfirmationEmail(userObj);
+    res.status(201).send({ statusCode: 201 });
   } else {
     // say that an email is sent but don't send for security purposes
     res.status(201).send({ statusCode: 201 });
