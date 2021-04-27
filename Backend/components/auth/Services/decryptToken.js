@@ -5,6 +5,7 @@ module.exports.decryptToken = async function decryptToken(token, key) {
     const decrypted = await jwt.verify(token, key);
     return decrypted;
   } catch (err) {
+    // will throw error if there's a wrong key or bad token
     throw Error(JSON.stringify({ statusCode: 401, error: 'The client is not authorized to make this request' }));
   }
 };
