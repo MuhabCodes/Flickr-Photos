@@ -31,6 +31,6 @@ module.exports.activateUser = async function activateUser(id) {
     await User.updateOne({ _id: id }, { $set: { isActivated: true } });
   } else {
     // user is in db and already activated
-    throw Error(JSON.stringify({ statusCode: 410, error: 'This resource is gone from the server.' }));
+    throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
   }
 };
