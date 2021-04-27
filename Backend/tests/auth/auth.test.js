@@ -5,7 +5,7 @@ const request = supertest(app);
 
 const loginInfo = {
   email: 'whentmp+uqgtp@gmail.com',
-  password: '12345',
+  password: '12345Asdf',
 };
 
 const regInfo = {
