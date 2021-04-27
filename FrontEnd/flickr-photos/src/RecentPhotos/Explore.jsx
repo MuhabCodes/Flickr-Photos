@@ -7,15 +7,17 @@ import RecentPhotos from './RecentPhotos';
 const Explore = () => (
   <div className="recentPhotos">
     <ExploreNavBar />
-    <h1 id="title">
+    <div className="pageContent">
+      <h1 id="title">
+        <br />
+        <br />
+        <br />
+        <br />
+        Explore
+      </h1>
       <br />
-      <br />
-      <br />
-      <br />
-      Explore
-    </h1>
-    <br />
-    <RecentPhotos />
+      <RecentPhotos />
+    </div>
   </div>
 
 );
