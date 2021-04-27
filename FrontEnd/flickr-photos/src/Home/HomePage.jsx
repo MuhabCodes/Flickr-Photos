@@ -1,4 +1,5 @@
 import React from 'react';
+import PeopleCard from './PeopleCard';
 
 const HomePage = () => {
   //   const { data, isPending, error } = 1;
@@ -25,8 +26,25 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-          <div className="feedPeopleToFollow">
-            <div className="feedItems" />
+          <div className="feed-people-to-follow">
+            <p>People to follow</p>
+            <div className="cards-container">
+              <div className="single-card">
+                <PeopleCard />
+              </div>
+              <div className="single-card">
+                <PeopleCard />
+              </div>
+              <div className="single-card">
+                <PeopleCard />
+              </div>
+              <div className="single-card">
+                <PeopleCard />
+              </div>
+            </div>
+            <div className="view-more">
+              View More
+            </div>
           </div>
         </div>
       </div>
