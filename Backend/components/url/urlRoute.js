@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const Group = require('../Group/groupModel');
 const User = require('../User/userModel');
+const myUser = require('../myUser/myuserModel');
 
 // Function returns url to a certain group
 // eslint-disable-next-line consistent-return
@@ -61,32 +62,30 @@ router.get('/user', (req, res) => {
   // if url = "https://www.flickr.com/people/192738037@N02"
   // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02' ]
 
+  let id = -1;
   // if last element in array is'' we would take one before otherwise last one will be id
   if (urlSplit[urlSplit.length - 1] === '') {
-    // eslint-disable-next-line no-undef
-    _id = urlSplit[urlSplit.length - 2];
+    id = urlSplit[urlSplit.length - 2];
   } else {
-    // eslint-disable-next-line no-undef
-    _id = urlSplit[urlSplit.length - 1];
+    id = urlSplit[urlSplit.length - 1];
   }
   // done extracting id
-
   // eslint-disable-next-line no-undef
-  if (!mongoose.isValidObjectId(_id)) {
+  if (!mongoose.isValidObjectId(id)) {
     return res.status(404).json({
       error: 'Invalid userId',
     });
   }
+
+  // myUser
   // eslint-disable-next-line no-undef
-  User.findById(_id).exec()
+  myUser.findById(id).exec()
     .then((doc) => {
       if (doc) {
         res.status(200).json({
           // eslint-disable-next-line no-underscore-dangle
           id: doc._id,
-          email: doc.email,
-          /// TODO :should be deleted and be username only but for purpose of testing
-          // username: doc.username,
+          username: doc.username,
         });
       } else {
         res.status(404).json({
@@ -167,7 +166,7 @@ router.get('/userprofile', (req, res) => {
   if (_id) {
     // will check if its valid format or not
     if (mongoose.isValidObjectId(_id)) {
-      User.findById(_id)
+      myUser.findById(_id) // myUser instead of user
         .exec()
         .then((user) => {
           if (user) {
