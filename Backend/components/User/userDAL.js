@@ -23,9 +23,14 @@ exports.createNewUser = async function createUser({
 
 module.exports.activateUser = async function activateUser(id) {
   const user = await User.findById(id);
-  if (user && !(user.isActivated)) {
+  if (!user) {
+    // The user you're searching for and confirmation link doesn't exist
+    throw Error(JSON.stringify({ statusCode: 404, error: 'This resource doesn\'t exist on the server.' }));
+  } else if (!user.isActivated) {
+    // user is in db and not activated
     await User.updateOne({ _id: id }, { $set: { isActivated: true } });
   } else {
+    // user is in db and already activated
     throw Error(JSON.stringify({ statusCode: 410, error: 'This resource is gone from the server.' }));
   }
 };
