@@ -199,4 +199,47 @@ router.get('/userprofile', (req, res) => {
   }
 });
 
+// Function (getUserPhotos) - Returns the url to a user's profile.
+// The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
+router.get('/userphotos', (req, res) => {
+  const { _id } = req.body;
+
+  // will follow this convention /profile/:userId
+
+  if (_id) {
+    // will check if its valid format or not
+    if (mongoose.isValidObjectId(_id)) {
+      myUser.findById(_id) // myUser instead of user
+        .exec()
+        .then((user) => {
+          if (user) {
+            // successfuly found ...
+            res.status(200).json({
+              id: _id,
+              url: `http://www.flickr.com/photos/${_id}`,
+              // this url follow api convention
+            });
+          } else {
+            res.status(404).json({
+              message: 'User not found',
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).json({
+            error: err,
+          });
+        });
+    } else {
+      res.status(404).json({
+        message: 'Invalid userId ',
+      });
+    }
+  } else {
+    // if its not sent in body , return calling user
+    // TODO GET LOGGED IN USER / WILL ASK HOSNY ABOUT IT
+    res.status(200).send(1); // just for linter !
+  }
+});
+
 module.exports = router;
