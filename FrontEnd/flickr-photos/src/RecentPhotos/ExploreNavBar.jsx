@@ -11,7 +11,7 @@ function ExploreNavBar() {
     <Navbar bg="white" expand="lg" fixed="top">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="container-fluid">
+        <Nav className="container-fluid nav-pills">
           <Nav.Link href="#explore">Explore</Nav.Link>
           <Nav.Link href="#trending">Trending</Nav.Link>
           <Nav.Link href="#events">Events</Nav.Link>
