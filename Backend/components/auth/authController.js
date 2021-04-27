@@ -3,7 +3,7 @@ const { join } = require('path');
 const userDAL = require('../User/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
 const { sendConfirmationEmail } = require('./Services/sendEmail.js');
-const { decryptToken } = require('./Services/decryptToken');
+const { decryptConfirmationToken } = require('./Services/decryptToken');
 require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
@@ -25,7 +25,7 @@ exports.register = async function registerUser(
   if (!user) {
     // create user after checking for email and password
     const userObj = await userDAL.createNewUser(body);
-    await sendConfirmationEmail(userObj);
+    await sendConfirmationEmail(userObj, body);
     res.status(201).send({ statusCode: 201 });
   } else {
     // say that an email is sent but don't send for security purposes
@@ -36,7 +36,7 @@ exports.register = async function registerUser(
 exports.confirmUser = async function confirmUser(req, res) {
   const { confirmationToken } = req.params;
   try {
-    const decoded = await decryptToken(confirmationToken, process.env.CONFIRMATION_KEY);
+    const decoded = await decryptConfirmationToken(confirmationToken);
     await userDAL.activateUser(decoded.userId);
     res.status(201).send({ statusCode: 201, message: 'The account is now activated' });
   } catch (err) {

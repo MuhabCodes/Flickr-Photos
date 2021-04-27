@@ -15,9 +15,7 @@ const options = {
 };
 
 module.exports.sendConfirmationEmail = async function sendEmail(
-  {
-    email, firstName, lastName, _id,
-  },
+  { email, _id }, { firstName, lastName },
 ) {
   const transporter = nodemailer.createTransport(options);
   const confirmationToken = jwt.sign({
