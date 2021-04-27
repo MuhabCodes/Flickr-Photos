@@ -46,7 +46,7 @@ function NavBarDropDown() {
         </Nav>
         <div className="icon-bar d-flex justify-content-end">
           <Form inline>
-            <FormControl type="text" placeholder="Photos, people, or group" className="mr-sm-2" />
+            <FormControl type="text" placeholder="Photos, people, or group" className="form-control me-2 min-vw-50" aria-label="Search" />
             <a href="#home">
               <i className="fas fa-cloud-upload-alt" />
               {' '}

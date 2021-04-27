@@ -9,22 +9,22 @@ function Footer() {
     <div className="footer">
       <Container className="justify-content-md-center">
         <Row>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">About</a>
           </Col>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">Jobs</a>
           </Col>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">Blog</a>
           </Col>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">Developers</a>
           </Col>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">Guidelines</a>
           </Col>
-          <Col xs lg="2">
+          <Col xs={6} lg={2}>
             <a href="#about">Help</a>
           </Col>
         </Row>
@@ -38,17 +38,14 @@ function Footer() {
       </Container>
       <Container className="justify-content-md-center">
         <Row>
-          <Col xs lg="1">
+          <Col xs={6} lg={1}>
             <a href="#about">Privacy</a>
           </Col>
-          <Col xs lg="1">
+          <Col xs={6} lg={1}>
             <a href="#about">Terms</a>
           </Col>
-          <Col xs lg="1">
+          <Col xs={6} lg={2}>
             <a href="#about">Cookies</a>
-          </Col>
-          <Col xs lg="5">
-            <p>SmugMug+Flickr. Connecting people through photography.</p>
           </Col>
         </Row>
       </Container>

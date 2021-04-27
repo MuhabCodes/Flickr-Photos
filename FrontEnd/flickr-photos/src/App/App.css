@@ -66,7 +66,8 @@
   width: 100%;
   background-color: #212124;
   color: white;
-  padding: 12px;
+  padding: 14px;
+  font-size: small;
 }
 
 hr{

@@ -9,7 +9,7 @@ import NavDropDown from './NavbarDropDown';
 // component for the whole navigation bar
 function NavBar() {
   return (
-    <div className="App">
+    <div className="App ">
       <Navbar collapseOnSelect sticky="top" expand="md">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
