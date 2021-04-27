@@ -6,13 +6,15 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import background from './background.jpg';
 import icon from './flickrlogo.png';
+import AppBar from './flickrbar';
 
+// Styles Added to The inputs
 const CssTextField = withStyles({
   root: {
     margin: 10,
   },
 })(TextField);
-
+// the card styles
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -41,7 +43,8 @@ const useStyles = makeStyles({
 
 export default function SignUp() {
   const classes = useStyles();
-
+  // the use of the use state and set state functions
+  // to save the changes made in each of this inputs
   const [state, setState] = useState({
     firstName: '',
     lastName: '',
@@ -62,9 +65,10 @@ export default function SignUp() {
       width: '100%',
       minHeight: '850px',
       backgroundRepeat: 'no-repeat',
-
+    // background image stylings
     }}
     >
+      <div>{AppBar()}</div>
       <Card className={classes.root}>
         <img src={icon} style={{ width: '25%', justifyContent: 'center', alignSelf: 'center' }} alt="icon" />
         <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
@@ -85,6 +89,7 @@ export default function SignUp() {
         >
           sign up
         </Button>
+
         <div style={{
           fontSize: '0.875rem', color: '#898989', position: 'relative', alignSelf: 'center', bottom: '-10px',
         }}
@@ -105,6 +110,7 @@ export default function SignUp() {
         </div>
 
       </Card>
+      {/* the stylings used to make the card and its components  */}
     </div>
   );
 }
