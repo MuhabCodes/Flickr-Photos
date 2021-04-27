@@ -1,0 +1,58 @@
+.user-info{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    color: #212124;
+    line-height: 14px;
+    padding: 20px 10%;
+    padding-bottom: 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+.user-info-container{
+    padding-top: 40px;
+}
+.info-view-container{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.info-view-container ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 48%;
+}
+.info-view-container li{
+    margin-bottom: 10px;
+    position: relative;
+    height: 40px;
+    display: flex;
+}
+.title{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    vertical-align: text-top;
+    color: #898989;
+    width: 120px;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    margin-right: 8px;
+}
+.user-join-date{
+display: inline-block;
+color: #000;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+line-height: 20px;
+vertical-align: text-top;
+}
+.spacer{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 48%;
+}
