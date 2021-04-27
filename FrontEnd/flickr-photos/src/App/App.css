@@ -20,11 +20,13 @@
 
 .navbar-brand {
   font-family: 'Inter', sans-serif;
-  margin-left: 160px;
-  margin-right: 20px;
   font-size: 1.6rem;
   padding-top: 2px;
+  margin-left: 8rem;
+  margin-right: 1rem;
+ 
 }
+
 
 .navbar-light .navbar-brand:hover{
   color: white;
@@ -43,8 +45,8 @@
 .icon-bar{ 
   font-size: 25px; 
   position: absolute;
-  right: 200px;
-  
+  right: 230px;
+  display: inline-block; 
   
 }
 
@@ -56,6 +58,21 @@
 
 .icon-bar a:hover{
   color: grey;
+}
+
+.icons{
+  display: inline-block; 
+  position: fixed;
+  right: 135px;
+}
+.icons a{
+  color: white;
+  font-size: 25px; 
+  margin-left: 15px;
+}
+
+.navbar-light .navbar-toggler{
+  color: white;
 }
 
 /* STYLING OF FOOTER */

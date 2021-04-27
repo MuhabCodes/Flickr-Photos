@@ -26,6 +26,16 @@ function NavBar() {
         </Navbar.Brand>
 
         <NavDropDown />
+        <div className="icons">
+          <a href="#home">
+            <i className="fas fa-cloud-upload-alt" />
+            {' '}
+          </a>
+          <a href="#home">
+            <i className="fas fa-bell" />
+            {' '}
+          </a>
+        </div>
 
       </Navbar>
     </div>
