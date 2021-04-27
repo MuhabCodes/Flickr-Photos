@@ -36,6 +36,22 @@ function Footer() {
           </Col>
         </Row>
       </Container>
+      <Container className="justify-content-md-center">
+        <Row>
+          <Col xs lg="1">
+            <a href="#about">Privacy</a>
+          </Col>
+          <Col xs lg="1">
+            <a href="#about">Terms</a>
+          </Col>
+          <Col xs lg="1">
+            <a href="#about">Cookies</a>
+          </Col>
+          <Col xs lg="5">
+            <p>SmugMug+Flickr. Connecting people through photography.</p>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
