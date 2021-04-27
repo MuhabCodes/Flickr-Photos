@@ -58,3 +58,20 @@
   color: grey;
 }
 
+/* STYLING OF FOOTER */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #212124;
+  color: white;
+  padding: 12px;
+}
+
+hr{
+  background-color: grey;
+  
+
+  text-align: center;
+}

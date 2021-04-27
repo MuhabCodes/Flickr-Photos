@@ -28,7 +28,6 @@ function NavBar() {
         <NavDropDown />
 
       </Navbar>
-
     </div>
   );
 }
