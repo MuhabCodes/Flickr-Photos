@@ -7,12 +7,11 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 // a mock server. This function returns the fetched images, but not all at once,
 // but a couple at a time and the more the user scrolls down,
 // the more images are fetched and displayed.
-
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
-    fetch(' http://localhost:4000/photos')
+    fetch(' http://localhost:5000/photos')
       .then((res) => res.json())
       .then((data) => {
         setRecPhotos(data);
