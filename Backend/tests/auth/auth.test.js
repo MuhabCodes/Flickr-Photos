@@ -4,7 +4,7 @@ const app = require('../../bin/server');
 const request = supertest(app);
 
 const loginInfo = {
-  email: 'whentmp+uqgtp@gmail.com',
+  email: 'and.yk.in.gso.lom.o.ntmp@gmail.com',
   password: '12345Asdf',
 };
 
@@ -46,6 +46,18 @@ it('Auth_ register account w/ old email registered above _success(security reaso
     .send(regInfo)
     .end((err, res) => {
       expect(res.statusCode).toEqual(201);
+      done();
+    });
+});
+
+it('Auth_ login with registered but unconfirmed account _Fail', async (done) => {
+  // creates a request of method post and send the login Info created above as body
+  request.post('/auth/login')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .send(loginInfo)
+    .end((err, res) => {
+      expect(res.statusCode).toEqual(403);
+      expect(res.body.statusCode).toEqual(403);
       done();
     });
 });
