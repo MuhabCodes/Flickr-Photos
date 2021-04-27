@@ -14,7 +14,7 @@ exports.login = async function loginUser(req, res) {
 };
 
 exports.register = async function registerUser(
-  req, res, next,
+  req, res,
 ) {
   const { body } = req;
   const user = await userDAL.getUserByEmail(body.email);
@@ -29,7 +29,7 @@ exports.register = async function registerUser(
     }
   } else {
     // say that an email is sent but don't send for security purposes
-    next();
+    res.status(201).send({ statusCode: 201 });
   }
 };
 
