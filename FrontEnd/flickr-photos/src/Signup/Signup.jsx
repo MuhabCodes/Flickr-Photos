@@ -41,6 +41,7 @@ const useStyles = makeStyles({
 
 export default function SignUp() {
   const classes = useStyles();
+
   const [state, setState] = useState({
     firstName: '',
     lastName: '',
@@ -84,6 +85,25 @@ export default function SignUp() {
         >
           sign up
         </Button>
+        <div style={{
+          fontSize: '0.875rem', color: '#898989', position: 'relative', alignSelf: 'center', bottom: '-10px',
+        }}
+        >
+          <p>
+            By signing up, you agree with Flickr
+            {'\''}
+            s Terms of Services and Privacy Policy.
+          </p>
+        </div>
+        <div style={{
+          fontSize: '0.875rem', position: 'relative', alignSelf: 'center', bottom: '-25px',
+        }}
+        >
+          <p>
+            Already a Flickr member? Log in here
+          </p>
+        </div>
+
       </Card>
     </div>
   );
