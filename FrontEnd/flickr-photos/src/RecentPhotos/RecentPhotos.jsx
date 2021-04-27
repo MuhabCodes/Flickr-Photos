@@ -12,7 +12,7 @@ const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
-    fetch(' http://localhost:8000/photos')
+    fetch(' http://localhost:4000/photos')
       .then((res) => res.json())
       .then((data) => {
         setRecPhotos(data);
