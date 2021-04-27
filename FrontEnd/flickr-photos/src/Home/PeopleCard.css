@@ -7,7 +7,7 @@
     top: 0px;
     left: 0px;
     width: 500px;
-    height: 280 px;
+    height: 270 px;
     display: flex;
     flex-direction: column;
 }
@@ -42,6 +42,7 @@
     font-size: 16px;
     display: flex;
     width:240px;
+    padding-bottom: 10px;
 }
 .avatar-img
 {
