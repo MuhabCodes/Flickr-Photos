@@ -17,8 +17,8 @@ module.exports.verifyPassword = async function verifyPassword({ email, password 
       // return token in case of correct pw
       return jwt.sign(tokenPayload, process.env.ACCESS_TOKEN_KEY);
       // throws error if user doesn't exist or pw doesn't match
-    } throw Error(JSON.stringify({ statusCode: 401, error: 'The client trying to access the server is unauthorized' }));
-  } else if (user && !user.isActivated) throw Error(JSON.stringify({ statusCode: 403, error: 'This client hasn\'t activated' }));
+    } throw Error(JSON.stringify({ statusCode: 401, error: 'The email or password entered were not correct.' }));
+  } else if (user && !user.isActivated) throw Error(JSON.stringify({ statusCode: 403, error: 'This client hasn\'t activated their account' }));
   // if user isn't found in the db
-  throw Error(JSON.stringify({ statusCode: 401, error: 'The client trying to access the server is unauthorized' }));
+  throw Error(JSON.stringify({ statusCode: 401, error: 'The email or password entered were not correct.' }));
 };
