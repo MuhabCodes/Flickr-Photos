@@ -30,7 +30,7 @@ module.exports.sendConfirmationEmail = async function sendEmail(
     from: 'noreply@flick.photos',
     to: email,
     subject: 'Flick Photos Email verification',
-    html: `<p>Hey ${firstName} ${lastName},\n\nPlease follow this link to verify your account on Flickr Photos : <a href=${confirmationLink}>Link</a></p>`, // TODO : Add real verification message
+    html: `<p>Hey ${firstName} ${lastName},\n\nPlease follow this link to verify your account on Flickr Photos : <a href=${confirmationLink}>Link</a></p>`,
   };
   await transporter.sendMail(message);
 };
