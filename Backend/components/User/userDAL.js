@@ -25,7 +25,7 @@ module.exports.activateUser = async function activateUser(id) {
   const user = await User.findById(id);
   if (!user) {
     // The user you're searching for and confirmation link doesn't exist
-    throw Error(JSON.stringify({ statusCode: 404, error: 'This resource doesn\'t exist on the server.' }));
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid.' }));
   } else if (!user.isActivated) {
     // user is in db and not activated
     await User.updateOne({ _id: id }, { $set: { isActivated: true } });
