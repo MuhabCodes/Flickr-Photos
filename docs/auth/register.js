@@ -20,12 +20,6 @@
  * @apiError (Error 400) {Number} statusCode The status code
  * 
  * 
- * @apiError (Error 401) {String} error The email or password entered were not correct.
- * @apiError (Error 401) {Number} statusCode The status code
- * 
- * @apiError (Error 403) {String} error This client hasn\'t activated their account.
- * @apiError (Error 403) {Number} statusCode The status code
- * 
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  * 
