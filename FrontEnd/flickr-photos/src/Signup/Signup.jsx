@@ -45,15 +45,30 @@ export default function SignUp() {
   const classes = useStyles();
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
-  const [state, setState] = useState({
-    firstName: '',
-    lastName: '',
-    age: '',
-    email: '',
-    password: '',
-  });
-  function handleChange(event) {
-    setState(event.target.value);
+  const [firstName, setFName] = useState('');
+
+  function handleChange1(event) {
+    setFName(event.target.value);
+  }
+  const [lastName, setLName] = useState('');
+
+  function handleChange2(event) {
+    setLName(event.target.value);
+  }
+  const [age, setAge] = useState('');
+
+  function handleChange3(event) {
+    setAge(event.target.value);
+  }
+  const [email, setEmail] = useState('');
+
+  function handleChange4(event) {
+    setEmail(event.target.value);
+  }
+  const [password, setPassword] = useState('');
+
+  function handleChange5(event) {
+    setPassword(event.target.value);
   }
 
   return (
@@ -74,11 +89,11 @@ export default function SignUp() {
         <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
           Sign up for Flickr
         </Typography>
-        <CssTextField variant="outlined" required value={state.firstName} onChange={handleChange} label="First Name" />
-        <CssTextField variant="outlined" required value={state.lastName} onChange={handleChange} label="Last Name" />
-        <CssTextField variant="outlined" type="number" required value={state.age} onChange={handleChange} label="Your Age" />
-        <CssTextField variant="outlined" required value={state.email} onChange={handleChange} label="Email Address" />
-        <CssTextField variant="outlined" type="password" required value={state.password} onChange={handleChange} label="Password" />
+        <CssTextField variant="outlined" required value={firstName} onChange={handleChange1} label="First Name" />
+        <CssTextField variant="outlined" required value={lastName} onChange={handleChange2} label="Last Name" />
+        <CssTextField variant="outlined" type="number" required value={age} onChange={handleChange3} label="Your Age" />
+        <CssTextField variant="outlined" required value={email} onChange={handleChange4} label="Email Address" />
+        <CssTextField variant="outlined" type="password" required value={password} onChange={handleChange5} label="Password" />
 
         <Button
           variant="contained"
