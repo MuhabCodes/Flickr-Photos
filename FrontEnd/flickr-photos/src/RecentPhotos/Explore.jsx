@@ -13,6 +13,7 @@ const Explore = () => (
         <br />
         <br />
         <br />
+        <br />
         Explore
       </h1>
       <br />
