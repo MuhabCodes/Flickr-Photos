@@ -1,35 +1,34 @@
+import $ from 'jquery';
 import React from 'react';
-import {
-  Navbar, NavDropdown, Nav,
-} from 'react-bootstrap';
+import 'bootstrap';
 
 // The ExploreNavbar.jsx will include a function 'ExploreNavbar' that returns the html tags and
-// properties to make up this navbar using bootstrap.
-
+// properties to make up this navbar.
+// The following 2 lines are jquery code to toggle the dropdown list 'More' on click
+$(document).ready(() => {
+  $('.dropdown-toggle').dropdown();
+});
+// This is the ExpNavBar function which returns the html tags to make up the navbar
 function ExploreNavBar() {
   return (
-    <Navbar bg="white" expand="lg" fixed="top">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="container-fluid nav-pills">
-          <Nav.Link href="#explore">Explore</Nav.Link>
-          <Nav.Link href="#trending">Trending</Nav.Link>
-          <Nav.Link href="#events">Events</Nav.Link>
-          <Nav.Item className="ml-auto">
-            <NavDropdown title="More" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">The Commons</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Galleries</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">World Map</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">App Garden</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Camera Finder</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">The Weekly Flickr</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Flickr Blog</NavDropdown.Item>
-            </NavDropdown>
-          </Nav.Item>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <nav className="expnav">
+      <a id="menu-item" href="./Explore" className="active">Explore</a>
+      <a id="menu-item" href="./Trending">Trending</a>
+      <a id="menu-item" href="./Events">Events</a>
+      <div className="animation start-home" />
+      <div className="dropdown">
+        <button className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+          More
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a className="dropdown-item" href="./TheCommons">The Commons</a>
+          <a className="dropdown-item" href="./Galleries">Galleries</a>
+          <a className="dropdown-item" href="./WorldMap">World Map</a>
+          <a className="dropdown-item" href="./CameraFinder">Camera Finder</a>
+          <a className="dropdown-item" href="./FlickrBlog">Flickr Blog</a>
+        </div>
+      </div>
+    </nav>
   );
 }
-
 export default ExploreNavBar;
