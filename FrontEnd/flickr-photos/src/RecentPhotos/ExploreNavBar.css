@@ -1,3 +1,93 @@
-#basic-nav-dropdown{
-    margin-left: 100px;
+.expnav {
+background-color:white;
+position:fixed;
+margin: 45px auto 0 ;
+width: 1250px;
+text-align: left;
+display: flex;
+flex-direction: row;
+z-index: 9999;
+}
+
+.expnav a:link {
+display: inline-block;
+color: rgba(0, 0, 0, 0.582);
+padding: 10px 16px;
+text-decoration: none;
+font-size: 15px;
+border-bottom: 3px solid transparent;
+transition:all .5s ease 0s;
+font-family: sans-serif;
+margin-top: 7px;
+}
+
+.expnav a:hover {
+border-bottom: 3px solid #0473db;
+color: black;
+text-decoration: none;
+}
+
+.expnav a.active {
+border-bottom: 3px solid #0473db;
+color: black;
+text-decoration: none;
+}
+.expnav a:visited{
+color: rgba(5, 0, 0, 0.753);
+}
+#dropdownMenuButton1 {
+background-color: white;
+color: rgba(5, 0, 0, 0.753);
+padding: 16px;
+font-size: 15px;
+border: none;
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+margin-left: 700px;
+width:100%;
+}
+.dropdown-menu {
+display: none;
+position: absolute;
+background-color: white;
+width: 50px; 
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 0;
+border: thin transparent;
+text-align: left;
+}
+.dropdown-menu a {
+color: rgb(12, 9, 9);
+text-decoration: none;
+display: block;
+line-height: 2px;
+}   
+.dropdown-menu a:hover {
+background-color: #ddd;
+border-bottom: transparent;
+}
+.dropdown:hover #dropdownMenuButton1 {
+background-color: white;
+color:black;
+} 
+@media screen and (max-width: 1200px) {
+.expnav {
+background-color:white;
+position:fixed;
+margin: 45px auto 0 ;
+max-width: 1200px;
+text-align: left;
+display: flex;
+flex-direction: row;
+z-index: 9999;
+}
+.dropdown{
+margin-left: 10px;
+position: relative;
+display: inline-block;
+width:100%;
+}
 }
