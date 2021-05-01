@@ -2,14 +2,47 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PhotoSchema = new Schema({
-	description: String,
-	captureDate: Date,
-	uploadDate: Date,
-	views: Number,
-	secret: String,
-	title: String,
-	imageUrl: String,
-	isPublic: Boolean,
+	description: {
+		type: String,
+	},
+	captureDate: {
+		type: Date,
+	},
+	uploadDate: {
+		type: Date,
+		required: true,
+	},
+	views: {
+		type: Number,
+		default: 0,
+	},
+	secret: {
+		type: String,
+		required: true,
+	},
+	title: {
+		type: String,
+		required: true,
+	},
+	imageUrl: {
+		type: String,
+		required: true,
+	},
+	isPublic: {
+		type: Boolean,
+		default: true,
+	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+		required: true,
+	},
+	gallery: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Gallery',
+		required: true,
+	},
+
 	//add the user reference when it is completed
 });
 
