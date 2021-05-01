@@ -9,7 +9,8 @@ const decryptToken = async function decryptToken(token, key) {
 
 module.exports.decryptAuthToken = async function decryptAuthToken(token) {
   try {
-    const decrypted = await decryptToken(token, process.env.ACCESS_TOKEN_KEY);
+    const decrypted = await decryptToken(token, 'ahmed ehab secret');
+    // TODO process.env.ACCESS_TOKEN_KEY instead of ahmed ehab but for testing !!
     return decrypted;
   } catch (_) {
     throw Error(JSON.stringify({ statusCode: 401, error: 'The client trying to access the server is unauthorized' }));

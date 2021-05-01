@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-
 const mongoose = require('mongoose');
+const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
 const Group = require('../Group/groupModel');
 const User = require('../User/userModel');
@@ -158,9 +158,26 @@ router.get('/user', (req, res) => {
 
 // Function (getUserProfile) - Returns the url to a user's profile.
 // The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
-router.get('/userprofile', (req, res) => {
-  const { _id } = req.body;
+router.get('/userprofile', async (req, res) => {
+  let { _id } = req.body;
 
+  if (!_id) {
+    // if its not sent in body , return calling user
+    const myToken = req.cookies.jwt;
+    // TODO CHECK IF THEY CHANGE COOKIES
+    if (myToken) {
+      const decrypted = await decryptAuthToken(myToken);
+      // eslint-disable-next-line no-underscore-dangle
+      _id = decrypted.id;
+    } else {
+      // no token and no id in body
+      return res.status(400).json({
+        message: 'Bad Request',
+      });
+    }
+  }
+
+  // now we got _id either from body or from token
   // will follow this convention /profile/:userId
 
   if (_id) {
@@ -171,40 +188,49 @@ router.get('/userprofile', (req, res) => {
         .then((user) => {
           if (user) {
             // successfuly found ...
-            res.status(200).json({
+            return res.status(200).json({
               id: _id,
-              url: `http://www.flickr.com/people/${_id}`,
-              // TODO profile means about page ? / and url checking
-            });
-          } else {
-            res.status(404).json({
-              message: 'User not found',
+              url: `http://www.flickr.com/profile/${_id}`,
             });
           }
-        })
-        .catch((err) => {
-          res.status(500).json({
-            error: err,
+          return res.status(404).json({
+            message: 'User not found',
           });
-        });
+        })
+        .catch((err) => res.status(500).json({
+          error: err,
+        }));
     } else {
       res.status(404).json({
         message: 'Invalid userId ',
       });
     }
-  } else {
-    // if its not sent in body , return calling user
-    // TODO GET LOGGED IN USER / WILL ASK HOSNY ABOUT IT
-    res.status(200).send(1); // just for linter !
   }
 });
 
-// Function (getUserPhotos) - Returns the url to a user's profile.
+// Function (getUserPhotos) - Returns the url to a user's photos.
 // The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
-router.get('/userphotos', (req, res) => {
-  const { _id } = req.body;
+router.get('/userphotos', async (req, res) => {
+  let { _id } = req.body;
 
-  // will follow this convention /profile/:userId
+  if (!_id) {
+    // if its not sent in body , return calling user
+    const myToken = req.cookies.jwt;
+    // TODO CHECK IF THEY CHANGE COOKIES
+    if (myToken) {
+      const decrypted = await decryptAuthToken(myToken);
+      // eslint-disable-next-line no-underscore-dangle
+      _id = decrypted.id;
+    } else {
+      // no token and no id in body
+      return res.status(400).json({
+        message: 'Bad Request',
+      });
+    }
+  }
+
+  // now we got _id either from body or from token
+  // will follow this convention /photos/:userId
 
   if (_id) {
     // will check if its valid format or not
@@ -214,30 +240,23 @@ router.get('/userphotos', (req, res) => {
         .then((user) => {
           if (user) {
             // successfuly found ...
-            res.status(200).json({
+            return res.status(200).json({
               id: _id,
               url: `http://www.flickr.com/photos/${_id}`,
-              // this url follow api convention
-            });
-          } else {
-            res.status(404).json({
-              message: 'User not found',
             });
           }
-        })
-        .catch((err) => {
-          res.status(500).json({
-            error: err,
+          return res.status(404).json({
+            message: 'User not found',
           });
-        });
+        })
+        .catch((err) => res.status(500).json({
+          error: err,
+        }));
     } else {
       res.status(404).json({
         message: 'Invalid userId ',
       });
     }
-  } else {
-    // if its not sent in body , return calling user
-    // const token = req.cookies.jwt;
   }
 });
 // #endregion

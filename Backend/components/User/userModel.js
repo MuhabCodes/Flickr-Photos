@@ -31,7 +31,6 @@ const userSchema = new Schema({
   },
 
   // TODO AE: need username,_id required for my part.
-  _id: mongoose.Schema.Types.ObjectId,
   username: {
     type: String,
     required: [true, 'Username field is required'],

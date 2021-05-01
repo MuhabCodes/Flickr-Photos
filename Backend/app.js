@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 // require routes only here
 const authRouter = require('./components/auth/authRouter');
 
@@ -11,6 +12,8 @@ const app = express();
 // using morgan
 app.use(morgan('dev'));
 
+// using cookie-parser
+app.use(cookieParser());
 // middleware here (no routing)
 app.use(express.json());
 app.use(cors());
@@ -19,9 +22,9 @@ app.use(cors());
 
 const urlRoutes = require('./components/url/urlRoute');
 const groupRoutes = require('./components/Group/groupRoute');
-const myUserRoutes = require('./components/myUser/myuserRoute');
+const UserRoutes = require('./components/User/userRoute');
 
-app.use('/myuser', myUserRoutes);
+app.use('/user', UserRoutes);
 
 app.use('/groups', groupRoutes);
 app.use('/urls', urlRoutes);
