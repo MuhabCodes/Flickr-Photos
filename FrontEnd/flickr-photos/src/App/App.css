@@ -1,5 +1,5 @@
 
-.nav-link:hover{
+.navbar-light .navbar-nav .nav-link:hover{
   color:rgba(255,255,255,.75);
 }
 
@@ -14,9 +14,7 @@
 .navbar-light .navbar-brand{
   color: white;
 }
-.navbar-light .navbar-nav .nav-link:hover{
-  color: grey;
-}
+
 
 .navbar-brand {
   font-family: 'Inter', sans-serif;
@@ -31,6 +29,7 @@
 .navbar-light .navbar-brand:hover{
   color: white;
 }
+
 
 @media all and (min-width: 992px) {
 	.navbar .nav-item .dropdown-menu{ display: none; }
