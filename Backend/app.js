@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const favoritesRoutes = require('./components/favorites/favoritesRouter')
+
+
 // require routes only here
 const authRouter = require('./components/auth/authRouter');
 
@@ -8,6 +11,7 @@ const app = express();
 
 // middleware here (no routing)
 app.use(express.json());
+app.use('/favorites',favoritesRoutes);
 app.use(cors());
 
 // use routing i.e. app.use('foo', bar)
@@ -17,4 +21,5 @@ app.route('/').get((req, res) => {
 app.use('/auth', authRouter);
 
 // exporting
+
 module.exports = app;

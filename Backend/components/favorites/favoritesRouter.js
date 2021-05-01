@@ -2,15 +2,15 @@ const express = require ('express');
 const router =express.Router();
 const mongoose =require('mongoose')
 const Favorite = require('../favorites/favoritesModel')
+const ObjectId = require('mongoose').Types.ObjectId;
 
 router.post('/:photoId',(req,res,next)=>
-{ const photo = req.params.photoId, 
-  const user = req.header.authorization
-    
+{
 const favorite = new Favorite(
-{ userId:user,
-photoId:photo,
+{user:req.headers.authorization,
 favoriteDate:req.body.favoriteDate,
+photo:req.params.photoId,
+
     
 })
 favorite.save()
@@ -19,9 +19,9 @@ favorite.save()
 res.status(201).json(
    {message:"Favorite added succesfully",
     favoriteCreated:
-    {userId:result.userId,
-    photoId:result.photoId,
-    date:result.favoriteDate
+    {user:result.user,
+    photoId:result.photo,
+    favoriteDate:result.favoriteDate,
 
     },
     request:
@@ -34,7 +34,8 @@ res.status(201).json(
 })
 .catch(err=>
 {console.log(err);
-  res.status(500).json({error:err
+  res.status(500).json({
+    error:err
   
   
   
@@ -43,10 +44,11 @@ res.status(201).json(
 
 });
 });
+
 router.delete('/:photoId',(req,res,next)=>{
-    const photo =req.params.photoId,
-    const user =req.header.authorization
-    Product.remove({
+    const photo =req.params.photoId
+    const user =req.headers.authorization
+    Favorite.remove({
     photoId:photo,
     UserId:user
     }) 
@@ -61,17 +63,17 @@ router.delete('/:photoId',(req,res,next)=>{
 
    });
 
-   router.get("/:userId",(req,res,next)=>
-   {const user =req.params.userId;
-    Favorite.find( {UserId :user} )
+   router.get('/:userId',(req,res,next)=>
+   { const userId =req.params.userId;
+    Favorite.find({user:[ObjectId(userId)]}) 
      .select("photo")
-     .populate('photo','secret,isPublic,title')
+     .populate('photo')
      .exec()
      .then(docs=>
        {res.status(200).json(
        {total:docs.length,
-        owner:userId,
-         photo:docs.map(doc=>
+         owner:user,
+          photo:docs.map(doc=>
            {
             return{
             photo:doc.photo
@@ -97,7 +99,8 @@ router.delete('/:photoId',(req,res,next)=>{
 
    router.get("/public/:userId",(req,res,next)=>
    {const user =req.params.userId;
-    Favorite.find( {UserId :user} )
+    
+    Favorite.find( {'user' :user} )
      .select("photo")
      .populate('photo','secret,isPublic,title')
      .exec()
@@ -107,9 +110,9 @@ router.delete('/:photoId',(req,res,next)=>{
        {total:docs.length,
         owner:userId,
          photo:docs.map(doc=>
-           {const public = doc.photo.isPublic,
+           {const public = doc.photo.isPublic
                
-            if(public===true)
+            if(public==true)
         {
             return{
             photo:doc.photo
@@ -122,7 +125,7 @@ router.delete('/:photoId',(req,res,next)=>{
 })
    
 .catch(err=>
-       {
+       {console.log(err);
            res.status(500).json(
    
          {

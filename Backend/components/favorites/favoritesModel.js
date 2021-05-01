@@ -1,21 +1,15 @@
 const DateFromTime = require('es-abstract/5/datefromtime');
-const { Schema, model } = require('mongoose');
+const mongoose= require('mongoose');
 
 
 
-const favoritesSchema = new Schema({
+const favoritesSchema = mongoose.Schema({
 
-userId:{ 
+user:{ 
     type:mongoose.Schema.Types.ObjectId,
     ref:'User',
     required:true
   },
-
-displayName:{
-    type:String,
-    ref:'User'
-   
-},
 
 photo:{
     type:mongoose.Schema.Types.ObjectId,
@@ -26,8 +20,10 @@ photo:{
 
 },
 
-favoriteDate:{type:Date,
-              required:true
+favoriteDate:{
+    type:String,
+    required:true
+              
 
 
 
@@ -39,4 +35,4 @@ favoriteDate:{type:Date,
   
 });
 
-module.exports = model('Favorites', favoritesSchema);
+module.exports = mongoose.model('Favorites', favoritesSchema);
