@@ -1,7 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const cors = require('cors');
 // require routes only here
+const authRouter = require('./components/auth/authRouter');
 
 // declaring app
 const app = express();
@@ -11,6 +13,7 @@ app.use(morgan('dev'));
 
 // middleware here (no routing)
 app.use(express.json());
+app.use(cors());
 
 // AE : ROUTING TO URL , GROUPS
 
@@ -27,6 +30,7 @@ app.use('/urls', urlRoutes);
 app.route('/').get((req, res) => {
   res.send('Hello world!');
 });
+app.use('/auth', authRouter);
 
 app.use(express.json());
 
