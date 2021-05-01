@@ -5,7 +5,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Group = require('../Group/groupModel');
-const User = require('../User/userModel');
+// const User = require('../User/userModel');
 const myUser = require('../myUser/myuserModel');
 
 // #region urls_related_to_group
@@ -239,8 +239,7 @@ router.get('/userphotos', (req, res) => {
     }
   } else {
     // if its not sent in body , return calling user
-    // TODO GET LOGGED IN USER / WILL ASK HOSNY ABOUT IT
-    res.status(200).send(1); // just for linter !
+    // const token = req.cookies.jwt;
   }
 });
 // #endregion
@@ -294,11 +293,9 @@ router.get('/gallery', (req, res) => {
           dateUpdate: '1270111667',
           countPhotos: '17',
           countVideos: '0',
-          server: '112',
-          farm: '1',
-          secret: '7f29861bc4',
           title: "Cat Pictures I've Sent To Kevin Collins",
           description: [],
+          // TODO AE / I REMOVED FARM,SECRET,SERVER SO NEED API SYNC!
         });
       } else {
         res.status(404).json({
