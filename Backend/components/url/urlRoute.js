@@ -5,8 +5,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Group = require('../Group/groupModel');
-// const User = require('../User/userModel');
-const myUser = require('../myUser/myuserModel');
+const User = require('../User/userModel');
 
 // #region urls_related_to_group
 // Function returns url to a certain group
@@ -137,9 +136,8 @@ router.get('/user', (req, res) => {
     });
   }
 
-  // myUser
   // eslint-disable-next-line no-undef
-  myUser.findById(id).exec()
+  User.findById(id).exec()
     .then((doc) => {
       if (doc) {
         res.status(200).json({
@@ -168,7 +166,7 @@ router.get('/userprofile', (req, res) => {
   if (_id) {
     // will check if its valid format or not
     if (mongoose.isValidObjectId(_id)) {
-      myUser.findById(_id) // myUser instead of user
+      User.findById(_id)
         .exec()
         .then((user) => {
           if (user) {
@@ -211,7 +209,7 @@ router.get('/userphotos', (req, res) => {
   if (_id) {
     // will check if its valid format or not
     if (mongoose.isValidObjectId(_id)) {
-      myUser.findById(_id) // myUser instead of user
+      User.findById(_id)
         .exec()
         .then((user) => {
           if (user) {
