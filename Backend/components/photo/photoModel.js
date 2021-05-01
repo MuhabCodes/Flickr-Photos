@@ -42,6 +42,10 @@ const PhotoSchema = new Schema({
 		ref: 'Gallery',
 		required: true,
 	},
+	tags: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: 'Comment',
+	},
 
 	//add the user reference when it is completed
 });
