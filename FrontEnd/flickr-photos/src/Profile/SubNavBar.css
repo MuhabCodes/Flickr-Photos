@@ -1,7 +1,6 @@
 .navbar {
   opacity: 1 !important;
   width: 100%;
-  display: block;
 }
 .fluid-sub-nav {
   height: 50px;
@@ -34,7 +33,7 @@
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-  height: 47px;
+  height: 50px;
   box-sizing: border-box;
   white-space: nowrap;
   user-select: none;
@@ -54,7 +53,6 @@
   transition: border-bottom 0.1s linear;
 }
 .sub-nav-links a {
-  outline: none;
   cursor: pointer;
   text-decoration: none;
   display: flex;

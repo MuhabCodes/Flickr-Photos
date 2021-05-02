@@ -12,42 +12,42 @@ const SubNavBar = () => (
               id="sub_nav_user_const"
             >
               <li id="about" role="menuitem">
-                <a href="/About">
+                <a href="/">
                   <span>About</span>
                 </a>
               </li>
               <li id="photostream" role="menuitem">
-                <a href="/Photostream">
+                <a href="/">
                   <span>Photostream</span>
                 </a>
               </li>
               <li id="albums" role="menuitem">
-                <a href="/Albums">
+                <a href="/">
                   <span>Albums</span>
                 </a>
               </li>
               <li id="favorites" role="menuitem">
-                <a href="/Faves">
+                <a href="/">
                   <span>Faves</span>
                 </a>
               </li>
               <li id="galleries" role="menuitem">
-                <a href="/Galleries">
+                <a href="/">
                   <span>Galleries</span>
                 </a>
               </li>
               <li id="groups" role="menuitem">
-                <a href="/Groups">
+                <a href="/">
                   <span>Groups</span>
                 </a>
               </li>
               <li id="stats" role="menuitem">
-                <a href="/Stats">
+                <a href="/">
                   <span>Stats</span>
                 </a>
               </li>
               <li id="cameraroll" role="menuitem">
-                <a href="/CameraRoll">
+                <a href="/">
                   <span>Camera Roll</span>
                 </a>
               </li>
