@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import MenuItems from './MenuItems';
 
 const SubNavBar = () => (
   <div className="navbar">
@@ -11,46 +13,11 @@ const SubNavBar = () => (
               role="menubar"
               id="sub_nav_user_const"
             >
-              <li id="about" role="menuitem">
-                <a href="/">
-                  <span>About</span>
-                </a>
-              </li>
-              <li id="photostream" role="menuitem">
-                <a href="/">
-                  <span>Photostream</span>
-                </a>
-              </li>
-              <li id="albums" role="menuitem">
-                <a href="/">
-                  <span>Albums</span>
-                </a>
-              </li>
-              <li id="favorites" role="menuitem">
-                <a href="/">
-                  <span>Faves</span>
-                </a>
-              </li>
-              <li id="galleries" role="menuitem">
-                <a href="/">
-                  <span>Galleries</span>
-                </a>
-              </li>
-              <li id="groups" role="menuitem">
-                <a href="/">
-                  <span>Groups</span>
-                </a>
-              </li>
-              <li id="stats" role="menuitem">
-                <a href="/">
-                  <span>Stats</span>
-                </a>
-              </li>
-              <li id="cameraroll" role="menuitem">
-                <a href="/">
-                  <span>Camera Roll</span>
-                </a>
-              </li>
+              {MenuItems.map((item) => (
+                <li key={item.key}>
+                  <Link to={item.url} className={item.cName}>{item.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
