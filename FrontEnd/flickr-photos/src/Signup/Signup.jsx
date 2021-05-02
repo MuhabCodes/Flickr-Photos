@@ -6,12 +6,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import background from './background.jpg';
 import icon from './flickrlogo.png';
-import AppBar from './flickrbar';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
   root: {
     margin: 10,
+    minWidth: 305,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 })(TextField);
 // the card styles
@@ -46,30 +48,31 @@ export default function SignUp() {
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
   const [firstName, setFName] = useState('');
-
-  function handleChange1(event) {
-    setFName(event.target.value);
-  }
   const [lastName, setLName] = useState('');
-
-  function handleChange2(event) {
-    setLName(event.target.value);
-  }
   const [age, setAge] = useState('');
-
-  function handleChange3(event) {
-    setAge(event.target.value);
-  }
   const [email, setEmail] = useState('');
-
-  function handleChange4(event) {
-    setEmail(event.target.value);
-  }
   const [password, setPassword] = useState('');
 
-  function handleChange5(event) {
-    setPassword(event.target.value);
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  // const [state, setState] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   age: '',
+  //   email: '',
+  //   password: '',
+  // });
+  // function handleChange(evt) {
+  //   const { value } = evt.target;
+  //   setState({
+  //     ...state,
+  //     [evt.target.name]: value,
+  //   });
+  // }
+  // function handleChange(event) {
+  //   let val = event.target.value;
+  // }
 
   return (
     <div style={{
@@ -83,32 +86,40 @@ export default function SignUp() {
     // background image stylings
     }}
     >
-      <div>{AppBar()}</div>
+      {/* <div>{AppBar()}</div> */}
       <Card className={classes.root}>
         <img src={icon} style={{ width: '25%', justifyContent: 'center', alignSelf: 'center' }} alt="icon" />
         <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
           Sign up for Flickr
         </Typography>
-        <CssTextField variant="outlined" required value={firstName} onChange={handleChange1} label="First Name" />
-        <CssTextField variant="outlined" required value={lastName} onChange={handleChange2} label="Last Name" />
-        <CssTextField variant="outlined" type="number" required value={age} onChange={handleChange3} label="Your Age" />
-        <CssTextField variant="outlined" required value={email} onChange={handleChange4} label="Email Address" />
-        <CssTextField variant="outlined" type="password" required value={password} onChange={handleChange5} label="Password" />
+        <form onSubmit={handleSubmit}>
+          <CssTextField variant="outlined" style={{ justifyContent: 'center', alignSelf: 'center' }} required value={firstName} onChange={(e) => setFName(e.target.value)} label="First Name" />
+          <CssTextField variant="outlined" required value={lastName} onChange={(e) => setLName(e.target.value)} label="Last Name" />
+          <CssTextField variant="outlined" type="number" required value={age} onChange={(e) => setAge(e.target.value)} label="Your Age" />
+          <CssTextField variant="outlined" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
+          <CssTextField variant="outlined" rules={{ minLength: 0 }} type="password" required value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
 
-        <Button
-          variant="contained"
-          style={{
-            color: 'white', backgroundColor: '#128fdc', paddingTop: '0.5rem', marginTop: '1.8rem', font: 'inherit',
-          }}
-          disableElevation
-        >
-          sign up
-        </Button>
-
+          <Button
+            variant="contained"
+            style={{
+              minWidth: 290,
+              color: 'white',
+              backgroundColor: '#128fdc',
+              paddingTop: '0.5rem',
+              marginTop: '1.8rem',
+              font: 'inherit',
+            }}
+            disableElevation
+            type="submit"
+          >
+            sign up
+          </Button>
+        </form>
         <div style={{
           fontSize: '0.875rem', color: '#898989', position: 'relative', alignSelf: 'center', bottom: '-10px',
         }}
         >
+
           <p>
             By signing up, you agree with Flickr
             {'\''}
