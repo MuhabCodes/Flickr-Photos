@@ -64,3 +64,8 @@
   box-sizing: border-box;
   height: 50px;
 }
+.sub-nav-links a:hover{
+  text-decoration: none;
+  color: #000;
+  border-bottom: 3px solid #0091dc;
+}
