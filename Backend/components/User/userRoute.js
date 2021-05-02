@@ -33,9 +33,9 @@ const createToken = (id) => jwt.sign({ id }, 'ahmed ehab secret', {
 
 router.post('/adduser', (req, res) => {
   const user = new User({
-    email: 'body_2000@outlook.com',
-    password: 'doksanf',
-    username: 'ahmedehabb8',
+    email: 'body@gmail.com',
+    password: '123456',
+    username: 'testing',
   });
 
   User.create(user)

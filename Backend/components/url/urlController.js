@@ -17,7 +17,7 @@ exports.getGroupById = async (req, res) => {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
         id: doc._id,
-        url: doc.url,
+        url: `https://www.flickr.com/groups/${doc._id}/`,
       });
     } else {
       res.status(404).json({

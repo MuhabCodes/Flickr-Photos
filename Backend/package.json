@@ -334,7 +334,7 @@
     "testEnviroment": "node"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
     "start": "nodemon ./bin/server.js",
     "devstart": "nodemon ./bin/server.js"
   },
