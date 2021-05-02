@@ -35,4 +35,12 @@ authRouter.route('/forgot-password').put(async (req, res) => {
   }
 });
 
+authRouter.route('/forgot-password/:resetToken').put(async (req, res) => {
+  try {
+    await authController.resetPassword(req, res);
+  } catch (err) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the registration process' });
+  }
+});
+
 module.exports = authRouter;
