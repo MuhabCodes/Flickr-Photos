@@ -14,9 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 @import "./Profile/Cover.css";
 @import "./Profile/SubNavBar.css";
 @import "./Profile/ProfileContainer.css";
 @import "./Profile/AboutBio.css";
 @import "./Profile/Showcase.css";
 @import "./Profile/UserInfo.css";
+@import "./Profile/GeneralStats.css";
