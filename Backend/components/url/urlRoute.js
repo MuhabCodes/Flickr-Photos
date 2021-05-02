@@ -52,32 +52,57 @@ router.get('/group', (req, res) => {
 
   const urlSplit = url.split('/'); // split url components whenever it encounter '/' into an array
 
-  // examples
+  // examples if its group url
   // if url = "https://www.flickr.com/groups/192738037@N02/"
   // [ 'https:', '', 'www.flickr.com', 'groups', '192738037@N02', '' ]
 
-  // if url = "https://www.flickr.com/groups/192738037@N02"
-  // [ 'https:', '', 'www.flickr.com', 'groups', '192738037@N02' ]
+  // example if photo pool url
+  // url = "https://www.flickr.com/groups/192738037@N02/pool/"
+  // [ 'https:', '', 'www.flickr.com', 'groups', '192738037@N02','pool','']
+  // or if photo inside a photo pool
+  // url = "https://www.flickr.com/photos/wayloncash/49951029628/in/pool-467849@N23/"
+  // [ 'https:', '', .....,'pool-467849@N23','' ]
 
   // if last element in array is'' we would take one before otherwise last one will be id
+  let id = -1;
+  let emptyQuotes = 0; // this will be true if last is '' to use it later in gettingid
   if (urlSplit[urlSplit.length - 1] === '') {
-    // eslint-disable-next-line no-undef
-    _id = urlSplit[urlSplit.length - 2];
+    id = urlSplit[urlSplit.length - 2];
+    emptyQuotes = 1;
   } else {
-    // eslint-disable-next-line no-undef
-    _id = urlSplit[urlSplit.length - 1];
+    id = urlSplit[urlSplit.length - 1]; // this mean there's no "/"
+    emptyQuotes = 0;
+  }
+
+  if (!mongoose.isValidObjectId(id)) {
+    // its photo pool so it will be either "pool" or "pool-id"
+    if (id === 'pool') { // if last one is pool ,  id will be before it directly
+      if (emptyQuotes === 1) {
+        id = urlSplit[urlSplit.length - 3];
+      } else {
+        id = urlSplit[urlSplit.length - 2];
+      }
+    } else {
+      // so it will be pool-id so we will substring it after pool- to end of string
+      // eslint-disable-next-line no-lonely-if
+      if (emptyQuotes === 1) {
+        id = urlSplit[urlSplit.length - 2].substring(5);
+      } else {
+        id = urlSplit[urlSplit.length - 1].substring(5);
+      }
+    }
   }
   // done extracting id
 
   // eslint-disable-next-line no-undef
-  if (!mongoose.isValidObjectId(_id)) {
+  if (!mongoose.isValidObjectId(id)) {
     return res.status(404).json({
       error: 'Invalid groupId',
     });
   }
 
   // eslint-disable-next-line no-undef
-  Group.findById(_id).exec()
+  Group.findById(id).exec()
     .then((doc) => {
       if (doc) {
         res.status(200).json({
@@ -158,6 +183,7 @@ router.get('/user', (req, res) => {
 
 // Function (getUserProfile) - Returns the url to a user's profile.
 // The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
+// eslint-disable-next-line consistent-return
 router.get('/userprofile', async (req, res) => {
   let { _id } = req.body;
 
@@ -190,7 +216,7 @@ router.get('/userprofile', async (req, res) => {
             // successfuly found ...
             return res.status(200).json({
               id: _id,
-              url: `http://www.flickr.com/profile/${_id}`,
+              url: `http://www.flickr.com/people/${_id}`,
             });
           }
           return res.status(404).json({
@@ -210,6 +236,7 @@ router.get('/userprofile', async (req, res) => {
 
 // Function (getUserPhotos) - Returns the url to a user's photos.
 // The Id of the user to fetch the url for is Optional so If omitted, the calling user is assumed.
+// eslint-disable-next-line consistent-return
 router.get('/userphotos', async (req, res) => {
   let { _id } = req.body;
 
