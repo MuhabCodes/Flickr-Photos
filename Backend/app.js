@@ -23,9 +23,10 @@ app.use(cors());
 const urlRoutes = require('./components/url/urlRoute');
 const groupRoutes = require('./components/Group/groupRoute');
 const UserRoutes = require('./components/User/userRoute');
+const galleryRoutes = require('./components/Gallery/galleryRoute');
 
 app.use('/user', UserRoutes);
-
+app.use('/gallery', galleryRoutes);
 app.use('/groups', groupRoutes);
 app.use('/urls', urlRoutes);
 

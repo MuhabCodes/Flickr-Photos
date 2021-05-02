@@ -6,7 +6,18 @@ const gallerySchema = new mongoose.Schema({
   url: {
     type: String,
   }, // url will be turned virtual just now for testing
-
+  owner: {
+    type: String,
+  },
+  primaryPhotoId: {
+    type: String,
+  },
+  dateCreate: {
+    type: String,
+  },
+  countPhotos: {
+    type: String,
+  },
   // not completed just for testing urls..
 });
 

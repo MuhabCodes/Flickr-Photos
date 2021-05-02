@@ -2,19 +2,17 @@
 const mongoose = require('mongoose');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
-const { urlValidations } = require('./Services/urlValidations');
+const { findGroupById, findUserById, findGalleryById } = require('./Services/urlValidations');
 
 exports.getGroupById = async (req, res) => {
   const { groupId } = req.params;
-
   if (!mongoose.isValidObjectId(groupId)) {
     return res.status(404).json({
       error: 'Invalid groupId',
     });
   }
-
   try {
-    const doc = await urlValidations.findGroupById(groupId);
+    const doc = await findGroupById(groupId);
     if (doc) {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
@@ -89,7 +87,7 @@ exports.lookUpGroup = async (req, res) => {
   }
 
   try {
-    const doc = await urlValidations.findGroupById(id);
+    const doc = await findGroupById(id);
     if (doc) {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
@@ -140,7 +138,7 @@ exports.lookUpUser = async (req, res) => {
   }
 
   try {
-    const doc = await urlValidations.findUserById(id);
+    const doc = await findUserById(id);
     if (doc) {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
@@ -184,7 +182,7 @@ exports.getUserProfile = async (req, res) => {
   // will check if its valid format or not
   if (_id && mongoose.isValidObjectId(_id)) {
     try {
-      const user = await urlValidations.findUserById(_id);
+      const user = await findUserById(_id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
@@ -231,7 +229,7 @@ exports.getUserPhotos = async (req, res) => {
   // will check if its valid format or not
   if (_id && mongoose.isValidObjectId(_id)) {
     try {
-      const user = await urlValidations.findUserById(_id);
+      const user = await findUserById(_id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
@@ -286,7 +284,7 @@ exports.lookupGallery = async (req, res) => {
 
   // eslint-disable-next-line no-undef
   try {
-    const doc = await urlValidations.findGalleryById(id);
+    const doc = await findGalleryById(id);
     if (doc) {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
