@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DataItems from './DataItems';
+import DataItems from './Stats';
 
 const Stats = () => (
   <div className="general-stats">
