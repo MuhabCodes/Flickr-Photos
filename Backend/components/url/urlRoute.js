@@ -8,7 +8,7 @@ const Group = require('../Group/groupModel');
 const User = require('../User/userModel');
 
 // #region urls_related_to_group
-// Function returns url to a certain group
+// Function getGroup: returns url to a certain group
 // eslint-disable-next-line consistent-return
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line consistent-return
@@ -125,8 +125,7 @@ router.get('/group', (req, res) => {
 });
 // #endregion
 // #region urls_related_to_user
-// Function (urls - lookupUser) ;; returns id,username to a certain user
-
+// Function (urls - lookupUser)-Returns a user NSID, given the url to a user's photos or profile
 // TODO :: discuss that ????
 // i change a change here r.t. our api as we used to sent whole user's url in as url parameter
 // i made this function as if its sent in body (more realistic !!)
@@ -139,6 +138,7 @@ router.get('/user', (req, res) => {
 
   const urlSplit = url.split('/'); // split url components whenever it encounter '/' into an array
 
+  // TODO VERY IMPORTANT: SHOULD WE ALSO CHECK "people",... and same applies for all other functions
   // examples
   // if url = "https://www.flickr.com/people/192738037@N02/"
   // [ 'https:', '', 'www.flickr.com', 'people', '192738037@N02', '' ]
@@ -240,8 +240,10 @@ router.get('/userprofile', async (req, res) => {
 router.get('/userphotos', async (req, res) => {
   let { _id } = req.body;
 
+  // will follow this convention /photos/:userId
+
   if (!_id) {
-    // if its not sent in body , return calling user
+    // if its not sent in body , return calling user so we need token
     const myToken = req.cookies.jwt;
     // TODO CHECK IF THEY CHANGE COOKIES
     if (myToken) {
@@ -255,9 +257,6 @@ router.get('/userphotos', async (req, res) => {
       });
     }
   }
-
-  // now we got _id either from body or from token
-  // will follow this convention /photos/:userId
 
   if (_id) {
     // will check if its valid format or not
@@ -319,7 +318,7 @@ router.get('/gallery', (req, res) => {
   // eslint-disable-next-line no-undef
   if (!mongoose.isValidObjectId(_id)) {
     return res.status(404).json({
-      error: 'Invalid groupId',
+      error: 'Invalid galleryId',
     });
   }
 
@@ -330,15 +329,16 @@ router.get('/gallery', (req, res) => {
         res.status(200).json({
           // eslint-disable-next-line no-underscore-dangle
           id: doc._id,
-          url: '/photos/straup/galleries/72157617483228192',
-          owner: '35034348999@N01',
-          primaryPhotoId: '292882708',
-          dateCreate: '1241028772',
-          dateUpdate: '1270111667',
-          countPhotos: '17',
-          countVideos: '0',
-          title: "Cat Pictures I've Sent To Kevin Collins",
-          description: [],
+          url: '/photos/flickr/galleries/72157617483228192',
+          // TODO /flickr was /straup in api but i saw real flickr and it was flickr
+          owner: doc.owner,
+          primaryPhotoId: doc.primaryPhotoId,
+          dateCreate: doc.dateCreate,
+          dateUpdate: doc.dateUpdate,
+          countPhotos: doc.countPhotos,
+          countVideos: doc.countVideos,
+          title: doc.title,
+          description: doc.description,
           // TODO AE / I REMOVED FARM,SECRET,SERVER SO NEED API SYNC!
         });
       } else {
