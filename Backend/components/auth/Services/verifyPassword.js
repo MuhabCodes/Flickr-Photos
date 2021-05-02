@@ -1,7 +1,6 @@
 const { join } = require('path');
 require('dotenv').config({ path: join(__dirname, '/../../../secret/', '.env') });
 const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
 const userDAL = require('../../User/userDAL');
 const utilsPassword = require('../../../utils/passwords');
 

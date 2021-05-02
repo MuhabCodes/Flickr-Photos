@@ -1,4 +1,3 @@
-// const bcrypt = require('bcrypt');
 const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
 
