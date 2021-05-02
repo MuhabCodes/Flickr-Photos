@@ -18,29 +18,24 @@ const request = supertest(app);
 //     .catch((err) => console.log(err));
 // });
 
-const url = 'https://www.flickr.com/groups/60860f86c649a259c0c9d82d/';
-const id = '60860f86c649a259c0c9d82d';
+const url = 'https://www.flickr.com/galleries/608e02a0627740193883e2fa/';
 
-test('Should return id and url a given group', async (done) => {
+const gallery = {
+  id: '608e02a0627740193883e2fa',
+  url: '/photos/flickr/galleries/72157617483228192',
+  owner: 'ahmed ehab',
+  primaryPhotoId: '2',
+  dateCreate: '213123',
+  countPhotos: '231',
+};
+test('Should return gallery info, by url', async (done) => {
   await request
-    .get(`/urls/groups/${id}`)
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id, url });
-      done();
-    });
-});
-
-const name = 'ahmed ehab kicks';
-test('Should return a group Id, given the url to a groups page or photo pool.', async (done) => {
-  await request
-    .get('/urls/group')
+    .get('/urls/gallery')
     .send({ url })
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id, name });
+      expect(response.body).toEqual(gallery);
       done();
     });
 });

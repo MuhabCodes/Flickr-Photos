@@ -2,7 +2,6 @@ const supertest = require('supertest');
 const app = require('../../bin/server');
 
 const request = supertest(app);
-const url = 'https://www.flickr.com/people/608dd1f51253c7348443ae76/';
 
 // const mongoose = require('mongoose');
 
@@ -18,6 +17,8 @@ const url = 'https://www.flickr.com/people/608dd1f51253c7348443ae76/';
 //   // eslint-disable-next-line no-console
 //     .catch((err) => console.log(err));
 // });
+
+const url = 'https://www.flickr.com/people/608dd1f51253c7348443ae76/';
 
 test('Should return id and username of user given url', async (done) => {
   await request
