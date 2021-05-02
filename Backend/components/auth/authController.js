@@ -2,7 +2,7 @@
 const { join } = require('path');
 const userDAL = require('../User/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
-const { sendConfirmationEmail } = require('./Services/sendEmail.js');
+const { sendConfirmationEmail, sendResetPasswordEmail } = require('./Services/sendEmail.js');
 const { decryptConfirmationToken } = require('./Services/decryptToken');
 require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
@@ -42,5 +42,20 @@ exports.confirmUser = async function confirmUser(req, res) {
   } catch (err) {
     const errMsg = JSON.parse(err.message);
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
+  const { email } = req.body;
+  try {
+    const userObj = await userDAL.getUserByEmail(email);
+
+    if (userObj && userObj.isActivated) {
+      await sendResetPasswordEmail(userObj._id, email);
+
+      res.status(200).json({ statusCode: 200 });
+    } else res.status(200).json({ statusCode: 200 });
+  } catch (err) {
+    res.send(err);
   }
 };

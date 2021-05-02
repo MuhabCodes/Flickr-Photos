@@ -34,3 +34,24 @@ module.exports.sendConfirmationEmail = async function sendEmail(
   };
   await transporter.sendMail(message);
 };
+
+module.exports.sendResetPasswordEmail = async function sendEmail(
+  userId, email,
+) {
+  const transporter = nodemailer.createTransport(options);
+  const resetToken = jwt.sign({
+    userId,
+  },
+  process.env.RESET_PASSWORD_KEY,
+  {
+    expiresIn: '1d',
+  });
+  const resetLink = `${process.env.HOST}:${process.env.PORT}/auth/forgot-password/${resetToken}`;
+  const message = {
+    from: 'noreply@flick.photos',
+    to: email,
+    subject: 'Flick Photos - Reset Password',
+    html: `<p>Hey,\n\nPlease follow this link to reset your password on Flickr Photos : <a href=${resetLink}>Link</a></p>`, // TODO : Add real verification message
+  };
+  await transporter.sendMail(message);
+};
