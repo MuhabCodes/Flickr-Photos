@@ -25,7 +25,7 @@ module.exports.activateUser = async function activateUser(id) {
   const user = await User.findById(id);
   if (!user) {
     // The user you're searching for and confirmation link doesn't exist
-    throw Error(JSON.stringify({ statusCode: 404, error: 'This resource doesn\'t exist on the server.' }));
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid.' }));
   } else if (!user.isActivated) {
     // user is in db and not activated
     await User.updateOne({ _id: id }, { $set: { isActivated: true } });
@@ -45,7 +45,7 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
     );
   } else if (!user) {
     // The user you're searching for or reset link doesn't exist
-    throw Error(JSON.stringify({ statusCode: 404, error: 'This resource doesn\'t exist on the server.' }));
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid.' }));
   } else if (!user.isActivated) { /// user is not activated.
     throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
   } else throw Error({ statusCode: 500, error: 'The server couldn\'t handle the process' });

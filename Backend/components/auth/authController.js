@@ -46,17 +46,14 @@ exports.confirmUser = async function confirmUser(req, res) {
 
 exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
   const { email } = req.body;
-  try {
-    const userObj = await userDAL.getUserByEmail(email);
 
-    if (userObj && userObj.isActivated) {
-      await sendResetPasswordEmail(userObj._id, email);
+  const userObj = await userDAL.getUserByEmail(email);
 
-      res.status(200).json({ statusCode: 200 });
-    } else res.status(200).json({ statusCode: 200 });
-  } catch (err) {
-    res.send(err);
-  }
+  if (userObj && userObj.isActivated) {
+    await sendResetPasswordEmail(userObj._id, email);
+
+    res.status(200).json({ statusCode: 200 });
+  } else res.status(200).json({ statusCode: 200 });
 };
 
 exports.resetPassword = async function resetPw(req, res) {
