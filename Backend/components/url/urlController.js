@@ -158,16 +158,16 @@ exports.lookUpUser = async (req, res) => {
 };
 
 exports.getUserProfile = async (req, res) => {
-  let { _id } = req.body;
+  let { id } = req.body;
 
-  if (!_id) {
+  if (!id) {
     // if its not sent in body , return calling user
     const myToken = req.cookies.jwt;
     // TODO CHECK IF THEY CHANGE COOKIES
     if (myToken) {
       const decrypted = await decryptAuthToken(myToken);
       // eslint-disable-next-line no-underscore-dangle
-      _id = decrypted.id;
+      id = decrypted.id;
     } else {
       // no token and no id in body
       return res.status(400).json({
@@ -180,14 +180,14 @@ exports.getUserProfile = async (req, res) => {
   // will follow this convention /profile/:userId
 
   // will check if its valid format or not
-  if (_id && mongoose.isValidObjectId(_id)) {
+  if (id && mongoose.isValidObjectId(id)) {
     try {
-      const user = await findUserById(_id);
+      const user = await findUserById(id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
-          id: _id,
-          url: `http://www.flickr.com/people/${_id}`,
+          id,
+          url: `https://www.flickr.com/people/${id}/`,
         });
       }
       return res.status(404).json({
@@ -206,18 +206,18 @@ exports.getUserProfile = async (req, res) => {
 };
 
 exports.getUserPhotos = async (req, res) => {
-  let { _id } = req.body;
+  let { id } = req.body;
 
   // will follow this convention /photos/:userId
 
-  if (!_id) {
+  if (!id) {
     // if its not sent in body , return calling user so we need token
     const myToken = req.cookies.jwt;
     // TODO CHECK IF THEY CHANGE COOKIES
     if (myToken) {
       const decrypted = await decryptAuthToken(myToken);
       // eslint-disable-next-line no-underscore-dangle
-      _id = decrypted.id;
+      id = decrypted.id;
     } else {
       // no token and no id in body
       return res.status(400).json({
@@ -227,14 +227,14 @@ exports.getUserPhotos = async (req, res) => {
   }
 
   // will check if its valid format or not
-  if (_id && mongoose.isValidObjectId(_id)) {
+  if (id && mongoose.isValidObjectId(id)) {
     try {
-      const user = await findUserById(_id);
+      const user = await findUserById(id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
-          id: _id,
-          url: `http://www.flickr.com/photos/${_id}`,
+          id,
+          url: `https://www.flickr.com/photos/${id}`,
         });
       }
       return res.status(404).json({
