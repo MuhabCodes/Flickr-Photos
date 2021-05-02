@@ -31,3 +31,12 @@ module.exports.activateUser = async function activateUser(id) {
     throw Error(JSON.stringify({ statusCode: 410, error: 'This resource is gone from the server.' }));
   }
 };
+
+module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
+  const userObj = await User.findById(userId);
+
+  // eslint-disable-next-line no-underscore-dangle
+  userObj.groups.push(groupObj._id);
+  userObj.save();
+  return userObj;
+};

@@ -32,6 +32,10 @@ const userSchema = new Schema({
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
+  groups: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Group',
+  },
 
   // personId: {
   //   type: String, // TODO : Change to person ID when person is added
