@@ -335,7 +335,7 @@
   },
   "scripts": {
     "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
-    "start": "nodemon ./bin/server.js",
+    "start": "node ./bin/server.js",
     "devstart": "nodemon ./bin/server.js"
   },
   "keywords": [],

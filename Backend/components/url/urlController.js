@@ -17,6 +17,7 @@ exports.getGroupById = async (req, res) => {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
         id: doc._id,
+        // eslint-disable-next-line no-underscore-dangle
         url: `https://www.flickr.com/groups/${doc._id}/`,
       });
     } else {
@@ -158,7 +159,7 @@ exports.lookUpUser = async (req, res) => {
 };
 
 exports.getUserProfile = async (req, res) => {
-  let { id } = req.body;
+  let { id } = req.query;
 
   if (!id) {
     // if its not sent in body , return calling user
@@ -206,7 +207,7 @@ exports.getUserProfile = async (req, res) => {
 };
 
 exports.getUserPhotos = async (req, res) => {
-  let { id } = req.body;
+  let { id } = req.query;
 
   // will follow this convention /photos/:userId
 

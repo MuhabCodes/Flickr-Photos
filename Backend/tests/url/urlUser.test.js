@@ -3,20 +3,22 @@ const app = require('../../bin/server');
 
 const request = supertest(app);
 
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// beforeAll(async () => {
-//   // DB Connection
-//   jest.setTimeout(30000);
-
-//   await mongoose
-//     .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
-//       { useNewUrlParser: true, useUnifiedTopology: true })
-//   // eslint-disable-next-line no-console
-//     .then(() => console.log('MongoDB Connected'))
-//   // eslint-disable-next-line no-console
-//     .catch((err) => console.log(err));
-// });
+beforeAll(async () => {
+  // DB Connection
+  jest.setTimeout(30000);
+  if (mongoose.connection.readyState) {
+    return;
+  }
+  await mongoose
+    .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
+      { useNewUrlParser: true, useUnifiedTopology: true })
+  // eslint-disable-next-line no-console
+    .then(() => console.log('MongoDB Connected'))
+  // eslint-disable-next-line no-console
+    .catch((err) => console.log(err));
+});
 
 const url = 'https://www.flickr.com/people/608dd1f51253c7348443ae76/';
 
@@ -35,8 +37,7 @@ test('Should return id and username of user given url', async (done) => {
 const id = '608dd1f51253c7348443ae76';
 test('Should return url to a userprofile', async (done) => {
   await request
-    .get('/urls/userprofile')
-    .send({ id })
+    .get('/urls/userprofile?id=608dd1f51253c7348443ae76')
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
       expect(response.status).toBe(200);
@@ -48,8 +49,7 @@ test('Should return url to a userprofile', async (done) => {
 const urlPhotos = 'https://www.flickr.com/photos/608dd1f51253c7348443ae76';
 test('Should return url to a userphotos', async (done) => {
   await request
-    .get('/urls/userphotos')
-    .send({ id })
+    .get('/urls/userphotos?id=608dd1f51253c7348443ae76')
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
       expect(response.status).toBe(200);
