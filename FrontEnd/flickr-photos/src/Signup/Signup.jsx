@@ -104,7 +104,7 @@ export default function SignUp() {
           <CssTextField variant="outlined" {...register('age')} name="Age" type="number" value={age} onChange={(e) => setAge(e.target.value)} label="Your Age" />
           <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.age && 'Required'}</p>
           <CssTextField variant="outlined" {...register('email')} name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
-          <span style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.email && 'Required'}</span>
+          <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.email && 'Required'}</p>
           <CssTextField variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
           <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.password && 'Required Must be 12 Characters'}</p>
           <Button
