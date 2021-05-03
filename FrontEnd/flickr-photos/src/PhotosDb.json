@@ -26,7 +26,7 @@
         {
             "title": "Paris",
             "imagePath": "https://images.pexels.com/photos/358561/pexels-photo-358561.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            "description": "Paris Seine Île de la Cité Pont Neuf Pont de Arts Square",
+            "description": "Paris Seine Île de la Cité Pont",
             "favs": 183,
             "comments": 170,
             "photoId": 3,
@@ -69,14 +69,14 @@
         },
         {
             "title": "Boat",
-            "imagePath": "https://images.pexels.com/photos/6750211/pexels-photo-6750211.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "imagePath": "https://images.pexels.com/photos/722427/pexels-photo-722427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             "description": "Boat in a lake",
             "favs": 130,
             "comments": 110,
             "photoId": 7,
             "user": "Jeanmarie Shelton",
-            "width": 438,
-            "height":657
+            "width": 608,
+            "height":403
         },
         {
             "title": "Infinite Beauty",
@@ -153,18 +153,18 @@
             "photoId": 14,
             "user": "Luis Del Rio",
             "width": 360,
-            "height":240
+            "height":270
         },
         {
             "title": "Food",
-            "imagePath": "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "imagePath": "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             "description": "Food photography",
             "favs": 280,
             "comments": 280,
             "photoId": 15,
             "user": "Ella Olssen",
-            "width": 360,
-            "height":240
+            "width": 608,
+            "height":403
         }
 
     ]
