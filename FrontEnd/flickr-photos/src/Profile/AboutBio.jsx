@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import edit from './assets/edit_icon.png';
 
-const text = 'seeing if this works, leave for later to re';
-
 const AboutBio = () => {
+  const [text, setText] = useState('where is change?');
   function Read() {
     //  Read function that checks whether user wants to expand or collapse the text area
     const dots = document.getElementById('dots');
@@ -27,6 +26,17 @@ const AboutBio = () => {
     readbtn.style.display = 'hide';
     document.getElementById('editingarea').style.display = 'block';
   }
+  function Cancel() {
+    document.getElementById('textcontainer').style.display = 'block';
+    document.getElementById('readbtn').style.display = 'block';
+    document.getElementById('editingarea').style.display = 'none';
+  }
+  function Save() {
+    setText(document.getElementById('usertextarea').value);
+    document.getElementById('textcontainer').style.display = 'block';
+    document.getElementById('readbtn').style.display = 'block';
+    document.getElementById('editingarea').style.display = 'none';
+  }
   return (
     <div className="bio-container">
       {/* edit bio button for user */}
@@ -38,11 +48,12 @@ const AboutBio = () => {
           {text}
         </textarea>
         <div className="editbio-actions">
-          <button type="button" className="save-bio">Save</button>
-          <button type="button" className="cancel-bio">Cancel</button>
+          <button type="button" className="save-bio" onClick={Save}>Save</button>
+          <button type="button" className="cancel-bio" onClick={Cancel}>Cancel</button>
         </div>
       </div>
       <div className="bio-body" id="textcontainer">
+        <p>{text}</p>
         <p>lets see how this acts and looks</p>
         <p>snother line just to see</p>
         <p>
