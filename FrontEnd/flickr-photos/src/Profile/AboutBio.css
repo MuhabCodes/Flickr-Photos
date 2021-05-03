@@ -20,6 +20,7 @@
     line-height: 24px;
     font-weight: 400;
     margin: 0;
+    overflow: hidden;
     transition:max-height 0.15s ease-out;
 
 }
@@ -43,24 +44,30 @@
     top: 40px;
     z-index: 81;
 }
+
+#readbtn{
+    bottom: 0;
+    right: 0;
+    display: block;
+    width:100%;
+    height: 60px;
+    text-align: left;
+    color: #006dac;
+    font-size:16px;
+    padding-top: 42px;
+    background-image: linear-gradient(to bottom, transparent, white);
+    cursor: pointer;
+}
+#readbtn:hover{
+    text-decoration: underline;
+}
 .divider{
     clear: both;
     border-top: 1px solid #e3e3e3;
 }
-#more{
-    display: none;
-}
-#readbtn{
-    background: none!important;
+button{
     border: none;
-    padding: 0!important;
-    font-family: arial, sans-serif;
-    color: #069;
-    text-decoration: underline;
-    cursor: pointer;
-    position: absolute;
-    padding: 10px;
-    bottom: 10px;
-    left: 17%;
-    margin-left: -104.5px;
+    background: none;
+    padding: 0;
+    margin: 0;
 }
