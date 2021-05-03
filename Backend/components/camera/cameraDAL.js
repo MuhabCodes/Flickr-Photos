@@ -15,3 +15,8 @@ module.exports.addCamera = async function addCamera({
   const cameras = await cameraObj.save();
   return cameras;
 };
+
+module.exports.getBrandModels = async function getBrandModels(brand) {
+  const brandObj = await Camera.find({ brandName: brand });
+  return brandObj;
+};

@@ -29,3 +29,18 @@ module.exports.AddCamera = async function AddCamera(req, res) {
     });
   }
 };
+
+module.exports.getBrandModels = async function getBrandModels(req, res) {
+  const { params } = req;
+  console.log(params.brand);
+  try {
+    const cameraModels = await cameraDAL.getBrandModels(params.brand);
+
+    return res.status(200).json(cameraModels);
+  } catch (err) {
+    return res.status(500).json({
+      message: "couldn't connect to db",
+      error: err,
+    });
+  }
+};
