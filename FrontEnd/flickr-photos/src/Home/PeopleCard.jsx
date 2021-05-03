@@ -3,7 +3,7 @@ import './PeopleCard.css';
 
 const PeopleCard = () => {
   const [name] = useState('Ahmed Mostafa');
-  const [avatar] = useState('https://lh3.googleusercontent.com/proxy/srrHIUmTv-Kyx2r_6oPvaCXWZUshFgkAzCfHVAptIdw9sNmvwCWZI6c6YEvIy3DRK1rPZfZWF7qJpQtyN_Mp-XLghfsPdb_PFJGpqHSIyjbo6YZsCPr4exg');
+  const [avatar] = useState('https://static.remove.bg/remove-bg-web/2a274ebbb5879d870a69caae33d94388a88e0e35/assets/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa.jpg');
   const [uName] = useState('AhmedMAyoub');
   const [bgImage] = useState('https://images.unsplash.com/photo-1619314367523-bc28b916dd9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
   const [Pro] = useState('Pro');

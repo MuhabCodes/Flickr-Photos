@@ -1,9 +1,9 @@
 .homePageContentMain
 {
+    padding-left: 20em;
     flex-direction: row ;
     display: flex;
-    margin: auto;
-    max-width: 80%;
+    max-width: 100%;
     flex-wrap: nowrap;
     background-color:#f3f5f6;
     height: 100%;
@@ -30,7 +30,6 @@
     padding: 16px 0;
     align-items: center;
     justify-content: space-between;
-    padding-right: 60px;
 }
 .homeFeedColumnContent 
 {
@@ -72,11 +71,11 @@
     max-width: 1200px;
     background-color:white;
     margin-bottom: 20px;
-    border-radius: 1%;
+    border-radius: 0%;
 }
 .feed-people-to-follow p
 {
-    padding-left: 1em;
+    padding-left: 1.75em;
 }
 .cards-container
 {
@@ -84,8 +83,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     position: relative;
-    margin: 0px;
-    padding-left: 1em;
+    padding-left: 1.75em;
 }
 .single-card
 {
@@ -96,7 +94,6 @@
 }
 .view-more
 {
-    width: 1020px;
     text-align:center;
     border-top: 1px solid #e1e1e1;
     height: 40px;
