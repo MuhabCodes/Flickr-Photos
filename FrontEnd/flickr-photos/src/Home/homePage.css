@@ -72,6 +72,11 @@
     max-width: 1200px;
     background-color:white;
     margin-bottom: 20px;
+    border-radius: 1%;
+}
+.feed-people-to-follow p
+{
+    padding-left: 1em;
 }
 .cards-container
 {
@@ -80,6 +85,7 @@
     flex-wrap: wrap;
     position: relative;
     margin: 0px;
+    padding-left: 1em;
 }
 .single-card
 {
