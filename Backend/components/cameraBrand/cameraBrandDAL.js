@@ -12,3 +12,8 @@ module.exports.getAllBrands = async function getAllBrands() {
   const brandObj = await CameraBrand.find().select('name _id');
   return brandObj;
 };
+
+module.exports.getBrandWithName = async function getBrandWithName(brandName) {
+  const brandObj = await CameraBrand.findOne({ name: brandName });
+  return brandObj;
+};

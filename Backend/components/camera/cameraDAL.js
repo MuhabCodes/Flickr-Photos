@@ -1,12 +1,12 @@
 const Camera = require('./cameraModel');
 
 module.exports.addCamera = async function addCamera({
-  name, brandId,
+  name, brandName,
 // storageType, imageUrl, megaPixels, zoom,
 }) {
   const cameraObj = new Camera({
     name,
-    brandId,
+    brandName,
     // storageType,
     // imageUrl,
     // megaPixels,

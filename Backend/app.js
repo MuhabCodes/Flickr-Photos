@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 // require routes only here
 const authRouter = require('./components/auth/authRouter');
-// const cameraRouter = require('./components/camera/cameraRouter');
+const cameraRouter = require('./components/camera/cameraRouter');
 const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 
 // declaring app
@@ -17,7 +17,7 @@ app.route('/').get((req, res) => {
   res.send('Hello world!');
 });
 app.use('/auth', authRouter);
-// app.use('/cameras', cameraRouter);
+app.use('/cameras', cameraRouter);
 app.use('/cameras/brands', cameraBrandRouter);
 
 // exporting

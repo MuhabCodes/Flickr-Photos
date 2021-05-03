@@ -5,8 +5,8 @@ const cameraSchema = new Schema({
     type: String,
     required: true,
   },
-  brandId: {
-    type: Schema.Types.ObjectId,
+  brandName: {
+    type: Schema.Types.String,
     ref: 'cameraBrand',
     required: true,
   },

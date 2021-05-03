@@ -1,13 +1,22 @@
 const cameraDAL = require('./cameraDAL');
+const camerBrandDAL = require('../cameraBrand/cameraBrandDAL');
 
-// assuming that the brandId would be given in the body of the request
+// assuming that the brandName would be given in the body of the request
 module.exports.AddCamera = async function AddCamera(req, res) {
   const { body } = req;
+
+  const brandObj = await camerBrandDAL.getBrandWithName(body.brandName);
+
+  if (!brandObj) {
+    return res.status(404).json({
+      message: "couldn't find brand with this name",
+    });
+  }
 
   try {
     const cameraObj = await cameraDAL.addCamera({
       name: body.name,
-      brandId: body.brandId,
+      brandName: body.brandName,
     //   storageType: body.storageType,
     //   imageUrl: body.imageUrl,
     //   megaPixels: body.megaPixels,

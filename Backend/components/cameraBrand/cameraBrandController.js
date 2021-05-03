@@ -24,3 +24,11 @@ module.exports.getBrands = async function getBrands(req, res) {
     });
   }
 };
+module.exports.getBrandWithName = async function getBrandWithName(req, res) {
+  try {
+    const brandObj = await cameraBrandDAL.getBrandWithName(req.params.brandName);
+    return res.status(200).json(brandObj);
+  } catch (error) {
+    return res.status(404).json(error);
+  }
+};
