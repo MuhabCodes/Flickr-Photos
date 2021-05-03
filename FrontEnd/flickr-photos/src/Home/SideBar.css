@@ -10,10 +10,11 @@
 {
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-size: 18px;
-    line-height: 1.2em;
-    font-weight: 600;
+    line-height: 1em;
+    font-weight:300;
+    text-align: left;
 }
 .exploreCardColumn
 {
