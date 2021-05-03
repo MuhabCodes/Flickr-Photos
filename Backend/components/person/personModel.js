@@ -1,47 +1,42 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-
-
-const personSchema = new Schema({
-    personId:
-    {type:mongoose.Schema.Types.ObjectId,
-      ref:'Person',
-      required:true
-  },
-  
-user:{ 
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'User',
-    required:true
-  },
+const personSchema = new mongoose.Schema({
+  _id:
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
   birthDate:
-  {type:Date,
-   required:true
-
+  {
+    type: String,
+    required: true,
 
   },
   realName:
-  {type:string,
-   required:true   
-
+  {
+    type: String,
+    required: true,
 
   },
   dateCreated:
-  {type:Date,
-   required:true   
+  {
+    type: String,
+    required: true,
 
+  },
+  description:
+  { type: String },
 
-  }
+  homeTown:
+  { type: String },
 
+  occupation:
+  { type: String },
 
-
-
-
-
-
-
-
-
-
-  
+  city:
+  { type: String },
+  country:
+  { type: String },
 });
+
+module.exports = mongoose.model('Person', personSchema);

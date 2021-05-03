@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('./userModel');
 
 exports.getUserByEmail = async function getWithEmail(email) {

@@ -1,25 +1,23 @@
-const { Schema, model } = require('mongoose');
-const photosSchema = new Schema({
+const mongoose = require('mongoose');
 
-    photoId:{ 
-        type:mongoose.Schema.Types.ObjectId,
-        required:true
-      },
+const photosSchema = mongoose.Schema({
 
-      isPublic:
-      {
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
 
+  isPublic:
+      { type: Boolean },
+  title:
+      { type: String },
+  secret:
+      { type: String },
+  isFamily:
+      { type: Boolean },
+  isFriend:
+      { type: Boolean },
 
-      }
+});
 
-
-
-
-
-
-    
-    
-    })
-
-
-    module.exports = model('Photo', photosSchema);
+module.exports = mongoose.model('Photos', photosSchema);

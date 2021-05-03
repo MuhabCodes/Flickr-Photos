@@ -1,4 +1,3 @@
-// const bcrypt = require('bcrypt');
 const { join } = require('path');
 const userDAL = require('../User/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
