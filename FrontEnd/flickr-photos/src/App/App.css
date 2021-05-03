@@ -1,4 +1,16 @@
 
+/* to maintain the position of the footer  */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 100px;
+  
+ 
+}
+
 .navbar-light .navbar-nav .nav-link:hover{
   color:rgba(255,255,255,.75);
 }
@@ -7,9 +19,7 @@
   background-color: #212124;
  
 }
-.App{
-  position: relative;
-}
+
 
 .navbar-light .navbar-brand{
   color: white;
@@ -76,7 +86,7 @@
 
 /* STYLING OF FOOTER */
 .footer {
-  position: relative;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;

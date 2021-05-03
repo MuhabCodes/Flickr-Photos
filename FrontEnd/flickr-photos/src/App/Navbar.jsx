@@ -26,6 +26,7 @@ function NavBar() {
         </Navbar.Brand>
 
         <NavDropDown />
+
         <div className="icons">
           <a href="#home">
             <i className="fas fa-cloud-upload-alt" />
@@ -38,35 +39,6 @@ function NavBar() {
         </div>
 
       </Navbar>
-      <h1>sandy</h1>
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-
-      <h1>sandy</h1>
-      <h1>sandy</h1>
-      <h1>sandy</h1>
-      <h1>sandy</h1>
-      <h1>sandy</h1>
-      <h1>sandy</h1>
 
     </div>
   );
