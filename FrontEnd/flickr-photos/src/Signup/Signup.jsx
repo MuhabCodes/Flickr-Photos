@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import background from './background.jpg';
 import icon from './flickrlogo.png';
 
@@ -52,27 +53,16 @@ export default function SignUp() {
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
+  // const [passwordError, setpasswordError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  // const [state, setState] = useState({
-  //   firstName: '',
-  //   lastName: '',
-  //   age: '',
-  //   email: '',
-  //   password: '',
-  // });
-  // function handleChange(evt) {
-  //   const { value } = evt.target;
-  //   setState({
-  //     ...state,
-  //     [evt.target.name]: value,
-  //   });
-  // }
-  // function handleChange(event) {
-  //   let val = event.target.value;
-  // }
+  // validatePassword = () => {
+  //   let passwordError = "";
+
+  // };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
     <div style={{
@@ -80,24 +70,23 @@ export default function SignUp() {
       justifyContent: 'center',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-      width: '100%',
-      minHeight: '850px',
+      width: '100vw',
+      minHeight: '100vh',
       backgroundRepeat: 'no-repeat',
     // background image stylings
     }}
     >
-      {/* <div>{AppBar()}</div> */}
       <Card className={classes.root}>
         <img src={icon} style={{ width: '25%', justifyContent: 'center', alignSelf: 'center' }} alt="icon" />
         <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
           Sign up for Flickr
         </Typography>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={() => history.push('/verifysignup')}>
           <CssTextField variant="outlined" style={{ justifyContent: 'center', alignSelf: 'center' }} required value={firstName} onChange={(e) => setFName(e.target.value)} label="First Name" />
           <CssTextField variant="outlined" required value={lastName} onChange={(e) => setLName(e.target.value)} label="Last Name" />
           <CssTextField variant="outlined" type="number" required value={age} onChange={(e) => setAge(e.target.value)} label="Your Age" />
           <CssTextField variant="outlined" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
-          <CssTextField variant="outlined" rules={{ minLength: 0 }} type="password" required value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
+          <CssTextField variant="outlined" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
 
           <Button
             variant="contained"

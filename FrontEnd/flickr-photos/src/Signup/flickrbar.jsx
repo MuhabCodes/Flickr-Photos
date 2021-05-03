@@ -7,9 +7,9 @@ import icon from './flickrlogo.png';
 export default function ButtonAppBar() {
   return (
     <div>
-      <AppBar position="fixed" style={{ backgroundColor: 'black', maxHeight: '50px' }}>
+      <AppBar position="fixed" style={{ backgroundColor: 'black', minHeight: '7vh', maxHeight: '7vh' }}>
         <Toolbar>
-          <img src={icon} style={{ width: '5%' }} alt="icon" />
+          <img src={icon} style={{ width: '5vw' }} alt="icon" />
           <Typography
             id="typography"
             variant="h6"

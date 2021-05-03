@@ -41,8 +41,8 @@ export default function VerifySignup() {
       justifyContent: 'center',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-      width: '100%',
-      minHeight: '850px',
+      width: '100vw',
+      minHeight: '100vh',
       backgroundRepeat: 'no-repeat',
       // background image stylings
     }}
