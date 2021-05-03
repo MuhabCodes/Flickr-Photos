@@ -1,4 +1,5 @@
 const User = require('./userModel');
+const userDAL = require('./userDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -15,18 +16,28 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   }
 };
 
-exports.getUserByEmail = async function getWithEmail(req,res) {
-    const email =req.params.email
-    try {
-      const userObj = await User.findOne({email})
-      return res.status(200).json({userObj
-        
-        //TODO :userName : connection between user and people
-      })
-    } catch (err) {
-      return status(500).json({
-        error : err
-      })
-    }
-    
-}
+exports.getUserByEmail = async function getWithEmail(req, res) {
+  const { email } = req.params;
+  try {
+    const userObj = await User.findOne({ email });
+    return res.status(200).json({
+      userObj,
+
+      // TODO :userName : connection between user and people
+    });
+  } catch (err) {
+    return res.status(500).json({
+      error: err,
+    });
+  }
+};
+
+exports.getUserInfoById = async function getUserInfoById(req, res) {
+  const { params } = req;
+  try {
+    const userObj = await userDAL.getUserById(params.userId);
+    return res.status(200).json(userObj);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};

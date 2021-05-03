@@ -40,3 +40,7 @@ module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) 
   userObj.save();
   return userObj;
 };
+module.exports.getUserById = async function getUserById(userId) {
+  const userObj = await User.findById(userId);
+  return userObj;
+};
