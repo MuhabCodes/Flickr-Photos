@@ -12,7 +12,7 @@ test('Should return all brands in DataBase', async (done) => {
 });
 
 const brand = {
-  name: 'Nikon',
+  name: 'for testing',
 };
 test('should create a brand', async (done) => {
   await request
@@ -20,6 +20,17 @@ test('should create a brand', async (done) => {
     .send(brand)
     .set('Accept', 'application/json') // sets the data type to be json
 
+    .expect(200);
+  done();
+});
+
+const brandname = {
+  name: 'Nikon',
+};
+test('should return a brand given its name', async (done) => {
+  await request
+    .get(`/cameras/brands/${brandname}`)
+    .set('Accept', 'application/json') // sets the data type to be json
     .expect(200);
   done();
 });

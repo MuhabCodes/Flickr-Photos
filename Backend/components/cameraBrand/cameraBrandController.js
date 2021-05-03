@@ -9,7 +9,7 @@ module.exports.createBrand = async function createBrand(req, res) {
         message: `There is already a brand named like this ${body.name}`,
       });
     }
-    return res.status(500).json(brandObj);
+    return res.status(200).json(brandObj);
   } catch (err) {
     return res.status(500).json({
       error: err,
