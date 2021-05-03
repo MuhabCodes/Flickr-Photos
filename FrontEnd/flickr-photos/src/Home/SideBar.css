@@ -1,0 +1,35 @@
+.exploreCardMain
+{
+    background-color: #fff;
+    padding: 1em;
+    margin-top: 2.5em;
+    border-radius: 5px;
+    margin-bottom: 2.5em;
+}
+.exploreCardTitle
+{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    color: #212124;
+    margin: 0 0 12px;
+    font-size: 18px;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+.exploreCardColumn
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.exploreCardRow
+{
+    flex: 50%;
+}
+.exploreCardRow img
+{
+    vertical-align: middle;
+    max-width: 50%;
+    height: auto;
+    padding : 2px;
+    object-fit: contain;
+}
