@@ -4,9 +4,9 @@
     padding: 1em;
     margin-top: 2.5em;
     border-radius: 5px;
-    margin-bottom: 2.5em;
+    margin-bottom: 1em;
 }
-.exploreCardTitle
+.sideBarCardTitle
 {
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
@@ -24,13 +24,41 @@
 }
 .exploreCardRow
 {
-    flex: 50%;
+    display: flex;
+    flex: 1;
+    max-width: 270px;
 }
 .exploreCardRow img
 {
-    vertical-align: middle;
-    max-width: 50%;
-    height: auto;
+    min-width: 30px;
+    height: 85px;
     padding : 2px;
-    object-fit: contain;
+    float: right;
+    flex-grow: 1;
+    object-fit: cover;
+}
+.groupsForYouContainer
+{
+    width: 300px;
+    height: 290px;
+    background-color: #fff;
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 5px;
+    margin-bottom: 2.5em;
+}
+.groupsRecommendationsContainer
+{
+    width: 260px;
+    height: 220px;
+}
+.groupRow
+{
+    width: 260px;
+    height: 110px;
+}
+.singleGroupCard
+{
+    margin-bottom: 10px;
+    height: 100px;
 }

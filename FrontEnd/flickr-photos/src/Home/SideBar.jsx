@@ -1,12 +1,12 @@
 import React from 'react';
 import './SideBar.css';
 import ExploreCard from './ExploreCard';
+import GroupsForYou from './GroupsForYou';
 
 const SideBar = () => (
   <div className="sideBarMain">
-    <div className="explorePhotosCard" />
     <ExploreCard />
-    <div className="groupsForYouCard" />
+    <GroupsForYou />
     <div className="upgradeToProCard" />
   </div>
 );
