@@ -1,11 +1,15 @@
 const CameraBrand = require('./cameraBrandModel');
 
-module.exports.createBrand = async function createBrand(name) {
-  const brandObj = new CameraBrand({
-    name,
-  });
-  const brand = await brandObj.save();
-  return brand;
+module.exports.createBrand = async function createBrand(brandName) {
+  const checking = await CameraBrand.findOne({ name: brandName });
+  if (checking === null) {
+    const brandObj = new CameraBrand({
+      name: brandName,
+    });
+    const brand = await brandObj.save();
+    return brand;
+  }
+  return null;
 };
 
 module.exports.getAllBrands = async function getAllBrands() {
