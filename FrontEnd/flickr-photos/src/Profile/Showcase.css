@@ -6,7 +6,7 @@
 .showcase{
     position: relative;
     border-bottom: 1px solid #e3e3e3;
-    padding: 40px 10%;
+    padding: 40px 10%;;
 }
 .title-view{
     font-size: 16px;
@@ -17,8 +17,15 @@
     cursor: pointer;
     position: relative;
 }
-.photo-list-view{
-    height: 1191px;
+.showcase-container{
+    
+}
+.grid-item {
+    float: left;
+    min-width: 150px;
+    height: 250px;
+    padding: 2px;
+    text-align: left;
 }
 .divider{
     clear: both;
