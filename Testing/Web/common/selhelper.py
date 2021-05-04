@@ -1,3 +1,7 @@
+from time import sleep
+import sys
+import traceback
+
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -57,15 +61,24 @@ class SelHelper(object):
         )
         return self.driver
 
-    def init_firefox_driver(self):
-        """ Initialize Helper object's driver with chromedriver.
+    # def init_firefox_driver(self):
+    #     """ Initialize Helper object's driver with chromedriver.
 
-        :return: Helper object's driver
+    #     :return: Helper object's driver
+    #     """
+    #     self.driver = webdriver.Firefox(
+    #         executable_path=GeckoDriverManager().install()
+    #     )
+    #     return self.driver
+
+    def implicit_wait(self, time_to_wait: float = 30):
+        """ Sets a sticky timeout to implicitly wait for an element to be
+        found, or a command to complete. This method only needs to be called
+        one time per session.
+
+        :param time_to_wait:  float waiting time
         """
-        self.driver = webdriver.Firefox(
-            executable_path=GeckoDriverManager().install()
-        )
-        return self.driver
+        self.driver.implicitly_wait(time_to_wait)
 
     def element_located(self, by: By, identifier: str, max_time: float = 100):
         """ Detect if an element is present in the page.
@@ -115,6 +128,7 @@ class SelHelper(object):
             return True
         except (NoSuchElementException, StaleElementReferenceException,
                 ElementNotInteractableException):
+            traceback.print_exception(*sys.exc_info())
             return False
 
     def find_element(self, by: By, identifier: str):
@@ -128,6 +142,7 @@ class SelHelper(object):
             element: WebElement = self.driver.find_element(by, identifier)
             return element
         except NoSuchElementException:
+            traceback.print_exception(*sys.exc_info())
             return None
 
     def find_elements(self, by: By, identifier: str):
@@ -141,6 +156,7 @@ class SelHelper(object):
             elements = self.driver.find_elements(by, identifier)
             return elements
         except NoSuchElementException:
+            traceback.print_exception(*sys.exc_info())
             return None
 
     def clear_element(self, element: WebElement):
@@ -153,6 +169,7 @@ class SelHelper(object):
             element.clear()
             return True
         except (NoSuchElementException, StaleElementReferenceException):
+            traceback.print_exception(*sys.exc_info())
             return False
 
     def send_key(self, element: WebElement,
@@ -175,6 +192,7 @@ class SelHelper(object):
             element.send_keys(text)
             return True
         except (NoSuchElementException, StaleElementReferenceException):
+            traceback.print_exception(*sys.exc_info())
             return False
 
     def click(self, button: WebElement):
@@ -183,6 +201,28 @@ class SelHelper(object):
         :param button: Webdriver Element to be clicked
         """
         button.click()
+
+    def forward(self, wait_before: float = None, wait_after: float = 5):
+        """ Go Forward.
+
+        :param wait_before: Time to wait before going Forward
+        :param wait_after: Time to wait after going Forward
+        """
+        if wait_before is not None:
+            sleep(wait_before)
+        self.driver.forward()
+        sleep(wait_after)
+
+    def back(self, wait_before: float = None, wait_after: float = 5):
+        """ Go Back.
+
+        :param wait_before: Time to wait before going Back
+        :param wait_after: Time to wait after going Back
+        """
+        if wait_before is not None:
+            sleep(wait_before)
+        self.driver.back()
+        sleep(wait_after)
 
     def close(self):
         """ Close the current window."""
