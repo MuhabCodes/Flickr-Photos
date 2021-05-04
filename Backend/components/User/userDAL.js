@@ -49,3 +49,8 @@ module.exports.getUserGroupsById = async function getUserById(userId) {
   const userObj = await User.findById(userId).populate('groups');
   return userObj;
 };
+
+module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
+  const userObj = await User.find({ displayName: displayname });
+  return userObj;
+};

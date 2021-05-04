@@ -1,11 +1,10 @@
-const User = require('./userModel');
 const userDAL = require('./userDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
   try {
     // TODO: this should be moved to DAL
-    const userObj = await User.findOne({ displayName });
+    const userObj = await userDAL.getUserByDisplayName(displayName);
 
     return res.status(200).json(userObj);
     // TODO :userName : connection between user and people
@@ -19,7 +18,7 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
 exports.getUserByEmail = async function getWithEmail(req, res) {
   const { email } = req.params;
   try {
-    const userObj = await User.findOne({ email });
+    const userObj = await userDAL.getUserByEmail(email);
     return res.status(200).json({
       userObj,
 
