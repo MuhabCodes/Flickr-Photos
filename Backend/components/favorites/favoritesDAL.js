@@ -10,8 +10,8 @@ module.exports.createFavorite = async function createFavorite(
     photo: favoriteParameter.photoId,
 
   });
-  favoriteobject.save();
-  return favoriteobject;
+  const favoriteReturned = await favoriteobject.save();
+  return favoriteReturned;
 };
 module.exports.findFavorite = async function findFavorite(userID) {
   const foundFavorite = await Favorite.find({ user: userID })
