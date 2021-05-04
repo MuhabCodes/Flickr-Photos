@@ -41,3 +41,11 @@ test('Should return all groups for user by userId', async (done) => {
     .expect(200);
   done();
 });
+
+test('should return all photos for a given user', async (done) => {
+  await request
+    .get(`/user/${userId}/photos`)
+    .set('Accept', 'application/json') // sets the data type to be json
+    .expect(200);
+  done();
+});

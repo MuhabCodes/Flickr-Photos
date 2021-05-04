@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('./userModel');
+const Photo = require('../photos/photoModel');
 
 exports.getUserByEmail = async function getWithEmail(email) {
   const userObj = await User.findOne({ email });
@@ -53,4 +54,9 @@ module.exports.getUserGroupsById = async function getUserById(userId) {
 module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
   const userObj = await User.find({ displayName: displayname });
   return userObj;
+};
+
+module.exports.getPhotos = async function getUserPhotos(userId) {
+  const photoObj = await Photo.find({ user: userId });
+  return photoObj;
 };

@@ -3,6 +3,7 @@ const cors = require('cors');
 // require routes only here
 const authRouter = require('./components/auth/authRouter');
 const userRouter = require('./components/User/userRoute');
+const groupRouter = require('./components/group/groupRoute');
 
 // declaring app
 const app = express();
@@ -17,6 +18,6 @@ app.route('/').get((req, res) => {
 });
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
-
+app.use('/groups', groupRouter);
 // exporting
 module.exports = app;
