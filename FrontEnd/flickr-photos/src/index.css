@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f5f6;
 }
 
 code {
@@ -22,3 +23,4 @@ code {
 @import "./Profile/Showcase.css";
 @import "./Profile/UserInfo.css";
 @import "./Profile/GeneralStats.css";
+@import "./Profile/MostPop.css";
