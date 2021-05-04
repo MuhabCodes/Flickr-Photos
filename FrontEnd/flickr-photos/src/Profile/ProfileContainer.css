@@ -7,6 +7,7 @@
     box-sizing: border-box;
     margin-bottom: 40px;
     opacity: 1!important;
+    background-color: #f3f5f6;
 }
 .bio-description-section{
     background: #fff;
@@ -14,4 +15,7 @@
     box-shadow: 0 0 0 1px #e3e3e3;
     appearance: none;
     line-height: 14px;
+}
+.most-pop{
+    background-color: #f3f5f6!important;
 }
