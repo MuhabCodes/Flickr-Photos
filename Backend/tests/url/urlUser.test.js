@@ -6,7 +6,7 @@ const request = supertest(app);
 const mongoose = require('mongoose');
 
 beforeAll(async () => {
-  // DB Connection
+  DB Connection
   jest.setTimeout(30000);
   if (mongoose.connection.readyState) {
     return;
@@ -14,9 +14,9 @@ beforeAll(async () => {
   await mongoose
     .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
       { useNewUrlParser: true, useUnifiedTopology: true })
-  // eslint-disable-next-line no-console
+  eslint-disable-next-line no-console
     .then(() => console.log('MongoDB Connected'))
-  // eslint-disable-next-line no-console
+  eslint-disable-next-line no-console
     .catch((err) => console.log(err));
 });
 
