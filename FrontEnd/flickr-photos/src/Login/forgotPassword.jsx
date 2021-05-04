@@ -14,7 +14,6 @@ import lockicon from './lockicon.png';
 
 const CssTextField = withStyles({
   root: {
-    // margin: 10,
     minWidth: 305,
     justifyContent: 'center',
     alignSelf: 'center',
@@ -56,6 +55,7 @@ export default function VerifySignup() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
+  // when the form is submitted to go to the send email page by react router dom
   const submitForm = () => {
     history.push('/sendemail');
   };

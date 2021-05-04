@@ -15,7 +15,6 @@ import icon from './flickrlogo.png';
 // Styles Added to The inputs
 const CssTextField = withStyles({
   root: {
-    // margin: 10,
     minWidth: 305,
     justifyContent: 'center',
     alignSelf: 'center',
@@ -26,7 +25,6 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    // alignItems: "center",
     marginTop: 150,
     padding: 10,
     minWidth: 360,
@@ -48,13 +46,14 @@ const useStyles = makeStyles({
   },
 });
 
+// the schema of the inputs needed to be validated
 const schema = yup.object().shape({
   password: yup.string().min(12).required(),
-  // age: yup.number().integer().positive().required(),
   email: yup.string().email().required(),
 });
 
 export default function SignUp() {
+  // the passing of the scheme using the useForm from the react hook library
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -63,13 +62,6 @@ export default function SignUp() {
   // to save the changes made in each of this inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //   const history = useHistory();
-  // const [passwordError, setpasswordError] = useState('');
-
-  // validatePassword = () => {
-  //   let passwordError = "";
-
-  // };
   const submitForm = () => {
   };
 
