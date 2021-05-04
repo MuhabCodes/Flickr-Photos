@@ -83,7 +83,7 @@ test('Creating a favorite', async (done) => {
     .post('/favorites/5d6ede6a0ba62570afcedd3d')
     .send({ favoriteDate })
     .set('Accept', 'application/json') // sets the data type to be json
-    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYxMDcifQ.T9BMwuwH0OW1SNnbjssPSmGRukppWy77lAWjpEfiBMI')
+    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODExNDUifQ.vklpwv2Uwoqiz2vWyfxEmX_oXjtOHcJ5keNJWPnp-xk')
     .expect((response) => {
       expect(response.status).toBe(201);
 
@@ -113,3 +113,14 @@ test('Should return user profileData', async (done) => {
       done();
     });
 });
+test('Deleting a Favorite', async (done) => {
+  await request
+    .delete('/favorites/5d6ede6a0ba62570afcedd3d')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYzY2MifQ.MnxzxLmt5UsR_GHFX-xgMngPp2jYLZL_lM1Hwtt79i8')
+    .expect((response) => {
+      expect(response.status).toBe(200);
+      done();
+    });
+});
+
