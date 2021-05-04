@@ -5,4 +5,5 @@ const router = express.Router();
 router.get('/displayname/:displayName', userController.getUserbyDisplayName);
 router.get('/email/:email', userController.getUserByEmail);
 router.get('/:userId/info', userController.getUserInfoById);
+router.get('/:userId/groups', userController.getGroups);
 module.exports = router;

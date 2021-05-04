@@ -14,3 +14,7 @@ module.exports.createGroup = async function createGroup({
   const group = await groupObj.save();
   return group;
 };
+module.exports.getAllGroup = async function getAllGroup() {
+  const group = await Group.find();
+  return group;
+};

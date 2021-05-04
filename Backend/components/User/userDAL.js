@@ -44,3 +44,8 @@ module.exports.getUserById = async function getUserById(userId) {
   const userObj = await User.findById(userId);
   return userObj;
 };
+
+module.exports.getUserGroupsById = async function getUserById(userId) {
+  const userObj = await User.findById(userId).populate('groups');
+  return userObj;
+};

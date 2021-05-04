@@ -41,3 +41,13 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
     return res.status(500).json(error);
   }
 };
+
+exports.getGroups = async function getGroupps(req, res) {
+  const { params } = req;
+  try {
+    const userObj = await userDAL.getUserGroupsById(params.userId);
+    return res.status(200).json(userObj.groups);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};

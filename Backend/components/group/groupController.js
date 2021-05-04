@@ -1,6 +1,6 @@
 const groupDAL = require('./groupDAL');
 const UserDAL = require('../User/userDAL');
-const User = require('../User/userModel');
+
 require('dotenv').config();
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
@@ -34,4 +34,12 @@ exports.createGroup = async function createNewGroup(req, res) {
     });
   }
 };
-// 608ec98754b9193a84bf9750
+
+exports.getAllGroups = async function getAllGroups(req, res) {
+  try {
+    const groupObj = await groupDAL.getAllGroup();
+    return res.status(200).json(groupObj);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
