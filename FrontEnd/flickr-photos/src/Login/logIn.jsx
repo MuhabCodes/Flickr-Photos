@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -49,8 +49,6 @@ const useStyles = makeStyles({
 });
 
 const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
   password: yup.string().min(12).required(),
   // age: yup.number().integer().positive().required(),
   email: yup.string().email().required(),
@@ -73,7 +71,6 @@ export default function SignUp() {
 
   // };
   const submitForm = () => {
-    // history.push('/verifysignup');
   };
 
   return (
@@ -114,12 +111,12 @@ export default function SignUp() {
             sign in
           </Button>
         </form>
-        {/* <Link to="/forgotpassword">Forgot Password?</Link> */}
+        <Link to="/forgotpassword" style={{ marginTop: '12px', fontSize: '14px' }}>Forgot Password?</Link>
         <div style={{
           fontSize: '0.875rem', position: 'relative', alignSelf: 'center',
         }}
         >
-          <p>
+          <p style={{ marginTop: '15px' }}>
             Not a Flickr member? Sign up here.
           </p>
         </div>

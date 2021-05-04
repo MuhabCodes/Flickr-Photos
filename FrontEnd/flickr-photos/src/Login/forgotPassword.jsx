@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -51,11 +52,12 @@ const schema = yup.object().shape({
 export default function VerifySignup() {
   const classes = useStyles();
   const [email, setEmail] = useState('');
+  const history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
   const submitForm = () => {
-    // history.push('/verifysignup');
+    history.push('/sendemail');
   };
 
   return (
