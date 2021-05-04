@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
+const { ObjectId } = require('mongoose').Types;
 
 const favoriteDAL = require('./favoritesDAL');
-
-const { ObjectId } = require('mongoose').Types;
 
 require('dotenv').config();
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
@@ -12,6 +11,11 @@ exports.add = async function addFavorite(req, res) {
 
   const { userId } = await decryptAuthToken(authorization);
   try {
+    const favoriteIfFound = await
+    favoriteDAL.findFavoriteByUserAndPhoto({ userId, photoId: req.params.photoId });
+    if (favoriteIfFound.length !== 0) {
+      return res.status(400).json({ message: 'You already liked this photo' });
+    }
     const favorite = await favoriteDAL.createFavorite({
       id: new mongoose.Types.ObjectId(),
       userID: userId,
@@ -41,6 +45,7 @@ exports.add = async function addFavorite(req, res) {
     });
   }
 };
+// error here makes non sense
 exports.findFavorite = async function findFavorite(req, res) {
   const user = req.params.userId;
   const toId = ObjectId(user);
@@ -62,7 +67,7 @@ exports.findFavorite = async function findFavorite(req, res) {
     });
   }
 };
-
+// error here makes non sense
 exports.findPublicFavorite = async function findPublicFavorite(req, res) {
   const user = req.params.userId;
   const toId = ObjectId(user);
@@ -88,6 +93,7 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     });
   }
 };
+// error here makes non sense
 exports.deleteFavorite = async function deleteFavorite(req, res) {
   const { authorization } = req.headers;
   const { userId } = await decryptAuthToken(authorization);

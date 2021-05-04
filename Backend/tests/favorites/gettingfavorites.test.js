@@ -19,7 +19,7 @@ const favoriteDate = '1212';
 const request = supertest(app);
 const photo = {
   total: 1,
-  owner: '507f191e810c19729de860ca',
+  owner: '507f191e810c19729de863cc',
   photos: [
     {
       photo: {
@@ -32,7 +32,7 @@ const photo = {
 };
 
 const photopublic = {
-  owner: '507f191e810c19729de860ca',
+  owner: '507f191e810c19729de863cc',
   photo: [
     {
       photo: {
@@ -59,7 +59,7 @@ const responseadding = {
 
 test('Should return user favorites  photos', async (done) => {
   await request
-    .get('/favorites/507f191e810c19729de860ca')
+    .get('/favorites/507f191e810c19729de863cc')
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
       expect(response.status).toBe(200);
@@ -70,7 +70,7 @@ test('Should return user favorites  photos', async (done) => {
 
 test('Should return user public favorites  photos', async (done) => {
   await request
-    .get('/favorites/public/507f191e810c19729de860ca')
+    .get('/favorites/public/507f191e810c19729de863cc')
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
       expect(response.status).toBe(200);
@@ -80,12 +80,24 @@ test('Should return user public favorites  photos', async (done) => {
 });
 test('Creating a favorite', async (done) => {
   await request
-    .post('/favorites/5d6ede6a0ba62570afcebbaa')
+    .post('/favorites/5d6ede6a0ba62570afcedd3d')
     .send({ favoriteDate })
     .set('Accept', 'application/json') // sets the data type to be json
-    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODY2YWEifQ.IPmL5go9w-UpVuE874Qw0OpCI5JJYmdP-qKs3eVioj0')
+    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYxMDcifQ.T9BMwuwH0OW1SNnbjssPSmGRukppWy77lAWjpEfiBMI')
     .expect((response) => {
       expect(response.status).toBe(201);
+
+      done();
+    });
+});
+test('Creating a Done favorite', async (done) => {
+  await request
+    .post('/favorites/5d6ede6a0ba62570afcedd3d')
+    .send({ favoriteDate })
+    .set('Accept', 'application/json') // sets the data type to be json
+    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYxMDUifQ.4_VLjQEdjrsodEPQTmzfAiFzM9MVTdx2ubcGfKBbWJo')
+    .expect((response) => {
+      expect(response.status).toBe(400);
 
       done();
     });

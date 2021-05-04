@@ -28,3 +28,10 @@ module.exports.deleteFavorite = async function deleteFavorite(favoriteToDelete) 
     .exec();
   return deletedFavorite;
 };
+module.exports.findFavoriteByUserAndPhoto = async function
+findFavoriteByUserAndPhoto(favoriteToFind) {
+  const foundFavorite = await
+  Favorite.find({ user: favoriteToFind.userId, photo: favoriteToFind.photoId })
+    .exec();
+  return foundFavorite;
+};
