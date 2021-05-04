@@ -7,7 +7,7 @@
  * 
  * @apiDescription Returns the url to a user's profile.
  * 
- * @apiParam  {String} [userId] The Id of the user to fetch the url for. If omitted, the calling user is assumed.
+ * @apiQuery {Number} userId The Id of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
  * @apiSuccess (Success 200) {Object} userProfileUrl the url to a user's profile.

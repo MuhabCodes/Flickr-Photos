@@ -1,14 +1,13 @@
 /**
  * 
- * @api {get} /urls/gallery/:url lookupGallery
+ * @api {get} /urls/gallery/ lookupGallery
  * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
  * @apiDescription Returns gallery info, by url.
  * 
- * @apiParam  {String} url The gallery's URL.
- * 
+ * @apiBody {String} {url: The gallery's URL.}
  * 
  * 
  * @apiSuccess (Success 200) {Object} galleryInfo gallery info by url.

@@ -1,13 +1,13 @@
 /**
  * 
- * @api {get} /urls/group/:url lookupGroup
+ * @api {get} /urls/group/ lookupGroup
  * 
  * @apiGroup urls
  * @apiVersion  1.0.0
  * 
  * @apiDescription Returns a group Id, given the url to a group's page or photo pool.
  * 
- * @apiParam  {String} url The url to the group page or photo pool.
+ * @apiBody {String} {url: The url to the group page or photo pool.}
  * 
  * @apiSuccess (Success 200) {Object} groupId The group id.
  * @apiSuccess (Success 200) {Number} statusCode The status code
