@@ -1,8 +1,8 @@
 const { join } = require('path');
 require('dotenv').config({ path: join(__dirname, '/../../../secret/', '.env') });
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const userDAL = require('../../User/userDAL');
+const utilsPassword = require('../../../utils/passwords');
 
 module.exports.verifyPassword = async function verifyPassword({ email, password }) {
   // get user from DB
@@ -10,7 +10,7 @@ module.exports.verifyPassword = async function verifyPassword({ email, password 
   // if user exists and account is activated check for matching passwords
   // and then return token if true
   if (user && user.isActivated) {
-    if (await bcrypt.compare(password, user.password)) {
+    if (await utilsPassword.comparePassword(password, user.password)) {
       const tokenPayload = {
         userId: user._id,
       };

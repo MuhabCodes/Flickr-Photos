@@ -24,3 +24,12 @@ module.exports.decryptConfirmationToken = async function decryptConfirmationToke
     throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid' }));
   }
 };
+
+module.exports.decryptResetPasswordToken = async function decryptConfirmationToken(token) {
+  try {
+    const decrypted = await decryptToken(token, process.env.RESET_PASSWORD_KEY);
+    return decrypted;
+  } catch (_) {
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid' }));
+  }
+};

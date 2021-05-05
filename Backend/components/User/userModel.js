@@ -19,9 +19,6 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  cameraRoll: { // Contains all photos of user and only accessible to it (public,private ... etc)
-    type: [String], // TODO : Change to photoId when photo is done.
-  },
   galleries: {
     type: [String], // TODO : Change to gallery array when gallery is done
   },
