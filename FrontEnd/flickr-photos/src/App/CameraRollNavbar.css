@@ -1,0 +1,13 @@
+.navbar{
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
+    
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+

@@ -5,7 +5,9 @@ import CameraRoll from './CameraRoll';
 function App() {
   return (
     <div className="App">
+
       <CameraRoll />
+
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CameraRoll.css';
 import cameraRollContent from '../services/CameraRollContent';
+import CameraRollNavbar from './CameraRollNavbar';
 
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
@@ -16,28 +17,44 @@ function CameraRoll() {
 
   const sortedDates = photos.sort((a, b) => a.DateTaken.split('/').reverse().join().localeCompare(b.DateTaken.split('/').reverse().join()));
 
-  const sortedFromLatestToOledest = sortedDates.reverse();
-  const content = sortedFromLatestToOledest.map((item) => (
-    <div className="images">
+  const sortedFromLatestToOldest = sortedDates.reverse();
+  const filtered = Object.values(sortedFromLatestToOldest.reduce((acc, val) => {
+    const dateparts = val.DateTaken.split('/');
+    const date = new Date(dateparts[2], dateparts[1], dateparts[0]);
+    // console.log(date);
+    if (!acc[date]) acc[date] = [];
+    acc[date].push(val);
+    return acc;
+  }, {}));
+
+  const days = filtered.map((day) => (
+    <div className="sandy">
       <h6>
-        {item.monthTaken}
+        {day[0].monthTaken}
         {' '}
-        {item.dayTaken}
+        {day[0].dayTaken}
         {', '}
-        {item.yearTaken}
-
+        {day[0].yearTaken}
       </h6>
-      <img key={item.photoId} src={item.imagePath} alt="" className="image-size" />
-    </div>
+      {
+        day.map((image) => (
+          <div className="images">
+            <img key={image.photoId} src={image.imagePath} alt="" id="image-size" />
+            <br />
+            <br />
 
+          </div>
+        ))
+      }
+    </div>
   ));
 
   return (
 
     <>
       <div className="wrapper">
-
-        {content}
+        <CameraRollNavbar />
+        {days}
 
       </div>
     </>
