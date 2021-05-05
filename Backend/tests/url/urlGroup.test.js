@@ -44,3 +44,17 @@ test('Should return a group Id, given the url to a groups page or photo pool.', 
       done();
     });
 });
+
+describe('Group tests', () => {
+  let connection;
+  jest.setTimeout(30000);
+  beforeAll(async () => {
+    connection = await mongoose
+      .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
+        { useNewUrlParser: true, useUnifiedTopology: true });
+  });
+
+  afterAll(async () => {
+    await connection.close();
+  });
+});

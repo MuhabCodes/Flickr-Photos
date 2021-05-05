@@ -5,55 +5,54 @@ const request = supertest(app);
 
 const mongoose = require('mongoose');
 
-beforeAll(async () => {
-  DB Connection
+describe('User tests', () => {
+  let connection;
   jest.setTimeout(30000);
-  if (mongoose.connection.readyState) {
-    return;
-  }
-  await mongoose
-    .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
-      { useNewUrlParser: true, useUnifiedTopology: true })
-  eslint-disable-next-line no-console
-    .then(() => console.log('MongoDB Connected'))
-  eslint-disable-next-line no-console
-    .catch((err) => console.log(err));
-});
+  beforeAll(async () => {
+    connection = await mongoose
+      .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
+        { useNewUrlParser: true, useUnifiedTopology: true });
+  });
 
-const url = 'https://www.flickr.com/people/608dd1f51253c7348443ae76/';
+  afterAll(async () => {
+    await connection.close();
+  });
 
-test('Should return id and username of user given url', async (done) => {
-  await request
-    .get('/urls/user')
-    .send({ url })
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id: '608dd1f51253c7348443ae76', username: 'ahmedehabb8' });
-      done();
-    });
-});
+  const url = 'https://www.flickr.com/people/111111111111111111111111/';
 
-const id = '608dd1f51253c7348443ae76';
-test('Should return url to a userprofile', async (done) => {
-  await request
-    .get('/urls/userprofile?id=608dd1f51253c7348443ae76')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id: '608dd1f51253c7348443ae76', url });
-      done();
-    });
-});
+  it('Should return id and username of user given url', async (done) => {
+    await request
+      .get('/urls/user')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .send({ url })
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({ id: '111111111111111111111111', username: 'testing' });
+        done();
+      });
+  });
 
-const urlPhotos = 'https://www.flickr.com/photos/608dd1f51253c7348443ae76';
-test('Should return url to a userphotos', async (done) => {
-  await request
-    .get('/urls/userphotos?id=608dd1f51253c7348443ae76')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id: '608dd1f51253c7348443ae76', url: urlPhotos });
-      done();
-    });
+  const id = '111111111111111111111111';
+  it('Should return url to a userprofile', async (done) => {
+    await request
+      .get('/urls/userprofile?id=111111111111111111111111')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({ id: '111111111111111111111111', url });
+        done();
+      });
+  });
+
+  const urlPhotos = 'https://www.flickr.com/photos/111111111111111111111111';
+  it('Should return url to a userphotos', async (done) => {
+    await request
+      .get('/urls/userphotos?id=111111111111111111111111')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({ id: '111111111111111111111111', url: urlPhotos });
+        done();
+      });
+  });
 });
