@@ -6,7 +6,7 @@
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
   }
-  #subtitle{
+  #subtitle,#subtitleForTable{
     font-weight: bold;
     color: #000;
     font-size: 20px;
@@ -14,7 +14,7 @@
     margin-block-start: 1em;
     margin-block-end: 1em;
   }
-  #title, #subtitle{
+  #title, #subtitle, #subtitleForTable{
   margin-left: 190px;
   text-align: left;
   display: block;
