@@ -1,4 +1,3 @@
-// import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -27,6 +26,9 @@ const RecentPhotos = () => {
   // function in the return block.
 
   const photoArr = Array.from(photos);
+  // changeImage is a function that changes the fav star icon from regular
+  // unfilled star to filled when clicked on. Needs some adjustments.
+  // Reference used: https://stackoverflow.com/questions/6764961/change-an-image-with-onclick
   function changeImage() {
     console.log('clicked');
     setLiked(isLiked);
