@@ -1,0 +1,39 @@
+.mainErrorPage
+{
+    background-color: #f3f5f6;   
+}
+.main404Container
+{
+    height: 100%;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.upper404Container
+{
+    text-align: center;
+    margin: 4em 0;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+.H2404
+{
+    line-height: 38px;
+    font-size: 3em;
+    color:#898989;
+    margin-bottom: 2rem;
+    font-weight:300;
+}
+.H3404
+{
+    font-weight: 400;
+    font-size: 1.4em;
+}
+.Paragraph404
+{
+    font-size: 0.9em;
+    line-height: 24px;
+    font-weight: 400;
+    margin:0;
+    text-align: center;
+}
