@@ -5,16 +5,20 @@ import ProPage from '../Profile/Pro';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
+import Faves from '../Profile/faves';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <CoverArea />
+        <SubNavBar />
         <Switch>
-          <Route exact path="/">
-            <CoverArea />
-            <SubNavBar />
+          <Route path="/About">
             <ProfileContainer />
+          </Route>
+          <Route path="/Faves">
+            <Faves />
           </Route>
           <Route path="/account/upgrade/pro">
             <ProPage />
