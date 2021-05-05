@@ -4,6 +4,7 @@ import Stats from './GeneralStats';
 import Showcase from './Showcase';
 import UserInfo from './UserInfo';
 import MostPop from './MostPop';
+import TestimonialsArea from './Testimonials';
 
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
 
@@ -18,9 +19,8 @@ const ProfileContainer = () => (
         <Stats />
       </div>
     </div>
-    <div className="most-pop">
-      <MostPop />
-    </div>
+    <MostPop />
+    <TestimonialsArea />
   </div>
 );
 
