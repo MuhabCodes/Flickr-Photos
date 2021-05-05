@@ -1,12 +1,9 @@
 import React from 'react';
-// This file includes the graphs of  popular point & shoot cameras and popular cameraphones
+// This file includes the graphs of popular point & shoot cameras and popular cameraphones
 const Graphs = () => (
   <div className="graphs">
-    <div className="row">
+    <div className="contentBox">
       <h3 className="titleOfGraph1">Popular Point & Shoot Cameras</h3>
-      <h3 className="titleOfGraph2">Popular Cameraphones</h3>
-    </div>
-    <div className="row">
       <img id="graph1" src="https://live.staticflickr.com/cameras/0_graph_main_c6cffefa7b.png" alt="Popular Point & Shoot Cameras" />
       <ul id="legendsOfGraph1">
         <li>
@@ -40,6 +37,9 @@ const Graphs = () => (
           </a>
         </li>
       </ul>
+    </div>
+    <div className="contentBox2">
+      <h3 className="titleOfGraph2">Popular Cameraphones</h3>
       <img id="graph2" src="https://live.staticflickr.com/cameras/2_graph_main_f50d48349d.png" alt="Popular Cameraphones" />
       <ul id="legendsOfGraph2">
         <li>
@@ -73,8 +73,8 @@ const Graphs = () => (
           </a>
         </li>
       </ul>
-      <h2 id="aboutTheseGraphs"><a href="./graphs">About these graphs »</a></h2>
     </div>
+    <h2 id="aboutTheseGraphs"><a href="./graphs">About these graphs »</a></h2>
   </div>
 );
 export default Graphs;
