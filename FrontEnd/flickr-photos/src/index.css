@@ -1,5 +1,6 @@
 @import './CameraFinder/CameraFinder.css';
 @import './CameraFinder/PopCameras.css';
+@import './CameraFinder/RankTable.css';
 
 body {
   margin: 0;
