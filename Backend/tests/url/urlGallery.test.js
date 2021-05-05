@@ -31,8 +31,8 @@ describe('Gallery tests', () => {
   it('Should return gallery info, by url', async (done) => {
     await request
       .get('/urls/gallery')
-      .send({ url })
       .set('Accept', 'application/json') // sets the data type to be json
+      .send({ url })
       .expect((response) => {
         expect(response.status).toBe(200);
         expect(response.body).toEqual(gallery);
