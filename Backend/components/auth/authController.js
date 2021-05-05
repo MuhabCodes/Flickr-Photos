@@ -8,6 +8,7 @@ require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 exports.login = async function loginUser(req, res) {
   const { body } = req;
   try {
+    // return Authorization token if the password was correct
     const token = await verifyPassword(body);
     res.status(201).send({ statusCode: 201, token });
   } catch (err) {
@@ -52,7 +53,9 @@ exports.resendConfirmationMail = async function resendMail(
 exports.confirmUser = async function confirmUser(req, res) {
   const { confirmationToken } = req.params;
   try {
+    // decrypt confirmation token to get ID
     const decoded = await decryptConfirmationToken(confirmationToken);
+    // uses ID to activate user
     await userDAL.activateUser(decoded.userId);
     res.status(201).send({ statusCode: 201, message: 'The account is now activated' });
   } catch (err) {
@@ -67,6 +70,7 @@ exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
   const userObj = await userDAL.getUserByEmail(email);
 
   if (userObj && userObj.isActivated) {
+    // sends email if the user exists and is activated
     await sendResetPasswordEmail(userObj._id, email);
 
     res.status(200).json({ statusCode: 200 });
@@ -78,7 +82,9 @@ exports.resetPassword = async function resetPw(req, res) {
   const { newPassword } = req.body;
 
   try {
+    // decrypt reset token to get userID
     const { userId } = await decryptResetPasswordToken(resetToken);
+    // use the id and the new password to change the current pw
     await userDAL.resetPassword(userId, newPassword);
     res.status(200).json({ statusCode: 200 });
   } catch (err) {
