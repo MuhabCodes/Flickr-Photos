@@ -3,13 +3,18 @@ const userDAL = require('./userDAL');
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
   try {
-    // TODO: this should be moved to DAL
+    // call getUser by display name from DAL
+    // TODO: might be changed to userName won't change alot
     const userObj = await userDAL.getUserByDisplayName(displayName);
-
-    return res.status(200).json(userObj);
-    // TODO :userName : connection between user and people
+    if (userObj.length === 0) // checking whether response is empty or not
+    {
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
+    return res.status(200).json(userObj); // else returns user
   } catch (err) {
-    return res.status(500).json({
+    return res.status(500).json({ // returns 500 if it couldn't access db
       error: err,
     });
   }
@@ -19,13 +24,18 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
   const { email } = req.params;
   try {
     const userObj = await userDAL.getUserByEmail(email);
-    return res.status(200).json({
+    if (userObj.length === 0) // checking whether response is empty or not
+    {
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
+    return res.status(200).json({ // else returns user
       userObj,
 
-      // TODO :userName : connection between user and people
     });
   } catch (err) {
-    return res.status(500).json({
+    return res.status(500).json({ // returns 500 if it couldn't access db
       error: err,
     });
   }
@@ -35,9 +45,15 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getUserById(params.userId);
+    if (userObj.length === 0) // checking whether response is empty or not
+    {
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
     return res.status(200).json(userObj);
   } catch (error) {
-    return res.status(500).json(error);
+    return res.status(500).json(error); // returns 500 if it couldn't access db
   }
 };
 
@@ -45,8 +61,14 @@ exports.getGroups = async function getGroupps(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getUserGroupsById(params.userId);
+    if (userObj.length === 0) // checking whether response is empty or not
+    {
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
     return res.status(200).json(userObj.groups);
   } catch (error) {
-    return res.status(500).json(error);
+    return res.status(500).json(error); // returns 500 if it couldn't access db
   }
 };
