@@ -48,9 +48,14 @@ exports.add = async function addFavorite(req, res) {
 // error here makes non sense
 exports.findFavorite = async function findFavorite(req, res) {
   const user = req.params.userId;
-  const toId = ObjectId(user);
+  // const toId = ObjectId(user);
   try {
-    const favoriteOutput = await favoriteDAL.findFavorite(toId);
+    if (!mongoose.isValidObjectId(user)) {
+      return res.status(404).json({
+        error: 'Invalid userId',
+      });
+    }
+    const favoriteOutput = await favoriteDAL.findFavorite(user);
     return res.status(200).json(
       {
         total: favoriteOutput.length,
@@ -70,9 +75,14 @@ exports.findFavorite = async function findFavorite(req, res) {
 // error here makes non sense
 exports.findPublicFavorite = async function findPublicFavorite(req, res) {
   const user = req.params.userId;
-  const toId = ObjectId(user);
+  // const toId = ObjectId(user);
   try {
-    const favoriteOutput = await favoriteDAL.findFavorite(toId);
+    if (!mongoose.isValidObjectId(user)) {
+      return res.status(404).json({
+        error: 'Invalid userId',
+      });
+    }
+    const favoriteOutput = await favoriteDAL.findFavorite(user);
     return res.status(200).json(
       {
         owner: user,
