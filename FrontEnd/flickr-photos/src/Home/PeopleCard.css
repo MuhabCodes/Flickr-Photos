@@ -16,15 +16,11 @@
     position: relative;
     width: 500px;
     height: 200px;
-    overflow: hidden;
+    overflow:hidden;
 }
 .card-img
 {
-    position: absolute;
-  top: -9999px;
-  left: -9999px;
-  right: -9999px;
-  bottom: -9999px;
+    object-fit:cover;
   margin: auto;
 }
 .lower-container
@@ -99,6 +95,14 @@
 .lower-container-right
 {
     padding-bottom: 20px;
+}
+#people-card-follow-btn:hover
+{
+    background-color: #fff;
+    color: #1c9be9;
+    border: solid;
+    border-width: thin;
+    border-color: #1c9be9;
 }
 #people-card-follow-btn
 {
