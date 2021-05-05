@@ -48,7 +48,7 @@
       top: 150%;                         
       transform: translate(-50%, -10%); 
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1215px) {
   .mostPopularCameras {
     flex-direction: column;
     flex-grow: column wrap;
