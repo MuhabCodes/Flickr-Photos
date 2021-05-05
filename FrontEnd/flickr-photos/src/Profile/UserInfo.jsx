@@ -37,10 +37,10 @@ const UserInfo = () => {
               <label htmlFor="inputCurrentCity">
                 <span className="title">Current city</span>
                 <input type="text" id="inputCurrentCity" />
-                <span className="filter-img">
-                  <img src={filter} alt="" className="privacy" />
-                </span>
               </label>
+              <span className="filter-img">
+                <img src={filter} alt="" className="privacy" />
+              </span>
             </li>
             <li>
               <label htmlFor="inputCountry">
@@ -51,6 +51,9 @@ const UserInfo = () => {
             <li>
               <span className="title">Email</span>
               <span className="user-data">manaarrzakaria@gmail.com</span>
+              <span className="filter-img">
+                <img src={filter} alt="" className="privacy" />
+              </span>
             </li>
           </ul>
           <ul>
