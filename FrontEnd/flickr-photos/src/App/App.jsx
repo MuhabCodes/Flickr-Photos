@@ -12,12 +12,13 @@ function App() {
     <Router>
       <div className="App">
         <CoverArea />
-        <SubNavBar />
         <Switch>
           <Route path="/About">
+            <SubNavBar />
             <ProfileContainer />
           </Route>
           <Route path="/Faves">
+            <SubNavBar />
             <Faves />
           </Route>
           <Route path="/account/upgrade/pro">
