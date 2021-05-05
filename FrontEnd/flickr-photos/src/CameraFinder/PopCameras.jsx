@@ -6,7 +6,8 @@ import React from 'react';
 // Then, We use the slice function to get the first 5 brands and store them in cam.
 // Finally, in the return statement, we use cam. map to fetch the details of each object and
 // display them on the page.
-
+// Note: when fetching topModels of a particular object, .map was used here because topModel
+// is an array and so that I would be able to put comma between each element in this array.
 const PopCameras = (props) => {
   const came = props;
   const { cameras } = came;
@@ -33,6 +34,21 @@ const PopCameras = (props) => {
                 {camera.brand}
               </a>
             </h2>
+          </div>
+          <div id="brandModelsText">
+            <p
+              id="brandModels"
+            >
+              <ul>
+                {camera.topModels.map((sub) => (
+                  <a href="./topModel">
+                    {sub}
+                    ,
+                  </a>
+                ))}
+                <a href="./topModel"> more...</a>
+              </ul>
+            </p>
           </div>
         </div>
       ))}
