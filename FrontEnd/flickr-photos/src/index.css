@@ -1,7 +1,7 @@
 @import './CameraFinder/CameraFinder.css';
 @import './CameraFinder/PopCameras.css';
 @import './CameraFinder/RankTable.css';
-
+@import './CameraFinder/Graphs.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
