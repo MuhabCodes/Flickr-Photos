@@ -25,11 +25,11 @@ const CoverArea = () => (
           <div className="follow-view">
             <p className="user-cover-display-name">manarr__</p>
             <p className="following-followers-cover-list">
-              989 following
+              989 Followers
               {' '}
               <em>•</em>
               {' '}
-              1000 following
+              1000 Following
             </p>
             <p className="cover-spacer" />
             <p className="user-cover-photo-count">50 photos</p>
