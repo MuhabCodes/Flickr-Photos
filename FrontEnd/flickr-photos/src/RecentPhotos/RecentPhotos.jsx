@@ -1,3 +1,4 @@
+// import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -8,9 +9,9 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 // a mock server. This function returns the fetched images, but not all at once,
 // but a couple at a time and the more the user scrolls down,
 // the more images are fetched and displayed.
-
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]);
+  const [isLiked, setLiked] = useState(false);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
     fetch(' http://localhost:8000/photos')
@@ -24,7 +25,20 @@ const RecentPhotos = () => {
   }, []);
   // The following changes the photos(objects) to array that can be used by the .map
   // function in the return block.
+
   const photoArr = Array.from(photos);
+  function changeImage() {
+    console.log('clicked');
+    setLiked(isLiked);
+    const src1 = 'https://img.icons8.com/android/24/ffffff/star.png';
+    const src2 = 'https://img.icons8.com/material-sharp/24/ffffff/star--v1.png';
+    if (document.querySelector('.star').src === src1) {
+      setLiked(!isLiked);
+      document.querySelector('.star').src = src2;
+    } else {
+      document.querySelector('.star').src = src1;
+    }
+  }
   // The following if condition checks if no images are in photos (fetched), display loading.
   if (!photos) {
     return <h1>Loading ...</h1>;
@@ -39,8 +53,9 @@ const RecentPhotos = () => {
   return (
 
     <div className="recentPhotos">
+
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-        <Masonry className="imageGrid" gutter="10px">
+        <Masonry className="imageGrid">
           {photoArr.map((photo) => (
             <div className="singleImage" height={photo.height}>
               <LazyLoadImage
@@ -63,8 +78,18 @@ const RecentPhotos = () => {
                   {photo.user}
                 </p>
                 <p className="faves">
-                  <img src="https://img.icons8.com/android/24/ffffff/star.png" alt="favIcon" />
-                  {photo.favs}
+                  <div>
+                    <button className="favBtn" type="button" onClick={changeImage}>
+                      <img
+                        className="star"
+                        src="https://img.icons8.com/android/24/ffffff/star.png"
+                        alt="favIcon"
+                      />
+                    </button>
+                  </div>
+                  <span className="favCount">
+                    {photo.favs}
+                  </span>
                 </p>
                 <p className="comments">
                   <img src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
