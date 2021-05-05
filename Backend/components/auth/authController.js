@@ -7,12 +7,15 @@ require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
   const { body } = req;
+
   try {
     // return Authorization token if the password was correct
     const token = await verifyPassword(body);
+
     res.status(201).send({ statusCode: 201, token });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
+
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };
@@ -21,7 +24,9 @@ exports.register = async function registerUser(
   req, res,
 ) {
   const { body } = req;
+
   const user = await userDAL.getUserByEmail(body.email);
+
   if (!user) {
     // create user after checking for email and password
     const userObj = await userDAL.createNewUser(body);
@@ -37,10 +42,13 @@ exports.resendConfirmationMail = async function resendMail(
   req, res,
 ) {
   const { body } = req;
+
   const user = await userDAL.getUserByEmail(body.email);
+
   if (user && !user.isActivated) {
     // if a user exists and not activated, resend the request
     await sendConfirmationEmail(user);
+
     res.status(201).send({ statusCode: 201 });
   } else if (user && user.isActivated) {
     // if the user is already activated, we send a 409 error (conflict).
@@ -57,6 +65,7 @@ exports.confirmUser = async function confirmUser(req, res) {
     const decoded = await decryptConfirmationToken(confirmationToken);
     // uses ID to activate user
     await userDAL.activateUser(decoded.userId);
+
     res.status(201).send({ statusCode: 201, message: 'The account is now activated' });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
@@ -86,9 +95,11 @@ exports.resetPassword = async function resetPw(req, res) {
     const { userId } = await decryptResetPasswordToken(resetToken);
     // use the id and the new password to change the current pw
     await userDAL.resetPassword(userId, newPassword);
+
     res.status(200).json({ statusCode: 200 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
+
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };
