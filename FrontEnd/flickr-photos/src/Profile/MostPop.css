@@ -19,11 +19,17 @@ h4{
     float: right;
     width: auto;
 }
-.grid-item{
+.grid-mp{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.grid-item-mp{
+    object-fit: cover;
     float: left;
+    flex-grow: 1;
     min-width: 150px;
-    max-width: 100%;
-    height: 250px;
+    height: 220px;
     padding: 2px;
     text-align: left;
 }

@@ -9,12 +9,111 @@
 }
 .faves-container{
     position: initial;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.photo-faves-view{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: #fff;
+    background-size: cover;
+    display: block;
+    transform: translate(0px, 4px);
+}
+.interaction-view{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+.photo-interaction{
+    cursor: pointer;
 }
 .grid-item-faves{
     float: left;
+    object-fit: cover;
+    flex-grow: 1;
     min-width: 150px;
-    max-width: 100%;
-    height: 250px;
+    height: 280px;
     padding: 2px;
     text-align: left;
+}
+.extra-tools{
+    top: 5px;
+    right: 5px;
+}
+.interactions-bar{
+    cursor: pointer;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px 8px;
+    z-index: 2;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: end;
+    align-items: flex-end;
+}
+.interactions-text{
+    -webkit-box-flex: 1;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    margin-right: 12px;
+}
+.interactions-title{
+    text-decoration: none;
+    display: block;
+    margin: 2px 0 0;
+    text-shadow: 0 0 2px #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    min-height: 17px;
+}
+.photo-owner{
+    text-decoration: none;
+    display: block;
+    margin: 2px 0 0;
+    text-shadow: 0 0 2px #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+    color: hsla(0,0%,100%,.7);
+    font-size: 11px;
+    transition: color .15s linear;
+}
+.engagement{
+    cursor: pointer;
+    -webkit-box-direction: normal;
+    display: flex;
+    font-size: 14px;
+}
+.engagement-fave{
+    font-size: 14px;
+    display: flex;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 12px;
+}
+.engagement-icon{
+    display: block;
+}
+.animated-fave-star{
+    background: url(https://combo.staticflickr.com/ap/build/images/fave-test/white@1x.png) 0 0/360px 18px no-repeat;
+    width: 18px;
+    height: 18px;
 }

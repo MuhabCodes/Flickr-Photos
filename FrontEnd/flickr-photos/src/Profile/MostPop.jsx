@@ -7,9 +7,9 @@ const MostPop = () => (
     <div className="pop-container">
       <h4>Most popular photos</h4>
       <div className="dropdown" />
-      <div className="grid" id="pop-exist">
+      <div className="grid-mp" id="pop-exist">
         {images.map((image) => (
-          <img className="grid-item" src={image.src} alt="" />
+          <img className="grid-item-mp" src={image.src} alt="" />
         ))}
       </div>
       {/* <div className="empty-pop" id="pop-false">

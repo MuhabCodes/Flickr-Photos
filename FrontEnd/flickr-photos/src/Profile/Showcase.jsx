@@ -19,7 +19,7 @@ const Showcase = () => (
       </div>
       <div className="showcase-container">
         {images.map((image) => (
-          <img className="grid-item" src={image.src} alt="" />
+          <img className="grid-item-sc" src={image.src} alt="" />
         ))}
       </div>
       <div className="divider" />

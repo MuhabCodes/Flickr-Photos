@@ -44,10 +44,16 @@
     cursor: pointer;
     position: relative;
 }
-.grid-item {
+.showcase-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.grid-item-sc {
+    object-fit:cover;
+    flex-grow: 1;
     float: left;
     min-width: 150px;
-    max-width: 100%;
     height: 250px;
     padding: 2px;
     text-align: left;
