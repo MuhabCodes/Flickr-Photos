@@ -39,7 +39,8 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
   const user = await User.findById(id);
 
   if (user && user.isActivated) { // user is in db so will change password
-    const hashedPassword = utilsPassword.hashPassword(newPassword);
+    const hashedPassword = await utilsPassword.hashPassword(newPassword);
+
     await User.updateOne(
       { _id: id }, { $set: { password: hashedPassword } },
     );
