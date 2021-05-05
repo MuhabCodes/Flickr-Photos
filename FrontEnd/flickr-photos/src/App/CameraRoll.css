@@ -1,0 +1,15 @@
+.images{
+    
+    display: inline-block;
+    margin-right: 10px;
+    
+}
+.image-size{
+    width: 143px;
+    height: 143px;
+}
+
+.wrapper{
+    padding: 10px;
+
+}
