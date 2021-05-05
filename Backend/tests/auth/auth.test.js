@@ -168,3 +168,64 @@ it('Auth_ login with new (changed) pw _success', async (done) => {
       done();
     });
 });
+
+// resend confirmation
+
+it('Auth_ resend confirmation to a non confirmed account _ success', async (done) => {
+  // creates a request of method post and send the login Info created above as body
+  request.post('/auth/resend-confirmation')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .send({
+      email: testInfo.nonActivatedUser2.email,
+      password: testInfo.newPassword,
+    })
+    .end((err, res) => {
+      expect(res.statusCode).toEqual(201);
+      expect(res.body.statusCode).toEqual(201);
+      done();
+    });
+});
+
+// resend confirmation
+
+it('Auth_ resend confirmation to a non confirmed account _ success', async (done) => {
+  // creates a request of method post and send the login Info created above as body
+  request.post('/auth/resend-confirmation')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .send({
+      email: testInfo.nonActivatedUser2.email,
+    })
+    .end((err, res) => {
+      expect(res.statusCode).toEqual(201);
+      expect(res.body.statusCode).toEqual(201);
+      done();
+    });
+});
+
+it('Auth_ resend confirmation to a confirmed account _ fail', async (done) => {
+  // creates a request of method post and send the login Info created above as body
+  request.post('/auth/resend-confirmation')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .send({
+      email: testInfo.activatedUser2.email,
+    })
+    .end((err, res) => {
+      expect(res.statusCode).toEqual(409);
+      expect(res.body.statusCode).toEqual(409);
+      done();
+    });
+});
+
+it('Auth_ resend confirmation to a fake account _ fail', async (done) => {
+  // creates a request of method post and send the login Info created above as body
+  request.post('/auth/resend-confirmation')
+    .set('Accept', 'application/json') // sets the data type to be json
+    .send({
+      email: 'accNotExist@aoqge.com',
+    })
+    .end((err, res) => {
+      expect(res.statusCode).toEqual(409);
+      expect(res.body.statusCode).toEqual(409);
+      done();
+    });
+});
