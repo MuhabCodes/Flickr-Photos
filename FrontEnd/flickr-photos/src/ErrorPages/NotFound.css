@@ -22,7 +22,7 @@
     font-size: 3em;
     color:#898989;
     margin-bottom: 2rem;
-    font-weight:300;
+    font-weight:300 !important;
 }
 .H3404
 {
@@ -37,3 +37,22 @@
     margin:0;
     text-align: center;
 }
+.imagesContainer404
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.image404Style
+{
+    max-height: 20em;
+    flex: 1;
+    object-fit: cover;
+    margin-right: 0.2em;
+    margin-bottom: 0.2em;
+}
+@media only screen and (max-width: 768px) {
+    .image404Style {
+      min-width: 200px;
+    }
+  }
