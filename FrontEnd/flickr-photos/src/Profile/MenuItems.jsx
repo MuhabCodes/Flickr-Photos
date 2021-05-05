@@ -19,7 +19,7 @@ const MenuItems = [
   },
   {
     title: 'Faves',
-    url: '/faves',
+    url: '/Faves',
     cName: 'nav-links',
     key: 'faves',
   },
