@@ -19,6 +19,14 @@ authRouter.route('/register').post(async (req, res) => {
   }
 });
 
+authRouter.route('/resend-confirmation').post(async (req, res) => {
+  try {
+    await authController.resendConfirmationMail(req, res);
+  } catch {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the registration process' });
+  }
+});
+
 authRouter.route('/confirmation/:confirmationToken').post(async (req, res) => {
   try {
     await authController.confirmUser(req, res);

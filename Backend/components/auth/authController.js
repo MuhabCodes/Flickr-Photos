@@ -24,7 +24,7 @@ exports.register = async function registerUser(
   if (!user) {
     // create user after checking for email and password
     const userObj = await userDAL.createNewUser(body);
-    await sendConfirmationEmail(userObj, body);
+    await sendConfirmationEmail(userObj);
     res.status(201).send({ statusCode: 201 });
   } else {
     // say that an email is sent but don't send for security purposes
@@ -32,6 +32,23 @@ exports.register = async function registerUser(
   }
 };
 
+exports.resendConfirmationMail = async function resendMail(
+  req, res,
+) {
+  const { body } = req;
+  const user = await userDAL.getUserByEmail(body.email);
+  if (user && !user.isActivated) {
+    // if a user exists and not activated, resend the request
+    await sendConfirmationEmail(user);
+    res.status(201).send({ statusCode: 201 });
+  } else if (user && user.isActivated) {
+    // if the user is already activated, we send a 409 error (conflict).
+    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+  } else {
+    // user doesn't exist, so will send 201 for security purposes
+    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+  }
+};
 exports.confirmUser = async function confirmUser(req, res) {
   const { confirmationToken } = req.params;
   try {
