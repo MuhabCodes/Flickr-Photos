@@ -8,6 +8,33 @@
     border-bottom: 1px solid #e3e3e3;
     padding: 40px 10%;;
 }
+.empty-showcase{
+    background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/empty-showcase.jpg);
+    background-size: 100%;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    height: 340px;
+    min-height: 340px;
+}
+.empty-showcase p{
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+    font-size: 18px;
+}
+.empty-showcase a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #006dac;
+}
 .title-view{
     font-size: 16px;
     line-height: 24px;
