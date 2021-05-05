@@ -35,7 +35,7 @@ router.post('/addGallery', (req, res) => {
   const gallery = new Gallery({
     _id,
     name: req.body.name,
-    url: `http://localhost:3000/galleries/${_id}`,
+    url: `https://www.flickr.com/photos/flickr/galleries/${_id}/`,
   });
 
   gallery.save()

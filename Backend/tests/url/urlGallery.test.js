@@ -18,16 +18,22 @@ describe('Gallery tests', () => {
     await connection.close();
   });
 
-  const url = 'https://www.flickr.com/galleries/608e02a0627740193883e2fa/';
-
+  const url = 'https://www.flickr.com/photos/flickr/galleries/111111111111111111111111/';
+  // this is the url to be passed to function in request body
   const gallery = {
-    id: '608e02a0627740193883e2fa',
-    url: '/photos/flickr/galleries/72157617483228192',
-    owner: 'ahmed ehab',
-    primaryPhotoId: '2',
-    dateCreate: '213123',
-    countPhotos: '231',
+    _id: mongoose.Types.ObjectId('111111111111111111111111'),
+    owner: 'testingOwner',
+    primaryPhotoId: 'testingId',
+    dateCreate: 'testingDate',
+    countPhotos: 'testingCount',
+    countVideos: 'testingCount',
+    title: 'testingTitle',
+    description: [],
+    url,
   };
+
+  // this is the gallery object expected to be returned if you seeded it successfully
+
   it('Should return gallery info, by url', async (done) => {
     await request
       .get('/urls/gallery')
@@ -35,7 +41,9 @@ describe('Gallery tests', () => {
       .send({ url })
       .expect((response) => {
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(gallery);
+        expect(JSON.stringify(response.body)).toEqual(JSON.stringify(gallery));
+        // here i need to stringify response body and gallery because of the array in the gallery
+        // because .toEqual makes a deep equality comparison
         done();
       });
   });

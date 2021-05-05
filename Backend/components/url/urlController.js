@@ -289,9 +289,7 @@ exports.lookupGallery = async (req, res) => {
     if (doc) {
       res.status(200).json({
         // eslint-disable-next-line no-underscore-dangle
-        id: doc._id,
-        url: '/photos/flickr/galleries/72157617483228192',
-        // TODO /flickr was /straup in api but i saw real flickr and it was flickr
+        _id: doc._id,
         owner: doc.owner,
         primaryPhotoId: doc.primaryPhotoId,
         dateCreate: doc.dateCreate,
@@ -301,6 +299,9 @@ exports.lookupGallery = async (req, res) => {
         title: doc.title,
         description: doc.description,
         // TODO AE / I REMOVED FARM,SECRET,SERVER SO NEED API SYNC!
+        url: `https://www.flickr.com/photos/flickr/galleries/${doc._id}/`,
+        // TODO /flickr was /straup in api but i saw real flickr and it was like one above
+
       });
     } else {
       return res.status(404).json({
