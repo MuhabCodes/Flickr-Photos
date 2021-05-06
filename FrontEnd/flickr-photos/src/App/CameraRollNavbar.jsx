@@ -12,6 +12,21 @@ function CameraRollNavbar() {
             <NavDropdown.Item href="#action/3.1">Date taken</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Date uploaded</NavDropdown.Item>
           </NavDropdown>
+          <div className="navbar-icons">
+            <input type="checkbox" id="info" name="info" />
+            <>{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }</>
+            <label htmlFor="info">Show info</label>
+            <div className="icons">
+              <a href="action">
+                <i className="fas fa-th-large" />
+                {' '}
+              </a>
+              <a href="action">
+                <i className="fas fa-th" />
+                {' '}
+              </a>
+            </div>
+          </div>
         </Nav>
 
       </Navbar>

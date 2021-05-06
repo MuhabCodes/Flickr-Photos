@@ -1,5 +1,6 @@
 .images{
-    
+    position: relative;
+
     display: inline-block;
     margin-right: 10px;
     
@@ -43,3 +44,25 @@
   h6{
       color: grey;
   }
+
+  img:hover{
+      opacity: 0.9;
+  }
+
+  .expand{
+        padding-top: 7px;	
+        padding-right: 7px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+    }
+    .images:hover .expand {
+        display: block;
+    }
+  
+    .expand a{
+        color: black;
+    }
+    /* model */
+    

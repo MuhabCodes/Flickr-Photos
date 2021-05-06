@@ -3,6 +3,11 @@ import './CameraRoll.css';
 import cameraRollContent from '../services/CameraRollContent';
 import CameraRollNavbar from './CameraRollNavbar';
 
+const modal = document.getElementById('myModal');
+function handleClick() {
+  console.log(modal);
+}
+
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
   useEffect(() => {
@@ -41,6 +46,19 @@ function CameraRoll() {
         day.map((image) => (
           <div className="images">
             <img key={image.photoId} src={image.imagePath} alt="" id="image-size" />
+
+            <div id="myModal" className="modal">
+              <span className="close"> &times;</span>
+              <img className="modal-content" id="img01" alt="" />
+            </div>
+
+            <div className="expand" id="expand-icon">
+              <a href="true" onClick={handleClick}>
+                <i className="fas fa-expand-alt" />
+                {' '}
+              </a>
+
+            </div>
             <br />
             <br />
 
