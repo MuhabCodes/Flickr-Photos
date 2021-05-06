@@ -20,7 +20,10 @@ const NotFound = () => (
       </div>
       <div className="lower404Container">
         <div className="imagesContainer404">
-          <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+          <div className="lowerImgDiv">
+            <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+            <i className="far fa-star" />
+          </div>
           <img className="image404Style" src="https://images.unsplash.com/photo-1620238748497-0b4bd9b922e2?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
           <img className="image404Style" src="https://images.unsplash.com/photo-1620221909406-02ca086acd4d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
           <img className="image404Style" src="https://images.unsplash.com/photo-1620236104164-d2e71d7f4b1f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
