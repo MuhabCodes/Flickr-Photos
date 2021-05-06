@@ -113,7 +113,6 @@ input{
     line-height: 20px;
     vertical-align: text-top;
     cursor: pointer;
-    color: #898989;
     height: auto;
     min-width: 50px;
     width: auto;
@@ -127,7 +126,59 @@ span > img{
     width: 24px;
     fill: currentColor;
 }
+#dropdownMenuButton{
+    color: #000;
+   background-color: #fff;
+   border: none;
+}
 #inputCurrentCity{
     width: 58%;
     margin-right: 60px;
+}
+.save-ui{
+    margin-top: 5px;
+    text-transform: none;
+    appearance: button;
+    background-color: #128fdc;
+    color: #fff;
+    height: 32px;
+    line-height: 32px;
+    min-width: 80px;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 20px;
+    vertical-align: top;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s ease-in-out;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.cancel-ui{
+    display: inline-block;
+    margin-top: 5px;
+    text-transform: none;
+    appearance: button;
+    height: 32px;
+    line-height: 32px;
+    min-width: 80px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    vertical-align: top;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s ease-in-out;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    background-color: #979ea2;
+    color: #fff;
 }

@@ -3,9 +3,13 @@ import edit from './assets/edit_icon.png';
 import filter from './assets/privacy.png';
 
 const UserInfo = () => {
+  // const [isDrop, setisDrop] = useState(false);
   function Edit() {
     document.getElementById('actual-info').style.display = 'none';
     document.getElementById('edit-form-container').style.display = 'flex';
+  }
+  function toggleMenu() {
+    document.getElementById('dropdownmenu-ui').style.display = 'flex';
   }
   return (
     <div className="user-info">
@@ -40,6 +44,15 @@ const UserInfo = () => {
               </label>
               <span className="filter-img">
                 <img src={filter} alt="" className="privacy" />
+                <span className="dropdown">
+                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" aria-label="dropdown-ui" />
+                  <div className="dropdown-menu" id="dropdownmenu-ui" aria-labelledby="dropdowbMenuButton">
+                    <a href="/" className="dropdown-menu">Everone</a>
+                    <a href="/" className="dropdown-menu">Any Flickr Member</a>
+                    <a href="/" className="dropdown-menu">People I follow</a>
+                    <a href="/" className="dropdown-menu">Friends and family</a>
+                  </div>
+                </span>
               </span>
             </li>
             <li>
@@ -53,6 +66,15 @@ const UserInfo = () => {
               <span className="user-data">manaarrzakaria@gmail.com</span>
               <span className="filter-img">
                 <img src={filter} alt="" className="privacy" />
+                <span className="dropdown">
+                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" aria-label="dropdown-ui" onClick={toggleMenu} />
+                  <div className="dropdown-menu" id="dropdownmenu-ui" aria-labelledby="dropdowbMenuButton">
+                    <a href="/" className="dropdown-menu">Everone</a>
+                    <a href="/" className="dropdown-menu">Any Flickr Member</a>
+                    <a href="/" className="dropdown-menu">People I follow</a>
+                    <a href="/" className="dropdown-menu">Friends and family</a>
+                  </div>
+                </span>
               </span>
             </li>
           </ul>
@@ -92,6 +114,12 @@ const UserInfo = () => {
                 <span className="title">Tumblr</span>
                 <input type="text" id="inputTumblr" placeholder="your username or profile link" />
               </label>
+            </li>
+            <li className="done-ui">
+              <span className="actions">
+                <button type="button" className="save-ui">Save</button>
+                <button type="button" className="cancel-ui">Cancel</button>
+              </span>
             </li>
           </ul>
         </div>
