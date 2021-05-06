@@ -45,11 +45,11 @@
 }
 .image404Style
 {
-    max-height: 15em;
     flex: 1;
     object-fit: cover;
     margin-right: 0.2em;
     margin-bottom: 0.2em;
+    max-height: 15em;
 }
 .viewMoreButton
 {
@@ -75,7 +75,7 @@
     margin-top: 2rem;
     margin-bottom: 2em;
 }
-@media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     .image404Style {
       min-width: 200px;
     }
