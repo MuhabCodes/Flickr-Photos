@@ -1,5 +1,5 @@
 const express = require('express');
-
+const photoRoutes = require('./components/photo/photoRouter');
 // require routes only here
 
 // declaring app
@@ -12,6 +12,8 @@ app.use(express.json());
 app.route('/').get((req, res) => {
   res.send('Hello world!');
 });
+
+app.use('/photos', photoRoutes);
 
 // exporting
 module.exports = app;

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect(process.env.MONGO_URI,
+  .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
@@ -18,3 +18,4 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port);
+module.exports = app;
