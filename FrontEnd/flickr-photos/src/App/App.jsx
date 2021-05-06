@@ -5,7 +5,6 @@ import NavBar from './Navbar';
 import Footer from './Footer';
 import CameraRoll from './CameraRoll';
 import './App.css';
-import ProPage from '../Profile/Pro';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
@@ -31,6 +30,7 @@ function App() {
           </Route>
           <Route path="/cameraroll">
                <CameraRoll /> 
+          </Route>
         </Switch>
       <Footer />
       </div>
