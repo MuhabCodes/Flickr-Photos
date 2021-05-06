@@ -1,11 +1,11 @@
 import React from 'react';
-import PeopleCard from './PeopleCard';
 import SideBar from './SideBar';
+import useFetch from '../useFetch';
+import CardsContainer from './CardsContainer';
 
 const HomePage = () => {
-  //   const { data, isPending, error } = 1;
-  const data = 1;
-  console.log(data);
+  const { data: Profiles, isPending, error } = useFetch('http://localhost:8000/Profiles');
+  // console.log(Profiles);
   return (
     <div className="homePage">
       <div className="homePageContentMain">
@@ -30,20 +30,9 @@ const HomePage = () => {
             </div>
             <div className="feed-people-to-follow">
               <p>People to follow</p>
-              <div className="cards-container">
-                <div className="single-card">
-                  <PeopleCard />
-                </div>
-                <div className="single-card">
-                  <PeopleCard />
-                </div>
-                <div className="single-card">
-                  <PeopleCard />
-                </div>
-                <div className="single-card">
-                  <PeopleCard />
-                </div>
-              </div>
+              { error && <div>{ error }</div>}
+              { isPending && <div>Loading</div>}
+              {Profiles && <CardsContainer Profiles={Profiles} />}
             </div>
           </div>
         </div>

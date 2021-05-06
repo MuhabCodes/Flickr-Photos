@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PeopleCard.css';
 
-const PeopleCard = () => {
-  const [name] = useState('Ahmed Mostafa');
-  const [avatar] = useState('https://static.remove.bg/remove-bg-web/2a274ebbb5879d870a69caae33d94388a88e0e35/assets/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa.jpg');
-  const [uName] = useState('AhmedMAyoub');
-  const [bgImage] = useState('https://images.unsplash.com/photo-1619314367523-bc28b916dd9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
-  const [Pro] = useState('Pro');
+const PeopleCard = (props) => {
+  const prop = props;
+  const { Profile } = prop;
+  console.log(Profile);
+  const name = Profile.displayName;
+  const { avatar } = Profile;
+  const { uName } = Profile;
+  const bgImage = Profile.coverPhoto;
+  const Pro = Profile.isPro;
   return (
     <div className="people-card">
       <div className="upper-container">
@@ -29,7 +32,7 @@ const PeopleCard = () => {
             <div className="user-name">
               { uName }
             </div>
-            <div className="Pro-Status-div">{ Pro }</div>
+            {Pro ? <div className="Pro-Status-div">Pro</div> : null}
           </div>
         </div>
         <div className="lower-container-right">
