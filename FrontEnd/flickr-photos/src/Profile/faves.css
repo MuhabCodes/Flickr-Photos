@@ -13,25 +13,6 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-.photo-faves-view{
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-color: #fff;
-    background-size: cover;
-    display: block;
-    transform: translate(0px, 4px);
-}
-.interaction-view{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity .2s linear;
-}
-.photo-interaction{
-    cursor: pointer;
-}
 .grid-item-faves{
     float: left;
     object-fit: cover;
@@ -41,12 +22,18 @@
     padding: 2px;
     text-align: left;
 }
-.extra-tools{
-    top: 5px;
-    right: 5px;
+.interaction-view{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .2s linear;
+    z-index: 1;
 }
-.interactions-bar{
+.photo-list-interaction{
     cursor: pointer;
+}
+.interaction-bar{
     left: 0;
     bottom: 0;
     width: 100%;
@@ -60,14 +47,14 @@
     -webkit-box-align: end;
     align-items: flex-end;
 }
-.interactions-text{
+.text-faves{
     -webkit-box-flex: 1;
     flex: 1;
     min-width: 0;
     min-height: 0;
     margin-right: 12px;
 }
-.interactions-title{
+.image-title-faves{
     text-decoration: none;
     display: block;
     margin: 2px 0 0;
@@ -82,7 +69,7 @@
     font-weight: 600;
     min-height: 17px;
 }
-.photo-owner{
+.faves-attribution{
     text-decoration: none;
     display: block;
     margin: 2px 0 0;
@@ -95,22 +82,6 @@
     color: hsla(0,0%,100%,.7);
     font-size: 11px;
     transition: color .15s linear;
-}
-.engagement{
-    cursor: pointer;
-    -webkit-box-direction: normal;
-    display: flex;
-    font-size: 14px;
-}
-.engagement-fave{
-    font-size: 14px;
-    display: flex;
-    color: #fff;
-    cursor: pointer;
-    margin-right: 12px;
-}
-.engagement-icon{
-    display: block;
 }
 .animated-fave-star{
     background: url(https://combo.staticflickr.com/ap/build/images/fave-test/white@1x.png) 0 0/360px 18px no-repeat;
