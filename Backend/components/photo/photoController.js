@@ -1,40 +1,59 @@
-const Photo = require('./photoModel');
+const { getRecent } = require('./services/getRecent');
+const { addNew } = require('./services/addNew');
+const { getInfo } = require('./services/getInfo');
+const { editPhoto } = require('./services/editPhoto');
+const { deletePhoto } = require('./services/deletePhoto');
 
 module.exports = {
-	async getPhotos(req, res, next) {
-		//get all photos within the database
-		let photos = await Photo.find({});
-		res.send(photos);
-	},
-	async addPhoto(req, res, next) {
-		try {
-			await Photo.create(req.body.photo);
-			res.send('Photo Added Successfully');
-		} catch (err) {
-			console.log(err);
-		}
-	},
-	async showPhoto(req, res, next) {
-		try {
-			let photo = await Photo.findById(req.params.id);
-			res.send(photo);
-		} catch (err) {
-			console.log(err);
-		}
-	},
-	async editPhoto(req, res, next) {
-		try {
-			let photo = await Photo.findById(req.params.id);
-			photo = req.body.photo;
-			await photo.save();
-			res.send(photo);
-		} catch (err) {
-			console.log(err);
-		}
-	},
-	async deletePhoto(req, res, next) {
-		let photo = await Photo.findById(req.params.id);
-		await photo.remove();
-		res.send('Photo removed successfully');
-	},
+  async getRecentPhotos(req, res) {
+    try {
+      // get all recent photos within the database from the services
+      return await getRecent();
+    } catch (err) {
+      return res.json({
+        error: err.message,
+        statusCode: 500,
+      });
+    }
+  },
+  async addPhoto(req, res) {
+    try {
+      return await addNew(req.body.photo, res);
+    } catch (err) {
+      return res.json({
+        error: err.message,
+        statusCode: 500,
+      });
+    }
+  },
+  async showPhoto(req, res) {
+    try {
+      return getInfo(req.params.id, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async editPhoto(req, res) {
+    try {
+      return await editPhoto(req.params.id, req.body.photo, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async deletePhoto(req, res) {
+    try {
+      return await deletePhoto(req.params.id, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
 };
