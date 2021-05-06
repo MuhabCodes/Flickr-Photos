@@ -27,7 +27,6 @@ router.get('/', (req, res) => {
 
 // AE :: NOT MY FUNCTION BUT TESTING
 router.post('/addGallery', (req, res) => {
-  // eslint-disable-next-line no-underscore-dangle
   const _id = new mongoose.Types.ObjectId();
   // needed to define it here so it will be defined when we are assigning it in url
   // unless it will give error
@@ -43,7 +42,7 @@ router.post('/addGallery', (req, res) => {
       res.status(201).json({
         message: 'Gallery is created',
         createdGallery: {
-          // eslint-disable-next-line no-underscore-dangle
+
           _id: result._id,
         },
       });

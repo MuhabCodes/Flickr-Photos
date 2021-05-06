@@ -3,20 +3,22 @@ const app = require('../../bin/server');
 
 const request = supertest(app);
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+// const { join } = require('path');
+// require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 describe('Group tests', () => {
-  let connection;
-  jest.setTimeout(30000);
-  beforeAll(async () => {
-    connection = await mongoose
-      .connect(process.envMONGO_URI_CLOUD,
-        { useNewUrlParser: true, useUnifiedTopology: true });
-  });
+  // let connection;
+  // jest.setTimeout(30000);
+  // beforeAll(async () => {
+  //   connection = await mongoose
+  //     .connect(process.env.MONGO_URI_CLOUD,
+  //       { useNewUrlParser: true, useUnifiedTopology: true });
+  // });
 
-  afterAll(async () => {
-    await connection.close();
-  });
+  // afterAll(async () => {
+  //   await connection.close();
+  // });
 
   const url = 'https://www.flickr.com/groups/111111111111111111111111/';
   const id = '111111111111111111111111';

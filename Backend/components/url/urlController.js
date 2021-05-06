@@ -17,9 +17,7 @@ exports.getGroupById = async (req, res) => {
     const doc = await findGroupById(groupId);
     if (doc) {
       res.status(200).json({
-        // eslint-disable-next-line no-underscore-dangle
         id: doc._id,
-        // eslint-disable-next-line no-underscore-dangle
         url: `https://www.flickr.com/groups/${doc._id}/`,
       });
     } else {
@@ -72,7 +70,6 @@ exports.lookUpGroup = async (req, res) => {
       }
     } else {
       // so it will be pool-id so we will substring it after pool- to end of string
-      // eslint-disable-next-line no-lonely-if
       if (emptyQuotes === 1) {
         id = urlSplit[urlSplit.length - 2].substring(5);
       } else {
@@ -92,7 +89,6 @@ exports.lookUpGroup = async (req, res) => {
     const doc = await findGroupById(id);
     if (doc) {
       res.status(200).json({
-        // eslint-disable-next-line no-underscore-dangle
         id: doc._id,
         name: doc.name,
         // TODO its groupName in api which is unuseful it should be name only, i know i'm in group
@@ -112,7 +108,7 @@ exports.lookUpGroup = async (req, res) => {
 exports.lookUpUser = async (req, res) => {
   const { url } = req.body;
 
-  // flickr's url contain id of element specified not (username) so i will extract id from url
+  // flickr's url contain id of element specified not (displayName) so i will extract id from url
 
   const urlSplit = url.split('/'); // split url components whenever it encounter '/' into an array
 
@@ -142,9 +138,8 @@ exports.lookUpUser = async (req, res) => {
     const doc = await findUserById(id);
     if (doc) {
       res.status(200).json({
-        // eslint-disable-next-line no-underscore-dangle
         id: doc._id,
-        username: doc.username,
+        displayName: doc.displayName,
       });
     } else {
       res.status(404).json({
@@ -266,15 +261,12 @@ exports.lookupGallery = async (req, res) => {
   let id = -1;
   // if last element in array is'' we would take one before otherwise last one will be id
   if (urlSplit[urlSplit.length - 1] === '') {
-    // eslint-disable-next-line no-undef
     id = urlSplit[urlSplit.length - 2];
   } else {
-    // eslint-disable-next-line no-undef
     id = urlSplit[urlSplit.length - 1];
   }
   // done extracting id
 
-  // eslint-disable-next-line no-undef
   if (!mongoose.isValidObjectId(id)) {
     return res.status(400).json({
       error: 'Bad Request!! Invalid galleryId',
@@ -285,7 +277,6 @@ exports.lookupGallery = async (req, res) => {
     const doc = await findGalleryById(id);
     if (doc) {
       res.status(200).json({
-        // eslint-disable-next-line no-underscore-dangle
         _id: doc._id,
         owner: doc.owner,
         primaryPhotoId: doc.primaryPhotoId,

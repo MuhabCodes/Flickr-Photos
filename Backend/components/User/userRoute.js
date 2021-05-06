@@ -40,7 +40,6 @@ router.post('/adduser', (req, res) => {
 
   User.create(user)
     .then((result) => {
-      // eslint-disable-next-line no-underscore-dangle
       const myToken = createToken(result._id);
       res.cookie('jwt', myToken, {
         maxAge: maxAge * 1000,
@@ -49,7 +48,6 @@ router.post('/adduser', (req, res) => {
       res.status(201).json({
         message: 'user is created',
         createduser: {
-          // eslint-disable-next-line no-underscore-dangle
           _id: result._id,
         },
       });

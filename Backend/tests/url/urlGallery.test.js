@@ -1,22 +1,24 @@
 const supertest = require('supertest');
+
+// const mongoose = require('mongoose');
+// const { join } = require('path');
+// require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 const app = require('../../bin/server');
 
 const request = supertest(app);
 
-const mongoose = require('mongoose');
-
 describe('Gallery tests', () => {
-  let connection;
-  jest.setTimeout(30000);
-  beforeAll(async () => {
-    connection = await mongoose
-      .connect(process.envMONGO_URI_CLOUD,
-        { useNewUrlParser: true, useUnifiedTopology: true });
-  });
+  // let connection;
+  // jest.setTimeout(30000);
+  // beforeAll(async () => {
+  //   connection = await mongoose
+  //     .connect(process.env.MONGO_URI_CLOUD,
+  //       { useNewUrlParser: true, useUnifiedTopology: true });
+  // });
 
-  afterAll(async () => {
-    await connection.close();
-  });
+  // afterAll(async () => {
+  //   await connection.close();
+  // });
 
   const url = 'https://www.flickr.com/photos/flickr/galleries/111111111111111111111111/';
   // this is the url to be passed to function in request body
