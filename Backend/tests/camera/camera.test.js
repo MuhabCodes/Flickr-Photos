@@ -2,22 +2,30 @@ const supertest = require('supertest');
 const app = require('../../bin/server');
 
 const request = supertest(app);
+const allCameras = require('./info');
 
-test('Should add camera to a given brandName in req body', async (done) => {
+test('Should not be added since there is already a model with this name Fail', async (done) => {
   await request
     .post('/cameras')
     .send({
-      name: 'nikon 500s',
+      name: 'Nikon 500s',
+      brandName: 'Nikon',
+    })
+    .expect(409);
+  done();
+});
+
+test('Should be added to model Success', async (done) => {
+  await request
+    .post('/cameras')
+    .send({
+      name: 'Nikon 700s',
       brandName: 'Nikon',
     })
     .expect(200);
   done();
 });
-
-const brandName = {
-  brand: 'Nikon',
-};
-
+const brandName = 'Nikon';
 test('Should return all models of a given brand', async (done) => {
   await request
     .get(`/cameras/${brandName}/models`)

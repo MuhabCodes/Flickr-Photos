@@ -27,7 +27,7 @@ module.exports.getBrands = async function getBrands(req, res) {
       });
     }
     return res.status(200).json({ // else return the brands
-      brands: [brandObj],
+      brands: brandObj,
     });
   } catch (err) { // couldn't connect to db
     return res.status(500).json({
@@ -38,7 +38,7 @@ module.exports.getBrands = async function getBrands(req, res) {
 module.exports.getBrandWithName = async function getBrandWithName(req, res) {
   try {
     const brandObj = await cameraBrandDAL.getBrandWithName(req.params.brandName);
-    if (brandObj.length === 0) { // if no brands exists in db
+    if (!brandObj) { // if no brands exists in db
       return res.status(404).json({
         message: 'could not find any brands',
       });

@@ -2,7 +2,7 @@ const cameraDAL = require('./cameraDAL');
 const camerBrandDAL = require('../cameraBrand/cameraBrandDAL');
 
 // assuming that the brandName would be given in the body of the request
-module.exports.AddCamera = async function AddCamera(req, res) {
+module.exports.addCamera = async function addCamera(req, res) {
   const { body } = req;
 
   const brandObj = await camerBrandDAL.getBrandWithName(body.brandName);
@@ -12,7 +12,12 @@ module.exports.AddCamera = async function AddCamera(req, res) {
       message: "couldn't find brand with this name",
     });
   }
-
+  const checkCam = await cameraDAL.getModelWithName(body.name);
+  if (checkCam) {
+    return res.status(409).json({
+      message: 'There is already a model with this name',
+    });
+  }
   try {
     const cameraObj = await cameraDAL.addCamera({
       name: body.name,
