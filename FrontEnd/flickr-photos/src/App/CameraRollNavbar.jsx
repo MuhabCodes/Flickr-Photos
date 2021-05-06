@@ -7,7 +7,7 @@ function CameraRollNavbar() {
   return (
     <div>
       <Navbar expand="lg" sticky="top">
-        <Nav className="mr-auto">
+        <Nav className="mr-auto nav-start">
           <NavDropdown title="Dropdown">
             <NavDropdown.Item href="#action/3.1">Date taken</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Date uploaded</NavDropdown.Item>

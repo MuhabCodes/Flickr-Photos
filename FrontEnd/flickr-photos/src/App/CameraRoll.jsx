@@ -26,6 +26,7 @@ function CameraRoll() {
     acc[date].push(val);
     return acc;
   }, {}));
+  console.log(filtered);
 
   const days = filtered.map((day) => (
     <div className="sandy">
@@ -49,15 +50,28 @@ function CameraRoll() {
     </div>
   ));
 
+  const sidebar = filtered.map((day) => (
+    <div>
+      <a href>{day[0].yearTaken}</a>
+      <a href="action1">
+        -
+        {day[0].monthTaken}
+      </a>
+    </div>
+  ));
+
   return (
 
-    <>
-      <div className="wrapper">
-        <CameraRollNavbar />
+    <div className="wrapper">
+      <CameraRollNavbar />
+      <div className="main">
+        <div className="sidenav">
+          {sidebar}
+        </div>
         {days}
 
       </div>
-    </>
+    </div>
   );
 }
 

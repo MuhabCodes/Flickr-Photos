@@ -15,6 +15,31 @@
 
 }
 
-.sandy{
-    align-items: auto;
-}
+
+
+.sidenav {
+    height: 100%; 
+    width: 160px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 48px; 
+    left: 0;
+    background-color: #f3f5f6; 
+    overflow-x: hidden; 
+    padding-top: 20px;
+  }
+  .main{
+    margin-left: 160px; /* Same as the width of the sidebar */
+    
+  }
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+  }
+
+  h6{
+      color: grey;
+  }
