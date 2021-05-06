@@ -1,23 +1,40 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Navbar';
 import Footer from './Footer';
 import CameraRoll from './CameraRoll';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import CoverArea from '../Profile/Cover';
+import SubNavBar from '../Profile/SubNavBar';
+import ProfileContainer from '../Profile/ProfileContainer';
+import Faves from '../Profile/faves';
 
 
 
 
 function App() {
   return (
-
-    <div className="App">
-      <NavBar />
-      <CameraRoll />
+    <Router>
+      <div className="App">
+        <NavBar />
+        <CoverArea />
+        <Switch>
+          <Route path="/About">
+            <SubNavBar />
+            <ProfileContainer />
+          </Route>
+          <Route path="/Faves">
+            <SubNavBar />
+            <Faves />
+          </Route>
+          <Route path="/cameraroll">
+               <CameraRoll /> 
+          </Route>
+        </Switch>
       <Footer />
-    
-    </div>
+      </div>
+    </Router>
   );
 }
 
