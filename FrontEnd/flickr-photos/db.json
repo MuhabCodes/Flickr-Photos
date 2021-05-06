@@ -1,0 +1,75 @@
+{
+"photos": [
+  {
+      
+      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "privacy": "public",
+      "dayTaken": 23,
+      "monthTaken": "April",
+      "yearTaken": 2021,
+      "DateTaken": "23/4/2021",
+      "photoId": 1,
+      "dayUploaded": 28,
+      "monthUploaded": "April",
+      "yearUploaded": 2021
+     
+
+  },
+  {
+    
+      "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "photoId": 2,
+      "privacy": "private",
+      "dayTaken": 25,
+      "monthTaken": "May",
+      "yearTaken": 2018,
+      "DateTaken": "25/5/2018",
+      "dayUploaded": 27,
+      "monthUploaded": "june",
+      "yearUploaded": 2021
+    
+},
+  {
+    "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "photoId": 3,
+    "privacy": "public",
+    "dayTaken": 25,
+    "monthTaken": "May",
+    "yearTaken": 2021,
+    "DateTaken": "25/5/2021",
+    "dayUploaded": 27,
+    "monthUploaded": "june",
+    "yearUploaded": 2021
+  },
+
+  {
+    "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "photoId": 4,
+    "privacy": "private",
+    "dayTaken": 10,
+    "monthTaken": "September",
+    "yearTaken": 2020,
+    "DateTaken": "10/9/2020",
+    "dayUploaded": 27,
+    "monthUploaded": "December",
+    "yearUploaded": 2020
+  },
+
+  {
+    "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "photoId": 5,
+    "privacy": "private",
+    "dayTaken": 25,
+    "monthTaken": "May",
+    "yearTaken": 2021,
+    "DateTaken": "25/5/2021",
+    "dayUploaded": 27,
+    "monthUploaded": "December",
+    "yearUploaded": 2020
+  }
+
+
+
+
+]
+}
