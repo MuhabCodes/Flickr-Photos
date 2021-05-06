@@ -22,8 +22,8 @@ mongoose
       if (err) {
         console.log(err, 'seeding doesnt finish successfully');
       } else { console.log(result, 'seeding  finish successfully'); }
-      mongoose.disconnect();
     });
+    mongoose.disconnect();
   })
   // eslint-disable-next-line no-console
   .catch((err) => console.log(err));
