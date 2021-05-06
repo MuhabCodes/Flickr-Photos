@@ -44,4 +44,28 @@ describe('Group tests', () => {
         done();
       });
   });
+
+  const invalidUrl = 'https://www.flickr.com/groups/211111111111111111111111/';
+  const invalidId = '211111111111111111111111';
+
+  it('Should return id and url a given group', async (done) => {
+    await request
+      .get(`/urls/groups/${invalidId}`)
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
+
+  it('Should return a group Id, given the url to a groups page or photo pool.', async (done) => {
+    await request
+      .get('/urls/group')
+      .send({ url: invalidUrl })
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
 });

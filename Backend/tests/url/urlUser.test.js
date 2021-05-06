@@ -55,4 +55,38 @@ describe('User tests', () => {
         done();
       });
   });
+
+  const invalidUrl = 'https://www.flickr.com/people/211111111111111111111111/';
+
+  it('Should return user not in DB _ so will fail', async (done) => {
+    await request
+      .get('/urls/user')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .send({ url: invalidUrl })
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
+
+  const invalidId = '211111111111111111111111';
+  it('Should return url to a userprofile not existing in db ', async (done) => {
+    await request
+      .get(`/urls/userprofile?id=${invalidId}`)
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
+
+  it('Should return url to a userphotos not existing in data base', async (done) => {
+    await request
+      .get(`/urls/userphotos?id=${invalidId}`)
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
 });

@@ -47,4 +47,17 @@ describe('Gallery tests', () => {
         done();
       });
   });
+
+  const invalidUrl = 'https://www.flickr.com/photos/flickr/galleries/211111111111111111111111/';
+
+  it('Should return gallery info not existing in DB, by url', async (done) => {
+    await request
+      .get('/urls/gallery')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .send({ url: invalidUrl })
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
 });
