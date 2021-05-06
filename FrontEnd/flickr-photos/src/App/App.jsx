@@ -9,6 +9,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="*">
+            { /* path for all pages that don't exist */ }
             <NotFound />
           </Route>
         </Switch>

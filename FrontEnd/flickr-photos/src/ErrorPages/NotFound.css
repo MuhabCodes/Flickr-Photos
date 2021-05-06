@@ -1,4 +1,5 @@
-.mainErrorPage
+/* main page container */
+.mainErrorPage 
 {
     background-color: #f3f5f6;   
 }
@@ -10,12 +11,14 @@
     flex-direction: column;
     margin: auto;
 }
+/* Container of all upper text but not images */
 .upper404Container
 {
     text-align: center;
     margin: 4em 0;
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
 }
+/* Styling for h2 inside the upper container */
 .H2404
 {
     line-height: 38px;
@@ -24,11 +27,13 @@
     margin-bottom: 2rem;
     font-weight:300 !important;
 }
+/* Styling for h3 inside the upper container */
 .H3404
 {
     font-weight: 400;
     font-size: 1.4em;
 }
+/* Styling for p inside the upper container */
 .Paragraph404
 {
     font-size: 0.9em;
@@ -37,12 +42,14 @@
     margin:0;
     text-align: center;
 }
+/* Container of all images which controls how they are displayed*/
 .imagesContainer404
 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+/* Styling for each single image inside image container */
 .image404Style
 {
     flex: 1;
@@ -51,6 +58,7 @@
     margin-bottom: 0.2em;
     max-height: 15em;
 }
+/* Styling for button which goes to explore */
 .viewMoreButton
 {
     outline-width: 0;
@@ -75,6 +83,7 @@
     margin-top: 2rem;
     margin-bottom: 2em;
 }
+/* Mobile responsivness fix */
   @media only screen and (max-width: 768px) {
     .image404Style {
       min-width: 200px;

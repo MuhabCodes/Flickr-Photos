@@ -6,6 +6,7 @@ const NotFound = () => (
   <div className="mainErrorPage">
     <div className="main404Container">
       <div className="upper404Container">
+        { /* container of all text (Error Code and paragraph) */ }
         <h2 className="H2404">
           404
         </h2>
@@ -19,6 +20,7 @@ const NotFound = () => (
         </p>
       </div>
       <div className="lower404Container">
+        { /* container of all images */ }
         <div className="imagesContainer404">
           <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
           <img className="image404Style" src="https://images.unsplash.com/photo-1620238748497-0b4bd9b922e2?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
