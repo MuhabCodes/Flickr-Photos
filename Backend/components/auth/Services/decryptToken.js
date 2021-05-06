@@ -24,7 +24,6 @@ module.exports.decryptConfirmationToken = async function decryptConfirmationToke
     throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid' }));
   }
 };
-<<<<<<< HEAD
 
 module.exports.decryptResetPasswordToken = async function decryptConfirmationToken(token) {
   try {
@@ -34,5 +33,3 @@ module.exports.decryptResetPasswordToken = async function decryptConfirmationTok
     throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid' }));
   }
 };
-=======
->>>>>>> BE_MA_favorites

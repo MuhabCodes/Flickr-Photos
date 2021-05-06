@@ -11,11 +11,7 @@
         "ecmaVersion": 12
     },
     "rules": {
-<<<<<<< HEAD
         "linebreak-style": "off",
         "no-underscore-dangle": ["error" , {"allow": ["_id"] }]
-=======
-        "linebreak-style":"off"
->>>>>>> BE_MA_favorites
     }
 }

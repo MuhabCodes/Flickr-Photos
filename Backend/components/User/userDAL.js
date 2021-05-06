@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-const bcrypt = require('bcryptjs');
->>>>>>> BE_MA_favorites
 const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
 
