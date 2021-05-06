@@ -10,7 +10,7 @@ describe('User tests', () => {
   jest.setTimeout(30000);
   beforeAll(async () => {
     connection = await mongoose
-      .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
+      .connect(process.envMONGO_URI_CLOUD,
         { useNewUrlParser: true, useUnifiedTopology: true });
   });
 

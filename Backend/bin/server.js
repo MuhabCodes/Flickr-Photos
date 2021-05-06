@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
+  .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true, useUnifiedTopology: true })
   // eslint-disable-next-line no-console
   .then(() => console.log('MongoDB Connected'))
