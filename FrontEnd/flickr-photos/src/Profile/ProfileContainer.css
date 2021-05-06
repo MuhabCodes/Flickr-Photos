@@ -1,3 +1,6 @@
+.container-fluid{
+    padding: 0px!important;
+}
 .fluid-profile-container{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
