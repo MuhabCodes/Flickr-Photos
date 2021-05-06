@@ -1,4 +1,5 @@
 import React from 'react';
+// import pic from './assets/logo192.png';
 
 const TestimonialsArea = () => (
   <div className="testimonials-view">
@@ -6,7 +7,7 @@ const TestimonialsArea = () => (
     <div className="test-filter-bar" />
     <div className="testimonials-container">
       <div className="testimonials-list">
-        <p>Nobody has added a testimonial for you yet.</p>
+        <p id="empty-testimmonials">Nobody has added a testimonial for you yet.</p>
       </div>
     </div>
   </div>
