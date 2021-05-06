@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-  .connect('mongodb+srv://MohamedAmr:flickr@flickr.60kk5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
