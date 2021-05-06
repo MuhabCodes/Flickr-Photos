@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useParams } from 'react-router';
 import useFetch from './usefetch';
 // import background from './assets/shapes_heart.png';
@@ -6,25 +6,26 @@ import useFetch from './usefetch';
 
 const CoverArea = () => {
   // const { id } = useParams();
-  const { data: Coverinfo } = useFetch('http://localhost:8000/CoverInfo/85@N00');
-  const checkBg = () => {
-    if (Coverinfo.coverUrl === '0') {
-      console.log('happens');
-      Coverinfo.coverUrl = 'https://media.istockphoto.com/photos/white-studio-background-picture-id1040250650?k=6&m=1040250650&s=612x612&w=0&h=Ve0znmMwCbVyo66uIfeSrSYRuHau85oBiVIv1OplATs=';
+  const { data: Coverinfo } = useFetch('http://localhost:8001/Coverinfo/85826296@N00');
+  useEffect(() => {
+    if (Coverinfo) {
+      if (Coverinfo.coverUrl === '0') {
+        Coverinfo.coverUrl = 'https://media.istockphoto.com/photos/white-studio-background-picture-id1040250650?k=6&m=1040250650&s=612x612&w=0&h=Ve0znmMwCbVyo66uIfeSrSYRuHau85oBiVIv1OplATs=';
+      }
+      if (Coverinfo.avatarUrl === '0') {
+        Coverinfo.avatarUrl = 'https://i.pinimg.com/originals/5c/dc/51/5cdc51216b63896814919fe5382bf752.jpg';
+      }
+      if (Coverinfo.isPro === '0') {
+        document.getElementById('pro-badge-cover').style.display = 'none';
+      } else {
+        document.getElementById('pro-badge-cover').style.display = 'flex';
+      }
     }
-    if (Coverinfo.avatarUrl === '0') {
-      Coverinfo.avatarUrl = 'https://i.pinimg.com/originals/5c/dc/51/5cdc51216b63896814919fe5382bf752.jpg';
-    }
-    if (Coverinfo.isPro === '0') {
-      document.getElementById('pro-badge-cover').style.display = 'none';
-    } else {
-      document.getElementById('pro-badge-cover').style.display = 'flex';
-    }
-  };
+  });
   return (
-    <div className="cover">
-      {Coverinfo && checkBg()}
-      {Coverinfo && (
+    <div className="container-fluid">
+      <div className="cover">
+        {Coverinfo && (
         <div
           className="changing-cover-photo-bg"
           style={{ backgroundImage: `url(${Coverinfo.coverUrl})` }}
@@ -81,7 +82,8 @@ const CoverArea = () => {
             </div>
           </div>
         </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

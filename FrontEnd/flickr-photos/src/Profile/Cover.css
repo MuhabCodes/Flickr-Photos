@@ -1,4 +1,7 @@
 /* Cover Styles */
+.container-fluid{
+  padding: 0;
+}
 .cover {
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
     color: #212124;
