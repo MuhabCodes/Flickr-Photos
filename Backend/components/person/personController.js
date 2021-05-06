@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-require('./personModel');
+
 const personDAL = require('./personDAL');
 
 exports.getProfile = async function getProfile(req, res) {
   const user = req.params.userId;
-  // const toId = ObjectId(user);
+
   try {
     if (!mongoose.isValidObjectId(user)) {
       return res.status(404).json({
