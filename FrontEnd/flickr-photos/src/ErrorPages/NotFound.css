@@ -54,9 +54,9 @@
 {
     flex: 1;
     object-fit: cover;
-    margin-right: 0.2em;
-    margin-bottom: 0.2em;
     max-height: 15em;
+    margin-bottom: 0.2em;
+    margin-right: 0.2em;
 }
 /* Styling for button which goes to explore */
 .viewMoreButton
@@ -83,6 +83,10 @@
     margin-top: 2rem;
     margin-bottom: 2em;
 }
+.imagesContainer404 a
+{
+    display: contents;
+}
 /* Mobile responsivness fix */
   @media only screen and (max-width: 768px) {
     .image404Style {
@@ -91,5 +95,9 @@
     .main404Container
     {
         max-width: 100%;
+    }
+    .imagesContainer404 a
+    {
+        width: 100%;
     }
   }
