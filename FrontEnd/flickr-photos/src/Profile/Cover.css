@@ -99,6 +99,22 @@
     -webkit-box-direction: normal;
     flex-direction: row;
   }
+  .pro-badge-style{
+    color: #fff;
+    -webkit-box-direction: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 30px 0 0;
+    line-height: 18px;
+    max-width: 250px;
+    font-weight: 300;
+    flex-shrink: 1;
+    padding: 5px;
+    border: 2px solid white;
+  }
   .user-cover-display-name {
     color: #fff;
     -webkit-box-direction: normal;
