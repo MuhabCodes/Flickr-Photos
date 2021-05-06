@@ -1,4 +1,5 @@
 const Favorite = require('./favoritesModel');
+require('../photos/photosModel');
 
 module.exports.createFavorite = async function createFavorite(
   favoriteParameter,

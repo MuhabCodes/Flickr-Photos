@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const supertest = require('supertest');
-
 const app = require('../../bin/server');
 
 const profileReached = {
