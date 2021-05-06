@@ -19,4 +19,8 @@ const server = http.createServer(app);
 
 server.listen(port);
 
+<<<<<<< HEAD
 module.exports = app; //  exported for testing purposes
+=======
+module.exports = app;
+>>>>>>> BE_MA_favorites
