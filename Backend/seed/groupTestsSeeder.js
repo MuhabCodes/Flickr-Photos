@@ -6,18 +6,19 @@ const group = new Group({
   name: 'testing',
 });
 
-mongoose
-  .connect('mongodb+srv://ahmedehab:ahmedehab@cluster0.hyt1i.mongodb.net/ahmedehab?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true })
-  // eslint-disable-next-line no-console
-  .then(() => {
-    console.log('MongoDB Connected');
-    group.save((err, result) => {
-      if (err) {
-        console.log(err, 'seeding doesnt finish successfully');
-      } else { console.log(result, 'seeding  finish successfully'); }
-    });
-    mongoose.disconnect();
-  })
-  // eslint-disable-next-line no-console
-  .catch((err) => console.log(err));
+async function connect() {
+  await mongoose
+    .connect(process.env.MONGO_URI_CLOUD,
+      { useNewUrlParser: true, useUnifiedTopology: true });
+}
+
+async function groupSeed() {
+  await group.save();
+}
+async function seed() {
+  await connect();
+  await groupSeed();
+  await mongoose.disconnect();
+}
+
+seed().then(() => console.log('done')).catch(() => console.log('error'));
