@@ -1,0 +1,37 @@
+import { Link } from 'react-router-dom';
+import React from 'react';
+
+const NotFoundExplore = () => (
+  <div className="lower404Container">
+    { /* container of all images */}
+    <div className="imagesContainer404">
+      <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620238748497-0b4bd9b922e2?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620221909406-02ca086acd4d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620236104164-d2e71d7f4b1f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620058689342-80271a734f23?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620203178232-3619475228a9?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620232224149-25be08bdec08?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620223741726-7d39ff6e4e6c?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620238748497-0b4bd9b922e2?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620221909406-02ca086acd4d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620236104164-d2e71d7f4b1f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620058689342-80271a734f23?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620203178232-3619475228a9?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620232224149-25be08bdec08?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620223741726-7d39ff6e4e6c?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1611095973512-45224aae1990?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620238748497-0b4bd9b922e2?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620221909406-02ca086acd4d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+      <img className="image404Style" src="https://images.unsplash.com/photo-1620236104164-d2e71d7f4b1f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+    </div>
+    <div className="exploreButton">
+      <Link to="Explore">
+        <button className="viewMoreButton" type="button">View more photos</button>
+      </Link>
+    </div>
+  </div>
+);
+
+export default NotFoundExplore;
