@@ -31,11 +31,6 @@ exports.add = async function addFavorite(req, res) {
   favoriteDate: favorite.favoriteDate,
 
 },
-      request:
-{
-  type: 'Get',
-  url: 'http://localhost:3000/favorites/:photoId',
-},
     });
   } catch (err) {
     return res.status(500).json({
