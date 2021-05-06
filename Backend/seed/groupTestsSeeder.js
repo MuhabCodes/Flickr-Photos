@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { join } = require('path');
 const Group = require('../components/Group/groupModel');
 
 const group = new Group({

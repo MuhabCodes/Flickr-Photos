@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const { join } = require('path');
 const User = require('../components/User/userModel');
+require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 const user = new User({
   _id: mongoose.Types.ObjectId('111111111111111111111111'),
