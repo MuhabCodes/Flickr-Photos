@@ -1,8 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-
-// I have here all tests because when divided in multiple files it gives "server already in user"
-//every
 const supertest = require('supertest');
 
 const app = require('../../bin/server');
@@ -34,31 +31,17 @@ const photo = {
   ],
 };
 
-const photopublic = {
+const photoPublic = {
   owner: '507f191e810c19729de860ea',
-  photo: [
+  photos: [
     {
-      photo: {
-        _id: '5d6ede6a0ba62570afcedd3d',
-        isPublic: true,
-        title: 'hi',
-      },
+      _id: '5d6ede6a0ba62570afcedd3d',
+      isPublic: true,
+      title: 'hi',
     },
   ],
 };
-const responseadding = {
-  message: 'Favorite added succesfully',
-  favoriteCreated: {
-    _id: '60906703ee33242f7c561993',
-    user: '507f191e810c19729de860ee',
-    photoId: '5d6ede6a0ba62570afcedd3d',
-    favoriteDate: '1212',
-  },
-  request: {
-    type: 'Get',
-    url: 'http://localhost:3000/favorites/:photoId',
-  },
-};
+
 test('Creating a favorite', async (done) => {
   await request
     .post('/favorites/5d6ede6a0ba62570afcedd3d')
@@ -90,7 +73,7 @@ test('Should return user public favorites  photos', async (done) => {
     .expect((response) => {
       // eslint-disable-next-line no-undef
       expect(response.status).toBe(200);
-      expect(response.body).toEqual(photopublic);
+      expect(response.body).toEqual(photoPublic);
       done();
     });
 });
