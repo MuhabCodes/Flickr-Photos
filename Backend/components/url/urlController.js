@@ -300,7 +300,6 @@ exports.lookupGallery = async (req, res) => {
         countVideos: doc.countVideos,
         title: doc.title,
         description: doc.description,
-        // TODO AE / I REMOVED FARM,SECRET,SERVER SO NEED API SYNC!
         url: `https://www.flickr.com/photos/flickr/galleries/${doc._id}/`,
         // TODO /flickr was /straup in api but i saw real flickr and it was like one above
 

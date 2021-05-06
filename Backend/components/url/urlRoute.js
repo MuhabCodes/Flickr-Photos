@@ -16,7 +16,6 @@ router.get('/groups/:groupId', async (req, res) => {
 });
 
 // Function urls - lookupGroup // Returns a group Id, given the url to a group's page or photo pool.
-// TODO i change a change here r.t. our api as we used to sent whole user's url in as url parameter
 router.get('/group', async (req, res) => {
   try {
     await urlController.lookUpGroup(req, res);
@@ -28,7 +27,6 @@ router.get('/group', async (req, res) => {
 
 // #region urls_related_to_user
 // Function (urls - lookupUser)-Returns a user NSID, given the url to a user's photos or profile
-// TODO i change a change here r.t. our api as we used to sent whole user's url in as url parameter
 router.get('/user', async (req, res) => {
   try {
     await urlController.lookUpUser(req, res);
@@ -60,7 +58,7 @@ router.get('/userphotos', async (req, res) => {
 
 // #region urls_related_to_gallery
 // Function urls - lookupGallery // Returns gallery info, by url.
-// TODO i change a change here r.t. our api as we used to sent whole user's url in as url parameter
+
 router.get('/gallery', async (req, res) => {
   try {
     await urlController.lookupGallery(req, res);
