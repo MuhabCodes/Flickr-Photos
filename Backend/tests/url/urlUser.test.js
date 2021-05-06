@@ -4,7 +4,8 @@ const app = require('../../bin/server');
 const request = supertest(app);
 
 const mongoose = require('mongoose');
-
+// TODO STILL TESTING THE FUNCTION THAT ACCEPT TOKEN FROM COOKIES IS DONE ONLY ON QUERY SIDE
+// AND DIDNT TEST COOKIES BECAUSE NOT SURE IT WILL BE COOKIES OR HEADERS
 describe('User tests', () => {
   let connection;
   jest.setTimeout(30000);
