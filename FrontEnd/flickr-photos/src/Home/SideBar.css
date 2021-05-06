@@ -131,6 +131,7 @@
 }
 .groupCardLowerContainer
 {
+    margin-top: 0.6em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
