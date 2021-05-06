@@ -34,3 +34,8 @@ module.exports.activateUser = async function activateUser(id) {
     throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
   }
 };
+
+module.exports.findUserById = async (id) => {
+  const user = await User.findById(id).exec();
+  return user;
+};

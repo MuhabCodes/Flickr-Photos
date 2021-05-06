@@ -2,7 +2,9 @@
 const mongoose = require('mongoose');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
-const { findGroupById, findUserById, findGalleryById } = require('./Services/urlValidations');
+const { findGroupById } = require('../Group/groupModel');
+const { findUserById } = require('../User/userDAL');
+const { findGalleryById } = require('../Gallery/galleryDAL');
 
 exports.getGroupById = async (req, res) => {
   const { groupId } = req.params;
