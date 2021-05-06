@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useFetch from './usefetch';
 import edit from './assets/edit_icon.png';
 
 const AboutBio = () => {
-  const [text, setText] = useState('where is change?');
+  const { data: About } = useFetch('http://localhost:8000/Bios/85826296@N00');
+  // const [text, setText] = useState(null);
+
   function Read() {
-    //  Read function that checks whether user wants to expand or collapse the text area
+    //  Read function that checks whether user wants to read more or read less
     const dots = document.getElementById('dots');
     const moreText = document.getElementById('more');
     const btnText = document.getElementById('readbtn');
@@ -20,58 +23,65 @@ const AboutBio = () => {
     }
   }
   function Edit() { // shows text area when edit button is clicked
-    const bio = document.getElementById('textcontainer');
-    const readbtn = document.getElementById('readbtn');
-    bio.style.display = 'none';
-    readbtn.style.display = 'hide';
+    document.getElementById('textcontainer').style.display = 'none';
+    if (About.bio.length > 200) {
+      document.getElementById('readbtn').style.display = 'none';
+    }
     document.getElementById('editingarea').style.display = 'block';
+    document.getElementById('usertextarea').innerHTML = About.bio;
   }
-  function Cancel() {
+  function Cancel() { // Cancel button that doesn't change anything in current bio value
     document.getElementById('textcontainer').style.display = 'block';
-    document.getElementById('readbtn').style.display = 'block';
+    if (About.bio.length > 200) {
+      document.getElementById('readbtn').style.display = 'block';
+    }
     document.getElementById('editingarea').style.display = 'none';
+    document.getElementById('usertextarea').innerHTML = About.bio;
   }
-  function Save() {
-    setText(document.getElementById('usertextarea').value);
+  function Save() { // Save button that changes current value of bio to be saved
+    About.bio = document.getElementById('usertextarea').value;
     document.getElementById('textcontainer').style.display = 'block';
-    document.getElementById('readbtn').style.display = 'block';
+    if (About.bio.length > 200) {
+      document.getElementById('readbtn').style.display = 'block';
+    }
     document.getElementById('editingarea').style.display = 'none';
   }
   return (
-    <div className="bio-container">
-      {/* edit bio button for user */}
-      <button type="button" className="edit-button" onClick={Edit}>
-        <img src={edit} alt="" className="edit-button-img" />
-      </button>
-      <div className="edit-bio" id="editingarea" style={{ display: 'none' }}>
-        <textarea name="userbio" id="usertextarea">
-          {text}
-        </textarea>
-        <div className="editbio-actions">
-          <button type="button" className="save-bio" onClick={Save}>Save</button>
-          <button type="button" className="cancel-bio" onClick={Cancel}>Cancel</button>
+    <div className="about-bio-area">
+      {About && (
+      <div className="bio-container">
+        {/* edit bio button for user */}
+        <button type="button" id="user-edit-biobtn" className="edit-button" onClick={Edit}>
+          <img src={edit} alt="" className="edit-button-img" />
+        </button>
+        <div className="edit-bio" id="editingarea" style={{ display: 'none' }}>
+          <textarea name="userbio" id="usertextarea" />
+          <div className="editbio-actions">
+            <button type="button" className="save-bio" id="editbio-savebtn" onClick={Save}>Save</button>
+            <button type="button" className="cancel-bio" id="editbio-cancelbtn" onClick={Cancel}>Cancel</button>
+          </div>
         </div>
+        <div className="bio-body" id="textcontainer">
+          {About && About.bio.length < 200 ? (
+            <p>
+              {About.bio}
+            </p>
+          )
+            : (
+              <p>
+                {About.bio.substring(0, 200)}
+                <span id="dots">...</span>
+                <span id="more" style={{ display: 'none' }}>
+                  {About.bio.substring(201, About.bio.length)}
+                </span>
+                <button type="button" onClick={Read} id="readbtn">Read more</button>
+              </p>
+            )}
+
+        </div>
+        <div className="divider" />
       </div>
-      <div className="bio-body" id="textcontainer">
-        <p>{text}</p>
-        <p>lets see how this acts and looks</p>
-        <p>snother line just to see</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet,
-          nulla et dictum
-          interdum, nisi lorem egestas vitae scel erisque enim ligula venenatis dolor.
-          Maecenas nisl est,
-          ultrices nec congue eget, sed ullamcorper ipsum dignissim ac. In at libero sed nunc
-          <span id="dots">...</span>
-          <span id="more" style={{ display: 'none' }}>
-            venenatis imperdiet sed ornare turpis.
-            Donec vitae dui eget tellus gravida venenatis.
-            Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.
-          </span>
-        </p>
-        <button type="button" onClick={Read} id="readbtn">Read more</button>
-      </div>
-      <div className="divider" />
+      ) }
     </div>
   );
 };
