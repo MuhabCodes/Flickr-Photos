@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useFetch from './usefetch';
 
 const Stats = () => {
-  const { data: stats } = useFetch('http://localhost:8005/generalStats/85@N00');
+  const { data: stats } = useFetch('http://localhost:8002/generalStats/85@N00');
   return (
     <div className="general-stats">
       {stats && (
@@ -35,7 +35,7 @@ const Stats = () => {
         <div className="item">
           <Link to="/groups">
             <span>{stats.groups}</span>
-            Views
+            groups
           </Link>
         </div>
       </div>
