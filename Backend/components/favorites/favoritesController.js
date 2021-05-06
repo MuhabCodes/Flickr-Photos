@@ -1,7 +1,4 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
-const { ObjectId } = require('mongoose').Types;
 
 const favoriteDAL = require('./favoritesDAL');
 
@@ -50,7 +47,6 @@ exports.add = async function addFavorite(req, res) {
 // error here makes non sense
 exports.findFavorite = async function findFavorite(req, res) {
   const user = req.params.userId;
-  // const toId = ObjectId(user);
   try {
     if (!mongoose.isValidObjectId(user)) {
       return res.status(404).json({
@@ -77,7 +73,6 @@ exports.findFavorite = async function findFavorite(req, res) {
 // error here makes non sense
 exports.findPublicFavorite = async function findPublicFavorite(req, res) {
   const user = req.params.userId;
-  // const toId = ObjectId(user);
   try {
     if (!mongoose.isValidObjectId(user)) {
       return res.status(404).json({
@@ -88,16 +83,9 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     return res.status(200).json(
       {
         owner: user,
-        // eslint-disable-next-line array-callback-return
-        photo: favoriteOutput.map((doc) => {
-          const pub = doc.photo.isPublic;
-          if (pub === true) {
-            return {
-              photo: doc.photo,
-
-            };
-          }
-        }),
+        photos: favoriteOutput
+          .filter((favorite) => favorite.photo.isPublic)
+          .map((favorite) => favorite.photo),
       },
     );
   } catch (err) {
