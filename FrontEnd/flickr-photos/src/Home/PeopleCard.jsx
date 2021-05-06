@@ -1,10 +1,10 @@
 import React from 'react';
 import './PeopleCard.css';
+import { Link } from 'react-router-dom';
 
 const PeopleCard = (props) => {
   const prop = props;
   const { Profile } = prop;
-  console.log(Profile);
   const name = Profile.displayName;
   const { avatar } = Profile;
   const { uName } = Profile;
@@ -13,22 +13,26 @@ const PeopleCard = (props) => {
   return (
     <div className="people-card">
       <div className="upper-container">
-        <div className="card-img-container">
-          <img className="card-img" src={bgImage} alt="" />
-        </div>
+        <Link to="/ProfileURLHERE">
+          <div className="card-img-container">
+            <img className="card-img" src={bgImage} alt="" />
+          </div>
+        </Link>
       </div>
       {/* Done the image part */}
       <div className="lower-container">
         <div className="lower-container-left">
           <div className="avatar-img-container">
-            <a href="https://www.flickr.com/photos/albionharrisonnaish/">
+            <Link to="/ProfileURLHERE">
               <img src={avatar} alt="" className="avatar-img" />
-            </a>
+            </Link>
           </div>
           <div className="profile-names">
-            <div className="display-name">
-              { name }
-            </div>
+            <Link to="/ProfileURLHERE">
+              <div className="display-name">
+                { name }
+              </div>
+            </Link>
             <div className="user-name">
               { uName }
             </div>
