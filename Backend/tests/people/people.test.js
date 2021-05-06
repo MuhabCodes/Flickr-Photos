@@ -3,32 +3,41 @@ const app = require('../../bin/server');
 
 const request = supertest(app);
 
-const displayName = {
-  displayName: 'keka',
-};
+const peopleInfo = require('./info');
+
 test('Should return user By displayName', async (done) => {
   await request
-    .get(`/user/displayname/${displayName}`)
+    .get(`/user/displayname/${peopleInfo.nonActivatedUser1.displayName}`)
     .set('Accept', 'application/json') // sets the data type to be json
     .expect(200);
   done();
 });
-const email = {
-  email: 'keka',
+const group = {
+  name: 'testing',
+  isPublic: true,
+
 };
-test('Should return user by email', async (done) => {
+
+test('Should create group Sucess', async (done) => {
   await request
-    .get(`/user/email/${email}`)
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect(200);
+    .post('/groups')
+    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDkyZWE2ODMyNmZhNTEwMTExNWRmYWQifQ.aQY-lGe4r3G0Kb-JFshWlOJa-FI9N0KUjOxJre1Qz7o')
+    .send(group)
+    .expect(201);
   done();
 });
 
-const userId = '608de27c15eb171ea0f5b190';
+test('Should return user by email', async (done) => {
+  await request
+    .get(`/user/email/${peopleInfo.nonActivatedUser1.email}`)
+    .set('Accept', 'application/json') // sets the data type to be json
+    .expect(200);
+  done();
+});
 
 test('Should return userInfo by userId', async (done) => {
   await request
-    .get(`/user/${userId}/info`)
+    .get(`/user/${peopleInfo.nonActivatedUser1.userId}/info`)
     .set('Accept', 'application/json') // sets the data type to be json
     .expect(200);
   done();
@@ -36,16 +45,16 @@ test('Should return userInfo by userId', async (done) => {
 
 test('Should return all groups for user by userId', async (done) => {
   await request
-    .get(`/user/${userId}/groups`)
+    .get(`/user/${peopleInfo.nonActivatedUser1.userId}/groups`)
     .set('Accept', 'application/json') // sets the data type to be json
     .expect(200);
   done();
 });
 
-test('should return all photos for a given user', async (done) => {
+test('should return 404 since no photos are there in this user Fail', async (done) => {
   await request
-    .get(`/user/${userId}/photos`)
+    .get(`/user/${peopleInfo.nonActivatedUser1.userId}/photos`)
     .set('Accept', 'application/json') // sets the data type to be json
-    .expect(200);
+    .expect(404);
   done();
 });
