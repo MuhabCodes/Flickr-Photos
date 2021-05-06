@@ -1,0 +1,32 @@
+.navbar{
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
+    
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+.nav-start{
+    margin-left: 100px;
+}
+
+.navbar-icons{
+    position: absolute;
+    right: 100px;
+    display: inline-block;
+}
+
+.icons{
+    margin-left: 20px;
+    display: inline-block;
+
+}
+
+.icons a{
+    color: grey;
+}

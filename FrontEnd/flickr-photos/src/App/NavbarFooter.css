@@ -1,0 +1,114 @@
+
+/* to maintain the position of the footer  */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    margin: 0 0 100px;
+    
+   
+  }
+  
+  .navbar-light .navbar-nav .nav-link:hover{
+    color:rgba(255,255,255,.75);
+  }
+  
+  .navbar{
+    background-color: #212124;
+   
+  }
+  
+  
+  .navbar-light .navbar-brand{
+    color: white;
+  }
+  
+  
+  .navbar-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    padding-top: 2px;
+    margin-left: 8rem;
+    margin-right: 1rem;
+   
+  }
+  
+  
+  .navbar-light .navbar-brand:hover{
+    color: white;
+  }
+  
+  
+  @media all and (min-width: 992px) {
+      .navbar .nav-item .dropdown-menu{ display: none; }
+      .navbar .nav-item:hover .nav-link{   }
+      .navbar .nav-item:hover .dropdown-menu{ display: block; }
+      .navbar .nav-item .dropdown-menu{ margin-top:0; }
+  }	
+  .navbar-light .navbar-nav .nav-link{
+    color: white;
+  }
+  
+  .icon-bar{ 
+    font-size: 25px; 
+    position: absolute;
+    right: 230px;
+    display: inline-block; 
+    
+  }
+  
+  .icon-bar a{
+    color: white;
+    margin-left: 15px;
+    
+  }
+  
+  .icon-bar a:hover{
+    color: grey;
+  }
+  
+  .icons{
+    display: inline-block; 
+    position: fixed;
+    right: 135px;
+  }
+  .icons a{
+    color: white;
+    font-size: 25px; 
+    margin-left: 15px;
+  }
+  
+  .navbar-light .navbar-toggler{
+    color: white;
+  }
+  
+  /* STYLING OF FOOTER */
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #212124;
+    color: white;
+    padding: 14px;
+    font-size: small;
+  }
+  
+  hr{
+    background-color: grey;
+    
+  
+    text-align: center;
+  }
+  
+  .footer a{
+    color: white;
+  }
+  
+  .footer a:hover{
+    color: grey;
+    text-decoration: transparent;
+  }
+  

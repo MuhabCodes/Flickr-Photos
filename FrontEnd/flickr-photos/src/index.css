@@ -1,6 +1,3 @@
-/* @import url("./Profile/Cover.css");
-@import url("./Profile/SubNavBar.css"); */
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -27,3 +24,4 @@ code {
 @import "./Profile/MostPop.css";
 @import "./Profile/Testimonials.css";
 @import "./Profile/faves.css";
+
