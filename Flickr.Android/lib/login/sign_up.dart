@@ -292,7 +292,7 @@ class _SignUpState extends State<SignUp> {
                                   children: [
                                     Checkbox(
                                       activeColor: Colors.blue,
-                                      shape: CircleBorder(),
+                                      //shape: CircleBorder(),
                                       value: _checkboxCharacters,
                                       onChanged: (string) {},
                                       checkColor: Colors.white,
@@ -310,7 +310,7 @@ class _SignUpState extends State<SignUp> {
                                       value: _checkboxSpacing,
                                       onChanged: (string) {},
                                       checkColor: Colors.white,
-                                      shape: CircleBorder(),
+                                      //shape: CircleBorder(),
                                     ),
                                     Flexible(
                                       child: Text(
