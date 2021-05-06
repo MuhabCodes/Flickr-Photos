@@ -82,7 +82,6 @@ exports.lookUpGroup = async (req, res) => {
   }
   // done extracting id
 
-  // eslint-disable-next-line no-undef
   if (!mongoose.isValidObjectId(id)) {
     return res.status(400).json({
       error: 'Invalid groupId',
@@ -133,7 +132,6 @@ exports.lookUpUser = async (req, res) => {
     id = urlSplit[urlSplit.length - 1];
   }
   // done extracting id
-  // eslint-disable-next-line no-undef
   if (!mongoose.isValidObjectId(id)) {
     return res.status(404).json({
       error: 'Invalid userId',
@@ -169,7 +167,6 @@ exports.getUserProfile = async (req, res) => {
     // TODO CHECK IF THEY CHANGE COOKIES
     if (myToken) {
       const decrypted = await decryptAuthToken(myToken);
-      // eslint-disable-next-line no-underscore-dangle
       id = decrypted.id;
     } else {
       // no token and no id in body
@@ -219,7 +216,6 @@ exports.getUserPhotos = async (req, res) => {
     // TODO CHECK IF THEY CHANGE COOKIES
     if (myToken) {
       const decrypted = await decryptAuthToken(myToken);
-      // eslint-disable-next-line no-underscore-dangle
       id = decrypted.id;
     } else {
       // no token and no id in body
@@ -285,7 +281,6 @@ exports.lookupGallery = async (req, res) => {
     });
   }
 
-  // eslint-disable-next-line no-undef
   try {
     const doc = await findGalleryById(id);
     if (doc) {
