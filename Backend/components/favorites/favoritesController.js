@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const favoriteDAL = require('./favoritesDAL');
 
-require('dotenv').config();
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
 exports.add = async function addFavorite(req, res) {

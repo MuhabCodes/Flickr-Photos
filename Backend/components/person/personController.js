@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { ObjectId } = require('mongoose').Types;
 require('./personModel');
 const personDAL = require('./personDAL');
 
