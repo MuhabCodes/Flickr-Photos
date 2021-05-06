@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import GroupMembers from './GroupMembers';
 
 function App() {
   return (
-    <p>edit</p>
+    <div className="App">
+      <GroupMembers />
+    </div>
   );
 }
 
