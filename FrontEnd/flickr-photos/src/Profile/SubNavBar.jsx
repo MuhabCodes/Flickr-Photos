@@ -17,7 +17,7 @@ const SubNavBar = () => {
               >
                 {MenuItems.map((item) => {
                   let idval = 'notactive';
-                  if (currentPath === item.url) {
+                  if (currentPath.includes(item.url) === item.url) {
                     idval = 'activeurl';
                   } return (
                     <li key={item.key}>
