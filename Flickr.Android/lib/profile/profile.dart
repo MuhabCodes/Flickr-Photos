@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import './Followers.dart';
 import './about_tap.dart';
-import './cameraroll.dart';
+import './camera_roll.dart';
 import './following.dart';
 import './stats.dart';
 import '../providers/about_provider.dart';
@@ -341,55 +341,58 @@ class _ProfileState extends State<Profile> {
                   ),
                   bottom: PreferredSize(
                     preferredSize: Size.fromHeight(56),
-                    child: Container(
-                      decoration: BoxDecoration(color: Colors.white),
-                      child: TabBar(
-                        isScrollable: true,
-                        onTap: (value) => initialIndex = value,
-                        tabs: [
-                          const Tab(
-                            child: Text(
-                              "About",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                    child: Center(
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(color: Colors.white),
+                        child: TabBar(
+                          isScrollable: true,
+                          onTap: (value) => initialIndex = value,
+                          tabs: [
+                            const Tab(
+                              child: Text(
+                                "About",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          const Tab(
-                            child: Text(
-                              "Stats",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                            const Tab(
+                              child: Text(
+                                "Stats",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          const Tab(
-                            child: Text(
-                              "Camera Roll",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                            const Tab(
+                              child: Text(
+                                "Camera Roll",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          const Tab(
-                            child: Text(
-                              "Public",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                            const Tab(
+                              child: Text(
+                                "Public",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          const Tab(
-                            child: Text(
-                              "Albums",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                            const Tab(
+                              child: Text(
+                                "Albums",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
                             ),
-                          ),
-                          const Tab(
-                            child: Text(
-                              "Groups",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
-                            ),
-                          )
-                        ],
+                            const Tab(
+                              child: Text(
+                                "Groups",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
