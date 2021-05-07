@@ -11,28 +11,36 @@
  * 
  * @apiSuccess (Success 200) {Object[]} cameraBrands all brands of cameras that flicker knows
  * @apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "brands": [
+      {
+         "id": "canon",
+         "text": "Canon"
+      },
+      {
+         "id": "nikon",
+         "text": "Nikon"
+      },
+      {
+         "id": "apple",
+         "text": "Apple"
+      }
+   ]
+}
  * 
  *  
  * 
  * 
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  * @apiErrorExample {json} Error-404:
- *     HTTP/1.1 404 Not Found
+ *     HTTP/1.1 500 server couldn't handle
  *     {
- *       "error": "camerasOrBrandNotFound",
- *        "statusCode":404
+ *       "error": "serverCouldn'tHandle",
+ *        "statusCode":500
  *     }
-  
- * @apiErrorExample {json} Error-401:
- *     HTTP/1.1 401 Unauthorized
- *     {
- *       "error": "Unauthorized User",
- *        "statusCode":401
- *     }
-
+ * 
  * 
  */

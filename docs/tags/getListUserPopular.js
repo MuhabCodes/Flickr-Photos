@@ -14,23 +14,46 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagsList list of all popular tags of the mentioned user
  * 
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "userId": "1234",
+   "tags": [
+      {
+         "count": "10",
+         "tagText": "bar"
+      },
+      {
+         "count": "11",
+         "tagText": "foo"
+      },
+      {
+         "count": "147",
+         "tagText": "gull"
+      },
+      {
+         "count": "3",
+         "tagText": "tags"
+      },
+      {
+         "count": "3",
+         "tagText": "test"
+      }
+   ]
+}
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ * 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code.
+ * 
+ * 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "userNotFound",
+ *       "error": "photoNotFound",
  *        "statusCode":404
  *     }
   
- * @apiErrorExample {json} Error-401:
- *     HTTP/1.1 401 Unauthorized
- *     {
- *       "error": "Unauthorized User",
- *        "statusCode":401
- *     }
  * 
  */

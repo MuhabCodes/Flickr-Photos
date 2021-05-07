@@ -14,15 +14,41 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} frequentTags list of all frequently used tags 
  * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+   
+   "who": {
+      "userId": "1234",
+      "tags": [
+         {
+            "count": "1",
+            "tagText": "blah"
+         },
+         {
+            "count": "5",
+            "tagText": "publicdomain"
+         }
+      ]
+   }
+}
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ * 
+ * @apiError (Error 401) {String} error The client must authenticate itself to get the requested response.( client unknown to server)
+ * @apiError (Error 401) {Number} statusCode The status code.
+ 
+ * @apiError (Error 403) {String} error The client does not have access rights to the content. (the client's identity is known to the server)
+ * @apiError (Error 403) {Number} statusCode The status code
+ 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code.
+ * 
+ * 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "tagNotFound",
+ *       "error": "userNotFound",
  *        "statusCode":404
  *     }
   

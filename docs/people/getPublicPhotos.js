@@ -22,27 +22,75 @@
  * @apiSuccess (Success 200) {Object[]}  userPhotos all public photos of the mentioned user 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+   "page": "2",
+   "pages": "15",
+   "perPage": "10",
+   "total": "150",
+   "photo": [
+      {
+         "photoId": "2636",
+         "ownerId": "1234",
+         "secret": "a123456",
+         
+         "title": "test_04",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      },
+      {
+         "photoId": "2637",
+         "ownerId": "1234",
+         "secret": "b123456",
+         
+         "title": "tress",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      },
+      {
+        "photoId": "2638",
+         "ownerId": "1234",
+         "secret": "c123456",
+         
+         "title": "clouds",
+         "isPublic": "0",
+         "isFriend": "1",
+         "isFamily": "1"
+      },
+      {
+         "photoId": "2639",
+         "ownerId": "5678",
+         "secret": "d123456",
+         
+         "title": "test_07",
+         "isPublic": "1",
+         "isFriend": "0",
+         "isFamily": "0"
+      }
+   ]
+}
+ * 
  * 
  *  
  * 
  * 
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code.
+ * 
+ * 
+ * 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
+
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "photoOrUserNotFound",
+ *       "error": "UserNotFound",
  *        "statusCode":404
- *     }
-  
- * @apiErrorExample {json} Error-401:
- *     HTTP/1.1 401 Unauthorized
- *     {
- *       "error": "Unauthorized User",
- *        "statusCode":401
  *     }
 
  * 

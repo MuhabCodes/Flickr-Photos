@@ -17,13 +17,11 @@
  * @apiSuccess (Success 200) {Date} createDate The date that the gallery was created
  * @apiSuccess (Success 200) {Number} countPhotos The Number of photos in the gallery
  * @apiSuccess (Success 200) {String} photoSecret The secret of the primary photo
- * @apiError (Error 404) {String} error The gallery isn't found
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  *
- * @apiParamExample  {json} Request-Example:
- * {
- *     "galleryId" : "fdshgy234"
- * }
  *
  *
  * @apiSuccessExample {json} Success-Response:
@@ -43,6 +41,13 @@
  *     {
  *       "error": "GalleryNotFound",
  *        "statusCode":404
+ *     }
+ *
+ * @apiErrorExample {json} Error-500:
+ *     HTTP/1.1 500 InternalServerError
+ *     {
+ *       "error": "InternalServerError",
+ *        "statusCode":500
  *     }
  *
  */

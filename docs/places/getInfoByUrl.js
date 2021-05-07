@@ -11,11 +11,45 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} informationList list of all information about a place by url
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+   "placeId": "4hLQygSaBJ92",
+   
+   "latitude": "45.512",
+   "longitude": "-73.554",
+   "placeUrl": "/Canada/Quebec/Montreal",
+   "placeType": "city",
+   
+   
+   "city": {
+      "placeId": "cFBi9x6bCJ8D5rba1g",
+      
+      "latitude": "45.551",
+      "longitude": "-73.600",
+      "placeUrl": "/cFBi9x6bCJ8D5rba1g",
+      "text": "Montréal"
+   },
+   
+   "country": {
+      "placeId": "EESRy8qbApgaeIkbsA",
+      
+      "latitude": "62.358",
+      "longitude": "-96.582",
+      "placeUrl": "/Canada",
+      "text": "Canada"
+   }
+   
+}
+ * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+ * @apiError (Error 400) {Number} statusCode The status code.
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code.
+ * 
+ * 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
+ 
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
@@ -23,12 +57,6 @@
  *        "statusCode":404
  *     }
   
- * @apiErrorExample {json} Error-401:
- *     HTTP/1.1 401 Unauthorized
- *     {
- *       "error": "Unauthorized User",
- *        "statusCode":401
- *     }
  * 
  * 
  * 

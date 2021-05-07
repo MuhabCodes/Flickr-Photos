@@ -12,24 +12,24 @@
  * 
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} photoTag list of first 24 photos of the given tag cluster
+ * @apiSuccessExample {json} Success-Response:
+ *    no response
  * 
  * 
- * @apiError (Error 401) {String} error The user doesn't have persmission to do this action
- * @apiError (Error 401) {Number} statusCode The status code
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
- * @apiError (Error 404) {Number} statusCode The status code 
+ 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code.
+ * 
+ * 
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {Number} statusCode The status code
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "tagOrClusterNotFound",
+ *       "error": "tagrPhotoNotFound",
  *        "statusCode":404
  *     }
   
- * @apiErrorExample {json} Error-401:
- *     HTTP/1.1 401 Unauthorized
- *     {
- *       "error": "Unauthorized User",
- *        "statusCode":401
- *     }
+ *
  * 
  */

@@ -20,14 +20,14 @@
  * @apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
  *@apiError (Error 400) {Number} statusCode The status code
  *
- * @apiError (Error 401) {String} error The user doesn't have permission to do this action
+ * @apiError (Error 401) {String} error The client must authenticate itself to get the requested response.( client unknown to server)
  * @apiError (Error 401) {Number} statusCode The status code
  *
  *
- * @apiError (Error 404) {String} error Informs the caller of the missing object.
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 404) {Number} statusCode The status code
  *
- * @apiError (Error 500) {String} error The server The server has encountered a situation it doesn't know how to handle.
+ * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *
  * @apiErrorExample {json} Error-404:
@@ -43,4 +43,34 @@
  *       "error": "Unauthorized User",
  *        "statusCode":401
  *     }
+ * 
+ * @apiSuccessExample {json} Success-200:
+ *    {
+ *  "page": "1",
+ *  "pages": "1",
+ *  "perpage": "100",
+ *  "total": "33",
+ *  "member": [
+ *     {
+ *        "nsid": "123456@N01",
+ *        "username": "foo",
+ *        "membertype": "2"
+ *     },
+ *     {
+ *        "nsid": "118210@N07",
+ *        "username": "kewlchops666",
+ *        "membertype": "1"
+ *     },
+ *     {
+ *        "nsid": "119377@N07",
+ *        "username": "Alpha Shanan",
+ *        "membertype": "2"
+ *     },
+ *     {
+ *        "nsid": "67783977@N00",
+ *        "username": "fakedunstanp1",
+ *        "membertype": "3"
+ *     }
+ *  ]
+ * }
  */
