@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 // import { useParams } from 'react-router';
 import useFetch from './usefetch';
+import './Cover.css';
 // import background from './assets/shapes_heart.png';
 // import avatar from './assets/logo192.png';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './PopCameras.css';
 // The PopCameras.jsx displays the Most popular brands section
 // It fetches the top 5 ranked camera from our json file and displays their images, brand names,
 // and brand models.
@@ -11,7 +12,6 @@ import React from 'react';
 const PopCameras = (props) => {
   const came = props;
   const { cameras } = came;
-  console.log(cameras);
   const cam = cameras.slice(0, 5);
   return (
     <div

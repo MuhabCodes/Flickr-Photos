@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MenuItems from './MenuItems';
+import './SubNavBar.css';
 
 const SubNavBar = () => {
   const currentPath = window.location.pathname;

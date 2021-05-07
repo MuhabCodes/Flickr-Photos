@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from './usefetch';
+import './MostPop.css';
 // import images from './imagesArray';
 
 const MostPop = () => {

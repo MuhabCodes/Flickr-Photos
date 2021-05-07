@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
+import './homePage.css';
 
 const HomePage = () => {
   const { data: Profiles, isPending, error } = useFetch('http://localhost:8000/Profiles');

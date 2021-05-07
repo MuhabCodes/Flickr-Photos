@@ -1,6 +1,7 @@
 import React from 'react';
 import edit from './assets/edit_icon.png';
 import filter from './assets/privacy.png';
+import './UserInfo.css';
 
 const UserInfo = () => {
   // const [isDrop, setisDrop] = useState(false);

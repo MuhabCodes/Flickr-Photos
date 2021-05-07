@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PopCameras from './PopCameras';
 import RankTable from './RankTable';
 import Graphs from './Graphs';
+import './CameraFinder.css';
 // This .jsx will include the components that will make up the Camera Finder webpage
 // The following function includes:
 // 1- useState that will help us set our data fetched

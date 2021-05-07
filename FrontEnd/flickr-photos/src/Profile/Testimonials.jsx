@@ -1,4 +1,5 @@
 import React from 'react';
+import './Testimonials.css';
 // import pic from './assets/logo192.png';
 
 const TestimonialsArea = () => (

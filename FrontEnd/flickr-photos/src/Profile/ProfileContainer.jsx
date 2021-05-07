@@ -6,6 +6,7 @@ import Showcase from './Showcase';
 import UserInfo from './UserInfo';
 import MostPop from './MostPop';
 import TestimonialsArea from './Testimonials';
+import './ProfileContainer.css';
 
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { cameras } from '../PopularCamerasDb.json';
+import './RankTable.css';
 // This .jsx will display the data fetched from .json as a table.
 // RankTable function has two functions renderHead and renderBody
 // 1- renderHead return the headings of the table such as Rank, Brand, Top Models, Model Types,

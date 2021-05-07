@@ -1,6 +1,7 @@
 import React from 'react';
 import useFetch from './usefetch';
 import edit from './assets/edit_icon.png';
+import './AboutBio.css';
 
 const AboutBio = () => {
   const { data: About } = useFetch('http://localhost:8000/Bios/85826296@N00');

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from './usefetch';
+import './GeneralStats.css';
 
 const Stats = () => {
   const { data: stats } = useFetch('http://localhost:8002/generalStats/85@N00');

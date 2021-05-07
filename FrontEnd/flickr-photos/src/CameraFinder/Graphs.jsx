@@ -1,4 +1,5 @@
 import React from 'react';
+import './Graphs.css';
 // This file includes the graphs of popular point & shoot cameras and popular cameraphones
 const Graphs = () => (
   <div className="graphs">

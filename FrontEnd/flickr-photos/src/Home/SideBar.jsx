@@ -5,7 +5,7 @@ import GroupsForYou from './GroupsForYou';
 import useFetch from '../useFetch';
 
 const SideBar = () => {
-  const { data: ExplorePhotos, isPending, error } = useFetch('http://localhost:8000/photos');
+  const { data: ExplorePhotos, isPending, error } = useFetch('http://localhost:8000/photosExplore');
   const { data: Groups, isPendingGroups, errorGroups } = useFetch('http://localhost:8000/Groups');
   return (
     <div className="sideBarMain">

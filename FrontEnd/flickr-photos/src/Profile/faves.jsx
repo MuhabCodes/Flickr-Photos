@@ -1,5 +1,6 @@
 import React from 'react';
 import images from './imagesArray';
+import './faves.css';
 
 const Faves = () => (
   <div className="faves-view">
