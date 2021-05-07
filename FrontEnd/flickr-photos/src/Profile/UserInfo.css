@@ -1,4 +1,4 @@
-.user-info{
+.user-info-uiP{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
     line-height: 14px;
@@ -8,45 +8,33 @@
     width: 100%;
     box-sizing: border-box;
 }
-#edit-form-container{
+#edit-form-container-uiP{
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.user-info-container{
+.user-info-container-uiP{
     padding-top: 40px;
 }
-.info-view-container{
+.info-view-container-uiP{
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.info-view-container ul{
+.userinfo-ul-style{
     margin: 0;
     padding: 0;
     list-style-type: none;
     width: 48%;
 }
- ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    width: 48%;
-}
- li{
+ .userinfo-list-style{
     list-style: none;
     margin-bottom: 10px;
     position: relative;
     height: 40px;
     display: flex;
 }
-.info-view-container li{
-    margin-bottom: 10px;
-    position: relative;
-    height: 40px;
-    display: flex;
-}
-.title{
+.title-uiP{
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
@@ -59,7 +47,7 @@
     flex: 0 0 auto;
     margin-right: 8px;
 }
-.user-join-date{
+.user-data-uiP{
 display: inline-block;
 color: #000;
 white-space: nowrap;
@@ -78,7 +66,7 @@ vertical-align: text-top;
     clear: both;
     border-top: 1px solid #e3e3e3;
 }
-input{
+.input-uiP{
     position: absolute;
     list-style-type: none;
     margin: 0;
@@ -104,7 +92,7 @@ input{
    line-height: 14px;
 }
 
-.filter-img{
+.filter-img-uiP{
     outline-width: 0;
     display: inline-block;
     white-space: nowrap;
@@ -120,13 +108,13 @@ input{
     top: 5px;
     right: 0;
 }
-span > img{
+.privacy-uiP{
     display: inline-block;
     height: 24px;
     width: 24px;
     fill: currentColor;
 }
-#dropdownMenuButton{
+#dropdownMenuButton-uiP{
     color: #000;
    background-color: #fff;
    border: none;
