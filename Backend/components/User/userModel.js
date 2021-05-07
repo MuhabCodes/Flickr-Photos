@@ -32,7 +32,6 @@ const userSchema = mongoose.Schema({
   },
   displayName: {
     type: String,
-    required: [true, 'Username field is required'],
   },
   // TODO : Add proper data structure to store following and followers
 },
