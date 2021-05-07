@@ -9,40 +9,32 @@ const authRouter = require('./components/auth/authRouter');
 const photosRoutes = require('./components/photos/photosRouter');
 const personRoutes = require('./components/person/personRouter');
 const userRoutes = require('./components/User/userRoute');
+const cameraRouter = require('./components/camera/cameraRouter');
+const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
+const urlRoutes = require('./components/url/urlRoute');
+const groupRoutes = require('./components/Group/groupRoute');
+const galleryRoutes = require('./components/Gallery/galleryRoute');
+
 // declaring app
 const app = express();
 
-// using morgan
-app.use(morgan('dev'));
-
-// using cookie-parser
-app.use(cookieParser());
 // middleware here (no routing)
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(cors());
-
-// AE : ROUTING TO URL , GROUPS
-
-const urlRoutes = require('./components/url/urlRoute');
-const groupRoutes = require('./components/Group/groupRoute');
-const UserRoutes = require('./components/User/userRoute');
-const galleryRoutes = require('./components/Gallery/galleryRoute');
-
-app.use('/user', UserRoutes);
-app.use('/gallery', galleryRoutes);
-app.use('/groups', groupRoutes);
-app.use('/urls', urlRoutes);
+app.use(morgan('dev'));
 
 // use routing i.e. app.use('foo', bar)
-app.route('/').get((req, res) => {
-  res.send('Hello world!');
-});
 app.use('/auth', authRouter);
 app.use('/favorites', favoritesRoutes);
 app.use('/photos', photosRoutes);
 app.use('/person', personRoutes);
 app.use('/user', userRoutes);
+app.use('/cameras', cameraRouter);
+app.use('/cameras/brands', cameraBrandRouter);
+app.use('/gallery', galleryRoutes);
+app.use('/groups', groupRoutes);
+app.use('/urls', urlRoutes);
 // exporting
 
 module.exports = app;
