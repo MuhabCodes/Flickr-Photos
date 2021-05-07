@@ -3,29 +3,29 @@
     background-color:#f3f5f6;
     align-content: center;
     align-items: center;
-
 }
 .homePageContentMain
-{   
+{   float: none;
     justify-content:center;
     flex-direction: row ;
     display: flex;
-    max-width: 80%;
     flex-wrap: nowrap;
     background-color:#f3f5f6;
     height: 100%;
-    margin:auto;
 }
 .homePageFeed
 {
+    float: left;
     display: flex;
     flex-direction: column;
     flex-grow: 2;
     margin-right: 2em;
+    margin-left: 2em;
     max-width: 1080px;
 }
 .homePageSideBar
 {
+    float: right;
     flex-grow: 1;
     text-align: center;
     width:300px;
@@ -37,7 +37,6 @@
     position:relative;
     margin-top: 20px;
     padding: 16px 0;
-    align-items: center;
     justify-content: space-between;
 }
 .homeFeedColumnContent 
@@ -74,8 +73,9 @@
 }
 .feed-people-to-follow
 {
-    text-align: left;
+    text-align: center;
     display: flex;
+    -ms-flex-align: center;
     flex-direction: column;
     font-weight: 500;
     background-color:white;
@@ -84,22 +84,24 @@
 }
 .feed-people-to-follow p
 {
-    padding-left: 1.75em;
-    display: inline-flex;
+    margin-top: 1em;
+    padding-left: 1.5em;
+    max-width: 200px;
 }
 .cards-container
 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-left: 1.75em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
 }
 .single-card
 {
-    width:520px;
+    max-width:500px;
     height:280px;
     position: relative;
-    margin-right: 1px;
+    margin-right: 1em;
 }
 .view-more
 {
@@ -107,25 +109,29 @@
     border-top: 1px solid #e1e1e1;
     height: 40px;
 }
-@media all and (max-width: 1755px) 
+@media all and (max-width: 1444px) 
   {
     .homePageSideBar 
     {   
         display: none;
     }
-    .homePageContentMain
+    .feed-people-to-follow p
     {
-        max-width: 100%;
+    align-self: center;
+    margin-top: 1em;
+    padding-left: 0em;
+    max-width: 200px;
     }
-  }
-  @media all and (max-width: 1120px) 
+}
+@media all and (max-width: 1144px) 
   {
-    .homePageContentMain
-    {
-        max-width: 550px;
-    }
-    .homePageFeed
-    {
-        margin-right: 0px;
-    }
-  }
+      .cards-container
+      {
+          align-self: center;
+          display: inline;
+      }
+      .single-card
+      {
+          align-self: center;
+      }
+}

@@ -2,26 +2,24 @@
 {
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
-    position: absolute;
     flex-direction: column;
-    top: 0px;
-    left: 0px;
-    width: 500px;
-    height: 270 px;
+    max-width: 500px;
+    max-height: 270px;
     display: flex;
     flex-direction: column;
 }
 .card-img-container
 {
+    display: contents;
     position: relative;
-    width: 500px;
-    height: 200px;
-    overflow:hidden;
+    max-width: 500px;
+    max-height: 200px;
 }
 .card-img
 {
+    max-height: 200px;
     object-fit:cover;
-  margin: auto;
+    max-width: 500px;
 }
 .lower-container
 {
@@ -37,7 +35,7 @@
 {
     font-size: 16px;
     display: flex;
-    width:240px;
+    max-width:240px;
     padding-bottom: 10px;
 }
 .avatar-img
@@ -59,12 +57,12 @@
 }
 .profile-names
 {
-    width: 190px;
+    max-width: 190px;
     display: flex;
     flex-direction: column;
     align-items:flex-start;
     padding-bottom: 5px;
-    height: 40px;
+    max-height: 40px;
     flex-wrap: wrap;
     align-content: flex-start;
 }

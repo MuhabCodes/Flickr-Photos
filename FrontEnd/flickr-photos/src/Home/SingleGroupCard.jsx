@@ -21,13 +21,11 @@ const SingleGroupCard = (props) => {
         </div>
       </div>
       <div className="groupCardLowerContainer">
-        <div className="exploreCardRow">
-          {photos.map((photo) => (
-            <Link to="POOLPHOTOURLHERE" key={photo.id}>
-              <img src={photo.imageURL} alt="" />
-            </Link>
-          ))}
-        </div>
+        {photos.map((photo) => (
+          <Link to="POOLPHOTOURLHERE" key={photo.id}>
+            <img src={photo.imageURL} alt="" />
+          </Link>
+        ))}
       </div>
     </div>
   );
