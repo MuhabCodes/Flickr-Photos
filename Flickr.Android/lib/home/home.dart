@@ -957,7 +957,7 @@ class _HomeState extends State<Home> {
 
   Widget getComments(List<Comment> commentsList) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in commentsList) {
       //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
       comments.add(new Container(
@@ -1083,7 +1083,7 @@ class _HomeState extends State<Home> {
 
   Widget getCommentsFaves(List<Comment> likes) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in likes) {
       comments.add(new Container(
           constraints: BoxConstraints(
