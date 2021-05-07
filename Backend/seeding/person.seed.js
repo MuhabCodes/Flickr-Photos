@@ -1,10 +1,12 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 const { mongoose } = require('mongoose');
+const { join } = require('path');
 const Person = require('../components/person/personModel');
+require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 mongoose
-  .connect('mongodb+srv://MohamedAmr:flickr@flickr.60kk5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true });
 const persons = [new Person({
   _id: '507f191e810c19729de86034',

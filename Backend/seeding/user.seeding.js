@@ -11,7 +11,7 @@ async function connect() {
 }
 
 async function userSeed() {
-  await User.collection.drop();
+  if (await User.collection.findOne()) await User.collection.drop();
   const hashedPw = await utilsPassword.hashPassword('12345678');
   await User.insertMany([{
     email: 'hamoksha@live.com',
@@ -33,6 +33,12 @@ async function userSeed() {
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfb0'),
     isActivated: true,
 
+  }, {
+    _id: mongoose.Types.ObjectId('507f191e810c19729de860ea'),
+    personId: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
+    email: 'mhmd@amr.com',
+    password: 'e3e3e3',
+
   }]);
 }
 async function seed() {
@@ -41,4 +47,4 @@ async function seed() {
   await mongoose.disconnect();
 }
 
-seed().then(() => console.log('done')).catch(() => console.log('error'));
+seed().then(() => console.log('done')).catch((err) => console.log(err));

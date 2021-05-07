@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const supertest = require('supertest');
+const mongoose = require('mongoose');
+const { join } = require('path');
 const app = require('../../bin/server');
+require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 const profileReached = {
   _id: '507f191e810c19729de860ef',
@@ -41,100 +44,113 @@ const photoPublic = {
   ],
 };
 
-test('Creating a favorite', async (done) => {
-  await request
-    .post('/favorites/5d6ede6a0ba62570afcedd3d')
-    .send({ favoriteDate })
-    .set('Accept', 'application/json') // sets the data type to be json
-    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
-    .expect((response) => {
-      expect(response.status).toBe(201);
+describe('auth tests', () => {
+  let connection;
+  beforeAll(async () => {
+    connection = await mongoose
+      .connect(process.env.MONGO_URI_CLOUD,
+        { useNewUrlParser: true, useUnifiedTopology: true });
+  });
 
-      done();
-    });
-});
+  afterAll(async () => {
+    await connection.close();
+  });
 
-test('Should return user favorites  photos', async (done) => {
-  await request
-    .get('/favorites/507f191e810c19729de860ea')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(photo);
-      done();
-    });
-});
+  test('Creating a favorite', async (done) => {
+    await request
+      .post('/favorites/5d6ede6a0ba62570afcedd3d')
+      .send({ favoriteDate })
+      .set('Accept', 'application/json') // sets the data type to be json
+      .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
+      .expect((response) => {
+        expect(response.status).toBe(201);
 
-test('Should return user public favorites  photos', async (done) => {
-  await request
-    .get('/favorites/public/507f191e810c19729de860ea')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
+        done();
+      });
+  });
+
+  test('Should return user favorites  photos', async (done) => {
+    await request
+      .get('/favorites/507f191e810c19729de860ea')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(photo);
+        done();
+      });
+  });
+
+  test('Should return user public favorites  photos', async (done) => {
+    await request
+      .get('/favorites/public/507f191e810c19729de860ea')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
       // eslint-disable-next-line no-undef
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(photoPublic);
-      done();
-    });
-});
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(photoPublic);
+        done();
+      });
+  });
 
-test('Creating a Done favorite', async (done) => {
-  await request
-    .post('/favorites/5d6ede6a0ba62570afcedd3d')
-    .send({ favoriteDate })
-    .set('Accept', 'application/json') // sets the data type to be json
-    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
-    .expect((response) => {
-      expect(response.status).toBe(409);
+  test('Creating a Done favorite', async (done) => {
+    await request
+      .post('/favorites/5d6ede6a0ba62570afcedd3d')
+      .send({ favoriteDate })
+      .set('Accept', 'application/json') // sets the data type to be json
+      .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
+      .expect((response) => {
+        expect(response.status).toBe(409);
 
-      done();
-    });
-});
+        done();
+      });
+  });
 
-test('Should return user profileData', async (done) => {
-  await request
-    .get('/person/507f191e810c19729de860ea')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(profileReached);
-      done();
-    });
-});
-test('Deleting a Favorite', async (done) => {
-  await request
-    .delete('/favorites/5d6ede6a0ba62570afcedd3d')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
-    .expect((response) => {
-      expect(response.status).toBe(200);
-      done();
-    });
-});
-test('Should return user favorites  photos but with invalid user', async (done) => {
-  await request
-    .get('/favorites/507f191e810c19729de863')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(404);
-      done();
-    });
-});
+  test('Should return user profileData', async (done) => {
+    await request
+      .get('/person/507f191e810c19729de860ea')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(profileReached);
+        done();
+      });
+  });
+  test('Deleting a Favorite', async (done) => {
+    await request
+      .delete('/favorites/5d6ede6a0ba62570afcedd3d')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDdmMTkxZTgxMGMxOTcyOWRlODYwZWEifQ.d01umbNhZzbLL3Y1TBRzcyhicvb4qH2WQE3sN5ZExLE')
+      .expect((response) => {
+        expect(response.status).toBe(200);
+        done();
+      });
+  });
+  test('Should return user favorites  photos but with invalid user', async (done) => {
+    await request
+      .get('/favorites/507f191e810c19729de863')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
 
-test('Should return user public favorites  photos but with invalid user', async (done) => {
-  await request
-    .get('/favorites/public/507f191e810c19729de86')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(404);
-      done();
-    });
-});
-test('Should return user profileData but with invalid user ', async (done) => {
-  await request
-    .get('/person/507f191e810c19729de86')
-    .set('Accept', 'application/json') // sets the data type to be json
-    .expect((response) => {
-      expect(response.status).toBe(404);
-      done();
-    });
+  test('Should return user public favorites  photos but with invalid user', async (done) => {
+    await request
+      .get('/favorites/public/507f191e810c19729de86')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
+  test('Should return user profileData but with invalid user ', async (done) => {
+    await request
+      .get('/person/507f191e810c19729de86')
+      .set('Accept', 'application/json') // sets the data type to be json
+      .expect((response) => {
+        expect(response.status).toBe(404);
+        done();
+      });
+  });
 });
