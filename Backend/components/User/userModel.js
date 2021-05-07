@@ -26,10 +26,13 @@ const userSchema = mongoose.Schema({
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
-
   personId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Person',
+  },
+  displayName: {
+    type: String,
+    required: [true, 'Username field is required'],
   },
   // TODO : Add proper data structure to store following and followers
 },
