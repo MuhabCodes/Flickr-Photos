@@ -17,6 +17,7 @@ import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
 import Faves from '../Profile/faves';
+import GroupMembers from './GroupMembers';
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
             </Route>
             <Route path="/CameraRoll">
               <CameraRoll />
+            </Route>
+            <Route path="/Groups/:id/GroupMembers">
+                <GroupMembers />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
