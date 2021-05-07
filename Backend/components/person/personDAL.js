@@ -4,8 +4,8 @@ require('./personModel');
 
 module.exports.findProfile = async function findProfile(toId) {
   const foundProfile = await User.findById(toId)
-    .select('person')
-    .populate('person')
+    .select('personId')
+    .populate('personId')
     .exec();
   return foundProfile;
 };
