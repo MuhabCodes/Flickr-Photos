@@ -1,0 +1,90 @@
+.faves-view{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    color: #212124;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    opacity: 1!important;
+}
+.faves-container{
+    position: initial;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.grid-item-faves{
+    float: left;
+    object-fit: cover;
+    flex-grow: 1;
+    min-width: 150px;
+    height: 280px;
+    padding: 2px;
+    text-align: left;
+}
+.interaction-view{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .2s linear;
+    z-index: 1;
+}
+.photo-list-interaction{
+    cursor: pointer;
+}
+.interaction-bar{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px 8px;
+    z-index: 2;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: end;
+    align-items: flex-end;
+}
+.text-faves{
+    -webkit-box-flex: 1;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    margin-right: 12px;
+}
+.image-title-faves{
+    text-decoration: none;
+    display: block;
+    margin: 2px 0 0;
+    text-shadow: 0 0 2px #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    min-height: 17px;
+}
+.faves-attribution{
+    text-decoration: none;
+    display: block;
+    margin: 2px 0 0;
+    text-shadow: 0 0 2px #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+    color: hsla(0,0%,100%,.7);
+    font-size: 11px;
+    transition: color .15s linear;
+}
+.animated-fave-star{
+    background: url(https://combo.staticflickr.com/ap/build/images/fave-test/white@1x.png) 0 0/360px 18px no-repeat;
+    width: 18px;
+    height: 18px;
+}
