@@ -157,7 +157,7 @@
         {
             "title": "Food",
             "Subtitle": "Sunset",
-            "Followers": "200",
+            "Followers": "",
             "Photos": "100",
             "Avatar": "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             "Pro": true,
@@ -192,9 +192,9 @@
             "title": "Night",
             "Subtitle": "Sunset",
             "Followers": "5500",
-            "Photos": "200",
+            "Photos": "",
             "Avatar": "https://images.pexels.com/photos/5117913/pexels-photo-5117913.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "Pro": true,
+            "Pro": false,
             "Admin": true,
             "url":"photos/18",
             "Id": 18
