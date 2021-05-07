@@ -17,11 +17,10 @@ class Profile extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _ProfileState extends State<Profile> {
-  bool notification = false;
-  bool nativeCamera = false;
+  bool _notification = false;
   var aboutProvider;
   var photoProvider;
-  int initialIndex = 2;
+  int _initialIndex = 2;
 
   @override
   void initState() {
@@ -67,13 +66,13 @@ class _ProfileState extends State<Profile> {
                   children: [
                     TextButton(
                       child: const Text(
-                        'Notifications',
+                        'notifications',
                         style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                       onPressed: () {},
                     ),
                     Switch(
-                      value: notification,
+                      value: _notification,
                       onChanged: (val) => {},
                     )
                   ],
@@ -216,7 +215,7 @@ class _ProfileState extends State<Profile> {
       );
     } else
       return DefaultTabController(
-        initialIndex: initialIndex,
+        initialIndex: _initialIndex,
         length: 6,
         child: Scaffold(
           body: NestedScrollView(
@@ -347,7 +346,7 @@ class _ProfileState extends State<Profile> {
                         decoration: BoxDecoration(color: Colors.white),
                         child: TabBar(
                           isScrollable: true,
-                          onTap: (value) => initialIndex = value,
+                          onTap: (value) => _initialIndex = value,
                           tabs: [
                             const Tab(
                               child: Text(
