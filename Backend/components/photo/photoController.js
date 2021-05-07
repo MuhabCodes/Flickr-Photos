@@ -18,7 +18,7 @@ module.exports = {
   },
   async addPhoto(req, res) {
     try {
-      return await addNew(req.body.photo, res);
+      return await addNew(req.body, res);
     } catch (err) {
       return res.json({
         error: err.message,

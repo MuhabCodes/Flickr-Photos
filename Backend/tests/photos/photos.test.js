@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const { photoData } = require('./info');
+const { photoData, newPhotoData } = require('./info');
 const app = require('../../bin/server');
 
 const request = supertest(app);
@@ -71,7 +71,7 @@ it('Gives a 404 error when the deleted photo is not found', async (done) => {
 it('Adds a new photo to the database', async (done) => {
   request.post('/photos')
     .set('Accept', 'application/json')
-    .send(photoData[3]).end((err, res) => {
+    .send(newPhotoData).end((err, res) => {
       expect(res.body.statusCode).toEqual(201);
       done();
     });

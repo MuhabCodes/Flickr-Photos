@@ -4,8 +4,8 @@ module.exports = {
   async getLatestPhotos() {
     return Photo.find().sort({ $natural: -1 });
   },
-  async addNewPhoto(photoInfo) {
-    return Photo.create(photoInfo);
+  async addNewPhotos(photosInfo) {
+    return Photo.insertMany(photosInfo);
   },
   async getPhotoById(photoId) {
     return Photo.findById(photoId);

@@ -13,8 +13,8 @@ async function photoSeed() {
   await Photo.collection.drop();
   await Photo.insertMany([{
     description: 'Great pic',
-    captureDate: '1-1-2020',
-    uploadDate: '1-2-2020',
+    captureDate: '2020-01-01T08:11:08',
+    uploadDate: '2021-01-01T09:11:08',
     secret: 'secret key',
     title: 'photo 1',
     imageUrl: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
@@ -25,8 +25,8 @@ async function photoSeed() {
   },
   {
     description: 'Great pic',
-    captureDate: '1-4-2020',
-    uploadDate: '1-4-2020',
+    captureDate: '2020-05-01T01:50:08',
+    uploadDate: '2021-12-01T19:11:08',
     secret: 'secret key',
     title: 'photo 2',
     imageUrl: 'https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg',
@@ -37,8 +37,8 @@ async function photoSeed() {
   },
   {
     description: 'Great pic',
-    captureDate: '1-1-2021',
-    uploadDate: '1-2-2021',
+    captureDate: '2021-01-01T08:11:08',
+    uploadDate: '2021-05-01T14:16:11',
     secret: 'secret key',
     title: 'photo 3',
     imageUrl: 'https://cdn.pixabay.com/photo/2016/10/22/17/46/mountains-1761292_1280.jpg',
