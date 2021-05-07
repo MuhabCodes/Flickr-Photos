@@ -10,7 +10,6 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 // the more images are fetched and displayed.
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]);
-  const [isLiked, setLiked] = useState(false);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
     fetch(' http://localhost:8000/photos')
@@ -24,23 +23,7 @@ const RecentPhotos = () => {
   }, []);
   // The following changes the photos(objects) to array that can be used by the .map
   // function in the return block.
-
   const photoArr = Array.from(photos);
-  // changeImage is a function that changes the fav star icon from regular
-  // unfilled star to filled when clicked on. Needs some adjustments.
-  // Reference used: https://stackoverflow.com/questions/6764961/change-an-image-with-onclick
-  function changeImage() {
-    console.log('clicked');
-    setLiked(isLiked);
-    const src1 = 'https://img.icons8.com/android/24/ffffff/star.png';
-    const src2 = 'https://img.icons8.com/material-sharp/24/ffffff/star--v1.png';
-    if (document.querySelector('.star').src === src1) {
-      setLiked(!isLiked);
-      document.querySelector('.star').src = src2;
-    } else {
-      document.querySelector('.star').src = src1;
-    }
-  }
   // The following if condition checks if no images are in photos (fetched), display loading.
   if (!photos) {
     return <h1>No Photos Found</h1>;
@@ -81,7 +64,7 @@ const RecentPhotos = () => {
                 </span>
                 <span className="faves">
                   <div>
-                    <button className="favBtn" type="button" id="faveButton" onClick={changeImage}>
+                    <button className="favBtn" type="button" id="faveButton">
                       <img
                         className="star"
                         src="https://img.icons8.com/android/24/ffffff/star.png"
