@@ -22,6 +22,6 @@ module.exports.getBrandModels = async function getBrandModels(brand) {
 };
 
 module.exports.getModelWithName = async function getModelWithName(modelName) {
-  const camera = await Camera.find({ name: modelName });
+  const camera = await Camera.findOne({ name: modelName });
   return camera;
 };
