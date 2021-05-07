@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../providers/about_provider.dart';
 import 'package:provider/provider.dart';
+
 import './Followers.dart';
-import './following.dart';
-import './cameraroll.dart';
 import './about_tap.dart';
+import './cameraroll.dart';
+import './following.dart';
 import './stats.dart';
+import '../providers/about_provider.dart';
+import '../providers/photo_provider.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class Profile extends StatefulWidget {
@@ -18,12 +20,16 @@ class _ProfileState extends State<Profile> {
   bool notification = false;
   bool nativeCamera = false;
   var aboutProvider;
-  int initialindex = 2;
+  var photoProvider;
+  int initialIndex = 2;
 
   @override
   void initState() {
     aboutProvider = Provider.of<AboutProvider>(context, listen: false);
     aboutProvider.setabout();
+    photoProvider = Provider.of<PhotoProvider>(context, listen: false);
+    photoProvider.setPhotos();
+    //photoProvider.arangePhoto();
     super.initState();
   }
 
@@ -210,7 +216,7 @@ class _ProfileState extends State<Profile> {
       );
     } else
       return DefaultTabController(
-        initialIndex: initialindex,
+        initialIndex: initialIndex,
         length: 6,
         child: Scaffold(
           body: NestedScrollView(
@@ -249,8 +255,9 @@ class _ProfileState extends State<Profile> {
                     background: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
+                          //background image for profile
                           image: NetworkImage(
-                              "https://farm4.staticflickr.com/3914/15118079089_489aa62638_b.jpg"),
+                              "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -338,7 +345,7 @@ class _ProfileState extends State<Profile> {
                       decoration: BoxDecoration(color: Colors.white),
                       child: TabBar(
                         isScrollable: true,
-                        onTap: (value) => initialindex = value,
+                        onTap: (value) => initialIndex = value,
                         tabs: [
                           const Tab(
                             child: Text(
