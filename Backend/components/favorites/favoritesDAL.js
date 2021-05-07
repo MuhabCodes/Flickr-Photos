@@ -1,5 +1,5 @@
 const Favorite = require('./favoritesModel');
-require('../photos/photosModel');
+require('../photo/photoModel');
 
 module.exports.createFavorite = async function createFavorite(
   favoriteParameter,
@@ -17,7 +17,7 @@ module.exports.createFavorite = async function createFavorite(
 module.exports.findFavorite = async function findFavorite(userID) {
   const foundFavorite = await Favorite.find({ user: userID })
     .select('photo')
-    .populate('photo', 'title isPublic ')
+    .populate('photo', 'title isPublic')
     .exec();
   return foundFavorite;
 };

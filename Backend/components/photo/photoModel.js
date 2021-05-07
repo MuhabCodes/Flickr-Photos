@@ -58,6 +58,11 @@ const PhotoSchema = new Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
   },
+  isFamily:
+  { type: Boolean },
+  isFriend:
+  { type: Boolean },
+
   // add the user reference when it is completed
 });
 

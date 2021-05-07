@@ -10,7 +10,7 @@ const favoritesSchema = mongoose.Schema({
 
   photo: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Photos',
+    ref: 'Photo',
     required: true,
 
   },
