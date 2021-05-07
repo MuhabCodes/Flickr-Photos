@@ -18,26 +18,26 @@ class _CameraButtonsState extends State<CameraButtons> {
   int _mode = 0;
   Color _cameraButtonColor = Colors.white;
   Color _videoButtonColor = Colors.grey.shade600;
-  void setCameraColor() {
+  void setCameraColor() {   //Set Camera button's color
     _initialCircleColor = Colors.white;
     _cameraButtonColor = Colors.white;
     _videoButtonColor = Colors.grey.shade600;
     setState(() {});
   }
 
-  void setVideoColor() {
+  void setVideoColor() {   //Set Video button's color
     _initialCircleColor = Colors.red;
     _cameraButtonColor = Colors.grey.shade600;
     _videoButtonColor = Colors.white;
     setState(() {});
   }
 
-  void setVideoMode() {
+  void setVideoMode() {    //Set mode to video
     _mode = 1;
     setState(() {});
   }
 
-  void setPhotoMode() {
+  void setPhotoMode() {    //Set photo to video
     _mode = 0;
     setState(() {});
   }
