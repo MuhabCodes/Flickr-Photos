@@ -1,10 +1,12 @@
-import '../models/About.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'dart:async';
 
 ///Importing library to send http requests.
 import 'dart:convert';
-import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/about.dart';
 
 enum Status { Success, Fail, Loading }
 
@@ -17,6 +19,7 @@ class AboutProvider with ChangeNotifier {
   AboutProvider({this.baseUrl, this.context, this.about});
 
   void getMember(String member, String val) {
+    // getter for certain member
     switch (member) {
       case "Description":
         {
@@ -63,6 +66,7 @@ class AboutProvider with ChangeNotifier {
   }
 
   void setmember(String member, String val) {
+    // setter for certain member
     switch (member) {
       case "Description":
         {
@@ -108,17 +112,18 @@ class AboutProvider with ChangeNotifier {
     //notifyListeners();
   }
 
-  var url =
+  var _url =
       Uri.parse("https://run.mocky.io/v3/fc9fb004-03d0-4e9f-a93f-493f6dacb9bf");
 
   Future<void> setabout() async {
-    var response = await http.get(url);
+    // get request
+    var response = await http.get(_url);
     if (response.statusCode == 200) {
       about = About.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
     } else {
-      // If the server did not return a 201 CREATED response,
+      // If the server did not return a 200 CREATED response,
       // then throw an exception.
       status = Status.Fail;
       throw Exception('Failed to load album');
@@ -127,17 +132,18 @@ class AboutProvider with ChangeNotifier {
   }
 
   Future<About> createAbout() async {
+    // post request from backend
     print(about.description);
     status = Status.Loading;
     final response = await http.post(
-      url,
+      _url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
         "profileId": about.profileId,
         "nsId": about.nsId,
-        "showcaseSet": about.showcaseSet,
+        "showcaseSet": about.showCaseSet,
         "firstName": about.firstName,
         "lastName": about.lastName,
         "description": about.description,
