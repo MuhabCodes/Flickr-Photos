@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'upload_page.dart';
 
 class EditorPage extends StatefulWidget {
-  final realimageFile;
-  EditorPage(this.realimageFile);
+  final realImageFile;
+  EditorPage(this.realImageFile);
   @override
   _EditorPageState createState() => _EditorPageState();
 }
@@ -41,7 +41,7 @@ class _EditorPageState extends State<EditorPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => (UploadPage(
-                                    widget.realimageFile, 1, null))));
+                                    widget.realImageFile, 1, null))));
                       },
                       style: TextButton.styleFrom(
                         primary: Colors.white,
@@ -59,9 +59,9 @@ class _EditorPageState extends State<EditorPage> {
             Container(
               height: 0.6 * MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: widget.realimageFile != null
+              child: widget.realImageFile != null
                   ? Image.file(
-                      widget.realimageFile,
+                      widget.realImageFile,
                       height: 0.6 * MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                     )
