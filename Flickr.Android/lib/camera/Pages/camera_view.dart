@@ -22,36 +22,36 @@ class CameraView extends StatefulWidget {
 
 class _CameraViewState extends State<CameraView> {
   PickedFile _imageFile;
-  File realimageFile;
+  File realImageFile;
   //List<File> convertedImages = <File>[];
   //List<Asset> assetImages = <Asset>[];
   final ImagePicker picker = ImagePicker();
   Color initialCircleColor = Colors.white;
   int mode = 0;
-  void setCameraColor() {
+  void setCameraColor() {      //Set Camera button's color
     initialCircleColor = Colors.white;
     setState(() {});
   }
 
-  void setVideoColor() {
+  void setVideoColor() {      //Set Video button's color
     initialCircleColor = Colors.red;
     setState(() {});
   }
 
-  void setVideoMode() {
+  void setVideoMode() {       //Set mode to video
     mode = 1;
     setState(() {});
   }
 
-  void setPhotoMode() {
+  void setPhotoMode() {    //Set mode to photo
     mode = 0;
     setState(() {});
   }
 
-  Future<void> openGallery() async {
+  Future<void> openGallery() async {    //Access the mobile gallery
     PickedFile _picture = await picker.getImage(source: ImageSource.gallery);
     _imageFile = _picture;
-    realimageFile = File(_imageFile.path);
+    realImageFile = File(_imageFile.path);
   }
 
   @override
@@ -102,12 +102,12 @@ class _CameraViewState extends State<CameraView> {
                             color: Colors.white,
                             onPressed: () async {
                               await openGallery().then((photo) {
-                                if (realimageFile != null) {
+                                if (realImageFile != null) {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              (EditorPage(realimageFile))));
+                                              (EditorPage(realImageFile))));
                                 }
                               });
                             },
