@@ -2,7 +2,6 @@ const supertest = require('supertest');
 const app = require('../../bin/server');
 
 const request = supertest(app);
-const allCameras = require('./info');
 
 test('Should not be added since there is already a model with this name Fail', async (done) => {
   await request
@@ -19,7 +18,7 @@ test('Should be added to model Success', async (done) => {
   await request
     .post('/cameras')
     .send({
-      name: 'Nikon 700s',
+      name: 'Nikon 666m',
       brandName: 'Nikon',
     })
     .expect(200);

@@ -9,7 +9,6 @@ test('Should return all brands in DataBase', async (done) => {
     .get('/cameras/brands')
     .set('Accept', 'application/json') // sets the data type to be json
     .expect((response) => {
-      console.log(response.body);
       expect(response.status).toBe(200);
       expect(response.body.brands).toEqual(allBrands);
     });
