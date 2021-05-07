@@ -1,14 +1,16 @@
-import React, {/* { useState } */} from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './GroupMembers.css';
 import GroupCover from './GroupMembers/GroupCover';
+import GroupNavBar from './GroupMembers/GroupNavBar';
+import Members from './GroupMembers/Members';
 
 function GroupMembers() {
-  // const { data: members } = useFetch('http://localhost:5001/members');
-
   return (
     <div id="page">
       <GroupCover />
+      <GroupNavBar />
+      <Members />
     </div>
   );
 }
