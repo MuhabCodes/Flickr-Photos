@@ -21,7 +21,7 @@ const getInfo = async (photoId, res) => {
       height: photo.height,
     });
   } catch (err) {
-    return res.json({ statusCode: 404 });
+    return res.json({ statusCode: 404, error: 'PhotoNotFound' });
   }
 };
 module.exports = {

@@ -8,7 +8,7 @@ module.exports = {
   async getRecentPhotos(req, res) {
     try {
       // get all recent photos within the database from the services
-      return await getRecent();
+      return await getRecent(res);
     } catch (err) {
       return res.json({
         error: err.message,
@@ -28,7 +28,7 @@ module.exports = {
   },
   async showPhoto(req, res) {
     try {
-      return getInfo(req.params.id, res);
+      return getInfo(req.params.photoId, res);
     } catch (err) {
       return res.json({
         error: 'PhotoNotFound',
@@ -38,7 +38,7 @@ module.exports = {
   },
   async editPhoto(req, res) {
     try {
-      return await editPhoto(req.params.id, req.body.photo, res);
+      return await editPhoto(req.params.photoId, req.body.photo, res);
     } catch (err) {
       return res.json({
         error: 'PhotoNotFound',
@@ -48,7 +48,7 @@ module.exports = {
   },
   async deletePhoto(req, res) {
     try {
-      return await deletePhoto(req.params.id, res);
+      return await deletePhoto(req.params.photoId, res);
     } catch (err) {
       return res.json({
         error: 'PhotoNotFound',

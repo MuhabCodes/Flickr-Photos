@@ -41,7 +41,6 @@ const PhotoSchema = new Schema({
   gallery: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Gallery',
-    required: true,
   },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
