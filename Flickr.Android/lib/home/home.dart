@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   bool _isNumImgTwo = true;
   static int _page = 1;
   static Post _thePost = post1;
-  double heightScreen = 0;
+  //double heightScreen = 0;
   double _widthScreen = 0;
   bool test01 = false;
   //final controller = TextEditingController();
