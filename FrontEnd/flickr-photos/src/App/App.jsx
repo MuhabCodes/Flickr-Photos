@@ -1,4 +1,5 @@
 import React from 'react';
+import CameraFinder from '../CameraFinder/CameraFinder';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
@@ -27,6 +28,9 @@ function App() {
           <Route path="*">
             { /* path for all pages that don't exist */ }
             <NotFound />
+         <div className="content">
+        <CameraFinder />
+      </div>
           </Route>
         </Switch>
         <AppBar />
