@@ -30,7 +30,7 @@ class GetStarted extends StatelessWidget {
           Swiper(
             loop: false,
             pagination: SwiperPagination(
-                margin: EdgeInsets.all(120),
+                margin: EdgeInsets.all(MediaQuery.of(context).size.height / 5),
                 builder: new DotSwiperPaginationBuilder(
                   space: 5,
                   size: 6,
@@ -112,7 +112,8 @@ class GetStarted extends StatelessWidget {
                   style: TextStyle(fontSize: 12),
                 ),
                 style: ElevatedButton.styleFrom(
-                    minimumSize: Size(150, 40),
+                    minimumSize: Size(MediaQuery.of(context).size.width / 2,
+                        MediaQuery.of(context).size.height / 10),
                     primary: Colors.transparent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0.0),
