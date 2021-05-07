@@ -43,10 +43,10 @@ const RecentPhotos = () => {
   }
   // The following if condition checks if no images are in photos (fetched), display loading.
   if (!photos) {
-    return <h1>Loading ...</h1>;
+    return <h1>No Photos Found</h1>;
   }
   // The following part is the one returns the fetched images.
-  // The ResponsiveMasonry cpmponent is used to make our grid responsive.
+  // The ResponsiveMasonry component is used to make our grid responsive.
   // The masonry component is used to make the layout of the fetched images.
   // The lazy load Image component is used to display the images but not all at once,
   // when the user scrolls down more images are fetched to be displayed.
@@ -69,19 +69,19 @@ const RecentPhotos = () => {
                 style={{ width: '100%', display: 'block' }}
               />
               <span className="textArea">
-                <p className="description">
+                <span className="description">
                   {photo.description}
                   <br />
                   <br />
-                </p>
-                <p className="userName">
+                </span>
+                <span className="userName">
                   by
                   {' '}
                   {photo.user}
-                </p>
-                <p className="faves">
+                </span>
+                <span className="faves">
                   <div>
-                    <button className="favBtn" type="button" onClick={changeImage}>
+                    <button className="favBtn" type="button" id="faveButton" onClick={changeImage}>
                       <img
                         className="star"
                         src="https://img.icons8.com/android/24/ffffff/star.png"
@@ -92,14 +92,14 @@ const RecentPhotos = () => {
                   <span className="favCount">
                     {photo.favs}
                   </span>
-                </p>
-                <p className="comments">
+                </span>
+                <span className="comments">
                   <img src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                   {photo.comments}
-                </p>
-                <p className="addToGallery">
+                </span>
+                <span className="addToGallery">
                   <img src="https://img.icons8.com/ios/50/ffffff/plus-2-math.png" alt="addToGallery" width="25px" height="25px" />
-                </p>
+                </span>
               </span>
             </div>
           ))}
