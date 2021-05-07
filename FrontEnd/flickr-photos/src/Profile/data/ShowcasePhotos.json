@@ -1,0 +1,95 @@
+{
+    "mostPopPhotos": [
+        {
+            "id": "1",
+            "src": "https://images.unsplash.com/photo-1587956517146-e4c65555d3c6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "title": "second image",
+            "user": "meeee",
+            "faves": "56",
+            "comments": "24"
+        },
+        {
+            "id": "2",
+            "src": "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "title": "first image",
+            "user": "meeee",
+            "faves": "5",
+            "comments": "20"
+        },
+        {
+            "id": "3",
+            "src": "https://images.unsplash.com/photo-1547699224-0924faf995c6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "title": "third image",
+            "user": "meeee",
+            "faves": "20",
+            "comments": "13"
+        },
+        {
+            "id": "4",
+            "src": "https://images.unsplash.com/photo-1619785273342-1f22da3026d5?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "title": "fourth image",
+            "user": "meeee",
+            "faves": "15",
+            "comments": "19"
+        },
+        {
+            "id": "5",
+            "src": "https://images.unsplash.com/photo-1619980652419-5128d5cb93cc?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "title": "fifth image",
+            "user": "meeee",
+            "faves": "95",
+            "comments": "100"
+        }
+    ],
+    "showcasePhotos": [],
+    "generalStats": [
+        {
+            "id": "85826296@N00",
+            "views": "15",
+            "tags": "50",
+            "geotags": "5",
+            "faves": "2",
+            "groups": "0"
+        },
+        {
+            "id": "173@N00",
+            "views": "15",
+            "tags": "50",
+            "geotags": "5",
+            "faves": "2",
+            "groups": "0"
+        },
+        {
+            "id": "85@N00",
+            "views": "15",
+            "tags": "50",
+            "geotags": "5",
+            "faves": "2",
+            "groups": "0"
+        }
+    ],
+    "userInfo": [
+        {
+            "id": "85@N00",
+            "email": "manarzakaria@gmail.com",
+            "Joined": "April 2010",
+            "City": "",
+            "Occupation": "",
+            "Facebook": "",
+            "Tumblr": ""
+        },
+        {
+            "id": "173@N00",
+            "email": "manarzakaria@gmail.com",
+            "Joined": "April 2010",
+            "Occupation": "student"
+        },
+        {
+            "id": "85826296@N00",
+            "email": "manarzakaria@gmail.com",
+            "Joined": "April 2010",
+            "City": "Cairo",
+            "Occupation": ""
+        }
+    ]
+}
