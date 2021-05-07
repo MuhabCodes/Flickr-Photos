@@ -40,11 +40,12 @@ const photoPublic = {
       _id: '5d6ede6a0ba62570afcedd3d',
       isPublic: true,
       title: 'hi',
+
     },
   ],
 };
 
-describe('auth tests', () => {
+describe('favorites tests', () => {
   let connection;
   beforeAll(async () => {
     connection = await mongoose
