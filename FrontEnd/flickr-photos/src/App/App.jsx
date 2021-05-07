@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
 import AppBar from '../Signup/flickrbar';
 import VerifySignup from '../Signup/VerifySignup';
@@ -22,6 +23,12 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Switch>
+          <Route path="*">
+            { /* path for all pages that don't exist */ }
+            <NotFound />
+          </Route>
+        </Switch>
         <AppBar />
         <Switch>
           <Route exact path="/signup">
