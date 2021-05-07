@@ -4,13 +4,8 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose
-<<<<<<< HEAD
   .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true, useUnifiedTopology: true })
-=======
-  .connect('mongodb+srv://keka:keka@cluster0.gg47n.mongodb.net/keka?retryWrites=true&w=majority',
-    { useNewUrlParser: true })
->>>>>>> BE_YQ_people
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 // Server Connection
