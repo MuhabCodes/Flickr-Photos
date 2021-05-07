@@ -1,80 +1,80 @@
-  .contentBox , .contentBox2{
-    display: inline-block;
-    width: 530px;
-    border: 0;
-    margin: 20px;
-    margin-left: 10px;
-    align-self: auto;
-  }
+.contentBox , .contentBox2{
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin: 20px;
+  margin-left: 10px;
+  align-self: auto;
+}
+
+.contentBox img ,.contentBox2 img {
+float: left;
+}
+
+.contentBox h3,.contentBox2 h3 {
+  margin: 5px;
+}
+.contentBox span,.contentBox2 span {
+  text-align: right;
+  margin: 5px;
+}
+#legendsOfGraph1, #legendsOfGraph2,.bullet-list-graphs{
+  text-align: left;
+   margin-left: 10px;
+   font-size: 14px;
+}
+#legendsOfGraph1, #legendsOfGraph2{
+  list-style-type: none;
+  padding:0px;
   
-  .contentBox img ,.contentBox2 img {
-  float: left;
-  }
-  
-  .contentBox h3,.contentBox2 h3 {
-    margin: 5px;
-  }
-  .contentBox span,.contentBox2 span {
-    text-align: right;
-    margin: 5px;
-  }
-  ul , li{
-    text-align: left;
-     margin-left: 10px;
-     font-size: 14px;
-  }
-  #legendsOfGraph1, #legendsOfGraph2{
-    list-style-type: none;
-    padding:0px;
-    
-   }
-   .firstBullet{
-    color: #FF43AB;
-  }
- .secondBullet{
-   color:#FFF400;
  }
- .thirdBullet{
-   color: #14DC20;
- }
- .fourthBullet{
-   color: #08BFF6;
- }
- .fifthBullet{
-   color: #99AACC;
- }
- h2 a:hover, p a:hover, th a:hover, td a:hover,ul a:hover,#aboutTheseGraphs a:hover{
-  background-color: #0063dc;
-  color: white;
+ .firstBullet{
+  color: #FF43AB;
+}
+.secondBullet{
+ color:#FFF400;
+}
+.thirdBullet{
+ color: #14DC20;
+}
+.fourthBullet{
+ color: #08BFF6;
+}
+.fifthBullet{
+ color: #99AACC;
+}
+#legendsOfGraph1 a:hover,#aboutTheseGraphs a:hover, #legendsOfGraph2 a:hover{
+background-color: #0063dc;
+color: white;
 }
 .titleOfGraph1{
-  text-align: left;
-   
-  }
-.titleOfGraph2{
 text-align: left;
  
 }
+.titleOfGraph2{
+text-align: left;
+
+}
 .titleOfGraph1,.titleOfGraph2{
-  font-weight: bold;
-  color: #000;
-  font-size: 20px;
+font-weight: bold;
+color: #000;
+font-size: 20px;
 }
 #aboutTheseGraphs{
-  margin-top: 10px;
-  font-size: 13px;
-  text-align: left;
-  margin-left: 80px;
- 
+margin-top: 10px;
+font-size: 13px;
+text-align: left;
+margin-left: 120px;
+
 }
 .graphs{
-  margin-left: 80px;
+margin-left: 80px;
 }
 @media screen and (max-width: 1215px) {
-  .graphs{
-    display: block;
-  }
-ul,li{
-  font-size: 13px;
+.graphs{
+  display: block;
+}
+#legendsOfGraph1, #legendsOfGraph2,.bullet-list-graphs{
+font-size: 13px;
 }
 }
