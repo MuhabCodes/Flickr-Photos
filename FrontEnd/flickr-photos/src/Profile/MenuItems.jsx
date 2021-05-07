@@ -1,7 +1,7 @@
 const MenuItems = [
   {
     title: 'About',
-    url: '/about',
+    url: '/Profile/About',
     cName: 'nav-links',
     key: 'about',
   },
