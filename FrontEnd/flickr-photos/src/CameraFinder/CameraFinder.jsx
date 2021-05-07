@@ -25,10 +25,10 @@ const CameraFinder = () => {
   }, []);
   return (
     <div className="cameraFinder">
-      <h1 id="title">
+      <h1 id="titleCF">
         Camera Finder
       </h1>
-      <h3 id="subtitle">
+      <h3 id="subtitleMPB">
         Most Popular Brands
       </h3>
       {cameras && <PopCameras cameras={cameras} />}

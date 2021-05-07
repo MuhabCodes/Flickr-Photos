@@ -18,10 +18,12 @@ import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
 import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
+import NavBar from './Navbar';
 
 function App() {
   return (
     <div className="flickrMain">
+      <NavBar />
       <Router>
         <div className="App">
           <Switch>
