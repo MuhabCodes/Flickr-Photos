@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flickr/login/send_email.dart';
 import 'package:flickr/login/sign_in.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,6 +18,9 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _ageController = TextEditingController();
   bool _obscureText = true;
   bool _changePassword = true;
   bool _checkboxCharacters = false;
@@ -142,6 +147,7 @@ class _SignUpState extends State<SignUp> {
                     height: 9,
                   ), //spacing between the previous and next widget
                   TextFormField(
+                    controller: _firstNameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "First name",
@@ -161,6 +167,7 @@ class _SignUpState extends State<SignUp> {
                     height: 9,
                   ),
                   TextFormField(
+                    controller: _lastNameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Last name",
@@ -180,6 +187,7 @@ class _SignUpState extends State<SignUp> {
                     height: 9,
                   ),
                   TextFormField(
+                    controller: _ageController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -267,7 +275,11 @@ class _SignUpState extends State<SignUp> {
                                   : Container(
                                       color: Colors.blue,
                                       height: 4,
-                                      margin: EdgeInsets.only(right: 150)))),
+                                      margin: EdgeInsets.only(
+                                          right: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2)))),
 
                   SizedBox(height: 10),
                   Container(
@@ -339,9 +351,14 @@ class _SignUpState extends State<SignUp> {
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(5.0),
                                 ),
-                                minimumSize: Size(300, 50)),
-                            onPressed: () {
+                                minimumSize: Size(
+                                    MediaQuery.of(context).size.width, 50)),
+                            onPressed: () async {
                               if (formKey.currentState.validate()) {
+                                // await Provider.of<Auth>(context).signup(
+                                //   _emailController.text,
+                                //   _passwordController.text,
+                                // );
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -462,7 +479,9 @@ class _SignUpState extends State<SignUp> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () =>
                                   _launchURL("https://help.flickr.com"),
                               /*() {
@@ -486,7 +505,9 @@ class _SignUpState extends State<SignUp> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/privacy"),
                               /*() {
@@ -511,7 +532,9 @@ class _SignUpState extends State<SignUp> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/terms"),
                               /*() {

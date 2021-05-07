@@ -141,7 +141,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(5.0),
                                 ),
-                                minimumSize: Size(300, 50)),
+                                minimumSize: Size(
+                                    MediaQuery.of(context).size.width, 50)),
                             onPressed: () {
                               if (formKey.currentState.validate()) {
                                 Navigator.push(
@@ -185,7 +186,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () =>
                                   _launchURL("https://help.flickr.com"),
                               child: Text('Help',
@@ -203,7 +206,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/privacy"),
                               child: Text('Privacy',
@@ -222,7 +227,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/terms"),
                               child: Text('Terms',
