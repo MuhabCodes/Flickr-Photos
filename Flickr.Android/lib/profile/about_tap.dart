@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import './cameraroll.dart';
-import 'description.dart';
-import '../providers/about_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/about_provider.dart';
+import '../providers/photo_provider.dart';
 
 class AboutTap extends StatefulWidget {
   @override
@@ -12,7 +12,8 @@ class AboutTap extends StatefulWidget {
 class _AboutTapState extends State<AboutTap> {
   @override
   Widget build(BuildContext context) {
-    final aboutProvider = Provider.of<AboutProvider>(context);
+    final _aboutProvider = Provider.of<AboutProvider>(context);
+    final _photoProvider = Provider.of<PhotoProvider>(context, listen: true);
     return ListView(
       children: [
         Card(
@@ -25,7 +26,7 @@ class _AboutTapState extends State<AboutTap> {
             padding: EdgeInsets.only(top: 27, bottom: 27),
             margin: EdgeInsets.only(left: 15),
             child: Text(
-              "${images.length} Photos",
+              "${_photoProvider.images.length} Photos",
               style: TextStyle(
                   fontSize: 16,
                   color: Colors.black,
@@ -33,64 +34,77 @@ class _AboutTapState extends State<AboutTap> {
             ),
           ),
         ),
-        newcard(
-            'Description',
-            aboutProvider.about.description,
-            context,
-            Description(
-                title: 'Description',
-                initialtext: aboutProvider.about.description)),
-        newcard(
-            'Occupation',
-            aboutProvider.about.occupation,
-            context,
-            Description(
-                title: 'Occupation',
-                initialtext: aboutProvider.about.occupation)),
-        newcard(
-            'Current City',
-            aboutProvider.about.city,
-            context,
-            Description(
-                title: 'Current City', initialtext: aboutProvider.about.city)),
-        newcard(
-            'HomeTown',
-            aboutProvider.about.homeTown,
-            context,
-            Description(
-                title: 'HomeTown', initialtext: aboutProvider.about.homeTown)),
-        newcard(
-            'Website',
-            aboutProvider.about.website,
-            context,
-            Description(
-                title: 'Website', initialtext: aboutProvider.about.website)),
-        newcard(
-            'Tumblr', 'Add Tumblr...', context, Description(title: 'Tumblr')),
-        newcard('Facebook', 'Add Facebook...', context,
-            Description(title: 'Facebook')),
-        newcard('Twitter', 'Add Twitter...', context,
-            Description(title: 'Twitter')),
-        newcard('Instagram', 'Add Instagram...', context,
-            Description(title: 'Instagram')),
-        newcard('Pinterest', 'Add Pinterest...', context,
-            Description(title: 'Pinterest')),
-        newcard('Email', 'mustafausamaa@gmail.com', context,
-            Description(title: 'Email')),
-        newcard('Date Joined', 'March 2021', context, Description()),
+        newCard(
+          'Description',
+          _aboutProvider.about.description,
+          context,
+        ),
+        newCard(
+          'Occupation',
+          _aboutProvider.about.occupation,
+          context,
+        ),
+        newCard(
+          'Current City',
+          _aboutProvider.about.city,
+          context,
+        ),
+        newCard(
+          'HomeTown',
+          _aboutProvider.about.homeTown,
+          context,
+        ),
+        newCard(
+          'Website',
+          _aboutProvider.about.website,
+          context,
+        ),
+        newCard(
+          'Tumblr',
+          'Add Tumblr...',
+          context,
+        ),
+        newCard(
+          'Facebook',
+          'Add Facebook...',
+          context,
+        ),
+        newCard(
+          'Twitter',
+          'Add Twitter...',
+          context,
+        ),
+        newCard(
+          'Instagram',
+          'Add Instagram...',
+          context,
+        ),
+        newCard(
+          'Pinterest',
+          'Add Pinterest...',
+          context,
+        ),
+        newCard(
+          'Email',
+          'mustafausamaa@gmail.com',
+          context,
+        ),
+        newCard(
+          'Date Joined',
+          'March 2021',
+          context,
+        ),
       ],
     );
   }
 }
 
-GestureDetector newcard(String primarytext, String secondrytext,
-    BuildContext context, StatefulWidget route) {
+GestureDetector newCard(
+    String primaryText, String secondryText, BuildContext context) {
   return GestureDetector(
     onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => route),
-      );
+      Navigator.of(context).pushNamed('/description',
+          arguments: {'title': primaryText, 'initialtext': secondryText});
     },
     child: Card(
       margin: EdgeInsets.only(
@@ -108,14 +122,14 @@ GestureDetector newcard(String primarytext, String secondrytext,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  primarytext,
+                  primaryText,
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  secondrytext,
+                  secondryText,
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               ],
