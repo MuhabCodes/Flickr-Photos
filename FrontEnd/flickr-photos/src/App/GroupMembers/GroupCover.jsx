@@ -1,21 +1,20 @@
-import React, {/* { useState } */} from 'react';
+import React from 'react';
 import useFetch from '../useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './GroupCover.css';
 
 function GroupCover() {
-  const { data: group } = useFetch(' http://localhost:8005/Group/1');
+  const { data: group } = useFetch(' http://localhost:8006/Group/1'); // Fetch group data
 
   return (
     group ? (
+      // Check that group exists and fetching finished then display group info
       <div className="group-cover " style={{ backgroundImage: `url(${group.cover})` }}>
+
+        {/* Applying cover photo gradient */}
         <div className="group-cover-gradient" />
         <div className="group-cover-content">
-          <div className="group-avatar" style={{ backgroundImage: `url(${group.Avatar})` }}>
-            <div className="loading-animation">
-              <div className="animation" />
-            </div>
-          </div>
+          <div className="group-avatar" style={{ backgroundImage: `url(${group.Avatar})` }} />
           <div className="group-main-info">
             <div className="group-title">
               <h1>
@@ -23,10 +22,12 @@ function GroupCover() {
                   {group.Name}
                 </a>
               </h1>
+              {/* Applying join group buttton */}
               <div className="join-group">
                 <button type="button" className="btn btn-light">+ join Group</button>
               </div>
             </div>
+            {/* Displaying group data */}
             <div className="group-data">
               <div>
                 <p className="group-statistics">
@@ -53,8 +54,8 @@ function GroupCover() {
                   </a>
                 </p>
               </div>
-              <p className="space" />
-              <p className="date">
+              <p className="group-space" />
+              <p className="group-date">
                 Group Since
                 {' '}
                 {group.Date}
