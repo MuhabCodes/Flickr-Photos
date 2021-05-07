@@ -17,7 +17,7 @@ const SingleGroupCard = (props) => {
           {Group.groupName}
         </div>
         <div className="joinButton">
-          <button className="joinBtn" type="button">Join</button>
+          <button className="joinBtn" id="joinGroupButton" type="button">Join</button>
         </div>
       </div>
       <div className="groupCardLowerContainer">

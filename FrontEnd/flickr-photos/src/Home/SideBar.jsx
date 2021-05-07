@@ -2,7 +2,6 @@ import React from 'react';
 import './SideBar.css';
 import ExploreCard from './ExploreCard';
 import GroupsForYou from './GroupsForYou';
-import UpgradeToPro from './UpgradeToPro';
 import useFetch from '../useFetch';
 
 const SideBar = () => {
@@ -16,7 +15,6 @@ const SideBar = () => {
       { errorGroups && <div>{ error }</div>}
       { isPendingGroups && <div>Loading</div>}
       {Groups && <GroupsForYou Groups={Groups} /> }
-      <UpgradeToPro />
     </div>
   );
 };

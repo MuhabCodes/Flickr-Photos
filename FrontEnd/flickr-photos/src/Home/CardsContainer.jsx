@@ -4,7 +4,7 @@ import PeopleCard from './PeopleCard';
 const CardsContainer = (props) => {
   const prop = props;
   let { Profiles } = prop;
-  Profiles = Profiles.slice(0, 4);
+  Profiles = Profiles.slice(0, 4); /* Only Show 4 profiles */
   // console.log(Profiles);
   return (
     <div className="cards-container">

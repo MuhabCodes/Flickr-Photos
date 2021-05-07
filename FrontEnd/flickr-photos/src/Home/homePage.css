@@ -1,10 +1,10 @@
-.homePage
+.homePage /*Main Paige bg*/
 {
     background-color:#f3f5f6;
     align-content: center;
     align-items: center;
 }
-.homePageContentMain
+.homePageContentMain /*Flex Container for feed and sidebar*/
 {   float: none;
     justify-content:center;
     flex-direction: row ;
@@ -13,7 +13,7 @@
     background-color:#f3f5f6;
     height: 100%;
 }
-.homePageFeed
+.homePageFeed 
 {
     float: left;
     display: flex;
@@ -31,13 +31,14 @@
     width:300px;
     max-width: 300px;
 }
-.homeFeedFilters
+.homeFeedFilters /*Filters for Grid hidden for now*/
 {
     display: flex;
     position:relative;
     margin-top: 20px;
     padding: 16px 0;
     justify-content: space-between;
+    display: none;
 }
 .homeFeedColumnContent 
 {
@@ -109,7 +110,7 @@
     border-top: 1px solid #e1e1e1;
     height: 40px;
 }
-@media all and (max-width: 1444px) 
+@media all and (max-width: 1444px) /*Make sidebar disappear under certain width*/
   {
     .homePageSideBar 
     {   
@@ -123,7 +124,7 @@
     max-width: 200px;
     }
 }
-@media all and (max-width: 1144px) 
+@media all and (max-width: 1144px)  /*Make photos container display in center of container*/
   {
       .cards-container
       {

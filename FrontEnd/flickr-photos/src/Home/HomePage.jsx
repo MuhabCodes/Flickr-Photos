@@ -30,8 +30,11 @@ const HomePage = () => {
             </div>
             <div className="feed-people-to-follow">
               <p>People to follow</p>
+              {/* Display Error in div and don't load Component */}
               { error && <div>{ error }</div>}
+              {/* Shows a loading text until fetch fetches data */}
               { isPending && <div>Loading</div>}
+              {/* Don't call component until data is fetched */}
               {Profiles && <CardsContainer Profiles={Profiles} />}
             </div>
           </div>

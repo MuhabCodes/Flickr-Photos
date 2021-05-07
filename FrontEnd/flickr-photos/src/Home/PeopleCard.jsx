@@ -13,15 +13,17 @@ const PeopleCard = (props) => {
   return (
     <div className="people-card">
       <div className="upper-container">
+        {/* Container for image of profiles */}
         <Link to="/ProfileURLHERE">
+          {/* Redirects to profile */}
           <div className="card-img-container">
             <img className="card-img" src={bgImage} alt="" />
           </div>
         </Link>
       </div>
-      {/* Done the image part */}
       <div className="lower-container">
         <div className="lower-container-left">
+          {/* Contaianer for avatar and names of profiles */}
           <div className="avatar-img-container">
             <Link to="/ProfileURLHERE">
               <img src={avatar} alt="" className="avatar-img" />
