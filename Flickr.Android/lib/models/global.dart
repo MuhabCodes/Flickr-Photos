@@ -4,11 +4,14 @@ import 'comment.dart';
 import 'post.dart';
 import 'user.dart';
 
-TextStyle textStyle = new TextStyle(fontFamily: 'Gotham');
+TextStyle textStyle = new TextStyle(fontFamily: 'Gotham', fontSize: 10);
 TextStyle textStyleBold = new TextStyle(
-    fontFamily: 'Gotham', fontWeight: FontWeight.bold, color: Colors.black);
+    fontFamily: 'Gotham',
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontSize: 10);
 TextStyle textStyleLigthGrey =
-    new TextStyle(fontFamily: 'Gotham', color: Colors.grey);
+    new TextStyle(fontFamily: 'Gotham', color: Colors.grey, fontSize: 10);
 
 Post post1 = new Post(
     /*[new Image.asset('lib/assets/istanbul.jpg')]*/
