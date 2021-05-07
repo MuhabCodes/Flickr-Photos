@@ -12,7 +12,7 @@ const userRouter = require('./components/User/userRoute');
 const cameraRouter = require('./components/camera/cameraRouter');
 const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 const urlRouter = require('./components/url/urlRoute');
-const groupRouter = require('./components/Group/groupRoute');
+const groupRouter = require('./components/group/groupRoute');
 const galleryRouter = require('./components/Gallery/galleryRoute');
 
 // declaring app
