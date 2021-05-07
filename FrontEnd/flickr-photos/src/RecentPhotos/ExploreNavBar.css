@@ -9,7 +9,7 @@ flex-direction: row;
 z-index: 9999;
 }
 
-.expnav a:link {
+.expnav #menu-item:link {
 display: inline-block;
 color: rgba(0, 0, 0, 0.582);
 padding: 10px 16px;
@@ -21,18 +21,18 @@ font-family: sans-serif;
 margin-top: 7px;
 }
 
-.expnav a:hover {
+.expnav #menu-item:hover {
 border-bottom: 3px solid #0473db;
 color: black;
 text-decoration: none;
 }
 
-.expnav a.active {
+.expnav #menu-item.active {
 border-bottom: 3px solid #0473db;
 color: black;
 text-decoration: none;
 }
-.expnav a:visited{
+.expnav #menu-item:visited{
 color: rgba(5, 0, 0, 0.753);
 }
 #dropdownMenuButton1 {
@@ -59,13 +59,13 @@ z-index: 0;
 border: thin transparent;
 text-align: left;
 }
-.dropdown-menu a {
+.dropdown-menu .dropdown-item {
 color: rgb(12, 9, 9);
 text-decoration: none;
 display: block;
-line-height: 2px;
+line-height: 12px;
 }   
-.dropdown-menu a:hover {
+.dropdown-menu .dropdown-item:hover {
 background-color: #ddd;
 border-bottom: transparent;
 }
