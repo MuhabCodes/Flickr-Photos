@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 // require routes only here
 const favoritesRouter = require('./components/favorites/favoritesRouter');
 const authRouter = require('./components/auth/authRouter');
-const photosRouter = require('./components/photos/photosRouter');
+const photosRouter = require('./components/photos/photoRouter');
 const personRouter = require('./components/person/personRouter');
 const userRouter = require('./components/User/userRoute');
 const cameraRouter = require('./components/camera/cameraRouter');
