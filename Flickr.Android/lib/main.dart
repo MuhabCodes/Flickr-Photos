@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/about_provider.dart';
+import 'providers/camera_provider.dart';
+import 'providers/tag_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,6 +27,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: PhotoProvider(),
         ),
+         ChangeNotifierProvider.value(
+          value: CameraProvider(),
+        ),
+         ChangeNotifierProvider.value(
+          value: TagProvider(),
+        ),
       ],
       child: MaterialApp(
         home: GetStarted(),
@@ -34,3 +42,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
