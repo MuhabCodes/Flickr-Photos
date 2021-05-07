@@ -14,6 +14,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _obscureText = true; //show password boolean
   bool _emailValid = true; //email validation
   bool _checkValue = false; //check box value
@@ -125,6 +126,7 @@ class _SignInState extends State<SignIn> {
                       child: _emailValid
                           ? null
                           : TextFormField(
+                              controller: _passwordController,
                               obscureText: _obscureText,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -181,10 +183,15 @@ class _SignInState extends State<SignIn> {
                                   borderRadius: new BorderRadius.circular(
                                       5.0), //button shape
                                 ),
-                                minimumSize: Size(300, 50)), //button size
-                            onPressed: () {
+                                minimumSize: Size(
+                                    MediaQuery.of(context).size.width,
+                                    50)), //button size
+                            onPressed: () async {
                               if (formKey.currentState.validate()) {
                                 if (_emailValid == false) {
+                                  // await Provider.of<Auth>(context).login(
+                                  //     _emailController.text,
+                                  //     _passwordController.text);
                                   Navigator.of(context).pop();
                                   Navigator.of(context).pop();
                                   Navigator.push(
@@ -275,7 +282,9 @@ class _SignInState extends State<SignIn> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () =>
                                   _launchURL("https://help.flickr.com"),
                               child: Text('Help',
@@ -293,7 +302,9 @@ class _SignInState extends State<SignIn> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/privacy"),
                               child: Text('Privacy',
@@ -312,7 +323,9 @@ class _SignInState extends State<SignIn> {
                                     borderRadius:
                                         new BorderRadius.circular(0.0),
                                   ),
-                                  minimumSize: Size(75, 50)),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width / 4,
+                                      50)),
                               onPressed: () => _launchURL(
                                   "https://www.flickr.com/help/terms"),
                               child: Text('Terms',

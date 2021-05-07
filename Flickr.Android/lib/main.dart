@@ -1,5 +1,4 @@
 import 'package:flickr/login/get_started.dart';
-import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-      home: GetStarted(), //TopNavigationBar(),
+      home: GetStarted(),
       debugShowCheckedModeBanner: false, //remove debug sign
     );
   }
