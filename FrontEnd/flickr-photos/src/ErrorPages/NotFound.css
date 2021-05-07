@@ -87,6 +87,11 @@
 {
     display: contents;
 }
+.exploreButton
+{
+    align-self: center;
+    display: inline-block;
+}
 /* Mobile responsivness fix */
   @media only screen and (max-width: 768px) {
     .image404Style {

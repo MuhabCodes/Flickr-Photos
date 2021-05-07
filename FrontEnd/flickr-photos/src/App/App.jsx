@@ -1,18 +1,16 @@
 import React from 'react';
-import CameraFinder from '../CameraFinder/CameraFinder';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CameraFinder from '../CameraFinder/CameraFinder';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
 import AppBar from '../Signup/flickrbar';
 import VerifySignup from '../Signup/VerifySignup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AppBar from '../Login/flickrbar';
 import Login from '../Login/logIn';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
-import NavBar from './Navbar';
 import Footer from './Footer';
 import CameraRoll from './CameraRoll';
 import CoverArea from '../Profile/Cover';
@@ -22,62 +20,54 @@ import Faves from '../Profile/faves';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="*">
-            { /* path for all pages that don't exist */ }
-            <NotFound />
-         <div className="content">
-        <CameraFinder />
-      </div>
-          </Route>
-        </Switch>
-        <AppBar />
-        <Switch>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Route exact path="/verifysignup">
-            <VerifySignup />
-          </Route>
-        </Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/forgotpassword">
-            <ForgotPassword />
-          </Route>
-          <Route exact path="/sendemail">
-            <SendEmail />
-          </Route>
-        </Switch>
-         <NavBar />
-        <CoverArea />
-
-        <div className="pageContent">
+    <div className="flickrMain">
+      <Router>
+        <div className="App">
           <Switch>
+            <Route exact path="/CameraFinder">
+              <CameraFinder />
+            </Route>
+            <Route exact path="/SignUp">
+              <AppBar />
+              <SignUp />
+            </Route>
+            <Route exact path="/VerifySignup">
+              <VerifySignup />
+            </Route>
+            <Route exact path="/Login">
+              <Login />
+            </Route>
+            <Route exact path="/ForgotPassword">
+              <ForgotPassword />
+            </Route>
+            <Route exact path="/SendEmail">
+              <SendEmail />
+            </Route>
             <Route exact path="/">
               <HomePage />
             </Route>
+            <Route path="/About">
+              <CoverArea />
+              <SubNavBar />
+              <ProfileContainer />
+            </Route>
+            <Route path="/Faves">
+              <CoverArea />
+              <SubNavBar />
+              <Faves />
+            </Route>
+            <Route path="/CameraRoll">
+              <CameraRoll />
+            </Route>
+            <Route path="*">
+              { /* path for all pages that don't exist */ }
+              <NotFound />
+            </Route>
           </Switch>
+          <Footer />
         </div>
-        <Switch>
-          <Route path="/About">
-            <SubNavBar />
-            <ProfileContainer />
-          </Route>
-          <Route path="/Faves">
-            <SubNavBar />
-            <Faves />
-          </Route>
-          <Route path="/cameraroll">
-               <CameraRoll /> 
-          </Route>
-        </Switch>
-      <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ import NotFoundExplore from './NotFoundExplore';
 import useFetch from '../useFetch';
 
 const NotFound = () => {
-  const { data: images, isPending, error } = useFetch('http://localhost:8000/photos');
+  const { data: images, isPending, error } = useFetch('http://localhost:8000/photosExplore');
   return (
     <div className="mainErrorPage">
       <div className="main404Container">

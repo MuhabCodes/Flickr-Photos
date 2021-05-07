@@ -20,9 +20,6 @@ const CameraFinder = () => {
       .then((res) => res.json())
       .then((data) => {
         setPopCam(data);
-      })
-      .catch((rejected) => {
-        console.log(rejected);
       });
   }, []);
   return (

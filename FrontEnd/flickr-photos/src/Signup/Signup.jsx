@@ -96,7 +96,9 @@ export default function SignUp() {
         <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
           Sign up for Flickr
         </Typography>
-        <form onSubmit={handleSubmit(submitForm)}>
+        <form
+          onSubmit={handleSubmit(submitForm)}
+        >
           <CssTextField variant="outlined" {...register('firstName')} name="firstName" style={{ justifyContent: 'center', alignSelf: 'center' }} value={firstName} onChange={(e) => setFName(e.target.value)} label="First Name" />
           <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.firstName && 'Required'}</p>
           <CssTextField variant="outlined" {...register('lastName')} name="lastName" value={lastName} onChange={(e) => setLName(e.target.value)} label="Last Name" />

@@ -6,7 +6,7 @@ import useFetch from './usefetch';
 
 const CoverArea = () => {
   // const { id } = useParams();
-  const { data: Coverinfo } = useFetch('http://localhost:8001/Coverinfo/85826296@N00');
+  const { data: Coverinfo } = useFetch('http://localhost:8000/Coverinfo/85826296@N00');
   useEffect(() => {
     if (Coverinfo) {
       if (Coverinfo.coverUrl === '0') {

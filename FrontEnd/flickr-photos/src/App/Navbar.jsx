@@ -9,38 +9,35 @@ import NavDropDown from './NavbarDropDown';
 // component for the whole navigation bar
 function NavBar() {
   return (
-    <div className="App ">
-      <Navbar collapseOnSelect sticky="top" expand="md">
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar collapseOnSelect sticky="top" expand="md">
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src="flickr.png"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
+      <Navbar.Brand href="#home">
+        <img
+          alt=""
+          src="flickr.png"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
+        {' '}
+        flickr
+      </Navbar.Brand>
+
+      <NavDropDown />
+
+      <div className="icons">
+        <a href="#home">
+          <i className="fas fa-cloud-upload-alt" />
           {' '}
-          flickr
-        </Navbar.Brand>
+        </a>
+        <a href="#home">
+          <i className="fas fa-bell" />
+          {' '}
+        </a>
+      </div>
 
-        <NavDropDown />
-
-        <div className="icons">
-          <a href="#home">
-            <i className="fas fa-cloud-upload-alt" />
-            {' '}
-          </a>
-          <a href="#home">
-            <i className="fas fa-bell" />
-            {' '}
-          </a>
-        </div>
-
-      </Navbar>
-
-    </div>
+    </Navbar>
   );
 }
 
