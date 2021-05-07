@@ -2,6 +2,6 @@ const express = require('express');
 
 const router = express.Router();
 
-const User = require('../User/userModel');
+const User = require('./userModel');
 
 module.exports = router;
