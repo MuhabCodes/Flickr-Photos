@@ -94,3 +94,65 @@ body {
     text-align: center;
     line-height: 30.35px;
 }
+/* About main styling */
+
+#about-main {
+  float: left;
+  max-width: 600px;
+  margin-left: 60px;
+  display: block;
+}
+
+#about-main h1 {
+  margin: 0 0 16px;
+  line-height: 29px;
+  color: #ff0084;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 25px 0 0;
+}
+
+#about-main h2 {
+  margin: 16px 0 10px;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 0;
+}
+
+#about-main blockquote {
+  margin: 16px 40px;
+  padding: 0;
+}
+#about-main h3 {
+  line-height: 22px;
+  font-size: 16px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+#about-main p {
+  margin: 12px 0;
+}
+
+#team {
+  color: #ff0084;
+}
+/* Team members styling*/
+
+#team-table {
+  margin-left: -15px;
+}
+#team-table p {
+  font-size: 9px;
+  color: #999;
+  font-size: smaller;
+  white-space: nowrap;
+}
+#team-table img {
+  vertical-align: middle;
+}
+#team-table img:hover {
+  border-bottom-style: solid;
+  border-bottom-color: #0063dc;
+  border-image-outset: 0 0 5px;
+}
