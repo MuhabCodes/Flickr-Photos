@@ -4,7 +4,6 @@ import useFetch from './usefetch';
 import './Cover.css';
 // import background from './assets/shapes_heart.png';
 // import avatar from './assets/logo192.png';
-
 const CoverArea = () => {
   // const { id } = useParams();
   const { data: Coverinfo } = useFetch('http://localhost:8000/Coverinfo/85826296@N00');
@@ -25,39 +24,38 @@ const CoverArea = () => {
   });
   return (
     <div className="container-fluid">
-      <div className="cover">
+      <div className="cover-cvuP">
         {Coverinfo && (
         <div
-          className="changing-cover-photo-bg"
+          className="changing-cover-photo-bg-cvuP"
           style={{ backgroundImage: `url(${Coverinfo.coverUrl})` }}
         >
-          <div className="cover-photo-gradient" />
-          <div className="cover-content">
-            <button type="button" className="cover-photo-editbutton">
+          <div className="cover-photo-gradient-cvuP" />
+          <div className="cover-content-cvuP">
+            <button type="button" className="cover-photo-editbutton-cvuP">
               <img src="./assets/edit_icon.png" alt="" />
               edit
             </button>
-
             <div
-              className="user-cover-avatar"
+              className="user-cover-avatar-cvuP"
               style={{ backgroundImage: `url(${Coverinfo.avatarUrl})` }}
             />
-            <div className="title-content">
-              <div className="user-cover-title">
-                <h1 className="user-cover-name">
+            <div className="title-content-cvuP">
+              <div className="user-cover-title-cvuP">
+                <h1 className="user-cover-name-cvuP">
                   {Coverinfo.firstName}
                   {' '}
                   {Coverinfo.lastName}
                 </h1>
               </div>
-              <div className="follow-view">
+              <div className="follow-view-cvuP">
                 <a href="/account/upgrade/po" id="pro-badge-cover">
-                  <p className="pro-badge-style">Pro</p>
+                  <p className="pro-badge-style-cvuP">Pro</p>
                 </a>
-                <p className="user-cover-display-name">
+                <p className="user-cover-display-name-cvuP">
                   {Coverinfo.displayName}
                 </p>
-                <p className="following-followers-cover-list">
+                <p className="following-followers-cover-list-cvuP">
                   {Coverinfo.Followers}
                   {' '}
                   Followers
@@ -68,13 +66,13 @@ const CoverArea = () => {
                   {' '}
                   Following
                 </p>
-                <p className="cover-spacer" />
-                <p className="user-cover-photo-count">
+                <p className="cover-spacer-cvuP" />
+                <p className="user-cover-photo-count-cvuP">
                   {Coverinfo.Photos}
                   {' '}
                   photos
                 </p>
-                <p className="user-cover-join-date">
+                <p className="user-cover-join-date-cvuP">
                   joined
                   {' '}
                   {Coverinfo.Joined}

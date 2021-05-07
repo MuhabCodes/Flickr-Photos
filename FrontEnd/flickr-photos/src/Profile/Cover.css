@@ -2,12 +2,12 @@
 .container-fluid{
   padding: 0;
 }
-.cover {
+.cover-cvuP {
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
     color: #212124;
     opacity: 1 !important;
   }
-  .changing-cover-photo-bg {
+  .changing-cover-photo-bg-cvuP {
     width: 100%;
     padding-top: 130px;
     background-size: 100%;
@@ -15,7 +15,7 @@
     background-position: 50% 50%;
     position: relative;
   }
-  .cover-photo-gradient {
+  .cover-photo-gradient-cvuP {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,7 +31,7 @@
       rgba(0, 0, 0, 0.7)
     );
   }
-  .cover-content {
+  .cover-content-cvuP {
     color: #fff;
     height: 120px;
     position: relative;
@@ -40,7 +40,7 @@
     margin-right: auto;
     box-sizing: border-box;
   }
-  .user-cover-avatar {
+  .user-cover-avatar-cvuP {
     color: #fff;
     position: relative;
     background-color: #ddd;
@@ -55,7 +55,7 @@
     float: left;
     margin: 0 15px 14px 0;
   }
-  .cover-photo-editbutton{
+  .cover-photo-editbutton-cvuP{
     position: absolute;
     right: 0;
     top: -105px;
@@ -68,12 +68,12 @@
     transition: opacity .2s ease,width .2s ease;
     width: 0;
   }
-  .title-content {
+  .title-content-cvuP {
     color: #fff;
     display: inline-block;
     width: calc(100% - 100px - 15px);
   }
-  .user-cover-title {
+  .user-cover-title-cvuP {
     color: #fff;
     display: flex;
     -webkit-box-pack: start;
@@ -83,7 +83,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
   }
-  .user-cover-name {
+  .user-cover-name-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     white-space: nowrap;
@@ -95,14 +95,14 @@
     margin: 21px 20px 13px 0;
     display: inline-block;
   }
-  .follow-view {
+  .follow-view-cvuP {
     color: #fff;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
   }
-  .pro-badge-style{
+  .pro-badge-style-cvuP{
     color: #fff;
     -webkit-box-direction: normal;
     white-space: nowrap;
@@ -118,7 +118,7 @@
     padding: 5px;
     border: 2px solid white;
   }
-  .user-cover-display-name {
+  .user-cover-display-name-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     white-space: nowrap;
@@ -132,7 +132,7 @@
     font-weight: 300;
     flex-shrink: 1;
   }
-  .following-followers-cover-list {
+  .following-followers-cover-list-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     white-space: nowrap;
@@ -147,7 +147,7 @@
     margin-right: 0;
     flex-shrink: 0;
   }
-  .cover-spacer {
+  .cover-spacer-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     white-space: nowrap;
@@ -163,7 +163,7 @@
     max-width: inherit;
     flex-shrink: 1;
   }
-  .user-cover-photo-count {
+  .user-cover-photo-count-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     font-size: 16px;
@@ -174,7 +174,7 @@
     font-weight: 300;
     flex-shrink: 0;
   }
-  .user-cover-join-date {
+  .user-cover-join-date-cvuP {
     color: #fff;
     -webkit-box-direction: normal;
     font-size: 16px;

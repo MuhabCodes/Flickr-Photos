@@ -1,4 +1,4 @@
-.faves-view{
+.faves-view-uP{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
     max-width: 80%;
@@ -7,13 +7,13 @@
     box-sizing: border-box;
     opacity: 1!important;
 }
-.faves-container{
+.faves-container-uP{
     position: initial;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.grid-item-faves{
+.grid-item-favesuP{
     float: left;
     object-fit: cover;
     flex-grow: 1;
@@ -22,7 +22,7 @@
     padding: 2px;
     text-align: left;
 }
-.interaction-view{
+.interaction-view-favesuP{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -30,10 +30,10 @@
     transition: opacity .2s linear;
     z-index: 1;
 }
-.photo-list-interaction{
+.photo-list-interaction-favesuP{
     cursor: pointer;
 }
-.interaction-bar{
+.interaction-bar-favesuP{
     left: 0;
     bottom: 0;
     width: 100%;
@@ -47,7 +47,7 @@
     -webkit-box-align: end;
     align-items: flex-end;
 }
-.text-faves{
+.text-faves-uP{
     -webkit-box-flex: 1;
     flex: 1;
     min-width: 0;
