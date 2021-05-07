@@ -334,7 +334,7 @@
     "supertest": "^6.1.3"
   },
   "jest": {
-    "testEnviroment": "node"
+    "testEnvironment": "node"
   },
   "scripts": {
     "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
