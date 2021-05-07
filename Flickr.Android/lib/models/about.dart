@@ -1,10 +1,10 @@
 class About {
   String profileId;
   String nsId;
-  String showcaseSet;
+  String showCaseSet;
   String firstName;
   String lastName;
-  String description = "add descrip";
+  String description;
   String website;
   String occupation;
   String homeTown;
@@ -13,7 +13,7 @@ class About {
   About({
     this.profileId,
     this.nsId,
-    this.showcaseSet,
+    this.showCaseSet,
     this.firstName,
     this.lastName,
     this.description,
@@ -27,7 +27,7 @@ class About {
   factory About.fromJson(Map<String, dynamic> json) => About(
         profileId: json["profileId"],
         nsId: json["nsId"],
-        showcaseSet: json["showcaseSet"],
+        showCaseSet: json["showcaseSet"],
         firstName: json["firstName"],
         lastName: json["lastName"],
         description: json["description"],
