@@ -10,17 +10,9 @@ async function favoriteSeed() {
   },
   ]);
 }
-// async function connect() {
-//   await mongoose
-//     .connect(process.env.MONGO_URI_CLOUD,
-//       { useNewUrlParser: true, useUnifiedTopology: true });
-// }
 
 async function seedFavorite() {
-  // await connect();
-
   await favoriteSeed();
-  // await mongoose.disconnect();
 }
 
 module.exports = seedFavorite;

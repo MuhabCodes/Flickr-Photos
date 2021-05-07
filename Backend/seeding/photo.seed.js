@@ -4,12 +4,6 @@ const Photo = require('../components/photos/photosModel');
 
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
-// async function connect() {
-//   await mongoose
-//     .connect(process.env.MONGO_URI_CLOUD,
-//       { useNewUrlParser: true, useUnifiedTopology: true });
-// }
-
 async function photoSeed() {
   if (await Photo.findOne()) await Photo.collection.drop();
   await Photo.insertMany([{
@@ -26,9 +20,7 @@ async function photoSeed() {
 }
 
 async function seedPhoto() {
-  // await connect();
   await photoSeed();
-  // await mongoose.disconnect();
 }
 
 module.exports = seedPhoto;

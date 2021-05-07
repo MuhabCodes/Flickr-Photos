@@ -4,14 +4,8 @@ const { join } = require('path');
 const cameraBrand = require('../components/cameraBrand/cameraBrandModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
-async function connect() {
-  await mongoose
-    .connect('mongodb+srv://keka:keka@cluster0.gg47n.mongodb.net/keka?retryWrites=true&w=majority',
-      { useNewUrlParser: true, useUnifiedTopology: true });
-}
-
 async function cameraBrandSeed() {
-  await cameraBrand.collection.drop();
+  if (await cameraBrand.findOne()) await cameraBrand.collection.drop();
   await cameraBrand.insertMany([{
     name: 'Nikon',
     _id: mongoose.Types.ObjectId('1092ea18321fa5101115dfad'),
@@ -30,10 +24,8 @@ async function cameraBrandSeed() {
 
   }]);
 }
-async function seed() {
-  await connect();
+async function seedCameraBrand() {
   await cameraBrandSeed();
-  await mongoose.disconnect();
 }
 
-seed().then(() => console.log('done')).catch(() => console.log('error'));
+module.exports = seedCameraBrand;

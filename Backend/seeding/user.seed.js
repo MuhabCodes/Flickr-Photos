@@ -4,12 +4,6 @@ const utilsPassword = require('../utils/passwords');
 const User = require('../components/User/userModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
-// async function connect() {
-//   await mongoose
-//     .connect(process.env.MONGO_URI_CLOUD,
-//       { useNewUrlParser: true, useUnifiedTopology: true });
-// }
-
 async function userSeed() {
   if (await User.findOne()) await User.collection.drop();
   const hashedPw = await utilsPassword.hashPassword('12345678');
@@ -48,9 +42,7 @@ async function userSeed() {
   }]);
 }
 async function seedUser() {
-  // await connect();
   await userSeed();
-  // await mongoose.disconnect();
 }
 
 module.exports = seedUser;

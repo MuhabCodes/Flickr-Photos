@@ -14,20 +14,12 @@ const gallery = new Gallery({
   description: [],
 });
 
-// async function connect() {
-//   await mongoose
-//     .connect(process.env.MONGO_URI_CLOUD,
-//       { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 50000 });
-// }
-
 async function gallerySeed() {
   if (await Gallery.findOne()) await Gallery.collection.drop();
   await gallery.save();
 }
 async function seedGallery() {
-  // await connect();
   await gallerySeed();
-  // await mongoose.disconnect();
 }
 
 module.exports = seedGallery;
