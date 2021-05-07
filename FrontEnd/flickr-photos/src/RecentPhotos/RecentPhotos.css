@@ -1,0 +1,69 @@
+ .imageGrid{
+margin-left: 30px;
+}
+.singleImage{
+position: relative;
+width: auto;
+ height: auto;
+ float: left;
+ margin-right: 10px;
+}
+.description, .userName, .faves, .comments, .addToGallery{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 5px;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  }
+.singleImage:hover{
+cursor:pointer; 
+}
+.singleImage:hover .description,.singleImage:hover .userName, .singleImage:hover .faves , .singleImage:hover .comments,
+.singleImage:hover .addToGallery{
+  width: 100%;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+}
+.singleImage:hover .description{
+text-align: left;
+font-weight: bold;
+margin-bottom: 1px;
+}
+.singleImage:hover .userName{
+text-align: left;
+color:darkgray;
+margin-bottom: 6px;
+margin-left: 1px;
+font-size: small;
+}
+.singleImage:hover .faves{
+color:white;
+margin-left: 20%;
+font-weight: bold;
+}
+.singleImage:hover .comments{
+color:white;
+margin-left: 33%;
+font-weight: bold;
+}
+.singleImage:hover .addToGallery{
+margin-left: 43%;
+} 
+.faves .favCount{
+  text-align: right;
+  margin-left: 30px;
+}
+.faves .favBtn {
+  position: absolute;
+  top: 10%;
+  right: 50%;
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+}

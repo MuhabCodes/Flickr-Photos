@@ -19,6 +19,7 @@ import ProfileContainer from '../Profile/ProfileContainer';
 import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
+import Explore from '../RecentPhotos/Explore';
 
 function App() {
   return (
@@ -64,6 +65,9 @@ function App() {
             </Route>
             <Route path="/Groups/:id/GroupMembers">
               <GroupMembers />
+            </Route>
+            <Route exact path="/Explore">
+              <Explore />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
