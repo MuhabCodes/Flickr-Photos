@@ -37,7 +37,6 @@ module.exports.addCamera = async function addCamera(req, res) {
 
 module.exports.getBrandModels = async function getBrandModels(req, res) {
   const { params } = req;
-  console.log(params.brand);
   try {
     const cameraModels = await cameraDAL.getBrandModels(params.brand);
 
