@@ -4,14 +4,14 @@ const utilsPassword = require('../utils/passwords');
 const User = require('../components/User/userModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
-async function connect() {
-  await mongoose
-    .connect(process.env.MONGO_URI_CLOUD,
-      { useNewUrlParser: true, useUnifiedTopology: true });
-}
+// async function connect() {
+//   await mongoose
+//     .connect(process.env.MONGO_URI_CLOUD,
+//       { useNewUrlParser: true, useUnifiedTopology: true });
+// }
 
 async function userSeed() {
-  if (await User.collection.findOne()) await User.collection.drop();
+  if (await User.findOne()) await User.collection.drop();
   const hashedPw = await utilsPassword.hashPassword('12345678');
   await User.insertMany([{
     email: 'hamoksha@live.com',
@@ -47,10 +47,10 @@ async function userSeed() {
     displayName: 'testing',
   }]);
 }
-async function seed() {
-  await connect();
+async function seedUser() {
+  // await connect();
   await userSeed();
-  await mongoose.disconnect();
+  // await mongoose.disconnect();
 }
 
-seed().then(() => console.log('done')).catch((err) => console.log(err));
+module.exports = seedUser;

@@ -8,20 +8,20 @@ const group = new Group({
   name: 'testing',
 });
 
-async function connect() {
-  await mongoose
-    .connect(process.env.MONGO_URI_CLOUD,
-      { useNewUrlParser: true, useUnifiedTopology: true });
-}
+// async function connect() {
+//   await mongoose
+//     .connect(process.env.MONGO_URI_CLOUD,
+//       { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 50000 });
+// }
 
 async function groupSeed() {
   if (await Group.findOne()) await Group.collection.drop();
   await group.save();
 }
-async function seed() {
-  await connect();
+async function seedGroup() {
+  // await connect();
   await groupSeed();
-  await mongoose.disconnect();
+  // await mongoose.disconnect();
 }
 
-seed().then(() => console.log('done')).catch(() => console.log('error'));
+module.exports = seedGroup;
