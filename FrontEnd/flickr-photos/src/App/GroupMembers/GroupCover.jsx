@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './GroupCover.css';
 
 function GroupCover() {
-  const { data: group } = useFetch(' http://localhost:8006/Group/1'); // Fetch group data
+  const { data: group } = useFetch(' http://localhost:8000/Group/1'); // Fetch group data
 
   return (
     group ? (

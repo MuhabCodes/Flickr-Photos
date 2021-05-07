@@ -20,6 +20,8 @@ import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
+import About from '../AboutPage/About';
+import GroupCover from './GroupMembers/GroupCover';
 
 function App() {
   return (
@@ -50,7 +52,7 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route path="/About">
+            <Route path="/Profile/About">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
@@ -64,10 +66,14 @@ function App() {
               <CameraRoll />
             </Route>
             <Route path="/Groups/:id/GroupMembers">
+              <GroupCover />
               <GroupMembers />
             </Route>
             <Route exact path="/Explore">
               <Explore />
+            </Route>
+            <Route exact path="/About">
+              <About />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }

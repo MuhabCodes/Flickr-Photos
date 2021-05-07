@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Members.css';
 
 function Members() {
-  const { data: members } = useFetch('http://localhost:5005/members'); // Fetching admins and members data
+  const { data: members } = useFetch('http://localhost:8000/members'); // Fetching admins and members data
   // spliting the data in two array one for admins and the other for regular members
   let adminsList = [];
   let regularList = [];
