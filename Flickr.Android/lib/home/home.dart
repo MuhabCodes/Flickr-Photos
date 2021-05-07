@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flickr/models/comment.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -13,20 +13,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //List<Widget> likers = [];
-  bool isNumImgTwo = true;
-  static int page = 1;
-  static Post thePost = post1;
+  bool _isNumImgTwo = true;
+  static int _page = 1;
+  static Post _thePost = post1;
   //final controller = TextEditingController();
-  final commentController = TextEditingController();
+  final _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    Map<int, Widget> pageview = {
+    Map<int, Widget> _pageview = {
       1: getMain(),
-      2: getLikes(thePost.likes),
-      3: getComments(thePost.comments)
+      2: getLikes(_thePost.likes),
+      3: getComments(_thePost.comments)
     };
-    return pageview[page];
+    return _pageview[_page];
   }
 
   Widget getMain() {
@@ -211,8 +211,8 @@ class _HomeState extends State<Home> {
                       color: Colors.grey,
                       onPressed: () {
                         setState(() {
-                          thePost = post;
-                          page = 3;
+                          _thePost = post;
+                          _page = 3;
                           build(context);
                         });
                       },
@@ -282,8 +282,8 @@ class _HomeState extends State<Home> {
                               )),
                           onPressed: () {
                             setState(() {
-                              thePost = post;
-                              page = 2;
+                              _thePost = post;
+                              _page = 2;
                               build(context);
                             });
                           },
@@ -348,8 +348,8 @@ class _HomeState extends State<Home> {
                           ),
                           onPressed: () {
                             setState(() {
-                              thePost = post;
-                              page = 3;
+                              _thePost = post;
+                              _page = 3;
                               build(context);
                             });
                           },
@@ -390,7 +390,7 @@ class _HomeState extends State<Home> {
                         left: 2,
                       ),*/
                       constraints: BoxConstraints(
-                        maxHeight: 282, //isNumImgTwo? 282: 141,
+                        maxHeight: 282, //_isNumImgTwo? 282: 141,
                         maxWidth: 170,
                       ),
                       decoration: BoxDecoration(
@@ -408,7 +408,7 @@ class _HomeState extends State<Home> {
                           //padding: EdgeInsets.only(right: 20),
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
-                            maxHeight: 131, //isNumImgTwo? 282: 141,
+                            maxHeight: 131, //_isNumImgTwo? 282: 141,
                             minWidth: 170,
                           ),
                           decoration: BoxDecoration(
@@ -423,7 +423,7 @@ class _HomeState extends State<Home> {
                         Container(
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
-                            maxHeight: 131, //isNumImgTwo? 282: 141,
+                            maxHeight: 131, //_isNumImgTwo? 282: 141,
                             minWidth: 170,
                           ),
                           decoration: BoxDecoration(
@@ -488,8 +488,8 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        thePost = post;
-                        page = 2;
+                        _thePost = post;
+                        _page = 2;
                         build(context);
                       });
                     },
@@ -504,7 +504,7 @@ class _HomeState extends State<Home> {
   }
 
   Widget getPostTwoPhotos(BuildContext context, Post post, int index) {
-    isNumImgTwo = getNumPostImg(post);
+    _isNumImgTwo = getNumPostImg(post);
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       color: Colors.white,
@@ -528,7 +528,7 @@ class _HomeState extends State<Home> {
                         left: 2,
                       ),*/
                       constraints: BoxConstraints(
-                        maxHeight: 282, //isNumImgTwo? 282: 141,
+                        maxHeight: 282, //_isNumImgTwo? 282: 141,
                         maxWidth: 170,
                       ),
                       decoration: BoxDecoration(
@@ -541,7 +541,7 @@ class _HomeState extends State<Home> {
                     Container(
                       margin: EdgeInsets.all(10),
                       constraints: BoxConstraints(
-                        maxHeight: 282, //isNumImgTwo? 282: 141,
+                        maxHeight: 282, //_isNumImgTwo? 282: 141,
                         maxWidth: 170,
                       ),
                       decoration: BoxDecoration(
@@ -603,8 +603,8 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        thePost = post;
-                        page = 2;
+                        _thePost = post;
+                        _page = 2;
                         build(context);
                       });
                     },
@@ -634,7 +634,7 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        page = 1;
+                        _page = 1;
                         build(context);
                       });
                     },
@@ -676,11 +676,11 @@ class _HomeState extends State<Home> {
 
   bool getNumPostImg(Post post) {
     if (post.image.length == 2) {
-      isNumImgTwo = true;
+      _isNumImgTwo = true;
     } else if (post.image.length >= 3) {
-      isNumImgTwo = false;
+      _isNumImgTwo = false;
     }
-    return isNumImgTwo;
+    return _isNumImgTwo;
   }
 
   Widget getLikes(List<User> likes) {
@@ -766,7 +766,7 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             title: Flexible(
               child: Text(
-                thePost.user.username + "'s Photo",
+                _thePost.user.username + "'s Photo",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -776,9 +776,9 @@ class _HomeState extends State<Home> {
                 indicatorColor: Colors.black,
                 tabs: <Widget>[
                   Tab(
-                    text: thePost.likes.length.toString() + " Faves",
+                    text: _thePost.likes.length.toString() + " Faves",
                   ),
-                  Tab(text: thePost.comments.length.toString() + " Comments"),
+                  Tab(text: _thePost.comments.length.toString() + " Comments"),
                 ]),
             backgroundColor: Colors.grey[900],
             leading: IconButton(
@@ -788,18 +788,18 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () {
                 setState(() {
-                  page = 1;
+                  _page = 1;
                   build(context);
                 });
               },
             ),
           ),
           body: TabBarView(children: <Widget>[
-            //getLikes(thePost.likes),
+            //getLikes(_thePost.likes),
             ListView(
               children: likers,
             ),
-            getCommentsFaves(thePost.comments),
+            getCommentsFaves(_thePost.comments),
 
             //Container(),
           ])
@@ -897,11 +897,11 @@ class _HomeState extends State<Home> {
         length: 2,
         child: Scaffold(
           body:
-              //getLikes(thePost.likes),
+              //getLikes(_thePost.likes),
               ListView(
             children: likers,
           ),
-          //getCommentsFaves(thePost.comments),
+          //getCommentsFaves(_thePost.comments),
         ));
   }
 
@@ -985,7 +985,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Flexible(
             child: Text(
-              thePost.user.username + "'s Photo",
+              _thePost.user.username + "'s Photo",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -996,9 +996,9 @@ class _HomeState extends State<Home> {
               indicatorColor: Colors.blue,
               tabs: <Widget>[
                 Tab(
-                  text: thePost.likes.length.toString() + " Faves",
+                  text: _thePost.likes.length.toString() + " Faves",
                 ),
-                Tab(text: thePost.comments.length.toString() + " Comments"),
+                Tab(text: _thePost.comments.length.toString() + " Comments"),
               ]),
           backgroundColor: Colors.grey[900],
           leading: IconButton(
@@ -1008,20 +1008,20 @@ class _HomeState extends State<Home> {
             ),
             onPressed: () {
               setState(() {
-                page = 1;
+                _page = 1;
                 build(context);
               });
             },
           ),
         ),
         body: TabBarView(children: <Widget>[
-          getFavesComments(thePost.likes),
+          getFavesComments(_thePost.likes),
           /*ListView(
               padding: EdgeInsets.only(bottom: 90),
               children: comments,
             ),*/
-          getCommentsFaves(thePost.comments),
-          //getLikes(thePost.likes),
+          getCommentsFaves(_thePost.comments),
+          //getLikes(_thePost.likes),
         ]),
       ),
     );
@@ -1103,6 +1103,7 @@ class _HomeState extends State<Home> {
         body: Container(
           child: ListView(
             children: comments,
+            padding: EdgeInsets.only(bottom: 80),
           ),
         ),
         bottomSheet: Container(
@@ -1112,9 +1113,10 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Container(
                 child: TextField(
-                  controller: commentController,
+                  controller: _commentController,
                   decoration: InputDecoration(
                     hintText: " Write a comment...",
+                    contentPadding: EdgeInsets.only(left: 7),
                     /*suffixIcon: IconButton(
                       icon: Icon(Icons.send),
                       onPressed: () {},
@@ -1142,7 +1144,17 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          if (_commentController.text.isEmpty == false) {
+                            _thePost.comments.add(
+                              new Comment(
+                                  _thePost.user,
+                                  _commentController.text,
+                                  DateTime.now(),
+                                  false),
+                            );
+                          }
+                        });
                       },
                     ),
                   ),
