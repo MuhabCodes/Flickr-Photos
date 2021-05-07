@@ -1,8 +1,10 @@
-import 'package:flickr/login/get_started.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
+import 'package:flickr/profile/description.dart';
+import 'package:flickr/providers/photo_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
 import 'providers/about_provider.dart';
 
 void main() {
@@ -15,10 +17,18 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return ChangeNotifierProvider.value(
-      value: AboutProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: AboutProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: PhotoProvider(),
+        ),
+      ],
       child: MaterialApp(
-        home: GetStarted(),
+        home: TopNavigationBar(),
+        routes: {'/description': (ctx) => Description()},
         debugShowCheckedModeBanner: false, //remove debug sign
       ),
     );
