@@ -10,11 +10,15 @@ module.exports.createGroup = async function createGroup({
     plusEighteen,
     requiresInvitation,
   });
-  console.log(groupObj);
   const group = await groupObj.save();
   return group;
 };
 module.exports.getAllGroup = async function getAllGroup() {
   const group = await Group.find();
+  return group;
+};
+
+module.exports.findGroupById = async (id) => {
+  const group = await Group.findById(id).exec();
   return group;
 };
