@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Following extends StatefulWidget {
-  @override
-  _FollowingState createState() => _FollowingState();
-}
-
-class _FollowingState extends State<Following> {
-  @override
+class Following extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
