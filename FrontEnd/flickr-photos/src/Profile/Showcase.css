@@ -1,14 +1,14 @@
-.showcase-view{
+.showcase-view-scP{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
     line-height: 14px;
 }
-.showcase{
+.showcase-scP{
     position: relative;
     border-bottom: 1px solid #e3e3e3;
     padding: 40px 10%;;
 }
-.empty-showcase{
+.empty-showcase-scP{
     background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/empty-showcase.jpg);
     background-size: 100%;
     background-position: 50% 0;
@@ -24,18 +24,18 @@
     height: 340px;
     min-height: 340px;
 }
-.empty-showcase p{
+.empty-title-scP{
     line-height: 24px;
     font-weight: 400;
     margin: 0;
     font-size: 18px;
 }
-.empty-showcase a{
+.link-scP{
     cursor: pointer;
     text-decoration: none;
     color: #006dac;
 }
-.title-view{
+.title-view-scP{
     font-size: 16px;
     line-height: 24px;
     margin: 0;
@@ -44,12 +44,12 @@
     cursor: pointer;
     position: relative;
 }
-.showcase-container{
+.showcase-container-scP{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.grid-item-sc {
+.grid-item-scP {
     object-fit:cover;
     flex-grow: 1;
     float: left;

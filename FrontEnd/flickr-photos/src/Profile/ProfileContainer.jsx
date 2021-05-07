@@ -11,9 +11,9 @@ import './ProfileContainer.css';
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
 
 const ProfileContainer = () => (
-  <div className="fluid-profile-container">
-    <div className="profile-bio-page">
-      <div className="bio-description-section">
+  <div className="fluid-profile-container-pP">
+    <div className="profile-bio-page-pP">
+      <div className="bio-description-section-pP">
         <AboutBio />
         <Showcase />
         <UserInfo />

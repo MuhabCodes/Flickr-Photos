@@ -4,38 +4,38 @@ import useFetch from './usefetch';
 import './GeneralStats.css';
 
 const Stats = () => {
-  const { data: stats } = useFetch('http://localhost:8002/generalStats/85@N00');
+  const { data: stats } = useFetch('http://localhost:8000/generalStats/85@N00');
   return (
-    <div className="general-stats">
+    <div className="general-stats-gsP">
       {stats && (
-      <div className="grid-container">
-        <div className="item">
-          <Link to="/views">
-            <span>{stats.views}</span>
+      <div className="grid-container-gsP">
+        <div className="item-gsP">
+          <Link className="link-gsP" to="/views">
+            <span className="span-gsP">{stats.views}</span>
             Views
           </Link>
         </div>
-        <div className="item">
-          <Link to="/tags">
-            <span>{stats.tags}</span>
+        <div className="item-gsP">
+          <Link className="link-gsP" to="/tags">
+            <span className="span-gsP">{stats.tags}</span>
             Tags
           </Link>
         </div>
-        <div className="item">
-          <Link to="/geotags">
-            <span>{stats.geotags}</span>
+        <div className="item-gsP">
+          <Link className="link-gsP" to="/geotags">
+            <span className="span-gsP">{stats.geotags}</span>
             geotags
           </Link>
         </div>
-        <div className="item">
-          <Link to="/faves">
-            <span>{stats.faves}</span>
+        <div className="item-gsP">
+          <Link className="link-gsP" to="/faves">
+            <span className="span-gsP">{stats.faves}</span>
             faves
           </Link>
         </div>
-        <div className="item">
-          <Link to="/groups">
-            <span>{stats.groups}</span>
+        <div className="item-gsP">
+          <Link className="link-gsP" to="/groups">
+            <span className="span-gsP">{stats.groups}</span>
             groups
           </Link>
         </div>

@@ -1,12 +1,12 @@
-.pop-photos-view{
+.pop-photos-view-mp{
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     color: #212124;
     background-color: #f3f5f6;
 }
-.pop-container{
+.pop-container-mp{
     margin-top: 30px;
 }
-h4{
+.h4-mp{
     margin: 1.33em 0;
     font-size: 20px;
     font-weight: 400;
@@ -15,7 +15,7 @@ h4{
     margin-top: 0;
     line-height: 20px;
 }
-.dropdown{
+.dropdown-mp{
     float: right;
     width: auto;
 }
@@ -33,7 +33,7 @@ h4{
     padding: 2px;
     text-align: left;
 }
-.empty-pop{
+.empty-pop-mp{
     background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/empty-popular.jpg);
     background-size: 100%;
     background-position: 50% 0;
@@ -49,7 +49,7 @@ h4{
     -webkit-box-pack: center;
     justify-content: center;
 }
-.empty-pop h3{
+.h3-mp{
     margin: 1em 0;
     font-weight: 300;
     margin-bottom: 5px;
@@ -58,13 +58,13 @@ h4{
     -webkit-box-flex: .5;
     flex: .5;
 }
-.empty-pop p{
+.p-mp{
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
     margin: 0;
 }
-.empty-pop a{
+.link-mp{
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
