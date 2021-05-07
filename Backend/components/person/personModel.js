@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const personSchema = new mongoose.Schema({
-  _id:
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
   birthDate:
   {
     type: String,
