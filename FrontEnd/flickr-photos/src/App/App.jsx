@@ -61,7 +61,7 @@ function App() {
               <CameraRoll />
             </Route>
             <Route path="/Groups/:id/GroupMembers">
-                <GroupMembers />
+              <GroupMembers />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
