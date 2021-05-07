@@ -12,7 +12,7 @@ class TagsButton extends StatefulWidget {
 class _TagsButtonState extends State<TagsButton> {
   bool isTag = false;
   List<Tag> tagsList;
-  void setTagsList() async {
+  void setTagsList() async {   //Fill the tags list
     tagsList = await Navigator.push(
         context, MaterialPageRoute(builder: (context) => (TagsPage())));
     tagsList.length != 0 ? isTag = false : isTag = true;
