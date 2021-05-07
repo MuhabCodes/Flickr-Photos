@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 // require routes only here
 const favoritesRouter = require('./components/favorites/favoritesRouter');
 const authRouter = require('./components/auth/authRouter');
-const photosRouter = require('./components/photos/photoRouter');
+const photoRouter = require('./components/photo/photoRouter');
 const personRouter = require('./components/person/personRouter');
 const userRouter = require('./components/User/userRoute');
 const cameraRouter = require('./components/camera/cameraRouter');
@@ -27,7 +27,7 @@ app.use(morgan('dev'));
 // use routing i.e. app.use('foo', bar)
 app.use('/auth', authRouter);
 app.use('/favorites', favoritesRouter);
-app.use('/photos', photosRouter);
+app.use('/photos', photoRouter);
 app.use('/person', personRouter);
 app.use('/user', userRouter);
 app.use('/cameras', cameraRouter);

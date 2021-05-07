@@ -1,6 +1,6 @@
 const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
-const Photo = require('../photos/photoModel');
+const Photo = require('../photo/photoModel');
 
 exports.getUserByEmail = async function getWithEmail(email) {
   const userObj = await User.findOne({ email });
