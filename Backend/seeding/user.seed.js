@@ -11,6 +11,7 @@ async function userSeed() {
     email: 'hamoksha@live.com',
     password: hashedPw,
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfad'),
+    displayName: 'keka',
   },
   {
     email: 'hamoksha@hotmail.com',
@@ -39,30 +40,6 @@ async function userSeed() {
     email: 'testing@gmail.com',
     password: '123456',
     displayName: 'testing',
-  },
-  {
-    email: 'hamoksha@live.com',
-    password: 'kjsadgjknadsgojsag',
-    displayName: 'keka',
-    _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfad'),
-  },
-  {
-    email: 'hamoksha@hotmail.com',
-    password: 'kjsadgjknadsgojsag',
-    displayName: 'lolo',
-    _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfae'),
-  }, {
-    email: 'activated@gmail.com',
-    password: 'kjsadgjknadsgojsag',
-    displayName: 'test',
-    _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfaf'),
-
-  }, {
-    email: 'activated@hotmail.com',
-    password: 'kjsadgjknadsgojsag',
-    displayName: 'test2',
-    _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfb0'),
-
   }]);
 }
 async function seedUser() {
