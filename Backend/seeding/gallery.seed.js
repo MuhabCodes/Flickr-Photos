@@ -21,6 +21,7 @@ async function connect() {
 }
 
 async function gallerySeed() {
+  if (await Gallery.findOne()) await Gallery.collection.drop();
   await gallery.save();
 }
 async function seed() {

@@ -15,6 +15,7 @@ async function connect() {
 }
 
 async function groupSeed() {
+  if (await Group.findOne()) await Group.collection.drop();
   await group.save();
 }
 async function seed() {
