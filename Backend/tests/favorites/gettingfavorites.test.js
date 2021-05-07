@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 
 // I have here all tests because when divided in multiple files it gives "server already in user"
-//every
+// every
 const supertest = require('supertest');
 
 const app = require('../../bin/server');
@@ -36,13 +36,11 @@ const photo = {
 
 const photopublic = {
   owner: '507f191e810c19729de860ea',
-  photo: [
+  photos: [
     {
-      photo: {
-        _id: '5d6ede6a0ba62570afcedd3d',
-        isPublic: true,
-        title: 'hi',
-      },
+      _id: '5d6ede6a0ba62570afcedd3d',
+      isPublic: true,
+      title: 'hi',
     },
   ],
 };

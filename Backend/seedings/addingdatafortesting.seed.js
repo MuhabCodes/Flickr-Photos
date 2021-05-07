@@ -14,7 +14,6 @@ async function connect() {
 }
 
 async function userSeed() {
-
   await User.insertMany([{
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ea'),
     person: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
@@ -25,8 +24,6 @@ async function userSeed() {
   ]);
 }
 async function photoSeed() {
-
-
   await Photo.insertMany([{
     _id: mongoose.Types.ObjectId('5d6ede6a0ba62570afcedd3d'),
     isPublic: true,
@@ -40,8 +37,6 @@ async function photoSeed() {
   ]);
 }
 async function personSeed() {
- 
-
   await Person.insertMany([{
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
     homeTown: 'ayhaga',
@@ -53,8 +48,6 @@ async function personSeed() {
   }]);
 }
 async function favoriteSeed() {
-
-
   await Favorite.insertMany([{
     _id: mongoose.Types.ObjectId('6091658b116c8c3a00403844'), user: mongoose.Types.ObjectId('507f191e810c19729de86033'), favoriteDate: '121212', photo: mongoose.Types.ObjectId('5d6ede6a0ba62570afcedd3d'),
   },

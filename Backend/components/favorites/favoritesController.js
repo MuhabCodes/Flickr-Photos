@@ -88,16 +88,8 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     return res.status(200).json(
       {
         owner: user,
-        // eslint-disable-next-line array-callback-return
-        photo: favoriteOutput.map((doc) => {
-          const pub = doc.photo.isPublic;
-          if (pub === true) {
-            return {
-              photo: doc.photo,
+        photos: favoriteOutput.filter((doc) => doc.photo.isPublic).map((photo) => photo.photo),
 
-            };
-          }
-        }),
       },
     );
   } catch (err) {
