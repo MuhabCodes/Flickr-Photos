@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-      home: TopNavigationBar(), //GetStarted(),
+      home: GetStarted(), //TopNavigationBar(),
       debugShowCheckedModeBanner: false, //remove debug sign
     );
   }
