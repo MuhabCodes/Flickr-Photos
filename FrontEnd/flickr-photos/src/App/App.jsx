@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SignUp from '../Signup/Signup';
+import AppBar from '../Signup/flickrbar';
+import VerifySignup from '../Signup/VerifySignup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppBar from '../Login/flickrbar';
@@ -21,6 +24,13 @@ function App() {
       <div className="App">
         <AppBar />
         <Switch>
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+          <Route exact path="/verifysignup">
+            <VerifySignup />
+          </Route>
+        </Switch>
           <Route exact path="/login">
             <Login />
           </Route>
