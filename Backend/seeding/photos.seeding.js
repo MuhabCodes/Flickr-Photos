@@ -10,7 +10,7 @@ async function connect() {
 }
 
 async function photoSeed() {
-  await Photo.collection.drop();
+  if (await Photo.findOne()) await Photo.collection.drop();
   await Photo.insertMany([{
     description: 'Great pic',
     captureDate: '2020-01-01T08:11:08',
