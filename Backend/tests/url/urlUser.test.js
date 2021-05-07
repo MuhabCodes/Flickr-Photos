@@ -2,24 +2,24 @@ const supertest = require('supertest');
 const app = require('../../bin/server');
 
 const request = supertest(app);
-// const { join } = require('path');
-// require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
-// const mongoose = require('mongoose');
+const { join } = require('path');
+require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
+const mongoose = require('mongoose');
 
 // TODO STILL TESTING THE FUNCTION THAT ACCEPT TOKEN FROM COOKIES IS DONE ONLY ON QUERY SIDE
 // AND DIDNT TEST COOKIES BECAUSE NOT SURE IT WILL BE COOKIES OR HEADERS
 describe('User tests', () => {
-  // let connection;
-  // jest.setTimeout(30000);
-  // beforeAll(async () => {
-  //   connection = await mongoose
-  //     .connect(process.env.MONGO_URI_CLOUD,
-  //       { useNewUrlParser: true, useUnifiedTopology: true });
-  // });
+  let connection;
+  jest.setTimeout(30000);
+  beforeAll(async () => {
+    connection = await mongoose
+      .connect(process.env.MONGO_URI_CLOUD,
+        { useNewUrlParser: true, useUnifiedTopology: true });
+  });
 
-  // afterAll(async () => {
-  //   await connection.close();
-  // });
+  afterAll(async () => {
+    await connection.close();
+  });
 
   const url = 'https://www.flickr.com/people/111111111111111111111111/';
 

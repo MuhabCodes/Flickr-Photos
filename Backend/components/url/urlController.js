@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
-const { findGroupById } = require('../Group/groupModel');
+const { findGroupById } = require('../Group/groupDAL');
 const { findUserById } = require('../User/userDAL');
 const { findGalleryById } = require('../Gallery/galleryDAL');
 
