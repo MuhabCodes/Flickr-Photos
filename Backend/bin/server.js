@@ -17,6 +17,6 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port);
+if (process.env.NODE_ENV !== 'test') server.listen(port);
 
 module.exports = app; //  exported for testing purposes
