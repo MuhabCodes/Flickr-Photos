@@ -1,5 +1,6 @@
 const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
+const Photo = require('../photos/photoModel');
 
 exports.getUserByEmail = async function getWithEmail(email) {
   const userObj = await User.findOne({ email });
@@ -7,14 +8,16 @@ exports.getUserByEmail = async function getWithEmail(email) {
 };
 
 exports.createNewUser = async function createUser({
-  email, password, firstName, lastName, age,
+  email, password, displayName, firstName, lastName, age,
 }) {
   // password encryption
   const hashedPassword = await utilsPassword.hashPassword(password);
   // create user object
   const userObj = new User({
     email,
-    password: hashedPassword, // TODO : add Person Id with firstName, lastName and age
+    password: hashedPassword,
+    displayName,
+    // TODO : add Person Id with firstName, lastName and age
   });
   // create user in db
   const user = await userObj.save();
@@ -52,7 +55,29 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
   } else throw Error({ statusCode: 500, error: 'The server couldn\'t handle the process' });
 };
 
-module.exports.findUserById = async (id) => {
+module.exports.getUserById = async (id) => {
   const user = await User.findById(id).exec();
   return user;
+};
+module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
+  const userObj = await User.findById(userId);
+
+  userObj.groups.push(groupObj._id);
+  userObj.save();
+  return userObj;
+};
+
+module.exports.getUserGroupsById = async function getUserById(userId) {
+  const userObj = await User.findById(userId).populate('groups');
+  return userObj;
+};
+
+module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
+  const userObj = await User.find({ displayName: displayname });
+  return userObj;
+};
+
+module.exports.getPhotos = async function getUserPhotos(userId) {
+  const photoObj = await Photo.find({ user: userId });
+  return photoObj;
 };
