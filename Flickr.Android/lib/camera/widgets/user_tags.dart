@@ -15,14 +15,14 @@ class UserTags extends StatefulWidget {
 class _UserTagsState extends State<UserTags> {
   int tagID;
 
-  void _incrementTagID() {
+  void _incrementTagID() {  //Increment TagID
     if (tagID == null)
       tagID = 0;
     else
       tagID++;
   }
 
-  void addNewTag(String inputText, int tagID) {
+  void addNewTag(String inputText, int tagID) {   //Add a new tag to the list
     final newTag = Tag(inputText: inputText, tagID: tagID);
     setState(() {
       widget.tagsList.add(newTag);
@@ -30,7 +30,7 @@ class _UserTagsState extends State<UserTags> {
     });
   }
 
-  void removeTag(int requiredID) {
+  void removeTag(int requiredID) {  // Remove a tag from the list
     setState(() {
       widget.tagsList.removeWhere((tag) => tag.tagID == requiredID);
     });
