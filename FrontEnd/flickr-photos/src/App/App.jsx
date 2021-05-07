@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HomePage from '../Home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Navbar';
 import Footer from './Footer';
@@ -17,8 +18,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+         <NavBar />
         <CoverArea />
+
+        <div className="pageContent">
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+          </Switch>
+        </div>
         <Switch>
           <Route path="/About">
             <SubNavBar />

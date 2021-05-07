@@ -14,6 +14,7 @@ code {
     monospace;
 }
 
+@import "./Home/homePage.css";
 @import "./Profile/Cover.css";
 @import "./Profile/SubNavBar.css";
 @import "./Profile/ProfileContainer.css";
@@ -24,4 +25,3 @@ code {
 @import "./Profile/MostPop.css";
 @import "./Profile/Testimonials.css";
 @import "./Profile/faves.css";
-
