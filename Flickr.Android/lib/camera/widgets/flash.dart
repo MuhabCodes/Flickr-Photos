@@ -7,7 +7,7 @@ class FlashButton extends StatefulWidget {
 
 class FlashButtonState extends State<FlashButton> {
   int _flashID = 0;
-  void changeFlashIndex(int tagID) {
+  void changeFlashIndex(int tagID) {  //Change flashID 
     if (_flashID == 0) {
       _flashID = 1;
     } else if (_flashID == 1) {
