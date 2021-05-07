@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:flickr/login/send_email.dart';
 import 'package:flickr/login/sign_in.dart';
-import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
