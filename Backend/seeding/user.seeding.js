@@ -39,6 +39,12 @@ async function userSeed() {
     email: 'mhmd@amr.com',
     password: 'e3e3e3',
 
+  },
+  {
+    _id: mongoose.Types.ObjectId('111111111111111111111111'),
+    email: 'testing@gmail.com',
+    password: '123456',
+    displayName: 'testing',
   }]);
 }
 async function seed() {
