@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
 const { findGroupById } = require('../Group/groupDAL');
-const { findUserById } = require('../User/userDAL');
+const { getUserById } = require('../User/userDAL');
 const { findGalleryById } = require('../Gallery/galleryDAL');
 
 exports.getGroupById = async (req, res) => {
@@ -135,7 +135,7 @@ exports.lookUpUser = async (req, res) => {
   }
 
   try {
-    const doc = await findUserById(id);
+    const doc = await getUserById(id);
     if (doc) {
       res.status(200).json({
         id: doc._id,
@@ -177,7 +177,7 @@ exports.getUserProfile = async (req, res) => {
   // will check if its valid format or not
   if (id && mongoose.isValidObjectId(id)) {
     try {
-      const user = await findUserById(id);
+      const user = await getUserById(id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
@@ -223,7 +223,7 @@ exports.getUserPhotos = async (req, res) => {
   // will check if its valid format or not
   if (id && mongoose.isValidObjectId(id)) {
     try {
-      const user = await findUserById(id);
+      const user = await getUserById(id);
       if (user) {
         // successfuly found ...
         return res.status(200).json({
