@@ -29,7 +29,7 @@ html {
     font-size: 1.6rem;
     padding-top: 2px;
     margin-left: 8rem;
-    margin-right: 1rem;
+    margin-right: 25px;
    
   }
   
@@ -39,12 +39,7 @@ html {
   }
   
   
-  @media all and (min-width: 992px) {
-      .navbar .nav-item .dropdown-menu{ display: none; }
-      .navbar .nav-item:hover .nav-link{   }
-      .navbar .nav-item:hover .dropdown-menu{ display: block; }
-      .navbar .nav-item .dropdown-menu{ margin-top:0; }
-  }	
+  
   .navbar-light .navbar-nav .nav-link{
     color: white;
   }
@@ -82,6 +77,55 @@ html {
     color: white;
   }
   
+/* Dropdown Link */
+.droplink-main-nav{
+  
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 25px;
+  
+}
+.droplink-main-nav:hover{
+  color: grey;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-main-nav {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown-main-nav:hover .dropdown-content {display: block;}
+
+
+
   /* STYLING OF FOOTER */
   .footer {
     position:absolute;
@@ -90,7 +134,7 @@ html {
     width: 100%;
     background-color: #212124;
     color: white;
-    padding: 14px;
+    padding: 15px;
     font-size: small;
     height: 11em;
   }

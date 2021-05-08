@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './CameraRoll.css';
 import cameraRollContent from '../services/CameraRollContent';
-import CameraRollNavbar from './CameraRollNavbar';
 
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
@@ -28,7 +27,7 @@ function CameraRoll() {
   }, {}));
 
   const days = filtered.map((day) => (
-    <div className="sandy">
+    <div>
       <h6>
         {day[0].monthTaken}
         {' '}
@@ -73,15 +72,16 @@ function CameraRoll() {
   ));
 
   return (
+    <div>
+      <div className="wrapper">
 
-    <div className="wrapper">
-      <CameraRollNavbar />
-      <div className="main">
-        <div className="sidenav">
-          {sidebar}
+        <div className="main">
+          <div className="sidenav">
+            {sidebar}
+          </div>
+          {days}
+
         </div>
-        {days}
-
       </div>
     </div>
   );
