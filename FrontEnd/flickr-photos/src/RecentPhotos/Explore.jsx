@@ -7,8 +7,8 @@ import RecentPhotos from './RecentPhotos';
 const Explore = () => (
   <div className="recentPhotos">
     <ExploreNavBar />
-    <div className="pageContent">
-      <h1 id="title">
+    <div className="explorePageContent">
+      <h1 id="exploreTitle">
         <br />
         <br />
         <br />
