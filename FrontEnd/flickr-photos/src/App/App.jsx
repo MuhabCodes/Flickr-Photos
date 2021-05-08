@@ -80,8 +80,8 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <Footer />
         </div>
+        <Footer />
       </Router>
     </div>
   );

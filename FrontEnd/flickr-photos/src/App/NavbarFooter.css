@@ -86,7 +86,7 @@ html {
   
   /* STYLING OF FOOTER */
   .footer {
-    position: absolute;
+    position:absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -94,6 +94,7 @@ html {
     color: white;
     padding: 14px;
     font-size: small;
+    height: 12em;
   }
   
   hr{
