@@ -40,12 +40,15 @@ function App() {
               <VerifySignup />
             </Route>
             <Route exact path="/Login">
+              <AppBar />
               <Login />
             </Route>
             <Route exact path="/ForgotPassword">
+              <AppBar />
               <ForgotPassword />
             </Route>
             <Route exact path="/SendEmail">
+              <AppBar />
               <SendEmail />
             </Route>
             <Route exact path="/">
