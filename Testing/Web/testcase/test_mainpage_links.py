@@ -2,8 +2,8 @@ from time import sleep
 import pytest
 
 from common.selhelper import SelHelper
-from pageobject.mainpage import MainPage, MainPageLocator
-from pageobject.mockmethods import MockMethods
+from pageobject.mainpage.mainpage import MainPage, MainPageLocator
+from pageobject.mockmethods.mockmethods import MockMethods
 
 
 class TestMainPageLinks(object):
@@ -19,14 +19,15 @@ class TestMainPageLinks(object):
         driver.maximize_window()
         self.helper.implicit_wait(30)
         self.mock_methods.mock_login()
+        sleep(10)
         yield
         self.helper.quit()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_driver(self, setup):
         pass
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "list_locator, list_dict",
         [
@@ -37,17 +38,15 @@ class TestMainPageLinks(object):
         ]
     )
     def test_clicking_nav_dropdowns(self, setup, list_locator, list_dict):
-        sleep(10)
         assert self.main_page.click_nav_dropdown_subitem(
             list_locator, list_dict
         )
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_nav_links(self, setup):
-        sleep(10)
         assert self.main_page.test_nav_links()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "menu_locator, view_locator, el_menu, el_view",
         [
@@ -59,7 +58,6 @@ class TestMainPageLinks(object):
     )
     def test_menus(self, setup, menu_locator,
                    view_locator, el_menu, el_view):
-        sleep(10)
         print("\n", el_menu, "\n")
         assert self.main_page.test_clicking_menu(
             menu_locator, view_locator,
