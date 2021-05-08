@@ -23,7 +23,7 @@ class TestExploreLinks(object):
         self.helper.go_to(self.explore.link)
         sleep(10)
         yield
-        # self.helper.quit()
+        self.helper.quit()
 
     # @pytest.mark.skip
     def test_driver(self, setup):
@@ -36,6 +36,9 @@ class TestExploreLinks(object):
     # @pytest.mark.skip
     def test_layout(self, setup):
         assert self.explore.select_layout("LAYOUT_STORY")
+        sleep(5)
 
+    # @pytest.mark.skip
     def test_click_photo(self, setup):
         assert self.explore.check_click_photo_link()
+        sleep(5)

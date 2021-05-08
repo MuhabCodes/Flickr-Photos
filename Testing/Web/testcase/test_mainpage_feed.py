@@ -21,38 +21,33 @@ class TestMainPageFeedTools(object):
         driver.maximize_window()
         self.helper.implicit_wait(30)
         self.mock_methods.mock_login()
+        sleep(10)
         yield
-        # self.helper.quit()
+        self.helper.quit()
 
     # @pytest.mark.skip
     def test_filters(self, setup):
-        sleep(10)
         assert self.main_page.check_feed_filters()
 
     # @pytest.mark.skip
     def test_layout(self, setup):
-        sleep(10)
         assert self.main_page.check_layouts()
 
     # @pytest.mark.skip
     def test_select_filter(self, setup):
-        sleep(10)
         assert self.main_page.select_filter("FILTER_PEOPLE")
-        sleep(20)
 
     # @pytest.mark.skip
     def test_select_layout(self, setup):
-        sleep(10)
         assert self.main_page.select_layout("LAYOUT_COMPACT")
 
     # @pytest.mark.skip
     def test_error_load(self, setup):
-        sleep(10)
-        assert self.main_page.check_feed_empty() is False
+        assert self.main_page.check_feed_empty() is True
 
     # @pytest.mark.skip
     def test_click_post_icon(self, setup):
-        sleep(10)
+        assert self.main_page.check_feed_empty() is True
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(10)
@@ -61,7 +56,7 @@ class TestMainPageFeedTools(object):
 
     # @pytest.mark.skip
     def test_click_poster_link(self, setup):
-        sleep(10)
+        assert self.main_page.check_feed_empty() is True
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(10)
@@ -70,7 +65,7 @@ class TestMainPageFeedTools(object):
 
     # @pytest.mark.skip
     def test_click_group_photo(self, setup):
-        sleep(10)
+        assert self.main_page.check_feed_empty() is True
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(5)

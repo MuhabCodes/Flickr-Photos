@@ -128,6 +128,7 @@ class MainPage(Page):
             raise e
 
     def get_person_photo_link(self, feed_item: WebElement):
+        """ UNDER DEVELOPEMENT. """
         try:
             pass
             # photo_card_xpath =
@@ -335,6 +336,11 @@ class MainPage(Page):
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
         try:
+            self.select_filter("FILTER_ALL_ACTIVITY")
+            sleep(5)
+            if not self.check_feed_empty():
+                raise AssertionError("Feed is empty")
+
             layout = self.utils.get_all_values(self.LOCATOR_LIST, "LAYOUT_")
             if len(layout) == 0:
                 raise IndexError("layout_list is empty")

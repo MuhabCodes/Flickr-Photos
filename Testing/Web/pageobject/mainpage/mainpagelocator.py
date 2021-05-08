@@ -197,6 +197,13 @@ class MainPageLocator(object):
 
     # ---- For Medium/Large photos ----
 
+    # ... /div[feed-item]/div
+    # /div[photo-card compact-large]/div[photo-card-content]
+    # /div[photo-card-photo]/div[photo]/a
+    photo_link_sub_xpath = \
+        photo_card_layout_xpath + \
+        '/div[@class="photo-card-content"/div/div/a]'
+
     ####################################################
     #                   Info Column                    #
     ####################################################
