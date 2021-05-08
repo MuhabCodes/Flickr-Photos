@@ -6,7 +6,7 @@
     margin-bottom: 20px;
     position: sticky;
     position: -webkit-sticky;
-    top: 0;
+    top:62px;
     z-index: 1000;
 }
 
@@ -68,7 +68,7 @@
     user-select: none;
 }
 
-.group-nav-items a{
+.group-nav-items-a{
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -82,7 +82,11 @@
     height: 50px;
     cursor: pointer;
 }
-
+.group-nav-items-a:hover{
+    text-decoration: none;
+    border-bottom: 3px solid #0091dc;
+    color: #000;
+}
 .group-selected{
     border-bottom: 3px solid #0091dc;
 }

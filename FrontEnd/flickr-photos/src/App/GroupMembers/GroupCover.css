@@ -98,7 +98,7 @@
     -webkit-box-direction: normal;
     -webkit-box-pack: start;
 }
-.group-title h1 {
+.group-title-h1 {
     line-height: 1em;
     margin: 21px 20px 13px 0;
     display: inline-block;
@@ -110,10 +110,15 @@
     color: #fff;
     -webkit-box-direction: normal;
 }
-.group-title a{
+.group-title-a {
 text-decoration: none;
 color: #fff;
 -webkit-box-direction: normal;
+}
+
+.group-title-a:hover {
+text-decoration: none;
+color: #fff;
 }
 
 /* join styles */
@@ -123,7 +128,7 @@ color: #fff;
     color: #fff;
     -webkit-box-flex: 0;
 }
-.join-group button{
+.join-group-button {
     margin-top: 28px;
     margin-left: 0;
     position: relative;
@@ -144,7 +149,11 @@ color: #fff;
     outline-width: 0;
     -webkit-box-direction: normal;
 }
-.join-group button::before{
+.join-group-button:hover {
+    background-color: #fff;
+    color: #1c9be9;
+}
+.join-group-button::before{
     width: 14px;
     height: 2px;
     top: 15px;
@@ -155,7 +164,7 @@ color: #fff;
     transition: all .15s ease-in-out;
 }
 
-.join-group button::after{
+.join-group-button::after{
     width: 2px;
     height: 14px;
     top: 9px;
@@ -187,7 +196,7 @@ color: #fff;
     
 }
 
-.group-statistics a{
+.group-statistics-a{
     color: #fff;
     cursor: pointer;
     text-decoration: none;
@@ -198,11 +207,12 @@ color: #fff;
     font-size: 16px;
     cursor: pointer;
 }
-.group-statistics a:hover{
+.group-statistics-a:hover{
     text-decoration: underline;
+    color: #fff;
 }
 
-.group-statistics em{
+.group-statistics-em{
     margin: 0 10px;
     font-style: italic;
     text-align: center;

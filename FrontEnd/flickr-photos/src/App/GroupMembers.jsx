@@ -7,7 +7,7 @@ import Members from './GroupMembers/Members';
 
 function GroupMembers() {
   return (
-    <div id="page">
+    <div id="gm-page">
       <GroupCover />
       <GroupNavBar />
       <Members />

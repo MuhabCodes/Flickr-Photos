@@ -21,7 +21,6 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
-import GroupCover from './GroupMembers/GroupCover';
 
 function App() {
   return (
@@ -65,8 +64,7 @@ function App() {
             <Route path="/CameraRoll">
               <CameraRoll />
             </Route>
-            <Route path="/Groups/:id/GroupMembers">
-              <GroupCover />
+            <Route path="/groups/members/">
               <GroupMembers />
             </Route>
             <Route exact path="/Explore">
