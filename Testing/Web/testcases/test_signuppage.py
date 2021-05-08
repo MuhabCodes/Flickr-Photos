@@ -15,12 +15,58 @@ class TestSignUPage(object):
         yield
         self.signupPage.driver.quit()
 
-    @pytest.mark.skip
+        """Age must be 13 or older"""
+        """Password must have 12 chars (letters) at least"""
+        """No field can be blank, all required"""
+
+    # @pytest.mark.skip
     def test_register1(self, setup):
         print("\nAll info correct")
-        self.signupPage.register("Abdelrahman", "Tarek", "21", "abdelrahman-tarek@outlook.com", "Qwerty1234567")
+        self.signupPage.register("Abdelrahman", "Tarek", "21", "abdelrahman-tarek@outlook.com", "qwertyuiopas123")
+        sleep(30)
         self.signupPage.click_signup_button()
-        sleep(5)
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.CHECK_EMAIL_URL
+
+    def test_register2(self, setup):
+        print("\nAge below 13")
+        self.signupPage.register("George", "Joseph", "12", "george.joseph2896@gmail.com", "georgejoseph12345")
+        sleep(30)
+        self.signupPage.click_signup_button()
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.SIGNUP_URL
+
+    def test_register3(self, setup):
+        print("\nAge is 13 exactly")
+        self.signupPage.register("George", "Joseph", "13", "george.joseph2896@gmail.com", "georgejoseph12345")
+        sleep(30)
+        self.signupPage.click_signup_button()
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.CHECK_EMAIL_URL
+
+    def test_register4(self, setup):
+        print("\nAlredy used email")
+        self.signupPage.register("George", "Joseph", "20", "george.joseph2896@gmail.com", "georgejoseph12345")
+        sleep(30)
+        self.signupPage.click_signup_button()
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.SIGNUP_URL
+
+    def test_register5(self, setup):
+        print("\nPassword less than 12 chars")
+        self.signupPage.register("George", "Joseph", "12", "george_eight@hotmail.com", "george12")
+        sleep(30)
+        self.signupPage.click_signup_button()
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.SIGNUP_URL
+
+    def test_register6(self, setup):
+        print("\nBlank fields")
+        self.signupPage.register("", "", "", "", "")
+        sleep(30)
+        self.signupPage.click_signup_button()
+        sleep(10)
+        assert self.signupPage.page_url() == TestData.SIGNUP_URL
 
     def test_terms_link(self, setup):
         if self.signupPage.element_clickable(self.signupPage.TERMS_LINK, 2):
