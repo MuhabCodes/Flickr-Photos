@@ -33,7 +33,7 @@ function Members() {
                 <div className="member-card">
                   <div className="member-card-size">
                     <div className="member-avatar-content">
-                      <a href=".">
+                      <a href="/*/">
                         <div className="member-avatar" key={admin.Id} style={{ backgroundImage: `url(${admin.Avatar})` }} />
                       </a>
                     </div>
@@ -44,7 +44,7 @@ function Members() {
                         {' '}
                         {/* Checking if the member is pro to display the logo */}
                         {admin.Pro && (
-                        <a href="/account/upgrade/pro" className="member-pro">
+                        <a href="/*/" className="member-pro">
                           <img src="https://i.imgur.com/c0Kf8Rt.jpg" alt="pro" width="17" height="10" />
                         </a>
                         )}
@@ -53,7 +53,7 @@ function Members() {
                         {/* Checking if the member has photos */}
                         {(admin.Photos !== '') && (
                         <span>
-                          <a href="." key={admin.Id}>
+                          <a href="/*/" key={admin.Id}>
                             <i className="member-photo-icon" />
                             {admin.Photos}
                           </a>
@@ -63,7 +63,7 @@ function Members() {
                         {/* Checking if the member has followers */}
                         {(admin.Followers !== '') && (
                         <span className="member-followers-icon">
-                          <a href="." key={admin.Id}>
+                          <a href="/*/" key={admin.Id}>
                             <i />
                             {admin.Followers}
                           </a>
@@ -93,7 +93,7 @@ function Members() {
                 <div className="member-card">
                   <div className="member-card-size">
                     <div className="member-avatar-content">
-                      <a href=".">
+                      <a href="/*/">
                         <div className="member-avatar" key={reg.Id} style={{ backgroundImage: `url(${reg.Avatar})` }} />
                       </a>
                     </div>
@@ -104,7 +104,7 @@ function Members() {
                         {' '}
                         {/* Checking if the member is pro to display the logo */}
                         {reg.Pro && (
-                        <a href="/account/upgrade/pro" className="member-pro">
+                        <a href="/*/" className="member-pro">
                           <img src="https://i.imgur.com/c0Kf8Rt.jpg" alt="pro" width="17" height="10" />
                         </a>
                         )}
@@ -113,7 +113,7 @@ function Members() {
                         {/* Checking if the member has photos */}
                         {(reg.Photos !== '') && (
                         <span>
-                          <a href="." key={reg.Id}>
+                          <a href="/*/" key={reg.Id}>
                             <i className="member-photo-icon" />
                             {reg.Photos}
                           </a>
@@ -123,7 +123,7 @@ function Members() {
                         {/* Checking if the member has followers */}
                         {(reg.Followers !== '') && (
                         <span className="member-followers-icon">
-                          <a href="." key={reg.Id}>
+                          <a href="/*/" key={reg.Id}>
                             <i />
                             {reg.Followers}
                           </a>
