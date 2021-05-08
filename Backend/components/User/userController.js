@@ -6,8 +6,7 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
     // call getUser by display name from DAL
     // TODO: might be changed to userName won't change alot
     const userObj = await userDAL.getUserByDisplayName(displayName);
-    if (userObj.length === 0) // checking whether response is empty or not
-    {
+    if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
       });
@@ -24,8 +23,7 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
   const { email } = req.params;
   try {
     const userObj = await userDAL.getUserByEmail(email);
-    if (userObj.length === 0) // checking whether response is empty or not
-    {
+    if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
       });
@@ -45,8 +43,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getUserById(params.userId);
-    if (userObj.length === 0) // checking whether response is empty or not
-    {
+    if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
       });
@@ -61,8 +58,7 @@ exports.getGroups = async function getGroupps(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getUserGroupsById(params.userId);
-    if (userObj.length === 0) // checking whether response is empty or not
-    {
+    if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
       });
@@ -77,8 +73,7 @@ exports.getPhotos = async function getPhotos(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getPhotos(params.userId);
-    if (userObj.length === 0) // checking whether response is empty or not
-    {
+    if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
       });
