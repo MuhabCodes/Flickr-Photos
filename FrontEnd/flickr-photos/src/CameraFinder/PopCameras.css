@@ -49,7 +49,7 @@
     top: 150%;                         
     transform: translate(-50%, -10%); 
 }
-#brandName a:hover, #brandModels a:hover{
+#brandName .brandsClass:hover, #brandModels .topModelClass:hover{
   background-color: #0063dc;
   color: white;
 }
