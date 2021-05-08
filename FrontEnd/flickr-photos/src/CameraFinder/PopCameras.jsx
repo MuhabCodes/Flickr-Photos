@@ -30,7 +30,7 @@ const PopCameras = (props) => {
             <h2
               id="brandName"
             >
-              <a href="./brand">
+              <a className="brandsClass" href="./brand">
                 {camera.brand}
               </a>
             </h2>
@@ -39,14 +39,14 @@ const PopCameras = (props) => {
             <p
               id="brandModels"
             >
-              <ul>
+              <ul className="ulTopModel">
                 {camera.topModels.map((sub) => (
-                  <a href="./topModel">
+                  <a className="topModelClass" href="./topModel">
                     {sub}
                     ,
                   </a>
                 ))}
-                <a href="./topModel"> more...</a>
+                <a className="topModelClass" href="./topModel"> more...</a>
               </ul>
             </p>
           </div>

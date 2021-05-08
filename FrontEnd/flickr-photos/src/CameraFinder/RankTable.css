@@ -6,16 +6,16 @@
   text-align: left;
   border-spacing: 10px;
 }
-td{
+.tableCell{
   padding: 10px;
   font-size: 13px;
 }
-tbody{
+#tbody{
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
 }
-.rankTable th{
+.rankTable .th{
     padding: 4px 12px;
     background: #f3f3f3;
     border-left: 1px solid #e0e0e0;
@@ -29,21 +29,21 @@ tbody{
     font-weight: bold;
     text-align:left;
 }
-th:first-child, td:first-child{
+.th:first-child, .tableCell:first-child{
   text-align: center;
 }
-tr:nth-child(1),tr:nth-child(2), tr:nth-child(3), tr:nth-child(4), tr:nth-child(5){
+.tableRow:nth-child(1),.tableRow:nth-child(2), .tableRow:nth-child(3), .tableRow:nth-child(4), .tableRow:nth-child(5){
   font-weight: bold;
 }
-tr:nth-child(2n){
+.tableRow:nth-child(2n){
   border-top: 1px solid #f3f3f3;
   background-color:whitesmoke;
   border-bottom: 1px solid #f3f3f3;
 }
-tr:hover{
+.tableRow:hover{
   background-color: #e0e0e0;
 }
-th a:hover, td a:hover{
+.th .cameraTable:hover, .tableCell .cameraTable:hover{
   background-color: #0063dc;
   color: white;
 }
@@ -51,15 +51,16 @@ th a:hover, td a:hover{
   .rankTable{
       overflow-x:auto;
       margin-left: 70px;
+      min-width: 170%;
     }
-    td{
+    .tableCell{
 
       font-size: 11px;
     }
-    tbody{
+    #tbody{
 min-width:33%;
     }
-    .rankTable th{
+    .rankTable .th{
         min-width: 33%;
         font-size: 13px;
     }

@@ -38,7 +38,7 @@ const RecentPhotos = () => {
 
     <div className="recentPhotos">
 
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+      <ResponsiveMasonry className="respMason" columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry className="imageGrid">
           {photoArr.map((photo) => (
             <div className="singleImage" height={photo.height}>
@@ -49,12 +49,13 @@ const RecentPhotos = () => {
                 alt={photo.description}
                 height={photo.height}
                 style={{ width: '100%', display: 'block' }}
+                className="lazyLoad"
               />
               <span className="textArea">
                 <span className="description">
                   {photo.description}
-                  <br />
-                  <br />
+                  <br className="brLines" />
+                  <br className="brLines" />
                 </span>
                 <span className="userName">
                   by
@@ -76,11 +77,11 @@ const RecentPhotos = () => {
                   </span>
                 </span>
                 <span className="comments">
-                  <img src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
+                  <img className="commentIcon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                   {photo.comments}
                 </span>
                 <span className="addToGallery">
-                  <img src="https://img.icons8.com/ios/50/ffffff/plus-2-math.png" alt="addToGallery" width="25px" height="25px" />
+                  <img className="addIcon" src="https://img.icons8.com/ios/50/ffffff/plus-2-math.png" alt="addToGallery" width="25px" height="25px" />
                 </span>
               </span>
             </div>
