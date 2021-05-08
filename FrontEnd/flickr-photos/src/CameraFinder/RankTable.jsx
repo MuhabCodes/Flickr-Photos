@@ -13,41 +13,41 @@ import './RankTable.css';
 function RankTable() {
   function renderHead() {
     return (
-      <thead>
-        <tr>
-          <th>Rank ▾</th>
-          <th>
-            <a href="./Brands">Brand</a>
+      <thead id="tableHead">
+        <tr className="tableRow">
+          <th className="th">Rank ▾</th>
+          <th className="th">
+            <a className="cameraTable" href="./Brands">Brand</a>
           </th>
-          <th>Top Models</th>
-          <th>Model Types</th>
-          <th><a href="./noOfModels"># of Models</a></th>
+          <th className="th">Top Models</th>
+          <th className="th">Model Types</th>
+          <th className="th"><a className="cameraTable" href="./noOfModels"># of Models</a></th>
         </tr>
       </thead>
     );
   }
   function renderBody() {
     return (
-      <tbody>
+      <tbody id="tbody">
         {cameras.map((camera) => (
-          <tr>
-            <td key={camera.rank}>{camera.rank}</td>
-            <td key={camera.rank}><a href="./Brands">{camera.brand}</a></td>
-            <td key={camera.rank}>
+          <tr className="tableRow">
+            <td className="tableCell" key={camera.rank}>{camera.rank}</td>
+            <td className="tableCell" key={camera.rank}><a className="cameraTable" href="./Brands">{camera.brand}</a></td>
+            <td className="tableCell" key={camera.rank}>
               {camera.topModels.map((sub, index) => (
-                <a href="./topModels">
+                <a className="cameraTable" href="./topModels">
                   { (index ? ', ' : '') + sub }
                 </a>
               ))}
             </td>
-            <td key={camera.rank}>
+            <td className="tableCell" key={camera.rank}>
               { camera.modelTypes.map((sub, index) => (
-                <span>
+                <span className="modelTypesColumn">
                   { (index ? ', ' : '') + sub }
                 </span>
               ))}
             </td>
-            <td key={camera.rank}>{camera.noOfModel}</td>
+            <td className="tableCell" key={camera.rank}>{camera.noOfModel}</td>
           </tr>
         ))}
       </tbody>
@@ -55,7 +55,7 @@ function RankTable() {
   }
   return (
     <div className="rankTable">
-      <table>
+      <table className="rankTableDetails">
         {renderHead()}
         {renderBody()}
       </table>
