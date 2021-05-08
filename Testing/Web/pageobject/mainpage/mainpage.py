@@ -114,6 +114,7 @@ class MainPage(Page):
             raise e
 
     def get_group_photo_link(self, batch_item: WebElement):
+        """ Return group-photo link element"""
         try:
             photo_card_xpath = MainPageLocator.group_photo_link_sub_xpath
             photo_link = self.page_helper.find_element_by_el(
@@ -375,7 +376,7 @@ class MainPage(Page):
             raise e
 
     def check_feed_empty(self, time_to_wait: float = None):
-        """ Check if Flickr feed is empty
+        """ Check if Flickr feed is empty.
 
         :param time_to_wait: Maximum waiting time
         :return: boolean to check if the operation is complete
@@ -408,6 +409,11 @@ class MainPage(Page):
     #             raise TimeoutException("ERROR IN LOCATING FEED_LOAD_ERROR")
 
     def check_click_icon(self, time_to_wait: float = None):
+        """ Test clicking poster Avatar.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:
@@ -423,6 +429,11 @@ class MainPage(Page):
                 raise e
 
     def check_poster_link(self, time_to_wait: float = None):
+        """ Test clicking poster name.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:
@@ -438,6 +449,11 @@ class MainPage(Page):
                 raise e
 
     def check_click_group_photo(self, time_to_wait: float = None):
+        """ Test clicking group photo.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:

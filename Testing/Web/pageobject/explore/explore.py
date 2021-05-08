@@ -72,7 +72,7 @@ class Explore(Page):
         try:
             photo_list = self.page_helper.safe_find_elements(
                 (By.XPATH, ExploreLocator.photo_list_item_xpath),
-                "feed_layout_list",
+                "explore_photo_list",
                 time_to_wait
             )
             return photo_list
@@ -80,6 +80,35 @@ class Explore(Page):
             traceback.print_exception(*sys.exc_info())
             raise e
 
-    # def get_photo_link(self, photo_item: WebElement):
-    #     try:
-    #         photo_link
+    def get_photo_link(self, photo_item: WebElement):
+        """ Return photo-link element."""
+        try:
+            photo_xpath = ExploreLocator.photo_sub_xpath
+            photo_link = self.page_helper.find_element_by_el(
+                (By.XPATH, './' + photo_xpath),
+                photo_item,
+                "photo_link"
+            )
+            return photo_link
+        except TypeError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
+
+    def check_click_photo_link(self, time_to_wait: float = None):
+        """ Test clicking photo.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
+        if time_to_wait is None:
+            time_to_wait = self.time_to_wait
+        try:
+            photo_list = self.get_explore_photo_list(time_to_wait)
+            photo_link = self.get_photo_link(photo_list[0])
+
+            self.helper.scroll_to_element(photo_link)
+            photo_link.click()
+            return True
+        except (TimeoutException, TypeError, IndexError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e

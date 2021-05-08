@@ -24,17 +24,17 @@ class TestMainPageFeedTools(object):
         yield
         # self.helper.quit()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_filters(self, setup):
         sleep(10)
         assert self.main_page.check_feed_filters()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_layout(self, setup):
         sleep(10)
         assert self.main_page.check_layouts()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_select_filter(self, setup):
         sleep(10)
         assert self.main_page.select_filter("FILTER_PEOPLE")
@@ -45,12 +45,12 @@ class TestMainPageFeedTools(object):
         sleep(10)
         assert self.main_page.select_layout("LAYOUT_COMPACT")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_error_load(self, setup):
         sleep(10)
         assert self.main_page.check_feed_empty() is False
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_click_post_icon(self, setup):
         sleep(10)
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
@@ -59,7 +59,7 @@ class TestMainPageFeedTools(object):
         assert self.main_page.check_click_icon()
         sleep(10)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_click_poster_link(self, setup):
         sleep(10)
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
@@ -68,7 +68,7 @@ class TestMainPageFeedTools(object):
         assert self.main_page.check_poster_link()
         sleep(10)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_click_group_photo(self, setup):
         sleep(10)
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")

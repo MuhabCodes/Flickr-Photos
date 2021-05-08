@@ -48,10 +48,10 @@ class ExploreLocator(object):
     # div[main]/div[view photo-list-view]
     # /div[view photo-list-photo-view] (multiple)
     photo_list_item_xpath = \
-        '//div[@role="main"]/div[@class="photo-list-view"]/div'
+        '//div[@role="main"]/div[contains(@class,"photo-list-view")]/div'
 
     # ... /div[view photo-list-photo-view]/div[interaction-view]
-    # /div[photo-list-photo-interaction]/a
+    # /div[photo-list-photo-interaction]
     photo_interact_sub_xpath = '/div[@class="interaction-view"]/div'
 
     # ... /div[view photo-list-photo-view]/div[interaction-view]
