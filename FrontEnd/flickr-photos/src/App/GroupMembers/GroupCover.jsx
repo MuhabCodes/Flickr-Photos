@@ -17,37 +17,37 @@ function GroupCover() {
           <div className="group-avatar" style={{ backgroundImage: `url(${group.Avatar})` }} />
           <div className="group-main-info">
             <div className="group-title">
-              <h1>
-                <a href={group.Url}>
+              <h1 className="group-title-h1">
+                <a href={group.Url} className="group-title-a">
                   {group.Name}
                 </a>
               </h1>
               {/* Applying join group buttton */}
               <div className="join-group">
-                <button type="button" className="btn btn-light">+ join Group</button>
+                <button type="button" className="btn btn-light join-group-button">+ Join Group</button>
               </div>
             </div>
             {/* Displaying group data */}
             <div className="group-data">
               <div>
                 <p className="group-statistics">
-                  <a href={`${group.Url}members/`}>
+                  <a className="group-statistics-a" href={`${group.Url}members/`}>
                     {group.Members}
                     {' '}
                     Members
                   </a>
-                  <em>&bull;</em>
+                  <em className="group-statistics-em">&bull;</em>
                 </p>
                 <p className="group-statistics">
-                  <a href={`${group.Url}photos/`}>
+                  <a className="group-statistics-a" href={`${group.Url}photos/`}>
                     {group.Photos}
                     {' '}
                     Photos
                   </a>
-                  <em>&bull;</em>
+                  <em className="group-statistics-em">&bull;</em>
                 </p>
                 <p className="group-statistics">
-                  <a href={`${group.Url}Discussions/`}>
+                  <a className="group-statistics-a" href={`${group.Url}Discussions/`}>
                     {group.Discussions}
                     {' '}
                     Discussions
