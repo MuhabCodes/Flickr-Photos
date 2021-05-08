@@ -30,7 +30,8 @@ class GetStarted extends StatelessWidget {
           Swiper(
             loop: false,
             pagination: SwiperPagination(
-                margin: EdgeInsets.all(MediaQuery.of(context).size.height / 5),
+                margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height * 0.23),
                 builder: new DotSwiperPaginationBuilder(
                   space: 5,
                   size: 6,
@@ -51,7 +52,7 @@ class GetStarted extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 18),
                     alignment: Alignment.center,
                     margin: EdgeInsets.only(
-                      top: 300,
+                      top: MediaQuery.of(context).size.height * 0.5,
                     ),
                     child: Column(
                       children: [
@@ -86,7 +87,8 @@ class GetStarted extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topCenter,
-            padding: EdgeInsets.only(top: 150),
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
             child: Text(
               "flickr",
               textAlign: TextAlign.center,
@@ -99,7 +101,8 @@ class GetStarted extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.only(bottom: 60),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height * 0.1),
             child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(

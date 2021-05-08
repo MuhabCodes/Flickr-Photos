@@ -16,17 +16,13 @@ class _HomeState extends State<Home> {
   bool _isNumImgTwo = true;
   static int _page = 1;
   static Post _thePost = post1;
-  //double heightScreen = 0;
   double _widthScreen = 0;
-  bool test01 = false;
   //final controller = TextEditingController();
   final _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //heightScreen = MediaQuery.of(context).size.height;
     _widthScreen = MediaQuery.of(context).size.width;
-
     Map<int, Widget> _pageview = {
       1: getMain(),
       2: getLikes(_thePost.likes),
@@ -162,7 +158,6 @@ class _HomeState extends State<Home> {
           ),
           Container(
             //Draw horizontal line
-
             constraints: BoxConstraints.expand(height: 20, width: _widthScreen),
             color: Colors.white,
             child: Row(
@@ -765,7 +760,6 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.all(Radius.circular(0))),
                       child: TextButton(
                         //height: 30,
-
                         child: Text(
                             user.following.contains(follower)
                                 ? "✓"
@@ -957,7 +951,7 @@ class _HomeState extends State<Home> {
 
   Widget getComments(List<Comment> commentsList) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in commentsList) {
       //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
       comments.add(new Container(
@@ -1083,7 +1077,7 @@ class _HomeState extends State<Home> {
 
   Widget getCommentsFaves(List<Comment> likes) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in likes) {
       comments.add(new Container(
           constraints: BoxConstraints(
