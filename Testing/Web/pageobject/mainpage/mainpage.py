@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from common.selhelper import SelHelper
 from pageobject.page import Page
 from pageobject.links import Links
-from pageobject.mainpagelocator import MainPageLocator
+from pageobject.mainpage.mainpagelocator import MainPageLocator
 
 
 class MainPage(Page):

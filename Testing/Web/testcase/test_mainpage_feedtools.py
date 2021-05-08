@@ -2,8 +2,8 @@ from time import sleep
 import pytest
 
 from common.selhelper import SelHelper
-from pageobject.mainpage import MainPage, MainPageLocator
-from pageobject.mockmethods import MockMethods
+from pageobject.mainpage.mainpage import MainPage
+from pageobject.mockmethods.mockmethods import MockMethods
 
 TIME_TO_WAIT = 30
 

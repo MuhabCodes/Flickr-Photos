@@ -2,14 +2,11 @@ import sys
 import traceback
 from time import sleep
 
-
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import ElementNotInteractableException
 from common.selhelper import SelHelper
 from pageobject.page import Page
-from pageobject.pagehelper import PageHelper
-from pageobject.mockmethodslocator import MockMethodsLocator
+from pageobject.mockmethods.mockmethodslocator import MockMethodsLocator
 from pageobject.links import Links
 
 

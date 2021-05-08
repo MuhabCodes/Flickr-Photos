@@ -2,8 +2,8 @@ from time import sleep
 import pytest
 
 from common.selhelper import SelHelper
-from pageobject.mainpage import MainPage, MainPageLocator
-from pageobject.mockmethods import MockMethods
+from pageobject.mainpage.mainpage import MainPage, MainPageLocator
+from pageobject.mockmethods.mockmethods import MockMethods
 
 
 class TestMainPageLinks(object):
