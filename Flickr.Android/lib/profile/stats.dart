@@ -35,7 +35,12 @@ class Stats extends StatelessWidget {
             shape: RoundedRectangleBorder(
               side: BorderSide(color: Colors.black, width: 2),
             ),
-            child: Text("Learn More"),
+            child: Text(
+              "Learn More",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
           ),
         )
       ],

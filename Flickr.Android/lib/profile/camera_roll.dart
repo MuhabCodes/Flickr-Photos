@@ -53,13 +53,14 @@ class _CameraRollState extends State<CameraRoll> {
               ViewPhotos(),
               Container(
                 height: 30,
-                width: size.width*0.23,
+                width: size.width * 0.23,
                 child: Container(
                   decoration: BoxDecoration(shape: BoxShape.rectangle),
                   child: ElevatedButton(
                     onPressed: () {},
                     child: Text("Select",
                         style: TextStyle(
+                          fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                         )),
@@ -99,12 +100,13 @@ class ViewPhotos extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: size.width*0.7,
+                        width: size.width * 0.7,
                         child: Text(
                           DateFormat("EEEE — MMM d,yyyy").format(photoProvider
                                   .dateTaken
                               ? photoProvider.photosWithUploadDate[index].date
-                              : photoProvider.photosWithCaptureDate[index].date),
+                              : photoProvider
+                                  .photosWithCaptureDate[index].date),
                           overflow: TextOverflow.fade,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),

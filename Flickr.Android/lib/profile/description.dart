@@ -50,7 +50,12 @@ class _EnterAboutFieldState extends State<EnterAboutField> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 close++;
@@ -70,6 +75,7 @@ class _EnterAboutFieldState extends State<EnterAboutField> {
               },
               child: Text(isWriting ? "Done" : "Edit",
                   style: TextStyle(
+                    fontSize: 16,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   )),
@@ -86,6 +92,9 @@ class _EnterAboutFieldState extends State<EnterAboutField> {
         child: TextFormField(
           focusNode: myFocusNode,
           initialValue: initialtext,
+          style: TextStyle(
+            fontSize: 16,
+          ),
           onTap: () => setState(() {
             isWriting = true;
           }),
@@ -99,7 +108,7 @@ class _EnterAboutFieldState extends State<EnterAboutField> {
           decoration: InputDecoration(
               floatingLabelBehavior: FloatingLabelBehavior.never,
               labelText: "Add $title",
-              labelStyle: TextStyle(color: Colors.grey[500])),
+              labelStyle: TextStyle(fontSize: 16, color: Colors.grey[500])),
         ),
       ),
     );
