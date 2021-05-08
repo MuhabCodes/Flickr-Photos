@@ -127,7 +127,12 @@ class MainPage(Page):
             raise e
 
     def get_person_photo_link(self, feed_item: WebElement):
-        pass
+        try:
+            pass
+            # photo_card_xpath =
+        except TypeError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
 
     def click_nav_dropdown_subitem(
             self, list_locator: tuple,
@@ -313,21 +318,12 @@ class MainPage(Page):
         :param time_to_wait: Maximum waiting time
         :return: boolean to check if the operation is complete
         """
-        if time_to_wait is None:
-            time_to_wait = self.time_to_wait
-        try:
-            layout = self.utils.get_value(self.LOCATOR_LIST, layout_name)
-            if len(layout) == 0:
-                raise IndexError("layout_list is empty")
-            self.page_helper.safe_click(
-                layout,
-                time_to_wait,
-                self.utils.get_key(self.LOCATOR_LIST, layout_name)
-            )
-            return True
-        except (TimeoutException, TypeError, IndexError) as e:
-            traceback.print_exception(*sys.exc_info())
-            raise e
+        self.page_helper.select_layout(
+            self.LOCATOR_LIST,
+            layout_name,
+            time_to_wait
+        )
+        return True
 
     def check_layouts(self, time_to_wait: float = None):
         """ Check if feed layouts are operational.

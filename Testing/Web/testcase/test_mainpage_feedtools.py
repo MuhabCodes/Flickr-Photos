@@ -40,7 +40,7 @@ class TestMainPageFeedTools(object):
         assert self.main_page.select_filter("FILTER_PEOPLE")
         sleep(20)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_select_layout(self, setup):
         sleep(10)
         assert self.main_page.select_layout("LAYOUT_COMPACT")
@@ -68,7 +68,7 @@ class TestMainPageFeedTools(object):
         assert self.main_page.check_poster_link()
         sleep(10)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     def test_click_group_photo(self, setup):
         sleep(10)
         assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")

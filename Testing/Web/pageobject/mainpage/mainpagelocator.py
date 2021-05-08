@@ -195,6 +195,8 @@ class MainPageLocator(object):
     # /div[photo-card-photo]/div[photo]/a
     group_photo_link_sub_xpath = '/div/div/div/div/div[@class="photo"]/a'
 
+    # ---- For Medium/Large photos ----
+
     ####################################################
     #                   Info Column                    #
     ####################################################

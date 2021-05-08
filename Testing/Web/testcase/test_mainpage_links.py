@@ -22,11 +22,11 @@ class TestMainPageLinks(object):
         yield
         self.helper.quit()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_driver(self, setup):
         pass
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "list_locator, list_dict",
         [
@@ -42,12 +42,12 @@ class TestMainPageLinks(object):
             list_locator, list_dict
         )
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_nav_links(self, setup):
         sleep(10)
         assert self.main_page.test_nav_links()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "menu_locator, view_locator, el_menu, el_view",
         [
