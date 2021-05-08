@@ -28,18 +28,18 @@ function NavBarDropDown() {
             <NavDropdown.Item href="#action/3.10">Organize</NavDropdown.Item>
           </NavDropdown> */}
           <div className="dropdown-main-nav">
-            <a href="#action" className="droplink-main-nav">You</a>
+            <a href="/Profile/About" className="droplink-main-nav">You</a>
             <div className="dropdown-content">
-              <a href="#action1">About</a>
-              <a href="#action2">Photostream</a>
-              <a href="#action3">Albums</a>
-              <a href="#action4">Faves</a>
-              <a href="#action5">Galleries</a>
-              <a href="#action6">Groups</a>
-              <a href="#action7">Camera Roll</a>
-              <a href="#action8">Recent</a>
-              <a href="#action9">People</a>
-              <a href="#action10">Organize</a>
+              <a href="/Profile/About">About</a>
+              <a href="/PhotoStream">Photostream</a>
+              <a href="/Albums">Albums</a>
+              <a href="/Profile/Faves">Faves</a>
+              <a href="/Galleries">Galleries</a>
+              <a href="/Groups">Groups</a>
+              <a href="/CameraRoll">Camera Roll</a>
+              <a href="/Notifications">Recent</a>
+              <a href="/People">People</a>
+              <a href="/Organize">Organize</a>
 
             </div>
           </div>
@@ -55,16 +55,16 @@ function NavBarDropDown() {
             <NavDropdown.Item href="#action/3.18">Flickr Blog</NavDropdown.Item>
           </NavDropdown> */}
           <div className="dropdown-main-nav">
-            <a href="#action" className="droplink-main-nav">Explore</a>
+            <a href="/Explore" className="droplink-main-nav">Explore</a>
             <div className="dropdown-content">
-              <a href="#action1">Recent Photos</a>
-              <a href="#action2">Trending</a>
-              <a href="#action1">Events</a>
-              <a href="#action1">The Commons</a>
-              <a href="#action1">Flicker Galleries</a>
-              <a href="#action1">World Map</a>
-              <a href="#action1">Camera Finder</a>
-              <a href="#action1">Flickr Blog</a>
+              <a href="/Explore">Recent Photos</a>
+              <a href="/Trending">Trending</a>
+              <a href="/Events">Events</a>
+              <a href="/TheCommons">The Commons</a>
+              <a href="FlickrGalleries">Flicker Galleries</a>
+              <a href="/WorldMap">World Map</a>
+              <a href="/CameraFinder">Camera Finder</a>
+              <a href="/FlickrBlog">Flickr Blog</a>
 
             </div>
           </div>
@@ -75,15 +75,15 @@ function NavBarDropDown() {
           </NavDropdown> */}
 
           <div className="dropdown-main-nav">
-            <a href="#action" className="droplink-main-nav">Print</a>
+            <a href="/Prints" className="droplink-main-nav">Print</a>
             <div className="dropdown-content">
-              <a href="#action1">Prints & Wall Art</a>
-              <a href="#action2">Photo Books</a>
+              <a href="/Prints">Prints & Wall Art</a>
+              <a href="/PhotoBooks">Photo Books</a>
             </div>
           </div>
 
           <div className="dropdown-main-nav">
-            <a href="#action1" className=" droplink-main-nav">Get Pro</a>
+            <a href="/GetPro" className=" droplink-main-nav">Get Pro</a>
           </div>
         </Nav>
         <div className="icon-bar d-flex justify-content-end">

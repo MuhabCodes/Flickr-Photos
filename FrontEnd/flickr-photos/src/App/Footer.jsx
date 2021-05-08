@@ -10,22 +10,22 @@ function Footer() {
       <Container className="justify-content-md-center">
         <Row>
           <Col xs={6} lg={2}>
-            <a href="#about">About</a>
+            <a href="/About">About</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Jobs</a>
+            <a href="/Jobs">Jobs</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Blog</a>
+            <a href="/Blog">Blog</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Developers</a>
+            <a href="Developers">Developers</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Guidelines</a>
+            <a href="/GuideLines">Guidelines</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Help</a>
+            <a href="/Help">Help</a>
           </Col>
         </Row>
       </Container>
@@ -39,13 +39,13 @@ function Footer() {
       <Container className="justify-content-md-center">
         <Row>
           <Col xs={6} lg={1}>
-            <a href="#about">Privacy</a>
+            <a href="/Privacy">Privacy</a>
           </Col>
           <Col xs={6} lg={1}>
-            <a href="#about">Terms</a>
+            <a href="/Terms">Terms</a>
           </Col>
           <Col xs={6} lg={2}>
-            <a href="#about">Cookies</a>
+            <a href="/Cookies">Cookies</a>
           </Col>
         </Row>
       </Container>

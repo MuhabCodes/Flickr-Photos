@@ -1,6 +1,5 @@
 .expnav {
     background-color:white;
-    position:fixed;
     margin: 0px auto 0 ;
     width: 100%;
     text-align: left;
@@ -76,7 +75,6 @@
     @media screen and (max-width: 1200px) {
     .expnav {
     background-color:white;
-    position:fixed;
     margin: 0px auto 0 ;
     max-width: 1200px;
     text-align: left;

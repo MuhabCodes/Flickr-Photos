@@ -12,7 +12,7 @@ function NavBar() {
     <Navbar collapseOnSelect sticky="top" expand="md">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img
           alt=""
           src="flickr.png"
