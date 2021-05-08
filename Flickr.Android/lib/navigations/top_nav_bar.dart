@@ -1,10 +1,13 @@
-import 'package:flickr/camera/camera.dart';
+
 import 'package:flickr/explore/search.dart';
 import 'package:flickr/home/home.dart';
 import 'package:flickr/notifications/notifications.dart';
 import 'package:flickr/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../camera/Pages/camera_view.dart';
+
 
 class TopNavigationBar extends StatelessWidget {
   @override
@@ -17,6 +20,7 @@ class TopNavigationBar extends StatelessWidget {
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 new SliverAppBar(
+                  toolbarHeight:0.06* MediaQuery.of(context).size.height ,
                   automaticallyImplyLeading: false,
                   backgroundColor: Colors.grey[900],
                   forceElevated: false,
@@ -51,7 +55,7 @@ class TopNavigationBar extends StatelessWidget {
                 Search(),
                 Profile(),
                 Notifications(),
-                Camera(),
+               CameraView(),
               ],
             )),
       ),

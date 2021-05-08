@@ -16,11 +16,13 @@ class _HomeState extends State<Home> {
   bool _isNumImgTwo = true;
   static int _page = 1;
   static Post _thePost = post1;
+  double _widthScreen = 0;
   //final controller = TextEditingController();
   final _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    _widthScreen = MediaQuery.of(context).size.width;
     Map<int, Widget> _pageview = {
       1: getMain(),
       2: getLikes(_thePost.likes),
@@ -82,6 +84,7 @@ class _HomeState extends State<Home> {
             //margin: EdgeInsets.all(10),
             constraints: BoxConstraints(
               maxHeight: 282,
+              maxWidth: _widthScreen,
             ),
 
             decoration: BoxDecoration(
@@ -97,6 +100,9 @@ class _HomeState extends State<Home> {
           ),
           Container(
             //this container creates a box around username row
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
+            ),
             color: Colors.white,
             padding: EdgeInsets.all(10),
             child: Row(
@@ -116,6 +122,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       post.user.username,
+                      style: textStyle,
                     )
                   ],
                 ),
@@ -129,6 +136,9 @@ class _HomeState extends State<Home> {
           ContainerResponsive(
             //Post  title (limit = 100 characters) not description
             //height: 10,
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
+            ),
             heightResponsive: true,
             widthResponsive: true,
             //constraints: BoxConstraints.expand(height: 60),
@@ -137,32 +147,39 @@ class _HomeState extends State<Home> {
             child: Row(
               children: <Widget>[
                 Flexible(
-                  child: Text(post.description), //+
-                  // " hi life is a journey and i need patience is the description box flexible with text?"),
-                ),
+                    child: Text(
+                  post.description,
+                  style: textStyle,
+                ) //+
+                    // " hi life is a journey and i need patience is the description box flexible with text?"),
+                    ),
               ],
             ),
           ),
           Container(
             //Draw horizontal line
-            constraints: BoxConstraints.expand(height: 20),
+            constraints: BoxConstraints.expand(height: 20, width: _widthScreen),
             color: Colors.white,
             child: Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(horizontal: 00.0),
                   child: Container(
                     height: 2.2,
-                    width: 340.0,
+                    width: _widthScreen, //340.0,
                     color: Colors.grey,
                   ),
                 ),
               ],
             ),
           ),
+          /*Divider(
+            height: 5,
+            color: Colors.grey[300],
+          ),*/
           Container(
             //Like, Share, Comment
-            constraints: BoxConstraints.expand(height: 50),
+            constraints: BoxConstraints.expand(height: 50, width: _widthScreen),
             padding: EdgeInsets.only(left: 10, right: 10),
             color: Colors.white,
             child: Row(
@@ -200,7 +217,10 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     Text(post.likes.length.toString(),
-                        style: TextStyle(color: Colors.grey)),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                        )),
                   ],
                 ),
                 Row(
@@ -218,7 +238,10 @@ class _HomeState extends State<Home> {
                       },
                     ),
                     Text("" + post.comments.length.toString(),
-                        style: TextStyle(color: Colors.grey)),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                        )),
                   ],
                 ),
                 Row(
@@ -235,7 +258,8 @@ class _HomeState extends State<Home> {
           ),
           Container(
             //Likers Row
-            constraints: BoxConstraints.expand(height: 140),
+            constraints:
+                BoxConstraints.expand(height: 140, width: _widthScreen),
             color: Colors.grey[200],
             //alignment: AlignmentDirectional.topCenter,
             //padding: EdgeInsets.only(left: 10, right: 10),
@@ -269,7 +293,7 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       Flexible(
-                        child: FlatButton(
+                        child: TextButton(
                           child: Text(
                               post.likes[0].username +
                                   ", " +
@@ -279,6 +303,8 @@ class _HomeState extends State<Home> {
                                   " others faved",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 10,
                               )),
                           onPressed: () {
                             setState(() {
@@ -293,7 +319,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  //sub-Container #1
+                  //sub-Container #2
                   padding: EdgeInsets.only(
                     top: 10,
                   ),
@@ -319,7 +345,7 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       Flexible(
-                        child: FlatButton(
+                        child: TextButton(
                           child: Container(
                             //alignment: AlignmentDirectional.topStart,
                             child: Column(
@@ -331,17 +357,28 @@ class _HomeState extends State<Home> {
                                     Text(post.comments[0].user.username,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: 10,
                                         )),
                                     Text(
                                         post.comments.length.toString() +
                                             " of " +
                                             post.comments.length.toString(),
-                                        style: TextStyle(color: Colors.grey)),
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                        )),
                                   ],
                                 ),
                                 Row(children: <Widget>[
-                                  Text(post.comments[post.comments.length - 1]
-                                      .comment),
+                                  Text(
+                                    post.comments[post.comments.length - 1]
+                                        .comment,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 10,
+                                    ),
+                                  ),
                                 ])
                               ],
                             ),
@@ -368,6 +405,9 @@ class _HomeState extends State<Home> {
 
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
     return Container(
+      constraints: BoxConstraints(
+        maxWidth: _widthScreen,
+      ),
       margin: EdgeInsets.only(bottom: 10),
       color: Colors.white,
       child: Column(
@@ -391,7 +431,7 @@ class _HomeState extends State<Home> {
                       ),*/
                       constraints: BoxConstraints(
                         maxHeight: 282, //_isNumImgTwo? 282: 141,
-                        maxWidth: 170,
+                        maxWidth: _widthScreen * 0.5, //170,
                       ),
                       decoration: BoxDecoration(
                           image: DecorationImage(image: post.image[0])),
@@ -399,17 +439,17 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 Column(
-                  //mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Row(
-                      //mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                           //padding: EdgeInsets.only(right: 20),
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
                             maxHeight: 131, //_isNumImgTwo? 282: 141,
-                            minWidth: 170,
+                            maxWidth: _widthScreen * 0.4, //170,
                           ),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -424,7 +464,7 @@ class _HomeState extends State<Home> {
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
                             maxHeight: 131, //_isNumImgTwo? 282: 141,
-                            minWidth: 170,
+                            maxWidth: _widthScreen * 0.4, //170,
                           ),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -462,6 +502,7 @@ class _HomeState extends State<Home> {
                           "\n Post " +
                           post.image.length.toString() +
                           " photos",
+                      style: textStyle,
                     )
                   ],
                 ),
@@ -479,19 +520,16 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  child: FlatButton(
+                  child: TextButton(
                     child: Text(
-                      "View all " + post.image.length.toString() + " photos",
-                      /*style: TextStyle(
+                        "View all " + post.image.length.toString() + " photos",
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
-                        )*/
-                    ),
+                          color: Colors.black,
+                          fontSize: 10,
+                        )),
                     onPressed: () {
-                      setState(() {
-                        _thePost = post;
-                        _page = 2;
-                        build(context);
-                      });
+                      setState(() {});
                     },
                   ),
                 ),
@@ -506,6 +544,9 @@ class _HomeState extends State<Home> {
   Widget getPostTwoPhotos(BuildContext context, Post post, int index) {
     _isNumImgTwo = getNumPostImg(post);
     return Container(
+      constraints: BoxConstraints(
+        maxWidth: _widthScreen,
+      ),
       margin: EdgeInsets.only(bottom: 10),
       color: Colors.white,
       child: Column(
@@ -594,7 +635,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  child: FlatButton(
+                  child: TextButton(
                     child: Text(
                       "View both photos",
                       /*style: TextStyle(
@@ -687,9 +728,12 @@ class _HomeState extends State<Home> {
     List<Widget> likers = [];
     for (User follower in likes) {
       likers.add(new Container(
+          constraints: BoxConstraints(
+            maxWidth: _widthScreen,
+          ),
           //height: 70,
           padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
-          child: FlatButton(
+          child: TextButton(
             child: Column(
               children: <Widget>[
                 Row(
@@ -705,9 +749,8 @@ class _HomeState extends State<Home> {
                             CircleAvatar(
                               backgroundImage: follower.profilePicture,
                             ),
-                            Text(
-                              "  " + follower.username,
-                            ),
+                            Text("  " + follower.username,
+                                style: textStyleBold),
                           ],
                         )),
                     Container(
@@ -715,17 +758,14 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 2, color: Colors.black),
                           borderRadius: BorderRadius.all(Radius.circular(0))),
-                      child: FlatButton(
-                        height: 30,
-                        color:
-                            user.following.contains(follower) //Background color
-                                ? Colors.transparent
-                                : Colors.transparent,
+                      child: TextButton(
+                        //height: 30,
                         child: Text(
                             user.following.contains(follower)
                                 ? "✓"
                                 : "+ Follow",
                             style: TextStyle(
+                                fontSize: 10,
                                 fontWeight: FontWeight.bold,
                                 color: user.following.contains(follower)
                                     ? Colors.black
@@ -750,7 +790,10 @@ class _HomeState extends State<Home> {
                     //constraints: BoxConstraints.expand(width: 200, height: 20),
                     child: Text(
                       "38 Photos -1.2k F ollowers",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 10,
+                      ),
                       overflow: TextOverflow.ellipsis,
                       //textWidthBasis: TextWidthBasis.longestLine,
                     )),
@@ -820,9 +863,12 @@ class _HomeState extends State<Home> {
     List<Widget> likers = [];
     for (User follower in likes) {
       likers.add(new Container(
+          constraints: BoxConstraints(
+            maxWidth: _widthScreen,
+          ),
           //height: 70,
           padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
-          child: FlatButton(
+          child: TextButton(
             child: Column(
               children: <Widget>[
                 Row(
@@ -838,9 +884,11 @@ class _HomeState extends State<Home> {
                             CircleAvatar(
                               backgroundImage: follower.profilePicture,
                             ),
-                            Text(
-                              "  " + follower.username,
-                            ),
+                            Text("  " + follower.username,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.black,
+                                )),
                           ],
                         )),
                     Container(
@@ -848,18 +896,14 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 2, color: Colors.black),
                           borderRadius: BorderRadius.all(Radius.circular(0))),
-                      child: FlatButton(
-                        height: 30,
-                        color:
-                            user.following.contains(follower) //Background color
-                                ? Colors.transparent
-                                : Colors.transparent,
+                      child: TextButton(
                         child: Text(
                             user.following.contains(follower)
                                 ? "✓"
                                 : "+ Follow",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 10,
                                 color: user.following.contains(follower)
                                     ? Colors.black
                                     : Colors.black)),
@@ -883,7 +927,7 @@ class _HomeState extends State<Home> {
                     //constraints: BoxConstraints.expand(width: 200, height: 20),
                     child: Text(
                       "38 Photos -1.2k F ollowers",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.grey, fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                       //textWidthBasis: TextWidthBasis.longestLine,
                     )),
@@ -907,13 +951,16 @@ class _HomeState extends State<Home> {
 
   Widget getComments(List<Comment> commentsList) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in commentsList) {
       //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
       comments.add(new Container(
+          constraints: BoxConstraints(
+            maxWidth: _widthScreen,
+          ),
           // height: 45,
           padding: EdgeInsets.only(top: 10),
-          child: FlatButton(
+          child: TextButton(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -936,13 +983,14 @@ class _HomeState extends State<Home> {
                         RichText(
                           text: new TextSpan(
                             style: new TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 10.0,
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
                               new TextSpan(
-                                  text: comment.user.username + "\n",
-                                  style: textStyleBold),
+                                text: comment.user.username + "\n",
+                                style: textStyleBold,
+                              ),
                               new TextSpan(text: '', style: textStyle),
                               new TextSpan(
                                   text: comment.comment, style: textStyle),
@@ -986,7 +1034,7 @@ class _HomeState extends State<Home> {
           title: Flexible(
             child: Text(
               _thePost.user.username + "'s Photo",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
           bottom: TabBar(
@@ -1029,12 +1077,15 @@ class _HomeState extends State<Home> {
 
   Widget getCommentsFaves(List<Comment> likes) {
     List<Widget> comments = [];
-    DateTime now = DateTime.now();
+    //DateTime now = DateTime.now();
     for (Comment comment in likes) {
       comments.add(new Container(
+          constraints: BoxConstraints(
+            maxWidth: _widthScreen,
+          ),
           // height: 45,
           padding: EdgeInsets.only(top: 10),
-          child: FlatButton(
+          child: TextButton(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1057,7 +1108,7 @@ class _HomeState extends State<Home> {
                         RichText(
                           text: new TextSpan(
                             style: new TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 10.0,
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
@@ -1107,6 +1158,9 @@ class _HomeState extends State<Home> {
           ),
         ),
         bottomSheet: Container(
+          constraints: BoxConstraints(
+            maxWidth: _widthScreen,
+          ),
           color: Colors.grey[300],
           child: SingleChildScrollView(
               child: Stack(
@@ -1124,41 +1178,51 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    //padding: EdgeInsets.only(top: 10),
-                    height: 40,
-                    width: 75,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(0))),
-                    child: FlatButton(
-                      height: 30,
-                      child: Text(
-                        "Post",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+              Container(
+                //Post Button
+                constraints: BoxConstraints(
+                  maxWidth: _widthScreen,
+                ),
+                padding: EdgeInsets.only(right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      //padding: EdgeInsets.only(top: 10),
+                      height: 40,
+                      width: 75,
+
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(0))),
+                      child: TextButton(
+                        //height: 30,
+                        child: Text(
+                          "Post",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 10,
+                          ),
                         ),
+                        onPressed: () {
+                          setState(() {
+                            if (_commentController.text.isEmpty == false) {
+                              _thePost.comments.add(
+                                new Comment(
+                                    _thePost.user,
+                                    _commentController.text,
+                                    DateTime.now(),
+                                    false),
+                              );
+                            }
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          if (_commentController.text.isEmpty == false) {
-                            _thePost.comments.add(
-                              new Comment(
-                                  _thePost.user,
-                                  _commentController.text,
-                                  DateTime.now(),
-                                  false),
-                            );
-                          }
-                        });
-                      },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             ],
           )),
