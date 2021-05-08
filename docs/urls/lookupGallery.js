@@ -7,7 +7,7 @@
  * 
  * @apiDescription Returns gallery info, by url.
  * 
- * @apiBody {String} {url: The gallery's URL.}
+ * @apiParam  (Body) {String} {url: The gallery's URL.}
  * 
  * 
  * 
