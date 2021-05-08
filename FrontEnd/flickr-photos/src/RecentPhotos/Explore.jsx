@@ -9,12 +9,12 @@ const Explore = () => (
     <ExploreNavBar />
     <div className="explorePageContent">
       <h1 id="exploreTitle">
-        <br />
-        <br />
-        <br />
+        <br className="breakLines" />
+        <br className="breakLines" />
+        <br className="breakLines" />
         Explore
       </h1>
-      <br />
+      <br className="breakLines" />
       <RecentPhotos />
     </div>
   </div>
