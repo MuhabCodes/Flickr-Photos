@@ -1,6 +1,6 @@
 /**
  * 
- * @api {Get} /people/:email findByEmail
+ * @api {Get} /people/email/:email findByEmail
  * @apiDescription find ID and userName of a user given their Email
  * @apiGroup people
  * @apiVersion  0.1.0
