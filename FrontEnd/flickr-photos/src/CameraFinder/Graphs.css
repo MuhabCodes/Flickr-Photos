@@ -1,12 +1,19 @@
-.contentBox , .contentBox2{
+.contentBox {
+  display: inline-block;
+  width: 540px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+}
+.contentBox2{
   display: inline-block;
   width: 530px;
   border: 0;
   margin: 20px;
   margin-left: 10px;
   align-self: auto;
-}
-
+  }
 .contentBox img ,.contentBox2 img {
 float: left;
 }
@@ -74,6 +81,22 @@ margin-left: 80px;
 .graphs{
   display: block;
 }
+.contentBox {
+  display: block;
+  width: 540px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+}
+.contentBox2{
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+  }
 #legendsOfGraph1, #legendsOfGraph2,.bullet-list-graphs{
 font-size: 13px;
 }
