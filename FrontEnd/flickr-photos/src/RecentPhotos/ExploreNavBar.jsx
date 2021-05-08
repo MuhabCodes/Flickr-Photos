@@ -12,15 +12,15 @@ $(document).ready(() => {
 function ExploreNavBar() {
   return (
     <nav className="expnav">
-      <Link id="menu-item" to="./" className="active">Explore</Link>
-      <Link id="menu-item" to="./Trending">Trending</Link>
-      <Link id="menu-item" to="./Events">Events</Link>
+      <Link id="exp-menu-item" to="./" className="active">Explore</Link>
+      <Link id="exp-menu-item" to="./Trending">Trending</Link>
+      <Link id="exp-menu-item" to="./Events">Events</Link>
       <div className="animation start-home" />
-      <div className="dropdown">
-        <button className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+      <div className="expDropdown">
+        <button className="dropdown-toggle" type="button" id="expdropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
           More
         </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <div className="dropdown-menu" aria-labelledby="expdropdownMenuButton1">
           <Link className="dropdown-item" to="./TheCommons">The Commons</Link>
           <Link className="dropdown-item" to="./Galleries">Galleries</Link>
           <Link className="dropdown-item" to="./WorldMap">World Map</Link>
