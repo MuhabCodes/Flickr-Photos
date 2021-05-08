@@ -7,7 +7,7 @@
  * 
  * @apiDescription Returns a user Id, given the url to a user's photos or profile.
  * 
- * @apiParam  (Body) {String} {url: The url to the user's profile or photos page.}
+ * @apiParam  (Body) {String} url The url to the user's profile or photos page.
  * 
  * 
  * @apiSuccess (Success 200) {Object} userId The user id.
