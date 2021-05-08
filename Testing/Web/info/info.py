@@ -15,4 +15,4 @@ class TestData(object):
     GUIDELINES_URL = "https://www.flickr.com/help/guidelines"
     HELP_FORUM_URL = "https://www.flickr.com/help/forum/en-us/"
     COOKIES_URL = "https://www.flickr.com/help/cookies"
-    CHECK-EMAIL_URL = "https://identity.flickr.com/check-email/sign-up"
+    CHECK_EMAIL_URL = "https://identity.flickr.com/check-email/sign-up"
