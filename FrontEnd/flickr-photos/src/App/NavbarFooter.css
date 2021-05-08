@@ -6,9 +6,7 @@ html {
   }
   
   body {
-    margin: 0 0 100px;
-    
-   
+    margin: 0 0;
   }
   
   .navbar-light .navbar-nav .nav-link:hover{
