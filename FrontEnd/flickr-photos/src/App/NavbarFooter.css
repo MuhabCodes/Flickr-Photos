@@ -103,10 +103,13 @@ html {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
 }
 
 /* Links inside the dropdown */
@@ -133,8 +136,9 @@ html {
     width: 100%;
     background-color: #212124;
     color: white;
-    padding: 14px;
+    padding: 15px;
     font-size: small;
+    height: 11em;
   }
   
   hr{
