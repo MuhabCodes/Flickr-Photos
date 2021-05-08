@@ -14,14 +14,21 @@
   margin-left: 10px;
   align-self: auto;
   }
-.contentBox img ,.contentBox2 img {
+.contentBox #graph1 ,.contentBox2 #graph2 {
 float: left;
 }
 
-.contentBox h3,.contentBox2 h3 {
+.contentBox .titleOfGraph1,.contentBox2 .titleOfGraph2 {
   margin: 5px;
 }
-.contentBox span,.contentBox2 span {
+
+.contentBox .firstBullet,.contentBox .secondBullet,.contentBox .thirdBullet,.contentBox .fourthBullet,.contentBox .fifthBullet
+{
+  text-align: right;
+  margin: 5px;
+}
+.contentBox2 .firstBullet,.contentBox2 .secondBullet,.contentBox2 .thirdBullet,.contentBox2 .fourthBullet,.contentBox2 .fifthBullet
+{
   text-align: right;
   margin: 5px;
 }
@@ -50,7 +57,7 @@ float: left;
 .fifthBullet{
  color: #99AACC;
 }
-#legendsOfGraph1 a:hover,#aboutTheseGraphs a:hover, #legendsOfGraph2 a:hover{
+#legendsOfGraph1 .brandsHyperTags:hover,#aboutTheseGraphs .brandsHyperTags:hover, #legendsOfGraph2 .brandsHyperTags:hover{
 background-color: #0063dc;
 color: white;
 }
