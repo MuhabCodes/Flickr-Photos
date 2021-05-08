@@ -25,7 +25,6 @@ function ExploreNavBar() {
           <Link className="dropdown-item" to="./Galleries">Galleries</Link>
           <Link className="dropdown-item" to="./WorldMap">World Map</Link>
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
-          <Link className="dropdown-item" to="./FlickrBlog">Flickr Blog</Link>
         </div>
       </div>
     </nav>
