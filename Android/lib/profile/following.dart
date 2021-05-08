@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Followers extends StatelessWidget {
+class Following extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -8,7 +8,12 @@ class Followers extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Followers"),
+            Text(
+              "Following",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ],
         ),
       ),
