@@ -51,6 +51,7 @@ th a:hover, td a:hover{
   .rankTable{
       overflow-x:auto;
       margin-left: 70px;
+      min-width: 170%;
     }
     td{
 
