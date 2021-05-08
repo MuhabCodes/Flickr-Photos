@@ -9,42 +9,20 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import background from './background.jpg';
+import style from './loginStyles';
 import icon from './flickrlogo.png';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
   root: {
+    marginLeft: 20,
+    marginBottom: '10px',
     minWidth: 305,
     justifyContent: 'center',
-    alignSelf: 'center',
   },
 })(TextField);
 // the card styles
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: 150,
-    padding: 10,
-    minWidth: 360,
-    maxWidth: 360,
-    height: 420,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 16,
-    padding: 20,
-    color: 'black',
-  },
-  pos: {
-    alignSelf: 'center',
-  },
-});
+const useStyles = makeStyles(style);
 
 // the schema of the inputs needed to be validated
 const schema = yup.object().shape({
@@ -66,44 +44,25 @@ export default function SignUp() {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundImage: `url(${background})`,
-      backgroundSize: 'cover',
-      width: '100vw',
-      minHeight: '100vh',
-      backgroundRepeat: 'no-repeat',
-    // background image stylings
-    }}
-    >
+    <div className={classes.backgroundImage}>
       <Card className={classes.root}>
-        <img src={icon} style={{ width: '25%', justifyContent: 'center', alignSelf: 'center' }} alt="icon" />
-        <Typography className={classes.title} style={{ marginTop: '-25px', fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
+        <img src={icon} className={classes.cardIcon} alt="icon" />
+        <Typography className={classes.title} style={{}} color="textSecondary" gutterBottom>
           Log in to Flickr
         </Typography>
         <form onSubmit={handleSubmit(submitForm)}>
-          <CssTextField variant="outlined" {...register('email')} name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
-          <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.email && 'Required'}</p>
-          <CssTextField variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
-          <p style={{ color: 'red', fontSize: '12px', transition: '10s' }}>{errors.password && 'Required Must be 12 Characters'}</p>
+          <CssTextField error={errors.email} helperText={errors.email && 'Required'} variant="outlined" {...register('email')} name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
+          <CssTextField error={errors.password} helperText={errors.password && 'Required'} variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
           <Button
             variant="contained"
-            style={{
-              minWidth: 290,
-              color: 'white',
-              backgroundColor: '#128fdc',
-              paddingTop: '8px',
-              marginTop: '8px',
-              font: 'inherit',
-            }}
+            className={classes.loginButton}
             disableElevation
             type="submit"
           >
             sign in
           </Button>
         </form>
-        <Link to="/forgotpassword" style={{ marginTop: '12px', fontSize: '14px' }}>Forgot Password?</Link>
+        <Link to="/forgotpassword" className={classes.linkStyle}>Forgot Password?</Link>
         <div style={{
           fontSize: '0.875rem', position: 'relative', alignSelf: 'center',
         }}

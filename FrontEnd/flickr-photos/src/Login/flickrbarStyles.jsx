@@ -1,6 +1,6 @@
 const flickrbarStyles = () => ({
   appBar: {
-    backgroundColor: 'black', minHeight: '50px', maxHeight: '50px',
+    backgroundColor: 'black', minHeight: '7vh', maxHeight: '7vh',
   },
   flickrIcon: {
     width: '5vw',

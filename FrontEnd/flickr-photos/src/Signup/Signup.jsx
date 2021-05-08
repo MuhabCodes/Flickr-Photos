@@ -17,9 +17,11 @@ import style from './signupStyles';
 const CssTextField = withStyles({
   root: {
     // margin: 10,
+    marginLeft: 25,
+    marginBottom: '10px',
     minWidth: 305,
     justifyContent: 'center',
-    alignSelf: 'center',
+
   },
 })(TextField);
 // the card styles
@@ -53,16 +55,16 @@ export default function SignUp() {
   return (
     <div className={classes.backgroundImage}>
       <Card className={classes.root}>
-        <img src={icon} style={{ width: '25%', justifyContent: 'center', alignSelf: 'center' }} alt="icon" />
-        <Typography className={classes.title} style={{ fontSize: '1.25rem' }} color="textSecondary" gutterBottom>
+        <img src={icon} className={classes.cardIcon} alt="icon" />
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
           Sign up for Flickr
         </Typography>
         <form onSubmit={handleSubmit(submitForm)}>
-          <CssTextField error={errors.lastName} helperText={errors.firstName && 'Required'} variant="outlined" {...register('firstName')} name="firstName" style={{ marginBottom: '10px' }} value={firstName} onChange={(e) => setFName(e.target.value)} label="First Name" />
-          <CssTextField error={errors.lastName} helperText={errors.lastName && 'Required'} variant="outlined" {...register('lastName')} name="lastName" style={{ marginBottom: '10px' }} value={lastName} onChange={(e) => setLName(e.target.value)} label="Last Name" />
-          <CssTextField error={errors.lastName} helperText={errors.lastName && 'Required'} variant="outlined" {...register('age')} name="Age" type="number" style={{ marginBottom: '10px' }} value={age} onChange={(e) => setAge(e.target.value)} label="Your Age" />
-          <CssTextField error={errors.email} helperText={errors.email && 'Required'} variant="outlined" {...register('email')} name="email" type="email" style={{ marginBottom: '10px' }} value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
-          <CssTextField error={errors.password} helperText={errors.password && 'Required'} variant="outlined" {...register('password')} name="password" type="password" style={{ marginBottom: '10px' }} value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
+          <CssTextField error={errors.lastName} helperText={errors.firstName && 'Required'} variant="outlined" {...register('firstName')} name="firstName" value={firstName} onChange={(e) => setFName(e.target.value)} label="First Name" />
+          <CssTextField error={errors.lastName} helperText={errors.lastName && 'Required'} variant="outlined" {...register('lastName')} name="lastName" value={lastName} onChange={(e) => setLName(e.target.value)} label="Last Name" />
+          <CssTextField error={errors.lastName} helperText={errors.lastName && 'Required'} variant="outlined" {...register('age')} name="Age" type="number" value={age} onChange={(e) => setAge(e.target.value)} label="Your Age" />
+          <CssTextField error={errors.email} helperText={errors.email && 'Required'} variant="outlined" {...register('email')} name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
+          <CssTextField error={errors.password} helperText={errors.password && 'Required'} variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="Password" />
           <Button
             variant="contained"
             className={classes.signUpButton}

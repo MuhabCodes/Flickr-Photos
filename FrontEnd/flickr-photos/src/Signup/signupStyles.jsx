@@ -4,9 +4,10 @@ const signUpStyle = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: 20,
-    padding: 10,
+    // alignItems: 'center',
+    // float: 'center',
+    // marginTop: 20,
+    // padding: 10,
     minWidth: 360,
     maxWidth: 360,
     height: 720,
@@ -17,9 +18,9 @@ const signUpStyle = () => ({
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 16,
-    padding: 20,
+    fontSize: '1.25rem',
     color: 'black',
+    marginLeft: 105,
   },
   pos: {
     marginBottom: 12,
@@ -28,6 +29,12 @@ const signUpStyle = () => ({
     minWidth: 290,
     color: 'white',
     backgroundColor: '#128fdc',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // margin: 'inherit',
+    // position: 'absolute',
+    marginLeft: 30,
+    float: 'center',
     paddingTop: '8px',
     marginTop: '8px',
     font: 'inherit',
@@ -35,6 +42,7 @@ const signUpStyle = () => ({
   backgroundImage: {
     display: 'flex',
     justifyContent: 'center',
+    margin: 'auto',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     width: '100vw',
@@ -47,9 +55,16 @@ const signUpStyle = () => ({
     color: '#898989',
     position: 'relative',
     alignSelf: 'center',
+    marginLeft: 27,
   },
   alreadymemberDiv: {
     fontSize: '0.875rem', position: 'relative', alignSelf: 'center',
+  },
+  cardIcon: {
+    display: 'flex',
+    width: '90px',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });
 

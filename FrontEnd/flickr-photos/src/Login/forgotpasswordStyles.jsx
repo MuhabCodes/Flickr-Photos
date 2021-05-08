@@ -1,6 +1,6 @@
 import background from './background.jpg';
 
-const verifysignupStyles = () => ({
+const fpasswordStyles = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -9,7 +9,7 @@ const verifysignupStyles = () => ({
     padding: 20,
     minWidth: '22rem',
     maxWidth: '22rem',
-    height: '18rem',
+    height: '24rem',
   },
   bullet: {
     display: 'inline-block',
@@ -19,37 +19,41 @@ const verifysignupStyles = () => ({
   title: {
     fontSize: '1.25rem',
     padding: 10,
-    marginLeft: 63,
     color: 'black',
-  },
-  pos: {
-    marginBottom: 12,
   },
   backgroundImage: {
     display: 'flex',
     justifyContent: 'center',
+    margin: 'auto',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     width: '100vw',
     minHeight: '100vh',
     backgroundRepeat: 'no-repeat',
   },
-  msgIcon: {
-    marginLeft: 140, width: '9%', justifyContent: 'center', alignSelf: 'center',
+  pos: {
+    marginBottom: 12,
   },
-  resendButton: {
+  lockIcon: {
+    width: '9%', justifyContent: 'center', alignSelf: 'center', marginLeft: 130,
+  },
+  buttonStylings: {
     minWidth: 290,
     color: 'white',
     backgroundColor: '#128fdc',
-    paddingTop: '0.5rem',
-    marginTop: '1.8rem',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // margin: 'inherit',
+    // position: 'absolute',
+    marginLeft: 5,
+    float: 'center',
+    paddingTop: '8px',
+    marginTop: '8px',
+    font: 'inherit',
   },
-  paragraphStyle: {
-    position: 'relative', bottom: '-10px',
-  },
-  sentParagraph: {
-    fontSize: '1.0rem',
+  accessEmailParag: {
+    fontSize: '14px', position: 'relative', bottom: '-15px',
   },
 });
 
-export default verifysignupStyles;
+export default fpasswordStyles;

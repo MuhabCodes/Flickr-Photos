@@ -19,7 +19,7 @@ export default function VerifySignup() {
             Check your inbox
           </Typography>
         </div>
-        <p style={{ fontSize: '1.0rem' }}>
+        <p className={classes.sentParagraph}>
           We sent a verification link to `email` Please check
           your email for the next step.
         </p>

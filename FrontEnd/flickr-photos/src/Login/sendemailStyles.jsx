@@ -1,6 +1,6 @@
 import background from './background.jpg';
 
-const verifysignupStyles = () => ({
+const sendemailStyles = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -52,4 +52,4 @@ const verifysignupStyles = () => ({
   },
 });
 
-export default verifysignupStyles;
+export default sendemailStyles;
