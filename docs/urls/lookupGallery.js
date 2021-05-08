@@ -79,9 +79,6 @@
   * "dateUpdate": "1270111667",
   * "countPhotos": "17",
   * "countVideos": "0",
-  * "server": "112",
-  * "farm": "1",
-  * "secret": "7f29861bc4",
   * "title": "Cat Pictures I've Sent To Kevin Collins",
   * "description": []
  *}
