@@ -59,7 +59,7 @@ function App() {
               <SubNavBar />
               <ProfileContainer />
             </Route>
-            <Route path="/Faves">
+            <Route path="/Profile/Faves">
               <CoverArea />
               <SubNavBar />
               <Faves />
