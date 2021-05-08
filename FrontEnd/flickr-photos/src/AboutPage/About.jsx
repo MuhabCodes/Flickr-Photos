@@ -12,18 +12,18 @@ function About() {
         <div id="about" className="row">
           {/* About sidebar */}
           <div id="about-sidebar" className="col-md-auto">
-            <ul>
-              <li><a href="../tour/">Take the tour</a></li>
-              <li><a href="https://blog.flickr.net/">Flickr blog</a></li>
-              <li><a href="../guidelines/">Community guidelines</a></li>
-              <li><a href="../jobs/">Jobs</a></li>
+            <ul id="about-sidebar-ul">
+              <li id="about-sidebar-li"><a href="../tour/">Take the tour</a></li>
+              <li id="about-sidebar-li"><a href="https://blog.flickr.net/">Flickr blog</a></li>
+              <li id="about-sidebar-li"><a href="../guidelines/">Community guidelines</a></li>
+              <li id="about-sidebar-li"><a href="../jobs/">Jobs</a></li>
             </ul>
             <p id="about-join">
               <a href="/SignUp/"><img src="https://combo.staticflickr.com/pw/images/tour/en-us/create-account-button.png" width="193" height="39" alt="Create Account" /></a>
-              <a href="/signin/">or Sign In</a>
+              <a href="/Login/">or Sign In</a>
             </p>
 
-            <h3>Need help?</h3>
+            <h3 id="about-sidebar-h3">Need help?</h3>
             <p>
               <a href="../help/faq/">Visit our FAQ</a>
               <br />
@@ -42,7 +42,7 @@ function About() {
               :
             </h2>
 
-            <blockquote>
+            <blockquote id="about-main-blockquote">
 
               <h3>
                 <b style={{ color: '#ff0084' }}>1.</b>
@@ -222,6 +222,9 @@ function About() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
     </div>
 
   );
