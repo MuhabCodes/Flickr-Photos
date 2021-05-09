@@ -1004,13 +1004,13 @@ class _HomeState extends State<Home> {
                               margin: EdgeInsets.only(right: 0, top: 0),
                               child: Text(
                                 getPostTime(comment.dateOfComment),
-                                style: textStyleLigthGrey,
+                                style: textStyleLightGrey,
                               ),
                             ),
                             Container(
                               child: Text(
                                 " • Reply",
-                                style: textStyleLigthGrey,
+                                style: textStyleLightGrey,
                               ),
                               margin: EdgeInsets.only(right: 10, top: 0),
                             )
@@ -1128,13 +1128,13 @@ class _HomeState extends State<Home> {
                               margin: EdgeInsets.only(right: 0, top: 0),
                               child: Text(
                                 getPostTime(comment.dateOfComment),
-                                style: textStyleLigthGrey,
+                                style: textStyleLightGrey,
                               ),
                             ),
                             Container(
                               child: Text(
                                 " • Reply",
-                                style: textStyleLigthGrey,
+                                style: textStyleLightGrey,
                               ),
                               margin: EdgeInsets.only(right: 10, top: 0),
                             )
