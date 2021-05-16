@@ -13,8 +13,8 @@ const ExploreCard = (props) => {
       </h6>
       <div className="images-container-explore-card">
         {ExplorePhotos.map((Photo) => (
-          <Link key={Photo.photoId} to="PHOTOURLHERE">
-            <img className="" src={Photo.imagePath} alt="" />
+          <Link className="images-container-explore-card-link" key={Photo.photoId} to="PHOTOURLHERE">
+            <img className="images-container-explore-card-img" src={Photo.imagePath} alt="" />
           </Link>
         ))}
       </div>

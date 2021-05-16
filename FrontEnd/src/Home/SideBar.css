@@ -13,11 +13,11 @@
   flex-wrap: wrap;
 }
 
-.images-container-explore-card a {
+.images-container-explore-card-link {
   display: contents;
 }
 
-.images-container-explore-card img {
+.images-container-explore-card-img {
   flex: 1;
   max-height: 60px;
   object-fit: cover;
@@ -76,7 +76,7 @@
   align-self: flex-start;
 }
 
-.group-avatar-container img {
+.group-avatar-container-img {
   position: relative;
   width: 32px;
   height: 32px;
@@ -136,11 +136,11 @@
   overflow: hidden;
 }
 
-.group-card-lower-container a {
+.group-card-lower-container-link {
   display: contents;
 }
 
-.group-card-lower-container img {
+.group-card-lower-container-img {
   flex: 1;
   max-height: 50px;
   object-fit: cover;

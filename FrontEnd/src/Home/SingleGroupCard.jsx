@@ -11,7 +11,7 @@ const SingleGroupCard = (props) => {
     <div className="group-rec-card">
       <div className="group-card-upper-container">
         <div className="group-avatar-container">
-          <img src={Group.avatar} alt="" />
+          <img className="group-avatar-container-img" src={Group.avatar} alt="" />
         </div>
         <div className="group-name">
           {Group.groupName}
@@ -22,8 +22,8 @@ const SingleGroupCard = (props) => {
       </div>
       <div className="group-card-lower-container">
         {photos.map((photo) => (
-          <Link to="POOLPHOTOURLHERE" key={photo.id}>
-            <img src={photo.imageURL} alt="" />
+          <Link className="group-card-lower-container-link" to="POOLPHOTOURLHERE" key={photo.id}>
+            <img className="group-card-lower-container-img" src={photo.imageURL} alt="" />
           </Link>
         ))}
       </div>

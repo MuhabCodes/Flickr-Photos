@@ -18,6 +18,10 @@
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
+.lower-404-container {
+  text-align: center;
+}
+
 /* Styling for h2 inside the upper container */
 .h2-404 {
   line-height: 38px;
@@ -58,6 +62,10 @@
   margin-right: 0.2em;
 }
 
+.view-more-button-link {
+  align-self: center;
+}
+
 /* Styling for button which goes to explore */
 .view-more-button {
   outline-width: 0;
@@ -83,13 +91,15 @@
   margin-bottom: 2em;
 }
 
-.images-container-404 a {
+.link-img-container-404 {
   display: contents;
 }
 
 .explore-button {
   align-self: center;
   display: inline-block;
+  text-align: center;
+  align-content: center;
 }
 
 /* Mobile responsivness fix */

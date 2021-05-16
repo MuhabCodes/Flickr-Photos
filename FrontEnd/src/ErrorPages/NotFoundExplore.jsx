@@ -17,7 +17,7 @@ const NotFoundExplore = (props) => {
         ))}
       </div>
       <div className="explore-button">
-        <Link className="viewMore-button-link" to="Explore">
+        <Link className="view-more-button-link" to="Explore">
           <button className="view-more-button" type="button">View more photos</button>
         </Link>
       </div>
