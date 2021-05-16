@@ -1,4 +1,4 @@
-.exploreCardMain {
+.explore-card-main {
   background-color: #fff;
   padding: 1em;
   margin-top: 2.5em;
@@ -7,17 +7,17 @@
   max-height: 20em;
 }
 
-.imagesContainerExploreCard {
+.images-container-explore-card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.imagesContainerExploreCard a {
+.images-container-explore-card a {
   display: contents;
 }
 
-.imagesContainerExploreCard img {
+.images-container-explore-card img {
   flex: 1;
   max-height: 60px;
   object-fit: cover;
@@ -25,7 +25,7 @@
   margin-right: 0.2em;
 }
 
-.sideBarCardTitle {
+.side-bar-card-title {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   margin: 0 0 10px;
@@ -35,7 +35,7 @@
   text-align: left;
 }
 
-.groupsForYouContainer {
+.groups-for-you-container {
   min-width: 300px;
   min-height: 270px;
   background-color: #fff;
@@ -45,43 +45,41 @@
   margin-bottom: 2.5em;
 }
 
-.groupsRecommendationsContainer {
+.groups-recommendations-container {
   width: 270px;
   height: 220px;
   display: flex;
   flex-direction: column;
 }
 
-.groupRow {
+.group-row {
   min-width: 270px;
   min-height: 110px;
 }
 
-.singleGroupCard {
+.single-group-card {
   margin-bottom: 10px;
   min-height: 100px;
 }
 
-.groupRecCard {
+.group-rec-card {
   display: flex;
   flex-direction: column;
 }
 
-.groupCardUpperContainer {
+.group-card-upper-container {
   display: flex;
 }
 
-.groupAvatarContainer {
+.group-avatar-container {
   display: inline;
   align-self: flex-start;
 }
 
-.groupAvatarContainer img {
+.group-avatar-container img {
   position: relative;
-  margin: auto;
   width: 32px;
   height: 32px;
-  position: relative;
   background-color: #ddd;
   cursor: pointer;
   display: inline-block;
@@ -93,7 +91,7 @@
   object-fit: cover;
 }
 
-.groupName {
+.group-name {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   padding-top: 0.5em;
   font-size: 0.8em;
@@ -104,7 +102,7 @@
   overflow: hidden;
 }
 
-.joinBtn {
+.join-btn {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -124,12 +122,12 @@
   line-height: 1.3;
 }
 
-.joinBtn:hover {
+.join-btn:hover {
   background-color: #128fdc;
   color: #fff;
 }
 
-.groupCardLowerContainer {
+.group-card-lower-container {
   margin-top: 0.6em;
   display: flex;
   flex-direction: row;
@@ -138,11 +136,11 @@
   overflow: hidden;
 }
 
-.groupCardLowerContainer a {
+.group-card-lower-container a {
   display: contents;
 }
 
-.groupCardLowerContainer img {
+.group-card-lower-container img {
   flex: 1;
   max-height: 50px;
   object-fit: cover;

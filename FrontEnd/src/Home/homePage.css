@@ -1,10 +1,10 @@
-.homePage {
+.home-page {
   background-color: #f3f5f6;
   align-content: center;
   align-items: center;
 }
 
-.homePageContentMain {
+.home-page-content-main {
   float: none;
   justify-content: center;
   flex-direction: row;
@@ -14,7 +14,7 @@
   height: 100%;
 }
 
-.homePageFeed {
+.home-page-feed {
   float: left;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
   max-width: 1080px;
 }
 
-.homePageSideBar {
+.home-page-side-bar {
   float: right;
   flex-grow: 1;
   text-align: center;
@@ -32,8 +32,7 @@
   max-width: 300px;
 }
 
-.homeFeedFilters {
-  display: flex;
+.home-feed-filters {
   position: relative;
   margin-top: 20px;
   padding: 16px 0;
@@ -41,13 +40,13 @@
   display: none;
 }
 
-.homeFeedColumnContent {
+.home-feed-column-content {
   text-align: center;
   align-items: center;
   align-content: center;
 }
 
-.noFollowingErrorDiv {
+.no-following-error-div {
   color: #212124;
   display: flex;
   justify-content: center;
@@ -55,18 +54,18 @@
   text-align: center;
 }
 
-.errorMessagediv {
+.error-message-div {
   text-align: center;
 }
 
-.errorFollowingTitle {
+.error-following-title {
   font-weight: 300;
   font-size: 28px;
   line-height: 1.5em;
   margin: 0 0 12px;
 }
 
-.errorFollowingMessage {
+.error-following-message {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -84,7 +83,7 @@
   border-radius: 0%;
 }
 
-.peopleToFollowP {
+.people-to-follow-p {
   text-align: left;
   margin-top: 1em;
   padding-left: 1.5em;
@@ -114,7 +113,7 @@
 }
 
 @media all and (max-width: 1444px) {
-  .homePageSideBar {
+  .home-page-side-bar {
     display: none;
   }
 

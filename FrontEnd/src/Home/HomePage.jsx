@@ -8,29 +8,29 @@ const HomePage = () => {
   const { data: Profiles, isPending, error } = useFetch('http://localhost:8000/Profiles');
   // console.log(Profiles);
   return (
-    <div className="homePage">
-      <div className="homePageContentMain">
-        <div className="homePageFeed">
-          <div className="homeFeedFilters">
-            <div className="homeFeedDropDown">
+    <div className="home-page">
+      <div className="home-page-content-main">
+        <div className="home-page-feed">
+          <div className="home-feed-filters">
+            <div className="home-feed-drop-down">
               ad
             </div>
-            <div className="homeFeedLayouts">
+            <div className="home-feed-layouts">
               ad
             </div>
           </div>
-          <div className="homeFeedColumnContent">
-            <div className="noFollowingErrorDiv">
-              <div className="errorMessagediv">
-                <h2 className="errorFollowingTitle">There are no posts from the people you follow right now.</h2>
-                <p className="errorFollowingMessage">
+          <div className="home-feed-column-content">
+            <div className="no-following-error-div">
+              <div className="error-message-div">
+                <h2 className="error-following-title">There are no posts from the people you follow right now.</h2>
+                <p className="error-following-message">
                   Check out the recommended photographers below and start following people
                   to see their content here.
                 </p>
               </div>
             </div>
             <div className="feed-people-to-follow">
-              <p className="peopleToFollowP">People to follow</p>
+              <p className="people-to-follow-p">People to follow</p>
               {/* Display Error in div and don't load Component */}
               { error && <div>{ error }</div>}
               {/* Shows a loading text until fetch fetches data */}
@@ -40,7 +40,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="homePageSideBar">
+        <div className="home-page-side-bar">
           <SideBar />
         </div>
       </div>
