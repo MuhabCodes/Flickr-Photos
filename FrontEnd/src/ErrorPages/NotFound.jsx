@@ -2,9 +2,10 @@ import React from 'react';
 import './NotFound.css';
 import NotFoundExplore from './NotFoundExplore';
 import useFetch from '../useFetch';
+import configData from '../config.json';
 
 const NotFound = () => {
-  const { data: images, isPending, error } = useFetch('http://localhost:8000/photosExplore');
+  const { data: images, isPending, error } = useFetch(`${configData.SERVER_URL}/photosExplore`);
   return (
     <div className="main-error-page">
       <div className="main-404-container">

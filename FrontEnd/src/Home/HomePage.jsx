@@ -3,9 +3,10 @@ import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
 import './homePage.css';
+import configData from '../config.json';
 
 const HomePage = () => {
-  const { data: Profiles, isPending, error } = useFetch('http://localhost:8000/Profiles');
+  const { data: Profiles, isPending, error } = useFetch(`${configData.SERVER_URL}/Profiles`);
   // console.log(Profiles);
   return (
     <div className="home-page">

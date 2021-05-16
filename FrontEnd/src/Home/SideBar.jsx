@@ -3,10 +3,11 @@ import './SideBar.css';
 import ExploreCard from './ExploreCard';
 import GroupsForYou from './GroupsForYou';
 import useFetch from '../useFetch';
+import configData from '../config.json';
 
 const SideBar = () => {
-  const { data: ExplorePhotos, isPending, error } = useFetch('http://localhost:8000/photosExplore');
-  const { data: Groups, isPendingGroups, errorGroups } = useFetch('http://localhost:8000/Groups');
+  const { data: ExplorePhotos, isPending, error } = useFetch(`${configData.SERVER_URL}/photosExplore`);
+  const { data: Groups, isPendingGroups, errorGroups } = useFetch(`${configData.SERVER_URL}/Groups`);
   return (
     <div className="side-bar-main">
       { error && <div>{ error }</div>}
