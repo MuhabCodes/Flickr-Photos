@@ -24,10 +24,10 @@ import About from '../AboutPage/About';
 
 function App() {
   return (
-    <div className="flickrMain">
+    <div className="flickr-main">
       <NavBar />
       <Router>
-        <div className="App">
+        <div className="app">
           <Switch>
             <Route exact path="/CameraFinder">
               <CameraFinder />

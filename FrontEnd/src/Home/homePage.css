@@ -1,140 +1,138 @@
-.homePage /*Main Paige bg*/
-{
-    background-color:#f3f5f6;
-    align-content: center;
-    align-items: center;
+.homePage {
+  background-color: #f3f5f6;
+  align-content: center;
+  align-items: center;
 }
-.homePageContentMain /*Flex Container for feed and sidebar*/
-{   float: none;
-    justify-content:center;
-    flex-direction: row ;
-    display: flex;
-    flex-wrap: nowrap;
-    background-color:#f3f5f6;
-    height: 100%;
+
+.homePageContentMain {
+  float: none;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #f3f5f6;
+  height: 100%;
 }
-.homePageFeed 
-{
-    float: left;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-    margin-right: 2em;
-    margin-left: 2em;
-    max-width: 1080px;
+
+.homePageFeed {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  margin-right: 2em;
+  margin-left: 2em;
+  max-width: 1080px;
 }
-.homePageSideBar
-{
-    float: right;
-    flex-grow: 1;
-    text-align: center;
-    width:300px;
-    max-width: 300px;
+
+.homePageSideBar {
+  float: right;
+  flex-grow: 1;
+  text-align: center;
+  width: 300px;
+  max-width: 300px;
 }
-.homeFeedFilters /*Filters for Grid hidden for now*/
-{
-    display: flex;
-    position:relative;
-    margin-top: 20px;
-    padding: 16px 0;
-    justify-content: space-between;
+
+.homeFeedFilters {
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+  padding: 16px 0;
+  justify-content: space-between;
+  display: none;
+}
+
+.homeFeedColumnContent {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.noFollowingErrorDiv {
+  color: #212124;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.errorMessagediv {
+  text-align: center;
+}
+
+.errorFollowingTitle {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 1.5em;
+  margin: 0 0 12px;
+}
+
+.errorFollowingMessage {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.feed-people-to-follow {
+  text-align: center;
+  display: flex;
+  -ms-flex-align: center;
+  flex-direction: column;
+  font-weight: 500;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 0%;
+}
+
+.peopleToFollowP {
+  text-align: left;
+  margin-top: 1em;
+  padding-left: 1.5em;
+  max-width: 200px;
+  font-weight: 600;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.single-card {
+  max-width: 500px;
+  height: 280px;
+  position: relative;
+  margin-right: 1em;
+}
+
+.view-more {
+  text-align: center;
+  border-top: 1px solid #e1e1e1;
+  height: 40px;
+}
+
+@media all and (max-width: 1444px) {
+  .homePageSideBar {
     display: none;
-}
-.homeFeedColumnContent 
-{
-    text-align: center;
-    align-items: center;
-    align-content: center;
-}
-.noFollowingErrorDiv
-{
-    color: #212124;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-    text-align: center;
-}
-.errorMessagediv
-{
-    text-align: center;
-}
-.errorFollowingTitle
-{
-    font-weight: 300;
-    font-size: 28px;
-    line-height: 1.5em;
-    margin: 0 0 12px;
-}
-.errorFollowingMessage
-{
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0 0 24px;
-}
-.feed-people-to-follow
-{
-    text-align: center;
-    display: flex;
-    -ms-flex-align: center;
-    flex-direction: column;
-    font-weight: 500;
-    background-color:white;
-    margin-bottom: 20px;
-    border-radius: 0%;
-}
-.peopleToFollowP
-{
-    text-align: left;
-    margin-top: 1em;
-    padding-left: 1.5em;
-    max-width: 200px;
-    font-weight: 600 ;
-}
-.cards-container
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-}
-.single-card
-{
-    max-width:500px;
-    height:280px;
-    position: relative;
-    margin-right: 1em;
-}
-.view-more
-{
-    text-align:center;
-    border-top: 1px solid #e1e1e1;
-    height: 40px;
-}
-@media all and (max-width: 1444px) /*Make sidebar disappear under certain width*/
-  {
-    .homePageSideBar 
-    {   
-        display: none;
-    }
-    .feed-people-to-follow p
-    {
+  }
+
+  .feed-people-to-follow p {
     align-self: center;
     margin-top: 1em;
-    padding-left: 0em;
+    padding-left: 0;
     max-width: 200px;
-    }
+  }
 }
-@media all and (max-width: 1144px)  /*Make photos container display in center of container*/
-  {
-      .cards-container
-      {
-          align-self: center;
-          display: inline;
-      }
-      .single-card
-      {
-          align-self: center;
-      }
+
+@media all and (max-width: 1144px) {
+  .cards-container {
+    align-self: center;
+    display: inline;
+  }
+
+  .single-card {
+    align-self: center;
+  }
 }

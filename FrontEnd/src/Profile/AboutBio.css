@@ -1,156 +1,168 @@
-.bio-container{
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    color: #212124;
-    line-height: 14px;
-    position: relative;
-}
-.bio-body{
-    line-height: 14px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-    padding-left: 10%;
-    padding-right: 10%;
-    display: inline-block;
-}
-#usertextarea{
-    line-height: 18px;
-}
-.bio-body p{
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    margin: 0;
-    overflow: hidden;
-    transition:max-height 0.15s ease-out;
-
-}
-.edit-button-img{
-    cursor: pointer;
-    display: inline-block;
-    height: 24px;
-    width: 24px;
-    fill: currentColor;
-    overflow: hidden;
-    color: #999;
-}
-.edit-button{
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    color: #006dac;
-    background-color: white;
-    position: absolute;
-    right: 40px;
-    top: 40px;
-    z-index: 81;
+.bio-container {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  line-height: 14px;
+  position: relative;
 }
 
-#readbtn{
-    bottom: 0;
-    right: 0;
-    display: block;
-    width:100%;
-    height: 60px;
-    text-align: left;
-    color: #006dac;
-    font-size:16px;
-    padding-top: 42px;
-    background-image: linear-gradient(to bottom, transparent, white);
-    cursor: pointer;
+.bio-body {
+  line-height: 14px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: inline-block;
 }
-#readbtn:hover{
-    text-decoration: underline;
+
+#usertextarea {
+  line-height: 18px;
 }
-.divider{
-    clear: both;
-    border-top: 1px solid #e3e3e3;
+
+.bio-body p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height 0.15s ease-out;
 }
-button{
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
+
+.edit-button-img {
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
+  overflow: hidden;
+  color: #999;
 }
-.edit-bio{
-    box-sizing: border-box;
-    padding: 40px 10%;
-    box-shadow: 0 0 0 1px #e3e3e3;
-    appearance: none;
+
+.edit-button {
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #006dac;
+  background-color: white;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 81;
 }
-textarea{
-    margin: 0;
-    overflow: auto;
-    vertical-align: top;
-    margin-bottom: 5px;
-    font-weight: 400;
-    box-shadow: inset 0 0 0 1px #9ea4a7;
-    border: none;
-    outline: none;
-    padding: 6px 10px;
-    box-sizing: border-box;
-    border-radius: 3px;
-    font-size: 14px;
-    line-height: 1.5;
-    background-color: #fff;
-    appearance: none;
-    resize: vertical;
-    width: 100%;
-    max-width: 100%;
-    min-height: 200px;
-    height: 200px;
+
+#readbtn {
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  color: #006dac;
+  font-size: 16px;
+  padding-top: 42px;
+  background-image: linear-gradient(to bottom, transparent, white);
+  cursor: pointer;
 }
-.editbio-actions{
-    display: flex;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
+
+#readbtn:hover {
+  text-decoration: underline;
 }
-.save-bio{
-    margin-top: 5px;
-    text-transform: none;
-    appearance: button;
-    background-color: #128fdc;
-    color: #fff;
-    height: 32px;
-    line-height: 32px;
-    min-width: 80px;
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0 20px;
-    vertical-align: top;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    transition: all .15s ease-in-out;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
+
+.divider {
+  clear: both;
+  border-top: 1px solid #e3e3e3;
 }
-.cancel-bio{
-    margin-top: 5px;
-    text-transform: none;
-    appearance: button;
-    height: 32px;
-    line-height: 32px;
-    min-width: 80px;
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0 20px;
-    vertical-align: top;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    transition: all .15s ease-in-out;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    background-color: #979ea2;
-    color: #fff;
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.edit-bio {
+  box-sizing: border-box;
+  padding: 40px 10%;
+  box-shadow: 0 0 0 1px #e3e3e3;
+  appearance: none;
+}
+
+textarea {
+  margin: 0;
+  overflow: auto;
+  vertical-align: top;
+  margin-bottom: 5px;
+  font-weight: 400;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #fff;
+  appearance: none;
+  resize: vertical;
+  width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  height: 200px;
+}
+
+.editbio-actions {
+  display: flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+.save-bio {
+  margin-top: 5px;
+  text-transform: none;
+  appearance: button;
+  background-color: #128fdc;
+  color: #fff;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cancel-bio {
+  margin-top: 5px;
+  text-transform: none;
+  appearance: button;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background-color: #979ea2;
+  color: #fff;
 }

@@ -7,18 +7,18 @@ const NotFoundExplore = (props) => {
   let { images } = prop;
   images = images.slice(0, 18); // Limit photos to just 18
   return (
-    <div className="lower404Container">
+    <div className="lower-404-container">
       { /* container of all images */}
-      <div className="imagesContainer404">
+      <div className="images-container-404">
         { images.map((image) => (
-          <Link to="imgURLHERE">
-            <img key={image.photoId} src={image.imagePath} alt="" className="image404Style" />
+          <Link className="link-img-container-404" to="imgURLHERE">
+            <img key={image.photoId} src={image.imagePath} alt="" className="image-404-style" />
           </Link>
         ))}
       </div>
-      <div className="exploreButton">
-        <Link className="viewMoreButtonLink" to="Explore">
-          <button className="viewMoreButton" type="button">View more photos</button>
+      <div className="explore-button">
+        <Link className="viewMore-button-link" to="Explore">
+          <button className="view-more-button" type="button">View more photos</button>
         </Link>
       </div>
     </div>
