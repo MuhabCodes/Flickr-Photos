@@ -48,6 +48,7 @@
   background-color: #0063dc;
   color: #ffff;
 }
+
 /* About sidebar styling */
 
 #about-sidebar {
@@ -87,12 +88,13 @@
 }
 
 #about-join {
-    padding: 3px 0;
-    display: block;
-    margin: 28px 0 26px;
-    text-align: center;
-    line-height: 30.35px;
+  padding: 3px 0;
+  display: block;
+  margin: 28px 0 26px;
+  text-align: center;
+  line-height: 30.35px;
 }
+
 /* About main styling */
 
 #about-main {
@@ -122,6 +124,7 @@
   margin: 16px 40px;
   padding: 0;
 }
+
 #about-main h3 {
   line-height: 22px;
   font-size: 16px;
@@ -136,20 +139,24 @@
 #team {
   color: #ff0084;
 }
-/* Team members styling*/
+
+/* Team members styling */
 
 #team-table {
   margin-left: -15px;
 }
+
 #team-table p {
   font-size: 9px;
   color: #999;
   font-size: smaller;
   white-space: nowrap;
 }
+
 #team-table img {
   vertical-align: middle;
 }
+
 #team-table img:hover {
   border-bottom-style: solid;
   border-bottom-color: #0063dc;

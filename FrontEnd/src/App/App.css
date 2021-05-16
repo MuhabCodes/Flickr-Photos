@@ -1,9 +1,8 @@
-.App
-{
-    padding-bottom: 11em;
+.app {
+  padding-bottom: 11em;
 }
-.flickrMain
-{
-    position: relative;
-    min-height: 100vh;
+
+.flickr-main {
+  position: relative;
+  min-height: 100vh;
 }

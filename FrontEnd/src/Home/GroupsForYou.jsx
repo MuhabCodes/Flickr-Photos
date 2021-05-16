@@ -7,14 +7,14 @@ const GroupsForYou = (props) => {
   let { Groups } = prop;
   Groups = Groups.slice(0, 2);
   return (
-    <div className="groupsForYouContainer">
-      <h6 className="sideBarCardTitle">
+    <div className="groups-for-you-container">
+      <h6 className="side-bar-card-title">
         Groups for you
       </h6>
-      <div className="groupsRecommendationsContainer">
+      <div className="groups-recommendations-container">
         { Groups.map((Group) => (
-          <div className="groupRow" key={Group.id}>
-            <div className="singleGroupCard">
+          <div className="group-row" key={Group.id}>
+            <div className="single-group-card">
               <SingleGroupCard Group={Group} />
             </div>
           </div>

@@ -7,11 +7,11 @@ const ExploreCard = (props) => {
   let { ExplorePhotos } = prop;
   ExplorePhotos = ExplorePhotos.slice(0, 8);
   return (
-    <div className="exploreCardMain">
-      <h6 className="sideBarCardTitle">
+    <div className="explore-card-main">
+      <h6 className="side-bar-card-title">
         Explore popular photos
       </h6>
-      <div className="imagesContainerExploreCard">
+      <div className="images-container-explore-card">
         {ExplorePhotos.map((Photo) => (
           <Link key={Photo.photoId} to="PHOTOURLHERE">
             <img className="" src={Photo.imagePath} alt="" />

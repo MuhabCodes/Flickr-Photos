@@ -1,33 +1,31 @@
-#navbar-CR{
-    background-color: #f3f5f6;
+#navbar-CR {
+  background-color: #f3f5f6;
 }
 
-
-.nav-start{
-    margin-left: 100px;
+.nav-start {
+  margin-left: 100px;
 }
 
-.CameralRoll-nav-bar{
-    top: 53px;
-    width: 100%;
-   
-}
-.CameraRoll-nav-dropdown{
-color: black;
+.CameralRoll-nav-bar {
+  top: 53px;
+  width: 100%;
 }
 
-.navbar-icons{
-    position: fixed;
-    right: 100px;
-    display: inline-block;
+.CameraRoll-nav-dropdown {
+  color: black;
 }
 
-.icons{
-    margin-left: 20px;
-    display: inline-block;
-
+.navbar-icons {
+  position: fixed;
+  right: 100px;
+  display: inline-block;
 }
 
-.icons a{
-    color: grey;
+.icons {
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.icons a {
+  color: grey;
 }

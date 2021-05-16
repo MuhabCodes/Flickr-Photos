@@ -8,7 +8,7 @@ const SideBar = () => {
   const { data: ExplorePhotos, isPending, error } = useFetch('http://localhost:8000/photosExplore');
   const { data: Groups, isPendingGroups, errorGroups } = useFetch('http://localhost:8000/Groups');
   return (
-    <div className="sideBarMain">
+    <div className="side-bar-main">
       { error && <div>{ error }</div>}
       { isPending && <div>Loading</div>}
       {ExplorePhotos && <ExploreCard ExplorePhotos={ExplorePhotos} />}

@@ -8,19 +8,19 @@ const SingleGroupCard = (props) => {
   let photos = Group.pool;
   photos = photos.slice(0, 4);
   return (
-    <div className="groupRecCard">
-      <div className="groupCardUpperContainer">
-        <div className="groupAvatarContainer">
+    <div className="group-rec-card">
+      <div className="group-card-upper-container">
+        <div className="group-avatar-container">
           <img src={Group.avatar} alt="" />
         </div>
-        <div className="groupName">
+        <div className="group-name">
           {Group.groupName}
         </div>
-        <div className="joinButton">
-          <button className="joinBtn" id="joinGroupButton" type="button">Join</button>
+        <div className="join-button">
+          <button className="join-btn" id="join-group-button" type="button">Join</button>
         </div>
       </div>
-      <div className="groupCardLowerContainer">
+      <div className="group-card-lower-container">
         {photos.map((photo) => (
           <Link to="POOLPHOTOURLHERE" key={photo.id}>
             <img src={photo.imageURL} alt="" />

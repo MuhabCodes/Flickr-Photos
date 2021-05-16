@@ -1,27 +1,31 @@
 /* Cover Styles */
-.container-fluid{
+.container-fluid {
   padding: 0;
 }
+
 .cover-cvuP {
-    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
-    color: #212124;
-    opacity: 1 !important;
-  }
-  .changing-cover-photo-bg-cvuP {
-    width: 100%;
-    padding-top: 130px;
-    background-size: 100%;
-    background-attachment: scroll;
-    background-position: 50% 50%;
-    position: relative;
-  }
-  .cover-photo-gradient-cvuP {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  opacity: 1 !important;
+}
+
+.changing-cover-photo-bg-cvuP {
+  width: 100%;
+  padding-top: 130px;
+  background-size: 100%;
+  background-attachment: scroll;
+  background-position: 50% 50%;
+  position: relative;
+}
+
+.cover-photo-gradient-cvuP {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(
       180deg,
       transparent 0,
       rgba(0, 0, 0, 0.03) 8%,
@@ -30,159 +34,172 @@
       rgba(0, 0, 0, 0.7) 95%,
       rgba(0, 0, 0, 0.7)
     );
-  }
-  .cover-content-cvuP {
-    color: #fff;
-    height: 120px;
-    position: relative;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-  }
-  .user-cover-avatar-cvuP {
-    color: #fff;
-    position: relative;
-    background-color: #ddd;
-    background-size: cover;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
-    vertical-align: bottom;
-    transition: box-shadow 0.15s ease-in-out;
-    border-radius: 100%;
-    width: 100px;
-    height: 100px;
-    float: left;
-    margin: 0 15px 14px 0;
-  }
-  .cover-photo-editbutton-cvuP{
-    position: absolute;
-    right: 0;
-    top: -105px;
-    opacity: 0;
-    margin-left: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    background: -43px -407px no-repeat;
-    height: 38px;
-    transition: opacity .2s ease,width .2s ease;
-    width: 0;
-  }
-  .title-content-cvuP {
-    color: #fff;
-    display: inline-block;
-    width: calc(100% - 100px - 15px);
-  }
-  .user-cover-title-cvuP {
-    color: #fff;
-    display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .user-cover-name-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 300;
-    font-size: 36px;
-    line-height: 1em;
-    margin: 21px 20px 13px 0;
-    display: inline-block;
-  }
-  .follow-view-cvuP {
-    color: #fff;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-  }
-  .pro-badge-style-cvuP{
-    color: #fff;
-    -webkit-box-direction: normal;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 30px 0 0;
-    line-height: 18px;
-    max-width: 250px;
-    font-weight: 300;
-    flex-shrink: 1;
-    padding: 5px;
-    border: 2px solid white;
-  }
-  .user-cover-display-name-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 30px 0 0;
-    line-height: 18px;
-    max-width: 250px;
-    font-weight: 300;
-    flex-shrink: 1;
-  }
-  .following-followers-cover-list-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 30px 0 0;
-    line-height: 18px;
-    font-weight: 300;
-    max-width: 400px;
-    margin-right: 0;
-    flex-shrink: 0;
-  }
-  .cover-spacer-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    display: inline-block;
-    line-height: 18px;
-    font-weight: 300;
-    -webkit-box-flex: 1;
-    flex: 1 0 75px;
-    margin: 0;
-    max-width: inherit;
-    flex-shrink: 1;
-  }
-  .user-cover-photo-count-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 30px 0 0;
-    line-height: 18px;
-    max-width: 250px;
-    font-weight: 300;
-    flex-shrink: 0;
-  }
-  .user-cover-join-date-cvuP {
-    color: #fff;
-    -webkit-box-direction: normal;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 30px 0 0;
-    line-height: 18px;
-    max-width: 250px;
-    font-weight: 300;
-    flex-shrink: 0;
-    margin-right: 0;
-  }
+}
+
+.cover-content-cvuP {
+  color: #fff;
+  height: 120px;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.user-cover-avatar-cvuP {
+  color: #fff;
+  position: relative;
+  background-color: #ddd;
+  background-size: cover;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  vertical-align: bottom;
+  transition: box-shadow 0.15s ease-in-out;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 0 15px 14px 0;
+}
+
+.cover-photo-editbutton-cvuP {
+  position: absolute;
+  right: 0;
+  top: -105px;
+  opacity: 0;
+  margin-left: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: -43px -407px no-repeat;
+  height: 38px;
+  transition: opacity 0.2s ease, width 0.2s ease;
+  width: 0;
+}
+
+.title-content-cvuP {
+  color: #fff;
+  display: inline-block;
+  width: calc(100% - 100px - 15px);
+}
+
+.user-cover-title-cvuP {
+  color: #fff;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.user-cover-name-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1em;
+  margin: 21px 20px 13px 0;
+  display: inline-block;
+}
+
+.follow-view-cvuP {
+  color: #fff;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+}
+
+.pro-badge-style-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  line-height: 18px;
+  max-width: 250px;
+  font-weight: 300;
+  flex-shrink: 1;
+  padding: 5px;
+  border: 2px solid white;
+}
+
+.user-cover-display-name-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  line-height: 18px;
+  max-width: 250px;
+  font-weight: 300;
+  flex-shrink: 1;
+}
+
+.following-followers-cover-list-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  line-height: 18px;
+  font-weight: 300;
+  max-width: 400px;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+.cover-spacer-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 18px;
+  font-weight: 300;
+  -webkit-box-flex: 1;
+  flex: 1 0 75px;
+  margin: 0;
+  max-width: inherit;
+  flex-shrink: 1;
+}
+
+.user-cover-photo-count-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  line-height: 18px;
+  max-width: 250px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.user-cover-join-date-cvuP {
+  color: #fff;
+  -webkit-box-direction: normal;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  line-height: 18px;
+  max-width: 250px;
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-right: 0;
+}
