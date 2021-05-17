@@ -14,14 +14,14 @@ function RankTable() {
   function renderHead() {
     return (
       <thead id="tableHead">
-        <tr className="tableRow">
-          <th className="th">Rank ▾</th>
-          <th className="th">
-            <a className="cameraTable" href="./Brands">Brand</a>
+        <tr className="table-row">
+          <th className="table-header">Rank ▾</th>
+          <th className="table-header">
+            <a className="camera-table" href="./Brands">Brand</a>
           </th>
-          <th className="th">Top Models</th>
-          <th className="th">Model Types</th>
-          <th className="th"><a className="cameraTable" href="./noOfModels"># of Models</a></th>
+          <th className="table-header">Top Models</th>
+          <th className="table-header">Model Types</th>
+          <th className="table-header"><a className="camera-table" href="./noOfModels"># of Models</a></th>
         </tr>
       </thead>
     );
@@ -30,32 +30,32 @@ function RankTable() {
     return (
       <tbody id="tbody">
         {cameras.map((camera) => (
-          <tr className="tableRow">
-            <td className="tableCell" key={camera.rank}>{camera.rank}</td>
-            <td className="tableCell" key={camera.rank}><a className="cameraTable" href="./Brands">{camera.brand}</a></td>
-            <td className="tableCell" key={camera.rank}>
+          <tr className="table-row">
+            <td className="table-cell" key={camera.rank}>{camera.rank}</td>
+            <td className="table-cell" key={camera.rank}><a className="camera-table" href="./Brands">{camera.brand}</a></td>
+            <td className="table-cell" key={camera.rank}>
               {camera.topModels.map((sub, index) => (
-                <a className="cameraTable" href="./topModels">
+                <a className="camera-table" href="./topModels">
                   { (index ? ', ' : '') + sub }
                 </a>
               ))}
             </td>
-            <td className="tableCell" key={camera.rank}>
+            <td className="table-cell" key={camera.rank}>
               { camera.modelTypes.map((sub, index) => (
-                <span className="modelTypesColumn">
+                <span className="model-types-column">
                   { (index ? ', ' : '') + sub }
                 </span>
               ))}
             </td>
-            <td className="tableCell" key={camera.rank}>{camera.noOfModel}</td>
+            <td className="table-cell" key={camera.rank}>{camera.noOfModel}</td>
           </tr>
         ))}
       </tbody>
     );
   }
   return (
-    <div className="rankTable">
-      <table className="rankTableDetails">
+    <div className="rank-table">
+      <table className="rank-table-details">
         {renderHead()}
         {renderBody()}
       </table>
