@@ -1,4 +1,4 @@
-.contentBox {
+.content-box {
   display: inline-block;
   width: 540px;
   border: 0;
@@ -7,7 +7,7 @@
   align-self: auto;
 }
 
-.contentBox2 {
+.content-box2 {
   display: inline-block;
   width: 530px;
   border: 0;
@@ -16,30 +16,65 @@
   align-self: auto;
 }
 
-.contentBox #graph1,
-.contentBox2 #graph2 {
+.first-bullet {
+  color: #ff43ab;
+}
+
+.second-bullet {
+  color: #fff400;
+}
+
+.third-bullet {
+  color: #14dc20;
+}
+
+.fourth-bullet {
+  color: #08bff6;
+}
+
+.fifth-bullet {
+  color: #9ac;
+}
+
+.title-of-graph1 {
+  text-align: left;
+}
+
+.title-of-graph2 {
+  text-align: left;
+}
+
+.title-of-graph1,
+.title-of-graph2 {
+  font-weight: bold;
+  color: #000;
+  font-size: 20px;
+}
+
+.content-box #graph1,
+.content-box2 #graph2 {
   float: left;
 }
 
-.contentBox .titleOfGraph1,
-.contentBox2 .titleOfGraph2 {
+.content-box .title-of-graph1,
+.content-box2 .title-of-graph2 {
   margin: 5px;
 }
 
-.contentBox .firstBullet,
-.contentBox .secondBullet,
-.contentBox .thirdBullet,
-.contentBox .fourthBullet,
-.contentBox .fifthBullet {
+.content-box .first-bullet,
+.content-box .second-bullet,
+.content-box .third-bullet,
+.content-box .fourth-bullet,
+.content-box .fifth-bullet {
   text-align: right;
   margin: 5px;
 }
 
-.contentBox2 .firstBullet,
-.contentBox2 .secondBullet,
-.contentBox2 .thirdBullet,
-.contentBox2 .fourthBullet,
-.contentBox2 .fifthBullet {
+.content-box2 .first-bullet,
+.content-box2 .second-bullet,
+.content-box2 .third-bullet,
+.content-box2 .fourth-bullet,
+.content-box2 .fifth-bullet {
   text-align: right;
   margin: 5px;
 }
@@ -58,46 +93,11 @@
   padding: 0;
 }
 
-.firstBullet {
-  color: #ff43ab;
-}
-
-.secondBullet {
-  color: #fff400;
-}
-
-.thirdBullet {
-  color: #14dc20;
-}
-
-.fourthBullet {
-  color: #08bff6;
-}
-
-.fifthBullet {
-  color: #9ac;
-}
-
-#legendsOfGraph1 .brandsHyperTags:hover,
-#aboutTheseGraphs .brandsHyperTags:hover,
-#legendsOfGraph2 .brandsHyperTags:hover {
+#legendsOfGraph1 .brands-hyper-tags:hover,
+#aboutTheseGraphs .brands-hyper-tags:hover,
+#legendsOfGraph2 .brands-hyper-tags:hover {
   background-color: #0063dc;
   color: white;
-}
-
-.titleOfGraph1 {
-  text-align: left;
-}
-
-.titleOfGraph2 {
-  text-align: left;
-}
-
-.titleOfGraph1,
-.titleOfGraph2 {
-  font-weight: bold;
-  color: #000;
-  font-size: 20px;
 }
 
 #aboutTheseGraphs {
@@ -116,7 +116,7 @@
     display: block;
   }
 
-  .contentBox {
+  .content-box {
     display: block;
     width: 540px;
     border: 0;
@@ -125,7 +125,7 @@
     align-self: auto;
   }
 
-  .contentBox2 {
+  .content-box2 {
     display: inline-block;
     width: 530px;
     border: 0;
