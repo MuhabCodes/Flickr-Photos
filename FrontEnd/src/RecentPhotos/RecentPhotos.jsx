@@ -36,12 +36,12 @@ const RecentPhotos = () => {
   // and the add to gallery button.
   return (
 
-    <div className="recentPhotos">
+    <div className="recent-photos">
 
-      <ResponsiveMasonry className="respMason" columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-        <Masonry className="imageGrid">
+      <ResponsiveMasonry className="resp-Mason" columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        <Masonry className="image-grid">
           {photoArr.map((photo) => (
-            <div className="singleImage" height={photo.height}>
+            <div className="single-image" height={photo.height}>
               <LazyLoadImage
                 effect="blur"
                 key={photo.photoId}
@@ -49,22 +49,22 @@ const RecentPhotos = () => {
                 alt={photo.description}
                 height={photo.height}
                 style={{ width: '100%', display: 'block' }}
-                className="lazyLoad"
+                className="lazy-load"
               />
-              <span className="textArea">
+              <span className="text-area">
                 <span className="description">
                   {photo.description}
-                  <br className="brLines" />
-                  <br className="brLines" />
+                  <br className="br-lines" />
+                  <br className="br-lines" />
                 </span>
-                <span className="userName">
+                <span className="user-name-explore">
                   by
                   {' '}
                   {photo.user}
                 </span>
                 <span className="faves">
                   <div>
-                    <button className="favBtn" type="button" id="faveButton">
+                    <button className="fav-btn" type="button" id="faveButton">
                       <img
                         className="star"
                         src="https://img.icons8.com/android/24/ffffff/star.png"
@@ -72,16 +72,16 @@ const RecentPhotos = () => {
                       />
                     </button>
                   </div>
-                  <span className="favCount">
+                  <span className="fav-count">
                     {photo.favs}
                   </span>
                 </span>
                 <span className="comments">
-                  <img className="commentIcon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
+                  <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                   {photo.comments}
                 </span>
-                <span className="addToGallery">
-                  <img className="addIcon" src="https://img.icons8.com/ios/50/ffffff/plus-2-math.png" alt="addToGallery" width="25px" height="25px" />
+                <span className="add-to-gallery">
+                  <img className="add-icon" src="https://img.icons8.com/ios/50/ffffff/plus-2-math.png" alt="addToGallery" width="25px" height="25px" />
                 </span>
               </span>
             </div>
