@@ -24,7 +24,7 @@ const CameraFinder = () => {
       });
   }, []);
   return (
-    <div className="cameraFinder">
+    <div className="camera-finder">
       <h1 id="titleCF">
         Camera Finder
       </h1>
