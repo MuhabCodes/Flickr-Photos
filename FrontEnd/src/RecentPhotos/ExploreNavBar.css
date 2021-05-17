@@ -44,7 +44,7 @@
   border: none;
 }
 
-.expDropdown {
+.exp-dropdown {
   position: relative;
   display: inline-block;
   margin-left: 900px;
@@ -74,7 +74,7 @@
   border-bottom: transparent;
 }
 
-.expDropdown:hover #expdropdownMenuButton1 {
+.exp-dropdown:hover #expdropdownMenuButton1 {
   background-color: white;
   color: black;
 }
@@ -90,7 +90,7 @@
     z-index: 9999;
   }
 
-  .expDropdown {
+  .exp-dropdown {
     margin-left: 10px;
     position: relative;
     display: inline-block;
