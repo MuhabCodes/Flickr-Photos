@@ -38,7 +38,7 @@ const PeopleCard = (props) => {
             <div className="user-name">
               { uName }
             </div>
-            {Pro ? <div className="Pro-Status-div">Pro</div> : null}
+            {Pro ? <div className="pro-status-div">Pro</div> : null}
           </div>
         </div>
         <div className="lower-container-right">
