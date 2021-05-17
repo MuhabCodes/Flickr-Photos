@@ -16,7 +16,7 @@ function ExploreNavBar() {
       <Link id="exp-menu-item" to="./Trending">Trending</Link>
       <Link id="exp-menu-item" to="./Events">Events</Link>
       <div className="animation start-home" />
-      <div className="expDropdown">
+      <div className="exp-dropdown">
         <button className="dropdown-toggle" type="button" id="expdropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
           More
         </button>
