@@ -1,9 +1,9 @@
-.imageGrid {
+.image-grid {
   margin-left: 30px;
   max-width: 1300px;
 }
 
-.singleImage {
+.single-image {
   position: relative;
   width: fit-content;
   height: auto;
@@ -12,10 +12,10 @@
 }
 
 .description,
-.userName,
+.user-name-explore,
 .faves,
 .comments,
-.addToGallery {
+.add-to-gallery {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -28,28 +28,28 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.singleImage:hover {
+.single-image:hover {
   cursor: pointer;
 }
 
-.singleImage:hover .description,
-.singleImage:hover .userName,
-.singleImage:hover .faves,
-.singleImage:hover .comments,
-.singleImage:hover .addToGallery {
+.single-image:hover .description,
+.single-image:hover .user-name-explore,
+.single-image:hover .faves,
+.single-image:hover .comments,
+.single-image:hover .add-to-gallery {
   width: 100%;
   padding: 8px 15px;
   visibility: visible;
   opacity: 1;
 }
 
-.singleImage:hover .description {
+.single-image:hover .description {
   text-align: left;
   font-weight: bold;
   margin-bottom: 1px;
 }
 
-.singleImage:hover .userName {
+.single-image:hover .user-name-explore {
   text-align: left;
   color: darkgray;
   margin-bottom: 6px;
@@ -57,28 +57,28 @@
   font-size: small;
 }
 
-.singleImage:hover .faves {
+.single-image:hover .faves {
   color: white;
   margin-left: 20%;
   font-weight: bold;
 }
 
-.singleImage:hover .comments {
+.single-image:hover .comments {
   color: white;
   margin-left: 315px;
   font-weight: bold;
 }
 
-.singleImage:hover .addToGallery {
+.single-image:hover .add-to-gallery {
   margin-left: 370px;
 }
 
-.faves .favCount {
+.faves .fav-count {
   text-align: right;
   margin-left: 200px;
 }
 
-.faves .favBtn {
+.faves .fav-btn {
   position: absolute;
   top: 10%;
   right: 50%;
@@ -88,11 +88,11 @@
 }
 
 @media screen and (max-width: 770px) {
-  .singleImage {
+  .single-image {
     position: relative;
   }
 
-  .singleImage:hover .description {
+  .single-image:hover .description {
     text-align: left;
     font-weight: bold;
     margin-bottom: 1px;
@@ -100,26 +100,26 @@
     position: absolute;
   }
 
-  .singleImage:hover .comments {
+  .single-image:hover .comments {
     color: white;
     font-weight: bold;
     position: absolute;
     right: 10%;
   }
 
-  .singleImage:hover .addToGallery {
+  .single-image:hover .add-to-gallery {
     position: absolute;
     right: -10%;
   }
 
-  .faves .favCount {
+  .faves .fav-count {
     text-align: right;
     position: absolute;
     top: -100%;
     right: 55%;
   }
 
-  .faves .favBtn {
+  .faves .fav-btn {
     position: absolute;
     top: -100%;
     right: 62%;
