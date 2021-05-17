@@ -15,11 +15,11 @@ const PopCameras = (props) => {
   const cam = cameras.slice(0, 5);
   return (
     <div
-      className="mostPopularCameras"
+      className="most-popular-cameras"
     >
       {cam.map((camera) => (
         <div
-          className="topFive"
+          className="top-five"
           id="five"
           key={camera.id}
         >
@@ -30,7 +30,7 @@ const PopCameras = (props) => {
             <h2
               id="brandName"
             >
-              <a className="brandsClass" href="./brand">
+              <a className="brands-class" href="./brand">
                 {camera.brand}
               </a>
             </h2>
@@ -39,14 +39,14 @@ const PopCameras = (props) => {
             <p
               id="brandModels"
             >
-              <ul className="ulTopModel">
+              <ul className="ul-top-model">
                 {camera.topModels.map((sub) => (
-                  <a className="topModelClass" href="./topModel">
+                  <a className="top-model-class" href="./topModel">
                     {sub}
                     ,
                   </a>
                 ))}
-                <a className="topModelClass" href="./topModel"> more...</a>
+                <a className="top-model-class" href="./topModel"> more...</a>
               </ul>
             </p>
           </div>
