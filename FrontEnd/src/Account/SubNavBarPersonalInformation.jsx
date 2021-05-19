@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import MenuItemsAccountSettings from './MenuItemsAccountSettings';
 import './SubNavBarPersonalInformation.css';
 
-const AccountSettings = () => {
+const SubNavBarPersonalInformation = () => {
   const currentPath = window.location.pathname;
   return (
-    <div className="container-account-settings">
+    <div className="container-account-settings-nav-bar">
       <div className="header-account-settings-container">
         <div className="header-account-settings">
           Account settings
@@ -41,5 +41,4 @@ const AccountSettings = () => {
     </div>
   );
 };
-
-export default AccountSettings;
+export default SubNavBarPersonalInformation;
