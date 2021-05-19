@@ -1,130 +1,147 @@
-.imageGrid {
-  margin-left: 30px;
-  max-width: 1300px;
+.recent-photos {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  min-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1;
 }
 
-.singleImage {
+.image-grid {
+  position: initial;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.image-container {
   position: relative;
-  width: fit-content;
-  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   float: left;
-  margin-right: 10px;
+  object-fit: cover;
+  flex-grow: 1;
+  padding: 2px;
+  min-width: fit-content;
 }
 
-.description,
-.userName,
-.faves,
-.comments,
-.addToGallery {
+.single-image {
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 380px;
+  padding: 2px;
+}
+
+.text-area .description {
   position: absolute;
   bottom: 0;
   left: 0;
   background: transparent;
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 8%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.image-container:hover {
+  cursor: pointer;
+}
+
+.image-container:hover .text-area .description {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .user-name-explore {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.image-container:hover .user-name-explore {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .fav-btn {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: transparent;
+  z-index: 9999;
+}
+
+.image-container:hover .fav-btn {
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .faves {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
   font-family: sans-serif;
   opacity: 0;
   visibility: hidden;
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.singleImage:hover {
-  cursor: pointer;
-}
-
-.singleImage:hover .description,
-.singleImage:hover .userName,
-.singleImage:hover .faves,
-.singleImage:hover .comments,
-.singleImage:hover .addToGallery {
-  width: 100%;
+.image-container:hover .faves {
+  min-width: 0;
   padding: 8px 15px;
   visibility: visible;
   opacity: 1;
-}
-
-.singleImage:hover .description {
-  text-align: left;
-  font-weight: bold;
-  margin-bottom: 1px;
-}
-
-.singleImage:hover .userName {
-  text-align: left;
-  color: darkgray;
-  margin-bottom: 6px;
-  margin-left: 1px;
-  font-size: small;
-}
-
-.singleImage:hover .faves {
-  color: white;
-  margin-left: 20%;
   font-weight: bold;
 }
 
-.singleImage:hover .comments {
-  color: white;
-  margin-left: 315px;
-  font-weight: bold;
-}
-
-.singleImage:hover .addToGallery {
-  margin-left: 370px;
-}
-
-.faves .favCount {
-  text-align: right;
-  margin-left: 200px;
-}
-
-.faves .favBtn {
+.image-container .comments {
   position: absolute;
-  top: 10%;
-  right: 50%;
-  background-color: transparent;
-  border: 0;
-  z-index: 9999;
+  bottom: 0;
+  right: 1%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
-@media screen and (max-width: 770px) {
-  .singleImage {
-    position: relative;
-  }
-
-  .singleImage:hover .description {
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 1px;
-    font-size: smaller;
-    position: absolute;
-  }
-
-  .singleImage:hover .comments {
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    right: 10%;
-  }
-
-  .singleImage:hover .addToGallery {
-    position: absolute;
-    right: -10%;
-  }
-
-  .faves .favCount {
-    text-align: right;
-    position: absolute;
-    top: -100%;
-    right: 55%;
-  }
-
-  .faves .favBtn {
-    position: absolute;
-    top: -100%;
-    right: 62%;
-    background-color: transparent;
-    border: 0;
-    z-index: 9999;
-  }
+.image-container:hover .comments {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
 }
