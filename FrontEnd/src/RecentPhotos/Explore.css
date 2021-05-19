@@ -4,9 +4,80 @@
   font-size: 25px;
   font-weight: lighter;
   text-align: left;
-  margin-left: 30px;
+  margin-left: 10%;
 }
 
-.explorePageContent {
+.explore-page-content {
   background-color: #f1f1f1;
+}
+
+.share-button-img {
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
+  overflow: hidden;
+  color: #999;
+}
+
+.share-button {
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background-color: transparent;
+  position: relative;
+  margin-top: 0%;
+  margin-left: 75%;
+  font-size: large;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.share-link {
+  box-sizing: border-box;
+  padding: 40px 10%;
+  appearance: none;
+  width: 35%;
+  height: 10%;
+  margin-left: 55%;
+}
+
+#expLink {
+  pointer-events: none;
+  margin: 0;
+  overflow: auto;
+  vertical-align: top;
+  margin-bottom: 5px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 20%;
+  height: 20%;
+  z-index: 0;
+}
+
+.share-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel-share {
+  margin-top: 5px;
+  appearance: button;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #979ea2;
+  color: #fff;
 }
