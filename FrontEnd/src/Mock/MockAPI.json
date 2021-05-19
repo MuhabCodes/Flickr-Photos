@@ -925,5 +925,30 @@
       "id": 2
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$AB5M5GccybsXAtyBsHNPDe/wPl/WyGj65VF6ycJXYSTVrUHD8YRhq",
+      "firstname": "Olivier",
+      "lastname": "Monge",
+      "age": 32,
+      "id": 2
+    },
+    {
+      "email": "Ahmed@gmail.com",
+      "password": "$2a$10$CTgsivd9L3lgVxZZSahdw.8n9oPmuCdIveH.DpkxHSjFbSyLntOIS",
+      "firstname": "Ahmed",
+      "lastname": "Mostafa",
+      "age": 20,
+      "id": 3
+    },
+    {
+      "email": "Hosny@gmail.com",
+      "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
+      "firstname": "Abdelrahman",
+      "lastname": "Hosny",
+      "age": 20,
+      "id": 4
+    }
+  ]
 }

@@ -1,4 +1,6 @@
 {
     "/group": "/Group",
-    "/group/:id": "/Group/:id"
+    "/group/:id": "/Group/:id",
+    "users": 644,
+    "people/:userId/photos":644
 }
