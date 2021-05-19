@@ -21,6 +21,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import AccountSettings from '../Account/AccountSettings';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           <Switch>
             <Route exact path="/CameraFinder">
               <CameraFinder />
+            </Route>
+            <Route exact path="/account">
+              <AccountSettings />
             </Route>
             <Route exact path="/SignUp">
               <AppBar />
