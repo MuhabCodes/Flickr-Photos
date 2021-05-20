@@ -4,6 +4,7 @@ import cameraRollContent from '../services/CameraRollContent';
 // import CameraRollNavbar from './CameraRollNavbar';
 // import CameraRollNavbar from './CameraRollNavbar';
 
+// this is the whole CameraRoll component
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
   useEffect(() => {
@@ -15,20 +16,27 @@ function CameraRoll() {
         }
       });
   }, []);
-  // const [expandButton, setexpand] = useState(false);
 
+  // this line split the code and arrange it according to taken date
   const sortedDates = photos.sort((a, b) => a.DateTaken.split('/').reverse().join().localeCompare(b.DateTaken.split('/').reverse().join()));
 
+  // here it is arranged from latest to oldest
   const sortedFromLatestToOldest = sortedDates.reverse();
+
+  // this function group images that have the same date to be rendered on the same div
+  // and images with different dates are rendered on different divs
   const filtered = Object.values(sortedFromLatestToOldest.reduce((acc, val) => {
     const dateparts = val.DateTaken.split('/');
     const date = new Date(dateparts[2], dateparts[1], dateparts[0]);
-    // console.log(date);
+
     if (!acc[date]) acc[date] = [];
     acc[date].push(val);
     return acc;
   }, {}));
 
+  // here we map through the array of array
+  // first we render the common date of the array
+  // then we render all of the images in this array that have the same day
   const days = filtered.map((day) => (
     <div>
       <h6>
@@ -43,7 +51,7 @@ function CameraRoll() {
           <div className="images">
             <img key={image.photoId} src={image.imagePath} alt="" id="image-size" />
 
-            {/* // image large model */}
+            {/* this is the model that is shown when i want to have full screen image */}
             <div id="myModal" className="modal">
               <span className="close">&times;</span>
               <img className="modal-content" id="img01" alt="" />
@@ -52,7 +60,9 @@ function CameraRoll() {
             <div className="expand" id="expand-icon">
               <button
                 type="button"
+                // this is the onclick function when clicking on the expand button to show the model
                 onClick={() => {
+                  // get the modal
                   const modal = document.getElementById('myModal');
 
                   // Get the image and insert it inside the modal
@@ -84,7 +94,7 @@ function CameraRoll() {
       }
     </div>
   ));
-
+  // get dates and render them on the side nav bar
   const sidebar = filtered.map((day) => (
     <div>
       <a href>{day[0].yearTaken}</a>
