@@ -1,4 +1,4 @@
-.general-stats-gsP {
+.general-stats-gsp {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   border-top: 1px solid #e3e3e3;
   line-height: 14px;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.grid-container-gsP {
+.grid-container-gsp {
   margin: 0;
   padding: 0;
   padding-left: 0;
@@ -18,7 +18,7 @@
   position: relative;
 }
 
-.item-gsP {
+.item-gsp {
   display: inline-block;
   vertical-align: middle;
   height: 60px;
@@ -26,7 +26,7 @@
   margin-right: 0;
 }
 
-.link-gsP {
+.link-gsp {
   cursor: pointer;
   text-decoration: none;
   display: block;
@@ -34,11 +34,11 @@
   color: #898989;
 }
 
-.link-gsP:hover {
+.link-gsp:hover {
   color: #898989;
 }
 
-.span-gsP {
+.span-gsp {
   cursor: pointer;
   color: #212124;
   line-height: 20px;

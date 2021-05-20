@@ -6,23 +6,23 @@ import './SubNavBar.css';
 const SubNavBar = () => {
   const currentPath = window.location.pathname;
   return (
-    <div className="navbar-uP">
-      <div className="fluid-sub-nav-uP">
-        <div className="sub-nav-menu-uP" role="navigation">
-          <div className="sub-nav-content-uP">
-            <div className="sub-nav-container-uP">
+    <div className="navbar-up">
+      <div className="fluid-sub-nav-up">
+        <div className="sub-nav-menu-up" role="navigation">
+          <div className="sub-nav-content-up">
+            <div className="sub-nav-container-up">
               <ul
-                className="sub-nav-links-uP"
+                className="sub-nav-links-up"
                 role="menubar"
                 id="sub_nav_user_const"
               >
                 {MenuItems.map((item) => {
                   let idval = 'notactive';
                   if (currentPath.includes(item.url) === item.url) {
-                    idval = 'activeurl-uP';
+                    idval = 'activeurl-up';
                   } return (
-                    <li key={item.key} className="subnav-list-uP">
-                      <Link to={item.url} className="subnav-title-uP" id={idval}>{item.title}</Link>
+                    <li key={item.key} className="subnav-list-up">
+                      <Link to={item.url} className="subnav-title-up" id={idval}>{item.title}</Link>
                     </li>
                   );
                 })}

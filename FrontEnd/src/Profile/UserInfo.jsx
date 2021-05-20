@@ -6,51 +6,51 @@ import './UserInfo.css';
 const UserInfo = () => {
   // const [isDrop, setisDrop] = useState(false);
   function Edit() {
-    document.getElementById('actual-info-uiP').style.display = 'none';
-    document.getElementById('edit-form-container-uiP').style.display = 'flex';
+    document.getElementById('actual-info-uip').style.display = 'none';
+    document.getElementById('edit-form-container-uip').style.display = 'flex';
   }
   function toggleMenu() {
     document.getElementById('dropdownmenu-ui').style.display = 'flex';
   }
   function Cancel() {
-    document.getElementById('actual-info-uiP').style.display = 'flex';
-    document.getElementById('edit-form-container-uiP').style.display = 'none';
+    document.getElementById('actual-info-uip').style.display = 'flex';
+    document.getElementById('edit-form-container-uip').style.display = 'none';
   }
   return (
-    <div className="user-info-uiP">
-      <div className="user-info-container-uiP">
+    <div className="user-info-uip">
+      <div className="user-info-container-uip">
         <div className="actions-container-userinfoP">
           <button type="button" className="edit-button" onClick={Edit}>
             <img src={edit} alt="" className="edit-button-img" />
           </button>
         </div>
-        <div id="edit-form-container-uiP" style={{ display: 'none' }}>
+        <div id="edit-form-container-uip" style={{ display: 'none' }}>
           <ul className="userinfo-ul-style">
             <li className="userinfo-list-style">
-              <span className="title-uiP">Joined</span>
-              <span className="user-data-uiP">April 2021</span>
+              <span className="title-uip">Joined</span>
+              <span className="user-data-uip">April 2021</span>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputOccupation">
-                <span className="title-uiP">Occupation</span>
-                <input className="input-uiP" type="text" id="inputOccupation" />
+                <span className="title-uip">Occupation</span>
+                <input className="input-uip" type="text" id="inputOccupation" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputHometown">
-                <span className="title-uiP">Hometown</span>
-                <input className="input-uiP" type="text" id="inputHometown" />
+                <span className="title-uip">Hometown</span>
+                <input className="input-uip" type="text" id="inputHometown" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputCurrentCity">
-                <span className="title-uiP">Current city</span>
-                <input className="input-uiP" type="text" id="inputCurrentCity" />
+                <span className="title-uip">Current city</span>
+                <input className="input-uip" type="text" id="inputCurrentCity" />
               </label>
-              <span className="filter-img-uiP">
-                <img src={filter} alt="" className="privacy-uiP" />
+              <span className="filter-img-uip">
+                <img src={filter} alt="" className="privacy-uip" />
                 <span className="dropdown">
-                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton-uiP" aria-label="dropdown-ui" />
+                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton-uip" aria-label="dropdown-ui" />
                   <div className="dropdown-menu" id="dropdownmenu-ui" aria-labelledby="dropdowbMenuButton">
                     <a href="/" className="dropdown-menu">Everone</a>
                     <a href="/" className="dropdown-menu">Any Flickr Member</a>
@@ -62,17 +62,17 @@ const UserInfo = () => {
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputCountry">
-                <span className="title-uiP">Country</span>
-                <input className="input-uiP" type="text" id="inputCountry" />
+                <span className="title-uip">Country</span>
+                <input className="input-uip" type="text" id="inputCountry" />
               </label>
             </li>
             <li className="userinfo-list-style">
-              <span className="title-uiP">Email</span>
-              <span className="user-data-uiP">manaarrzakaria@gmail.com</span>
-              <span className="filter-img-uiP">
-                <img src={filter} alt="" className="privacy-uiP" />
+              <span className="title-uip">Email</span>
+              <span className="user-data-uip">manaarrzakaria@gmail.com</span>
+              <span className="filter-img-uip">
+                <img src={filter} alt="" className="privacy-uip" />
                 <span className="dropdown">
-                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton-uiP" aria-label="dropdown-ui" onClick={toggleMenu} />
+                  <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton-uip" aria-label="dropdown-ui" onClick={toggleMenu} />
                   <div className="dropdown-menu" id="dropdownmenu-ui" aria-labelledby="dropdowbMenuButton">
                     <a href="/" className="dropdown-menu">Everone</a>
                     <a href="/" className="dropdown-menu">Any Flickr Member</a>
@@ -86,38 +86,38 @@ const UserInfo = () => {
           <ul className="userinfo-ul-style">
             <li className="userinfo-list-style">
               <label htmlFor="inputWebsite">
-                <span className="title-uiP">Website</span>
-                <input className="input-uiP" type="text" id="inputWebsite" />
+                <span className="title-uip">Website</span>
+                <input className="input-uip" type="text" id="inputWebsite" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputFacebook">
-                <span className="title-uiP">Facebook</span>
-                <input className="input-uiP" type="text" id="inputFacebook" placeholder="your username or profile link" />
+                <span className="title-uip">Facebook</span>
+                <input className="input-uip" type="text" id="inputFacebook" placeholder="your username or profile link" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputTwitter">
-                <span className="title-uiP">Twitter</span>
-                <input className="input-uiP" type="text" id="inputTwitter" placeholder="your username or profile link" />
+                <span className="title-uip">Twitter</span>
+                <input className="input-uip" type="text" id="inputTwitter" placeholder="your username or profile link" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputInstagram">
-                <span className="title-uiP">Instagram</span>
-                <input className="input-uiP" type="text" id="inputInstagram" placeholder="your username or profile link" />
+                <span className="title-uip">Instagram</span>
+                <input className="input-uip" type="text" id="inputInstagram" placeholder="your username or profile link" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputPinteret">
-                <span className="title-uiP">Pinterest</span>
-                <input className="input-uiP" type="text" id="inputPinterest" placeholder="your username or profile link" />
+                <span className="title-uip">Pinterest</span>
+                <input className="input-uip" type="text" id="inputPinterest" placeholder="your username or profile link" />
               </label>
             </li>
             <li className="userinfo-list-style">
               <label htmlFor="inputTumblr">
-                <span className="title-uiP">Tumblr</span>
-                <input className="input-uiP" type="text" id="inputTumblr" placeholder="your username or profile link" />
+                <span className="title-uip">Tumblr</span>
+                <input className="input-uip" type="text" id="inputTumblr" placeholder="your username or profile link" />
               </label>
             </li>
             <li className="done-ui">
@@ -128,15 +128,15 @@ const UserInfo = () => {
             </li>
           </ul>
         </div>
-        <div className="info-view-container-uiP" id="actual-info-uiP">
+        <div className="info-view-container-uip" id="actual-info-uip">
           <ul className="userinfo-ul-style">
             <li className="userinfo-list-style">
-              <span className="title-uiP">Joined</span>
-              <span className="user-data-uiP"> April 2021</span>
+              <span className="title-uip">Joined</span>
+              <span className="user-data-uip"> April 2021</span>
             </li>
             <li className="userinfo-list-style">
-              <span className="title-uiP">Email</span>
-              <span className="user-data-uiP">manarzakaria@gmail.com</span>
+              <span className="title-uip">Email</span>
+              <span className="user-data-uip">manarzakaria@gmail.com</span>
             </li>
           </ul>
           <ul className="spacer" />

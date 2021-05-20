@@ -3,10 +3,10 @@ import images from './imagesArray';
 import './faves.css';
 
 const Faves = () => (
-  <div className="faves-view-uP">
-    <div className="faves-container-uP">
+  <div className="faves-view-up">
+    <div className="faves-container-up">
       {images.map((image) => (
-        <img className="grid-item-favesuP" src={image.src} alt="" />
+        <img className="grid-item-favesup" src={image.src} alt="" />
         /* <div className="interaction-view">
             <div className="photo-list-interaction">
               <div className="interaction-bar">

@@ -1,4 +1,4 @@
-.user-info-uiP {
+.user-info-uip {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   line-height: 14px;
@@ -9,17 +9,17 @@
   box-sizing: border-box;
 }
 
-#edit-form-container-uiP {
+#edit-form-container-uip {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
 }
 
-.user-info-container-uiP {
+.user-info-container-uip {
   padding-top: 40px;
 }
 
-.info-view-container-uiP {
+.info-view-container-uip {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -40,7 +40,7 @@
   display: flex;
 }
 
-.title-uiP {
+.title-uip {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -54,7 +54,7 @@
   margin-right: 8px;
 }
 
-.user-data-uiP {
+.user-data-uip {
   display: inline-block;
   color: #000;
   white-space: nowrap;
@@ -76,7 +76,7 @@
   border-top: 1px solid #e3e3e3;
 }
 
-.input-uiP {
+.input-uip {
   position: absolute;
   list-style-type: none;
   margin: 0;
@@ -102,7 +102,7 @@
   line-height: 14px;
 }
 
-.filter-img-uiP {
+.filter-img-uip {
   outline-width: 0;
   display: inline-block;
   white-space: nowrap;
@@ -119,14 +119,14 @@
   right: 0;
 }
 
-.privacy-uiP {
+.privacy-uip {
   display: inline-block;
   height: 24px;
   width: 24px;
   fill: currentColor;
 }
 
-#dropdownMenuButton-uiP {
+#dropdownMenuButton-uip {
   color: #000;
   background-color: #fff;
   border: none;

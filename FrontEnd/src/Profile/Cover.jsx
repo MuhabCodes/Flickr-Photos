@@ -24,38 +24,38 @@ const CoverArea = () => {
   });
   return (
     <div className="container-fluid">
-      <div className="cover-cvuP">
+      <div className="cover-cvup">
         {Coverinfo && (
         <div
-          className="changing-cover-photo-bg-cvuP"
+          className="changing-cover-photo-bg-cvup"
           style={{ backgroundImage: `url(${Coverinfo.coverUrl})` }}
         >
-          <div className="cover-photo-gradient-cvuP" />
-          <div className="cover-content-cvuP">
-            <button type="button" className="cover-photo-editbutton-cvuP">
+          <div className="cover-photo-gradient-cvup" />
+          <div className="cover-content-cvup">
+            <button type="button" className="cover-photo-editbutton-cvup">
               <img src="./assets/edit_icon.png" alt="" />
               edit
             </button>
             <div
-              className="user-cover-avatar-cvuP"
+              className="user-cover-avatar-cvup"
               style={{ backgroundImage: `url(${Coverinfo.avatarUrl})` }}
             />
-            <div className="title-content-cvuP">
-              <div className="user-cover-title-cvuP">
-                <h1 className="user-cover-name-cvuP">
+            <div className="title-content-cvup">
+              <div className="user-cover-title-cvup">
+                <h1 className="user-cover-name-cvup">
                   {Coverinfo.firstName}
                   {' '}
                   {Coverinfo.lastName}
                 </h1>
               </div>
-              <div className="follow-view-cvuP">
+              <div className="follow-view-cvup">
                 <a href="/account/upgrade/po" id="pro-badge-cover">
-                  <p className="pro-badge-style-cvuP">Pro</p>
+                  <p className="pro-badge-style-cvup">Pro</p>
                 </a>
-                <p className="user-cover-display-name-cvuP">
+                <p className="user-cover-display-name-cvup">
                   {Coverinfo.displayName}
                 </p>
-                <p className="following-followers-cover-list-cvuP">
+                <p className="following-followers-cover-list-cvup">
                   {Coverinfo.Followers}
                   {' '}
                   Followers
@@ -66,13 +66,13 @@ const CoverArea = () => {
                   {' '}
                   Following
                 </p>
-                <p className="cover-spacer-cvuP" />
-                <p className="user-cover-photo-count-cvuP">
+                <p className="cover-spacer-cvup" />
+                <p className="user-cover-photo-count-cvup">
                   {Coverinfo.Photos}
                   {' '}
                   photos
                 </p>
-                <p className="user-cover-join-date-cvuP">
+                <p className="user-cover-join-date-cvup">
                   joined
                   {' '}
                   {Coverinfo.Joined}
