@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './CameraRoll.css';
 import cameraRollContent from '../services/CameraRollContent';
+// import CameraRollNavbar from './CameraRollNavbar';
+// import CameraRollNavbar from './CameraRollNavbar';
 
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
@@ -13,6 +15,7 @@ function CameraRoll() {
         }
       });
   }, []);
+  // const [expandButton, setexpand] = useState(false);
 
   const sortedDates = photos.sort((a, b) => a.DateTaken.split('/').reverse().join().localeCompare(b.DateTaken.split('/').reverse().join()));
 
@@ -47,17 +50,30 @@ function CameraRoll() {
             </div>
 
             <div className="expand" id="expand-icon">
-              <a
-                href="action"
-                onClick={(e) => {
+              <button
+                type="button"
+                onClick={() => {
                   const modal = document.getElementById('myModal');
-                  console.log(modal);
-                  e.preventDefault();
+
+                  // Get the image and insert it inside the modal
+
+                  const modalImg = document.getElementById('img01');
+
+                  modal.style.display = 'block';
+                  modalImg.src = image.imagePath;
+
+                  // Get the <span> element that closes the modal
+                  const span = document.getElementsByClassName('close')[0];
+
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function close() {
+                    modal.style.display = 'none';
+                  };
                 }}
               >
                 <i className="fas fa-expand-alt" />
                 {' '}
-              </a>
+              </button>
 
             </div>
             <br />
@@ -81,16 +97,15 @@ function CameraRoll() {
 
   return (
     <div>
-      <div className="wrapper">
 
-        <div className="main">
-          <div className="sidenav">
-            {sidebar}
-          </div>
-          {days}
-
+      <div className="main">
+        <div className="sidenav">
+          {sidebar}
         </div>
+        {days}
+
       </div>
+
     </div>
   );
 }
