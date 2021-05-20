@@ -2,7 +2,7 @@ import React from 'react';
 import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
-import './HomePage.css';
+import './homePage.css';
 import configData from '../config.json';
 
 const HomePage = () => {
