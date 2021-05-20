@@ -1,20 +1,22 @@
 
-
 .container-account-settings-nav-bar {
   padding-left: 10em;
 }
+
 .main-personal-info-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 80%;
   margin: auto;
+  justify-content: space-between;
 }
 
 .personal-info-left-column {
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-right: 1em;
 }
 
 .personal-info-right-column {
@@ -24,14 +26,15 @@
   flex-direction: column;
 }
 
-.membership-status-box {
+.personal-information-box {
   text-align: left;
   background-color: #fff;
   border-radius: 0.2em;
   border: 1px solid #e3e3e3;
+  margin-bottom: 1em;
 }
 
-.membership-status-title {
+.personal-information-box-title {
   padding: 1em;
   border-radius: 0.2em;
   border-bottom: 1px solid #e3e3e3;
@@ -46,7 +49,7 @@
   height: 50px;
 }
 
-.content-membership-status-div-p {
+.content-membership-status-divs {
   flex: 1;
   padding-left: 1em;
 }
@@ -56,7 +59,7 @@
   padding-top: 0.6em;
 }
 
-.membership-status-content-container {
+.personal-information-content-container {
   padding: 1em;
   display: flex;
 }
@@ -66,16 +69,62 @@
   font-size: 0.9em;
 }
 
+.content-personal-info-subtitle {
+  font-weight: 600;
+  font-size: 0.9em;
+  padding-bottom: 0.4em;
+}
+
 .content-membership-paragraph {
   font-size: 0.85em;
+}
+
+.content-personal-information-paragraph {
+  font-size: 0.85em;
+  margin-bottom: 0.4em;
 }
 
 .container-sub-nav-bar-account-settings {
   background-color: #fff;
 }
 
+.content-personal-information-footer {
+  border-top: 1px solid #e3e3e3;
+  padding: 1em;
+  font-size: 0.9em;
+}
+
+.personal-information-avatar-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.personal-information-avatar-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  position: relative;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 @media all and (max-width: 1080px) {
   .main-personal-info-container {
     flex-direction: column;
+  }
+
+  .container-account-settings-nav-bar {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .sub-nav-content-account-settings {
+    margin: auto;
+  }
+
+  .personal-info-left-column {
+    margin-right: 0;
+    margin-bottom: 1em;
   }
 }
