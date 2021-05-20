@@ -1,0 +1,81 @@
+
+
+.container-account-settings-nav-bar {
+  padding-left: 10em;
+}
+.main-personal-info-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: auto;
+}
+
+.personal-info-left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-info-right-column {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-status-box {
+  text-align: left;
+  background-color: #fff;
+  border-radius: 0.2em;
+  border: 1px solid #e3e3e3;
+}
+
+.membership-status-title {
+  padding: 1em;
+  border-radius: 0.2em;
+  border-bottom: 1px solid #e3e3e3;
+  font-weight: 600;
+}
+
+.logo-membership-status-div {
+  border-radius: 50%;
+  border: 2px solid #ff46a6;
+  color: #ff46a6;
+  width: 50px;
+  height: 50px;
+}
+
+.content-membership-status-div-p {
+  flex: 1;
+  padding-left: 1em;
+}
+
+.logo-membership-status-p {
+  text-align: center;
+  padding-top: 0.6em;
+}
+
+.membership-status-content-container {
+  padding: 1em;
+  display: flex;
+}
+
+.content-membership-subtitle {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.content-membership-paragraph {
+  font-size: 0.85em;
+}
+
+.container-sub-nav-bar-account-settings {
+  background-color: #fff;
+}
+
+@media all and (max-width: 1080px) {
+  .main-personal-info-container {
+    flex-direction: column;
+  }
+}
