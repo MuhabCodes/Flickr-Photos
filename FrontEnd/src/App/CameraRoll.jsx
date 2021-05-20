@@ -40,13 +40,21 @@ function CameraRoll() {
           <div className="images">
             <img key={image.photoId} src={image.imagePath} alt="" id="image-size" />
 
+            {/* // image large model */}
             <div id="myModal" className="modal">
-              <span className="close"> &times;</span>
+              <span className="close">&times;</span>
               <img className="modal-content" id="img01" alt="" />
             </div>
 
             <div className="expand" id="expand-icon">
-              <a href="true">
+              <a
+                href="action"
+                onClick={(e) => {
+                  const modal = document.getElementById('myModal');
+                  console.log(modal);
+                  e.preventDefault();
+                }}
+              >
                 <i className="fas fa-expand-alt" />
                 {' '}
               </a>
