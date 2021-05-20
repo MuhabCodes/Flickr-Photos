@@ -1,14 +1,10 @@
 #navbar-CR {
-  background-color: black;
+  background-color: #f3f5f6;
+  position: relative;
 }
 
 .nav-start {
   margin-left: 100px;
-}
-
-.cameralroll-nav-bar {
-  top: 53px;
-  width: 100%;
 }
 
 .navbar-icons {

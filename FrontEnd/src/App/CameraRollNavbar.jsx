@@ -6,7 +6,7 @@ import './CameraRollNavbar.css';
 function CameraRollNavbar() {
   return (
     <div>
-      <Navbar expand="lg" sticky="top" className="cameralroll-nav-bar " id="navbar-CR">
+      <Navbar expand="lg" sticky="top" id="navbar-CR">
         <Nav className="mr-auto nav-start">
           <NavDropdown title="Dropdown">
             <NavDropdown.Item href="#action/3.1">Date taken</NavDropdown.Item>

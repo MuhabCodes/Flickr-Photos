@@ -65,6 +65,8 @@ function App() {
               <Faves />
             </Route>
             <Route path="/CameraRoll">
+              <CoverArea />
+              <SubNavBar />
               <CameraRoll />
             </Route>
             <Route path="/groups/members/">
