@@ -5,7 +5,7 @@ import './MostPop.css';
 // import images from './imagesArray';
 
 const MostPop = () => {
-  const { data: mostPop } = useFetch('http://localhost:8002/mostPopPhotos');
+  const { data: mostPop } = useFetch('http://localhost:8000/mostPopPhotos');
   return (
     <div className="pop-photos-view-mp">
       <div className="pop-container-mp">
