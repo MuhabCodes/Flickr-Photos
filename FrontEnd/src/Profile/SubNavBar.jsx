@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MenuItems from './MenuItems';
 import './SubNavBar.css';
-
+// The SubNavBar component helps in displaying the navigation bar in the profile area
+// This nav exists in all subpages of 'You'. It includes all pages in the 'You'
+// Has a mapping function which gets name of items in the subnavbar from a pre-defined array
+// this array also includes the url to which we route to when a user clicks it
 const SubNavBar = () => (
   <div className="navbar-up">
     <div className="fluid-sub-nav-up">
