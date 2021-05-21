@@ -21,6 +21,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import Photostream from '../Profile/Photostream';
 
 function App() {
   return (
@@ -63,6 +64,11 @@ function App() {
               <CoverArea />
               <SubNavBar />
               <Faves />
+            </Route>
+            <Route path="/Profile/Photostream">
+              <CoverArea />
+              <SubNavBar />
+              <Photostream />
             </Route>
             <Route path="/CameraRoll">
               <CameraRoll />
