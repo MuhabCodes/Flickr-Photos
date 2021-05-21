@@ -21,6 +21,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import FollowersCard from '../Followers/FollowersCard';
 
 function App() {
   return (
@@ -77,6 +78,9 @@ function App() {
             </Route>
             <Route exact path="/About">
               <About />
+            </Route>
+            <Route exact path="/followers">
+              <FollowersCard />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }

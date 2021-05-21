@@ -113,6 +113,7 @@ function CameraRoll() {
           {sidebar}
         </div>
         {days}
+        <a href="/followers">click me</a>
 
       </div>
 

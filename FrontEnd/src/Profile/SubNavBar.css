@@ -1,8 +1,6 @@
 .navbar-uP {
   opacity: 1 !important;
   padding: 0 !important;
-  position: sticky;
-  position: -webkit-sticky;
   top: 0;
   z-index: 100;
 }
