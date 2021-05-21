@@ -1,0 +1,27 @@
+.photostream-container-uph {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  opacity: 1 !important;
+}
+
+.magic-tools-uph {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  margin-top: -20px;
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+
+.magic-toolbar-uph {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  position: relative;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
