@@ -1,0 +1,4 @@
+# default ingored files
+**/__pycache__
+.idea
+venv

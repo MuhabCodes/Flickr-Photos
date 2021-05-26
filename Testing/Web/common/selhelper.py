@@ -61,15 +61,15 @@ class SelHelper(object):
         )
         return self.driver
 
-    # def init_firefox_driver(self):
-    #     """ Initialize Helper object's driver with chromedriver.
+    def init_firefox_driver(self):
+        """ Initialize Helper object's driver with chromedriver.
 
-    #     :return: Helper object's driver
-    #     """
-    #     self.driver = webdriver.Firefox(
-    #         executable_path=GeckoDriverManager().install()
-    #     )
-    #     return self.driver
+        :return: Helper object's driver
+        """
+        self.driver = webdriver.Firefox(
+            executable_path=GeckoDriverManager().install()
+        )
+        return self.driver
 
     def implicit_wait(self, time_to_wait: float = 30):
         """ Sets a sticky timeout to implicitly wait for an element to be
@@ -251,6 +251,16 @@ class SelHelper(object):
         :return: String page URL
         """
         return str(self.driver.current_url)
+
+    def scroll_to_element(self, element: WebElement):
+        """ Scroll until WebElement element appears on view
+
+        :param element: WebElement element
+        """
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView();",
+            element
+        )
 
     def quit(self):
         """ Close the browser."""

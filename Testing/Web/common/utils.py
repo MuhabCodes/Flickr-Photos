@@ -1,6 +1,7 @@
 import inspect
 
 from common.selhelper import SelHelper
+from selenium.webdriver.common.by import By
 
 
 class Utils(object):
@@ -61,3 +62,4 @@ class Utils(object):
         attribute_list: list = inspect.getmembers(
             class_name, lambda a: not (inspect.isroutine(a)))
         return attribute_list
+
