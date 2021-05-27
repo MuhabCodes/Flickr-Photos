@@ -18,7 +18,6 @@ const editPhoto = async (photoId, newPhotoInfo, res) => {
     await savePhoto(photo);
     return res.json({ statusCode: 200 });
   } catch (err) {
-    console.log(err);
     return res.json({ statusCode: 404, error: 'PhotoNotFound' });
   }
 };
