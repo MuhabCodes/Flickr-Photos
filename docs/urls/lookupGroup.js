@@ -7,7 +7,7 @@
  * 
  * @apiDescription Returns a group Id, given the url to a group's page or photo pool.
  * 
- * @apiBody {String} {url: The url to the group page or photo pool.}
+ * @apiParam  (Body) {String} url The url to the group page or photo pool.
  * 
  * @apiSuccess (Success 200) {Object} groupId The group id.
  * @apiSuccess (Success 200) {Number} statusCode The status code
