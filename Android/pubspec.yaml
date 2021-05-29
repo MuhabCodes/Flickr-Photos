@@ -104,7 +104,7 @@ flutter:
   #         style: italic
      - family: ProximaNova
        fonts:
-         - asset: fonts/ProximaNova-Regular.otf
+         - asset: fonts/ProximaNova.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
