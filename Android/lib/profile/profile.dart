@@ -1,3 +1,4 @@
+import 'package:flickr/login/get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -191,6 +192,11 @@ class _ProfileState extends State<Profile> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GetStarted()),
+                    );
                   },
                 ),
               ),

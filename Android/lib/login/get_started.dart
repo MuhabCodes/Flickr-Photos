@@ -24,18 +24,19 @@ class GetStarted extends StatelessWidget {
   ]; //list of qoutes
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
           Swiper(
             loop: false,
             pagination: SwiperPagination(
-                margin: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).size.height * 0.23),
+                margin: EdgeInsets.only(bottom: _height * 0.23),
                 builder: new DotSwiperPaginationBuilder(
-                  space: 5,
-                  size: 6,
-                  activeSize: 6,
+                  space: _width * 0.025,
+                  size: _width * 0.025,
+                  activeSize: _width * 0.025,
                   activeColor: Colors.white,
                   color: Colors.grey,
                 )), //locate the pagnition and designed as dots
@@ -52,7 +53,7 @@ class GetStarted extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 18),
                     alignment: Alignment.center,
                     margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.5,
+                      top: _height * 0.55,
                     ),
                     child: Column(
                       children: [
@@ -66,7 +67,7 @@ class GetStarted extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        SizedBox(height: 2),
+                        SizedBox(height: _height * 0.01),
                         Flexible(
                           child: Container(
                             child: Text("${_qoutes[index]}",
@@ -88,14 +89,15 @@ class GetStarted extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25),
             child: Text(
               "flickr",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 40,
+                fontSize: 65,
                 fontWeight: FontWeight.bold,
+                fontFamily: "FreeSet",
               ),
             ),
           ),
@@ -115,7 +117,7 @@ class GetStarted extends StatelessWidget {
                   style: TextStyle(fontSize: 12),
                 ),
                 style: ElevatedButton.styleFrom(
-                    minimumSize: Size(MediaQuery.of(context).size.width / 2,
+                    minimumSize: Size(MediaQuery.of(context).size.width / 1.3,
                         MediaQuery.of(context).size.height / 10),
                     primary: Colors.transparent,
                     shape: RoundedRectangleBorder(
@@ -127,24 +129,24 @@ class GetStarted extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.bottomLeft,
-            margin: EdgeInsets.all(10),
+            margin:
+                EdgeInsets.only(right: _width * 0.05, bottom: _height * 0.04),
             child: Row(
               children: [
                 Icon(
                   FontAwesomeIcons.camera,
-                  size: 10,
+                  size: 14,
                   color: Colors.white,
                 ),
                 SizedBox(
-                  width: 2,
+                  width: _width * 0.02,
                 ),
                 Text(
                   "Ben flasher",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
                 ),
               ],
