@@ -26,6 +26,20 @@
  * @apiError (Error 500) {Number} statusCode The status code
  *
  *
+ * @apiParamExample  {json} Request-Example:
+ * {[{
+ *      "authorId" : "nhuefbh432",
+ *      "title":"Blue Lake",
+ *      "description":"A fantastic view on the lake",
+ *      "captureDate":"2020-05-01T01:50:08",
+ *      "uploadDate":"2021-12-01T19:11:08",
+ *      "isPublic":true,
+ *      "secret":"dfabhfu234",
+ *      "favorites":false,
+ *      "inPhoto":[{...},{...},...],
+ *      "tags":[{...},{...},...],
+ *      "cameraName":"Cannon 201cf"
+ *  },{...},...] }
  *
  *
  * @apiSuccessExample {json} Success-Response:
