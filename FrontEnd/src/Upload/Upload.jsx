@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Upload.css';
 import { Link } from 'react-router-dom';
 import toDataUrl from './ToDataUrl';
+import configData from '../config.json';
 
 function Upload() {
   const [selectedFiles, setSelectedFiles] = useState([]); // images state (intially empty)
@@ -53,7 +54,7 @@ function Upload() {
         const data = {}; // create data object
         data.title = restData[index].fileName; // set photo name
         data.date = restData[index].fileDate; // set photo upload date
-        data.user = 'me';
+        // data.id = index;
         data.tag = photoTag;
         data.album = photoAlbum;
         data.privacy = photoPrivacy;
@@ -64,10 +65,25 @@ function Upload() {
             image.src = dataUrl;
             image.onload = function imageDimensions() { // get image dimensions
               // eslint-disable-next-line react/no-this-in-sfc
-              data.width = this.width;
+              data.photoWidth = this.width;
               // eslint-disable-next-line react/no-this-in-sfc
-              data.height = this.height;
+              data.photoHeight = this.height;
             };
+            // const uploadButton = document.getElementById('enabled-button');
+            // uploadButton.id = 'disabled-button';
+            fetch(`${configData.SERVER_URL}/photos`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            }).then(() => {
+              // eslint-disable-next-line no-console
+              console.log('new photos added');
+              console.log(data);
+            }).catch((err) => {
+              if (!err.name === 'AbortError') {
+                console.log(err.message);
+              }
+            });
             dataArray.push(data); // push object into array
           });
       });
