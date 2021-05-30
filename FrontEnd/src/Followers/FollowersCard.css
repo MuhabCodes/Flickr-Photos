@@ -1,0 +1,19 @@
+.follower-card-container {
+  width: 40%;
+  padding: 10px;
+  display: inline-block;
+}
+
+.follower-avatar {
+  width: 15%;
+  height: 30%;
+  margin-right: 10px;
+}
+
+.content {
+  display: inline-block;
+}
+
+.container {
+  margin: auto;
+}

@@ -9,16 +9,16 @@ body {
   margin: 0 0;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
 .navbar-light .navbar-nav .nav-link:hover {
   color: rgba(255, 255, 255, 0.75);
 }
 
 .navbar {
   background-color: #212124;
-}
-
-.navbar-light .navbar-brand {
-  color: white;
 }
 
 .navbar-brand {
@@ -29,11 +29,11 @@ body {
   margin-right: 25px;
 }
 
-.navbar-light .navbar-brand:hover {
+.navbar-light .navbar-brand {
   color: white;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-brand:hover {
   color: white;
 }
 
@@ -49,6 +49,24 @@ body {
   margin-left: 15px;
 }
 
+.icons a {
+  color: white;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.footer a {
+  color: white;
+}
+
 .icon-bar a:hover {
   color: grey;
 }
@@ -57,12 +75,6 @@ body {
   display: inline-block;
   position: fixed;
   right: 135px;
-}
-
-.icons a {
-  color: white;
-  font-size: 25px;
-  margin-left: 15px;
 }
 
 .navbar-light .navbar-toggler {
@@ -101,21 +113,11 @@ body {
   border-color: gray;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 10px 10px;
-  text-decoration: none;
-  display: block;
-}
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover { background-color: #ddd; }
 
 /* Show the dropdown menu on hover */
 .dropdown-main-nav:hover .dropdown-content { display: block; }
-
-
 
 /* STYLING OF FOOTER */
 .footer {
@@ -133,10 +135,6 @@ body {
 hr {
   background-color: grey;
   text-align: center;
-}
-
-.footer a {
-  color: white;
 }
 
 .footer a:hover {
