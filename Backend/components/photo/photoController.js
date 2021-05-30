@@ -4,6 +4,7 @@ const { getInfo } = require('./services/getInfo');
 const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
 const { addPersonToPhotoServ } = require('./services/addPersonToPhoto');
+const { removePersonFromPhotoServ } = require('./services/removePersonFromPhoto');
 
 module.exports = {
   async getRecentPhotos(req, res) {
@@ -62,6 +63,19 @@ module.exports = {
       const { userId } = req.body;
       const { photoId } = req.params;
       await addPersonToPhotoServ(photoId, userId);
+      res.status(200).json({ statusCode: 200 });
+    } catch (err) {
+      res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async removePersonFromPhoto(req, res) {
+    try {
+      const { userId } = req.body;
+      const { photoId } = req.params;
+      await removePersonFromPhotoServ(photoId, userId);
       res.status(200).json({ statusCode: 200 });
     } catch (err) {
       res.json({
