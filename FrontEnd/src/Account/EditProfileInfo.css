@@ -1,0 +1,103 @@
+.edit-your-profile-main-container {
+  max-width: 45%;
+  margin: auto;
+  text-align: center;
+}
+
+.edit-your-profile-title {
+  padding-top: 25px;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 0.6em;
+}
+
+.edit-name-text-box {
+  height: 1.4em;
+  flex: 0 300px;
+  margin-left: 10px;
+}
+
+.edit-your-profile-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.edit-basic-bits-container {
+  width: 50%;
+  margin: auto;
+}
+
+.edit-your-profile-mini-form-header {
+  text-align: left;
+  font-size: 20px;
+  color: #ff0084;
+  font-weight: 400;
+}
+
+.edit-your-profile-label-text {
+  font-weight: 600;
+  padding-top: 0;
+}
+
+.edit-your-profile-radio-labels {
+  display: flex;
+  flex-direction: row;
+  padding-left: 8em;
+}
+
+.edit-gender-radio {
+  margin-top: 0.35em;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.gender-radio-buttons-container {
+  font-weight: 600;
+  text-align: left;
+}
+
+.edit-your-profile-label-radio {
+  font-size: 0.9em;
+}
+
+.gender-title {
+  font-size: 1em;
+}
+
+.submit-profile-info {
+  margin-top: 2em;
+  outline-width: 0;
+  height: 30px;
+  line-height: 32px;
+  min-width: 80px;
+  display: inline-block;
+  padding: 0 2px;
+  vertical-align: top;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  background-color: #0063dc;
+}
+
+@media all and (max-width: 500px) {
+  .edit-your-profile-main-container {
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .edit-basic-bits-container {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

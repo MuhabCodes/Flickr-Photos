@@ -22,6 +22,7 @@ import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import PersonalInformation from '../Account/PersonalInformation';
+import EditPersonalInfo from '../Account/EditPersonalInfo';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route exact path="/account">
               <PersonalInformation />
+            </Route>
+            <Route exact path="/account/edit-profile">
+              <EditPersonalInfo />
             </Route>
             <Route exact path="/SignUp">
               <AppBar />
