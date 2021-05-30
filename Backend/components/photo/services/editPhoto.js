@@ -13,6 +13,7 @@ const editPhoto = async (photoId, newPhotoInfo, res) => {
       photo.imageUrl = newPhotoInfo.imageUrl ? newPhotoInfo.imageUrl : photo.imageUrl;
       photo.width = newPhotoInfo.width ? newPhotoInfo.width : photo.width;
       photo.height = newPhotoInfo.height ? newPhotoInfo.height : photo.height;
+      photo.location = newPhotoInfo.location ? newPhotoInfo.location : photo.location;
     }
     photo._id = photoId;
     await savePhoto(photo);
