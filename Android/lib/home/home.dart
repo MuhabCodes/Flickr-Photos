@@ -1,3 +1,5 @@
+import 'package:flickr/home/comments_page.dart';
+import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/comment.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/post.dart';
@@ -6,29 +8,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
+import '../models/global.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  void selectScreen(BuildContext ctx, int n,
+      {String textTitle, List<NetworkImage> imageRoll}) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      if (n == 1) return ViewAllPhotos(textTitle, imageRoll);
+    }));
+  }
+
   //List<Widget> likers = [];
   bool _isNumImgTwo = true;
-  static int _page = 1;
-  static Post _thePost = post1;
-  double _widthScreen = 0;
+  static int page = 1;
+  static Post thePost = post1;
+  double widthScreen = 0;
   //final controller = TextEditingController();
   final _commentController = TextEditingController();
+  //CommentsPage _myCommentsPage;
 
   @override
   Widget build(BuildContext context) {
-    _widthScreen = MediaQuery.of(context).size.width;
+    widthScreen = MediaQuery.of(context).size.width;
     Map<int, Widget> _pageview = {
       1: getMain(),
-      2: getLikes(_thePost.likes),
-      3: getComments(_thePost.comments)
+      2: getLikes(thePost.likes),
+      3: getComments(thePost.comments)
     };
-    return _pageview[_page];
+    return _pageview[page];
   }
 
   Widget getMain() {
@@ -84,24 +96,28 @@ class _HomeState extends State<Home> {
             //margin: EdgeInsets.all(10),
             constraints: BoxConstraints(
               maxHeight: 282,
-              maxWidth: _widthScreen,
+              maxWidth: widthScreen,
             ),
 
             decoration: BoxDecoration(
                 // 'decoration:' doesn't allow writing 'color:' after or before it
                 border: Border.all(
                   color: Colors.white, // white as border color
-                  width: 3,
+                  width: 5,
                 ),
                 color: Colors.white,
-                image: DecorationImage(image: post.image[0])),
+                image: DecorationImage(
+                  image: /*post.image[0]*/ post.imagePath[0],
+                  fit: BoxFit.cover,
+                )),
 
             //child: Image.asset(post.image[]),
           ),
+
           Container(
             //this container creates a box around username row
             constraints: BoxConstraints(
-              maxWidth: _widthScreen,
+              maxWidth: widthScreen,
             ),
             color: Colors.white,
             padding: EdgeInsets.all(10),
@@ -137,7 +153,7 @@ class _HomeState extends State<Home> {
             //Post  title (limit = 100 characters) not description
             //height: 10,
             constraints: BoxConstraints(
-              maxWidth: _widthScreen,
+              maxWidth: widthScreen,
             ),
             heightResponsive: true,
             widthResponsive: true,
@@ -158,7 +174,7 @@ class _HomeState extends State<Home> {
           ),
           Container(
             //Draw horizontal line
-            constraints: BoxConstraints.expand(height: 20, width: _widthScreen),
+            constraints: BoxConstraints.expand(height: 20, width: widthScreen),
             color: Colors.white,
             child: Row(
               children: <Widget>[
@@ -166,7 +182,7 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.symmetric(horizontal: 00.0),
                   child: Container(
                     height: 2.2,
-                    width: _widthScreen, //340.0,
+                    width: widthScreen, //340.0,
                     color: Colors.grey,
                   ),
                 ),
@@ -179,7 +195,7 @@ class _HomeState extends State<Home> {
           ),*/
           Container(
             //Like, Share, Comment
-            constraints: BoxConstraints.expand(height: 50, width: _widthScreen),
+            constraints: BoxConstraints.expand(height: 50, width: widthScreen),
             padding: EdgeInsets.only(left: 10, right: 10),
             color: Colors.white,
             child: Row(
@@ -231,8 +247,8 @@ class _HomeState extends State<Home> {
                       color: Colors.grey,
                       onPressed: () {
                         setState(() {
-                          _thePost = post;
-                          _page = 3;
+                          thePost = post;
+                          page = 3;
                           build(context);
                         });
                       },
@@ -258,8 +274,7 @@ class _HomeState extends State<Home> {
           ),
           Container(
             //Likers Row
-            constraints:
-                BoxConstraints.expand(height: 140, width: _widthScreen),
+            constraints: BoxConstraints.expand(height: 140, width: widthScreen),
             color: Colors.grey[200],
             //alignment: AlignmentDirectional.topCenter,
             //padding: EdgeInsets.only(left: 10, right: 10),
@@ -308,8 +323,8 @@ class _HomeState extends State<Home> {
                               )),
                           onPressed: () {
                             setState(() {
-                              _thePost = post;
-                              _page = 2;
+                              thePost = post;
+                              page = 2;
                               build(context);
                             });
                           },
@@ -385,8 +400,8 @@ class _HomeState extends State<Home> {
                           ),
                           onPressed: () {
                             setState(() {
-                              _thePost = post;
-                              _page = 3;
+                              thePost = post;
+                              page = 3;
                               build(context);
                             });
                           },
@@ -404,11 +419,15 @@ class _HomeState extends State<Home> {
   } // getPost
 
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
+    String textTitle1 = post.user.username +
+        " uploaded " +
+        post.image.length.toString() +
+        " photos";
     return Container(
       constraints: BoxConstraints(
-        maxWidth: _widthScreen,
+        maxWidth: widthScreen,
       ),
-      margin: EdgeInsets.only(bottom: 10),
+      margin: EdgeInsets.only(bottom: 10, top: 0),
       color: Colors.white,
       child: Column(
         children: <Widget>[
@@ -422,54 +441,59 @@ class _HomeState extends State<Home> {
                   children: [
                     Container(
                       //1st container
-                      //image Container
-                      //color: Colors.white,
-                      //margin: EdgeInsets.all(10),
-                      //alignment: Alignment.topLeft,
-                      /*padding: EdgeInsets.only(
-                        left: 2,
-                      ),*/
                       constraints: BoxConstraints(
                         maxHeight: 282, //_isNumImgTwo? 282: 141,
-                        maxWidth: _widthScreen * 0.5, //170,
+                        maxWidth: widthScreen * 0.5, //170,
                       ),
                       decoration: BoxDecoration(
-                          image: DecorationImage(image: post.image[0])),
+                        border: Border.all(
+                          color: Colors.white, // white as border color
+                          width: 5,
+                        ),
+                        image: DecorationImage(
+                          image: post.imagePath[0],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ],
                 ),
                 Column(
+                  //2nd container
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           //padding: EdgeInsets.only(right: 20),
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
                             maxHeight: 131, //_isNumImgTwo? 282: 141,
-                            maxWidth: _widthScreen * 0.4, //170,
+                            maxWidth: widthScreen * 0.4,
+                            minWidth: widthScreen * 0.4,
+                            //170,
                           ),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               image: DecorationImage(
-                                  image: post.image[1], fit: BoxFit.fitWidth)),
+                                  image: post.imagePath[1], fit: BoxFit.cover)),
                         ),
                       ],
                     ),
                     Row(
                       children: [
                         Container(
+                          //3rd container
                           margin: EdgeInsets.all(10),
                           constraints: BoxConstraints(
                             maxHeight: 131, //_isNumImgTwo? 282: 141,
-                            maxWidth: _widthScreen * 0.4, //170,
+                            maxWidth: widthScreen * 0.4, //170,
                           ),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               image: DecorationImage(
-                                  image: post.image[2], fit: BoxFit.fitWidth)),
+                                  image: post.imagePath[2], fit: BoxFit.cover)),
                         ),
                       ],
                     ),
@@ -506,10 +530,10 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                Text(getPostTime(post.date) //post.date.hour.toString() //'2d  '
-                    //icon: Icon(Icons.more_horiz),
-                    //onPressed: () {},
-                    ),
+                Text(
+                  getPostTime(post.date),
+                  style: textStyle,
+                ),
               ],
             ),
           ),
@@ -522,13 +546,12 @@ class _HomeState extends State<Home> {
                 Container(
                   child: TextButton(
                     child: Text(
-                        "View all " + post.image.length.toString() + " photos",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 10,
-                        )),
+                      "View all " + post.image.length.toString() + " photos",
+                      style: textStyleBold,
+                    ),
                     onPressed: () {
+                      selectScreen(context, 1,
+                          textTitle: textTitle1, imageRoll: post.imagePath);
                       setState(() {});
                     },
                   ),
@@ -545,7 +568,7 @@ class _HomeState extends State<Home> {
     _isNumImgTwo = getNumPostImg(post);
     return Container(
       constraints: BoxConstraints(
-        maxWidth: _widthScreen,
+        maxWidth: widthScreen,
       ),
       margin: EdgeInsets.only(bottom: 10),
       color: Colors.white,
@@ -561,23 +584,19 @@ class _HomeState extends State<Home> {
                   children: [
                     Container(
                       //1st container
-                      //image Container
-                      //color: Colors.white,
-                      //margin: EdgeInsets.all(10),
-                      //alignment: Alignment.topLeft,
-                      /*padding: EdgeInsets.only(
-                        left: 2,
-                      ),*/
+
                       constraints: BoxConstraints(
                         maxHeight: 282, //_isNumImgTwo? 282: 141,
                         maxWidth: 170,
                       ),
                       decoration: BoxDecoration(
-                          image: DecorationImage(image: post.image[0])),
+                          image: DecorationImage(
+                              image: post.imagePath[0], fit: BoxFit.cover)),
                     ),
                   ],
                 ),
                 Column(
+                  //2nd container
                   children: [
                     Container(
                       margin: EdgeInsets.all(10),
@@ -587,7 +606,8 @@ class _HomeState extends State<Home> {
                       ),
                       decoration: BoxDecoration(
                           color: Colors.transparent,
-                          image: DecorationImage(image: post.image[1])),
+                          image: DecorationImage(
+                              image: post.imagePath[1], fit: BoxFit.cover)),
                     ),
                   ],
                 ),
@@ -644,8 +664,8 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _thePost = post;
-                        _page = 2;
+                        thePost = post;
+                        page = 2;
                         build(context);
                       });
                     },
@@ -656,62 +676,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget getViewAllPhotos(Post post, int numPhotos) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _page = 1;
-                        build(context);
-                      });
-                    },
-                  ),
-                  Text(
-                    'Comments',
-                    style: textStyleBold,
-                  )
-                ],
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.send,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
-              )
-            ],
-          ),
-        ),
-        backgroundColor: Colors.white,
-      ),
-      body: Container(
-          color: Colors.white,
-          child: ListView(
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Divider(),
-                  Column(
-                    children: getPosts(context),
-                  )
-                ],
-              )
-            ],
-          )),
     );
   }
 
@@ -729,7 +693,7 @@ class _HomeState extends State<Home> {
     for (User follower in likes) {
       likers.add(new Container(
           constraints: BoxConstraints(
-            maxWidth: _widthScreen,
+            maxWidth: widthScreen,
           ),
           //height: 70,
           padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
@@ -809,19 +773,19 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             title: Flexible(
               child: Text(
-                _thePost.user.username + "'s Photo",
-                style: TextStyle(color: Colors.white),
+                thePost.user.username + "'s Photo",
+                style: appBarTitle,
               ),
             ),
             bottom: TabBar(
-                labelColor: Colors.white,
-                unselectedLabelColor: Colors.white,
-                indicatorColor: Colors.black,
+                //labelColor: Colors.white,
+                //unselectedLabelColor: Colors.white,
+                indicatorColor: Colors.white,
                 tabs: <Widget>[
                   Tab(
-                    text: _thePost.likes.length.toString() + " Faves",
+                    text: thePost.likes.length.toString() + " Faves",
                   ),
-                  Tab(text: _thePost.comments.length.toString() + " Comments"),
+                  Tab(text: thePost.comments.length.toString() + " Comments"),
                 ]),
             backgroundColor: Colors.grey[900],
             leading: IconButton(
@@ -831,18 +795,18 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () {
                 setState(() {
-                  _page = 1;
+                  page = 1;
                   build(context);
                 });
               },
             ),
           ),
           body: TabBarView(children: <Widget>[
-            //getLikes(_thePost.likes),
+            //getLikes(thePost.likes),
             ListView(
               children: likers,
             ),
-            getCommentsFaves(_thePost.comments),
+            getCommentsFaves(thePost.comments),
 
             //Container(),
           ])
@@ -864,7 +828,7 @@ class _HomeState extends State<Home> {
     for (User follower in likes) {
       likers.add(new Container(
           constraints: BoxConstraints(
-            maxWidth: _widthScreen,
+            maxWidth: widthScreen,
           ),
           //height: 70,
           padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
@@ -941,11 +905,11 @@ class _HomeState extends State<Home> {
         length: 2,
         child: Scaffold(
           body:
-              //getLikes(_thePost.likes),
+              //getLikes(thePost.likes),
               ListView(
             children: likers,
           ),
-          //getCommentsFaves(_thePost.comments),
+          //getCommentsFaves(thePost.comments),
         ));
   }
 
@@ -956,7 +920,7 @@ class _HomeState extends State<Home> {
       //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
       comments.add(new Container(
           constraints: BoxConstraints(
-            maxWidth: _widthScreen,
+            maxWidth: widthScreen,
           ),
           // height: 45,
           padding: EdgeInsets.only(top: 10),
@@ -1033,8 +997,8 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Flexible(
             child: Text(
-              _thePost.user.username + "'s Photo",
-              style: TextStyle(color: Colors.white, fontSize: 15),
+              thePost.user.username + "'s Photo",
+              style: appBarTitle,
             ),
           ),
           bottom: TabBar(
@@ -1044,9 +1008,9 @@ class _HomeState extends State<Home> {
               indicatorColor: Colors.blue,
               tabs: <Widget>[
                 Tab(
-                  text: _thePost.likes.length.toString() + " Faves",
+                  text: thePost.likes.length.toString() + " Faves",
                 ),
-                Tab(text: _thePost.comments.length.toString() + " Comments"),
+                Tab(text: thePost.comments.length.toString() + " Comments"),
               ]),
           backgroundColor: Colors.grey[900],
           leading: IconButton(
@@ -1056,32 +1020,33 @@ class _HomeState extends State<Home> {
             ),
             onPressed: () {
               setState(() {
-                _page = 1;
+                page = 1;
                 build(context);
               });
             },
           ),
         ),
         body: TabBarView(children: <Widget>[
-          getFavesComments(_thePost.likes),
+          getFavesComments(thePost.likes),
           /*ListView(
               padding: EdgeInsets.only(bottom: 90),
               children: comments,
             ),*/
-          getCommentsFaves(_thePost.comments),
-          //getLikes(_thePost.likes),
+          getCommentsFaves(thePost.comments),
+          //getLikes(thePost.likes),
         ]),
       ),
     );
   }
 
   Widget getCommentsFaves(List<Comment> likes) {
+    bool isAdded = false;
     List<Widget> comments = [];
     //DateTime now = DateTime.now();
     for (Comment comment in likes) {
       comments.add(new Container(
           constraints: BoxConstraints(
-            maxWidth: _widthScreen,
+            maxWidth: widthScreen,
           ),
           // height: 45,
           padding: EdgeInsets.only(top: 10),
@@ -1159,7 +1124,7 @@ class _HomeState extends State<Home> {
         ),
         bottomSheet: Container(
           constraints: BoxConstraints(
-            maxWidth: _widthScreen,
+            maxWidth: widthScreen,
           ),
           color: Colors.grey[300],
           child: SingleChildScrollView(
@@ -1181,7 +1146,7 @@ class _HomeState extends State<Home> {
               Container(
                 //Post Button
                 constraints: BoxConstraints(
-                  maxWidth: _widthScreen,
+                  maxWidth: widthScreen,
                 ),
                 padding: EdgeInsets.only(right: 10),
                 child: Row(
@@ -1208,15 +1173,18 @@ class _HomeState extends State<Home> {
                         ),
                         onPressed: () {
                           setState(() {
-                            if (_commentController.text.isEmpty == false) {
-                              _thePost.comments.add(
+                            /*if (_commentController.text.isEmpty == false) {
+                              thePost.comments.add(
                                 new Comment(
-                                    _thePost.user,
+                                    loggedInUser,
                                     _commentController.text,
                                     DateTime.now(),
                                     false),
                               );
-                            }
+                            }*/
+                            isAdded =
+                                post_comment(_commentController.text, thePost);
+                            if (isAdded == true) {}
                           });
                         },
                       ),
