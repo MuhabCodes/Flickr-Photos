@@ -60,9 +60,12 @@ module.exports = {
   },
   async addPersonToPhoto(req, res) {
     try {
+      // get ids from  request
       const { userId } = req.body;
       const { photoId } = req.params;
+
       await addPersonToPhotoServ(photoId, userId);
+
       res.status(200).json({ statusCode: 200 });
     } catch (err) {
       res.json({
@@ -73,9 +76,12 @@ module.exports = {
   },
   async removePersonFromPhoto(req, res) {
     try {
+      // get ids from  request
       const { userId } = req.body;
       const { photoId } = req.params;
+
       await removePersonFromPhotoServ(photoId, userId);
+
       res.status(200).json({ statusCode: 200 });
     } catch (err) {
       res.json({

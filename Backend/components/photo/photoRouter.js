@@ -28,8 +28,10 @@ router.put('/:photoId', editPhoto);
 // delete a photo
 router.delete('/:photoId', deletePhoto);
 
+// add person to photo
 router.route('/:photoId/people').post(addPersonToPhoto);
 
+// remove person from photo
 router.route('/:photoId/people').delete(removePersonFromPhoto);
 
 module.exports = router;
