@@ -32,4 +32,13 @@
   animation-name: zoom; /* add animation to the image when appearing */
   animation-duration: 1.5s;
   z-index: 1; /* Sit on top */
+  padding: 15px;
+}
+
+.privacy-checkbox {
+  margin-right: 10px;
+}
+
+.privacy-model-buttons {
+  margin-left: 250px;
 }
