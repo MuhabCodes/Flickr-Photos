@@ -62,7 +62,9 @@ const PhotoSchema = new Schema({
   { type: Boolean },
   isFriend:
   { type: Boolean },
-
+  photoLocation: {
+    type: String,
+  }
   // add the user reference when it is completed
 });
 
