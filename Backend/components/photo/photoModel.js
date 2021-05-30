@@ -64,7 +64,7 @@ const PhotoSchema = new Schema({
   { type: Boolean },
   location: {
     type: String,
-  }
+  },
   // add the user reference when it is completed
 });
 
