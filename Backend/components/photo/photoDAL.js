@@ -22,5 +22,10 @@ module.exports = {
       { $push: { peopleInPhoto: userId } },
     );
   },
-
+  async removePersonFromPhoto(photoId, userId) {
+    Photo.updateOne(
+      { _id: photoId },
+      { $pull: { peopleInPhoto: userId } },
+    );
+  },
 };
