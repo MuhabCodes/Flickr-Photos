@@ -12,6 +12,7 @@ TextStyle textStyleBold = new TextStyle(
     fontSize: 10);
 TextStyle textStyleLigthGrey =
     new TextStyle(fontFamily: 'Gotham', color: Colors.grey, fontSize: 10);
+TextStyle appBarTitle = new TextStyle(color: Colors.white, fontSize: 15);
 
 Post post1 = new Post(
     /*[new Image.asset('lib/assets/istanbul.jpg')]*/
@@ -23,9 +24,21 @@ Post post1 = new Post(
     [follower1, follower2, follower3],
     [],
     false,
-    false);
+    false,
+    [
+      new NetworkImage(
+          'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
+    ]);
 final User user = new User(
     'Hannah Hatem',
+    AssetImage('lib/assets/photo_1.jpeg'),
+    [follower1, follower2, follower3],
+    [follower1, follower2, follower3],
+    [],
+    [],
+    false);
+User loggedInUser = new User(
+    'LoggedIn user',
     AssetImage('lib/assets/photo_1.jpeg'),
     [follower1, follower2, follower3],
     [follower1, follower2, follower3],
@@ -60,7 +73,15 @@ List<Post> userHomePosts = [
         new Comment(follower2, "Cool one", DateTime.now(), false),
       ],
       false,
-      false),
+      false,
+      [
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
+      ]),
   new Post(
       //['lib/assets/post2.jpg']
       [new AssetImage('lib/assets/post2.jpg')],
@@ -76,7 +97,11 @@ List<Post> userHomePosts = [
         new Comment(follower3, "I'm batman", DateTime.now(), false)
       ],
       false,
-      false),
+      false,
+      [
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
+      ]),
   new Post(
       //['lib/assets/photo5.jpg']
       [new AssetImage('lib/assets/photo5.jpg')],
@@ -91,7 +116,11 @@ List<Post> userHomePosts = [
         new Comment(user, "I know rite!", DateTime.now(), false),
       ],
       false,
-      false),
+      false,
+      [
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
+      ]),
   new Post(
       //['lib/assets/photo5.jpg']
       [new AssetImage('lib/assets/photo5.jpg')],
@@ -110,7 +139,11 @@ List<Post> userHomePosts = [
         new Comment(user, "I know rite!", DateTime.now(), false),
       ],
       false,
-      false),
+      false,
+      [
+        new NetworkImage(
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
+      ]),
 ];
 
 String getPostTime(DateTime postTime) {
@@ -120,14 +153,36 @@ String getPostTime(DateTime postTime) {
   if (timeNow == postTime) {
     result = "now";
   } else if (timeNow.year == postTime.year) {
-    if (timeNow.day != postTime.day && timeNow.month > postTime.month) {
-      if ((timeNow.month - postTime.month) == 1) {
-        result = (timeNow.month - postTime.month).toString() + "mo";
+    if (timeNow.month == postTime.month &&
+        timeNow.day == postTime.day &&
+        timeNow.hour == postTime.hour &&
+        timeNow.minute > postTime.minute) {
+      if ((timeNow.minute - postTime.minute) == 1 &&
+          (timeNow.second - postTime.second) <= 59) {
+        result = (timeNow.minute - postTime.minute).toString() + "m";
       } else {
-        result = (timeNow.month - postTime.month).toString() + "mo";
+        result = (timeNow.minute - postTime.minute).toString() + "m";
       }
-    }
-    if (timeNow.month == postTime.month && timeNow.day > postTime.day) {
+    } else if (timeNow.month == postTime.month &&
+        timeNow.day == postTime.day &&
+        (timeNow.hour - postTime.hour) == 1) {
+      int temp1 = 0;
+
+      temp1 = 60 - postTime.minute;
+      temp1 = timeNow.minute + temp1;
+      if (temp1 <= 59 && temp1 > 0)
+        result = (temp1).toString() + "m";
+      else
+        result = "1h";
+    } else if (timeNow.month == postTime.month &&
+        timeNow.day == postTime.day &&
+        timeNow.hour > postTime.hour) {
+      if ((timeNow.hour - postTime.hour) == 1) {
+        result = (timeNow.hour - postTime.hour).toString() + "h";
+      } else {
+        result = (timeNow.hour - postTime.hour).toString() + "h";
+      }
+    } else if (timeNow.month == postTime.month && timeNow.day > postTime.day) {
       if ((timeNow.day - postTime.day) >= 1 &&
           (timeNow.day - postTime.day) <= 6) {
         result = (timeNow.day - postTime.day).toString() + "d";
@@ -138,24 +193,11 @@ String getPostTime(DateTime postTime) {
       } else if ((timeNow.day - postTime.day) <= 29) {
         result = /*(timeNow.day - postTime.day).toString() + */ "3w";
       }
-    }
-    if (timeNow.month == postTime.month &&
-        timeNow.day == postTime.day &&
-        timeNow.hour > postTime.hour) {
-      if ((timeNow.hour - postTime.hour) == 1) {
-        result = (timeNow.hour - postTime.hour).toString() + "h";
+    } else if (timeNow.month > postTime.month) {
+      if ((timeNow.month - postTime.month) == 1) {
+        result = (timeNow.month - postTime.month).toString() + "mo";
       } else {
-        result = (timeNow.hour - postTime.hour).toString() + "h";
-      }
-    }
-    if (timeNow.month == postTime.month &&
-        timeNow.day == postTime.day &&
-        timeNow.hour == postTime.hour &&
-        timeNow.minute > postTime.minute) {
-      if ((timeNow.minute - postTime.minute) == 1) {
-        result = (timeNow.minute - postTime.minute).toString() + "m";
-      } else {
-        result = (timeNow.minute - postTime.minute).toString() + "m";
+        result = (timeNow.month - postTime.month).toString() + "mo";
       }
     }
   } //else if
