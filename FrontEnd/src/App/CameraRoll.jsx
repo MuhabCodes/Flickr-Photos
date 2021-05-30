@@ -8,6 +8,7 @@ import PopoutImageModel from './PopoutImageModel';
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
   const [showModel, setshowModel] = useState(false);
+  const [images, setimage] = useState([]);
   useEffect(() => {
     const mounted = true;
     cameraRollContent()
@@ -18,9 +19,10 @@ function CameraRoll() {
       });
   }, []);
 
-  function handleImageClick() {
+  function handleImageClick(image) {
     setshowModel(!showModel);
-    console.log(showModel);
+    setimage(image);
+    console.log(images);
   }
 
   // this line split the code and arrange it according to taken date
@@ -56,7 +58,7 @@ function CameraRoll() {
         day.map((image) => (
           <div className="images">
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-            <img key={image.photoId} src={image.imagePath} alt="" id="image-size" onClick={handleImageClick} onKeyDown={handleImageClick} />
+            <img key={image.photoId} src={image.imagePath} alt="" id="image-size" onClick={() => handleImageClick(image.imagePath)} onKeyDown={handleImageClick} />
 
             {/* this is the model that is shown when i want to have full screen image */}
             <div id="myModal" className="modal">
@@ -111,9 +113,6 @@ function CameraRoll() {
       </a>
     </div>
   ));
-  const style = {
-    display: 'block',
-  };
 
   return (
     <div>
@@ -124,7 +123,7 @@ function CameraRoll() {
         </div>
         {days}
         <a href="/followers">click me</a>
-        {showModel ? <PopoutImageModel style={style} /> : null}
+        {showModel ? <PopoutImageModel image={images} /> : null}
 
       </div>
     </div>

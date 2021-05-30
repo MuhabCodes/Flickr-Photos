@@ -5,12 +5,12 @@ import React from 'react';
 import './PopoutImageModel.css';
 
 function Example(prop) {
-  const { style } = prop;
+  const { image } = prop;
   return (
     <>
-      <div id="myModal" className="image-modal" style={style}>
+      <div id="myModal" className="image-modal">
         <div className="image-model-content">
-          <img src="https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" className="image-model-size" />
+          <img src={image} alt="" className="image-model-size" />
 
         </div>
       </div>
