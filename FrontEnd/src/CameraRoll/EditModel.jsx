@@ -13,7 +13,10 @@ function EditModel() {
         <span className="close" onClick={closeModel} onKeyDown={closeModel}>&times;</span>
 
         <div className="edit-model-content">
-          <h1>sandy</h1>
+          <h4>Editting 1 photo</h4>
+          <br />
+          <input type="text" id="fname" name="firstname" placeholder="Change title" />
+          <input type="text" id="fname" name="firstname" placeholder="Change discription" />
         </div>
       </div>
     </div>

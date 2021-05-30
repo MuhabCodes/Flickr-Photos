@@ -34,3 +34,13 @@
   z-index: 1; /* Sit on top */
   padding: 15px;
 }
+
+input[type=text],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: small;
+}
