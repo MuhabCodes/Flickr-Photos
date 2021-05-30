@@ -850,7 +850,8 @@
       "photoId": 1,
       "dayUploaded": 28,
       "monthUploaded": "April",
-      "yearUploaded": 2021
+      "yearUploaded": 2021,
+      "userId": 4
     },
     {
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -862,7 +863,8 @@
       "DateTaken": "25/5/2018",
       "dayUploaded": 27,
       "monthUploaded": "june",
-      "yearUploaded": 2021
+      "yearUploaded": 2021,
+      "userId": 4
     },
     {
       "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
