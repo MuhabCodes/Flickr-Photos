@@ -1,5 +1,5 @@
 .follower-card-container {
-  width: 30%;
+  width: 40%;
   padding: 10px;
   display: inline-block;
 }
@@ -12,4 +12,8 @@
 
 .content {
   display: inline-block;
+}
+
+.container {
+  margin: auto;
 }

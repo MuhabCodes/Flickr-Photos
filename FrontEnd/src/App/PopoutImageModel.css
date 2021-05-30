@@ -1,0 +1,17 @@
+.image-modal,
+.image-model-content {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1;
+  bottom: 0;
+  width: 80%; /* Full width */
+  height: 20%; /* Full height */
+  background-color: white; /* Fallback color */
+  box-shadow: 1px 3px rgb(194, 194, 186), -0.2em 0 .4em rgb(194, 194, 186);
+}
+
+.image-model-size {
+  padding: 8px;
+  height: 80px;
+  width: 80px;
+}
