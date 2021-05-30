@@ -15,3 +15,26 @@
   height: 80px;
   width: 80px;
 }
+
+.model-button {
+  padding: 10px;
+  font-size: large;
+}
+
+.model-button-style {
+  margin-right: 30px;
+  color: grey;
+}
+
+.model-button-style:hover {
+  opacity: 0.5;
+}
+
+.delete-button {
+  margin-right: 30px;
+  color: red;
+}
+
+.delete-button:hover {
+  opacity: 0.6;
+}
