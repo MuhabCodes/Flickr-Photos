@@ -30,4 +30,10 @@ router.delete('/:photoId', deletePhoto);
 // add location to photo
 router.post('/:photoId/:photoLocation', addLocation);
 
+// to get location of certain photo : use get/:photoId and do Object destruction to
+// get photoLocation as whole photo will be returned
+
+// to edit location of certain photo : use put/:photoId and send only location so that it will be
+// the only thing to be changed
+
 module.exports = router;
