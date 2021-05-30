@@ -3,6 +3,7 @@ const { addNew } = require('./services/addNew');
 const { getInfo } = require('./services/getInfo');
 const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
+const { addLocation } = require('./services/addLocation');
 
 module.exports = {
   async getRecentPhotos(req, res) {
@@ -49,6 +50,16 @@ module.exports = {
   async deletePhoto(req, res) {
     try {
       return await deletePhoto(req.params.photoId, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async addLocation(req, res) {
+    try {
+      return await addLocation(req.params.photoId, req.params.photoLocation, res);
     } catch (err) {
       return res.json({
         error: 'PhotoNotFound',
