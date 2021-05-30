@@ -5,6 +5,7 @@ const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
 const { addPersonToPhotoServ } = require('./services/addPersonToPhoto');
 const { removePersonFromPhotoServ } = require('./services/removePersonFromPhoto');
+const { isInPhoto } = require('./services/isInPhoto.validation');
 
 module.exports = {
   async getRecentPhotos(req, res) {
@@ -64,13 +65,22 @@ module.exports = {
       const { userId } = req.body;
       const { photoId } = req.params;
 
-      await addPersonToPhotoServ(photoId, userId);
+      // checks that the user is not in the photo
+      if (!isInPhoto(photoId, userId)) {
+        // if user is not in the photo add him
+        await addPersonToPhotoServ(photoId, userId);
 
-      res.status(200).json({ statusCode: 200 });
+        res.status(200).json({ statusCode: 200 });
+      }
+
+      res.status(409).json({
+        statusCode: 409,
+        message: 'The request couldn;t be completed due to the current state of the resource',
+      });
     } catch (err) {
       res.json({
-        error: 'PhotoNotFound',
-        statusCode: 404,
+        error: "Server couldn't handle the request",
+        statusCode: 500,
       });
     }
   },
@@ -80,13 +90,21 @@ module.exports = {
       const { userId } = req.body;
       const { photoId } = req.params;
 
-      await removePersonFromPhotoServ(photoId, userId);
+      // checks that the user is in the photo
+      if (isInPhoto(photoId, userId)) {
+        // if user in photo remove him from it
+        await removePersonFromPhotoServ(photoId, userId);
 
-      res.status(200).json({ statusCode: 200 });
+        res.status(200).json({ statusCode: 200 });
+      }
+      res.status(409).json({
+        statusCode: 409,
+        message: 'The request couldn;t be completed due to the current state of the resource',
+      });
     } catch (err) {
       res.json({
-        error: 'PhotoNotFound',
-        statusCode: 404,
+        error: "Server couldn't handle the request",
+        statusCode: 500,
       });
     }
   },
