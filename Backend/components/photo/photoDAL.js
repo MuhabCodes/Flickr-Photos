@@ -16,8 +16,8 @@ module.exports = {
   async removePhoto(photoToRemove) {
     return photoToRemove.remove();
   },
-  async addPersonToPhoto(photoId, userId) {
-    Photo.updateOne(
+  async addPersonToPhotoDAL(photoId, userId) {
+    await Photo.updateOne(
       { _id: photoId },
       { $push: { peopleInPhoto: userId } },
     );
