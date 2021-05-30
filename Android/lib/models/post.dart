@@ -14,8 +14,9 @@ class Post {
   DateTime date;
   bool isLiked;
   bool isSaved;
+  List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
   //List<AssetImage> img1 = [new AssetImage('lib/assets/photo5.jpg')];
 
   Post(this.image, this.user, this.description, this.date, this.likes,
-      this.comments, this.isLiked, this.isSaved);
+      this.comments, this.isLiked, this.isSaved, this.imagePath);
 }
