@@ -12,7 +12,7 @@ import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
 import Footer from './Footer';
-import CameraRoll from './CameraRoll';
+import CameraRoll from '../CameraRoll/CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
