@@ -54,7 +54,7 @@ const PhotoSchema = new Schema({
     type: Number,
     required: true,
   },
-  inPhoto: {
+  peopleInPhoto: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
   },
