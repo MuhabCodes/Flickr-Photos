@@ -60,7 +60,7 @@ export default function SignUp() {
       data: JSON.stringify(UserInfo),
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', resp.token);
+      localStorage.setItem('token', resp.data.token);
     });
   };
 
