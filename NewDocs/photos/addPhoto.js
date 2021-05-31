@@ -19,6 +19,8 @@
  * @apiParam (Body) {Object[]} [inPhoto] Array of user objects in the photo
  * @apiParam (Body) {Object[]} [tags] Array of tag objects in the photo
  * @apiParam (Body) {String} [cameraName] The name of the camera used
+ * @apiParam {Number} width the width of the image
+ * @apiParam {Number} height the height of the image
  *
  *
  *
@@ -34,6 +36,9 @@
  *      "description":"A fantastic view on the lake",
  *      "captureDate":"2020-05-01T01:50:08",
  *      "uploadDate":"2021-12-01T19:11:08",
+ *      "imageUrl":"https://images.unsplash.com/",
+ *      "width":1920,
+ *      "height":2000,
  *      "isPublic":true,
  *      "secret":"dfabhfu234",
  *      "imageUrl":"www.example.com/123"
