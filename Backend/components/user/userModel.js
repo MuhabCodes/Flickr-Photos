@@ -37,7 +37,10 @@ const userSchema = mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Group',
   },
-  // TODO : Add proper data structure to store following and followers
+  followers: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'User',
+  },
 },
 { autoCreate: true });
 
