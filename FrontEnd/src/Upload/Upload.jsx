@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import jwt from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Upload.css';
 import { Link, useHistory } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import CancelIcon from '@material-ui/icons/Cancel';
 import toDataUrl from './ToDataUrl';
-import configData from '../config.json';
 
 function Upload() {
+  const history = useHistory(); // useHitory to redirect the user
+  const userjwt = jwt(localStorage.getItem('token'));
   const [selectedFiles, setSelectedFiles] = useState([]); // images state (intially empty)
   const [restData, setRestData] = useState([]); // rest File data
   const [photoTag, setPhotoTag] = useState(''); // set photo tags on input change
   const [photoAlbum, setPhotoAlbum] = useState(''); // set photo album on input change
   const [photoPrivacy, setPhotoPrivacy] = useState('public'); // set privacy on change (default public)
-  const history = useHistory(); // useHitory to redirect the user
   const imgElement = React.useRef(null); // to get image dimensions
 
   // handle input change
@@ -47,7 +49,7 @@ function Upload() {
         alt=""
         ref={imgElement}
         onLoad={() => {
-          restData[index].photoWidth = imgElement.current.naturalWidth;
+          restData[index].photoWidth = imgElement.current.naturalWidth; // get image width & height
           restData[index].photoHeight = imgElement.current.naturalHeight;
         }}
       />
@@ -78,37 +80,27 @@ function Upload() {
     const uploadButton = document.getElementById('enabled-button');
     uploadButton.id = 'disabled-button'; // set the upload to disabled
     if (selectedFiles.length > 0) {
-      // const dataArray = [];
+      const dataArray = [];
       selectedFiles.forEach((selectedFile, index) => {
         const data = {}; // create data object
         data.title = restData[index].fileName; // set photo name
         data.date = restData[index].fileDate; // set photo upload date
         data.width = restData[index].photoWidth;
         data.height = restData[index].photoHeight;
-        data.user = 'me';
+        data.userId = userjwt.sub;
         data.tag = photoTag;
         data.album = photoAlbum;
         data.privacy = photoPrivacy;
         toDataUrl(selectedFile)
           .then((dataUrl) => {
             data.src = dataUrl; // set image src
-            fetch(`${configData.SERVER_URL}/photos`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data),
-            }).then(() => {
-              // console.log('new photos added');
-              // console.log(data);
-            }).catch((err) => {
-              if (!err.name === 'AbortError') {
-                // console.log(err.message);
-              }
-            });
-            // dataArray.push(data);
+            dataArray.push(data);
+            axios.post('/photos', data)
+              .then(() => {
+                history.push(`/profile/photostream/${userjwt.sub}`); // redirect to photostream after upload
+              });
           });
       });
-      history.push('/profile/photostream');
-      // console.log(dataArray);
     }
   };
 
