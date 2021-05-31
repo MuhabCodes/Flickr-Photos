@@ -8,11 +8,11 @@
  * 
  * 
  *
- * @apiParam  {String} userId The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.
- * @apiParam  {Date} [minFaveDate] Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.
- * @apiParam  {Date} [maxFaveDate] Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.
- * @apiParam  {Number} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
- * @apiParam  {Number} [page] The page of results to return. If this argument is omitted, it defaults to 1
+ * @apiParam  (Body) {String} userId The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.
+ * @apiParam  (Body) {Date} [minFaveDate] Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.
+ * @apiParam  (Body) {Date} [maxFaveDate] Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.
+ * @apiParam  (Body) {Number} [perPage] Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
+ * @apiParam  (Body) {Number} [page] The page of results to return. If this argument is omitted, it defaults to 1
  * 
  * @apiSuccess (Success 200) {Object[]} favoritesList List of all user favorites
  * @apiSuccess (Success 200) {Number} statusCode The status code
