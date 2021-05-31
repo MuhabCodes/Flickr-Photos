@@ -19,8 +19,8 @@
  * @apiParam (Body) {Object[]} [inPhoto] Array of user objects in the photo
  * @apiParam (Body) {Object[]} [tags] Array of tag objects in the photo
  * @apiParam (Body) {String} [cameraName] The name of the camera used
- * @apiParam {Number} width the width of the image
- * @apiParam {Number} height the height of the image
+ * @apiParam (Body) {Number} width the width of the image
+ * @apiParam (Body) {Number} height the height of the image
  *
  *
  *
