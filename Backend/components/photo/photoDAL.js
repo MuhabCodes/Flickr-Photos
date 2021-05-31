@@ -32,7 +32,9 @@ module.exports = {
   async getPeopleInPhotoDAL(photoId) {
     const inPhoto = await Photo.findById(photoId)
       .select('peopleInPhoto')
-      .populate('peopleInPhoto');
+      .populate('peopleInPhoto')
+      .select('displayName personId')
+      .populate('personId');
 
     return inPhoto;
   },
