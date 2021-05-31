@@ -8,11 +8,6 @@ const EditPersonalInfo = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   // For not rendering of text boxes until user info gets fetched
-  // const headers = {
-  //   'Content-Type': 'application/json',
-  // Authorization: 'Bearer eyJhbGciO',
-  // };
-  // Headers for storing the token (Will be taken from local storage)
   const userjwt = jwt(localStorage.getItem('token'));
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
