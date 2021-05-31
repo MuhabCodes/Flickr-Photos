@@ -21,6 +21,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import Upload from '../Upload/Upload';
 
 function App() {
   return (
@@ -73,8 +74,11 @@ function App() {
             <Route exact path="/Explore">
               <Explore />
             </Route>
-            <Route exact path="/About">
+            <Route exact path="/about">
               <About />
+            </Route>
+            <Route exact path="/photos/upload">
+              <Upload />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
