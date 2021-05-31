@@ -1,7 +1,7 @@
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
 
-const createNotification = async (req, res) => {
+const createLikeNotification = async (req, res) => {
   const { photoId } = req.params;
 
   try {
@@ -35,5 +35,5 @@ const createNotification = async (req, res) => {
 };
 
 module.exports = {
-  createNotification,
+  createLikeNotification,
 };

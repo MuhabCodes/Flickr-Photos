@@ -2,12 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 const favoriteController = require('./favoritesController');
-const { createNotification } = require('../../middleware/createNotification');
+const { createLikeNotification } = require('../../middleware/createNotification');
 
 require('dotenv').config();
 
 router.post('/:photoId',
-  favoriteController.add, createNotification);
+  favoriteController.add, createLikeNotification);
 
 router.delete('/:photoId', favoriteController.deleteFavorite);
 
