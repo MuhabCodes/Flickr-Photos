@@ -11,21 +11,21 @@ import Login from '../Login/logIn';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
-import Footer from './Footer';
 import CameraRoll from './CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
 import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
-import NavBar from './Navbar';
+// import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import StartPage from '../StartPage/StartPage';
+import NavBarSP from '../StartPage/NavBarSP';
 
 function App() {
   return (
     <div className="flickr-main">
-      <NavBar />
       <Router>
         <div className="app">
           <Switch>
@@ -76,13 +76,17 @@ function App() {
             <Route exact path="/About">
               <About />
             </Route>
+            <Route exact path="/ex">
+              <NavBarSP />
+              <StartPage />
+            </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
               <NotFound />
             </Route>
+
           </Switch>
         </div>
-        <Footer />
       </Router>
     </div>
   );
