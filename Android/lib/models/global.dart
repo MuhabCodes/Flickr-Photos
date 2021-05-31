@@ -4,15 +4,33 @@ import 'comment.dart';
 import 'post.dart';
 import 'user.dart';
 
-TextStyle textStyle = new TextStyle(fontFamily: 'Gotham', fontSize: 10);
+TextStyle textStyle = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 15,
+  color: Colors.black,
+);
 TextStyle textStyleBold = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
     color: Colors.black,
-    fontSize: 10);
-TextStyle textStyleLigthGrey =
-    new TextStyle(fontFamily: 'Gotham', color: Colors.grey, fontSize: 10);
-TextStyle appBarTitle = new TextStyle(color: Colors.white, fontSize: 15);
+    fontSize: 15);
+TextStyle textStyleLigthGrey = new TextStyle(
+  fontFamily: 'Gotham',
+  color: Colors.grey,
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+);
+TextStyle textStyleDarkGrey = new TextStyle(
+  fontFamily: 'Gotham',
+  color: Colors.grey,
+  fontSize: 13,
+  fontWeight: FontWeight.bold,
+);
+TextStyle appBarTitleStyle = new TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+  fontWeight: FontWeight.bold,
+);
 
 Post post1 = new Post(
     /*[new Image.asset('lib/assets/istanbul.jpg')]*/
@@ -31,7 +49,8 @@ Post post1 = new Post(
     ]);
 final User user = new User(
     'Hannah Hatem',
-    AssetImage('lib/assets/photo_1.jpeg'),
+    new NetworkImage(
+        'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg'),
     [follower1, follower2, follower3],
     [follower1, follower2, follower3],
     [],
@@ -39,7 +58,8 @@ final User user = new User(
     false);
 User loggedInUser = new User(
     'LoggedIn user',
-    AssetImage('lib/assets/photo_1.jpeg'),
+    new NetworkImage(
+        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
     [follower1, follower2, follower3],
     [follower1, follower2, follower3],
     [],
@@ -47,11 +67,32 @@ User loggedInUser = new User(
     false);
 
 User follower1 = new User(
-    'ZiadAkram', AssetImage('lib/assets/follower3.jpeg'), [], [], [], [], true);
+    'ZiadAkram',
+    new NetworkImage(
+        'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg'),
+    [],
+    [],
+    [],
+    [],
+    true);
 User follower2 = new User(
-    'Mehrez', AssetImage('lib/assets/follower2.jpg'), [], [], [], [], false);
-User follower3 = new User('MostafaUsama',
-    AssetImage('lib/assets/their_profile.jpeg'), [], [], [], [], true);
+    'Mehrez',
+    new NetworkImage(
+        'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg'),
+    [],
+    [],
+    [],
+    [],
+    false);
+User follower3 = new User(
+    'MostafaUsama',
+    new NetworkImage(
+        'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg'),
+    [],
+    [],
+    [],
+    [],
+    true);
 
 //Create a list which contains the posts in home page
 
