@@ -3,6 +3,7 @@ const morgan = require('morgan');
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 // require routes only here
 const favoritesRouter = require('./components/favorites/favoritesRouter');
 const authRouter = require('./components/auth/authRouter');
@@ -23,6 +24,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // use routing i.e. app.use('foo', bar)
 app.use('/auth', authRouter);
