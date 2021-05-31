@@ -25,7 +25,7 @@ class ViewAllPhotos extends StatelessWidget {
         brightness: Brightness.dark,
         title: Text(
           textTitle,
-          style: appBarTitle,
+          style: appBarTitleStyle,
           maxLines: 3,
         ),
       ),
