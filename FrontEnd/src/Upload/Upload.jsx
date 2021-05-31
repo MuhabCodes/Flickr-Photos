@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Upload.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import CancelIcon from '@material-ui/icons/Cancel';
 import toDataUrl from './ToDataUrl';
 import configData from '../config.json';
 
@@ -11,6 +13,8 @@ function Upload() {
   const [photoTag, setPhotoTag] = useState(''); // set photo tags on input change
   const [photoAlbum, setPhotoAlbum] = useState(''); // set photo album on input change
   const [photoPrivacy, setPhotoPrivacy] = useState('public'); // set privacy on change (default public)
+  const history = useHistory(); // useHitory to redirect the user
+  const imgElement = React.useRef(null); // to get image dimensions
 
   // handle input change
   const handleImageChange = (e) => {
@@ -29,8 +33,31 @@ function Upload() {
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file)); // avoid memory leak
     }
   };
+  // cancel upload of selected files
+  const deleteItem = (i) => {
+    setSelectedFiles((currentItems) => currentItems.filter((item, index) => index !== i));
+    setRestData((currentItems) => currentItems.filter((item, index) => index !== i));
+  };
   // Render photos for preview
-  const renderPhotos = (source) => source.map((photo) => <img id="added-photos" src={photo} alt="" key={photo} />);
+  const renderPhotos = (source) => source.map((photo, index) => (
+    <div key={photo}>
+      <img
+        id="added-photos"
+        src={photo}
+        alt=""
+        ref={imgElement}
+        onLoad={() => {
+          restData[index].photoWidth = imgElement.current.naturalWidth;
+          restData[index].photoHeight = imgElement.current.naturalHeight;
+        }}
+      />
+      {' '}
+      {/* cancel button */}
+      <IconButton id="cancel-button" color="secondary" onClick={() => deleteItem(index)}>
+        <CancelIcon fontSize="small" />
+      </IconButton>
+    </div>
+  ));
 
   // button state and empty state whether it's disabled or enabled
   const [enabled, setEnabled] = useState(false);
@@ -48,47 +75,40 @@ function Upload() {
   // Handling upload event
   const handleUpload = (e) => {
     e.preventDefault();
+    const uploadButton = document.getElementById('enabled-button');
+    uploadButton.id = 'disabled-button'; // set the upload to disabled
     if (selectedFiles.length > 0) {
-      const dataArray = [];
+      // const dataArray = [];
       selectedFiles.forEach((selectedFile, index) => {
         const data = {}; // create data object
         data.title = restData[index].fileName; // set photo name
         data.date = restData[index].fileDate; // set photo upload date
-        // data.id = index;
+        data.width = restData[index].photoWidth;
+        data.height = restData[index].photoHeight;
+        data.user = 'me';
         data.tag = photoTag;
         data.album = photoAlbum;
         data.privacy = photoPrivacy;
         toDataUrl(selectedFile)
           .then((dataUrl) => {
             data.src = dataUrl; // set image src
-            const image = new Image();
-            image.src = dataUrl;
-            image.onload = function imageDimensions() { // get image dimensions
-              // eslint-disable-next-line react/no-this-in-sfc
-              data.photoWidth = this.width;
-              // eslint-disable-next-line react/no-this-in-sfc
-              data.photoHeight = this.height;
-            };
-            // const uploadButton = document.getElementById('enabled-button');
-            // uploadButton.id = 'disabled-button';
             fetch(`${configData.SERVER_URL}/photos`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),
             }).then(() => {
-              // eslint-disable-next-line no-console
-              console.log('new photos added');
-              console.log(data);
+              // console.log('new photos added');
+              // console.log(data);
             }).catch((err) => {
               if (!err.name === 'AbortError') {
-                console.log(err.message);
+                // console.log(err.message);
               }
             });
-            dataArray.push(data); // push object into array
+            // dataArray.push(data);
           });
       });
-      // eslint-disable-next-line no-console
-      console.log(dataArray);
+      history.push('/profile/photostream');
+      // console.log(dataArray);
     }
   };
 
