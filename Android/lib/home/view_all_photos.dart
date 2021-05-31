@@ -1,5 +1,6 @@
 import 'package:flickr/home/image_fullscreen.dart';
 import 'package:flickr/models/global.dart';
+import 'package:flickr/models/post.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -7,11 +8,12 @@ class ViewAllPhotos extends StatelessWidget {
   String textTitle = "";
   List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
   double _widthScreen = 0;
-  ViewAllPhotos(this.textTitle, this.imagePath);
+  Post thePost;
+  ViewAllPhotos(this.textTitle, this.imagePath, this.thePost);
 
-  void selectScreen(BuildContext ctx, NetworkImage imageRoll) {
+  void selectScreen(BuildContext ctx, NetworkImage imageRoll, Post post) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return ImageFullscreen(imageRoll);
+      return ImageFullscreen(imageRoll, post);
     }));
   }
 
@@ -86,7 +88,7 @@ class ViewAllPhotos extends StatelessWidget {
                   )),
             ),
             onTap: () {
-              selectScreen(context, image);
+              selectScreen(context, image, thePost);
             },
           ),
         ]));
