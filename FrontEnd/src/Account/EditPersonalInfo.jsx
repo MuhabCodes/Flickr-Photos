@@ -30,13 +30,6 @@ const EditPersonalInfo = () => {
       });
   }, []);
 
-  // Here we decode the jwt to get the sub property which is the userid
-
-  // axios.patch(`${configData.SERVER_URL}/users/${userjwt.sub}`, {
-  //   method: 'patch',
-  //   headers,
-  //   data: JSON.stringify(ProfileInfo),
-  // })
   const handleSubmit = (e) => {
     e.preventDefault();
     const ProfileInfo = {
