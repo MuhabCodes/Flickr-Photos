@@ -107,7 +107,7 @@ List<Post> userHomePosts = [
       ],
       user,
       "Deeply Exhausted",
-      DateTime.now(),
+      DateTime(2021, 05, 31, 20, 38, 59),
       [follower1, follower2, follower3],
       [
         new Comment(follower1, "This was amazing!", DateTime.now(), false),
@@ -252,4 +252,15 @@ String getPostTime(DateTime postTime) {
     result = "unConditional";
   }
   return result;
+}
+
+double convertDateToNum(DateTime postTime) {
+  double total = 0;
+  total = postTime.year +
+      postTime.month +
+      postTime.hour +
+      postTime.minute / 10 +
+      postTime.second / 100;
+
+  return total;
 }
