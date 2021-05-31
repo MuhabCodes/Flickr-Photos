@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';

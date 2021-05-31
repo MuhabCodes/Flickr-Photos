@@ -7,7 +7,7 @@ import AppBar from '../Signup/flickrbar';
 import VerifySignup from '../Signup/VerifySignup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from '../Login/logIn';
+import Login from '../Login/Login';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
