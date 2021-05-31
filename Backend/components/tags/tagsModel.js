@@ -6,11 +6,11 @@ const tagSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  tagText: {
+  tagRaw: {
     type: String,
     unique: true,
   },
-  tagRaw: {
+  tagText: {
     type: String,
     required: true,
   },

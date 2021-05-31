@@ -44,7 +44,7 @@ const PhotoSchema = new Schema({
   },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Comment',
+    ref: 'Tag',
   },
   width: {
     type: Number,
