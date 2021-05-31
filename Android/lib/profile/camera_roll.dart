@@ -19,19 +19,57 @@ class _CameraRollState extends State<CameraRoll> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            height: size.height * 0.05,
             decoration: BoxDecoration(color: Colors.grey[350]),
-            padding: EdgeInsets.only(top: 8, bottom: 8),
+            //padding: EdgeInsets.only(top: 8, bottom: 8),
             child: TextButton(
                 onPressed: () {
-                  photoProvider.setDateTaken();
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                            height: MediaQuery.of(context).size.height * 0.16,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    photoProvider.setDateTaken("Date Taken");
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "Date Taken",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    photoProvider.setDateTaken("Date Uploaded");
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "Date Uploaded",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ));
+                      });
                 },
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   Text(
-                    photoProvider.dateTaken ? "Date Uploaded" : "Date Taken",
+                    photoProvider.dateTaken ? "Date Taken" : "Date Uploaded",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        fontSize: 16),
+                        fontSize: 14),
                   ),
                   Icon(
                     Icons.arrow_drop_down,
