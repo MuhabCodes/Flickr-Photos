@@ -37,3 +37,35 @@ module.exports.findPhotoWithTags = async function findPhotoWithTags(photoId) {
 
   return photoObj;
 };
+
+module.exports.removeTagFromPhoto = async function removeTagFromPhoto(photoId, tagId) {
+  const photoObj = await Photo.findById(photoId).update(
+    {},
+    { $pull: { tags: tagId } },
+  );
+  return photoObj;
+};
+
+module.exports.removeTagFromAllPhotos = async function removeTagFromAllPhotos(tagId) {
+  const photoObj = await Photo.find().update(
+    {},
+    { $pull: { tags: tagId } },
+    { multi: true },
+  );
+  return photoObj;
+};
+
+module.exports.removeTag = async function removeTag(tagId) {
+  const tagObj = await Tags.findById(tagId).remove();
+  return tagObj;
+};
+
+module.exports.getAllTags = async function getAllTags() {
+  const tagObj = await Tags.find();
+  return tagObj;
+};
+
+module.exports.getTagWithId = async function getTagWithId(tagId) {
+  const tagObj = await Tags.findById(tagId);
+  return tagObj;
+};

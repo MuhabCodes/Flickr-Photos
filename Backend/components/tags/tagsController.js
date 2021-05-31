@@ -100,3 +100,60 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
     return res.status(500).json(error);
   }
 };
+
+module.exports.removeTagFromPhoto = async function removeTagFromPhoto(req, res) {
+  const { body, params } = req;
+
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+
+    const photoObj = await getPhotoById(params.photoId);
+    if (currentUser.userId != photoObj.user) {
+      return res.status(403).json({
+        message: 'You are not authorized to delete the tag',
+      });
+    }
+    const photoWithoutTag = await tagsDAL.removeTagFromPhoto(params.photoId, body.tagId);
+    return res.status(200).json({
+      message: 'Tag deleted from photo successfully',
+      photoObj,
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+module.exports.deleteTag = async function deleteTag(req, res) {
+  const { params } = req;
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+    const tagObj = await tagsDAL.getTagWithId(params.tagId);
+    console.log(tagObj);
+    // check if the owner of tag is the current User
+    if (currentUser.userId == tagObj.ownerId) {
+      console.log('You are the user');
+      // remove this tag from all the photos
+      const photoWithoutTag = await tagsDAL.removeTagFromAllPhotos(params.tagId);
+      const removedTag = await tagsDAL.removeTag(params.tagId);
+      return res.status(200).json({
+        message: 'Tag removed Successfully from tags and photos',
+      });
+    }
+    return res.status(403).json({
+      message: "You don't have access to delete the tag",
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+module.exports.getAllTags = async function getAllTags(req, res) {
+  try {
+    const tagObj = await tagsDAL.getAllTags();
+    return res.status(200).json(tagObj);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
