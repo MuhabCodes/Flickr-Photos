@@ -19,14 +19,14 @@
    "photoId": "2619",
    "tagsList": [
       {
-         "photoId": "156",
+         "tagId": "156",
          "author": "12037949754@N01",
          "authorName": "Bees",
          "tagRaw": "tag 1",
          "tagText": "tag1"
       },
       {
-         "photoId": "157",
+         "tagId": "157",
          "author": "12037949754@N01",
          "authorName": "Bees",
          "tagRaw": "tag 2",
