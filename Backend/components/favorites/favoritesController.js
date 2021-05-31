@@ -4,7 +4,7 @@ const favoriteDAL = require('./favoritesDAL');
 
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
-exports.add = async function addFavorite(req, res) {
+exports.add = async function addFavorite(req, res, next) {
   const { authorization } = req.headers;
 
   const { userId } = await decryptAuthToken(authorization);
@@ -20,18 +20,14 @@ exports.add = async function addFavorite(req, res) {
       favoriteDa: req.body.favoriteDate,
       photoId: req.params.photoId,
     });
-    return res.status(201).json({
-      message: 'Favorite added succesfully',
-      favoriteCreated:
 
-{
-  _id: favorite.id,
-  user: favorite.user,
-  photoId: favorite.photo,
-  favoriteDate: favorite.favoriteDate,
-
-},
-    });
+    req.favoriteCreated = {
+      _id: favorite.id,
+      user: favorite.user,
+      photoId: favorite.photo,
+      favoriteDate: favorite.favoriteDate,
+    };
+    next();
   } catch (err) {
     return res.status(500).json({
       error: err,
