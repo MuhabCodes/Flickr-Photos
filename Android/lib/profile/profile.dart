@@ -1,4 +1,5 @@
-import 'package:flickr/login/get_started.dart';
+import 'package:flickr/profile/public_tab.dart';
+import 'package:flickr/profile/showMoreVertMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,6 @@ class Profile extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _ProfileState extends State<Profile> {
-  bool _notification = false;
   var aboutProvider;
   var photoProvider;
   int _initialIndex = 2;
@@ -31,180 +31,6 @@ class _ProfileState extends State<Profile> {
     photoProvider.setPhotos();
     //photoProvider.arangePhoto();
     super.initState();
-  }
-
-  Future<void> _showMoreVertMenue(double width) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (ctx) {
-        return Dialog(
-          insetPadding: EdgeInsets.all(0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10, top: 5),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Auto-Uploadr',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'notifications',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      onPressed: () {},
-                    ),
-                    Switch(
-                      value: _notification,
-                      onChanged: (val) => {},
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Privacy and Safety',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 20, bottom: 10),
-                    child: TextButton(
-                      child: const Text(
-                        'Use Native Video Camera',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                  Switch(value: true, onChanged: (val) {})
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Divider(
-                  height: 10,
-                  thickness: 2,
-                  color: Colors.grey[300],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Feedback',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'About',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Help',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
-                child: Divider(
-                  height: 10,
-                  thickness: 2,
-                  color: Colors.grey[300],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                color: Colors.grey[900],
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Sign Out',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => GetStarted()),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
   }
 
   @override
@@ -250,7 +76,19 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(0),
                           child: IconButton(
                             icon: Icon(Icons.more_vert),
-                            onPressed: () => _showMoreVertMenue(size.width),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.8,
+                                      child: ShowMoreVertMenu(),
+                                    );
+                                  });
+                            },
                           ),
                         ),
                       )
@@ -259,10 +97,14 @@ class _ProfileState extends State<Profile> {
                   flexibleSpace: FlexibleSpaceBar(
                     background: Container(
                       decoration: BoxDecoration(
+                        color: Colors.black,
                         image: DecorationImage(
+                          colorFilter: new ColorFilter.mode(
+                              Colors.black.withOpacity(0.3), BlendMode.dstATop),
                           //background image for profile
                           image: NetworkImage(
-                              "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg"),
+                            "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg",
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -409,7 +251,7 @@ class _ProfileState extends State<Profile> {
                 AboutTap(),
                 Stats(),
                 CameraRoll(),
-                Icon(Icons.directions_transit),
+                Public(),
                 Icon(Icons.directions_bike),
                 Icon(Icons.directions_bike),
               ],

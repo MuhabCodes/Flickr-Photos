@@ -10,7 +10,7 @@ TextStyle textStyleBold = new TextStyle(
     fontWeight: FontWeight.bold,
     color: Colors.black,
     fontSize: 10);
-TextStyle textStyleLigthGrey =
+TextStyle textStyleLightGrey =
     new TextStyle(fontFamily: 'Gotham', color: Colors.grey, fontSize: 10);
 
 Post post1 = new Post(

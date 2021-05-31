@@ -16,25 +16,36 @@ class PhotoProvider with ChangeNotifier {
   final BuildContext context;
   bool dateTaken = true;
   List<Photo> images = [];
+  List<Photo> triple = [];
   List<DateWithImages> photosWithUploadDate = [];
   List<DateWithImages> photosWithCaptureDate = [];
   PhotoProvider({this.baseUrl, this.context});
-  void setDateTaken() {
-    dateTaken = !dateTaken;
+  void setDateTaken(String date) {
+    if ("Date Taken" == date)
+      dateTaken = true;
+    else {
+      dateTaken = false;
+    }
     notifyListeners();
   }
 
   var url =
-      Uri.parse("https://run.mocky.io/v3/9407f7b1-30ab-4ee8-a2a2-b3c3df6a9630");
+      Uri.parse("https://run.mocky.io/v3/67c647b0-1a0f-45f6-99e1-7da292898854");
   var response;
   Future<void> setPhotos() async {
     await http.get(url).then((value) {
       if (value.statusCode == 200) {
+        if (images.isNotEmpty) {
+          images.clear();
+          photosWithUploadDate.clear();
+          photosWithCaptureDate.clear();
+        }
         images = Photos.fromJson(jsonDecode(value.body)).photos;
         status = PhotoStatus.Success;
 
         arangeWithUploadDate();
         arangewithCaptureDate();
+        triplephotos();
         print(images.length);
         notifyListeners();
       } else {
@@ -53,6 +64,14 @@ class PhotoProvider with ChangeNotifier {
     final formatter = DateFormat("yyyy-MM-dd");
     final dateTimeFromStr = formatter.parse(dateStr);
     return dateTimeFromStr;
+  }
+
+  void triplephotos() {
+    for (int i = 0; i < images.length; i++) {
+      triple.add(images[i]);
+      triple.add(images[i]);
+      triple.add(images[i]);
+    }
   }
 
   void arangeWithUploadDate() {

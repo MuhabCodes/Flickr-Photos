@@ -34,25 +34,27 @@ class _InSearchState extends State<InSearch> {
                     color: Colors.white,
                     size: 15,
                   )),
-              TextFormField(
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(
-                        left: _width * 0.05, top: _height * 0.1),
-                    fillColor: Colors.white,
-                    focusColor: Colors.white,
-                    focusedBorder: InputBorder.none,
-                    constraints: BoxConstraints(
-                        maxHeight: 0.05 * _height, maxWidth: _width * 0.6),
-                    border: InputBorder.none,
-                    hintText: "Flickr Search",
-                    hintStyle: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
+              Container(
+                constraints: BoxConstraints(
+                    maxHeight: 0.05 * _height, maxWidth: _width * 0.6),
+                child: TextFormField(
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          left: _width * 0.05, top: _height * 0.1),
+                      fillColor: Colors.white,
+                      focusColor: Colors.white,
+                      focusedBorder: InputBorder.none,
+                      border: InputBorder.none,
+                      hintText: "Flickr Search",
+                      hintStyle: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                      filled: false,
                     ),
-                    filled: false,
-                  ),
-                  onTap: () {}),
+                    onTap: () {}),
+              ),
               Container(
                   child: ElevatedButton(
                       onPressed: () {
