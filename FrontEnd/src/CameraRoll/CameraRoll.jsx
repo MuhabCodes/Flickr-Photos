@@ -10,12 +10,9 @@ function CameraRoll() {
   const [showModel, setshowModel] = useState(false);
   const [images, setimage] = useState([]);
   useEffect(() => {
-    const mounted = true;
     cameraRollContent()
       .then((items) => {
-        if (mounted) {
-          setphotos(items);
-        }
+        setphotos(items);
       });
   }, []);
 

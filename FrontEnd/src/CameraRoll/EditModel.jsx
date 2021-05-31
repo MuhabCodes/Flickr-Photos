@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './EditModel.css';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 function EditModel() {
   function closeModel() {
     const modal = document.getElementById('editmodel');
     modal.style.display = 'none';
   }
+  const [title, setTitle] = useState('');
+  const [discription, setdiscription] = useState('');
+  const [DateTaken, setdate] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const edit = {
+      title, discription, DateTaken,
+    };
+    axios.patch('/photos/2', edit)
+      .then((resp) => {
+        console.log(resp);
+      });
+  };
+
   return (
     <div>
       <div id="editmodel" className="edit-modal">
@@ -16,9 +32,9 @@ function EditModel() {
         <div className="edit-model-content">
           <h4>Editting 1 photo</h4>
           <br />
-          <form action="">
-            <input type="text" id="fname" name="firstname" placeholder="Change title" />
-            <input type="text" id="fname" name="firstname" placeholder="Change discription" />
+          <form onSubmit={handleSubmit}>
+            <input type="text" id="fname" name="firstname" placeholder="Change title" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input type="text" id="fname" name="firstname" placeholder="Change discription" value={discription} onChange={(e) => setdiscription(e.target.value)} />
             <br />
             <br />
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -57,14 +73,14 @@ function EditModel() {
               {' '}
               Date Taken
             </label>
-            <input id="datetaken" type="datetime-local" name="datetaken" className="edit-select" />
+            <input id="datetaken" type="datetime-local" name="datetaken" className="edit-select" value={DateTaken} onChange={(e) => setdate(e.target.value)} />
             <br />
             <br />
             <br />
             <div className="edit-model-buttons">
               <Button variant="secondary" onClick={closeModel}>Cancel</Button>
               {' '}
-              <Button variant="primary">Change</Button>
+              <Button variant="primary" type="submit">Change</Button>
               {' '}
             </div>
           </form>

@@ -843,62 +843,57 @@
     {
       "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "privacy": "public",
-      "dayTaken": 23,
-      "monthTaken": "April",
-      "yearTaken": 2021,
       "DateTaken": "2017-05-01T01:50:08",
       "id": 1,
-      "dayUploaded": 28,
-      "monthUploaded": "April",
-      "yearUploaded": 2021
+      "title": "water",
+      "discription": "I love water",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
     },
     {
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "id": 2,
       "privacy": "Family",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2018,
-      "DateTaken": "2019-05-01T01:50:08",
-      "dayUploaded": 27,
-      "monthUploaded": "june",
-      "yearUploaded": 2021
+      "DateTaken": "2021-05-13T21:09",
+      "title": "cat",
+      "discription": "i don't love cats",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 2
     },
     {
       "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "id": 3,
       "privacy": "public",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2021,
       "DateTaken": "2020-05-01T01:50:08",
-      "dayUploaded": 27,
-      "monthUploaded": "june",
-      "yearUploaded": 2021
+      "title": "jelly fish",
+      "discription": "I love jelly fish",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
     },
     {
       "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "id": 4,
       "privacy": "private",
-      "dayTaken": 10,
-      "monthTaken": "September",
-      "yearTaken": 2020,
       "DateTaken": "2018-05-01T01:50:08",
-      "dayUploaded": 27,
-      "monthUploaded": "December",
-      "yearUploaded": 2020
+      "title": "compas",
+      "discription": "I love compas",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
     },
     {
       "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "id": 5,
       "privacy": "private",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2021,
       "DateTaken": "2019-05-01T01:50:08",
-      "dayUploaded": 27,
-      "monthUploaded": "December",
-      "yearUploaded": 2020
+      "title": "beach",
+      "discription": "I love the beach",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
     }
   ],
   "Group": [
@@ -956,12 +951,21 @@
       "id": 1,
       "UserName": "Mario Samir",
       "item": "5",
+      "useravatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "Url": "https://www.flickr.com/people/cannon_s5_is/"
     },
     {
       "id": 2,
       "UserName": "Sandy Samir",
       "item": "15",
+      "useravatar": "https://i.pinimg.com/564x/b8/03/78/b80378993da7282e58b35bdd3adbce89.jpg",
+      "Url": "https://www.flickr.com/people/cannon_s5_is/"
+    },
+    {
+      "id": 3,
+      "UserName": "Sarah Ossama",
+      "item": "20",
+      "useravatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "Url": "https://www.flickr.com/people/cannon_s5_is/"
     }
   ]

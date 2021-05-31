@@ -5,15 +5,20 @@
 }
 
 .follower-avatar {
-  width: 15%;
+  width: 13%;
   height: 30%;
   margin-right: 10px;
 }
 
 .content {
   display: inline-block;
+  color: black;
 }
 
 .container {
   margin: auto;
+}
+
+.follower-name {
+  color: black;
 }

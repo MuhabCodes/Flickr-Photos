@@ -1,16 +1,20 @@
-import React from 'react';
-// import FollowersCard from './FollowersCard';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import FollowersCard from './FollowersCard';
 import './FollowersPage.css';
-import configData from '../config.json';
-import useFetch from '../useFetch';
 
 function FollowersPage() {
-  const { data: Followers } = useFetch(`${configData.SERVER_URL}/Followers`);
-  console.log(Followers);
+  const [followers, setfollowers] = useState([]);
+  useEffect(() => {
+    axios.get('/followers')
+      .then((items) => {
+        setfollowers(items.data);
+      });
+  }, []);
+  console.log(followers);
   return (
     <div>
-      <h1 className="follower-title">Sandy follower</h1>
-      {/* <FollowersCard Followers={Followers} /> */}
+      <FollowersCard followers={followers} />
     </div>
   );
 }
