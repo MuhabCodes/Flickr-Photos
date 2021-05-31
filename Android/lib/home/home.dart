@@ -9,6 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 import '../models/global.dart';
+import 'comments_fav_page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,10 +17,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  void selectScreen(BuildContext ctx, int n,
-      {String textTitle, List<NetworkImage> imageRoll}) {
+  void selectScreen(
+    BuildContext ctx,
+    int n, {
+    String textTitle,
+    List<NetworkImage> imageRoll,
+    int favComIndex,
+    Post thePost,
+  }) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      if (n == 1) return ViewAllPhotos(textTitle, imageRoll);
+      if (n == 1)
+        return ViewAllPhotos(textTitle, imageRoll);
+      else if (n == 2) //if user tapped on likes row
+        return CommentsFavs(thePost, 1);
     }));
   }
 
@@ -51,7 +61,7 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Divider(),
+                  //Divider(),
                   Column(
                     children: getPosts(context),
                   )
@@ -138,18 +148,19 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       post.user.username,
-                      style: textStyle,
+                      style: textStyleBold,
                     )
                   ],
                 ),
-                Text(getPostTime(post.date) //post.date.hour.toString() //'2d  '
-                    //icon: Icon(Icons.more_horiz),
-                    //onPressed: () {},
-                    ),
+                Text(
+                  getPostTime(post.date),
+                  style: textStyleDarkGrey,
+                ),
               ],
             ),
           ),
           ContainerResponsive(
+            //Post description
             //Post  title (limit = 100 characters) not description
             //height: 10,
             constraints: BoxConstraints(
@@ -179,10 +190,10 @@ class _HomeState extends State<Home> {
             child: Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 00.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Container(
                     height: 2.2,
-                    width: widthScreen, //340.0,
+                    width: widthScreen - 21, //340.0,
                     color: Colors.grey,
                   ),
                 ),
@@ -233,10 +244,12 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     Text(post.likes.length.toString(),
-                        style: TextStyle(
+                        style:
+                            textStyleLigthGrey /*TextStyle(
                           color: Colors.grey,
                           fontSize: 10,
-                        )),
+                        )*/
+                        ),
                   ],
                 ),
                 Row(
@@ -254,10 +267,12 @@ class _HomeState extends State<Home> {
                       },
                     ),
                     Text("" + post.comments.length.toString(),
-                        style: TextStyle(
+                        style:
+                            textStyleLigthGrey /*TextStyle(
                           color: Colors.grey,
                           fontSize: 10,
-                        )),
+                        )*/
+                        ),
                   ],
                 ),
                 Row(
@@ -299,7 +314,7 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Icon(
                                   Icons.star,
-                                  size: 20,
+                                  size: 22,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -308,20 +323,20 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       Flexible(
+                        fit: FlexFit.loose,
                         child: TextButton(
                           child: Text(
-                              post.likes[0].username +
-                                  ", " +
-                                  post.likes[1].username +
-                                  " and " +
-                                  (post.likes.length - 2).toString() +
-                                  " others faved",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 10,
-                              )),
+                            post.likes[0].username +
+                                ", " +
+                                post.likes[1].username +
+                                " and " +
+                                (post.likes.length - 2).toString() +
+                                " others faved",
+                            style: textStyleBold,
+                          ),
                           onPressed: () {
+                            /*selectScreen(context, 2,
+                                thePost: post, favComIndex: 1);*/
                             setState(() {
                               thePost = post;
                               page = 2;
@@ -351,7 +366,7 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Icon(
                                   Icons.mode_comment_rounded,
-                                  size: 18,
+                                  size: 20,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -370,29 +385,20 @@ class _HomeState extends State<Home> {
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text(post.comments[0].user.username,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                        )),
+                                        style: textStyleBold),
                                     Text(
-                                        post.comments.length.toString() +
-                                            " of " +
-                                            post.comments.length.toString(),
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 10,
-                                        )),
+                                      post.comments.length.toString() +
+                                          " of " +
+                                          post.comments.length.toString(),
+                                      style: textStyleDarkGrey,
+                                    ),
                                   ],
                                 ),
                                 Row(children: <Widget>[
                                   Text(
                                     post.comments[post.comments.length - 1]
                                         .comment,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 10,
-                                    ),
+                                    style: textStyle,
                                   ),
                                 ])
                               ],
@@ -516,23 +522,30 @@ class _HomeState extends State<Home> {
                       //this container is related to the circle avatar only (tiny box contains an avatar)
                       //color: Colors.white,
                       margin: EdgeInsets.only(
-                          right: 10), //user name padding away from pp
+                          right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
                         backgroundImage: post.user.profilePicture,
                       ),
                     ),
-                    Text(
-                      post.user.username +
-                          "\n Post " +
-                          post.image.length.toString() +
-                          " photos",
-                      style: textStyle,
-                    )
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "  " + post.user.username,
+                          style: textStyleBold,
+                        ),
+                        Text(
+                          "Post " + post.image.length.toString() + " photos",
+                          style: textStyle,
+                          //textDirection: TextDirection.ltr,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 Text(
                   getPostTime(post.date),
-                  style: textStyle,
+                  style: textStyleDarkGrey,
                 ),
               ],
             ),
@@ -628,23 +641,31 @@ class _HomeState extends State<Home> {
                       //this container is related to the circle avatar only (tiny box contains an avatar)
                       //color: Colors.white,
                       margin: EdgeInsets.only(
-                          right: 10), //user name padding away from pp
+                          right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
                         backgroundImage: post.user.profilePicture,
                       ),
                     ),
-                    Text(
-                      post.user.username +
-                          "\n Post " +
-                          post.image.length.toString() +
-                          " photos",
-                    )
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "  " + post.user.username,
+                          style: textStyleBold,
+                        ),
+                        Text(
+                          "Post " + post.image.length.toString() + " photos",
+                          style: textStyle,
+                          //textDirection: TextDirection.ltr,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-                Text(getPostTime(post.date) //post.date.hour.toString() //'2d  '
-                    //icon: Icon(Icons.more_horiz),
-                    //onPressed: () {},
-                    ),
+                Text(
+                  getPostTime(post.date),
+                  style: textStyleDarkGrey,
+                ),
               ],
             ),
           ),
@@ -774,7 +795,7 @@ class _HomeState extends State<Home> {
             title: Flexible(
               child: Text(
                 thePost.user.username + "'s Photo",
-                style: appBarTitle,
+                style: appBarTitleStyle,
               ),
             ),
             bottom: TabBar(
@@ -998,7 +1019,7 @@ class _HomeState extends State<Home> {
           title: Flexible(
             child: Text(
               thePost.user.username + "'s Photo",
-              style: appBarTitle,
+              style: appBarTitleStyle,
             ),
           ),
           bottom: TabBar(
@@ -1183,7 +1204,7 @@ class _HomeState extends State<Home> {
                               );
                             }*/
                             isAdded =
-                                post_comment(_commentController.text, thePost);
+                                postComment(_commentController.text, thePost);
                             if (isAdded == true) {}
                           });
                         },
