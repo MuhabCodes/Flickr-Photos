@@ -5,10 +5,10 @@ const commentsController = require('./commentsController');
 
 router.post('/:photoId',
   commentsController.add);
-router.put('/:photoId',
+router.put('/:photoId/:commentId',
   commentsController.editComment);
 
-router.delete('/:photoId', commentsController.deleteComment);
+router.delete('/:photoId/:commentId', commentsController.deleteComment);
 
 router.get('/:photoId', commentsController.findComment);
 

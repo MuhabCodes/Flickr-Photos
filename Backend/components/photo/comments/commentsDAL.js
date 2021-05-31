@@ -1,5 +1,5 @@
 const Comment = require('./commentsModel');
-require('../photoModel');
+const Photo = require('../photoModel');
 require('../../user/userModel');
 
 module.exports.createComment = async function createComment(
@@ -18,17 +18,13 @@ module.exports.createComment = async function createComment(
 };
 module.exports.Editcomment = async function Editcomment(paramtersToEdit) {
   const editedcomment = await Comment.findOneAndUpdate({
-    photo: paramtersToEdit.photoId,
-    user: paramtersToEdit.userId,
+    _id: paramtersToEdit.commentID,
   }, { commentText: paramtersToEdit.commenttex })
     .exec();
   return editedcomment;
 };
-module.exports.deleteComment = async function deleteComment(commentToDelete) {
-  const deletedComment = await Comment.deleteOne({
-    photo: commentToDelete.photoId,
-    user: commentToDelete.userId,
-  })
+module.exports.deleteComment = async function deleteComment(commentToDeleteId) {
+  const deletedComment = await Comment.findByIdAndDelete(commentToDeleteId)
     .exec();
   return deletedComment;
 };
@@ -37,4 +33,9 @@ module.exports.findComment = async function findComment(photoID) {
     .populate('user', 'displayName')
     .exec();
   return foundComment;
+};
+module.exports.findphoto = async function findphoto(photoID) {
+  const foundPhoto = await Photo.findById(photoID)
+    .exec();
+  return foundPhoto;
 };
