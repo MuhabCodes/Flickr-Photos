@@ -12,7 +12,7 @@ import '../models/global.dart';
 
 class CommentsFavs extends StatelessWidget {
   Post thePost;
-  int index = 0;
+  int index = 0; //1 means start with favs tab, 2 means start with comments tab
   CommentsFavs(this.thePost, index);
 
   @override
@@ -20,38 +20,26 @@ class CommentsFavs extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-          appBar: AppBar(
-            title: Flexible(
-              child: Text(
-                thePost.user.username + "'s Photo",
-                style: TextStyle(color: Colors.white),
-              ),
+        appBar: AppBar(
+          title: Flexible(
+            child: Text(
+              thePost.user.username + "'s Photo",
+              style: appBarTitleStyle,
             ),
-            bottom: TabBar(
-                //labelColor: Colors.white,
-                //unselectedLabelColor: Colors.white,
-                indicatorColor: Colors.white,
-                tabs: <Widget>[
-                  Tab(
-                    text: thePost.likes.length.toString() + " Faves",
-                  ),
-                  Tab(text: thePost.comments.length.toString() + " Comments"),
-                ]),
-            backgroundColor: Colors.grey[900],
-            /*leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                setState(() {
-                  page = 1;
-                  build(context);
-                });
-              },
-            ),*/
           ),
-          body: TabBarView(children: <Widget>[
+          bottom: TabBar(
+              labelColor: Colors.white,
+              //key: 2,
+              unselectedLabelColor: Colors.white,
+              indicatorColor: Colors.blue,
+              tabs: <Widget>[
+                Tab(
+                  text: thePost.likes.length.toString() + " Faves",
+                ),
+                Tab(text: thePost.comments.length.toString() + " Comments"),
+              ]),
+        ),
+        /*body: TabBarView(children: <Widget>[
             //getLikes(thePost.likes),
             ListView(
                 //children: likers,
@@ -59,7 +47,9 @@ class CommentsFavs extends StatelessWidget {
             //getCommentsFaves(thePost.comments),
 
             //Container(),
-          ])),
+          ]
+          )*/
+      ),
     );
   }
 }
