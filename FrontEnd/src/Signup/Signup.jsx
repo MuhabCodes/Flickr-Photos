@@ -10,8 +10,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 // import background from './background.jpg';
+import axios from 'axios';
 import icon from './flickrlogo.png';
 import style from './signupStyles';
+import configData from '../config.json';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -50,6 +52,16 @@ export default function SignUp() {
   const history = useHistory();
   const submitForm = () => {
     history.push('/verifysignup');
+    const UserInfo = {
+      firstName, lastName, age, email, password,
+    };
+    axios(`${configData.SERVER_URL}/register/`, {
+      method: 'post',
+      data: JSON.stringify(UserInfo),
+    }).then((resp) => {
+      console.log(resp.data);
+      localStorage.setItem('token', resp.token);
+    });
   };
 
   return (

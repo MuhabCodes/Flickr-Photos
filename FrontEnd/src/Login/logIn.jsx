@@ -9,8 +9,10 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import axios from 'axios';
 import style from './loginStyles';
 import icon from './flickrlogo.png';
+import configData from '../config.json';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -41,6 +43,16 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const submitForm = () => {
+    const UserInfo = {
+      email, password,
+    };
+    axios(`${configData.SERVER_URL}/login/`, {
+      method: 'post',
+      data: JSON.stringify(UserInfo),
+    }).then((resp) => {
+      console.log(resp.data);
+      localStorage.setItem('token', resp.token);
+    });
   };
 
   return (
