@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DeleteModel from './DeleteModel';
 import EditModel from './EditModel';
 import './PopoutImageModel.css';
 import PrivacyModel from './PrivacyModel';
@@ -11,6 +12,9 @@ function PopoutImageModel(prop) {
   // set edit model intial state to false
   const [editModel, setEditModel] = useState(false);
 
+  // set delete model intial state to false
+  const [deleteModel, setdelete] = useState(false);
+
   // show privacy model when clicking on it by changing its state to true
   function ShowPrivacyModel() {
     setPrivacyModel(!privacyModel);
@@ -21,6 +25,12 @@ function PopoutImageModel(prop) {
   function ShowEditModel() {
     setEditModel(!editModel);
     console.log(editModel);
+  }
+
+  // show delete model when clicking on it by changing its state to true
+  function ShowDeleteModel() {
+    setdelete(!deleteModel);
+    console.log(deleteModel);
   }
   return (
     <>
@@ -56,7 +66,7 @@ function PopoutImageModel(prop) {
               {' '}
               Download
             </button>
-            <button type="button" className="delete-button">
+            <button type="button" className="delete-button" onClick={ShowDeleteModel}>
               <i className="far fa-trash-alt" />
               {' '}
               Delete
@@ -66,6 +76,7 @@ function PopoutImageModel(prop) {
       </div>
       {privacyModel ? <PrivacyModel /> : null }
       {editModel ? <EditModel /> : null }
+      {deleteModel ? <DeleteModel /> : null }
     </>
   );
 }

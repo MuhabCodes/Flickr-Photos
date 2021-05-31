@@ -1,4 +1,4 @@
-.edit-modal {
+.delete-modal {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -22,38 +22,15 @@
   transition: 0.3s;
 }
 
-.edit-model-content {
+.delete-model-content {
   margin: auto;
   display: block;
-  width: 40%;
-  height: 70%;
+  width: 30%;
+  height: 20%;
   max-width: 700px;
   background: white;
   animation-name: zoom; /* add animation to the image when appearing */
   animation-duration: 1.5s;
   z-index: 1; /* Sit on top */
   padding: 15px;
-  position: relative;
-}
-
-input[type=text],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: small;
-}
-
-.edit-select {
-  width: auto;
-  height: 10%;
-  position: absolute;
-  right: 10px;
-  border: none;
-}
-
-.edit-model-buttons {
-  margin-left: 380px;
 }

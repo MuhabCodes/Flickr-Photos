@@ -2,7 +2,9 @@ import React from 'react';
 import './PrivacyModel.css';
 import Button from 'react-bootstrap/Button';
 
+// this function is to render the component that edit the photo privacy
 function PrivacyModel() {
+  // close the model when clicking close button or close sign
   function closeModel() {
     const modal = document.getElementById('privacyModel');
     modal.style.display = 'none';
