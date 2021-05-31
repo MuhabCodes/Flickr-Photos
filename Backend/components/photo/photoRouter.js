@@ -9,6 +9,7 @@ const {
   deletePhoto,
   addPersonToPhoto,
   removePersonFromPhoto,
+  getPeopleInPhoto,
 } = require('./photoController');
 
 // all the photos are within the /photos route
@@ -33,5 +34,8 @@ router.route('/:photoId/people').post(addPersonToPhoto);
 
 // remove person from photo
 router.route('/:photoId/people').delete(removePersonFromPhoto);
+
+// get people in photo
+router.route('/:photoId/people').get(getPeopleInPhoto);
 
 module.exports = router;

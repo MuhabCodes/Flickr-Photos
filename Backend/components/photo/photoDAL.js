@@ -1,4 +1,5 @@
 const Photo = require('./photoModel');
+require('../user/userModel');
 
 module.exports = {
   async getLatestPhotos() {
@@ -27,5 +28,12 @@ module.exports = {
       { _id: photoId },
       { $pull: { peopleInPhoto: userId } },
     );
+  },
+  async getPeopleInPhotoDAL(photoId) {
+    const inPhoto = await Photo.findById(photoId)
+      .select('peopleInPhoto')
+      .populate('peopleInPhoto');
+
+    return inPhoto;
   },
 };
