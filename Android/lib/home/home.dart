@@ -27,11 +27,29 @@ class _HomeState extends State<Home> {
   }) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       if (n == 1)
-        return ViewAllPhotos(textTitle, imageRoll);
+        return ViewAllPhotos(textTitle, imageRoll, thePost);
       else if (n == 2) //if user tapped on likes row
         return CommentsFavs(thePost, 1);
     }));
   }
+
+  /* void arangePostsWithUploadDate() {
+    
+    for (int i = 0; i < userHomePosts.length; i++) {
+      List<Post> tempList = [];
+      tempList.add(userHomePosts[0]);;
+      
+
+      for (int j = i + 1; j < userHomePosts.length; j++) {
+        if (userHomePosts[i].date == userHomePosts[j].date) {
+          tempList.add(userHomePosts[j]);
+          i++;
+        }
+      }
+      
+    }
+    userHomePosts=tempList;
+  }*/
 
   //List<Widget> likers = [];
   bool _isNumImgTwo = true;
@@ -73,6 +91,7 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> getPosts(BuildContext context) {
+    //arangePostsWithUploadDate();
     List<Widget> posts = [];
     int index = 0;
     for (Post post in userHomePosts) {
@@ -129,6 +148,7 @@ class _HomeState extends State<Home> {
             constraints: BoxConstraints(
               maxWidth: widthScreen,
             ),
+
             color: Colors.white,
             padding: EdgeInsets.all(10),
             child: Row(
@@ -166,27 +186,43 @@ class _HomeState extends State<Home> {
             constraints: BoxConstraints(
               maxWidth: widthScreen,
             ),
+            decoration: BoxDecoration(
+              // 'decoration:' doesn't allow writing 'color:' after or before it
+              border: Border.all(
+                color: Colors.white, // white as border color
+                width: 0,
+              ),
+              color: Colors.white,
+            ),
             heightResponsive: true,
             widthResponsive: true,
             //constraints: BoxConstraints.expand(height: 60),
             padding: EdgeInsets.only(left: 20),
-            color: Colors.white,
+            //color: Colors.red,
+
             child: Row(
               children: <Widget>[
-                Flexible(
-                    child: Text(
+                Text(
                   post.description,
                   style: textStyle,
+                  maxLines: 5,
                 ) //+
-                    // " hi life is a journey and i need patience is the description box flexible with text?"),
-                    ),
+                // " hi life is a journey and i need patience is the description box flexible with text?"),
               ],
             ),
           ),
           Container(
             //Draw horizontal line
             constraints: BoxConstraints.expand(height: 20, width: widthScreen),
-            color: Colors.white,
+            decoration: BoxDecoration(
+              // 'decoration:' doesn't allow writing 'color:' after or before it
+              border: Border.all(
+                color: Colors.white, // white as border color
+                width: 0,
+              ),
+              color: Colors.white,
+            ),
+            //color: Colors.white,
             child: Row(
               children: <Widget>[
                 Padding(
@@ -564,7 +600,9 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       selectScreen(context, 1,
-                          textTitle: textTitle1, imageRoll: post.imagePath);
+                          textTitle: textTitle1,
+                          imageRoll: post.imagePath,
+                          thePost: post);
                       setState(() {});
                     },
                   ),
@@ -1091,20 +1129,25 @@ class _HomeState extends State<Home> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        RichText(
-                          text: new TextSpan(
-                            style: new TextStyle(
-                              fontSize: 10.0,
-                              color: Colors.black,
+                        Container(
+                          constraints:
+                              BoxConstraints(maxWidth: widthScreen - 80),
+                          child: RichText(
+                            maxLines: null,
+                            text: new TextSpan(
+                              style: new TextStyle(
+                                fontSize: 10.0,
+                                color: Colors.black,
+                              ),
+                              children: <TextSpan>[
+                                new TextSpan(
+                                    text: comment.user.username + "\n",
+                                    style: textStyleBold),
+                                new TextSpan(text: '', style: textStyle),
+                                new TextSpan(
+                                    text: comment.comment, style: textStyle),
+                              ],
                             ),
-                            children: <TextSpan>[
-                              new TextSpan(
-                                  text: comment.user.username + "\n",
-                                  style: textStyleBold),
-                              new TextSpan(text: '', style: textStyle),
-                              new TextSpan(
-                                  text: comment.comment, style: textStyle),
-                            ],
                           ),
                         ),
                         Row(
@@ -1152,8 +1195,10 @@ class _HomeState extends State<Home> {
               child: Stack(
             children: <Widget>[
               Container(
+                padding: EdgeInsets.only(right: 90),
                 child: TextField(
                   controller: _commentController,
+                  maxLines: null,
                   decoration: InputDecoration(
                     hintText: " Write a comment...",
                     contentPadding: EdgeInsets.only(left: 7),
