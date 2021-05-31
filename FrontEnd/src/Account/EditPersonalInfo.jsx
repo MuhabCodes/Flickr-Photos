@@ -3,50 +3,49 @@ import { Link, useHistory } from 'react-router-dom';
 import './EditProfileInfo.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import configData from '../config.json';
 
 const EditPersonalInfo = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   // For not rendering of text boxes until user info gets fetched
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ2MDc4MCwiZXhwIjoxNjIyNDY0MzgwLCJzdWIiOiI0In0.NzHVlXKnHST44YAvDEqVsUaRPdCWdCxcslXccSPcG2k',
-  };
+  // const headers = {
+  //   'Content-Type': 'application/json',
+  // Authorization: 'Bearer eyJhbGciO',
+  // };
   // Headers for storing the token (Will be taken from local storage)
-  const userjwt = jwt(headers.Authorization);
+  const userjwt = jwt(localStorage.getItem('token'));
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const [displayname, setDisplayName] = useState('');
   const [gender, setGender] = useState('');
   useEffect(() => {
-    axios(`${configData.SERVER_URL}/users/${userjwt.sub}`, {
-      method: 'get',
-      headers,
-    }).then((resp) => {
-      setLoading(false);
-      setFirstName(resp.data.firstname);
-      setLastName(resp.data.lastname);
-      setDisplayName(resp.data.displayname);
-      setGender(resp.data.gender);
-      return resp.data;
-    });
+    axios.get(`/users/${userjwt.sub}`)
+      .then((resp) => {
+        setLoading(false);
+        setFirstName(resp.data.firstname);
+        setLastName(resp.data.lastname);
+        setDisplayName(resp.data.displayname);
+        setGender(resp.data.gender);
+        return resp.data;
+      });
   }, []);
 
   // Here we decode the jwt to get the sub property which is the userid
 
+  // axios.patch(`${configData.SERVER_URL}/users/${userjwt.sub}`, {
+  //   method: 'patch',
+  //   headers,
+  //   data: JSON.stringify(ProfileInfo),
+  // })
   const handleSubmit = (e) => {
     e.preventDefault();
     const ProfileInfo = {
       firstname, lastname, displayname, gender,
     };
-    axios(`${configData.SERVER_URL}/users/${userjwt.sub}`, {
-      method: 'patch',
-      headers,
-      data: JSON.stringify(ProfileInfo),
-    }).then(() => {
-      history.push('/account');
-    });
+    axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
+      .then(() => {
+        history.push('/account');
+      });
   };
   return (
     <div className="edit-your-profile-main-container">

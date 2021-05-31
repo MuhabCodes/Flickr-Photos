@@ -947,12 +947,13 @@
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "ABDO",
-      "lastname": "Hosda",
+      "firstname": "Abdsa",
+      "lastname": "Hosodas",
       "age": 20,
       "id": 4,
-      "gender": "Male",
-      "displayname": "Ho"
+      "gender": "Female",
+      "displayname": "Hosd",
+      "ispro": "true"
     },
     {
       "email": "karim@gmail.com",
