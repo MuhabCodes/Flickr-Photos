@@ -1,6 +1,25 @@
 const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
 const Photo = require('../photo/photoModel');
+const personDAL = require('../person/personDAL');
+
+const isUniqueDisplayName = async function isUnique(displayName) {
+  // checks whether or not display name is unique
+  const user = await User.findOne({ displayName });
+  return user;
+};
+
+const createUniqueDisplayName = async function createUniqueDP(email) {
+  // checks whether or not display name is unique
+  const emailBase = email.split('@')[0];
+
+  let i = 0;
+  // eslint-disable-next-line no-await-in-loop
+  while (await isUniqueDisplayName(emailBase + i.toString())) {
+    i += 1;
+  }
+  return emailBase + i.toString();
+};
 
 exports.getUserByEmail = async function getWithEmail(email) {
   const userObj = await User.findOne({ email });
@@ -8,16 +27,20 @@ exports.getUserByEmail = async function getWithEmail(email) {
 };
 
 exports.createNewUser = async function createUser({
-  email, password, displayName, firstName, lastName, age,
+  email, password, firstName, lastName, age,
 }) {
   // password encryption
   const hashedPassword = await utilsPassword.hashPassword(password);
+  // create person
+  const personObj = await personDAL.createPerson(firstName, lastName, age);
   // create user object
+  const displayName = await createUniqueDisplayName(email);
+
   const userObj = new User({
     email,
     password: hashedPassword,
     displayName,
-    // TODO : add Person Id with firstName, lastName and age
+    personId: personObj._id,
   });
   // create user in db
   const user = await userObj.save();
