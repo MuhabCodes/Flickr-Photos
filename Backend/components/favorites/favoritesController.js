@@ -27,7 +27,7 @@ exports.add = async function addFavorite(req, res) {
 {
   _id: favorite.id,
   user: favorite.user,
-  photoId: favorite.photo,
+  photo: favorite.photo,
   favoriteDate: favorite.favoriteDate,
 
 },
