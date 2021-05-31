@@ -1,3 +1,30 @@
+async function SaveNotification(notification){
+  var admin = require("firebase-admin");
+  var serviceAccount = require("./serviceAccountKey.json");
+  try{  
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://notify-d4836-default-rtdb.firebaseio.com"
+  });
+  
+  const FIREBASE_AUTH = admin.auth();
+  const FIREBASE_MESSAGING = admin.messaging();
+  const FIREBASE_DATABASE = admin.database();
+  
+  let ref = FIREBASE_DATABASE.ref("/notifications");
+
+    let doc =await FIREBASE_DATABASE.ref('/notifications').push(notification)
+    if (doc)
+      return doc ;
+  }catch(err){
+    console.log(err);
+  }
+}
+  
+
+
+
+
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
 
@@ -23,6 +50,14 @@ const createLikeNotification = async (req, res) => {
       notificationDate: req.body.favoriteDate,
     });
     console.log(newNotification);
+        
+    const notification2 = {
+      message: "node",
+      user:"node;",
+      userProfileImg:"node",
+    }
+    SaveNotification(notification2);
+
     return res.status(201).json({
       message: 'Favorite added succesfully',
       favoriteCreated: req.favoriteCreated,
@@ -30,7 +65,7 @@ const createLikeNotification = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: err,
-    });
+    }); 
   }
 };
 
