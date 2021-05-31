@@ -71,9 +71,9 @@ exports.findComment = async function findComment(req, res) {
       });
     }
     const commentOutput = await commentsDAL.findComment(photoID);
-    console.log(commentOutput);
     return res.status(200).json(
-      { photo_Id: photoID,
+      {
+        photo_Id: photoID,
         total: commentOutput.length,
         comments: commentOutput.map((doc) => ({
           dateCreate: doc.dateCreated,
