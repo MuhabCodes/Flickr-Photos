@@ -846,56 +846,56 @@
       "dayTaken": 23,
       "monthTaken": "April",
       "yearTaken": 2021,
-      "DateTaken": "23/4/2021",
-      "photoId": 1,
+      "DateTaken": "2017-05-01T01:50:08",
+      "id": 1,
       "dayUploaded": 28,
       "monthUploaded": "April",
       "yearUploaded": 2021
     },
     {
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "photoId": 2,
-      "privacy": "private",
+      "id": 2,
+      "privacy": "Family",
       "dayTaken": 25,
       "monthTaken": "May",
       "yearTaken": 2018,
-      "DateTaken": "25/5/2018",
+      "DateTaken": "2019-05-01T01:50:08",
       "dayUploaded": 27,
       "monthUploaded": "june",
       "yearUploaded": 2021
     },
     {
       "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 3,
+      "id": 3,
       "privacy": "public",
       "dayTaken": 25,
       "monthTaken": "May",
       "yearTaken": 2021,
-      "DateTaken": "25/5/2021",
+      "DateTaken": "2020-05-01T01:50:08",
       "dayUploaded": 27,
       "monthUploaded": "june",
       "yearUploaded": 2021
     },
     {
       "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 4,
+      "id": 4,
       "privacy": "private",
       "dayTaken": 10,
       "monthTaken": "September",
       "yearTaken": 2020,
-      "DateTaken": "10/9/2020",
+      "DateTaken": "2018-05-01T01:50:08",
       "dayUploaded": 27,
       "monthUploaded": "December",
       "yearUploaded": 2020
     },
     {
       "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 5,
+      "id": 5,
       "privacy": "private",
       "dayTaken": 25,
       "monthTaken": "May",
       "yearTaken": 2021,
-      "DateTaken": "25/5/2021",
+      "DateTaken": "2019-05-01T01:50:08",
       "dayUploaded": 27,
       "monthUploaded": "December",
       "yearUploaded": 2020
@@ -945,28 +945,24 @@
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Abdelrahman",
+      "firstname": "Sandy",
       "lastname": "Hosny",
       "age": 20,
       "id": 4
     }
-
-
-    ],
-    "Followers": [
-        {
-            "id": 1,
-            "UserName": "Mario Samir",
-            "item": "5",
-            "Url": "https://www.flickr.com/people/cannon_s5_is/"
-            
-        },
-        {
-            "id": 2,
-            "UserName": "Sandy Samir",
-            "item": "15",
-            "Url": "https://www.flickr.com/people/cannon_s5_is/"
-            
-        }
-    ]
+  ],
+  "Followers": [
+    {
+      "id": 1,
+      "UserName": "Mario Samir",
+      "item": "5",
+      "Url": "https://www.flickr.com/people/cannon_s5_is/"
+    },
+    {
+      "id": 2,
+      "UserName": "Sandy Samir",
+      "item": "15",
+      "Url": "https://www.flickr.com/people/cannon_s5_is/"
+    }
+  ]
 }

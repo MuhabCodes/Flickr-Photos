@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import CameraFinder from '../CameraFinder/CameraFinder';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
@@ -22,8 +23,13 @@ import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import FollowersPage from '../Followers/FollowersPage';
+import configData from '../config.json';
 
 function App() {
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ3MTMzOSwiZXhwIjoxNjIyNDc0OTM5LCJzdWIiOiI0In0.zZmIFi2i7ZYp9OuW96b48H59a-dTqdJNa_F4gZP3QSI';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  localStorage.setItem('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ3MTMzOSwiZXhwIjoxNjIyNDc0OTM5LCJzdWIiOiI0In0.zZmIFi2i7ZYp9OuW96b48H59a-dTqdJNa_F4gZP3QSI');
   return (
     <div className="flickr-main">
       <NavBar />

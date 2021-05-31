@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PrivacyModel.css';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 // this function is to render the component that edit the photo privacy
 function PrivacyModel() {
@@ -9,6 +10,20 @@ function PrivacyModel() {
     const modal = document.getElementById('privacyModel');
     modal.style.display = 'none';
   }
+
+  const [privacy, setprivacy] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const Privacy = {
+      privacy,
+    };
+    axios.patch('/photos/2', Privacy)
+      .then((resp) => {
+        console.log(resp);
+      });
+  };
+
   return (
 
     <>
@@ -17,38 +32,71 @@ function PrivacyModel() {
         <span className="close" onClick={closeModel} onKeyDown={closeModel}>&times;</span>
         <div className="privacy-model-content">
           <h3>Change privacy?</h3>
+          <form onSubmit={handleSubmit}>
+            <br />
+            <input
+              type="radio"
+              id="public"
+              name="privacyRadio"
+              className="privacy-checkbox"
+              value="Public"
+              onChange={(e) => {
+                setprivacy(e.target.value);
+              }}
+            />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor="public">Public</label>
 
-          <br />
-          <input type="radio" id="public" name="privacyRadio" className="privacy-checkbox" />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="public">Public</label>
+            <br />
+            <input
+              type="radio"
+              id="private"
+              name="privacyRadio"
+              className="privacy-checkbox"
+              value="Private"
+              onChange={(e) => {
+                setprivacy(e.target.value);
+              }}
+            />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor="private">Private</label>
 
-          <br />
-          <input type="radio" id="private" name="privacyRadio" className="privacy-checkbox" />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="private">Private</label>
+            <br />
+            <input
+              type="radio"
+              id="friends"
+              name="privacyRadio"
+              className="privacy-checkbox"
+              value="Friends"
+              onChange={(e) => {
+                setprivacy(e.target.value);
+              }}
+            />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor="friends">Friends</label>
 
-          <br />
-          <input type="radio" id="friends" name="privacyRadio" className="privacy-checkbox" />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="friends">Friends</label>
+            <br />
+            <input
+              type="radio"
+              id="family"
+              name="privacyRadio"
+              className="privacy-checkbox"
+              value="Family"
+              onChange={(e) => {
+                setprivacy(e.target.value);
+              }}
+            />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor="family">Public</label>
 
-          <br />
-          <input type="radio" id="family" name="privacyRadio" className="privacy-checkbox" />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="family">Public</label>
-
-          <br />
-          <input type="radio" id="friendfamily" name="privacyRadio" className="privacy-checkbox" />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="friendfamily">Friends & Family</label>
-          <br />
-          <div className="privacy-model-buttons">
-            <Button variant="secondary" onClick={closeModel}>Cancel</Button>
-            {' '}
-            <Button variant="primary">Change</Button>
-            {' '}
-          </div>
+            <br />
+            <div className="privacy-model-buttons">
+              <Button variant="secondary" onClick={closeModel}>Cancel</Button>
+              {' '}
+              <Button variant="primary" type="submit">Change</Button>
+              {' '}
+            </div>
+          </form>
         </div>
       </div>
     </>

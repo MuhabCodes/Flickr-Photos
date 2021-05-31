@@ -22,11 +22,10 @@ function CameraRoll() {
   function handleImageClick(image) {
     setshowModel(!showModel);
     setimage(image);
-    console.log(images);
   }
 
   // this line split the code and arrange it according to taken date
-  const sortedDates = photos.sort((a, b) => a.DateTaken.split('/').reverse().join().localeCompare(b.DateTaken.split('/').reverse().join()));
+  const sortedDates = photos.sort((a, b) => a.DateTaken.split('-').reverse().join().localeCompare(b.DateTaken.split('-').reverse().join()));
 
   // here it is arranged from latest to oldest
   const sortedFromLatestToOldest = sortedDates.reverse();
@@ -34,25 +33,29 @@ function CameraRoll() {
   // this function group images that have the same date to be rendered on the same div
   // and images with different dates are rendered on different divs
   const filtered = Object.values(sortedFromLatestToOldest.reduce((acc, val) => {
-    const dateparts = val.DateTaken.split('/');
-    const date = new Date(dateparts[2], dateparts[1], dateparts[0]);
+    const dateparts = val.DateTaken.split('-');
+
+    const dates = dateparts[2].split('T');
+
+    const date = new Date(dateparts[0], dateparts[1], dates[0]);
 
     if (!acc[date]) acc[date] = [];
     acc[date].push(val);
     return acc;
   }, {}));
-
+  console.log(filtered);
   // here we map through the array of array
   // first we render the common date of the array
   // then we render all of the images in this array that have the same day
   const days = filtered.map((day) => (
     <div>
       <h6>
-        {day[0].monthTaken}
-        {' '}
-        {day[0].dayTaken}
+
+        {day[0].DateTaken.split('-')[2].split('T')[0]}
+        -
+        {day[0].DateTaken.split('-')[1]}
         {', '}
-        {day[0].yearTaken}
+        {day[0].DateTaken.split('-')[0]}
       </h6>
       {
         day.map((image) => (
@@ -104,23 +107,20 @@ function CameraRoll() {
     </div>
   ));
   // get dates and render them on the side nav bar
-  const sidebar = filtered.map((day) => (
-    <div>
-      <a href>{day[0].yearTaken}</a>
-      <a href="action1">
-        -
-        {day[0].monthTaken}
-      </a>
-    </div>
-  ));
+  // const sidebar = filtered.map((day) => (
+  //   <div>
+  //     <a href>{day.yearTaken}</a>
+  //     <a href="action1">
+  //       -
+  //       {day.monthTaken}
+  //     </a>
+  //   </div>
+  // ));
 
   return (
     <div>
 
       <div className="main">
-        <div className="sidenav">
-          {sidebar}
-        </div>
         {days}
         <a href="/followers">click me</a>
         {showModel ? <PopoutImageModel image={images} /> : null}
