@@ -7,6 +7,7 @@ const { addPersonToPhotoServ } = require('./services/addPersonToPhoto');
 const { removePersonFromPhotoServ } = require('./services/removePersonFromPhoto');
 const { isInPhoto } = require('./services/isInPhoto.validation');
 const { getPeopleInPhotoServ } = require('./services/getPeopleInPhoto');
+const { addLocation } = require('./services/addLocation');
 
 module.exports = {
   async getRecentPhotos(req, res) {
@@ -121,6 +122,16 @@ module.exports = {
       res.status(200).json({ statusCode: 200, peopleInPhoto: peopleInPhoto.peopleInPhoto });
     } catch (err) {
       res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async addLocation(req, res) {
+    try {
+      return await addLocation(req.params.photoId, req.params.photoLocation, res);
+    } catch (err) {
+      return res.json({
         error: 'PhotoNotFound',
         statusCode: 404,
       });
