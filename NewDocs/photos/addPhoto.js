@@ -7,17 +7,18 @@
  * @apiPermission none
  *
  *
- * @apiParam {String} authorId The id of the author of this photo
- * @apiParam {String} title The title of the image
- * @apiParam {String} description The description given to the image
- * @apiParam {Date} [captureDate="Now"] The date that the photo was captured on
- * @apiParam {Date} [uploadDate="Now"] The date that the photo was uploaded on
- * @apiParam {Boolean} [isPublic=true] If this photo is public for anyone to see
- * @apiParam {String} secret The secret of this photo
- * @apiParam {Boolean} [favorites=false] If this photo is in the author's favourites
- * @apiParam {Object[]} [inPhoto] Array of user objects in the photo
- * @apiParam {Object[]} [tags] Array of tag objects in the photo
- * @apiParam {String} [cameraName] The name of the camera used
+ * @apiParam (Body) {String} authorId The id of the author of this photo
+ * @apiParam (Body) {String} title The title of the image
+ * @apiParam (Body) {String} description The description given to the image
+ * @apiParam (Body) {Date} [captureDate="Now"] The date that the photo was captured on
+ * @apiParam (Body) {Date} [uploadDate="Now"] The date that the photo was uploaded on
+ * @apiParam (Body) {Boolean} [isPublic=true] If this photo is public for anyone to see
+ * @apiParam (Body) {String} secret The secret of this photo
+ * @apiParam (Body) {String} imageUrl The url of this photo
+ * @apiParam (Body) {Boolean} [favorites=false] If this photo is in the author's favourites
+ * @apiParam (Body) {Object[]} [inPhoto] Array of user objects in the photo
+ * @apiParam (Body) {Object[]} [tags] Array of tag objects in the photo
+ * @apiParam (Body) {String} [cameraName] The name of the camera used
  *
  *
  *
@@ -35,6 +36,7 @@
  *      "uploadDate":"2021-12-01T19:11:08",
  *      "isPublic":true,
  *      "secret":"dfabhfu234",
+ *      "imageUrl":"www.example.com/123"
  *      "favorites":false,
  *      "inPhoto":[{...},{...},...],
  *      "tags":[{...},{...},...],

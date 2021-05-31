@@ -7,8 +7,13 @@
  * @apiPermission author
  *
  *
- * @apiParam  {String} title The title of the album
- * @apiParam  {String} [description] The description of the album
+ * @apiParam (Body) {String} title The title of the album
+ * @apiParam (Body) {String} [description] The description of the album
+ * @apiParam (Body) {String} authorId The id of the author of the album
+ * @apiParam (Body) {Object[]} photos the photos that are within the album
+ * @apiParam (Body) {String} [updateDate] The update date of the album
+ * @apiParam (Body) {String} [createDate] The created date of the album
+ * 
  *
  *
  * @apiSuccess (Success 201) {Number} statusCode The status code
