@@ -1,3 +1,4 @@
+import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
 
 import 'comment.dart';
@@ -31,22 +32,26 @@ TextStyle appBarTitleStyle = new TextStyle(
   fontSize: 15,
   fontWeight: FontWeight.bold,
 );
+TextStyle postTitleStyle = new TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+);
 
 Post post1 = new Post(
-    /*[new Image.asset('lib/assets/istanbul.jpg')]*/
-    //['lib/assets/photo_1.jpeg']
-    [new AssetImage('lib/assets/photo_1.jpeg')],
-    user,
-    "My first post",
-    DateTime.now(),
-    [follower1, follower2, follower3],
-    [],
-    false,
-    false,
-    [
-      new NetworkImage(
-          'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
-    ]);
+  [
+    new Photo(
+      imagePath:
+          'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
+    )
+  ],
+  user,
+  "My first post",
+  DateTime.now(),
+  [follower1, follower2, follower3],
+  [],
+  false,
+  false,
+);
 final User user = new User(
     'Hannah Hatem',
     new NetworkImage(
@@ -98,93 +103,101 @@ User follower3 = new User(
 
 List<Post> userHomePosts = [
   new Post(
-      /*[new Image.asset('lib/assets/istanbul.jpg')]*/
-      //['lib/assets/istanbul.jpg']
-      [
-        new AssetImage('lib/assets/perfume1.jpeg'),
-        new AssetImage('lib/assets/perfume2.jpeg'),
-        new AssetImage('lib/assets/toothpaste.jpeg'),
-      ],
+    [
+      new Photo(
+        imagePath:
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
+      ),
+      new Photo(
+        imagePath:
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
+      ),
+      new Photo(
+        imagePath:
+            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
+      ),
+    ],
+    user,
+    "Deeply Exhausted",
+    DateTime(2021, 05, 31, 20, 38, 59),
+    [follower1, follower2, follower3],
+    [
+      new Comment(follower1, "This was amazing!", DateTime.now(), false),
+      new Comment(follower2, "Cool one", DateTime.now(), false),
+    ],
+    false,
+    false,
+  ),
+  new Post(
+    [
+      new Photo(
+        imagePath:
+            'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg',
+      ),
+      new Photo(
+        imagePath:
+            'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg',
+      ),
+    ],
+    follower1,
+    "This is such a great post though",
+    DateTime.now(),
+    [user, follower2, follower3, follower1, follower2],
+    [
+      new Comment(follower3, "This was super cool!", DateTime.now(), false),
+      new Comment(follower1, "I can't believe it's not \nbutter!",
+          DateTime.now(), false),
+      new Comment(user, "I know rite!", DateTime.now(), false),
+      new Comment(follower3, "I'm batman", DateTime.now(), false)
+    ],
+    false,
+    false,
+  ),
+  new Post(
+    //['lib/assets/photo5.jpg']
+    [
+      new Photo(
+        imagePath:
+            'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
+      ),
+    ],
+    follower2,
+    "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
+    DateTime.now(),
+    [user, follower2, follower3, follower3, follower1],
+    [
+      new Comment(follower3, "This was super cool!", DateTime.now(), false),
+      new Comment(follower1, "I can't believe it's not \nbutter!",
+          DateTime.now(), false),
+      new Comment(user, "I know rite!", DateTime.now(), false),
+    ],
+    false,
+    false,
+  ),
+  new Post(
+    [
+      new Photo(
+        imagePath:
+            'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
+      ),
+    ],
+    follower3,
+    "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
+    DateTime.now(),
+    [
       user,
-      "Deeply Exhausted",
-      DateTime(2021, 05, 31, 20, 38, 59),
-      [follower1, follower2, follower3],
-      [
-        new Comment(follower1, "This was amazing!", DateTime.now(), false),
-        new Comment(follower2, "Cool one", DateTime.now(), false),
-      ],
-      false,
-      false,
-      [
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920'),
-      ]),
-  new Post(
-      //['lib/assets/post2.jpg']
-      [new AssetImage('lib/assets/post2.jpg')],
-      follower1,
-      "This is such a great post though",
-      DateTime.now(),
-      [user, follower2, follower3, follower1, follower2],
-      [
-        new Comment(follower3, "This was super cool!", DateTime.now(), false),
-        new Comment(follower1, "I can't believe it's not \nbutter!",
-            DateTime.now(), false),
-        new Comment(user, "I know rite!", DateTime.now(), false),
-        new Comment(follower3, "I'm batman", DateTime.now(), false)
-      ],
-      false,
-      false,
-      [
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
-      ]),
-  new Post(
-      //['lib/assets/photo5.jpg']
-      [new AssetImage('lib/assets/photo5.jpg')],
-      follower2,
-      "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
-      DateTime.now(),
-      [user, follower2, follower3, follower3, follower1],
-      [
-        new Comment(follower3, "This was super cool!", DateTime.now(), false),
-        new Comment(follower1, "I can't believe it's not \nbutter!",
-            DateTime.now(), false),
-        new Comment(user, "I know rite!", DateTime.now(), false),
-      ],
-      false,
-      false,
-      [
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
-      ]),
-  new Post(
-      //['lib/assets/photo5.jpg']
-      [new AssetImage('lib/assets/photo5.jpg')],
-      follower3,
-      "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
-      DateTime.now(),
-      [
-        user,
-        follower2,
-        follower3,
-      ],
-      [
-        new Comment(follower3, "This was super cool!", DateTime.now(), false),
-        new Comment(follower1, "I can't believe it's not \nbutter!",
-            DateTime.now(), false),
-        new Comment(user, "I know rite!", DateTime.now(), false),
-      ],
-      false,
-      false,
-      [
-        new NetworkImage(
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920')
-      ]),
+      /*follower2,
+      follower3,*/
+    ],
+    [
+      new Comment(follower3, "This was super cool!", DateTime.now(), false),
+      new Comment(follower1, "I can't believe it's not \nbutter!",
+          DateTime.now(), false),
+      new Comment(user, "I know rite!", DateTime.now(), false),
+    ],
+    false,
+    false,
+  ),
 ];
 
 String getPostTime(DateTime postTime) {
@@ -228,12 +241,25 @@ String getPostTime(DateTime postTime) {
           (timeNow.day - postTime.day) <= 6) {
         result = (timeNow.day - postTime.day).toString() + "d";
       } else if ((timeNow.day - postTime.day) <= 13) {
-        result = /* (timeNow.day - postTime.day).toString() + */ "1w";
+        result = "1w";
       } else if ((timeNow.day - postTime.day) <= 20) {
-        result = /*(timeNow.day - postTime.day).toString() + */ "2w";
+        result = "2w";
       } else if ((timeNow.day - postTime.day) <= 29) {
-        result = /*(timeNow.day - postTime.day).toString() + */ "3w";
+        result = "3w";
       }
+    } else if ((timeNow.month - postTime.month) == 1) {
+      int temp1 = 0;
+
+      temp1 = 31 - postTime.day;
+      temp1 = timeNow.day + temp1;
+      if (temp1 <= 6 && temp1 > 0)
+        result = (temp1).toString() + "d";
+      else if (temp1 <= 7 && temp1 > 14)
+        result = (temp1).toString() + "1w";
+      else if (temp1 <= 14 && temp1 > 21)
+        result = (temp1).toString() + "2w";
+      else
+        result = "1m";
     } else if (timeNow.month > postTime.month) {
       if ((timeNow.month - postTime.month) == 1) {
         result = (timeNow.month - postTime.month).toString() + "mo";
@@ -244,7 +270,11 @@ String getPostTime(DateTime postTime) {
   } //else if
   else if (timeNow.year > postTime.year) {
     if ((timeNow.year - postTime.year) == 1) {
-      result = (timeNow.year - postTime.year).toString() + "y";
+      if (postTime.month == 12) {
+        int temp1 = timeNow.month;
+        result = (temp1).toString() + "m";
+      } else
+        result = (timeNow.year - postTime.year).toString() + "y";
     } else {
       result = (timeNow.year - postTime.year).toString() + "y";
     }
