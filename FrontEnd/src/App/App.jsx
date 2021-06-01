@@ -11,7 +11,7 @@ import Login from '../Login/logIn';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
-import Footer from './Footer';
+// import Footer from './Footer';
 import CameraRoll from './CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
@@ -21,6 +21,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/UpgradeToPro">
+              <UpgradeToPro />
+            </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
             </Route>
@@ -82,7 +86,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );
