@@ -24,6 +24,7 @@ import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import FollowersPage from '../Followers/FollowersPage';
 import configData from '../config.json';
+import Notification from '../Notification/Notification';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
@@ -85,8 +86,11 @@ function App() {
             <Route exact path="/About">
               <About />
             </Route>
-            <Route exact path="/followers?:userid">
+            <Route exact path="/followers/:userid">
               <FollowersPage />
+            </Route>
+            <Route exact path="/Notification">
+              <Notification />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
