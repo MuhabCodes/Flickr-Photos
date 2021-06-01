@@ -3,7 +3,7 @@ from time import sleep
 import pytest
 from appium import webdriver
 from common.properties import PropertiesMiA1, PropertiesNox
-from pageobject.mockmethods.mockmethods import MockMethods
+from pageobject.generalmethods.general_methods import MockMethods
 from pageobject.mainpage.mainpage import MainPage
 
 
@@ -26,7 +26,7 @@ class TestMainPage(object):
         self.mock_methods.set_driver(self.driver)
         self.main_page.set_driver(self.driver)
 
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
         sleep(5)
 
     # @pytest.mark.skip
