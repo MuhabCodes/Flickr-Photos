@@ -2,7 +2,7 @@ from time import sleep
 
 import pytest
 from appium import webdriver
-from common.properties import PropertiesMiA1
+from common.properties import PropertiesMiA1, PropertiesNox
 from pageobject.mockmethods.mockmethods import MockMethods
 from pageobject.mainpage.mainpage import MainPage
 
@@ -10,6 +10,7 @@ from pageobject.mainpage.mainpage import MainPage
 class TestMainPage(object):
     driver = None
     desired_caps = PropertiesMiA1.desired_caps
+    # desired_caps = PropertiesNox.desired_caps
     mock_methods = MockMethods()
     main_page = MainPage()
     link = "http://localhost:4723/wd/hub"

@@ -50,3 +50,4 @@ class MockMethods(Page):
             MockMethodsLocator.proceed_button_xpath).click()
 
         self.driver.switch_to.context('NATIVE_APP')
+        self.driver.contexts
