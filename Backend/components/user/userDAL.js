@@ -129,3 +129,22 @@ exports.createGoogleAccountDAL = async function createGoogleAcc(email, googleNam
   const user = await userObj.save();
   return user;
 };
+
+module.exports.addPersonToFollowing = async function addToFollowers(userId, followingId) {
+  const userObj = await User.findById(userId);
+  userObj.following.push(followingId);
+  userObj.save();
+};
+
+module.exports.addPersonToFollowers = async function addPersonToFollowers(userId, followerId) {
+  const userObj = await User.findById(userId);
+  userObj.followers.push(followerId);
+  userObj.save();
+};
+
+module.exports.addDescription = async function addDescription(userId, description) {
+  const userObj = await User.findById(userId);
+  userObj.description = description;
+  userObj.save();
+  return userObj;
+};

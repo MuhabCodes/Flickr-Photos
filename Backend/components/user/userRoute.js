@@ -16,4 +16,6 @@ router.route('/pro').post(async (req, res) => {
   }
 });
 
+router.post('/follow', userController.followUser);
+router.post('/addDescription/:userId', userController.addDescription);
 module.exports = router;

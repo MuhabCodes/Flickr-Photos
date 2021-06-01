@@ -44,6 +44,13 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  following: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  description: {
+    type: String,
+  },
+
 },
 { autoCreate: true });
 
