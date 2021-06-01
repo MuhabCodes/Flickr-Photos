@@ -3,6 +3,7 @@ const userDAL = require('../user/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
 const { sendConfirmationEmail, sendResetPasswordEmail } = require('./Services/sendEmail.js');
 const { decryptConfirmationToken, decryptResetPasswordToken } = require('./Services/decryptToken');
+const { signInGoogleServ } = require('./Services/signInGoogle');
 require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
@@ -101,6 +102,20 @@ exports.resetPassword = async function resetPw(req, res) {
     await userDAL.resetPassword(userId, newPassword);
 
     res.status(200).json({ statusCode: 200 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.signInGoogle = async function signInGoogle(req, res) {
+  const { email, displayName } = req.body;
+
+  try {
+    // create Account Google
+    const token = await signInGoogleServ(email, displayName);
+    res.status(201).send({ statusCode: 201, token });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 
