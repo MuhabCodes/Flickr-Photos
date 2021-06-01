@@ -24,8 +24,8 @@ async function personSeed() {
     homeTown: 'ayhaga',
     country: 'frfr',
     description: 'dedd',
-    dateCreated: 'ererer',
-    birthDate: Date.now(),
+    dateCreated: Date.now(),
+    birthDate: '12-12-2000',
     realName: 'ewfwe',
   }]);
 }
