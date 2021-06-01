@@ -25,7 +25,7 @@ async function personSeed() {
     country: 'frfr',
     description: 'dedd',
     dateCreated: 'ererer',
-    birthDate: 'ccscds',
+    birthDate: Date.now(),
     realName: 'ewfwe',
   }]);
 }

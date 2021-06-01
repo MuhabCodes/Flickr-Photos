@@ -15,7 +15,7 @@ const personSchema = new mongoose.Schema({
   },
   dateCreated:
   {
-    type: String,
+    type: Date,
     required: true,
 
   },

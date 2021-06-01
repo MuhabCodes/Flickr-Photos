@@ -13,7 +13,7 @@ exports.getProfile = async function getProfile(req, res) {
     }
     const profileOutput = await personDAL.findProfile(user);
     return res.status(200).json(
-      profileOutput.personId,
+      profileOutput.person,
     );
   } catch (err) {
     return res.status(500).json({
