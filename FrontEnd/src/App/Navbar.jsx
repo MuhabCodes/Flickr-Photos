@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavbarFooter.css';
+import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
 import { Navbar } from 'react-bootstrap';
 import NavDropDown from './NavbarDropDown';
@@ -8,6 +10,11 @@ import NavDropDown from './NavbarDropDown';
 
 // component for the whole navigation bar
 function NavBar() {
+  const history = useHistory();
+  const logout = () => {
+    localStorage.clear();
+    history.push('/startpage');
+  };
   return (
     <Navbar collapseOnSelect sticky="top" expand="md">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -36,7 +43,7 @@ function NavBar() {
           {' '}
         </a>
       </div>
-
+      <Button className="button1" onClick={logout}>Logout</Button>
     </Navbar>
   );
 }

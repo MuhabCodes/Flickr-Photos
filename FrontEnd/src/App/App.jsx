@@ -30,7 +30,7 @@ function App() {
   axios.defaults.headers.common.Authorization = localStorage.getItem('token');
   return (
     <div className="flickr-main">
-      <NavBar />
+      {/* <NavBar /> */}
       <Router>
         <div className="app">
           <Switch>
@@ -57,6 +57,7 @@ function App() {
               <SendEmail />
             </Route>
             <Route exact path="/">
+              <NavBar />
               <HomePage />
             </Route>
             <Route path="/Profile/About">

@@ -50,9 +50,10 @@ export default function SignUp() {
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const history = useHistory();
   const history = useHistory();
   const submitForm = () => {
-    history.push('/verifysignup');
+    // history.push('/verifysignup');
     const UserInfo = {
       firstName, lastName, age, email, password,
     };
@@ -62,6 +63,7 @@ export default function SignUp() {
     }).then((resp) => {
       console.log(resp.data);
       localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
+      history.push('/');
     });
   };
 
