@@ -102,6 +102,8 @@
     "fill-range": "^7.0.1",
     "finalhandler": "^1.1.1",
     "find-up": "^2.1.0",
+    "firebase": "^8.6.3",
+    "firebase-admin": "^9.9.0",
     "flat-cache": "^3.0.4",
     "flatted": "^3.1.1",
     "forwarded": "^0.1.2",

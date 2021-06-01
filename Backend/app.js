@@ -3,6 +3,7 @@ const morgan = require('morgan');
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 // require routes only here
 const favoritesRouter = require('./components/favorites/favoritesRouter');
 const authRouter = require('./components/auth/authRouter');
@@ -15,7 +16,11 @@ const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 const urlRouter = require('./components/url/urlRoute');
 const groupRouter = require('./components/group/groupRoute');
 const galleryRouter = require('./components/Gallery/galleryRoute');
+<<<<<<< HEAD
 const tagsRouter = require('./components/tags/tagsRouter');
+=======
+const notificationRouter = require('./components/notification/notificationRouter');
+>>>>>>> BE_master_AE_notifications
 
 // declaring app
 const app = express();
@@ -25,6 +30,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // use routing i.e. app.use('foo', bar)
 app.use('/auth', authRouter);
@@ -39,6 +46,7 @@ app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
 app.use('/comments', commentRouter);
 app.use('/tags', tagsRouter);
+app.use('/notifications',notificationRouter);
 // exporting
 
 module.exports = app;
