@@ -1,29 +1,4 @@
-async function SaveNotification(notification){
-  var admin = require("firebase-admin");
-  var serviceAccount = require("./serviceAccountKey.json");
-  try{  
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://notify-d4836-default-rtdb.firebaseio.com"
-  });
-  
-  const FIREBASE_AUTH = admin.auth();
-  const FIREBASE_MESSAGING = admin.messaging();
-  const FIREBASE_DATABASE = admin.database();
-  
-  let ref = FIREBASE_DATABASE.ref("/notifications");
-
-    let doc =await FIREBASE_DATABASE.ref('/notifications').push(notification)
-    if (doc)
-      return doc ;
-  }catch(err){
-    console.log(err);
-  }
-}
-  
-
-
-
+const SaveNotification = require('../fire-base/saveNotification');
 
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
@@ -33,30 +8,35 @@ const createLikeNotification = async (req, res) => {
 
   try {
     const photo = await getPhotoById(photoId, res);
-    let authorId;
+    let reciever; // photo_owenr
     if (photo) {
-      authorId = photo.authorId;
+      reciever = photo.user._id;
     } else {
       return res.status(404).json({
         message: 'Photo Not Found',
         favoriteCreated: req.favoriteCreated,
       }); // this mean dont do anything if he doesnt find photo
     }
-    const newNotification = new Notification({
-    // senderID: userId, // TODO
-      recieverID: authorId,
+    console.log(reciever);
+    const newNotification = new Notification({ 
+    // sender: userId, // TODO
+      reciever,//reciever.toString(),
       act: 'like',
       photoId,
-      notificationDate: req.body.favoriteDate,
+      notificationDate:req.body.favoriteDate, 
     });
-    console.log(newNotification);
-        
-    const notification2 = {
-      message: "node",
-      user:"node;",
-      userProfileImg:"node",
+    console.log("newNot",newNotification);
+    // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
+    const id =newNotification._id ;
+    const firebaseNotification ={ // due to firebase constrictions 
+      reciever: newNotification.reciever.toString(),
+      id:id.toString(),
+      act: newNotification.act,
+      photoId : newNotification.photoId.toString(),
+      notificationDate:newNotification.notificationDate.toString(), 
     }
-    SaveNotification(notification2);
+    console.log("firebasenot",firebaseNotification);
+    SaveNotification(firebaseNotification);
 
     return res.status(201).json({
       message: 'Favorite added succesfully',
