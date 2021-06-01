@@ -51,4 +51,12 @@ authRouter.route('/forgot-password/:resetToken').put(async (req, res) => {
   }
 });
 
+authRouter.route('/googleSignIn').post(async (req, res) => {
+  try {
+    await authController.signInGoogle(req, res);
+  } catch (err) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the registration process' });
+  }
+});
+
 module.exports = authRouter;

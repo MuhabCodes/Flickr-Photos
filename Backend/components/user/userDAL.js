@@ -104,3 +104,27 @@ module.exports.getPhotos = async function getUserPhotos(userId) {
   const photoObj = await Photo.find({ user: userId });
   return photoObj;
 };
+
+exports.createGoogleAccountDAL = async function createGoogleAcc(email, googleName) {
+  // create person
+
+  // first and last names from name of google account
+  const names = googleName.split(' ');
+  const firstName = names[0];
+  const lastName = names[1];
+
+  // create person object
+  const personObj = await personDAL.createPerson(firstName, lastName, null);
+  // create user object
+  const displayName = await createUniqueDisplayName(email);
+
+  const userObj = new User({
+    email,
+    displayName,
+    isGoogleUser: true,
+    personId: personObj._id,
+  });
+  // create user in db
+  const user = await userObj.save();
+  return user;
+};
