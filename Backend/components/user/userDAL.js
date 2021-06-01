@@ -123,6 +123,7 @@ exports.createGoogleAccountDAL = async function createGoogleAcc(email, googleNam
     displayName,
     isGoogleUser: true,
     personId: personObj._id,
+    isActivated: true,
   });
   // create user in db
   const user = await userObj.save();
