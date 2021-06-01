@@ -1,6 +1,6 @@
 /**
  * 
- * @api {GET} /tags/:photoId getPhotoTags
+ * @api {GET} /tags/photo/:photoId getPhotoTags
  * @apiDescription Get the tag list for a given photo
  * @apiGroup tags
  * @apiVersion  0.1.0
@@ -13,28 +13,20 @@
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiSuccess (Success 200) {Object[]} tagsList list of all tags of the mentioned photo
  * @apiSuccessExample {json} Success-Response:
- *    {
- * "tags": 
- * {
-   "photoId": "2619",
-   "tagsList": [
-      {
-         "tagId": "156",
-         "author": "12037949754@N01",
-         "authorName": "Bees",
-         "tagRaw": "tag 1",
-         "tagText": "tag1"
-      },
-      {
-         "tagId": "157",
-         "author": "12037949754@N01",
-         "authorName": "Bees",
-         "tagRaw": "tag 2",
-         "tagText": "tag2"
-      }
-   ]
+{
+    "tags": {
+        "photoId": "5d6ede6a0ba62570afcedd3d",
+        "tagsList": [
+            {
+                "_id": "60b4db9cc53d5f5480ff0938",
+                "ownerId": "6092ea68326fa5101115dfae",
+                "tagRaw": "ElKekaHowaElBaba",
+                "tagText": "ElKekaHowaElBaba",
+                "__v": 0
+            }
+        ]
+    }
 }
- *    }
  * 
  * 
  *  
