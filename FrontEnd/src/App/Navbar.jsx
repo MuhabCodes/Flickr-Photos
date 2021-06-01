@@ -13,7 +13,7 @@ function NavBar() {
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    history.push('/startpage');
+    history.push('/login');
   };
   return (
     <Navbar collapseOnSelect sticky="top" expand="md">
