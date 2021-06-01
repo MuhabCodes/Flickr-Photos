@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'comment.dart';
 import 'user.dart';
 
+///[Post] class
 class Post {
   //List<AssetImage> image = [new AssetImage('lib/assets/photo5.jpg')];
   String description;
