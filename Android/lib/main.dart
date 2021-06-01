@@ -1,6 +1,5 @@
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/login/sign_in.dart';
-import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/providers/photo_provider.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: TopNavigationBar(), //GetStarted(),
+        home: GetStarted(),
         routes: {'/description': (ctx) => Description()},
         theme: ThemeData(fontFamily: "ProximaNova"),
         debugShowCheckedModeBanner: false, //remove debug sign
