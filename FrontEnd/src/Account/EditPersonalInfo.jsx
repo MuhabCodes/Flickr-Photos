@@ -162,7 +162,7 @@ const EditPersonalInfo = () => {
                   </label>
                 </div>
               </div>
-              <button className="submit-profile-info" type="submit">Save</button>
+              <button className="submit-profile-info" type="submit" id="edit-personal-info-btn">Save</button>
             </form>
           </div>
         )}

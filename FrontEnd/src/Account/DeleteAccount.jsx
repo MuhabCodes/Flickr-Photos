@@ -91,7 +91,7 @@ const DeleteAccount = () => {
                 for use on another account.
               </ul>
             </div>
-            <button type="button" onClick={handleDelete} className="delete-account-button">Delete Account</button>
+            <button type="button" onClick={handleDelete} className="delete-account-button" id="delete-account-button">Delete Account</button>
           </div>
         )}
     </div>

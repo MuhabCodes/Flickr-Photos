@@ -56,7 +56,7 @@ const ChangePassword = () => {
             onChange={(e) => setnewpassword(e.target.value)}
           />
         </label>
-        <button className="change-pw-btn" type="submit">Change Password</button>
+        <button className="change-pw-btn" type="submit" id="change-password-btn">Change Password</button>
       </form>
     </div>
   );
