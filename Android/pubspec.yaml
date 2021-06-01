@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3
+  photo_view:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,7 +40,7 @@ dependencies:
   cloud_firestore: ^2.0.0
   provider: ^5.0.0
   mockito: ^5.0.7
-  firebase_core : ^1.1.0
+  firebase_core: ^1.1.0
   camera: ^0.8.1
   image_picker: ^0.7.4
   google_maps_webservice: ^0.0.19
@@ -49,6 +50,7 @@ dependencies:
   video_thumbnail: ^0.3.3
   flutter_svg: ^0.20.0-nullsafety.3
   google_fonts: ^2.1.0
+  dartdoc: ^0.44.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -100,14 +102,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: FreeSet
-       fonts:
-         - asset: fonts/FreeSet-Bold.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-     - family: ProximaNova
-       fonts:
-         - asset: fonts/ProximaNova.otf
+    - family: FreeSet
+      fonts:
+        - asset: fonts/FreeSet-Bold.ttf
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
+    - family: ProximaNova
+      fonts:
+        - asset: fonts/ProximaNova.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
