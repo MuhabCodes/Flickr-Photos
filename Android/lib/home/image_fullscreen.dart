@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:photo_view/photo_view.dart';
 
+import 'comments_fav_page.dart';
+import 'home.dart';
+
 class ImageFullscreen extends StatefulWidget {
   Photo myPhoto;
   double _widthScreen = 0;
@@ -126,7 +129,7 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
                         ),
                         Container(
                           //Draw horizontal line
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: EdgeInsets.only(bottom: 5),
                           constraints: BoxConstraints.expand(
                               height: 20, width: _widthScreen),
                           decoration: BoxDecoration(
@@ -193,6 +196,10 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
                                 color: Colors.grey,
                                 iconSize: 30,
                                 onPressed: () {
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(builder: (_) {
+                                    return CommentsFavs(post, 1, false, 2);
+                                  }));
                                   setState(() {});
                                 }),
                             IconButton(
