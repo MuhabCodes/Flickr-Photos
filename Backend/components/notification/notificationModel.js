@@ -6,11 +6,11 @@ const notificationSchema = mongoose.Schema({
     ref: 'User',
     required: true,
   }, // TODO WILL BE REMOVED
-  senderName:{
-    type:String,
+  senderName: {
+    type: String,
   },
-  recieverName:{
-    type:String,
+  recieverName: {
+    type: String,
   },
   reciever: {
     type: mongoose.Schema.Types.ObjectId,

@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 const commentsController = require('./commentsController');
-const {createCommentNotification} = require('../../../middleware/createNotification');
+const { createCommentNotification } = require('../../../middleware/createNotification');
 
 router.post('/:photoId',
-  commentsController.add,createCommentNotification);
+  commentsController.add, createCommentNotification);
 router.put('/:photoId/:commentId',
   commentsController.editComment);
 

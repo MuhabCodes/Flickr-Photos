@@ -12,7 +12,8 @@ module.exports = async function getNotifications(userId) {
   try {
     const snapshot = await FIREBASE_DATABASE.ref('/notifications').orderByChild('reciever').equalTo(userId)
       .once('value');
-    if (snapshot.val() && snapshot.val()[Object.keys(snapshot.val())[0]] === undefined) { return null; }
+    if (snapshot.val()
+    && snapshot.val()[Object.keys(snapshot.val())[0]] === undefined) { return null; }
     return snapshot.val();
   } catch (err) {
     console.log(err);

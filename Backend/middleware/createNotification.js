@@ -1,15 +1,13 @@
 const SaveNotification = require('../fire-base/saveNotification');
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
-const {getUserById} = require('../components/user/userDAL');
-
+const { getUserById } = require('../components/user/userDAL');
 
 const createLikeNotification = async (req, res) => {
   const { photoId } = req.params;
-  const favoriteCreated = req.favoriteCreated;
-  
-  try {
+  const { favoriteCreated } = req;
 
+  try {
     const photo = await getPhotoById(photoId, res);
     let reciever; // photo_owenr
     if (photo) {
@@ -22,25 +20,25 @@ const createLikeNotification = async (req, res) => {
     }
     const recieverInfo = await getUserById(reciever);
     const senderInfo = await getUserById(req.userId);
-    let senderName=senderInfo.displayName;
-    let recieverName= recieverInfo.displayName;
+    let senderName = senderInfo.displayName;
+    let recieverName = recieverInfo.displayName;
     const newNotification = new Notification({
-      sender:req.userId,
+      sender: req.userId,
       senderName,
       reciever, // reciever.toString()
       recieverName,
-      act: `like`,
+      act: 'like',
       photoId,
       notificationDate: req.body.favoriteDate,
-      imageUrl:photo.imageUrl,
+      imageUrl: photo.imageUrl,
     });
 
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
 
     // since firebase dont allow undefined values and throw errors
-    senderName = senderName==undefined? null : senderName;
-    recieverName = recieverName==undefined? null : recieverName;
-    
+    senderName = senderName === undefined ? null : senderName;
+    recieverName = recieverName === undefined ? null : recieverName;
+
     const id = newNotification._id;
     const firebaseNotification = { // due to firebase constrictions
       sender: newNotification.sender.toString(),
@@ -51,7 +49,7 @@ const createLikeNotification = async (req, res) => {
       act: newNotification.act,
       photoId: newNotification.photoId.toString(),
       notificationDate: req.body.favoriteDate.toString(),
-      imageUrl:photo.imageUrl.toString(),
+      imageUrl: photo.imageUrl.toString(),
     };
     await SaveNotification(firebaseNotification);
     return res.status(201).json({
@@ -65,42 +63,38 @@ const createLikeNotification = async (req, res) => {
   }
 };
 
-
 const createCommentNotification = async (req, res) => {
-
   try {
+    const { commentCreated } = req;
 
-    const commentCreated = req.commentCreated;
-    const photoId =req.photoFound._id; 
-
-    const reciever =req.photoFound.user; // photo_owner
+    const reciever = req.photoFound.user; // photo_owner
     const recieverInfo = await getUserById(reciever);
     const senderInfo = await getUserById(req.userId);
-    let senderName=senderInfo.displayName;
-    let recieverName= recieverInfo.displayName;
+    let senderName = senderInfo.displayName;
+    let recieverName = recieverInfo.displayName;
 
     const newNotification = new Notification({
-      sender:req.userId,
+      sender: req.userId,
       reciever, // reciever.toString()
-      act: `comment`,
-      photoId:req.photoFound._id,
+      act: 'comment',
+      photoId: req.photoFound._id,
       notificationDate: commentCreated.dateCreated,
       recieverName,
-      imageUrl:req.photoFound.imageUrl,
+      imageUrl: req.photoFound.imageUrl,
       senderName,
     });
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
     const id = newNotification._id;
     // since firebase dont allow undefined values and throw errors
-    senderName = senderName==undefined? null : senderName;
-    recieverName = recieverName==undefined? null : recieverName;
+    senderName = senderName === undefined ? null : senderName;
+    recieverName = recieverName === undefined ? null : recieverName;
 
     const firebaseNotification = { // due to firebase constrictions
       sender: newNotification.sender.toString(),
       reciever: newNotification.reciever.toString(),
       recieverName,
       senderName,
-      imageUrl:req.photoFound.imageUrl,
+      imageUrl: req.photoFound.imageUrl,
       id: id.toString(),
       act: newNotification.act,
       photoId: newNotification.photoId.toString(),
@@ -119,8 +113,6 @@ const createCommentNotification = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
-  createLikeNotification,createCommentNotification
+  createLikeNotification, createCommentNotification,
 };

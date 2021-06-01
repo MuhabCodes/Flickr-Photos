@@ -3,7 +3,7 @@ const commentsDAL = require('./commentsDAL');
 
 const { decryptAuthToken } = require('../../auth/Services/decryptToken');
 
-exports.add = async function addComment(req, res,next) {
+exports.add = async function addComment(req, res, next) {
   const { authorization } = req.headers;
 
   const { userId } = await decryptAuthToken(authorization);
@@ -27,9 +27,9 @@ exports.add = async function addComment(req, res,next) {
       commenttex: req.body.commentText,
     });
     // bypassing into middlewares
-    req.userId=userId;
-    req.photoFound= photoFound;
-    req.commentCreated ={
+    req.userId = userId;
+    req.photoFound = photoFound;
+    req.commentCreated = {
       _id: comment.id,
       user: comment.user,
       photo: comment.photo,
@@ -37,7 +37,7 @@ exports.add = async function addComment(req, res,next) {
       commentText: comment.commentText,
     };
     next();
-    } catch (err) {
+  } catch (err) {
     return res.status(500).json({
       error: err,
     });
