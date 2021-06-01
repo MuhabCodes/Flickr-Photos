@@ -61,7 +61,7 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route path="/Profile/About">
+            <Route path="/Profile/About/:id">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
@@ -85,7 +85,7 @@ function App() {
             <Route exact path="/About">
               <About />
             </Route>
-            <Route exact path="/followers">
+            <Route exact path="/followers?:userid">
               <FollowersPage />
             </Route>
             <Route path="*">
