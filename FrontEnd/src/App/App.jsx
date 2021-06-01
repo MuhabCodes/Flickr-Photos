@@ -22,6 +22,7 @@ import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import Photostream from '../Profile/Photostream';
+import EditPhotostream from '../Profile/EditPhotostream';
 
 function App() {
   return (
@@ -55,20 +56,23 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route path="/Profile/About">
+            <Route exact path="/Profile/About">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
             </Route>
-            <Route path="/Profile/Faves">
+            <Route exact path="/Profile/Faves">
               <CoverArea />
               <SubNavBar />
               <Faves />
             </Route>
-            <Route path="/Profile/Photostream">
+            <Route exact path="/Profile/Photostream">
               <CoverArea />
               <SubNavBar />
               <Photostream />
+            </Route>
+            <Route exact path="/profile/photostream/edit">
+              <EditPhotostream />
             </Route>
             <Route path="/CameraRoll">
               <CameraRoll />
