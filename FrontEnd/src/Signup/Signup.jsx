@@ -61,7 +61,7 @@ export default function SignUp() {
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', resp.data.accessToken);
+      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
     });
   };
 

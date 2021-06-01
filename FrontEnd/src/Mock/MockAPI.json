@@ -949,6 +949,14 @@
       "lastname": "Hosny",
       "age": 20,
       "id": 4
+    },
+    {
+      "email": "kareem@gmail",
+      "password": "$2a$10$rkgA9HYNBKGEgk3EiOkWguDd7213SDYnhu9F/ZsZOwlJaaTpc7sse",
+      "firstname": "kareem",
+      "lastname": "Mostafa",
+      "age": 20,
+      "id": 5
     }
   ]
 }
