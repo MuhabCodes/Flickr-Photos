@@ -78,8 +78,7 @@ exports.deleteComment = async function deleteComment(req, res) {
 };
 exports.findComment = async function findComment(req, res) {
   const photoID = req.params.photoId;
-  console.log(photoID);
-  try { /// /validation if photo exist
+  try { /// /validation if photoid is correct
     if (!mongoose.isValidObjectId(photoID)) {
       return res.status(404).json({
         error: 'Invalid Photo',
