@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import './UpgradeToPro.css';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -30,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// import { makeStyles, withStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-// import { useHistory } from 'react-router-dom';
-
 export default function UpgradeToPro() {
   const classes = useStyles();
+  const history = useHistory();
+  const handleSubmit = () => {
+    history.push('/GettingStarted');
+  };
   return (
     <div>
       <div className="backgroundimg">
@@ -44,13 +45,17 @@ export default function UpgradeToPro() {
           <span>pro</span>
         </p>
         <p className="first">Advanced stats, ad-free browsing, automatic photo uploads, and more.</p>
-        <Button
-          variant="contained"
-          className="button"
-          disableElevation
-        >
-          Get Started
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <Button
+            variant="contained"
+            className="button"
+            disableElevation
+            type="submit"
+          >
+            Get Started
+          </Button>
+        </form>
+
       </div>
       <div className={classes.root}>
         <Grid container spacing={3}>

@@ -22,6 +22,7 @@ import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
+import GettingStarted from '../UpgradeToPro/GettingStarted';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           <Switch>
             <Route exact path="/UpgradeToPro">
               <UpgradeToPro />
+            </Route>
+            <Route exact path="/GettingStarted">
+              <GettingStarted />
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
