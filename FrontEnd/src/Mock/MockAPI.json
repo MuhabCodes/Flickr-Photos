@@ -992,7 +992,8 @@
       "photoId": 1,
       "dayUploaded": 28,
       "monthUploaded": "April",
-      "yearUploaded": 2021
+      "yearUploaded": 2021,
+      "userId": 4
     },
     {
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -1004,7 +1005,8 @@
       "DateTaken": "25/5/2018",
       "dayUploaded": 27,
       "monthUploaded": "june",
-      "yearUploaded": 2021
+      "yearUploaded": 2021,
+      "userId": 4
     },
     {
       "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -1087,10 +1089,29 @@
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Abdelrahman",
-      "lastname": "Hosny",
+      "firstname": "Abdo",
+      "lastname": "Hos",
       "age": 20,
-      "id": 4
+      "id": 4,
+      "gender": "Male",
+      "displayname": "HosHos",
+      "ispro": "false"
+    },
+    {
+      "email": "kareem@gmail",
+      "password": "$2a$10$rkgA9HYNBKGEgk3EiOkWguDd7213SDYnhu9F/ZsZOwlJaaTpc7sse",
+      "firstname": "kareem",
+      "lastname": "Mostafa",
+      "age": 20,
+      "id": 5
+    },
+    {
+      "email": "kareemmoustafa05@gmail.com",
+      "password": "$2a$10$DN8t.lmPvPle4gyG9G/7Vuu/LV1NNqG/3fDd3Bz.B2eisO1yVrNX2",
+      "firstName": "kareemm",
+      "lastName": "kareem",
+      "age": "20",
+      "id": 6
     }
   ]
 }

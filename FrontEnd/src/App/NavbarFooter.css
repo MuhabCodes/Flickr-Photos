@@ -29,6 +29,12 @@ body {
   margin-right: 25px;
 }
 
+.button1 {
+  background-color: transparent;
+  margin-right: 0;
+  margin-left: 800px;
+}
+
 .navbar-light .navbar-brand:hover {
   color: white;
 }

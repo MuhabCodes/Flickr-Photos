@@ -27,6 +27,7 @@
     "react-edit-text": "^4.0.3",
     "react-hook-form": "^7.3.6",
     "react-lazy-load-image-component": "^1.5.1",
+    "react-promise-tracker": "^2.1.0",
     "react-responsive-masonry": "^2.1.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
