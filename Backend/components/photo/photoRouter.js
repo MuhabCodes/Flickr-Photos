@@ -1,4 +1,5 @@
 const express = require('express');
+const commentsController = require('./comments/commentsController');
 
 const router = express.Router();
 const {
@@ -28,6 +29,8 @@ router.get('/:photoId', showPhoto);
 router.put('/:photoId', editPhoto);
 
 // delete a photo
+
+/// // Now the part of comment (photos.comments)
 router.delete('/:photoId', deletePhoto);
 
 // add person to photo
@@ -46,5 +49,12 @@ router.post('/:photoId/:photoLocation', addLocation);
 
 // to edit location of certain photo : use put/:photoId and send only location so that it will be
 // the only thing to be changed
+router.post('/:photoId/comments', commentsController.add);
+
+router.put('/:photoId/comments/:commentId', commentsController.editComment);
+
+router.delete('/:photoId/comments/:commentId', commentsController.deleteComment);
+
+router.get('/:photoId/comments', commentsController.findComment);
 
 module.exports = router;
