@@ -1,3 +1,6 @@
+///[ImageFullscreen] class which displays a given image with zoom in and ou feature and
+///like comment feature
+
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
@@ -7,7 +10,7 @@ import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:photo_view/photo_view.dart';
 
 import 'comments_fav_page.dart';
-import 'home.dart';
+import 'comments_page.dart';
 
 class ImageFullscreen extends StatefulWidget {
   Photo myPhoto;
@@ -35,23 +38,11 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
     }));
   }
 
-  void addLikers(Post post) {
-    post.isLiked = post.isLiked ? false : true;
-    if (!post.isLiked && post.likes != null) {
-      post.likes.remove(loggedInUser);
-    } else {
-      post.likes.add(loggedInUser);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     _widthScreen = MediaQuery.of(context).size.width;
     _heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      /*appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),*/
       body: Stack(
         children: [
           Center(
@@ -63,49 +54,66 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
             ),
           ),
           Align(
-              alignment: Alignment.topCenter,
+
+              ///to align widgets above each other
+              alignment: Alignment.topLeft,
               child: Container(
+                width: _widthScreen,
                 constraints: BoxConstraints(maxWidth: _widthScreen),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Row(
                       children: [
-                        Container(
-                          //this container is related to the circle avatar only (tiny box contains an avatar)
-                          //color: Colors.white,
-                          margin: EdgeInsets.only(
-                              right: 10,
-                              top: 65,
-                              left: 30), //user name padding away from pp
-                          child: CircleAvatar(
-                            backgroundImage: post.user.profilePicture,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 70, right: 50),
-                          child: TextButton(
-                            child: Text(
-                              post.user.username,
-                              style: appBarTitleStyle,
+                        Column(
+                          children: [
+                            Container(
+                              //this container is related to the circle avatar only (tiny box contains an avatar)
+                              //color: Colors.white,
+                              margin: EdgeInsets.only(
+                                  right: 10,
+                                  top: 65,
+                                  left: 30), //user name padding away from pp
+                              child: CircleAvatar(
+                                backgroundImage: post.user.profilePicture,
+                              ),
                             ),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (_) {
-                                return Profile();
-                              }));
-                            },
-                          ),
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(right: 20, top: 50, left: 10),
-                          child: IconButton(
-                              //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
-                              icon: Icon(Icons.close_rounded,
-                                  size: 35, color: Colors.white),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              }),
+                        Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 70, right: 50),
+                              child: TextButton(
+                                child: Text(
+                                  post.user.username,
+                                  style: appBarTitleStyle,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(builder: (_) {
+                                    return Profile();
+                                  }));
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              margin:
+                                  EdgeInsets.only(right: 5, top: 60, left: 5),
+                              child: IconButton(
+                                  //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
+                                  icon: Icon(Icons.close_rounded,
+                                      size: 30, color: Colors.white),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  }),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -176,22 +184,13 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
                                   onPressed: () {
                                     addLikers(post);
 
-                                    setState(() {
-                                      /* post.isLiked =
-                                          post.isLiked ? false : true;
-                                      if (!post.isLiked && post.likes != null) {
-                                        post.likes.remove(loggedInUser);
-                                      } else {
-                                        post.likes.add(loggedInUser);
-                                        print('in add');
-                                      }*/
-                                    });
+                                    setState(() {});
                                   },
                                 ),
                               ],
                             ),
                             IconButton(
-                                padding: EdgeInsets.only(top: 8, left: 25),
+                                padding: EdgeInsets.only(top: 8, left: 15),
                                 icon: Icon(Icons.mode_comment_outlined),
                                 color: Colors.grey,
                                 iconSize: 30,
