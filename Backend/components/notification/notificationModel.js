@@ -6,7 +6,7 @@ const notificationSchema = mongoose.Schema({
   //   ref: 'User',
   //   required: true,
   // }, // TODO WILL BE REMOVED
-  recieverID: {
+  reciever: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
@@ -23,6 +23,6 @@ const notificationSchema = mongoose.Schema({
     type: Date,
   },
 
-});
+}); 
 
 module.exports = mongoose.model('Notification', notificationSchema);
