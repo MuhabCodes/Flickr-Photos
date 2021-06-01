@@ -1,7 +1,7 @@
-module.exports = async function getNotifications(userId) {
-  const admin = require('firebase-admin');
-  const serviceAccount = require('./serviceAccountKey.json');
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceAccountKey.json');
 
+module.exports = async function getNotifications(userId) {
   if (!admin.apps.length) { // this to check if there's app
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
