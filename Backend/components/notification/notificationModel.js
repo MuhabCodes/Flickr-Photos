@@ -6,6 +6,12 @@ const notificationSchema = mongoose.Schema({
     ref: 'User',
     required: true,
   }, // TODO WILL BE REMOVED
+  senderName:{
+    type:String,
+  },
+  recieverName:{
+    type:String,
+  },
   reciever: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -14,6 +20,9 @@ const notificationSchema = mongoose.Schema({
   photoId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Photo',
+  },
+  imageUrl: {
+    type: String,
   },
   act: {
     type: String, // it will be one of three ("follow/like/comment")
