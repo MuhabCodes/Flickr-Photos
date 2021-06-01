@@ -30,6 +30,7 @@ module.exports = {
     );
   },
   async getPeopleInPhotoDAL(photoId) {
+    // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
       .select('peopleInPhoto')
       .populate('peopleInPhoto')
