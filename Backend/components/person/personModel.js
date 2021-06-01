@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const personSchema = new mongoose.Schema({
   birthDate:
   {
-    type: String,
+    type: Date,
     required: true,
 
   },
