@@ -58,10 +58,10 @@ export default function SignUp() {
     };
     axios(`${configData.SERVER_URL}/register/`, {
       method: 'post',
-      data: JSON.stringify(UserInfo),
+      data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', resp.data.token);
+      localStorage.setItem('token', resp.data.accessToken);
     });
   };
 

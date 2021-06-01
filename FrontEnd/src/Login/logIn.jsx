@@ -30,7 +30,7 @@ const useStyles = makeStyles(style);
 
 // the schema of the inputs needed to be validated
 const schema = yup.object().shape({
-  password: yup.string().min(12).required(),
+  password: yup.string().min(5).required(),
   email: yup.string().email().required(),
 });
 
@@ -50,13 +50,14 @@ export default function SignUp() {
     };
     axios(`${configData.SERVER_URL}/login/`, {
       method: 'post',
-      data: JSON.stringify(UserInfo),
+      data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', resp.data.token);
+      localStorage.setItem('token', resp.data.accessToken);
     });
   };
-
+  console.log(email);
+  console.log(password);
   return (
     <div className={classes.backgroundImage}>
       <Card className={classes.root}>
