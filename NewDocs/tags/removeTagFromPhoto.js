@@ -1,14 +1,16 @@
-/**
- * 
- * @api {delete} /tags/photo/:photoId removeTagFromPhoto
- * @apiDescription removeTag from a photo
- * @apiName apiName
- * @apiGroup group
- * @apiVersion  major.minor.patch
+ /** 
+ * @api {DELETE} /tags/photo/:photoId removeTagFromPhoto
+ * @apiDescription remove Tag from a photo
+ * @apiGroup tags
+ * @apiVersion  0.1.0
  * 
  * 
- * @apiHeader  {String} authorization authorization
  * 
+ * @apiHeader  {String} authorization authorization Value
+ * @apiHeaderExample {json} Request-Example:
+ *    {
+ *        "Authorization": "Bearer   dksjfbdsjkfbusafbjaadsf"
+ *     } 
  * @apiParam  {String} photoId photoId to remove the tag from
  * @apiParam  {String} tagId Id of the tag you want to remove
  * @apiParamExample  {string} Request-Example:
@@ -17,8 +19,7 @@
  *     }
  * 
  * 
- * @apiSuccess (Success 200) {Number} name description
-
+ * @apiSuccess (Success 200) {Number} statusCode The status code
  * 
  * 
  * 
