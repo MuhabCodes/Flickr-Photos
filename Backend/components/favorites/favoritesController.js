@@ -52,10 +52,10 @@ exports.findFavorite = async function findFavorite(req, res) {
       {
         total: favoriteOutput.length,
         owner: user,
-        photos: favoriteOutput.map((doc) => ({
-          photo: doc.photo,
+        photos: favoriteOutput.map((doc) => (
+          doc.photo
 
-        })),
+        )),
       },
     );
   } catch (err) {
