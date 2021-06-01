@@ -84,6 +84,12 @@ exports.findComment = async function findComment(req, res) {
         error: 'Invalid Photo',
       });
     }
+    const photoFound = await /// /validation if photo exist
+    commentsDAL.findphoto(req.params.photoId);
+    if (photoFound === null) {
+      return res.status(404).json({ message: 'Photo not Found' });
+    }
+
     const commentOutput = await commentsDAL.findComment(photoID);
     return res.status(200).json(
       {
