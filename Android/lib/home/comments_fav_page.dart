@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+///[CommentsFaves] class creates a page which navigates between two tabs Faves and Comment
+
 import 'package:flickr/home/comments_page.dart';
 import 'package:flickr/models/comment.dart';
 import 'package:flickr/models/global.dart';
@@ -6,7 +7,6 @@ import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:responsive_widgets/responsive_widgets.dart';
 
 import '../models/global.dart';
 
@@ -23,7 +23,10 @@ class CommentsFavs extends StatefulWidget {
 
 class _CommentsFavsState extends State<CommentsFavs> {
   Post thePost;
-  int index = 0; //1 means start with favs tab, 2 means start with comments tab
+  int index = 0;
+
+  ///[index] 1 means start with favs tab, 2 means start with comments tab
+  ///[isFaves] checks if the like button is clicked or not and based on that it changes color
   bool isFaves = false;
   double _widthScreen = 0;
   int page = 0;
@@ -34,14 +37,14 @@ class _CommentsFavsState extends State<CommentsFavs> {
   Widget build(BuildContext context) {
     _widthScreen = MediaQuery.of(context).size.width;
     Map<int, Widget> _pageview = {
-      1: getLikes(context, thePost.likes),
+      1: getLikes(thePost.likes),
       2: getComments(thePost.comments),
       //3: Navigator.pop(context);
     };
     return _pageview[page];
   }
 
-  Widget getLikes(BuildContext context, List<User> likes) {
+  Widget getLikes(List<User> likes) {
     List<Widget> likers = [];
     for (User follower in likes) {
       likers.add(new Container(
@@ -148,10 +151,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                setState(() {
-                  /*page = 1;
-                  build(context);*/
-                });
+                setState(() {});
               },
             ),
           ),
@@ -163,17 +163,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
             getCommentsFaves(thePost.comments),
 
             //Container(),
-          ])
-
-          /*Row(
-          children: <Widget>[
-            Container(
-                child: ListView(
-              children: likers,
-            )),
-          ],
-        ),*/
-          ),
+          ])),
     );
   }
 
@@ -368,19 +358,13 @@ class _CommentsFavsState extends State<CommentsFavs> {
             ),
             onPressed: () {
               Navigator.pop(context);
-              setState(() {
-                /* page = 1;
-                build(context);*/
-              });
+              setState(() {});
             },
           ),
         ),
         body: TabBarView(children: <Widget>[
           getFavesComments(thePost.likes),
-          /*ListView(
-              padding: EdgeInsets.only(bottom: 90),
-              children: comments,
-            ),*/
+
           getCommentsFaves(thePost.comments),
           //getLikes(thePost.likes),
         ]),
@@ -489,10 +473,6 @@ class _CommentsFavsState extends State<CommentsFavs> {
                   decoration: InputDecoration(
                     hintText: " Write a comment...",
                     contentPadding: EdgeInsets.only(left: 7),
-                    /*suffixIcon: IconButton(
-                      icon: Icon(Icons.send),
-                      onPressed: () {},
-                    ),*/
                   ),
                 ),
               ),
@@ -526,15 +506,6 @@ class _CommentsFavsState extends State<CommentsFavs> {
                         ),
                         onPressed: () {
                           setState(() {
-                            /*if (_commentController.text.isEmpty == false) {
-                              thePost.comments.add(
-                                new Comment(
-                                    loggedInUser,
-                                    _commentController.text,
-                                    DateTime.now(),
-                                    false),
-                              );
-                            }*/
                             isAdded =
                                 postComment(_commentController.text, thePost);
                             if (isAdded == true) {
