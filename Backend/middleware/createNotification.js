@@ -50,6 +50,49 @@ const createLikeNotification = async (req, res) => {
   }
 };
 
+
+const createCommentNotification = async (req, res) => {
+
+  try {
+
+  const commentCreated = req.commentCreated;
+  const photoId =req.photoFound._id; 
+
+  const reciever =req.photoFound.user; // photo_owner
+    const newNotification = new Notification({
+      sender:req.userId,
+      reciever, // reciever.toString()
+      act: `comment`,
+      photoId:req.photoFound._id,
+      notificationDate: commentCreated.dateCreated,
+    });
+    console.log('newNot', newNotification);
+    // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
+    const id = newNotification._id;
+    const firebaseNotification = { // due to firebase constrictions
+      sender: newNotification.sender.toString(),
+      reciever: newNotification.reciever.toString(),
+      id: id.toString(),
+      act: newNotification.act,
+      photoId: newNotification.photoId.toString(),
+      notificationDate: newNotification.notificationDate.toString(),
+    };
+
+    console.log('firebasenot', firebaseNotification); 
+    await SaveNotification(firebaseNotification);
+    return res.status(201).json({
+      message: 'comment added succesfully',
+      commentCreated,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+};
+
+
+
 module.exports = {
-  createLikeNotification,
+  createLikeNotification,createCommentNotification
 };
