@@ -2,5 +2,6 @@
     "/group": "/Group",
     "/group/:id": "/Group/:id",
     "users": 644,
+    "users/:id":644,
     "people/:userId/photos":644
 }

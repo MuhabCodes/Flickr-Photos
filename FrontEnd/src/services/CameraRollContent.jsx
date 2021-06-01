@@ -1,6 +1,8 @@
+import axios from 'axios';
+
 function cameraRollContent() {
-  return fetch('http://localhost:8000/photos')
-    .then((data) => data.json());
+  return axios('http://localhost:8000/photos')
+    .then((resp) => resp.data);
 }
 
 export default cameraRollContent;

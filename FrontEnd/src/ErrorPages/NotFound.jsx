@@ -18,7 +18,7 @@ const NotFound = () => {
             This is not the page you&#39;re looking for.
           </h3>
           <p className="paragraph-404">
-            It appears the photostream you seek doesn’t exist.
+            It appears the page you seek doesn’t exist.
             <br />
             Here are some of today’s best photos instead:
           </p>
