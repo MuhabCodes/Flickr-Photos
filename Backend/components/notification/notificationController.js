@@ -24,7 +24,7 @@ const { decryptAuthToken } = require('../auth/Services/decryptToken');
                 myNotificationsarray[i]=(myNotifications[Object.keys(myNotifications)[i]]);
                 i++ ;
             }
-            return res.status(200).send({ statusCode: 201, myNotificationsarray });
+            return res.status(200).send({ statusCode: 200, myNotificationsarray });
             
     }
     catch(err){
