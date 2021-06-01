@@ -27,9 +27,14 @@ const PersonalInformation = () => {
       setIsPro(resp.data.ispro);
       setEmail(resp.data.email);
       return resp.data;
-    }).catch((err) => {
-      console.log(err.message);
-      history.push('*');
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        history.push('/login');
+      } else {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+      }
     });
   }, []);
   return (

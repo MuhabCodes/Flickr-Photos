@@ -8,15 +8,22 @@ const DeleteAccount = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   // For not rendering of text boxes until user info gets fetched
-  // Headers for storing the token (Will be taken from local storage)
-  const userjwt = jwt(localStorage.getItem('token'));
+  const userjwt = jwt(localStorage.getItem('token')); // get token from local storage to get curr user id
   const [displayname, setDisplayName] = useState('');
   useEffect(() => {
     axios.get(`/users/${userjwt.sub}`, {
     }).then((resp) => {
-      setLoading(false);
+      setLoading(false); // set loading to false as it is dont and fetched data
       setDisplayName(resp.data.displayname);
       return resp.data;
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        history.push('/login');
+      } else {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+      }
     });
   }, []);
 
@@ -29,9 +36,16 @@ const DeleteAccount = () => {
         // Delete
         setTimeout(() => history.push('/login'), 1000); // Redirect to login if Account Deleted
       })
-      .catch((err) => {
-        console.log(err.message);
-        setTimeout(() => history.push('*'), 2000); // Redirect to Error page
+      .catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        } else if (error.response.status === 404) {
+          setTimeout(() => history.push('*'), 2000); // Redirect to Error page
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
       });
   };
   return (

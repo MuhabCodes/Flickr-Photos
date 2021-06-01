@@ -19,7 +19,7 @@ const ChangePassword = () => {
     };
     axios.put(`/users/${userjwt.sub}`, ProfileInfo)
       .then(() => {
-        history.push('/account');
+        history.push('/account'); // if successful we redirect to account
       }).catch((err) => {
         if (err.response.status === 401) {
           localStorage.removeItem('token');

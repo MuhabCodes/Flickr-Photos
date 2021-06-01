@@ -23,9 +23,14 @@ const EditPersonalInfo = () => {
         setGender(resp.data.gender);
         return resp.data;
       })
-      .catch((err) => {
-        console.log(err.message);
-        history.push('*');
+      .catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          history.push('/login');
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
       });
   }, []);
 
@@ -37,9 +42,16 @@ const EditPersonalInfo = () => {
     axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
       .then(() => {
         history.push('/account');
-      }).catch((err) => {
-        console.log(err.message);
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        } else if (error.response.status === 404) {
+          setTimeout(() => history.push('*'), 2000); // Redirect to Error page
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
       });
   };
   return (
