@@ -971,5 +971,24 @@
       "Url": "https://www.flickr.com/people/cannon_s5_is/",
       "userId": "85826296@N00"
     }
+  ], 
+
+  "Notification":[
+      {
+          "senderName": "Ahmed",
+          "reciever": 1,
+          "id": 1,
+          "act": "like",
+          "notificationDate": "27/12/2020",
+          "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      },
+      {
+        "senderName": "Sarah",
+        "reciever": 1,
+        "id": 2,
+        "act": "comment",
+        "notificationDate": "28/12/2020",
+        "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    }
   ]
 }
