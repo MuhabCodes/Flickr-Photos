@@ -460,56 +460,56 @@ class _PrivacySafetyButtonState extends State<PrivacySafetyButton> {
 }
 
 class SingleNotifier1 extends ChangeNotifier {
-  String _currentchoice = choices1[0];
+  String _currentChoice = choices1[0];
   SingleNotifier1();
 
-  String get currentChoices => _currentchoice;
+  String get currentChoices => _currentChoice;
 
   updateChoice(String value) {
-    if (value != _currentchoice) {
-      _currentchoice = value;
+    if (value != _currentChoice) {
+      _currentChoice = value;
       notifyListeners();
     }
   }
 }
 
 class SingleNotifier2 extends ChangeNotifier {
-  String _currentchoice = choices2[0];
+  String _currentChoice = choices2[0];
   SingleNotifier2();
 
-  String get currentChoices => _currentchoice;
+  String get currentChoices => _currentChoice;
 
   updateChoice(String value) {
-    if (value != _currentchoice) {
-      _currentchoice = value;
+    if (value != _currentChoice) {
+      _currentChoice = value;
       notifyListeners();
     }
   }
 }
 
 class SingleNotifier3 extends ChangeNotifier {
-  String _currentchoice = choices3[0];
+  String _currentChoice = choices3[0];
   SingleNotifier3();
 
-  String get currentChoices => _currentchoice;
+  String get currentChoices => _currentChoice;
 
   updateChoice(String value) {
-    if (value != _currentchoice) {
-      _currentchoice = value;
+    if (value != _currentChoice) {
+      _currentChoice = value;
       notifyListeners();
     }
   }
 }
 
 class SingleNotifier4 extends ChangeNotifier {
-  String _currentchoice = choices4[0];
+  String _currentChoice = choices4[0];
   SingleNotifier4();
 
-  String get currentChoices => _currentchoice;
+  String get currentChoices => _currentChoice;
 
   updateChoice(String value) {
-    if (value != _currentchoice) {
-      _currentchoice = value;
+    if (value != _currentChoice) {
+      _currentChoice = value;
       notifyListeners();
     }
   }
