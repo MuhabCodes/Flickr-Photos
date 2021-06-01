@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const notificationSchema = mongoose.Schema({
-  // senderID: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  //   required: true,
-  // }, // TODO WILL BE REMOVED
+  sender: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  }, // TODO WILL BE REMOVED
   reciever: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
