@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -5,12 +7,14 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import axios from 'axios';
 import style from './loginStyles';
 import icon from './flickrlogo.png';
+import configData from '../config.json';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -26,7 +30,7 @@ const useStyles = makeStyles(style);
 
 // the schema of the inputs needed to be validated
 const schema = yup.object().shape({
-  password: yup.string().min(12).required(),
+  password: yup.string().min(5).required(),
   email: yup.string().email().required(),
 });
 
@@ -40,9 +44,22 @@ export default function SignUp() {
   // to save the changes made in each of this inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
   const submitForm = () => {
+    const UserInfo = {
+      email, password,
+    };
+    axios(`${configData.SERVER_URL}/login/`, {
+      method: 'post',
+      data: UserInfo,
+    }).then((resp) => {
+      console.log(resp.data);
+      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
+      history.push('/');
+    });
   };
-
+  // console.log(email);
+  // console.log(password);
   return (
     <div className={classes.backgroundImage}>
       <Card className={classes.root}>

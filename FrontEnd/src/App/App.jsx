@@ -30,12 +30,11 @@ import configData from '../config.json';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
-  axios.defaults.headers.common.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjU0NDkyMywiZXhwIjoxNjIyNTQ4NTIzLCJzdWIiOiI0In0.MEnRAS4qt_2Y4UMPgwUxSoAkT9w26PMV8x8nrj1ohcc';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  localStorage.setItem('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjU0NDkyMywiZXhwIjoxNjIyNTQ4NTIzLCJzdWIiOiI0In0.MEnRAS4qt_2Y4UMPgwUxSoAkT9w26PMV8x8nrj1ohcc');
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
   return (
     <div className="flickr-main">
-      <NavBar />
+      {/* <NavBar /> */}
       <Router>
         <div className="app">
           <Switch>
@@ -74,6 +73,7 @@ function App() {
               <SendEmail />
             </Route>
             <Route exact path="/">
+              <NavBar />
               <HomePage />
             </Route>
             <Route path="/Profile/About">
