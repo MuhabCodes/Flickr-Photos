@@ -1,4 +1,6 @@
 const userDAL = require('./userDAL');
+const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { sendProEmail } = require('../auth/Services/sendEmail');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -82,4 +84,21 @@ exports.getPhotos = async function getPhotos(req, res) {
   } catch (error) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
   }
+};
+
+exports.sendProEmail = async function sendPro(req, res) {
+  const { authorization } = req.headers;
+  if (!authorization) res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
+
+  const { userId } = await decryptAuthToken(authorization);
+  const user = await userDAL.getUserById(userId);
+  if (user && !user.isPro) {
+    // sends email if the user exists and is pro
+    await sendProEmail(user._id, user.email);
+
+    res.status(201).json({ statusCode: 201 });
+  } else if (user && user.isPro) {
+    // user in db but not pro
+    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+  } throw Error();
 };
