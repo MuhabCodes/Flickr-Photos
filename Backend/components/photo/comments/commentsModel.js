@@ -16,8 +16,8 @@ const commentsModel = mongoose.Schema({
   },
 
   dateCreated: {
-    type: String,
-    required: true,
+    type: Date,
+    default: Date.now(),
 
   },
   commentText: {

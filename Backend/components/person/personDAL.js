@@ -1,5 +1,4 @@
 const User = require('../user/userModel');
-const userDAL = require('../user/userDAL');
 
 const Person = require('./personModel');
 
