@@ -1,20 +1,16 @@
 import { React, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './PersonalInformation.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
-import configData from '../config.json';
 
 const PersonalInformation = () => {
+  const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   // For not rendering of text boxes until user info gets fetched
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ2MDc4MCwiZXhwIjoxNjIyNDY0MzgwLCJzdWIiOiI0In0.NzHVlXKnHST44YAvDEqVsUaRPdCWdCxcslXccSPcG2k',
-  };
   // Headers for storing the token (Will be taken from local storage)
-  const userjwt = jwt(headers.Authorization);
+  const userjwt = jwt(localStorage.getItem('token'));
   const [ispro, setIsPro] = useState(false);
   const [email, setEmail] = useState('');
   const [firstname, setFirstName] = useState('');
@@ -22,9 +18,7 @@ const PersonalInformation = () => {
   const [displayname, setDisplayName] = useState('');
   const [avatar] = 'https://images.unsplash.com/photo-1584891800774-6f8c93265d8a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGF2YXRhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
   useEffect(() => {
-    axios(`${configData.SERVER_URL}/users/${userjwt.sub}`, {
-      method: 'get',
-      headers,
+    axios.get(`/users/${userjwt.sub}`, {
     }).then((resp) => {
       setLoading(false);
       setFirstName(resp.data.firstname);
@@ -33,6 +27,9 @@ const PersonalInformation = () => {
       setIsPro(resp.data.ispro);
       setEmail(resp.data.email);
       return resp.data;
+    }).catch((err) => {
+      console.log(err.message);
+      history.push('*');
     });
   }, []);
   return (

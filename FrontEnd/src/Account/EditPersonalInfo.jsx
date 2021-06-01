@@ -22,6 +22,10 @@ const EditPersonalInfo = () => {
         setDisplayName(resp.data.displayname);
         setGender(resp.data.gender);
         return resp.data;
+      })
+      .catch((err) => {
+        console.log(err.message);
+        history.push('*');
       });
   }, []);
 
@@ -33,6 +37,9 @@ const EditPersonalInfo = () => {
     axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
       .then(() => {
         history.push('/account');
+      }).catch((err) => {
+        console.log(err.message);
+        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
       });
   };
   return (

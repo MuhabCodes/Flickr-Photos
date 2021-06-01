@@ -954,14 +954,6 @@
       "gender": "Female",
       "displayname": "Hosd",
       "ispro": "false"
-    },
-    {
-      "email": "karim@gmail.com",
-      "password": "$2a$10$rgWiaWwSHGnIlLSzaKwbI.V6ueI0ZB/Z.Cdbcce/iIhtk5Yk4Zzrm",
-      "firstname": "Karim",
-      "lastname": "Mostafa",
-      "age": 21,
-      "id": 5
     }
   ]
 }
