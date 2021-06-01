@@ -1,99 +1,147 @@
-.faves-view-up {
+.recent-photos {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
-  max-width: 80%;
+  min-width: 100%;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  opacity: 1 !important;
+  opacity: 1;
 }
 
-.faves-container-up {
+.image-grid {
   position: initial;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.grid-item-favesup {
+.image-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   float: left;
   object-fit: cover;
   flex-grow: 1;
-  min-width: 150px;
-  height: 280px;
   padding: 2px;
-  text-align: left;
+  min-width: fit-content;
 }
 
-.interaction-view-favesup {
+.single-image {
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 380px;
+  padding: 2px;
+}
+
+.text-area .description {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 8%;
+  font-family: sans-serif;
   opacity: 0;
-  transition: opacity 0.2s linear;
-  z-index: 1;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
 }
 
-.photo-list-interaction-favesup {
+.image-container:hover {
   cursor: pointer;
 }
 
-.interaction-bar-favesup {
-  left: 0;
+.image-container:hover .text-area .description {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .user-name-explore {
+  position: absolute;
   bottom: 0;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 8px 8px;
-  z-index: 2;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  flex-direction: row;
-  -webkit-box-align: end;
-  align-items: flex-end;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
 }
 
-.text-faves-up {
-  -webkit-box-flex: 1;
-  flex: 1;
+.image-container:hover .user-name-explore {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .fav-btn {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: transparent;
+  z-index: 9999;
+}
+
+.image-container:hover .fav-btn {
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container .faves {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.image-container:hover .faves {
   min-width: 0;
-  min-height: 0;
-  margin-right: 12px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
 }
 
-.image-title-faves {
-  text-decoration: none;
-  display: block;
-  margin: 2px 0 0;
-  text-shadow: 0 0 2px #000;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  z-index: 2;
-  font-size: 14px;
-  color: #fff;
-  font-weight: 600;
-  min-height: 17px;
+.image-container .comments {
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
-.faves-attribution {
-  text-decoration: none;
-  display: block;
-  margin: 2px 0 0;
-  text-shadow: 0 0 2px #000;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  z-index: 2;
-  color: hsla(0, 0%, 100%, 0.7);
-  font-size: 11px;
-  transition: color 0.15s linear;
-}
-
-.animated-fave-star {
-  background: url(https://combo.staticflickr.com/ap/build/images/fave-test/white@1x.png) 0 0/360px 18px no-repeat;
-  width: 18px;
-  height: 18px;
+.image-container:hover .comments {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
 }
