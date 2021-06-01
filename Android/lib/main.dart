@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: GetStarted(),
+        home: TopNavigationBar(), //GetStarted(),
         routes: {'/description': (ctx) => Description()},
         theme: ThemeData(fontFamily: "ProximaNova"),
         debugShowCheckedModeBanner: false, //remove debug sign
