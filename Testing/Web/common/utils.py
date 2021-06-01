@@ -1,6 +1,6 @@
 import inspect
 
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from selenium.webdriver.common.by import By
 
 

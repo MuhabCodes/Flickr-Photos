@@ -5,10 +5,10 @@ from time import sleep
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from pageobject.page import Page
 from pageobject.links import Links
-from pageobject.explore.explorelocator import ExploreLocator
+from pageobject.explore.explore_locator import ExploreLocator
 
 
 class Explore(Page):

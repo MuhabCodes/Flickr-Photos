@@ -1,9 +1,9 @@
 from time import sleep
 import pytest
 
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from pageobject.mainpage.mainpage import MainPage
-from pageobject.mockmethods.mockmethods import MockMethods
+from pageobject.generalmethods.general_methods import GeneralMethods
 
 TIME_TO_WAIT = 30
 
@@ -11,7 +11,7 @@ TIME_TO_WAIT = 30
 class TestMainPageFeedTools(object):
     helper = SelHelper()
     main_page = MainPage(helper, TIME_TO_WAIT)
-    mock_methods = MockMethods(helper)
+    mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = main_page.LOCATOR_LIST
     driver = None
 
@@ -20,7 +20,7 @@ class TestMainPageFeedTools(object):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
         self.helper.implicit_wait(30)
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
         sleep(10)
         yield
         self.helper.quit()

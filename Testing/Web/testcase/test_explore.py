@@ -1,15 +1,15 @@
 from time import sleep
 import pytest
 
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from pageobject.explore.explore import ExploreLocator, Explore
-from pageobject.mockmethods.mockmethods import MockMethods
+from pageobject.generalmethods.general_methods import GeneralMethods
 
 
 class TestExploreLinks(object):
     helper = SelHelper()
     explore = Explore(helper)
-    mock_methods = MockMethods(helper)
+    mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = explore.LOCATOR_LIST
     driver = None
 
@@ -18,7 +18,7 @@ class TestExploreLinks(object):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
         self.helper.implicit_wait(30)
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
         sleep(3)
         self.helper.go_to(self.explore.link)
         sleep(10)

@@ -1,6 +1,6 @@
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from common.utils import Utils
-from pageobject.pagehelper import PageHelper
+from pageobject.page_helper import PageHelper
 
 
 class Page(object):
