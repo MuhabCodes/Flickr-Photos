@@ -2,6 +2,7 @@ const tagsDAL = require('./tagsDAL');
 const { getPhotoById } = require('../photo/photoDAL');
 const { getUserById } = require('../User/userDAL');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { getTagFromPhoto } = require('./services/checkTagInPhoto');
 
 module.exports.getPhotoTags = async function getPhotoTags(req, res) {
   const { params } = req;
@@ -13,9 +14,8 @@ module.exports.getPhotoTags = async function getPhotoTags(req, res) {
       return res.status(200).json({ // form as in API doc
         tags: {
           photoId: params.photoId,
-          tagsList: [
-            photoObj.tags,
-          ],
+          tagsList: photoObj.tags
+          ,
         },
       });
     }
@@ -27,7 +27,7 @@ module.exports.getPhotoTags = async function getPhotoTags(req, res) {
   }
 };
 
-module.exports.getListUser = async function getListUser(req, res) {
+module.exports.getUserTags = async function getUserTags(req, res) {
   const { params } = req;
   try {
     const userObj = await getUserById(params.userId);
@@ -35,7 +35,9 @@ module.exports.getListUser = async function getListUser(req, res) {
     if (userObj) { // checks if i got a user not an empty one
       const tagsObj = await tagsDAL.getUserTag(params.userId);
       // if there is a tag it should return it else return not found
-      if (tagsObj) { return res.status(200).json(tagsObj); }
+      if (tagsObj) {
+        return res.status(200).json(tagsObj);
+      }
       return res.status(404).json({
         error: '404 Tags not found',
       });
@@ -69,9 +71,10 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
         error: 'You are not authorized to add a tag',
       });
     }
+
+    if (!body.tagRaw || body.tagRaw === '') { return res.status(404).json(); }
     // create the tag
     const checkTag = await tagsDAL.getTag(body.tagRaw);
-
     // if there is no Tag with this name it should  create a tag then add it
     if (checkTag == null) {
       // creating the tag
@@ -87,6 +90,14 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
       return res.status(200).json({
         message: `Tag created and added Successfully with owner Id = ${currentUser.userId}`,
         photo: photoWithTag,
+      });
+    }
+    // Checking whether tag exists in photo or not
+    const inPhoto = getTagFromPhoto(checkTag._id, photoObj.tags);
+
+    if (inPhoto === true) {
+      return res.status(403).json({
+        message: 'Tag already exists',
       });
     }
 
@@ -117,7 +128,7 @@ module.exports.removeTagFromPhoto = async function removeTagFromPhoto(req, res) 
     const photoWithoutTag = await tagsDAL.removeTagFromPhoto(params.photoId, body.tagId);
     return res.status(200).json({
       message: 'Tag deleted from photo successfully',
-      photoObj,
+
     });
   } catch (error) {
     return res.status(500).json(error);
@@ -130,10 +141,9 @@ module.exports.deleteTag = async function deleteTag(req, res) {
   try {
     const currentUser = await decryptAuthToken(authorization);
     const tagObj = await tagsDAL.getTagWithId(params.tagId);
-    console.log(tagObj);
+
     // check if the owner of tag is the current User
-    if (currentUser.userId == tagObj.ownerId) {
-      console.log('You are the user');
+    if (currentUser.userId === tagObj.ownerId) {
       // remove this tag from all the photos
       const photoWithoutTag = await tagsDAL.removeTagFromAllPhotos(params.tagId);
       const removedTag = await tagsDAL.removeTag(params.tagId);

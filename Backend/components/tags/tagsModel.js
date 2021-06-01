@@ -9,6 +9,7 @@ const tagSchema = new Schema({
   tagRaw: {
     type: String,
     unique: true,
+    required: true,
   },
   tagText: {
     type: String,
