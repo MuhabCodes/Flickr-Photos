@@ -1,17 +1,22 @@
 import 'package:flickr/home/image_fullscreen.dart';
 import 'package:flickr/models/global.dart';
+import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 class ViewAllPhotos extends StatelessWidget {
   String textTitle = "";
-  List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
+  List<Photo> photo = [
+    new Photo(
+      imagePath: 'www.google.com',
+    )
+  ];
   double _widthScreen = 0;
   Post thePost;
-  ViewAllPhotos(this.textTitle, this.imagePath, this.thePost);
+  ViewAllPhotos(this.textTitle, this.photo, this.thePost);
 
-  void selectScreen(BuildContext ctx, NetworkImage imageRoll, Post post) {
+  void selectScreen(BuildContext ctx, Photo imageRoll, Post post) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return ImageFullscreen(imageRoll, post);
     }));
@@ -51,7 +56,7 @@ class ViewAllPhotos extends StatelessWidget {
   List<Widget> getPosts(BuildContext context) {
     List<Widget> imageRoll = [];
     int index = 0;
-    for (NetworkImage image in imagePath) {
+    for (Photo image in photo) {
       // we will loop on all posts created in global.dart and add them to our home page
 
       imageRoll.add(drawImage(context, image));
@@ -61,7 +66,7 @@ class ViewAllPhotos extends StatelessWidget {
     return imageRoll;
   }
 
-  Widget drawImage(BuildContext context, NetworkImage image) {
+  Widget drawImage(BuildContext context, Photo image) {
     return Container(
         margin: EdgeInsets.only(bottom: 10),
         child: Column(children: <Widget>[
@@ -83,7 +88,7 @@ class ViewAllPhotos extends StatelessWidget {
                   ),
                   color: Colors.white,
                   image: DecorationImage(
-                    image: image,
+                    image: NetworkImage(image.imagePath),
                     fit: BoxFit.cover,
                   )),
             ),
