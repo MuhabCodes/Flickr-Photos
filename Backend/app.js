@@ -15,6 +15,7 @@ const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 const urlRouter = require('./components/url/urlRoute');
 const groupRouter = require('./components/group/groupRoute');
 const galleryRouter = require('./components/Gallery/galleryRoute');
+const tagsRouter = require('./components/tags/tagsRouter');
 
 // declaring app
 const app = express();
@@ -37,6 +38,7 @@ app.use('/gallery', galleryRouter);
 app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
 app.use('/comments', commentRouter);
+app.use('/tags', tagsRouter);
 // exporting
 
 module.exports = app;
