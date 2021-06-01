@@ -47,6 +47,7 @@ dependencies:
   video_thumbnail: ^0.3.3
   flutter_svg: ^0.20.0-nullsafety.3
   google_fonts: ^2.1.0
+  dartdoc: ^0.44.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
