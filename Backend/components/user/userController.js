@@ -90,15 +90,20 @@ exports.sendProEmail = async function sendPro(req, res) {
   const { authorization } = req.headers;
   if (!authorization) res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
 
-  const { userId } = await decryptAuthToken(authorization);
-  const user = await userDAL.getUserById(userId);
-  if (user && !user.isPro) {
-    // sends email if the user exists and is pro
-    await sendProEmail(user._id, user.email);
+  try {
+    const { userId } = await decryptAuthToken(authorization);
+    const user = await userDAL.getUserById(userId);
 
-    res.status(201).json({ statusCode: 201 });
-  } else if (user && user.isPro) {
+    if (user && !user.isPro) {
+    // sends email if the user exists and is pro
+      await sendProEmail(user._id, user.email);
+
+      res.status(201).json({ statusCode: 201 });
+    } else if (user && user.isPro) {
     // user in db but not pro
-    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
-  } throw Error();
+      res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+    }
+  } catch (err) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
 };
