@@ -69,3 +69,13 @@ module.exports.getTagWithId = async function getTagWithId(tagId) {
   const tagObj = await Tags.findById(tagId);
   return tagObj;
 };
+
+module.exports.getTagFromPhoto = async function getTagFromPhoto(tagId, photoId) {
+  const photoObj = await Photo.findById(photoId);
+  // eslint-disable-next-line no-plusplus
+  for (let index = 0; index < photoObj.tags.length; index++) {
+    // eslint-disable-next-line eqeqeq
+    if (tagId === photoObj.tags[index]) { return true; }
+  }
+  return false;
+};
