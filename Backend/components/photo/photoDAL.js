@@ -1,4 +1,5 @@
 const Photo = require('./photoModel');
+require('../user/userModel');
 
 module.exports = {
   async getLatestPhotos() {
@@ -15,5 +16,26 @@ module.exports = {
   },
   async removePhoto(photoToRemove) {
     return photoToRemove.remove();
+  },
+  async addPersonToPhotoDAL(photoId, userId) {
+    await Photo.updateOne(
+      { _id: photoId },
+      { $push: { peopleInPhoto: userId } },
+    );
+  },
+  async removePersonFromPhotoDAL(photoId, userId) {
+    await Photo.updateOne(
+      { _id: photoId },
+      { $pull: { peopleInPhoto: userId } },
+    );
+  },
+  async getPeopleInPhotoDAL(photoId) {
+    const inPhoto = await Photo.findById(photoId)
+      .select('peopleInPhoto')
+      .populate('peopleInPhoto')
+      .select('displayName personId')
+      .populate('personId');
+
+    return inPhoto;
   },
 };

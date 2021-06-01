@@ -12,7 +12,7 @@ exports.add = async function addFavorite(req, res, next) {
     const favoriteIfFound = await
     favoriteDAL.findFavoriteByUserAndPhoto({ userId, photoId: req.params.photoId });
     if (favoriteIfFound.length !== 0) {
-      return res.status(409).json({ message: 'You already liked this photo' });
+      res.status(404).json({ message: 'You already liked this photo' });
     }
     const favorite = await favoriteDAL.createFavorite({
       id: new mongoose.Types.ObjectId(),
@@ -29,7 +29,7 @@ exports.add = async function addFavorite(req, res, next) {
     };
     next();
   } catch (err) {
-    return res.status(500).json({
+    res.status(500).json({
       error: err,
     });
   }

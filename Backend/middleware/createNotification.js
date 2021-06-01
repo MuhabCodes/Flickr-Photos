@@ -18,24 +18,24 @@ const createLikeNotification = async (req, res) => {
       }); // this mean dont do anything if he doesnt find photo
     }
     console.log(reciever);
-    const newNotification = new Notification({ 
+    const newNotification = new Notification({
     // sender: userId, // TODO
-      reciever,//reciever.toString(),
+      reciever, // reciever.toString(),
       act: 'like',
       photoId,
-      notificationDate:req.body.favoriteDate, 
+      notificationDate: req.body.favoriteDate,
     });
-    console.log("newNot",newNotification);
+    console.log('newNot', newNotification);
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
-    const id =newNotification._id ;
-    const firebaseNotification ={ // due to firebase constrictions 
+    const id = newNotification._id;
+    const firebaseNotification = { // due to firebase constrictions
       reciever: newNotification.reciever.toString(),
-      id:id.toString(),
+      id: id.toString(),
       act: newNotification.act,
-      photoId : newNotification.photoId.toString(),
-      notificationDate:newNotification.notificationDate.toString(), 
-    }
-    console.log("firebasenot",firebaseNotification);
+      photoId: newNotification.photoId.toString(),
+      notificationDate: newNotification.notificationDate.toString(),
+    };
+    console.log('firebasenot', firebaseNotification);
     SaveNotification(firebaseNotification);
 
     return res.status(201).json({
@@ -45,7 +45,7 @@ const createLikeNotification = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: err,
-    }); 
+    });
   }
 };
 

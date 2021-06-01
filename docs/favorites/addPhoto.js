@@ -7,14 +7,12 @@
 * @apiDescription Adds a photo to a user's favorites list.
 * 
 *
-*@apiParam  {String} photoId The id of the photo to add to the user's favorites
+*@apiParam  (Body){String} photoId The id of the photo to add to the user's favorites
 * 
 *@apiSuccess (Success 200) {Number} statusCode The status code
 *
 *@apiError (Error 400) {Number} statusCode The status code
 *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
-
-
 
 
 * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
