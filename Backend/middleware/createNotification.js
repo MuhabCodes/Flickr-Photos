@@ -24,9 +24,6 @@ const createLikeNotification = async (req, res) => {
     const senderInfo = await getUserById(req.userId);
     let senderName=senderInfo.displayName;
     let recieverName= recieverInfo.displayName;
-    console.log("senderName",senderName);
-    console.log("recieverName",recieverName);
-    console.log("req.body.favoriteDate",req.body.favoriteDate);
     const newNotification = new Notification({
       sender:req.userId,
       senderName,
@@ -37,7 +34,7 @@ const createLikeNotification = async (req, res) => {
       notificationDate: req.body.favoriteDate,
       imageUrl:photo.imageUrl,
     });
-    console.log('newNot', newNotification);
+
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
 
     // since firebase dont allow undefined values and throw errors
@@ -56,7 +53,6 @@ const createLikeNotification = async (req, res) => {
       notificationDate: req.body.favoriteDate.toString(),
       imageUrl:photo.imageUrl.toString(),
     };
-    console.log('firebasenot', firebaseNotification);
     await SaveNotification(firebaseNotification);
     return res.status(201).json({
       message: 'Favorite added succesfully',
@@ -83,7 +79,6 @@ const createCommentNotification = async (req, res) => {
     let senderName=senderInfo.displayName;
     let recieverName= recieverInfo.displayName;
 
-    console.log(senderName,recieverName);
     const newNotification = new Notification({
       sender:req.userId,
       reciever, // reciever.toString()
@@ -94,7 +89,6 @@ const createCommentNotification = async (req, res) => {
       imageUrl:req.photoFound.imageUrl,
       senderName,
     });
-    console.log('newNot', newNotification);
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
     const id = newNotification._id;
     // since firebase dont allow undefined values and throw errors
@@ -113,7 +107,6 @@ const createCommentNotification = async (req, res) => {
       notificationDate: newNotification.notificationDate.toString(),
     };
 
-    console.log('firebasenot', firebaseNotification); 
     await SaveNotification(firebaseNotification);
     return res.status(201).json({
       message: 'comment added succesfully',
