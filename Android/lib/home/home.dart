@@ -1,14 +1,15 @@
-import 'package:flickr/home/comments_page.dart';
+/// Class Home contains 3 impartant widgets
+/// [getPost] which takes every post with single photo in list userHomePosts and creates it's design
+///[getPostMultiPhotos] does the same thing that [getPost] does but, it takes posts which have 3 photo or more
+///[getPostTwoPhotos] does the same thing but, takes posts with two photos only
+
 import 'package:flickr/home/view_all_photos.dart';
-import 'package:flickr/models/comment.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
-import 'package:flickr/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
-
 import '../models/global.dart';
 import 'comments_fav_page.dart';
 import 'image_fullscreen.dart';
@@ -19,9 +20,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  ///function wich Navigates between 3 screens which are [ViewAllPhotos] [CommentFaves] [ImageFullscreen]
   void selectScreen(
     BuildContext ctx,
+
+    /// [n] integer indicates the which screen the app is navigated too
     int n, {
+
+    ///Parameters needed for each screen constructor
     String textTitle,
     List<Photo> imageRoll,
     int favComIndex,
@@ -63,10 +69,10 @@ class _HomeState extends State<Home> {
   //List<Widget> likers = [];
 
   static int page = 1;
-  static Post thePost = post1;
+
   double widthScreen = 0;
   //final controller = TextEditingController();
-  final _commentController = TextEditingController();
+
   //CommentsPage _myCommentsPage;
 
   @override
@@ -99,6 +105,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+  ///[getPosts] loops on each post in userHomePosts then determines which post is sent to which function
   List<Widget> getPosts(BuildContext context) {
     //arangePostsWithUploadDate();
     List<Widget> posts = [];
@@ -131,7 +138,7 @@ class _HomeState extends State<Home> {
 
           InkWell(
             child: ContainerResponsive(
-              //image Container
+              ///image Container in single photo post
 
               constraints: BoxConstraints(
                 maxHeight: 282,
@@ -154,12 +161,12 @@ class _HomeState extends State<Home> {
             ),
             onTap: () {
               selectScreen(context, 3,
-                  photoFullscreen: thePost.photo[0], thePost: thePost);
+                  photoFullscreen: post.photo[0], thePost: post);
             },
           ),
 
           Container(
-            //this container creates a box around username row
+            ///this container creates wraps username and avatar
             constraints: BoxConstraints(
               maxWidth: widthScreen,
             ),
@@ -195,7 +202,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           ContainerResponsive(
-            //Post description
+            ///Post description container
             //Post  title (limit = 100 characters) not description
             //height: 10,
             constraints: BoxConstraints(
@@ -227,7 +234,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
-            //Draw horizontal line
+            ///Draw horizontal line container
             constraints: BoxConstraints.expand(height: 20, width: widthScreen),
             decoration: BoxDecoration(
               // 'decoration:' doesn't allow writing 'color:' after or before it
@@ -253,7 +260,7 @@ class _HomeState extends State<Home> {
           ),
 
           Container(
-            //Like, Share, Comment
+            ///Like, Share, Comment container
             constraints: BoxConstraints.expand(height: 50, width: widthScreen),
             padding: EdgeInsets.only(left: 10, right: 10),
             color: Colors.white,
@@ -292,12 +299,7 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     Text(post.likes.length.toString(),
-                        style:
-                            textStyleLigthGrey /*TextStyle(
-                          color: Colors.grey,
-                          fontSize: 10,
-                        )*/
-                        ),
+                        style: textStyleLigthGrey),
                   ],
                 ),
                 Row(
@@ -308,25 +310,14 @@ class _HomeState extends State<Home> {
                       color: Colors.grey,
                       onPressed: () {
                         selectScreen(context, 2,
-                            thePost: post,
-                            favComIndex: 1,
-                            isFaves: true,
-                            commentFavPage: 2);
-                        setState(() {
-                          /*
-                          thePost = post;
-                          page = 3;
-                          build(context);*/
-                        });
+                            thePost: post, favComIndex: 1, commentFavPage: 2);
+                        setState(() {});
                       },
                     ),
-                    Text("" + post.comments.length.toString(),
-                        style:
-                            textStyleLigthGrey /*TextStyle(
-                          color: Colors.grey,
-                          fontSize: 10,
-                        )*/
-                        ),
+                    Text(
+                      "" + post.comments.length.toString(),
+                      style: textStyleLigthGrey,
+                    ),
                   ],
                 ),
                 Row(
@@ -334,7 +325,7 @@ class _HomeState extends State<Home> {
                     Icon(
                       Icons.share_outlined,
                       size: 30,
-                      color: /*post.isLiked ? Colors.red : */ Colors.grey,
+                      color: Colors.grey,
                     ),
                   ],
                 ),
@@ -342,7 +333,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
-            //Likers Row
+            ///Likers and comments row
             constraints: BoxConstraints.expand(height: 140, width: widthScreen),
             color: Colors.grey[200],
             //alignment: AlignmentDirectional.topCenter,
@@ -400,12 +391,7 @@ class _HomeState extends State<Home> {
                                 isFaves: true,
                                 commentFavPage: 1);
 
-                            setState(() {
-                              /*
-                              thePost = post;
-                              page = 2;
-                              build(context);*/
-                            });
+                            setState(() {});
                           },
                         ),
                       ),
@@ -474,11 +460,7 @@ class _HomeState extends State<Home> {
                                 favComIndex: 1,
                                 isFaves: true,
                                 commentFavPage: 2);
-                            setState(() {
-                              /*thePost = post;
-                              page = 3;
-                              build(context);*/
-                            });
+                            setState(() {});
                           },
                         ),
                       ),
@@ -494,6 +476,7 @@ class _HomeState extends State<Home> {
   } // getPost
 
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
+    ///[textTitle1] this string is used in AppBar title when navigating between screens
     String textTitle1 = post.user.username +
         " uploaded " +
         post.photo.length.toString() +
@@ -685,27 +668,33 @@ class _HomeState extends State<Home> {
       child: Column(
         children: <Widget>[
           Container(
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
 
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 InkWell(
-                  child: Column(
-                    children: [
-                      Container(
-                        //1st container
+                  child: ContainerResponsive(
+                    //image Container
 
-                        constraints: BoxConstraints(
-                          maxHeight: 282, //_isNumImgTwo? 282: 141,
-                          maxWidth: 170,
+                    constraints: BoxConstraints(
+                      maxHeight: 135,
+                      maxWidth: widthScreen,
+                    ),
+
+                    decoration: BoxDecoration(
+                        // 'decoration:' doesn't allow writing 'color:' after or before it
+                        border: Border.all(
+                          color: Colors.white, // white as border color
+                          width: 5,
                         ),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(post.photo[0].imagePath),
-                                fit: BoxFit.cover)),
-                      ),
-                    ],
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: NetworkImage(post.photo[0].imagePath),
+                          fit: BoxFit.cover,
+                        )),
+
+                    //child: Image.asset(post.image[]),
                   ),
                   onTap: () {
                     selectScreen(context, 3,
@@ -713,22 +702,27 @@ class _HomeState extends State<Home> {
                   },
                 ),
                 InkWell(
-                  child: Column(
-                    //2nd container
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        constraints: BoxConstraints(
-                          maxHeight: 282, //_isNumImgTwo? 282: 141,
-                          maxWidth: 170,
+                  child: ContainerResponsive(
+                    //image Container
+
+                    constraints: BoxConstraints(
+                      maxHeight: 135,
+                      maxWidth: widthScreen,
+                    ),
+
+                    decoration: BoxDecoration(
+                        // 'decoration:' doesn't allow writing 'color:' after or before it
+                        border: Border.all(
+                          color: Colors.white, // white as border color
+                          width: 5,
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            image: DecorationImage(
-                                image: NetworkImage(post.photo[1].imagePath),
-                                fit: BoxFit.cover)),
-                      ),
-                    ],
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: NetworkImage(post.photo[1].imagePath),
+                          fit: BoxFit.cover,
+                        )),
+
+                    //child: Image.asset(post.image[]),
                   ),
                   onTap: () {
                     selectScreen(context, 3,
@@ -802,12 +796,7 @@ class _HomeState extends State<Home> {
                           imageRoll: post.photo,
                           thePost: post,
                           index: index);
-                      setState(() {
-                        /*thePost = post;
-                        page = 2;
-                        build(context)*/
-                        ;
-                      });
+                      setState(() {});
                     },
                   ),
                 ),
