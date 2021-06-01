@@ -29,10 +29,10 @@ body {
   margin-right: 25px;
 }
 
-.button1{
+.button1 {
   background-color: transparent;
-  margin-right:0px;
-  margin-left:800px;
+  margin-right: 0;
+  margin-left: 800px;
 }
 
 .navbar-light .navbar-brand:hover {
