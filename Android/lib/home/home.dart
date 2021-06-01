@@ -2,6 +2,7 @@ import 'package:flickr/home/comments_page.dart';
 import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/comment.dart';
 import 'package:flickr/models/global.dart';
+import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,10 @@ class _HomeState extends State<Home> {
     BuildContext ctx,
     int n, {
     String textTitle,
-    List<NetworkImage> imageRoll,
+    List<Photo> imageRoll,
     int favComIndex,
     Post thePost,
+    int index,
   }) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       if (n == 1)
@@ -52,7 +54,7 @@ class _HomeState extends State<Home> {
   }*/
 
   //List<Widget> likers = [];
-  bool _isNumImgTwo = true;
+
   static int page = 1;
   static Post thePost = post1;
   double widthScreen = 0;
@@ -96,12 +98,12 @@ class _HomeState extends State<Home> {
     int index = 0;
     for (Post post in userHomePosts) {
       // we will loop on all posts created in global.dart and add them to our home page
-      if (post.image.length == 1) {
+      if (post.photo.length == 1) {
         posts.add(getPost(context, post, index));
-      } else if (post.image.length > 1) {
-        if (post.image.length == 2) {
+      } else if (post.photo.length > 1) {
+        if (post.photo.length == 2) {
           posts.add(getPostTwoPhotos(context, post, index));
-        } else if (post.image.length >= 3) {
+        } else if (post.photo.length >= 3) {
           posts.add(getPostMultiPhotos(context, post, index));
         }
       }
@@ -114,6 +116,7 @@ class _HomeState extends State<Home> {
 
   Widget getPost(BuildContext context, Post post, int index) {
     return Container(
+      color: Colors.white,
       margin: EdgeInsets.only(bottom: 10),
       child: Column(
         children: <Widget>[
@@ -136,7 +139,7 @@ class _HomeState extends State<Home> {
                 ),
                 color: Colors.white,
                 image: DecorationImage(
-                  image: /*post.image[0]*/ post.imagePath[0],
+                  image: NetworkImage(post.photo[0].imagePath),
                   fit: BoxFit.cover,
                 )),
 
@@ -197,10 +200,10 @@ class _HomeState extends State<Home> {
             heightResponsive: true,
             widthResponsive: true,
             //constraints: BoxConstraints.expand(height: 60),
-            padding: EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 20, right: 5),
             //color: Colors.red,
 
-            child: Row(
+            child: Column(
               children: <Widget>[
                 Text(
                   post.description,
@@ -371,12 +374,13 @@ class _HomeState extends State<Home> {
                             style: textStyleBold,
                           ),
                           onPressed: () {
-                            /*selectScreen(context, 2,
-                                thePost: post, favComIndex: 1);*/
+                            selectScreen(context, 2,
+                                thePost: post, favComIndex: 1);
                             setState(() {
+                              /*
                               thePost = post;
                               page = 2;
-                              build(context);
+                              build(context);*/
                             });
                           },
                         ),
@@ -463,7 +467,7 @@ class _HomeState extends State<Home> {
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
     String textTitle1 = post.user.username +
         " uploaded " +
-        post.image.length.toString() +
+        post.photo.length.toString() +
         " photos";
     return Container(
       constraints: BoxConstraints(
@@ -493,7 +497,7 @@ class _HomeState extends State<Home> {
                           width: 5,
                         ),
                         image: DecorationImage(
-                          image: post.imagePath[0],
+                          image: NetworkImage(post.photo[0].imagePath),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -519,7 +523,8 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               image: DecorationImage(
-                                  image: post.imagePath[1], fit: BoxFit.cover)),
+                                  image: NetworkImage(post.photo[1].imagePath),
+                                  fit: BoxFit.cover)),
                         ),
                       ],
                     ),
@@ -535,7 +540,8 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               image: DecorationImage(
-                                  image: post.imagePath[2], fit: BoxFit.cover)),
+                                  image: NetworkImage(post.photo[2].imagePath),
+                                  fit: BoxFit.cover)),
                         ),
                       ],
                     ),
@@ -571,7 +577,7 @@ class _HomeState extends State<Home> {
                           style: textStyleBold,
                         ),
                         Text(
-                          "Post " + post.image.length.toString() + " photos",
+                          "Post " + post.photo.length.toString() + " photos",
                           style: textStyle,
                           //textDirection: TextDirection.ltr,
                         ),
@@ -595,14 +601,15 @@ class _HomeState extends State<Home> {
                 Container(
                   child: TextButton(
                     child: Text(
-                      "View all " + post.image.length.toString() + " photos",
+                      "View all " + post.photo.length.toString() + " photos",
                       style: textStyleBold,
                     ),
                     onPressed: () {
                       selectScreen(context, 1,
                           textTitle: textTitle1,
-                          imageRoll: post.imagePath,
-                          thePost: post);
+                          imageRoll: post.photo,
+                          thePost: post,
+                          index: index);
                       setState(() {});
                     },
                   ),
@@ -616,7 +623,6 @@ class _HomeState extends State<Home> {
   }
 
   Widget getPostTwoPhotos(BuildContext context, Post post, int index) {
-    _isNumImgTwo = getNumPostImg(post);
     return Container(
       constraints: BoxConstraints(
         maxWidth: widthScreen,
@@ -642,7 +648,8 @@ class _HomeState extends State<Home> {
                       ),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: post.imagePath[0], fit: BoxFit.cover)),
+                              image: NetworkImage(post.photo[0].imagePath),
+                              fit: BoxFit.cover)),
                     ),
                   ],
                 ),
@@ -658,7 +665,8 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(
                           color: Colors.transparent,
                           image: DecorationImage(
-                              image: post.imagePath[1], fit: BoxFit.cover)),
+                              image: NetworkImage(post.photo[1].imagePath),
+                              fit: BoxFit.cover)),
                     ),
                   ],
                 ),
@@ -692,7 +700,7 @@ class _HomeState extends State<Home> {
                           style: textStyleBold,
                         ),
                         Text(
-                          "Post " + post.image.length.toString() + " photos",
+                          "Post " + post.photo.length.toString() + " photos",
                           style: textStyle,
                           //textDirection: TextDirection.ltr,
                         ),
@@ -717,9 +725,7 @@ class _HomeState extends State<Home> {
                   child: TextButton(
                     child: Text(
                       "View both photos",
-                      /*style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )*/
+                      style: textStyleBold,
                     ),
                     onPressed: () {
                       setState(() {
@@ -736,15 +742,6 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
-  }
-
-  bool getNumPostImg(Post post) {
-    if (post.image.length == 2) {
-      _isNumImgTwo = true;
-    } else if (post.image.length >= 3) {
-      _isNumImgTwo = false;
-    }
-    return _isNumImgTwo;
   }
 
   Widget getLikes(List<User> likes) {
