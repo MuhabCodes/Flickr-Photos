@@ -58,8 +58,8 @@ export default function SignUp() {
       history.push('/');
     });
   };
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
   return (
     <div className={classes.backgroundImage}>
       <Card className={classes.root}>

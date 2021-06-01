@@ -50,12 +50,13 @@ export default function SignUp() {
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const isPro = useState('false');
   // const history = useHistory();
   const history = useHistory();
   const submitForm = () => {
     // history.push('/verifysignup');
     const UserInfo = {
-      firstName, lastName, age, email, password,
+      firstName, lastName, age, email, password, isPro,
     };
     axios(`${configData.SERVER_URL}/register/`, {
       method: 'post',
