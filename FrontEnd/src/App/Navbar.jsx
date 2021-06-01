@@ -31,7 +31,7 @@ function NavBar() {
           <i className="fas fa-cloud-upload-alt" />
           {' '}
         </a>
-        <a href="#home">
+        <a href="/Notification">
           <i className="fas fa-bell" />
           {' '}
         </a>

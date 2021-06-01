@@ -1,0 +1,15 @@
+.notification-card-container {
+  width: 70%;
+  background: white;
+  display: inline-block;
+  text-align: left;
+  height: 80px;
+  border: 0.2px solid;
+  border-color: rgb(199, 195, 188);
+  padding: 10px;
+}
+
+.notification-container {
+  margin: auto;
+  text-align: center;
+}
