@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css';
-
+import { useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -62,6 +62,14 @@ const useStyles = makeStyles((theme) => ({
 
 // component for the whole navigation bar
 function NavBar() {
+  const history = useHistory();
+  const routeLogin = () => {
+    history.push('/login');
+  };
+  const history1 = useHistory();
+  const routeSignup = () => {
+    history1.push('/signup');
+  };
   const classes = useStyles();
   return (
     <Navbar collapseOnSelect sticky="top" expand="md">
@@ -91,8 +99,8 @@ function NavBar() {
           inputProps={{ 'aria-label': 'search' }}
         />
       </div>
-      <Button className={classes.button1}>Login</Button>
-      <Button className={classes.button2}>SignUp</Button>
+      <Button onClick={routeLogin} className={classes.button1}>Login</Button>
+      <Button onClick={routeSignup} className={classes.button2}>SignUp</Button>
 
     </Navbar>
   );
