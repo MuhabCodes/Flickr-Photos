@@ -8,7 +8,6 @@ const favoritesRouter = require('./components/favorites/favoritesRouter');
 const authRouter = require('./components/auth/authRouter');
 const photoRouter = require('./components/photo/photoRouter');
 const personRouter = require('./components/person/personRouter');
-const commentRouter = require('./components/photo/comments/commentsRouter');
 const userRouter = require('./components/user/userRoute');
 const cameraRouter = require('./components/camera/cameraRouter');
 const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
@@ -36,7 +35,6 @@ app.use('/cameras/brands', cameraBrandRouter);
 app.use('/gallery', galleryRouter);
 app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
-app.use('/comments', commentRouter);
 // exporting
 
 module.exports = app;

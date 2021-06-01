@@ -1,4 +1,5 @@
 const express = require('express');
+const commentsController = require('./comments/commentsController');
 
 const router = express.Router();
 const {
@@ -24,6 +25,17 @@ router.get('/:photoId', showPhoto);
 router.put('/:photoId', editPhoto);
 
 // delete a photo
+
+/// // Now the part of comment (photos.comments)
 router.delete('/:photoId', deletePhoto);
+
+router.post('/:photoId/comments',
+  commentsController.add);
+router.put('/:photoId/comments/:commentId',
+  commentsController.editComment);
+
+router.delete('/:photoId/comments/:commentId', commentsController.deleteComment);
+
+router.get('/:photoId/comments', commentsController.findComment);
 
 module.exports = router;

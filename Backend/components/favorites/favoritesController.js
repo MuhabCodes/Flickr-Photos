@@ -17,7 +17,7 @@ exports.add = async function addFavorite(req, res) {
     const favorite = await favoriteDAL.createFavorite({
       id: new mongoose.Types.ObjectId(),
       userID: userId,
-      favoriteDa: req.body.favoriteDate,
+      favoriteDa: Date.now(),
       photoId: req.params.photoId,
     });
     return res.status(201).json({
