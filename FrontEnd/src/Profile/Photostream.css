@@ -25,3 +25,71 @@
   -webkit-box-pack: justify;
   justify-content: space-between;
 }
+
+.secondary-tools-container-uph {
+  height: 50px;
+}
+
+.edit-link-uph {
+  outline-width: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 100%;
+  float: right;
+  color: #737b80;
+}
+
+.photolist-container-uph {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.edit-icon-uph {
+  cursor: pointer;
+  color: #737b80;
+  background: url(https://combo.staticflickr.com/ap/build/images/sprites/icons-32dc0fa1.png) -315px -174px no-repeat;
+  width: 18px;
+  height: 18px;
+  transform: translate(-100px, 10px);
+  display: inline-block;
+}
+
+.photolist-contains-uph {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.grid-item-uph {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #fff;
+  background-size: cover;
+  display: block;
+  width: 238px;
+  height: 356px;
+}
+
+.overlay-image-hover-uph {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.photolist-contains-uph:hover .overlay-image-hover-uph {
+  opacity: 1;
+}

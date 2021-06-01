@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-// import { DropdownButton, Dropdown } from 'react-bootstrap';
-// import Dropdown from './Dropdown';
+import { Link } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
+import Images from './imagesArray';
 import 'react-dropdown/style.css';
 import './Photostream.css';
 
 const Photostream = () => {
+  // let prevWidth = 0;
   const [choice, setChoice] = useState('Date uploaded');
   const items = [
     'Date uploaded', 'Date taken',
@@ -22,7 +23,21 @@ const Photostream = () => {
               <Dropdown options={items} onChange={onSelect} value={choice} id="dropdown-btn-uph" />
             </div>
           </div>
+          <div className="secondary-tools-container-uph">
+            <div className="share-button-uph" />
+            <div className="edit-button-uph">
+              <Link to="/profile/photostream/edit" className="edit-link-uph">
+                <span className="edit-icon-uph" />
+              </Link>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="photolist-contains-uph">
+        {/* stopped here */}
+        {Images.map((image) => (
+          <div className="grid-item-uph" style={{ backgroundImage: `url(${image.src}` }} alt="" />
+        ))}
       </div>
     </div>
   );
