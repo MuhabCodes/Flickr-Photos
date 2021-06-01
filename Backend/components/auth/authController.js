@@ -35,8 +35,8 @@ exports.register = async function registerUser(
 
     res.status(201).send({ statusCode: 201 });
   } else {
-    // say that an email is sent but don't send for security purposes
-    res.status(201).send({ statusCode: 201 });
+    // user already exists
+    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
   }
 };
 
@@ -88,7 +88,7 @@ exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
   } else if (userObj && !userObj.isActivated) {
     // user in db but not activated
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
-  } else res.status(200).json({ statusCode: 200 });
+  } else res.status(404).json({ statusCode: 404, error: 'The User is not found' });
 };
 
 exports.resetPassword = async function resetPw(req, res) {
