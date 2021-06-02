@@ -31,6 +31,7 @@ import Notification from '../Notification/Notification';
 import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
 import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
+import PhotoView from '../PhotoViewPage/PhotoView';
 import configData from '../config.json';
 
 function App() {
@@ -119,6 +120,9 @@ function App() {
             </Route>
             <Route exact path="/photos/upload">
               <Upload />
+            </Route>
+            <Route exact path="/photoview/:routeId">
+              <PhotoView />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
