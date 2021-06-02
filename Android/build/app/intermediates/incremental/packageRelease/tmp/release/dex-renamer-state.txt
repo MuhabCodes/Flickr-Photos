@@ -1,0 +1,4 @@
+#Wed Jun 02 21:10:18 EET 2021
+base.0=E\:\\College\\SPRING 2021\\CMPN203\\project\\Flickr-Photos\\Flickr-Photos\\Android\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
