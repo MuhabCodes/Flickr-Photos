@@ -940,12 +940,12 @@
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Sandy",
+      "firstname": "Sand",
       "lastname": "Hosny",
       "age": 20,
       "id": 4,
-      "gender": "Male",
-      "displayname": "HosHos",
+      "gender": "Rather not say",
+      "displayname": "Hos",
       "ispro": "false"
     },
     {
@@ -990,24 +990,23 @@
       "Url": "https://www.flickr.com/people/cannon_s5_is/",
       "userId": "85826296@N00"
     }
-  ], 
-
-  "Notification":[
-      {
-          "senderName": "Ahmed",
-          "reciever": 1,
-          "id": 1,
-          "act": "like",
-          "notificationDate": "27/12/2020",
-          "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-      },
-      {
-        "senderName": "Sarah",
-        "reciever": 1,
-        "id": 2,
-        "act": "comment",
-        "notificationDate": "28/12/2020",
-        "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+  ],
+  "Notification": [
+    {
+      "senderName": "Ahmed",
+      "reciever": 1,
+      "id": 1,
+      "act": "like",
+      "notificationDate": "27/12/2020",
+      "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+      "senderName": "Sarah",
+      "reciever": 1,
+      "id": 2,
+      "act": "comment",
+      "notificationDate": "28/12/2020",
+      "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     }
   ]
 }
