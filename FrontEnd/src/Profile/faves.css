@@ -40,7 +40,7 @@
   padding: 2px;
 }
 
-.text-area .description {
+.text-area .title-exp {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 
-.image-container:hover .text-area .description {
+.image-container:hover .text-area .title-exp {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -107,7 +107,7 @@
 .image-container .faves {
   position: absolute;
   bottom: 0;
-  right: 15%;
+  left: 80%;
   background: transparent;
   color: white;
   margin-bottom: 3.5%;
@@ -128,7 +128,7 @@
 .image-container .comments {
   position: absolute;
   bottom: 0;
-  right: 1%;
+  left: 65%;
   background: transparent;
   color: white;
   margin-bottom: 3.5%;
@@ -142,6 +142,7 @@
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;
+  right: 15%;
   opacity: 1;
   font-weight: bold;
 }
