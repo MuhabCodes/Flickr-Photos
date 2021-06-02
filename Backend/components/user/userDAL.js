@@ -129,3 +129,17 @@ exports.createGoogleAccountDAL = async function createGoogleAcc(email, googleNam
   const user = await userObj.save();
   return user;
 };
+
+exports.becomePro = async function becomePro(userId) {
+  const user = await User.findById(userId);
+  if (!user) {
+    // The user you're searching for and confirmation link doesn't exist
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid.' }));
+  } else if (!user.isPro) {
+    // user is in db and not pro
+    await User.updateOne({ _id: userId }, { $set: { isPro: true } });
+  } else {
+    // user is in db and already pro
+    throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
+  }
+};

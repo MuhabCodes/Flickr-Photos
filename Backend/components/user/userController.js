@@ -1,5 +1,5 @@
 const userDAL = require('./userDAL');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
@@ -101,4 +101,21 @@ exports.sendProEmail = async function sendPro(req, res) {
     // user in db but not pro
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
   } throw Error();
+};
+
+exports.becomePro = async function becomePro(req, res) {
+  const { proToken } = req.params;
+
+  try {
+    // decrypt reset token to get userID
+    const { userId } = await decryptProToken(proToken);
+    // use the id and the new password to change the current pw
+    await userDAL.becomePro(userId);
+
+    res.status(201).json({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
 };
