@@ -28,6 +28,8 @@ import DeleteAccount from '../Account/DeleteAccount';
 import ChangePassword from '../Account/ChangePassword';
 import FollowersPage from '../Followers/FollowersPage';
 import Notification from '../Notification/Notification';
+import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
+import GettingStarted from '../UpgradeToPro/GettingStarted';
 import configData from '../config.json';
 
 function App() {
@@ -40,6 +42,12 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/UpgradeToPro">
+              <UpgradeToPro />
+            </Route>
+            <Route exact path="/GettingStarted">
+              <GettingStarted />
+            </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
             </Route>
@@ -114,7 +122,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
 import { Navbar } from 'react-bootstrap';
-import NavDropDown from './NavbarDropDown';
 // import NavBarDropDown from './NavbarDropDown';
 
 // component for the whole navigation bar
@@ -30,8 +29,6 @@ function NavBar() {
         {' '}
         flickr
       </Navbar.Brand>
-
-      <NavDropDown />
 
       <div className="icons">
         <a href="#home">
