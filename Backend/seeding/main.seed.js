@@ -8,6 +8,7 @@ const photoSeed = require('./photo.seed');
 const favoriteSeed = require('./favorite.seed');
 const cameraBrandSeed = require('./camera.seed');
 const cameraModelSeed = require('./cameraModel.seed');
+const tagSeed = require('./tags.seed');
 
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
@@ -39,6 +40,7 @@ async function seed() {
   await favoriteSeed();
   await cameraBrandSeed();
   await cameraModelSeed();
+  await tagSeed();
   await mongoose.disconnect();
 }
 
