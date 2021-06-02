@@ -8,7 +8,7 @@
  * 
  * @apiParam {String} resetToken Token sent to the email by the backend, return to identify user
  * 
- * @apiSuccess (201) {Number} statusCode Indicates that the password has been changed.
+ * @apiSuccess (Success 201) {Number} statusCode Indicates that the password has been changed.
  * 
  * @apiError (Error 400) {String} error The reset token is invalid.
  * @apiError (Error 400) {Number} statusCode The status code

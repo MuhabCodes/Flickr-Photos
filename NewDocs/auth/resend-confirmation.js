@@ -7,7 +7,7 @@
  * 
  * @apiParam  (Body) {String} email Email to send confirmation link on.
  * 
- * @apiSuccess (201) {Number} statusCode Indicates the success of the operation.
+ * @apiSuccess (Success 201) {Number} statusCode Indicates the success of the operation.
  * 
  * 
  * 
