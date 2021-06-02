@@ -1,5 +1,10 @@
+import sys
 from time import sleep
 import pytest
+
+# sys.path.append("E:\College\SPRING 2021\\CMPN203\\"
+#                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
+
 
 from common.sel_helper import SelHelper
 from pageobject.mainpage.mainpage import MainPage
