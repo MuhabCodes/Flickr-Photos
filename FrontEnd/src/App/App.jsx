@@ -29,11 +29,13 @@ import ChangePassword from '../Account/ChangePassword';
 import FollowersPage from '../Followers/FollowersPage';
 import Notification from '../Notification/Notification';
 import configData from '../config.json';
+import Albums from '../Profile/Albums';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ3MTMzOSwiZXhwIjoxNjIyNDc0OTM5LCJzdWIiOiI0In0.zZmIFi2i7ZYp9OuW96b48H59a-dTqdJNa_F4gZP3QSI';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
+  localStorage.setItem('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ3MTMzOSwiZXhwIjoxNjIyNDc0OTM5LCJzdWIiOiI0In0.zZmIFi2i7ZYp9OuW96b48H59a-dTqdJNa_F4gZP3QSI');
   return (
     <div className="flickr-main">
       {/* <NavBar /> */}
@@ -107,6 +109,11 @@ function App() {
             </Route>
             <Route exact path="/Notification">
               <Notification />
+            </Route>
+            <Route path="/Profile/albums/:routeId">
+              <CoverArea />
+              <SubNavBar />
+              <Albums />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }
