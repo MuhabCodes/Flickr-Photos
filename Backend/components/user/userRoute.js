@@ -18,4 +18,13 @@ router.route('/pro').post(async (req, res) => {
 
 router.post('/follow', userController.followUser);
 router.post('/addDescription/:userId', userController.addDescription);
+
+router.route('/pro/:proToken').post(async (req, res) => {
+  try {
+    await userController.becomePro(req, res);
+  } catch (_) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
+});
+
 module.exports = router;
