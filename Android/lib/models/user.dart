@@ -5,7 +5,7 @@ import 'post.dart';
 class User {
   String email;
   String password;
-
+  String token;
   String username;
   List<Post> posts;
   NetworkImage profilePicture = new NetworkImage(
@@ -20,6 +20,7 @@ class User {
   String showCaseSet;
   String firstName;
   String lastName;
+  String age;
   String description;
   String website;
   String occupation;
@@ -28,7 +29,8 @@ class User {
   String country;
 
   User(
-      {this.username,
+      {this.age,
+      this.username,
       this.profilePicture,
       this.followers,
       this.following,
@@ -48,7 +50,8 @@ class User {
       this.city,
       this.country,
       this.email,
-      this.password});
+      this.password,
+      this.token});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         profileId: json["profileId"],
@@ -62,5 +65,9 @@ class User {
         homeTown: json["homeTown"],
         city: json["city"],
         country: json["country"],
+      );
+
+  factory User.fromJson2(Map<String, dynamic> json) => User(
+        token: json["token"],
       );
 }
