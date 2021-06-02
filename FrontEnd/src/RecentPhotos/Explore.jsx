@@ -1,23 +1,27 @@
 import React from 'react';
 import ExploreNavBar from './ExploreNavBar';
 import RecentPhotos from './RecentPhotos';
+import ShareBtn from './Share';
+import NavBar from '../App/Navbar';
 
 // The Explore.jsx will include the title of the webpage, nav bars as well as
 // the components of Recent Photos
+// Can be used by any user /guest
+
 const Explore = () => (
-  <div className="recentPhotos">
+  <div className="recent-photos">
+    <NavBar />
     <ExploreNavBar />
-    <div className="explorePageContent">
+    <div className="explore-page-content" id="explore">
+      <br className="break-lines" />
+      <br className="break-lines" />
       <h1 id="exploreTitle">
-        <br className="breakLines" />
-        <br className="breakLines" />
-        <br className="breakLines" />
         Explore
       </h1>
-      <br className="breakLines" />
+      <ShareBtn />
+      {/* <RecentPhotos photos={photos} loading={loading} /> */}
       <RecentPhotos />
     </div>
   </div>
-
 );
 export default Explore;
