@@ -938,7 +938,7 @@
       "email": "Ahmed@gmail.com",
       "password": "$2a$10$CTgsivd9L3lgVxZZSahdw.8n9oPmuCdIveH.DpkxHSjFbSyLntOIS",
       "firstname": "Ahmed",
-      "lastname": "Mostafa",
+      "lastname": "Mostaf",
       "age": 20,
       "id": 3,
       "followers": [
@@ -969,18 +969,19 @@
           "userId": 4
         }
       ],
-      "displayname": "ASDSSDA",
-      "gender": "Male"
+      "displayname": "ASDsa",
+      "gender": "Male",
+      "newPassword": "123124213123"
     },
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
       "firstname": "Abdelrahman",
-      "lastname": "Hosss",
+      "lastname": "Hosdadada",
       "age": 20,
       "id": 4,
-      "gender": "Female",
-      "displayname": "Ho",
+      "gender": "Male",
+      "displayname": "Hosda",
       "ispro": "true",
       "followers": [
         {
@@ -996,8 +997,7 @@
           "userId": 4
         }
       ],
-      "following": [
-      ],
+      "following": [],
       "newPassword": "12312312"
     },
     {
