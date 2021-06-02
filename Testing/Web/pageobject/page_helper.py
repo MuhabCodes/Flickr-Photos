@@ -8,7 +8,8 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.webdriver.common.by import By
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
+from common.utils import Utils
 
 
 class PageHelper(object):
@@ -16,6 +17,7 @@ class PageHelper(object):
     def __init__(self, helper: SelHelper, time_to_wait=100):
         self.helper = helper
         self.time_to_wait = time_to_wait
+        self.utils = Utils()
 
     def safe_click(self, locator: tuple,
                    time_to_wait: float = None,
@@ -221,3 +223,20 @@ class PageHelper(object):
                     + text\
                     + "');element.remove();"
         driver.execute_script(js_string)
+
+    def select_layout(self, locator_list: list,
+                      layout_name: str,
+                      time_to_wait: float = None):
+        if time_to_wait is None:
+            time_to_wait = self.time_to_wait
+        try:
+            layout = self.utils.get_value(locator_list, layout_name)
+            self.safe_click(
+                layout,
+                time_to_wait,
+                self.utils.get_key(locator_list, layout_name)
+            )
+            return True
+        except (TimeoutException, TypeError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
