@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   isActivated: {
     type: Boolean,
@@ -41,6 +40,17 @@ const userSchema = mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
   },
+  isGoogleUser: {
+    type: Boolean,
+    default: false,
+  },
+  following: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  description: {
+    type: String,
+  },
+
 },
 { autoCreate: true });
 

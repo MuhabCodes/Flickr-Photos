@@ -16,8 +16,8 @@ const favoritesSchema = mongoose.Schema({
   },
 
   favoriteDate: {
-    type: String,
-    required: true,
+    type: Date,
+    default: Date.now(),
 
   },
 });

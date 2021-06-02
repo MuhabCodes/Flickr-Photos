@@ -30,7 +30,7 @@ module.exports.sendConfirmationEmail = async function sendEmail(
     from: 'noreply@flick.photos',
     to: email,
     subject: 'Flick Photos Email verification',
-    html: `<p>\n\nPlease follow this link to verify your account on Flickr Photos : <a href=${confirmationLink}>Link</a></p>`, // TODO : Add real verification message
+    html: `<p>\n\nPlease follow this link to verify your account on Flickr Photos : <a href=${confirmationLink}>Link</a></p>`,
   };
   await transporter.sendMail(message);
 };
@@ -51,7 +51,28 @@ module.exports.sendResetPasswordEmail = async function sendEmail(
     from: 'noreply@flick.photos',
     to: email,
     subject: 'Flick Photos - Reset Password',
-    html: `<p>Hey,\n\nPlease follow this link to reset your password on Flickr Photos : <a href=${resetLink}>Link</a></p>`, // TODO : Add real verification message
+    html: `<p>Hey,\n\nPlease follow this link to reset your password on Flickr Photos : <a href=${resetLink}>Link</a></p>`,
+  };
+  await transporter.sendMail(message);
+};
+
+module.exports.sendProEmail = async function sendEmail(
+  userId, email,
+) {
+  const transporter = nodemailer.createTransport(options);
+  const proToken = jwt.sign({
+    userId,
+  },
+  process.env.PRO_KEY,
+  {
+    expiresIn: '1d',
+  });
+  const proLink = `${process.env.HOST}:${process.env.PORT}/user/pro/${proToken}`;
+  const message = {
+    from: 'noreply@flick.photos',
+    to: email,
+    subject: 'Flick Photos - Pro',
+    html: `<p>Hey,\n\nPlease follow this link to get a pro membership on Flickr Photos : <a href=${proLink}>Link</a></p>`,
   };
   await transporter.sendMail(message);
 };

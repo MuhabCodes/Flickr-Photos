@@ -8,21 +8,15 @@ exports.add = async function addComment(req, res, next) {
 
   const { userId } = await decryptAuthToken(authorization);
   try {
-    const photoFound = await
+    const photoFound = await /// /validation if photo exist
     commentsDAL.findphoto(req.params.photoId);
     if (photoFound === null) {
       return res.status(404).json({ message: 'Photo not Found' });
     }
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-
-    today = `${yyyy}-${mm}-${dd}`;
     const comment = await commentsDAL.createComment({
       id: new mongoose.Types.ObjectId(),
       userID: userId,
-      commentDa: today,
+      commentDa: Date.now(),
       photoId: req.params.photoId,
       commenttex: req.body.commentText,
     });
@@ -48,7 +42,7 @@ exports.editComment = async function editComment(req, res) {
   const commentID = req.params.commentId;
   const commenttex = req.body.commentText;
   try {
-    const photoFound = await
+    const photoFound = await/// /validation if photo exist
     commentsDAL.findphoto(photoID);
     if (photoFound === null) {
       return res.status(404).json({ message: 'Photo not Found' });
@@ -66,7 +60,7 @@ exports.deleteComment = async function deleteComment(req, res) {
   const commentID = req.params.commentId;
 
   try {
-    const photoFound = await
+    const photoFound = await/// /validation if photo exist
     commentsDAL.findphoto(photoID);
     if (photoFound === null) {
       return res.status(404).json({ message: 'Photo not Found' });
@@ -81,12 +75,18 @@ exports.deleteComment = async function deleteComment(req, res) {
 };
 exports.findComment = async function findComment(req, res) {
   const photoID = req.params.photoId;
-  try {
+  try { /// /validation if photoid is correct
     if (!mongoose.isValidObjectId(photoID)) {
       return res.status(404).json({
         error: 'Invalid Photo',
       });
     }
+    const photoFound = await /// /validation if photo exist
+    commentsDAL.findphoto(req.params.photoId);
+    if (photoFound === null) {
+      return res.status(404).json({ message: 'Photo not Found' });
+    }
+
     const commentOutput = await commentsDAL.findComment(photoID);
     return res.status(200).json(
       {

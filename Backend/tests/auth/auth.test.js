@@ -30,11 +30,11 @@ describe('auth tests', () => {
       });
   });
 
-  it('Auth_ ask to reset pw w/ unregistered account_ success(Security reasons)', async (done) => {
+  it('Auth_ ask to reset pw w/ unregistered account_ fail', async (done) => {
     request.put('auth/forgot-password')
       .set('Accept', 'application/json') // sets the data type to be json
       .send(testInfo.newUser)
-      .expect(200)
+      .expect(404)
       .end((err, res) => {
         done();
       });
@@ -50,15 +50,12 @@ describe('auth tests', () => {
       });
   });
 
-  it('Auth_ register account w/ old email registered above _success(security reasons)', async (done) => {
-  // after this you should have only one email in that mail
-  // first one success and doesn't send email
-  // but this one doesn't send an email
+  it('Auth_ register account w/ old email registered above  fail', async (done) => {
     request.post('/auth/register')
       .set('Accept', 'application/json')
       .send(testInfo.newUser)
       .end((err, res) => {
-        expect(res.statusCode).toEqual(201);
+        expect(res.statusCode).toEqual(409);
         done();
       });
   });

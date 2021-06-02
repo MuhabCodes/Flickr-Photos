@@ -105,9 +105,60 @@ module.exports.getPhotos = async function getUserPhotos(userId) {
   return photoObj;
 };
 
-module.exports.addPersonToFollowersDAL = async function addToFollowers(userId, followerId) {
-  await User.updateOne(
-    { _id: userId },
-    { $push: { followers: followerId } },
-  );
+exports.createGoogleAccountDAL = async function createGoogleAcc(email, googleName) {
+  // create person
+
+  // first and last names from name of google account
+  const names = googleName.split(' ');
+  const firstName = names[0];
+  const lastName = names[1];
+
+  // create person object
+  const personObj = await personDAL.createPerson(firstName, lastName, null);
+  // create user object
+  const displayName = await createUniqueDisplayName(email);
+
+  const userObj = new User({
+    email,
+    displayName,
+    isGoogleUser: true,
+    personId: personObj._id,
+    isActivated: true,
+  });
+  // create user in db
+  const user = await userObj.save();
+  return user;
+};
+
+module.exports.addPersonToFollowing = async function addToFollowers(userId, followingId) {
+  const userObj = await User.findById(userId);
+  userObj.following.push(followingId);
+  userObj.save();
+};
+
+module.exports.addPersonToFollowers = async function addPersonToFollowers(userId, followerId) {
+  const userObj = await User.findById(userId);
+  userObj.followers.push(followerId);
+  userObj.save();
+};
+
+module.exports.addDescription = async function addDescription(userId, description) {
+  const userObj = await User.findById(userId);
+  userObj.description = description;
+  userObj.save();
+  return userObj;
+};
+
+exports.becomePro = async function becomePro(userId) {
+  const user = await User.findById(userId);
+  if (!user) {
+    // The user you're searching for and confirmation link doesn't exist
+    throw Error(JSON.stringify({ statusCode: 400, error: 'The token passed in the url is invalid.' }));
+  } else if (!user.isPro) {
+    // user is in db and not pro
+    await User.updateOne({ _id: userId }, { $set: { isPro: true } });
+  } else {
+    // user is in db and already pro
+    throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
+  }
 };
