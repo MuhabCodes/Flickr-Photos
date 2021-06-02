@@ -477,7 +477,7 @@
       "Id": 18
     }
   ],
-  "Profiles": [
+  "getpeopletofollow": [
     {
       "id": 1,
       "displayName": "Ahmed Mostafa",
@@ -485,7 +485,8 @@
       "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": true,
       "coverPhoto": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/1"
+      "url": "Profiles/1",
+      "isFollowed": false
     },
     {
       "id": 2,
@@ -494,7 +495,8 @@
       "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": false,
       "coverPhoto": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdmVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/2"
+      "url": "Profiles/2",
+      "isFollowed": false
     },
     {
       "id": 3,
@@ -503,7 +505,8 @@
       "avatar": "https://images.unsplash.com/photo-1528763380143-65b3ac89a3ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": false,
       "coverPhoto": "https://images.unsplash.com/photo-1519033676044-ea56cf576bdf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y292ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/3"
+      "url": "Profiles/3",
+      "isFollowed": false
     },
     {
       "id": 4,
@@ -512,7 +515,8 @@
       "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": true,
       "coverPhoto": "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/4"
+      "url": "Profiles/4",
+      "isFollowed": false
     },
     {
       "id": 5,
@@ -521,7 +525,8 @@
       "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": true,
       "coverPhoto": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/5"
+      "url": "Profiles/5",
+      "isFollowed": false
     }
   ],
   "photosExplore": [

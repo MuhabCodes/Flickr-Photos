@@ -9,7 +9,7 @@ import './HomePage.css';
 import configData from '../config.json';
 
 const HomePage = () => {
-  const { data: Profiles, isPending, error } = useFetch(`${configData.SERVER_URL}/Profiles`);
+  const { data: Profiles, isPending, error } = useFetch(`${configData.SERVER_URL}/getpeopletofollow`);
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [currLoggedInFollowing, setCurrLoggedInFollowing] = useState('');
