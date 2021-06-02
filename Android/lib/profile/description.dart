@@ -9,20 +9,6 @@ class Description extends StatefulWidget {
 }
 
 class _DescriptionState extends State<Description> {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<AboutProvider>(
-        create: (BuildContext context) => AboutProvider(),
-        child: EnterAboutField());
-  }
-}
-
-class EnterAboutField extends StatefulWidget {
-  @override
-  _EnterAboutFieldState createState() => _EnterAboutFieldState();
-}
-
-class _EnterAboutFieldState extends State<EnterAboutField> {
   String changedText;
   bool isWriting = false;
   FocusNode myFocusNode;
@@ -112,12 +98,5 @@ class _EnterAboutFieldState extends State<EnterAboutField> {
         ),
       ),
     );
-  }
-
-  void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    myFocusNode.dispose();
-
-    super.dispose();
   }
 }
