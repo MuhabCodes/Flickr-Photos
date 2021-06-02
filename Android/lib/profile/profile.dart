@@ -3,7 +3,7 @@ import 'package:flickr/profile/showMoreVertMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './Followers.dart';
+import './followers.dart';
 import './about_tap.dart';
 import './camera_roll.dart';
 import './following.dart';
