@@ -841,64 +841,84 @@
   ],
   "photos": [
     {
-      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "privacy": "public",
-      "dayTaken": 23,
-      "monthTaken": "April",
-      "yearTaken": 2021,
-      "DateTaken": "23/4/2021",
-      "photoId": 1,
-      "dayUploaded": 28,
-      "monthUploaded": "April",
-      "yearUploaded": 2021
+      "id": 1,
+      "src": "https://images.unsplash.com/photo-1587956517146-e4c65555d3c6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "title": "first image",
+      "user": "meeee",
+      "userId": "4",
+      "isPro": true,
+      "userAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "faves": "56",
+      "comments": "24",
+      "views": "11",
+      "tags": [
+        "Yarab Nekhlas",
+        "Insha2allah Ne5las",
+        "Yarab t3dy",
+        "3ala 5er",
+        "Insha2allah"
+      ],
+      "date": "August 8, 2015",
+      "camera": "sony"
+      ,
+      "comment":[
+    {
+      "commentId":1,
+      "userName":"Ahmed",
+      "comment":"Yarab Ne5las",
+      "userAvatar":"https://resources.premierleague.com/premierleague/photo/2020/08/11/55650e57-1935-4a40-b3be-f8d1900598e8/FPL-Statement-Lead.png"
     },
     {
-      "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "photoId": 2,
-      "privacy": "private",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2018,
-      "DateTaken": "25/5/2018",
-      "dayUploaded": 27,
-      "monthUploaded": "june",
-      "yearUploaded": 2021
+      "userName":"Mahmoud",
+      "comment":"Insha2allh han5ls",
+      "userAvatar":"https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
-      "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 3,
-      "privacy": "public",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2021,
-      "DateTaken": "25/5/2021",
-      "dayUploaded": 27,
-      "monthUploaded": "june",
-      "yearUploaded": 2021
+      "userName":"Hussein",
+      "comment":"Hat3dy 3ala 5er isa",
+      "UserAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+
+  ]
     },
     {
-      "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 4,
-      "privacy": "private",
-      "dayTaken": 10,
-      "monthTaken": "September",
-      "yearTaken": 2020,
-      "DateTaken": "10/9/2020",
-      "dayUploaded": 27,
-      "monthUploaded": "December",
-      "yearUploaded": 2020
+      "id": 2,
+      "src": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+      "title": "second image",
+      "user": "meeee",
+      "userId": 3,
+      "isPro": true,
+      "userAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "faves": "56",
+      "comments": "24",
+      "views": "11",
+      "date": "August 8, 2015",
+      "tags": [
+        "Yarab Nekhlas",
+        "Insha2allah Ne5las",
+        "Yarab t3dy",
+        "3ala 5er",
+        "Insha2allah"
+      ],
+      "camera": "sony",
+      "comment":[
+    {
+      "userName":"Ahmed",
+      "comment":"Yarab Ne5las",
+      "userAvatar":"https://resources.premierleague.com/premierleague/photo/2020/08/11/55650e57-1935-4a40-b3be-f8d1900598e8/FPL-Statement-Lead.png"
     },
     {
-      "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "photoId": 5,
-      "privacy": "private",
-      "dayTaken": 25,
-      "monthTaken": "May",
-      "yearTaken": 2021,
-      "DateTaken": "25/5/2021",
-      "dayUploaded": 27,
-      "monthUploaded": "December",
-      "yearUploaded": 2020
+      "userName":"Mahmoud",
+      "comment":"Insha2allh han5ls",
+      "userAvatar":"https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "userName":"Hussein",
+      "comment":"Hat3dy 3ala 5er isa",
+      "UserAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+
+  ]
     }
   ],
   "Group": [
@@ -912,43 +932,7 @@
       "Members": "18",
       "Date": "May 3, 2021",
       "id": 1
-    },
-    {
-      "Name": "Insha2allah Nekhlas",
-      "Url": "/groups/",
-      "Avatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "cover": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
-      "Discussions": "200",
-      "Photos": "50",
-      "Members": "18",
-      "Date": "April 1, 2021",
-      "id": 2
-    }
-  ],
-  "users": [
-    {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$AB5M5GccybsXAtyBsHNPDe/wPl/WyGj65VF6ycJXYSTVrUHD8YRhq",
-      "firstname": "Olivier",
-      "lastname": "Monge",
-      "age": 32,
-      "id": 2
-    },
-    {
-      "email": "Ahmed@gmail.com",
-      "password": "$2a$10$CTgsivd9L3lgVxZZSahdw.8n9oPmuCdIveH.DpkxHSjFbSyLntOIS",
-      "firstname": "Ahmed",
-      "lastname": "Mostafa",
-      "age": 20,
-      "id": 3
-    },
-    {
-      "email": "Hosny@gmail.com",
-      "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Abdelrahman",
-      "lastname": "Hosny",
-      "age": 20,
-      "id": 4
     }
   ]
+
 }
