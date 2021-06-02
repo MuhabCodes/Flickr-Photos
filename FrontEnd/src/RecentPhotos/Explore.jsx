@@ -19,7 +19,6 @@ const Explore = () => (
         Explore
       </h1>
       <ShareBtn />
-      {/* <RecentPhotos photos={photos} loading={loading} /> */}
       <RecentPhotos />
     </div>
   </div>
