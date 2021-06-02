@@ -19,18 +19,18 @@ class ImageFullscreen extends StatefulWidget {
   Post post;
   ImageFullscreen(this.myPhoto, this.post);
   @override
-  _ImageFullscreenState createState() =>
-      _ImageFullscreenState(this.myPhoto, this.post);
+  ImageFullscreenState createState() =>
+      ImageFullscreenState(this.myPhoto, this.post);
 }
 
-class _ImageFullscreenState extends State<ImageFullscreen> {
+class ImageFullscreenState extends State<ImageFullscreen> {
   String textTitle = "";
   //NetworkImage imagePath = new NetworkImage('www.google.com');
   Photo myPhoto;
   double _widthScreen = 0;
   double _heightScreen = 0;
   Post post;
-  _ImageFullscreenState(this.myPhoto, this.post);
+  ImageFullscreenState(this.myPhoto, this.post);
 
   void selectScreen(BuildContext ctx, NetworkImage imageRoll) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {

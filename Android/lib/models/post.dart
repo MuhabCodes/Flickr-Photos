@@ -14,6 +14,7 @@ class Post {
   DateTime date;
   bool isLiked;
   bool isSaved;
+  String postId;
   //List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
@@ -21,15 +22,16 @@ class Post {
     )
   ];
 
-  Post(
+  Post({
     this.photo,
     this.user,
-    this.description,
     this.date,
+    this.isLiked = false,
+    this.isSaved = false,
+    this.postId,
+    this.description = "",
+    this.title = "",
     this.likes,
     this.comments,
-    this.isLiked,
-    this.isSaved, {
-    this.title,
   });
 }

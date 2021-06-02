@@ -1,3 +1,4 @@
+///This file contains data used across the app
 import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ import 'comment.dart';
 import 'post.dart';
 import 'user.dart';
 
+///Some text foramts used in several files
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
   fontSize: 15,
@@ -37,70 +39,109 @@ TextStyle postTitleStyle = new TextStyle(
   fontSize: 15,
 );
 
+///[userHomePostsMock] is the list of posts which are displayed is home page
+///and it's data is received through a get request
+List<Post> userHomePostsMock = [];
+
+///[addUserHomePosts] this function is called in PostProvider Class
+///to fill in the data members of the post
+bool addUserHomePosts(Map<String, dynamic> json) {
+  Post newPost = new Post(
+      photo: [
+        new Photo(imagePath: json["photoUrl"]),
+      ],
+      postId: json["postId"],
+      user: new User(json["username"], new NetworkImage(json["userAvatar"])),
+      title: json["title"],
+      description: json["description"],
+      date: DateTime(2021, 05, 31, 20, 38, 59),
+      likes: [
+        new User(json["likes"][0]["userName"],
+            new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+      ],
+      comments: [
+        new Comment(
+          new User(json["likes"][0]["userName"],
+              new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+          json["commenters"][0]["text"],
+          DateTime(2021, 05, 31, 20, 38, 59),
+        )
+      ]);
+  //print(newPost.like);
+  userHomePostsMock.add(newPost);
+  if (userHomePostsMock.length == 1) {
+    userHomePostsMock.add(post1);
+  }
+  return true;
+}
+
+User loggedInUser = new User(
+  'LoggedIn user',
+  new NetworkImage(
+      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
+  following: [follower1, follower2, follower3],
+  followers: [follower1, follower2, follower3],
+);
+
 Post post1 = new Post(
-  [
+  photo: [
+    new Photo(
+      imagePath:
+          'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
+    ),
     new Photo(
       imagePath:
           'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
     )
   ],
-  user,
-  "My first post",
-  DateTime.now(),
-  [follower1, follower2, follower3],
-  [],
-  false,
-  false,
+  user: user,
+  description: "My first post",
+  date: DateTime.now(),
+  likes: [follower1, follower2, follower3],
+  comments: [
+    new Comment(
+      follower1,
+      "This was amazing!",
+      DateTime.now(),
+    ),
+    new Comment(
+      follower2,
+      "Cool one",
+      DateTime.now(),
+    ),
+  ],
 );
 final User user = new User(
-    'Hannah Hatem',
-    new NetworkImage(
-        'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg'),
-    [follower1, follower2, follower3],
-    [follower1, follower2, follower3],
-    [],
-    [],
-    false);
-User loggedInUser = new User(
-    'LoggedIn user',
-    new NetworkImage(
-        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
-    [follower1, follower2, follower3],
-    [follower1, follower2, follower3],
-    [],
-    [],
-    false);
+  'Hannah Hatem',
+  new NetworkImage(
+      'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg'),
+  following: [follower1, follower2, follower3],
+  followers: [follower1, follower2, follower3],
+);
 
 User follower1 = new User(
-    'ZiadAkram',
-    new NetworkImage(
-        'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg'),
-    [],
-    [],
-    [],
-    [],
-    true);
+  'ZiadAkram',
+  new NetworkImage(
+      'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg'),
+  followers: [],
+  following: [],
+);
 User follower2 = new User(
-    'Mehrez',
-    new NetworkImage(
-        'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg'),
-    [],
-    [],
-    [],
-    [],
-    false);
+  'Mehrez',
+  new NetworkImage(
+      'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg'),
+  followers: [],
+  following: [],
+);
 User follower3 = new User(
-    'MostafaUsama',
-    new NetworkImage(
-        'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg'),
-    [],
-    [],
-    [],
-    [],
-    true);
-
+  'MostafaUsama',
+  new NetworkImage(
+      'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg'),
+  following: [],
+  followers: [],
+);
+/*
 //Create a list which contains the posts in home page
-
 List<Post> userHomePosts = [
   new Post(
     [
@@ -122,8 +163,16 @@ List<Post> userHomePosts = [
     DateTime(2021, 05, 31, 20, 38, 59),
     [follower1, follower2, follower3],
     [
-      new Comment(follower1, "This was amazing!", DateTime.now(), false),
-      new Comment(follower2, "Cool one", DateTime.now(), false),
+      new Comment(
+        follower1,
+        "This was amazing!",
+        DateTime.now(),
+      ),
+      new Comment(
+        follower2,
+        "Cool one",
+        DateTime.now(),
+      ),
     ],
     false,
     false,
@@ -144,11 +193,26 @@ List<Post> userHomePosts = [
     DateTime.now(),
     [user, follower2, follower3, follower1, follower2],
     [
-      new Comment(follower3, "This was super cool!", DateTime.now(), false),
-      new Comment(follower1, "I can't believe it's not \nbutter!",
-          DateTime.now(), false),
-      new Comment(user, "I know rite!", DateTime.now(), false),
-      new Comment(follower3, "I'm batman", DateTime.now(), false)
+      new Comment(
+        follower3,
+        "This was super cool!",
+        DateTime.now(),
+      ),
+      new Comment(
+        follower1,
+        "I can't believe it's not \nbutter!",
+        DateTime.now(),
+      ),
+      new Comment(
+        user,
+        "I know rite!",
+        DateTime.now(),
+      ),
+      new Comment(
+        follower3,
+        "I'm batman",
+        DateTime.now(),
+      )
     ],
     false,
     false,
@@ -166,10 +230,21 @@ List<Post> userHomePosts = [
     DateTime.now(),
     [user, follower2, follower3, follower3, follower1],
     [
-      new Comment(follower3, "This was super cool!", DateTime.now(), false),
-      new Comment(follower1, "I can't believe it's not \nbutter!",
-          DateTime.now(), false),
-      new Comment(user, "I know rite!", DateTime.now(), false),
+      new Comment(
+        follower3,
+        "This was super cool!",
+        DateTime.now(),
+      ),
+      new Comment(
+        follower1,
+        "I can't believe it's not \nbutter!",
+        DateTime.now(),
+      ),
+      new Comment(
+        user,
+        "I know rite!",
+        DateTime.now(),
+      ),
     ],
     false,
     false,
@@ -190,16 +265,31 @@ List<Post> userHomePosts = [
       follower3,*/
     ],
     [
-      new Comment(follower3, "This was super cool!", DateTime.now(), false),
-      new Comment(follower1, "I can't believe it's not \nbutter!",
-          DateTime.now(), false),
-      new Comment(user, "I know rite!", DateTime.now(), false),
+      new Comment(
+        follower3,
+        "This was super cool!",
+        DateTime.now(),
+      ),
+      new Comment(
+        follower1,
+        "I can't believe it's not \nbutter!",
+        DateTime.now(),
+      ),
+      new Comment(
+        user,
+        "I know rite!",
+        DateTime.now(),
+      ),
     ],
     false,
     false,
   ),
 ];
 
+*/
+
+///[getPostTime] this function calculates returns how long
+///the post or comment has been posted
 String getPostTime(DateTime postTime) {
   DateTime timeNow = DateTime.now();
   String result = "now";
