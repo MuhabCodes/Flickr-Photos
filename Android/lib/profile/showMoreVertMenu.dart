@@ -1,4 +1,6 @@
 import 'package:flickr/login/get_started.dart';
+import 'package:flickr/navigations/about_button.dart';
+import 'package:flickr/navigations/privacy_and_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -126,7 +128,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
                     builder: (BuildContext context) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.95,
-                        //child: PrivacySafetyButton(),
+                        child: PrivacySafetyButton(),
                       );
                     });
               },
@@ -196,7 +198,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
                     builder: (BuildContext context) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.95,
-                        //child: AboutButton(),
+                        child: AboutButton(),
                       );
                     });
               },
