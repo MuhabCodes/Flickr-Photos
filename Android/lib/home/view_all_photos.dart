@@ -1,3 +1,4 @@
+///[ViewAllPhotos] class which returns screen to view all photos in a post with have more than 1 photo
 import 'package:flickr/home/image_fullscreen.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 class ViewAllPhotos extends StatelessWidget {
+  ///[textTitle] is the sting displayed is AppBar ex: "Lara uploaded 2 photos"
   String textTitle = "";
   List<Photo> photo = [
     new Photo(

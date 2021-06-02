@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 
+///[User] class used when generating a comment, logged in user, when liking a comment
 class User {
   String username;
   List<Post> posts;
@@ -19,19 +20,4 @@ class User {
       this.savedPosts,
       this.hasStory,
       this.userId});
-/*
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        profileId: json["profileId"],
-        nsId: json["nsId"],
-        showCaseSet: json["showcaseSet"],
-        firstName: json["firstName"],
-        lastName: json["lastName"],
-        description: json["description"],
-        website: json["website"],
-        occupation: json["occupation"],
-        homeTown: json["homeTown"],
-        city: json["city"],
-        country: json["country"],
-      );*/
-
 }

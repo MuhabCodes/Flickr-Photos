@@ -1,3 +1,4 @@
+///This file contains data used across the app
 import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ import 'comment.dart';
 import 'post.dart';
 import 'user.dart';
 
+///Some text foramts used in several files
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
   fontSize: 15,
@@ -37,8 +39,12 @@ TextStyle postTitleStyle = new TextStyle(
   fontSize: 15,
 );
 
+///[userHomePostsMock] is the list of posts which are displayed is home page
+///and it's data is received through a get request
 List<Post> userHomePostsMock = [];
 
+///[addUserHomePosts] this function is called in PostProvider Class
+///to fill in the data members of the post
 bool addUserHomePosts(Map<String, dynamic> json) {
   Post newPost = new Post(
       photo: [
@@ -282,6 +288,8 @@ List<Post> userHomePosts = [
 
 */
 
+///[getPostTime] this function calculates returns how long
+///the post or comment has been posted
 String getPostTime(DateTime postTime) {
   DateTime timeNow = DateTime.now();
   String result = "now";

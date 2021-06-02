@@ -44,6 +44,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
     return _pageview[page];
   }
 
+  ///[getLikes] returns a widget screen to display comments and likes
   Widget getLikes(List<User> likes) {
     List<Widget> likers = [];
     for (User follower in likes) {
@@ -167,6 +168,9 @@ class _CommentsFavsState extends State<CommentsFavs> {
     );
   }
 
+  ///[getFavesComments] similar to [getLikes] but without the AppBar
+  ///used when calling [getComments] which has an AppBar
+  ///purpose is to avoid drawing the AppBar twice
   Widget getFavesComments(List<User> likes) {
     List<Widget> likers = [];
     for (User follower in likes) {

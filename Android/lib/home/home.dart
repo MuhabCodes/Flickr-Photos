@@ -18,10 +18,10 @@ import 'image_fullscreen.dart';
 
 class Home extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   ///function wich Navigates between 3 screens which are [ViewAllPhotos] [CommentFaves] [ImageFullscreen]
   void selectScreen(
     BuildContext ctx,
@@ -390,13 +390,13 @@ class _HomeState extends State<Home> {
                       Flexible(
                         fit: FlexFit.loose,
                         child: TextButton(
-                          child: post.likes.length >= 3
+                          child: post.likes.length >= 2
                               ? Text(
                                   post.likes[0].username +
                                       ", " +
                                       post.likes[1].username +
                                       " and " +
-                                      (post.likes.length - 2).toString() +
+                                      (post.likes.length - 2 + 1).toString() +
                                       " others faved",
                                   style: textStyleBold,
                                 )

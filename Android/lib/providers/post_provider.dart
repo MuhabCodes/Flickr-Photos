@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,28 +28,24 @@ class PostProvider with ChangeNotifier {
       this.userLoggedIn,
       this.followingIds});
 
-  var _urlFollowingIds =
-      Uri.parse("https://run.mocky.io/v3/d5891262-174f-4016-ab95-07fb2bc5e570");
-
   var _urlUserHomePosts =
       Uri.parse("https://run.mocky.io/v3/8b56c903-aa47-4432-a540-5d8c6873afb2");
   Future<void> getUserHomePosts() async {
-    // get request
+    /// get request
     var response = await http.get(_urlUserHomePosts);
     if (response.statusCode == 200) {
-      //about = About.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
       var extractData = jsonDecode(response.body);
       List<dynamic> json = extractData["posts"];
-      //userHomePostsString = extractData["posts"];
+
       print(json);
       for (int i = 0; i < json.length; i++) {
         addUserHomePosts(json[i]);
       }
     } else {
-      // If the server did not return a 200 CREATED response,
-      // then throw an exception.
+      /// If the server did not return a 200 CREATED response,
+      /// then throw an exception.
       status = Status.Fail;
       throw Exception('Failed to followings');
     }
@@ -58,7 +53,7 @@ class PostProvider with ChangeNotifier {
   }
 
   Future<About> putLikePost() async {
-    // post request from backend
+    /// put request from backend
 
     status = Status.Loading;
     final response = await http.put(
