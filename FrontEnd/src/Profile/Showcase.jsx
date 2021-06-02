@@ -1,13 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useFetch from './usefetch';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
 import './Showcase.css';
 // import images from './imagesArray';
 
 const Showcase = () => {
-  const { data: showCase } = useFetch('http://localhost:8002/showcasePhotos');
+  const history = useHistory();
+  const [isLoading, setLoading] = useState(true);
+  const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
+  const [showCase, setShowCase] = useState('');
+
+  useEffect(() => {
+    axios.get(`/Userinfo/${userjwt.sub}`, {
+    }).then((resp) => {
+      setLoading(false); // set loading to false as it is dont and fetched data
+      setShowCase(resp.data.showcasePhotos);
+      return resp.data;
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        history.push('/login');
+      } else {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+      }
+    });
+  }, []);
   return (
     <div className="container-fluid">
+      {!isLoading && (
       <div className="showcase-view-scp">
         <div className="showcase-scp">
           <div className="title-container-scp">
@@ -18,7 +40,7 @@ const Showcase = () => {
           { showCase && Object.keys(showCase).length !== 0 ? (
             <div className="showcase-container-scp" id="user-sc-full">
               {showCase.map((image) => (
-                <img className="grid-item-scp" src={image.src} alt="" />
+                <img className="grid-item-scp" src={image.imagePath} alt="" />
               ))}
             </div>
           )
@@ -34,6 +56,7 @@ const Showcase = () => {
           <div className="divider" />
         </div>
       </div>
+      )}
     </div>
   );
 };
