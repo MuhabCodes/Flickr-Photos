@@ -13,17 +13,12 @@ function ExploreNavBar() {
   return (
     <nav className="expnav">
       <Link id="exp-menu-item" to="./" className="active">Explore</Link>
-      <Link id="exp-menu-item" to="./Trending">Trending</Link>
-      <Link id="exp-menu-item" to="./Events">Events</Link>
       <div className="animation start-home" />
-      <div className="expDropdown">
+      <div className="exp-dropdown">
         <button className="dropdown-toggle" type="button" id="expdropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
           More
         </button>
         <div className="dropdown-menu" aria-labelledby="expdropdownMenuButton1">
-          <Link className="dropdown-item" to="./TheCommons">The Commons</Link>
-          <Link className="dropdown-item" to="./Galleries">Galleries</Link>
-          <Link className="dropdown-item" to="./WorldMap">World Map</Link>
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
         </div>
       </div>
