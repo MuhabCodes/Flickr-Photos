@@ -23,5 +23,9 @@
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  * 
- * 
+ *@apiSuccessExample {json} Success-Response:
+ *{
+ *  "statusCode": 201,
+ *  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGI2YTYxZTE3MTMwNDQ4MTQwNTg4ZDkiLCJpYXQiOjE2MjI2NjYxNjR9.nYV8D9TK4U-nf5FBAi_XCdUT6hNK9z2ce3AC-yBDT3A"
+ * }
  */
