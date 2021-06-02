@@ -10,7 +10,28 @@ class User {
   List<User> following;
   List<Post> savedPosts;
   bool hasStory;
+  int userId;
 
-  User(this.username, this.profilePicture, this.followers, this.following,
-      this.posts, this.savedPosts, this.hasStory);
+  User(this.username, this.profilePicture,
+      {this.followers,
+      this.following,
+      this.posts,
+      this.savedPosts,
+      this.hasStory,
+      this.userId});
+/*
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        profileId: json["profileId"],
+        nsId: json["nsId"],
+        showCaseSet: json["showcaseSet"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        description: json["description"],
+        website: json["website"],
+        occupation: json["occupation"],
+        homeTown: json["homeTown"],
+        city: json["city"],
+        country: json["country"],
+      );*/
+
 }
