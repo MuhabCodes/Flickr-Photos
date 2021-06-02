@@ -80,11 +80,11 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
     if (checkTag == null) {
       // creating the tag
 
-      const tagObj = await tagsDAL.createTag({
-        ownerId: currentUser.userId,
-        tagRaw: body.tagRaw,
-        tagText: ((String)(body.tagRaw)).replace(/\s/g, ''), // removing all white space from tag
-      });
+      const tagObj = await tagsDAL.createTag(
+        currentUser.userId,
+        body.tagRaw,
+
+      );
       // adding the tag to the photo
       const photoWithTag = await tagsDAL.addTagToPhoto(params.photoId, tagObj);
 

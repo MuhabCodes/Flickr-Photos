@@ -1,11 +1,11 @@
 const Tags = require('./tagsModel');
 const Photo = require('../photo/photoModel');
 
-module.exports.createTag = async function createTag({ ownerId, tagRaw, tagText }) {
+module.exports.createTag = async function createTag(ownerId, tagRaw) {
   const tagObj = new Tags({
     ownerId,
     tagRaw,
-    tagText,
+    tagText: ((String)(tagRaw)).replace(/\s/g, ''), // removing all white space from tag,
   });
   const tag = await tagObj.save();
   return tag;
