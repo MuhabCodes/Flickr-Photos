@@ -7,8 +7,10 @@ import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
+import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import '../models/global.dart';
 import 'comments_fav_page.dart';
@@ -68,15 +70,28 @@ class _HomeState extends State<Home> {
 
   //List<Widget> likers = [];
 
+  var globalProvider;
+  @override
+  /*void initState() {
+    globalProvider = Provider.of<PostProvider>(context, listen: false);
+
+    super.initState();
+  }*/
+
   static int page = 1;
 
   double widthScreen = 0;
   //final controller = TextEditingController();
 
   //CommentsPage _myCommentsPage;
-
+  int isDone = 0;
   @override
   Widget build(BuildContext context) {
+    if (isDone == 0) {
+      globalProvider =
+          Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
+      isDone++;
+    }
     widthScreen = MediaQuery.of(context).size.width;
     Map<int, Widget> _pageview = {
       1: getMain(),
@@ -110,7 +125,10 @@ class _HomeState extends State<Home> {
     //arangePostsWithUploadDate();
     List<Widget> posts = [];
     int index = 0;
-    for (Post post in userHomePosts) {
+    if (userHomePostsMock == null) {
+      return [Container()];
+    }
+    for (Post post in userHomePostsMock) {
       // we will loop on all posts created in global.dart and add them to our home page
       if (post.photo.length == 1) {
         posts.add(getPost(context, post, index));
@@ -207,6 +225,7 @@ class _HomeState extends State<Home> {
             //height: 10,
             constraints: BoxConstraints(
               maxWidth: widthScreen,
+              minWidth: widthScreen - 20,
             ),
             decoration: BoxDecoration(
               // 'decoration:' doesn't allow writing 'color:' after or before it
@@ -219,7 +238,7 @@ class _HomeState extends State<Home> {
             heightResponsive: true,
             widthResponsive: true,
             //constraints: BoxConstraints.expand(height: 60),
-            padding: EdgeInsets.only(left: 20, right: 5),
+            padding: EdgeInsets.only(left: 20, right: 10),
             //color: Colors.red,
 
             child: Column(
@@ -285,12 +304,12 @@ class _HomeState extends State<Home> {
                           iconSize: 35,
                           onPressed: () {
                             setState(() {
-                              userHomePosts[index].isLiked =
+                              userHomePostsMock[index].isLiked =
                                   post.isLiked ? false : true;
                               if (!post.isLiked) {
-                                post.likes.remove(user);
+                                post.likes.remove(loggedInUser);
                               } else {
-                                post.likes.add(user);
+                                post.likes.add(loggedInUser);
                               }
                             });
                             //print(post.likes.length);
@@ -355,7 +374,8 @@ class _HomeState extends State<Home> {
                               Container(
                                 padding: EdgeInsets.only(
                                   left: 15,
-                                  bottom: 25,
+                                  bottom: 10,
+                                  top: 0,
                                 ),
                                 child: Icon(
                                   Icons.star,
