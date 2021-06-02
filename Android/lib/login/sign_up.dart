@@ -4,9 +4,12 @@ import 'package:flickr/login/send_email.dart';
 import 'package:flickr/login/sign_in.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'auth_services.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  var token;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _firstNameController = TextEditingController();
@@ -361,13 +365,35 @@ class _SignUpState extends State<SignUp> {
                                         _height * 0.065)),
                                 onPressed: () async {
                                   if (formKey.currentState.validate()) {
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SendEmail(
-                                              text: _emailController.text)),
-                                    );
+                                    AuthService1()
+                                        .signUp(
+                                            _firstNameController,
+                                            _lastNameController,
+                                            _ageController,
+                                            _emailController.text,
+                                            _passwordController.text)
+                                        .then((val) {
+                                      if (val.statusCode == 201) {
+                                        token = val.data['token'];
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SendEmail(
+                                                  text: _emailController.text)),
+                                        );
+                                        Fluttertoast.showToast(
+                                          msg: 'Authenticated',
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor:
+                                              Colors.lightGreenAccent,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0,
+                                        );
+                                      }
+                                    });
                                   } else {
                                     print('unsuccessful');
                                   }

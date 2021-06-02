@@ -3,6 +3,9 @@ import 'post.dart';
 
 ///[User] class used when generating a comment, logged in user, when liking a comment
 class User {
+  String _id;
+  String email;
+  String password;
   String username;
   List<Post> posts;
   NetworkImage profilePicture = new NetworkImage(

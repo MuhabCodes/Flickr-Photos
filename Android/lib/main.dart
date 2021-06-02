@@ -1,4 +1,5 @@
 import 'package:flickr/login/get_started.dart';
+import 'package:flickr/navigations/privacy_and_safety.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/providers/photo_provider.dart';
 import 'package:flickr/providers/post_provider.dart';
@@ -36,6 +37,18 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: PostProvider(),
+        ),
+        ChangeNotifierProvider<SingleNotifier1>(
+          create: (_) => SingleNotifier1(),
+        ),
+        ChangeNotifierProvider<SingleNotifier2>(
+          create: (_) => SingleNotifier2(),
+        ),
+        ChangeNotifierProvider<SingleNotifier3>(
+          create: (_) => SingleNotifier3(),
+        ),
+        ChangeNotifierProvider<SingleNotifier4>(
+          create: (_) => SingleNotifier4(),
         ),
       ],
       child: MaterialApp(

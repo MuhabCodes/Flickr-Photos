@@ -1,8 +1,11 @@
+import 'package:flickr/login/auth_services.dart';
 import 'package:flickr/login/forgot_password.dart';
 import 'package:flickr/login/sign_up.dart';
+import 'package:flickr/models/global.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,6 +16,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  var token;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscureText = true; //show password boolean
@@ -200,14 +204,32 @@ class _SignInState extends State<SignIn> {
                                     // await Provider.of<Auth>(context).login(
                                     //     _emailController.text,
                                     //     _passwordController.text);
-                                    Navigator.of(context).pop();
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TopNavigationBar()),
-                                    );
+                                    AuthService()
+                                        .login(_emailController.text,
+                                            _passwordController.text)
+                                        .then((val) {
+                                      if (val.statusCode == 201) {
+                                        token = val.data['token'];
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  TopNavigationBar()),
+                                        );
+                                        Fluttertoast.showToast(
+                                          msg: 'Authenticated',
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor:
+                                              Colors.lightGreenAccent,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0,
+                                        );
+                                      }
+                                    });
                                   } else {
                                     _emailSwitch();
                                   }
@@ -278,6 +300,31 @@ class _SignInState extends State<SignIn> {
                             )
                           ],
                         )),
+                        SizedBox(
+                          height: _height * 0.02,
+                        ),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                minimumSize: Size(_width, _height * 0.07)),
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "lib/assets/google.png",
+                                  height: _height * 0.09,
+                                  width: _width * 0.09,
+                                ),
+                                SizedBox(
+                                  width: _width * 0.05,
+                                ),
+                                Text(
+                                  "Sign in with Google",
+                                  style: TextStyle(color: Colors.black),
+                                )
+                              ],
+                            ))
                       ],
                     ),
                   ],

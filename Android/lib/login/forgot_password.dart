@@ -1,9 +1,11 @@
+import 'package:flickr/login/auth_services.dart';
 import 'package:flickr/login/send_email.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgotPassword extends StatefulWidget {
   final String text;
@@ -15,8 +17,8 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController
       _emailController; //controller for using the input of the email textfield
-  final GlobalKey<FormState> formKey =
-      GlobalKey<FormState>(); //used for validation of email
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var token; //used for validation of email
 
   void initState() {
     super.initState();
@@ -139,13 +141,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       _height * 0.065)),
                               onPressed: () {
                                 if (formKey.currentState.validate()) {
-                                  Navigator.of(context).pop();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SendEmail(
-                                            text: _emailController.text)),
-                                  );
+                                  AuthService2()
+                                      .forgot(
+                                    _emailController.text,
+                                  )
+                                      .then((val) {
+                                    if (val.statusCode == 201) {
+                                      token = val.data['token'];
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SendEmail(
+                                                text: _emailController.text)),
+                                      );
+                                      Fluttertoast.showToast(
+                                        msg: 'Authenticated',
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor:
+                                            Colors.lightGreenAccent,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0,
+                                      );
+                                    }
+                                  });
                                 } else {
                                   print('unsuccessful');
                                 }
