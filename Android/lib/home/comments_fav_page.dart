@@ -17,11 +17,11 @@ class CommentsFavs extends StatefulWidget {
   int page;
   CommentsFavs(this.thePost, index, this.isFaves, this.page);
   @override
-  _CommentsFavsState createState() =>
-      _CommentsFavsState(this.thePost, index, this.isFaves, this.page);
+  CommentsFavsState createState() =>
+      CommentsFavsState(this.thePost, index, this.isFaves, this.page);
 }
 
-class _CommentsFavsState extends State<CommentsFavs> {
+class CommentsFavsState extends State<CommentsFavs> {
   Post thePost;
   int index = 0;
 
@@ -31,7 +31,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
   double _widthScreen = 0;
   int page = 0;
   final _commentController = TextEditingController();
-  _CommentsFavsState(this.thePost, index, this.isFaves, this.page);
+  CommentsFavsState(this.thePost, index, this.isFaves, this.page);
 
   @override
   Widget build(BuildContext context) {
