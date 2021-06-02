@@ -29,7 +29,7 @@ const createLikeNotification = async (req, res) => {
       recieverName,
       act: 'like',
       photoId,
-      notificationDate: req.body.favoriteDate,
+      notificationDate: favoriteCreated.favoriteDate,
       imageUrl: photo.imageUrl,
     });
 
@@ -48,7 +48,7 @@ const createLikeNotification = async (req, res) => {
       id: id.toString(),
       act: newNotification.act,
       photoId: newNotification.photoId.toString(),
-      notificationDate: req.body.favoriteDate.toString(),
+      notificationDate: newNotification.notificationDate.toString(),
       imageUrl: photo.imageUrl.toString(),
     };
     await SaveNotification(firebaseNotification);
@@ -100,7 +100,6 @@ const createCommentNotification = async (req, res) => {
       photoId: newNotification.photoId.toString(),
       notificationDate: newNotification.notificationDate.toString(),
     };
-
     await SaveNotification(firebaseNotification);
     return res.status(201).json({
       message: 'comment added succesfully',
@@ -113,6 +112,48 @@ const createCommentNotification = async (req, res) => {
   }
 };
 
+const createFollowNotification = async (req, res) => {
+  try {
+    const reciever = req.body.userId; // contain person to be followed -> reciever
+    const recieverInfo = await getUserById(reciever);
+    const senderInfo = req.sender; // as i forwarded it
+    let senderName = senderInfo.displayName;
+    let recieverName = recieverInfo.displayName;
+
+    const newNotification = new Notification({
+      sender: senderInfo._id,
+      reciever, // reciever.toString()
+      act: 'follow',
+      notificationDate: Date.now(),
+      recieverName,
+      senderName,
+    });
+    await SaveNotification('newNotification', newNotification);
+    // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
+    const id = newNotification._id;
+    // since firebase dont allow undefined values and throw errors
+    senderName = senderName === undefined ? null : senderName;
+    recieverName = recieverName === undefined ? null : recieverName;
+
+    const firebaseNotification = { // due to firebase constrictions
+      sender: newNotification.sender.toString(),
+      reciever: newNotification.reciever.toString(),
+      recieverName,
+      senderName,
+      id: id.toString(),
+      act: newNotification.act,
+      notificationDate: newNotification.notificationDate.toString(),
+    };
+    await SaveNotification(firebaseNotification);
+
+    return res.status(200).json(senderInfo);
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+};
+
 module.exports = {
-  createLikeNotification, createCommentNotification,
+  createLikeNotification, createCommentNotification, createFollowNotification,
 };
