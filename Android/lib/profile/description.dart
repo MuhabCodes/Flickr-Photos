@@ -13,13 +13,13 @@ class _DescriptionState extends State<Description> {
   bool isWriting = false;
   FocusNode myFocusNode;
   bool isFinished = false;
-  var aboutProvider;
+  var userProvider;
   int close = 0;
   @override
   void initState() {
     super.initState();
-    aboutProvider = Provider.of<AboutProvider>(context, listen: false);
-    aboutProvider.setabout();
+    userProvider = Provider.of<UserProvider>(context, listen: false);
+    userProvider.setUser();
     myFocusNode = FocusNode();
   }
 
@@ -29,7 +29,7 @@ class _DescriptionState extends State<Description> {
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final String title = routeArgs['title'];
     final String initialtext = routeArgs['initialtext'];
-    aboutProvider = Provider.of<AboutProvider>(context);
+    userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[800],
@@ -52,8 +52,8 @@ class _DescriptionState extends State<Description> {
                   });
                 }
                 if (changedText != null) {
-                  aboutProvider.setmember(title, changedText);
-                  aboutProvider.createAbout();
+                  userProvider.setMember(title, changedText);
+                  userProvider.createUser();
                 }
                 if (close == 2) {
                   Navigator.pop(context);
@@ -86,8 +86,8 @@ class _DescriptionState extends State<Description> {
           }),
           onChanged: (value) => {changedText = value},
           onFieldSubmitted: (value) => {
-            aboutProvider.setmember(title, value),
-            aboutProvider.createAbout(),
+            userProvider.setMember(title, value),
+            userProvider.createUser(),
             Navigator.pop(context)
           },
           cursorHeight: 30,
