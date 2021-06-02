@@ -534,7 +534,8 @@
       "photoId": 1,
       "user": "John Smith",
       "width": 500,
-      "height": 625
+      "height": 625,
+      "dateUploaded": "2021-05-25"
     },
     {
       "title": "Cats",
@@ -545,7 +546,8 @@
       "photoId": 2,
       "user": "Felicity Berkleef",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2020-04-25"
     },
     {
       "title": "Paris",
@@ -556,7 +558,8 @@
       "photoId": 3,
       "user": "Ferda Hejl",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2021-04-25"
     },
     {
       "title": "Ice",
@@ -567,7 +570,8 @@
       "photoId": 4,
       "user": "Farero",
       "width": 438,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2021-03-25"
     },
     {
       "title": "Sunset",
@@ -578,7 +582,8 @@
       "photoId": 5,
       "user": "Richard Larsson",
       "width": 438,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2021-02-25"
     },
     {
       "title": "Solar Circumnavigation",
@@ -589,7 +594,8 @@
       "photoId": 6,
       "user": "Bill Bowman",
       "width": 500,
-      "height": 500
+      "height": 500,
+      "dateUploaded": "2021-01-25"
     },
     {
       "title": "Boat",
@@ -600,7 +606,8 @@
       "photoId": 7,
       "user": "Jeanmarie Shelton",
       "width": 608,
-      "height": 403
+      "height": 403,
+      "dateUploaded": "2020-12-25"
     },
     {
       "title": "Infinite Beauty",
@@ -611,7 +618,8 @@
       "photoId": 8,
       "user": "Fabien Georget",
       "width": 500,
-      "height": 373
+      "height": 373,
+      "dateUploaded": "2020-11-25"
     },
     {
       "title": "The kids",
@@ -622,7 +630,8 @@
       "photoId": 9,
       "user": "Monte Stinett",
       "width": 466,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2020-10-25"
     },
     {
       "title": "Beach",
@@ -633,7 +642,8 @@
       "photoId": 10,
       "user": "Minutiae",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2020-09-25"
     },
     {
       "title": "Colors",
@@ -644,7 +654,8 @@
       "photoId": 11,
       "user": "Annie Raekone",
       "width": 360,
-      "height": 481
+      "height": 481,
+      "dateUploaded": "2020-08-25"
     },
     {
       "title": "Dolphins",
@@ -655,7 +666,8 @@
       "photoId": 12,
       "user": "Jermey Bishop",
       "width": 360,
-      "height": 240
+      "height": 240,
+      "dateUploaded": "2020-07-25"
     },
     {
       "title": "Aurora Lights",
@@ -666,7 +678,8 @@
       "photoId": 13,
       "user": "Frans Van Heerdan",
       "width": 360,
-      "height": 243
+      "height": 243,
+      "dateUploaded": "2020-06-25"
     },
     {
       "title": "Green Forest",
@@ -677,7 +690,8 @@
       "photoId": 14,
       "user": "Luis Del Rio",
       "width": 360,
-      "height": 270
+      "height": 270,
+      "dateUploaded": "2020-05-25"
     },
     {
       "title": "Food",
@@ -688,7 +702,8 @@
       "photoId": 15,
       "user": "Ella Olssen",
       "width": 608,
-      "height": 403
+      "height": 403,
+      "dateUploaded": "2021-06-25"
     }
   ],
   "Coverinfo": [
