@@ -26,6 +26,7 @@ const CssTextField = withStyles({
 
 export default function GettingStarted() {
   const [email, setEmail] = useState('');
+  // const [isPro, setIsPro] = useState('false');
 
   return (
     <div>
