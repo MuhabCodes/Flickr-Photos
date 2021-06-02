@@ -1,0 +1,38 @@
+#result {
+  top: 10%;
+  max-height: auto;
+  width: 100%;
+  margin-left: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+  
+}
+
+
+#added-photos {
+  width: 240px;
+  height: 240px;
+  margin: 20px;
+}
+#album-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+#album-title{
+  position: absolute;
+  bottom: 40px;
+  left: 25px;
+  color: white;
+  font-weight: 600
+}
+#photo-number{
+ position: absolute;
+ bottom: 25px; 
+ left: 25px;
+ color: white;
+ font-weight: 400;
+ font-size: 14px;
+}
