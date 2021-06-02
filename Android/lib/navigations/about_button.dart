@@ -1,3 +1,5 @@
+import 'package:flickr/home/image_fullscreen.dart';
+import 'package:flickr/models/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -116,7 +118,12 @@ class AboutButton extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                  return ImageFullscreen(
+                      postBenFlasher.photo[0], postBenFlasher);
+                }));
+              },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 alignment: Alignment.centerLeft,

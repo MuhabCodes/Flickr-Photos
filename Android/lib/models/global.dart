@@ -83,6 +83,38 @@ User loggedInUser = new User(
   followers: [follower1, follower2, follower3],
 );
 
+User userBenFlasher = new User(
+  'LoggedIn user',
+  new NetworkImage(
+      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
+  following: [follower1, follower2, follower3],
+  followers: [follower1, follower2, follower3],
+);
+Post postBenFlasher = new Post(
+  photo: [
+    new Photo(
+      imagePath:
+          'https://live.staticflickr.com/4532/38021230015_8934884e7b_h.jpg',
+    ),
+  ],
+  title: "Sutro Shore",
+  user: user,
+  description: "My first post",
+  date: DateTime.now(),
+  likes: [follower1, follower2, follower3],
+  comments: [
+    new Comment(
+      follower1,
+      "This was amazing!",
+      DateTime.now(),
+    ),
+    new Comment(
+      follower2,
+      "Cool one",
+      DateTime.now(),
+    ),
+  ],
+);
 Post post1 = new Post(
   photo: [
     new Photo(

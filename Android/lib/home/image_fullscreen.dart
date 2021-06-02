@@ -64,54 +64,66 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        Column(
+                        Row(
                           children: [
-                            Container(
-                              //this container is related to the circle avatar only (tiny box contains an avatar)
-                              //color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  right: 10,
-                                  top: 65,
-                                  left: 30), //user name padding away from pp
-                              child: CircleAvatar(
-                                backgroundImage: post.user.profilePicture,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 70, right: 50),
-                              child: TextButton(
-                                child: Text(
-                                  post.user.username,
-                                  style: appBarTitleStyle,
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      //this container is related to the circle avatar only (tiny box contains an avatar)
+                                      //color: Colors.white,
+                                      margin: EdgeInsets.only(
+                                          right: 10,
+                                          top: 65,
+                                          left:
+                                              30), //user name padding away from pp
+                                      child: CircleAvatar(
+                                        backgroundImage:
+                                            post.user.profilePicture,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .push(MaterialPageRoute(builder: (_) {
-                                    return Profile();
-                                  }));
-                                },
-                              ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      margin:
+                                          EdgeInsets.only(top: 70, right: 50),
+                                      child: TextButton(
+                                        child: Text(
+                                          post.user.username,
+                                          style: appBarTitleStyle,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (_) {
+                                            return Profile();
+                                          }));
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              margin:
-                                  EdgeInsets.only(right: 5, top: 60, left: 5),
-                              child: IconButton(
-                                  //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
-                                  icon: Icon(Icons.close_rounded,
-                                      size: 30, color: Colors.white),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  }),
+                            SizedBox(width: 50),
+                            Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      right: 5, top: 60, left: 5),
+                                  child: IconButton(
+                                      //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
+                                      icon: Icon(Icons.close_rounded,
+                                          size: 30, color: Colors.white),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      }),
+                                ),
+                              ],
                             ),
                           ],
                         ),
