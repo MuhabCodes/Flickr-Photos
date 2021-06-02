@@ -11,7 +11,7 @@
   },
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\ESC\\Desktop\\Documentation",
+    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\mohamed.afifi\\Desktop\\Afifi_Documents",
     "doctest_linux": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs",
     "linux_nodemon:docs": "npx nodemon --exec \"npm run doctest_linux\" ./docs/*.js"
   },
