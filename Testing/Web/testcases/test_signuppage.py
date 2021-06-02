@@ -1,6 +1,6 @@
 import pytest
 from time import sleep
-from pages.signuppage import SignUpPage
+from pages.signuppage.signuppage import SignUpPage
 from webdriver_manager.chrome import ChromeDriverManager
 from info.info import TestData
 from selenium import webdriver
