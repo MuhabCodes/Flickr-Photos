@@ -1,0 +1,110 @@
+.contentBox {
+  display: inline-block;
+  width: 540px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+}
+.contentBox2{
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin: 20px;
+  margin-left: 10px;
+  align-self: auto;
+  }
+.contentBox #graph1 ,.contentBox2 #graph2 {
+float: left;
+}
+
+.contentBox .titleOfGraph1,.contentBox2 .titleOfGraph2 {
+  margin: 5px;
+}
+
+.contentBox .firstBullet,.contentBox .secondBullet,.contentBox .thirdBullet,.contentBox .fourthBullet,.contentBox .fifthBullet
+{
+  text-align: right;
+  margin: 5px;
+}
+.contentBox2 .firstBullet,.contentBox2 .secondBullet,.contentBox2 .thirdBullet,.contentBox2 .fourthBullet,.contentBox2 .fifthBullet
+{
+  text-align: right;
+  margin: 5px;
+}
+#legendsOfGraph1, #legendsOfGraph2,.bullet-list-graphs{
+  text-align: left;
+   margin-left: 10px;
+   font-size: 14px;
+}
+#legendsOfGraph1, #legendsOfGraph2{
+  list-style-type: none;
+  padding:0px;
+
+ }
+ .firstBullet{
+  color: #FF43AB;
+}
+.secondBullet{
+ color:#FFF400;
+}
+.thirdBullet{
+ color: #14DC20;
+}
+.fourthBullet{
+ color: #08BFF6;
+}
+.fifthBullet{
+ color: #99AACC;
+}
+#legendsOfGraph1 .brandsHyperTags:hover,#aboutTheseGraphs .brandsHyperTags:hover, #legendsOfGraph2 .brandsHyperTags:hover{
+background-color: #0063dc;
+color: white;
+}
+.titleOfGraph1{
+text-align: left;
+
+}
+.titleOfGraph2{
+text-align: left;
+
+}
+.titleOfGraph1,.titleOfGraph2{
+font-weight: bold;
+color: #000;
+font-size: 20px;
+}
+#aboutTheseGraphs{
+margin-top: 10px;
+font-size: 13px;
+text-align: left;
+margin-left: 120px;
+
+}
+.graphs{
+margin-left: 80px;
+}
+@media screen and (max-width: 1215px) {
+.graphs{
+  display: block;
+}
+.contentBox {
+  display: block;
+  width: 540px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+}
+.contentBox2{
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin: 20px;
+  margin-left: 90px;
+  align-self: auto;
+  }
+#legendsOfGraph1, #legendsOfGraph2,.bullet-list-graphs{
+font-size: 13px;
+}
+}
