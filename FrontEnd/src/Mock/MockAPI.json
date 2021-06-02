@@ -942,34 +942,79 @@
       "firstname": "Ahmed",
       "lastname": "Mostafa",
       "age": 20,
-      "id": 3
-    },
-    {
-      "email": "Hosny@gmail.com",
-      "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Abdo",
-      "lastname": "Hos",
-      "age": 20,
-      "id": 4,
-      "gender": "Male",
-      "displayname": "HosHos",
-      "ispro": "false"
-    },
-    {
-      "email": "kareem@gmail",
-      "password": "$2a$10$rkgA9HYNBKGEgk3EiOkWguDd7213SDYnhu9F/ZsZOwlJaaTpc7sse",
-      "firstname": "kareem",
-      "lastname": "Mostafa",
-      "age": 20,
-      "id": 5
-    },
-    {
-      "email": "kareemmoustafa05@gmail.com",
-      "password": "$2a$10$DN8t.lmPvPle4gyG9G/7Vuu/LV1NNqG/3fDd3Bz.B2eisO1yVrNX2",
-      "firstName": "kareemm",
-      "lastName": "kareem",
-      "age": "20",
-      "id": 6
-    }
+      "id": 3,
+      "followers": [
+        {
+          "userId": 1
+        },
+        {
+          "userId": 2
+        },
+        {
+          "userId": 3
+        },
+        {
+          "userId": 4
+        }
+      ],
+      "following": [
+        {
+          "userId": 1
+        },
+        {
+          "userId": 2
+        },
+        {
+          "userId": 3
+        },
+        {
+          "userId": 4
+        }
+    ]
+  },
+  {
+    "email": "Hosny@gmail.com",
+    "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
+    "firstname": "Abdo",
+    "lastname": "Hos",
+    "age": 20,
+    "id": 4,
+    "gender": "Male",
+    "displayname": "HosHos",
+    "ispro": "false",
+    "followers": [
+      {
+        "userId": 1
+      },
+      {
+        "userId": 2
+      },
+      {
+        "userId": 3
+      },
+      {
+        "userId": 4
+      }
+    ],
+    "following": [
+      
   ]
+  },
+  {
+    "email": "kareem@gmail",
+    "password": "$2a$10$rkgA9HYNBKGEgk3EiOkWguDd7213SDYnhu9F/ZsZOwlJaaTpc7sse",
+    "firstname": "kareem",
+    "lastname": "Mostafa",
+    "age": 20,
+    "id": 5
+  },
+  {
+    "email": "kareemmoustafa05@gmail.com",
+    "password": "$2a$10$DN8t.lmPvPle4gyG9G/7Vuu/LV1NNqG/3fDd3Bz.B2eisO1yVrNX2",
+    "firstName": "kareemm",
+    "lastName": "kareem",
+    "age": "20",
+    "id": 6
+  }
+]
 }
