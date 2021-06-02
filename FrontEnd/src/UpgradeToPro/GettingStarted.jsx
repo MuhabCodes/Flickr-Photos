@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
+import jwt from 'jwt-decode';
+import axios from 'axios';
 import './GettingStarted.css';
 
 const CssTextField = withStyles({
@@ -25,8 +27,20 @@ const CssTextField = withStyles({
 // });
 
 export default function GettingStarted() {
+  const userjwt = jwt(localStorage.getItem('token'));
   const [email, setEmail] = useState('');
-  // const [isPro, setIsPro] = useState('false');
+  const [ispro, setIsPro] = useState(false);
+  const getPro = () => {
+    const UserInfo = {
+      email, ispro,
+    };
+    axios(`/users/${userjwt.sub}`, {
+      method: 'patch',
+      data: UserInfo,
+    }).then(() => {
+      setIsPro(true);
+    });
+  };
 
   return (
     <div>
@@ -47,6 +61,7 @@ export default function GettingStarted() {
             <Button
             //   variant="contained"
               className="button"
+              onClick={getPro}
               disableElevation
               type="submit"
             >
