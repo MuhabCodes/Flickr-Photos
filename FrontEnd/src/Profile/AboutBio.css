@@ -48,7 +48,7 @@
   background-color: white;
   position: absolute;
   right: 40px;
-  top: 40px;
+  top: 30px;
   z-index: 81;
 }
 
@@ -165,4 +165,13 @@ textarea {
   cursor: pointer;
   background-color: #979ea2;
   color: #fff;
+}
+
+.link-to-edit-aboutbio {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
 }
