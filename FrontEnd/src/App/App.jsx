@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import CameraFinder from '../CameraFinder/CameraFinder';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
@@ -23,8 +24,12 @@ import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
 import GettingStarted from '../UpgradeToPro/GettingStarted';
+import configData from '../config.json';
 
 function App() {
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
   return (
     <div className="flickr-main">
       <NavBar />
