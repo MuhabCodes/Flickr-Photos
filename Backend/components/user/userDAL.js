@@ -105,9 +105,9 @@ module.exports.getPhotos = async function getUserPhotos(userId) {
   return photoObj;
 };
 
-module.exports.addPersonToFollowersDAL = async function addToFollowers(userId,followerId) {
+module.exports.addPersonToFollowersDAL = async function addToFollowers(userId, followerId) {
   await User.updateOne(
     { _id: userId },
     { $push: { followers: followerId } },
   );
-}
+};
