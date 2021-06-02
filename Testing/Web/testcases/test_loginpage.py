@@ -1,5 +1,5 @@
 import pytest
-from pages.loginpage import LoginPage
+from pages.loginpage.loginpage import LoginPage
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from time import sleep
