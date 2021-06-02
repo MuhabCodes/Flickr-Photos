@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import jwt from 'jwt-decode';
 import './GeneralStats.css';
 
 const Stats = () => {
+  const { id } = useParams();
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [views, setViews] = useState('');
   const [tags, setTags] = useState('');
   const [faves, setFaves] = useState('');
-  const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
+
   useEffect(() => {
-    axios.get(`/Userinfo/${userjwt.sub}`, {
+    axios.get(`/Userinfo/${id}`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
       resp.data.generalStats.map((item) => {
