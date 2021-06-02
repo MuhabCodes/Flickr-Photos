@@ -33,8 +33,6 @@ const HomePage = () => {
         }
       });
     }, []);
-
-    console.log(currLoggedInFollowing);
   }
   // console.log(Profiles);
   return (
