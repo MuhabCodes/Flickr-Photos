@@ -1,5 +1,5 @@
 from info.info import TestData
-from pages.BasePage import BasePage
+from pages.basepage import BasePage
 from selenium.webdriver.common.by import By
 
 
