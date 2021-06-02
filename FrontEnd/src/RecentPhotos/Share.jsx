@@ -1,4 +1,5 @@
 import React from 'react';
+import './Share.css';
 
 function Share() { // shows link to be shared
   document.getElementById('share-link-btn').style.display = 'none';
