@@ -21,7 +21,7 @@ const ChangePassword = () => {
     const ProfileInfo = {
       newPassword,
     };
-    axios.put(`/users/${userjwt.sub}`, ProfileInfo)
+    axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
       .then(() => {
         history.push('/account'); // if successful we redirect to account
       }).catch((err) => {
