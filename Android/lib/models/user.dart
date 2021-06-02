@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'post.dart';
 
-///[User] class used when generating a comment, logged in user, when liking a comment
 class User {
+  String email;
+  String password;
+
   String username;
   List<Post> posts;
   NetworkImage profilePicture = new NetworkImage(
@@ -12,12 +15,52 @@ class User {
   List<Post> savedPosts;
   bool hasStory;
   int userId;
+  String profileId;
+  String nsId;
+  String showCaseSet;
+  String firstName;
+  String lastName;
+  String description;
+  String website;
+  String occupation;
+  String homeTown;
+  String city;
+  String country;
 
-  User(this.username, this.profilePicture,
-      {this.followers,
+  User(
+      {this.username,
+      this.profilePicture,
+      this.followers,
       this.following,
       this.posts,
       this.savedPosts,
       this.hasStory,
-      this.userId});
+      this.userId,
+      this.profileId,
+      this.nsId,
+      this.showCaseSet,
+      this.firstName,
+      this.lastName,
+      this.description,
+      this.website,
+      this.occupation,
+      this.homeTown,
+      this.city,
+      this.country,
+      this.email,
+      this.password});
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        profileId: json["profileId"],
+        nsId: json["nsId"],
+        showCaseSet: json["showcaseSet"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        description: json["description"],
+        website: json["website"],
+        occupation: json["occupation"],
+        homeTown: json["homeTown"],
+        city: json["city"],
+        country: json["country"],
+      );
 }
