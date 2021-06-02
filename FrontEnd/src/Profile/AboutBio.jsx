@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import useFetch from './usefetch';
+import { useHistory, useParams } from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
 import edit from './assets/edit_icon.png';
 import './AboutBio.css';
 
 const AboutBio = () => {
-  const { data: About } = useFetch('http://localhost:8000/Bios/85826296@N00');
+  const { id } = useParams();
+  const history = useHistory();
+  const [isLoading, setLoading] = useState(true);
+  const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [text, setText] = useState('');
-
-  useEffect(async () => {
-    const resp = await fetch('http://localhost:8000/Bios/85826296@N00');
-    const data = await resp.json();
-    setText(data.bio);
+  const currUser = (id === userjwt.sub);
+  useEffect(() => {
+    axios.get(`/Userinfo/${id}`, {
+    }).then((resp) => {
+      setLoading(false); // set loading to false as it is dont and fetched data
+      setText(resp.data.bio);
+      return resp.data;
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        history.push('/login');
+      } else {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+      }
+    });
   }, []);
   function Read() {
     //  Read function that checks whether user wants to read more or read less
@@ -30,9 +46,10 @@ const AboutBio = () => {
   }
   return (
     <div className="about-bio-area">
-      {About && (
+      {!isLoading && (
       <div className="bio-container">
         {/* edit bio button for user */}
+        {currUser && (
         <button
           type="button"
           id="user-edit-biobtn"
@@ -48,6 +65,7 @@ const AboutBio = () => {
         >
           <img src={edit} alt="" className="edit-button-img" />
         </button>
+        )}
         <div className="edit-bio" id="editingarea" style={{ display: 'none' }}>
           <textarea name="userbio" id="usertextarea" />
           <div className="editbio-actions">
@@ -84,7 +102,7 @@ const AboutBio = () => {
           </div>
         </div>
         <div className="bio-body" id="textcontainer">
-          {About && text.length < 200 ? (
+          {!isLoading && text.length < 200 ? (
             <p>
               {text}
             </p>
