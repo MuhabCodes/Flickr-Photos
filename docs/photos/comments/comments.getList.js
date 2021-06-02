@@ -27,9 +27,8 @@
 
 * @apiSuccessExample {json} Success-Response:
 *    {
-   "photo_Id": "109722179",
    "comment": {
-      "commentId": "6065-109722179-72057594077818641",
+      "_id": "6065-109722179-72057594077818641",
       "authorId": "35468159852@N01",
       "authorName": "Rev Dan Catt",
       "dateCreate": "1141841470",

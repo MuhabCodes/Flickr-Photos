@@ -19,7 +19,7 @@
 
 @apiSuccessExample {json} Success-Response:
 *    {
-   "profileId": "85826296@N00",
+   "_id": "85826296@N00",
    "realName": "Hal",
    "birthDate": "12-12-2000",
    "description": "This is me, this is my story",
