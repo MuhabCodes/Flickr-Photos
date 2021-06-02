@@ -11,6 +11,7 @@
  *
  *
  * @apiSuccess (Success 201) {Number} statusCode The status code
+ * @apiSuccess (Success 201) {Object} photo photo to be edited.
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *
