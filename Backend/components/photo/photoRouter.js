@@ -1,5 +1,6 @@
 const express = require('express');
 const commentsController = require('./comments/commentsController');
+const createCommentNotification = require('../../middleware/createNotification');
 
 const router = express.Router();
 const {
@@ -49,7 +50,7 @@ router.post('/:photoId/:photoLocation', addLocation);
 
 // to edit location of certain photo : use put/:photoId and send only location so that it will be
 // the only thing to be changed
-router.post('/:photoId/comments', commentsController.add);
+router.post('/:photoId/comments', commentsController.add, createCommentNotification);
 
 router.put('/:photoId/comments/:commentId', commentsController.editComment);
 
