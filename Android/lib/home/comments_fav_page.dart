@@ -17,11 +17,11 @@ class CommentsFavs extends StatefulWidget {
   int page;
   CommentsFavs(this.thePost, index, this.isFaves, this.page);
   @override
-  _CommentsFavsState createState() =>
-      _CommentsFavsState(this.thePost, index, this.isFaves, this.page);
+  CommentsFavsState createState() =>
+      CommentsFavsState(this.thePost, index, this.isFaves, this.page);
 }
 
-class _CommentsFavsState extends State<CommentsFavs> {
+class CommentsFavsState extends State<CommentsFavs> {
   Post thePost;
   int index = 0;
 
@@ -31,7 +31,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
   double _widthScreen = 0;
   int page = 0;
   final _commentController = TextEditingController();
-  _CommentsFavsState(this.thePost, index, this.isFaves, this.page);
+  CommentsFavsState(this.thePost, index, this.isFaves, this.page);
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +44,7 @@ class _CommentsFavsState extends State<CommentsFavs> {
     return _pageview[page];
   }
 
+  ///[getLikes] returns a widget screen to display comments and likes
   Widget getLikes(List<User> likes) {
     List<Widget> likers = [];
     for (User follower in likes) {
@@ -81,21 +82,21 @@ class _CommentsFavsState extends State<CommentsFavs> {
                       child: TextButton(
                         //height: 30,
                         child: Text(
-                            user.following.contains(follower)
+                            loggedInUser.following.contains(follower)
                                 ? "✓"
                                 : "+ Follow",
                             style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
-                                color: user.following.contains(follower)
+                                color: loggedInUser.following.contains(follower)
                                     ? Colors.black
                                     : Colors.black)),
                         onPressed: () {
                           setState(() {
-                            if (user.following.contains(follower)) {
-                              user.following.remove(follower);
+                            if (loggedInUser.following.contains(follower)) {
+                              loggedInUser.following.remove(follower);
                             } else {
-                              user.following.add(follower);
+                              loggedInUser.following.add(follower);
                             }
                           });
                         },
@@ -127,12 +128,12 @@ class _CommentsFavsState extends State<CommentsFavs> {
       length: 2,
       child: Scaffold(
           appBar: AppBar(
-            title: Flexible(
-              child: Text(
+            title: Column(children: [
+              Text(
                 thePost.user.username + "'s Photo",
                 style: appBarTitleStyle,
               ),
-            ),
+            ]),
             bottom: TabBar(
                 //labelColor: Colors.white,
                 //unselectedLabelColor: Colors.white,
@@ -167,6 +168,9 @@ class _CommentsFavsState extends State<CommentsFavs> {
     );
   }
 
+  ///[getFavesComments] similar to [getLikes] but without the AppBar
+  ///used when calling [getComments] which has an AppBar
+  ///purpose is to avoid drawing the AppBar twice
   Widget getFavesComments(List<User> likes) {
     List<Widget> likers = [];
     for (User follower in likes) {
@@ -203,21 +207,21 @@ class _CommentsFavsState extends State<CommentsFavs> {
                           borderRadius: BorderRadius.all(Radius.circular(0))),
                       child: TextButton(
                         child: Text(
-                            user.following.contains(follower)
+                            loggedInUser.following.contains(follower)
                                 ? "✓"
                                 : "+ Follow",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: user.following.contains(follower)
+                                color: loggedInUser.following.contains(follower)
                                     ? Colors.black
                                     : Colors.black)),
                         onPressed: () {
                           setState(() {
-                            if (user.following.contains(follower)) {
-                              user.following.remove(follower);
+                            if (loggedInUser.following.contains(follower)) {
+                              loggedInUser.following.remove(follower);
                             } else {
-                              user.following.add(follower);
+                              loggedInUser.following.add(follower);
                             }
                           });
                         },
@@ -333,12 +337,12 @@ class _CommentsFavsState extends State<CommentsFavs> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Flexible(
-            child: Text(
+          title: Column(children: [
+            Text(
               thePost.user.username + "'s Photo",
               style: appBarTitleStyle,
             ),
-          ),
+          ]),
           bottom: TabBar(
               labelColor: Colors.white,
               //key: 2,

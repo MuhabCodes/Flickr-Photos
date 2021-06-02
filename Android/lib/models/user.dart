@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'post.dart';
 
+///[User] class used when generating a comment, logged in user, when liking a comment
 class User {
   String username;
   List<Post> posts;
@@ -10,7 +11,13 @@ class User {
   List<User> following;
   List<Post> savedPosts;
   bool hasStory;
+  int userId;
 
-  User(this.username, this.profilePicture, this.followers, this.following,
-      this.posts, this.savedPosts, this.hasStory);
+  User(this.username, this.profilePicture,
+      {this.followers,
+      this.following,
+      this.posts,
+      this.savedPosts,
+      this.hasStory,
+      this.userId});
 }

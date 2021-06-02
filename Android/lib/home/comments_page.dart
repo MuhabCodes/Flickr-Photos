@@ -9,7 +9,11 @@ bool postComment(String commentController, Post thePost) {
   bool isAdded = false;
   if (commentController.isEmpty == false) {
     thePost.comments.add(
-      new Comment(loggedInUser, commentController, DateTime.now(), false),
+      new Comment(
+        loggedInUser,
+        commentController,
+        DateTime.now(),
+      ),
     );
     isAdded = true;
   }

@@ -1,6 +1,7 @@
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/providers/photo_provider.dart';
+import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: TagProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: PostProvider(),
         ),
       ],
       child: MaterialApp(
