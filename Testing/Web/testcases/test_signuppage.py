@@ -41,7 +41,7 @@ class TestSignUPage(object):
     def test_register3(self, setup):
         print("\nAge is 13 exactly")
         self.signupPage.register("George", "Joseph", "13", "george.joseph2896@gmail.com", "georgejoseph12345")
-        sleep(30)
+        sleep(50)
         self.signupPage.click_signup_button()
         sleep(10)
         assert self.signupPage.page_url() == TestData.CHECK_EMAIL_URL
