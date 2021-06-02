@@ -119,7 +119,6 @@ function CameraRoll() {
 
       <div className="main">
         {days}
-        <a href="/followers">click me</a>
         {showModel ? <PopoutImageModel image={images} /> : null}
 
       </div>
