@@ -131,12 +131,13 @@ class AboutProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<About> createAbout() async {
+  var _geturl =
+      Uri.parse("https://run.mocky.io/v3/2e226f67-30da-4160-bd74-f88464cac234");
+  Future<void> createAbout() async {
     // post request from backend
-    print(about.description);
     status = Status.Loading;
     final response = await http.post(
-      _url,
+      _geturl,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -156,12 +157,13 @@ class AboutProvider with ChangeNotifier {
     );
     if (response.statusCode == 200) {
       print(response.body);
+      about = About.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
 
-      return About.fromJson(jsonDecode(response.body));
+      return;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
