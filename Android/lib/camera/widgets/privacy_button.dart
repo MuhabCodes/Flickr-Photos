@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class PrivacyButton extends StatefulWidget {
@@ -9,7 +8,8 @@ class PrivacyButton extends StatefulWidget {
 }
 
 class _PrivacyButtonState extends State<PrivacyButton> {
-  void setPrivacy(BuildContext context, String choice) async {   //Set privacy option
+  void setPrivacy(BuildContext context, String choice) async {
+    //Set privacy option
     widget.choice = choice;
     this.setState(() {});
     Navigator.of(context).pop();
