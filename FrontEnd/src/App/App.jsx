@@ -12,7 +12,7 @@ import Login from '../Login/logIn';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
-import Footer from './Footer';
+// import Footer from './Footer';
 import CameraRoll from './CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
@@ -27,6 +27,7 @@ import EditPersonalInfo from '../Account/EditPersonalInfo';
 import DeleteAccount from '../Account/DeleteAccount';
 import ChangePassword from '../Account/ChangePassword';
 import configData from '../config.json';
+import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
@@ -38,6 +39,10 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/privacy">
+              <NavBar />
+              <PrivacyPermissions />
+            </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
             </Route>
@@ -104,7 +109,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
       </Router>
     </div>
   );
