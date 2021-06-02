@@ -1,10 +1,10 @@
 from info.info import TestData
-from pages.BasePage import BasePage
+from pages.basepage import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class MainPage(BasePage):
+class HomePage(BasePage):
     """Locators"""
     START_FOR_FREE_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[2]/div[3]/div/a')
     LOGIN_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[1]/div/div[3]/div/ul[2]/li[2]/a')
