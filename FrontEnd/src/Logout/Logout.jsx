@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import jwt from 'jwt-decode';
 
 export default function Logout() {
@@ -6,7 +7,8 @@ export default function Logout() {
     const decodedData = jwt(storedToken);
     const expirationDate = decodedData.exp;
     const currenttime = Date.now() / 1000;
-    if (expirationDate < currenttime) {
+    console.log(currenttime);
+    if (expirationDate <= currenttime) {
       localStorage.removeItem('token');
     }
   }
