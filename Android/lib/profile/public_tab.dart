@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../models/photos.dart';
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
 import 'list_view.dart';
 

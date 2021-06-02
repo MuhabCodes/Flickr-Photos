@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 
 class Description extends StatefulWidget {
   @override

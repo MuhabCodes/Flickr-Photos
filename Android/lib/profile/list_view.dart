@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
 import 'public_tab.dart';
 

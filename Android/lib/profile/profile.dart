@@ -8,7 +8,7 @@ import './about_tap.dart';
 import './camera_roll.dart';
 import './following.dart';
 import './stats.dart';
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
 
 /// This is the stateful widget that the main application instantiates.
