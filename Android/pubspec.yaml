@@ -33,6 +33,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   flutter_staggered_grid_view: ^0.4.0
   timeago: ^3.0.2
+  share_plus: ^2.1.2
   font_awesome_flutter: ^9.0.0
   url_launcher: ^6.0.3
   responsive_widgets: ^2.0.1

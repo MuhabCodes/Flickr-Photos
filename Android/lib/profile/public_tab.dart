@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../models/photos.dart';
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
+import 'list_view.dart';
 
 String timeAgo(PhotoProvider photoProvider, Photo image) {
   DateTime now = DateTime.now();
@@ -32,7 +33,7 @@ class _PublicState extends State<Public> {
   bool isGrid = true;
   @override
   Widget build(BuildContext context) {
-    var aboutProvider = Provider.of<AboutProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
     var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
     return Column(
@@ -222,10 +223,10 @@ class _PublicState extends State<Public> {
         ),
         Expanded(
           child: SizedBox(
-            height: size.height,
+            height: size.height * 0.6,
             child: isGrid
                 ? gridView(photoProvider)
-                : listView(photoProvider, aboutProvider),
+                : listView(photoProvider, userProvider, size),
           ),
         ),
       ],
@@ -248,61 +249,5 @@ Widget gridView(PhotoProvider photoProvider) {
       ),
       itemCount: photoProvider.triple.length,
     )
-  ]);
-}
-
-Widget listView(PhotoProvider photoProvider, AboutProvider aboutProvider) {
-  return CustomScrollView(slivers: <Widget>[
-    SliverStaggeredGrid.countBuilder(
-      mainAxisSpacing: 5,
-      itemCount: photoProvider.triple.length,
-      crossAxisCount: 1,
-      staggeredTileBuilder: (index) => StaggeredTile.count(1, 1),
-      itemBuilder: (context, index) => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.network(
-            photoProvider.triple[index].imagePath,
-            fit: BoxFit.fill,
-          ),
-          Container(
-            height: 40,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //this row holds pp, username, date posted
-              children: <Widget>[
-                Row(
-                  children: [
-                    Container(
-                      //this container is related to the circle avatar only (tiny box contains an avatar)
-                      //color: Colors.white,
-                      margin: EdgeInsets.only(
-                          right: 10), //user name padding away from pp
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://farm4.staticflickr.com/3914/15118079089_489aa62638_b.jpg"),
-                      ),
-                    ),
-                    Text(
-                      aboutProvider.about.firstName +
-                          " " +
-                          aboutProvider.about.lastName,
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Text(
-                  timeAgo(photoProvider, photoProvider.triple[index])
-                      .toString(),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
   ]);
 }

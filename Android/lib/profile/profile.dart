@@ -3,12 +3,12 @@ import 'package:flickr/profile/showMoreVertMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './Followers.dart';
+import './followers.dart';
 import './about_tap.dart';
 import './camera_roll.dart';
 import './following.dart';
 import './stats.dart';
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
 
 /// This is the stateful widget that the main application instantiates.
@@ -19,14 +19,14 @@ class Profile extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _ProfileState extends State<Profile> {
-  var aboutProvider;
+  var userProvider;
   var photoProvider;
   int _initialIndex = 2;
 
   @override
   void initState() {
-    aboutProvider = Provider.of<AboutProvider>(context, listen: false);
-    aboutProvider.setabout();
+    userProvider = Provider.of<UserProvider>(context, listen: false);
+    userProvider.setUser();
     photoProvider = Provider.of<PhotoProvider>(context, listen: false);
     photoProvider.setPhotos();
     //photoProvider.arangePhoto();
@@ -35,9 +35,9 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    aboutProvider = Provider.of<AboutProvider>(context, listen: true);
+    userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
-    if (aboutProvider.status == Status.Loading) {
+    if (userProvider.status == Status.Loading) {
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(
@@ -122,9 +122,9 @@ class _ProfileState extends State<Profile> {
                                   child: null,
                                 )),
                             Text(
-                              aboutProvider.about.firstName +
+                              userProvider.user.firstName +
                                   " " +
-                                  aboutProvider.about.lastName,
+                                  userProvider.user.lastName,
                               style: TextStyle(
                                   fontSize: 23,
                                   color: Colors.white,

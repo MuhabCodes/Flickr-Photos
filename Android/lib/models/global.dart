@@ -39,11 +39,11 @@ TextStyle postTitleStyle = new TextStyle(
   fontSize: 15,
 );
 
-///[userHomePostsMock] is the list of posts which are displayed is home page
+///is the list of posts which are displayed is home page
 ///and it's data is received through a get request
 List<Post> userHomePostsMock = [];
 
-///[addUserHomePosts] this function is called in PostProvider Class
+///[this function is called in PostProvider Class
 ///to fill in the data members of the post
 bool addUserHomePosts(Map<String, dynamic> json) {
   Post newPost = new Post(
@@ -51,18 +51,24 @@ bool addUserHomePosts(Map<String, dynamic> json) {
         new Photo(imagePath: json["photoUrl"]),
       ],
       postId: json["postId"],
-      user: new User(json["username"], new NetworkImage(json["userAvatar"])),
+      user: new User(
+          username: json["username"],
+          profilePicture: new NetworkImage(json["userAvatar"])),
       title: json["title"],
       description: json["description"],
       date: DateTime(2021, 05, 31, 20, 38, 59),
       likes: [
-        new User(json["likes"][0]["userName"],
-            new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+        new User(
+            username: json["likes"][0]["userName"],
+            profilePicture:
+                new NetworkImage(json["likes"][0]["userAvatarUrl"])),
       ],
       comments: [
         new Comment(
-          new User(json["likes"][0]["userName"],
-              new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+          new User(
+              username: json["likes"][0]["userName"],
+              profilePicture:
+                  new NetworkImage(json["likes"][0]["userAvatarUrl"])),
           json["commenters"][0]["text"],
           DateTime(2021, 05, 31, 20, 38, 59),
         )
@@ -76,8 +82,8 @@ bool addUserHomePosts(Map<String, dynamic> json) {
 }
 
 User loggedInUser = new User(
-  'LoggedIn user',
-  new NetworkImage(
+  username: 'LoggedIn user',
+  profilePicture: new NetworkImage(
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
@@ -112,30 +118,30 @@ Post post1 = new Post(
   ],
 );
 final User user = new User(
-  'Hannah Hatem',
-  new NetworkImage(
+  username: 'Hannah Hatem',
+  profilePicture: new NetworkImage(
       'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg'),
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
 );
 
 User follower1 = new User(
-  'ZiadAkram',
-  new NetworkImage(
+  username: 'ZiadAkram',
+  profilePicture: new NetworkImage(
       'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg'),
   followers: [],
   following: [],
 );
 User follower2 = new User(
-  'Mehrez',
-  new NetworkImage(
+  username: 'Mehrez',
+  profilePicture: new NetworkImage(
       'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg'),
   followers: [],
   following: [],
 );
 User follower3 = new User(
-  'MostafaUsama',
-  new NetworkImage(
+  username: 'MostafaUsama',
+  profilePicture: new NetworkImage(
       'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg'),
   following: [],
   followers: [],
