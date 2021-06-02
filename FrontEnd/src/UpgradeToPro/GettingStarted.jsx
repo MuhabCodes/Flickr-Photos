@@ -31,14 +31,14 @@ export default function GettingStarted() {
   const [email, setEmail] = useState('');
   const [ispro, setIsPro] = useState(false);
   const getPro = () => {
+    setIsPro(true);
     const UserInfo = {
-      email, ispro,
+      ispro,
     };
     axios(`/users/${userjwt.sub}`, {
       method: 'patch',
       data: UserInfo,
     }).then(() => {
-      setIsPro(true);
     });
   };
 
