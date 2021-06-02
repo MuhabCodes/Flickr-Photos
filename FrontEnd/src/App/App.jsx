@@ -26,6 +26,7 @@ import PersonalInformation from '../Account/PersonalInformation';
 import EditPersonalInfo from '../Account/EditPersonalInfo';
 import DeleteAccount from '../Account/DeleteAccount';
 import ChangePassword from '../Account/ChangePassword';
+import EmailNotifications from '../Emails&Notifications/EmailNotifications';
 import configData from '../config.json';
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/emailnotif">
+              <EmailNotifications />
+            </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
             </Route>
