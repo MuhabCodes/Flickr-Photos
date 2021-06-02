@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 import './UserInfo.css';
 
 const UserInfo = () => {
   const history = useHistory();
+  const { id } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [joinedY, setJoinedY] = useState('');
   const [joinedM, setJoinedM] = useState('');
-  const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
+  // const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   useEffect(() => {
-    axios.get(`/Userinfo/${userjwt.sub}`, {
+    axios.get(`/Userinfo/${id}`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
       setEmail(resp.data.email);
