@@ -5,13 +5,16 @@ import jwt from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../App/Navbar';
 import './ChangePassword.css';
+import configData from '../config.json';
 
 const ChangePassword = () => {
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
   const userjwt = jwt(localStorage.getItem('token'));
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
-  const [currentpassword, setcurrpassword] = useState(''); // Might not need it after integration
   const [newPassword, setnewpassword] = useState('');
   const handleSubmit = (e) => { // Submission of form to put request
     e.preventDefault();
@@ -33,19 +36,6 @@ const ChangePassword = () => {
       <Navbar />
       <div className="main-change-password-after-loading">
         <form onSubmit={handleSubmit} className="change-password-form">
-          <label htmlFor="curr-pw-text-box" className="edit-your-profile-labels">
-            <div className="edit-your-profile-label-text">
-              Current Password
-            </div>
-            <input
-              id="curr-pw-text-box"
-              className="edit-name-text-box"
-              type="password"
-              required
-              value={currentpassword}
-              onChange={(e) => setcurrpassword(e.target.value)}
-            />
-          </label>
           <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
             <div className="edit-your-profile-label-text">
               New Password

@@ -5,10 +5,14 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import Navbar from '../App/Navbar';
 import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
+import configData from '../config.json';
 
 const PersonalInformation = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
   // For not rendering of text boxes until user info gets fetched
   // Headers for storing the token (Will be taken from local storage)
   const userjwt = jwt(localStorage.getItem('token'));
