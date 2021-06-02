@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import axios from 'axios';
 import './PeopleCard.css';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +12,9 @@ const PeopleCard = (props) => {
   const { uName } = Profile;
   const bgImage = Profile.coverPhoto;
   const Pro = Profile.isPro;
+  const handleClick = ((e) => {
+    e.preventDefault();
+  });
   return (
     <div className="people-card">
       <div className="upper-container">
@@ -42,7 +47,7 @@ const PeopleCard = (props) => {
           </div>
         </div>
         <div className="lower-container-right">
-          <button className="btn btn-primary btn-sm" id="people-card-follow-btn" type="button">
+          <button className="btn btn-primary btn-sm" id="people-card-follow-btn" type="button" onClick={handleClick}>
             Follow
           </button>
         </div>

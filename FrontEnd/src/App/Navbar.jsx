@@ -14,6 +14,9 @@ function NavBar() {
     localStorage.clear();
     history.push('/login');
   };
+  const account = () => {
+    history.push('/account');
+  };
   return (
     <Navbar collapseOnSelect sticky="top" expand="md">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -41,6 +44,7 @@ function NavBar() {
         </a>
       </div>
       <Button className="button1" onClick={logout}>Logout</Button>
+      <Button className="button1" onClick={account}>Account</Button>
     </Navbar>
   );
 }
