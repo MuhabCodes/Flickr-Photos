@@ -48,9 +48,9 @@ exports.addDescription = async function addDescription(req, res) {
   try {
     const userObj = await userDAL.getUserById(params.userId);
     const currentUser = await decryptAuthToken(authorization);
-    console.log(currentUser);
-    console.log(userObj._id);
-    if ((String)(currentUser.userId) !== (String)(userObj._id)) { // check whether token contains information or not
+
+    // check whether token contains information or not
+    if ((String)(currentUser.userId) !== (String)(userObj._id)) {
       return res.status(403).json({
         message: ' You are not logged in ',
       });
