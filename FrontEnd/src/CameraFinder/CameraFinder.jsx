@@ -3,6 +3,7 @@ import PopCameras from './PopCameras';
 import RankTable from './RankTable';
 import Graphs from './Graphs';
 import './CameraFinder.css';
+import NavBar from '../App/Navbar';
 // This .jsx will include the components that will make up the Camera Finder webpage
 // The following function includes:
 // 1- useState that will help us set our data fetched
@@ -24,16 +25,17 @@ const CameraFinder = () => {
       });
   }, []);
   return (
-    <div className="cameraFinder">
-      <h1 id="titleCF">
+    <div className="camera-finder">
+      <NavBar />
+      <h1 id="title-cf">
         Camera Finder
       </h1>
-      <h3 id="subtitleMPB">
+      <h3 id="subtitle-mpb">
         Most Popular Brands
       </h3>
       {cameras && <PopCameras cameras={cameras} />}
       <Graphs />
-      <h3 id="subtitleForTable">
+      <h3 id="subtitle-table">
         Camera Brands used in the Flickr Community
       </h3>
       <RankTable />
