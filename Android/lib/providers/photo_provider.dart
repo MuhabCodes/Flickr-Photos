@@ -19,7 +19,15 @@ class PhotoProvider with ChangeNotifier {
   List<Photo> triple = [];
   List<DateWithImages> photosWithUploadDate = [];
   List<DateWithImages> photosWithCaptureDate = [];
+  List<Photo> selectedPhotos = [];
+  bool isSelected = false; //check if one is selected
   PhotoProvider({this.baseUrl, this.context});
+
+  void setSelected(bool val) {
+    isSelected = val;
+    notifyListeners();
+  }
+
   void setDateTaken(String date) {
     if ("Date Taken" == date)
       dateTaken = true;
@@ -112,5 +120,17 @@ class PhotoProvider with ChangeNotifier {
       }
       dateCounter++;
     }
+  }
+
+  void removeSelected() {
+    for (var i = 0; i < selectedPhotos.length; i++) {
+      images.remove(selectedPhotos[i]);
+    }
+    photosWithUploadDate.clear();
+    photosWithCaptureDate.clear();
+    arangewithCaptureDate();
+    arangeWithUploadDate();
+    selectedPhotos.clear();
+    notifyListeners();
   }
 }
