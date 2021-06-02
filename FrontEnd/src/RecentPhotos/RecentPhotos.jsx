@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import configData from '../config.json';
+// import configData from '../config.json';
 // The RecentPhotos.jsx is the component which helps in displaying the recent photos,
 // It includes the function 'RecentPhotos' which has a code the helps in fetching the photos from
 // a mock server. This function returns the fetched images, but not all at once,
 // but a couple at a time and the more the user scrolls down,
 // the more images are fetched and displayed.
-const RecentPhotos = () => {
-  const [photos, setRecPhotos] = useState([]);
-  const [toggled, setToggle] = useState(false);
+const RecentPhotos = (props) => {
+  // const [photos, setRecPhotos] = useState([]);
+  // const [toggled, setToggle] = useState(false);
+  const ph = props;
+  const { photos, loading } = ph;
   // useEffect helps us fetch the photos from the mock server.
-  useEffect(() => {
-    fetch(`${configData.SERVER_URL}/photosExplore`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRecPhotos(data);
-      })
-      .catch(() => {
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${configData.SERVER_URL}/photosExplore`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRecPhotos(data);
+  //     })
+  //     .catch(() => {
+  //     });
+  // }, []);
+
   // const obj = JSON.parse(photos);
   // console.log(obj.favs);
   // The following changes the photos(objects) to array that can be used by the .map
@@ -37,20 +40,20 @@ const RecentPhotos = () => {
     if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
       e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
       // console.log(photoArr[].favs);
-      setToggle(!toggled);
+      // setToggle(!toggled);
       // IncFave();
       // let count = e.target.
       // count += 1;
       // console.log(count);
     } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
       e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
-      setToggle(toggled);
+      // setToggle(toggled);
     }
   }
 
   // The following if condition checks if no images are in photos (fetched), display loading.
-  if (!photos) {
-    return <h1>No Photos Found</h1>;
+  if (loading) {
+    return <h1>Loading</h1>;
   }
   // The following part is the one returns the fetched images.
   // The lazy load Image component is used to display the images but not all at once,
@@ -69,8 +72,8 @@ const RecentPhotos = () => {
               key={photo.photoId}
             />
             <span className="text-area">
-              <span className="description">
-                {photo.description}
+              <span className="title-exp">
+                {photo.title}
               </span>
               <span className="user-name-explore">
                 by
