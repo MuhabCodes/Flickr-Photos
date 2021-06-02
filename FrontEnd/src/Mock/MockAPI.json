@@ -694,11 +694,16 @@
   "Userinfo": [
     {
       "id": "4",
-      "firstName": "Hal",
-      "lastName": "Cenderson",
-      "displayName": "halC_",
+      "firstName": "Hosny",
+      "lastName": "Abdo",
+      "displayName": "hos_A",
       "Followers": "2",
-      "Following": "10",
+      "followersList": [
+        "173@N00",
+        "85@N00"
+      ],
+      "Following": "1",
+      "followingList": ["173@N00"],
       "Photos": "10",
       "Joined": "2010",
       "JoinedMonth": "January",
@@ -706,7 +711,7 @@
       "avatarUrl": "https://images.unsplash.com/photo-1619857154353-eff1ffd9ffe4?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8UzRNS0xBc0JCNzR8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "coverUrl": "https://images.unsplash.com/photo-1619985200248-a2ef331a0468?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "url": "Profiles/4",
-      "bio": "“Saisir les gestes ordinaires de gens ordinaires dans des situations ordinaires” Robert Doisneau  On croise des gens, des personnalités, des regards, des sourires... Saisir un instant et le retrouver plus tard lorsque le marathon de la vie nous a emporté plus loin... Que sont-ils devenus ? Qu'imaginent-ils ? I'm trying Instagram too, don't hesitate to send me a little message from there to keep connected ! www.instagram.com/aurel_street/ #streetphotography",
+      "bio": "hhello world",
       "email": "hosny@gmail.com",
       "mostPopPhotos": [
         {
@@ -931,7 +936,12 @@
       "lastName": "Nassef",
       "displayName": "manarr",
       "Followers": "0",
+      "followersList": [],
       "Following": "2",
+      "followingList": [
+        "4",
+        "85@N00"
+      ],
       "Photos": "5",
       "Joined": "2021",
       "JoinedMonth": "April",
@@ -956,8 +966,12 @@
       "firstName": "Ahmed",
       "lastName": "Mostafa",
       "displayName": "ahmedM",
-      "Followers": "12",
-      "Following": "50",
+      "Followers": "1",
+      "followersList": [
+        "4"
+      ],
+      "Following": "0",
+      "followingList": [],
       "Photos": "21",
       "Joined": "2015",
       "JoinedMonth": "July",
