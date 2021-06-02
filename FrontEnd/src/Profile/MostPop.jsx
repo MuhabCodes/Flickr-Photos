@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 import './MostPop.css';
 // import images from './imagesArray';
 
 const MostPop = () => {
+  const { id } = useParams();
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
-  const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
+  // const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [mostPop, setMostPop] = useState('');
 
   useEffect(() => {
-    axios.get(`/Userinfo/${userjwt.sub}`, {
+    axios.get(`/Userinfo/${id}`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
       setMostPop(resp.data.mostPopPhotos);
