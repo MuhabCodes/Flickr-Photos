@@ -6,7 +6,7 @@ import '../providers/photo_provider.dart';
 import 'public_tab.dart';
 
 Widget listView(
-    PhotoProvider photoProvider, AboutProvider aboutProvider, Size size) {
+    PhotoProvider photoProvider, UserProvider userProvider, Size size) {
   return CustomScrollView(slivers: <Widget>[
     SliverStaggeredGrid.extentBuilder(
       mainAxisSpacing: 5,
@@ -41,9 +41,9 @@ Widget listView(
                       ),
                     ),
                     Text(
-                      aboutProvider.about.firstName +
+                      userProvider.user.firstName +
                           " " +
-                          aboutProvider.about.lastName,
+                          userProvider.user.lastName,
                       style:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                     ),
