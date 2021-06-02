@@ -33,7 +33,7 @@ class _PublicState extends State<Public> {
   bool isGrid = true;
   @override
   Widget build(BuildContext context) {
-    var aboutProvider = Provider.of<AboutProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
     var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
     return Column(
@@ -226,7 +226,7 @@ class _PublicState extends State<Public> {
             height: size.height * 0.6,
             child: isGrid
                 ? gridView(photoProvider)
-                : listView(photoProvider, aboutProvider, size),
+                : listView(photoProvider, userProvider, size),
           ),
         ),
       ],
