@@ -1,9 +1,12 @@
 import 'package:flickr/login/forgot_password.dart';
 import 'package:flickr/login/sign_up.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 //import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -43,6 +46,8 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    var authentication = Provider.of<Authentication>(context, listen: true);
+
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -200,6 +205,11 @@ class _SignInState extends State<SignIn> {
                                     // await Provider.of<Auth>(context).login(
                                     //     _emailController.text,
                                     //     _passwordController.text);
+                                    authentication.currentUser = new User(
+                                        email: _emailController.text,
+                                        password: _passwordController.text);
+                                    print(authentication.currentUser.password);
+                                    authentication.createAbout();
                                     Navigator.of(context).pop();
                                     Navigator.of(context).pop();
                                     Navigator.push(
