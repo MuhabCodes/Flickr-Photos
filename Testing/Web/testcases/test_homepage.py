@@ -1,6 +1,6 @@
 import pytest
 from time import sleep
-from pages.homepage import HomePage
+from pages.homepage.homepage import HomePage
 from webdriver_manager.chrome import ChromeDriverManager
 from info.info import TestData
 from selenium import webdriver
