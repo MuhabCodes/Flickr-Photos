@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Form, FormControl } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './MainSearch.css';
+import jwt from 'jwt-decode';
 // This page is to allow the user to search for pictures by title
 // The page is initially empty with only asearch bar on the right
 // the user will be able to type the title of the desired image in the search box and retreive
@@ -18,6 +20,13 @@ const MainSearch = () => {
   // when searching with title=query
   const [stateImages, setStateImages] = useState([]); // used to set the images fetched
   const [isLoading, setLoading] = useState(true); // for loading purpose
+  let userjwt = [];
+  function loadPage() {
+    if (localStorage.getItem('token')) {
+      userjwt = jwt(localStorage.getItem('token'));
+      $('.text-area-search').css('display', 'block');
+    }
+  }
   // fetchImages is the function that handles the fetching process
   function fetchImages() {
     // useEffect helps us fetch the photos from the mock server.
@@ -47,10 +56,12 @@ const MainSearch = () => {
   };
   // This function toggles the fav button on each image in the results by setting the src url
   function ClickMe(e) {
-    if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
-      e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
-    } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
-      e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
+    if (userjwt) {
+      if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
+        e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
+      } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
+        e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
+      }
     }
   }
   const searchData = fetchImages();
@@ -77,38 +88,39 @@ const MainSearch = () => {
       <div className="image-results">
         {isLoading ? <div>Loading...</div> : (
           <div id="imgDiv" style={{ display: 'none' }}>
-            <div className="image-grid">
+            <div className="image-grid-search">
               {searchData.map((photo) => (
-                <div className="image-container">
+                <div className="image-container-search">
                   <LazyLoadImage
-                    className="single-image"
+                    className="single-image-search"
                     src={photo.imagePath}
                     alt=""
                     key={photo.photoId}
+                    onLoad={loadPage}
                   />
-                  <span className="text-area">
-                    <span className="title-exp">
+                  <span id="hover-items-search" className="text-area-search" style={{ display: 'none' }}>
+                    <span className="title-search">
                       {photo.title}
                     </span>
-                    <span className="user-name-explore">
+                    <span className="user-name-search">
                       by
                       {' '}
                       {photo.user}
                     </span>
-                    <span className="faves">
-                      <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                    <span className="faves-search">
+                      <button className="fav-btn-search" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
                         <img
                           className="star"
                           src="https://img.icons8.com/android/24/ffffff/star.png"
                           alt="favIcon"
                         />
                       </button>
-                      <span className="fav-count" id="favNum" key={photo.photoId}>
+                      <span className="fav-count-search" id="favNum" key={photo.photoId}>
                         {photo.favs}
                       </span>
                     </span>
-                    <span className="comments">
-                      <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
+                    <span className="comments-search">
+                      <img className="comment-icon-search" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                       {photo.comments}
                     </span>
                   </span>
