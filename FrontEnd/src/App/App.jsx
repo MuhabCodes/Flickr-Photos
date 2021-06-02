@@ -78,7 +78,7 @@ function App() {
               <NavBar />
               <HomePage />
             </Route>
-            <Route exact path="/Profile/About">
+            <Route exact path="/Profile/About/:id">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
