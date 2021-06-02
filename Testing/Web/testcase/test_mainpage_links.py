@@ -1,15 +1,20 @@
+import sys
 from time import sleep
 import pytest
 
-from common.selhelper import SelHelper
-from pageobject.mainpage import MainPage, MainPageLocator
-from pageobject.mockmethods import MockMethods
+# sys.path.append("E:\College\SPRING 2021\\CMPN203\\"
+#                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
+
+
+from common.sel_helper import SelHelper
+from pageobject.mainpage.mainpage import MainPage, MainPageLocator
+from pageobject.generalmethods.general_methods import GeneralMethods
 
 
 class TestMainPageLinks(object):
     helper = SelHelper()
     main_page = MainPage(helper)
-    mock_methods = MockMethods(helper)
+    mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = main_page.LOCATOR_LIST
     driver = None
 
@@ -18,15 +23,16 @@ class TestMainPageLinks(object):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
         self.helper.implicit_wait(30)
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
+        sleep(10)
         yield
         self.helper.quit()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_driver(self, setup):
         pass
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "list_locator, list_dict",
         [
@@ -37,17 +43,15 @@ class TestMainPageLinks(object):
         ]
     )
     def test_clicking_nav_dropdowns(self, setup, list_locator, list_dict):
-        sleep(10)
         assert self.main_page.click_nav_dropdown_subitem(
             list_locator, list_dict
         )
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_nav_links(self, setup):
-        sleep(10)
         assert self.main_page.test_nav_links()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.parametrize(
         "menu_locator, view_locator, el_menu, el_view",
         [
@@ -59,7 +63,6 @@ class TestMainPageLinks(object):
     )
     def test_menus(self, setup, menu_locator,
                    view_locator, el_menu, el_view):
-        sleep(10)
         print("\n", el_menu, "\n")
         assert self.main_page.test_clicking_menu(
             menu_locator, view_locator,

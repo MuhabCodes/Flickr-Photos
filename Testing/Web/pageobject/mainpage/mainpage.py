@@ -5,18 +5,22 @@ from time import sleep
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from pageobject.page import Page
 from pageobject.links import Links
-from pageobject.mainpagelocator import MainPageLocator
+from pageobject.mainpage.mainpage_locator import MainPageLocator
 
 
 class MainPage(Page):
     """ Class that contains methods interacting with WebElement objects in
     Main page "https://www.flickr.com/" after signing in.
     """
-    def __init__(self, helper: SelHelper, time_to_wait: float = 100):
-        Page.__init__(self, helper, time_to_wait)
+    def __init__(self, helper: SelHelper,
+                 time_to_wait: float = 100,
+                 filter_exists: bool = True,
+                 layout_exists: bool = True):
+        Page.__init__(self, helper, time_to_wait,
+                      filter_exists, layout_exists)
         self.LOCATOR_LIST = self.utils.get_locators_list(MainPageLocator)
         self.link = Links.MAIN_URL
         self.title = "Home | Flickr"
@@ -114,6 +118,7 @@ class MainPage(Page):
             raise e
 
     def get_group_photo_link(self, batch_item: WebElement):
+        """ Return group-photo link element"""
         try:
             photo_card_xpath = MainPageLocator.group_photo_link_sub_xpath
             photo_link = self.page_helper.find_element_by_el(
@@ -127,7 +132,13 @@ class MainPage(Page):
             raise e
 
     def get_person_photo_link(self, feed_item: WebElement):
-        pass
+        """ UNDER DEVELOPEMENT. """
+        try:
+            pass
+            # photo_card_xpath =
+        except TypeError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
 
     def click_nav_dropdown_subitem(
             self, list_locator: tuple,
@@ -313,21 +324,12 @@ class MainPage(Page):
         :param time_to_wait: Maximum waiting time
         :return: boolean to check if the operation is complete
         """
-        if time_to_wait is None:
-            time_to_wait = self.time_to_wait
-        try:
-            layout = self.utils.get_value(self.LOCATOR_LIST, layout_name)
-            if len(layout) == 0:
-                raise IndexError("layout_list is empty")
-            self.page_helper.safe_click(
-                layout,
-                time_to_wait,
-                self.utils.get_key(self.LOCATOR_LIST, layout_name)
-            )
-            return True
-        except (TimeoutException, TypeError, IndexError) as e:
-            traceback.print_exception(*sys.exc_info())
-            raise e
+        self.page_helper.select_layout(
+            self.LOCATOR_LIST,
+            layout_name,
+            time_to_wait
+        )
+        return True
 
     def check_layouts(self, time_to_wait: float = None):
         """ Check if feed layouts are operational.
@@ -338,6 +340,11 @@ class MainPage(Page):
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
         try:
+            self.select_filter("FILTER_ALL_ACTIVITY")
+            sleep(5)
+            if not self.check_feed_empty():
+                raise AssertionError("Feed is empty")
+
             layout = self.utils.get_all_values(self.LOCATOR_LIST, "LAYOUT_")
             if len(layout) == 0:
                 raise IndexError("layout_list is empty")
@@ -379,7 +386,7 @@ class MainPage(Page):
             raise e
 
     def check_feed_empty(self, time_to_wait: float = None):
-        """ Check if Flickr feed is empty
+        """ Check if Flickr feed is empty.
 
         :param time_to_wait: Maximum waiting time
         :return: boolean to check if the operation is complete
@@ -412,6 +419,11 @@ class MainPage(Page):
     #             raise TimeoutException("ERROR IN LOCATING FEED_LOAD_ERROR")
 
     def check_click_icon(self, time_to_wait: float = None):
+        """ Test clicking poster Avatar.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:
@@ -427,6 +439,11 @@ class MainPage(Page):
                 raise e
 
     def check_poster_link(self, time_to_wait: float = None):
+        """ Test clicking poster name.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:
@@ -442,6 +459,11 @@ class MainPage(Page):
                 raise e
 
     def check_click_group_photo(self, time_to_wait: float = None):
+        """ Test clicking group photo.
+
+        :param time_to_wait: Maximum waiting time
+        :return: boolean to check if the operation is successful
+        """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
             try:
