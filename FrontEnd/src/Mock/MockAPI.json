@@ -969,19 +969,19 @@
           "userId": 4
         }
       ],
-      "displayname": "ASD",
+      "displayname": "ASDSSDA",
       "gender": "Male"
     },
     {
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
-      "firstname": "Abdo",
+      "firstname": "Abdelrahman",
       "lastname": "Hos",
       "age": 20,
       "id": 4,
       "gender": "Male",
-      "displayname": "HosHos",
-      "ispro": "false",
+      "displayname": "Ho",
+      "ispro": "true",
       "followers": [
         {
           "userId": 1

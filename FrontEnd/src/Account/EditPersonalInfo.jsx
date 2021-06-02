@@ -3,9 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 import './EditProfileInfo.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
+import Navbar from '../App/Navbar';
+import configData from '../config.json';
 
 const EditPersonalInfo = () => {
   const history = useHistory();
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const [isLoading, setLoading] = useState(true);
   // For not rendering of text boxes until user info gets fetched
   const userjwt = jwt(localStorage.getItem('token'));
@@ -39,6 +44,8 @@ const EditPersonalInfo = () => {
     const ProfileInfo = {
       firstname, lastname, displayname, gender,
     };
+    console.log(ProfileInfo);
+    console.log(userjwt.sub);
     axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
       .then(() => {
         history.push('/account');
@@ -55,117 +62,120 @@ const EditPersonalInfo = () => {
       });
   };
   return (
-    <div className="edit-your-profile-main-container">
-      {isLoading ? <div>Loading...</div>
-        : (
-          <div className="main-edit-profile-after-loading">
-            <h1 className="edit-your-profile-title">
-              <Link to="/account">
-                Your account
-              </Link>
-              {' '}
-              / Edit your profile
-            </h1>
-            <form onSubmit={handleSubmit} className="edit-profile-info-form">
-              <h3 className="edit-your-profile-mini-form-header">Basic bits</h3>
-              <div className="edit-basic-bits-container">
-                <label htmlFor="edit-first-name-text-box" className="edit-your-profile-labels">
-                  <div className="edit-your-profile-label-text">
-                    First Name:
-                  </div>
-                  <input
-                    id="edit-first-name-text-box"
-                    className="edit-name-text-box"
-                    type="text"
-                    required
-                    value={firstname}
-                    placeholder={firstname}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
-                  <div className="edit-your-profile-label-text">
-                    Last Name:
-                  </div>
-                  <input
-                    id="edit-last-name-text-box"
-                    className="edit-name-text-box"
-                    type="text"
-                    required
-                    value={lastname}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="edit-display-name-text-box" className="edit-your-profile-labels">
-                  <div className="edit-your-profile-label-text">
-                    Display Name:
-                  </div>
-                  <input
-                    id="edit-display-name-text-box"
-                    className="edit-name-text-box"
-                    type="text"
-                    required
-                    value={displayname}
-                    onChange={(e) => setDisplayName(e.target.value)}
-                  />
-                </label>
-                {/* Here we start adding radio buttons for gender */}
-                <div className="gender-radio-buttons-container">
-                  <h3 className="gender-title">Gender:</h3>
-                  <label htmlFor="edit-gender-male-radio" className="edit-your-profile-radio-labels">
-                    <input
-                      id="edit-gender-male-radio"
-                      className="edit-gender-radio"
-                      name="gender"
-                      type="radio"
-                      required
-                      value="Male"
-                      onChange={(e) => {
-                        setGender(e.target.value);
-                      }}
-                    />
-                    <div className="edit-your-profile-label-radio">
-                      Male
+    <div>
+      <Navbar />
+      <div className="edit-your-profile-main-container">
+        {isLoading ? <div>Loading...</div>
+          : (
+            <div className="main-edit-profile-after-loading">
+              <h1 className="edit-your-profile-title">
+                <Link to="/account">
+                  Your account
+                </Link>
+                {' '}
+                / Edit your profile
+              </h1>
+              <form onSubmit={handleSubmit} className="edit-profile-info-form">
+                <h3 className="edit-your-profile-mini-form-header">Basic bits</h3>
+                <div className="edit-basic-bits-container">
+                  <label htmlFor="edit-first-name-text-box" className="edit-your-profile-labels">
+                    <div className="edit-your-profile-label-text">
+                      First Name:
                     </div>
-                  </label>
-                  <label htmlFor="edit-gender-female-radio" className="edit-your-profile-radio-labels">
                     <input
-                      id="edit-gender-female-radio"
-                      className="edit-gender-radio"
-                      name="gender"
-                      type="radio"
+                      id="edit-first-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
                       required
-                      value="Female"
-                      onChange={(e) => {
-                        setGender(e.target.value);
-                      }}
+                      value={firstname}
+                      placeholder={firstname}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
-                    <div className="edit-your-profile-label-radio">
-                      Female
-                    </div>
                   </label>
-                  <label htmlFor="edit-gender-rather-radio" className="edit-your-profile-radio-labels">
+                  <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
+                    <div className="edit-your-profile-label-text">
+                      Last Name:
+                    </div>
                     <input
-                      id="edit-gender-rather-radio"
-                      className="edit-gender-radio"
-                      name="gender"
-                      type="radio"
+                      id="edit-last-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
                       required
-                      value="Rather not say"
-                      onChange={(e) => {
-                        setGender(e.target.value);
-                      }}
+                      value={lastname}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
-                    <div className="edit-your-profile-label-radio">
-                      Rather not say
-                    </div>
                   </label>
+                  <label htmlFor="edit-display-name-text-box" className="edit-your-profile-labels">
+                    <div className="edit-your-profile-label-text">
+                      Display Name:
+                    </div>
+                    <input
+                      id="edit-display-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
+                      required
+                      value={displayname}
+                      onChange={(e) => setDisplayName(e.target.value)}
+                    />
+                  </label>
+                  {/* Here we start adding radio buttons for gender */}
+                  <div className="gender-radio-buttons-container">
+                    <h3 className="gender-title">Gender:</h3>
+                    <label htmlFor="edit-gender-male-radio" className="edit-your-profile-radio-labels">
+                      <input
+                        id="edit-gender-male-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Male"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      <div className="edit-your-profile-label-radio">
+                        Male
+                      </div>
+                    </label>
+                    <label htmlFor="edit-gender-female-radio" className="edit-your-profile-radio-labels">
+                      <input
+                        id="edit-gender-female-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Female"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      <div className="edit-your-profile-label-radio">
+                        Female
+                      </div>
+                    </label>
+                    <label htmlFor="edit-gender-rather-radio" className="edit-your-profile-radio-labels">
+                      <input
+                        id="edit-gender-rather-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Rather not say"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      <div className="edit-your-profile-label-radio">
+                        Rather not say
+                      </div>
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <button className="submit-profile-info" type="submit" id="edit-personal-info-btn">Save</button>
-            </form>
-          </div>
-        )}
+                <button className="submit-profile-info" type="submit" id="edit-personal-info-btn">Save</button>
+              </form>
+            </div>
+          )}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
+import Navbar from '../App/Navbar';
 import './DeleteAccount.css';
 
 const DeleteAccount = () => {
@@ -49,51 +50,54 @@ const DeleteAccount = () => {
       });
   };
   return (
-    <div className="delete-account-main">
-      {isLoading ? <div>Loading...</div>
-        : (
-          <div className="main-edit-profile-after-loading">
-            <h1 className="delete-account-header">
-              <Link to="/account">Your Account</Link>
-              {' '}
-              /
-              {' '}
-              Delete it??
-            </h1>
-            <div className="delete-account-info-div">
-              <h2 className="delete-account-warning">
-                Warning!
-              </h2>
-              <p className="delete-account-name-p">
-                You are about to delete account
+    <div>
+      <Navbar />
+      <div className="delete-account-main">
+        {isLoading ? <div>Loading...</div>
+          : (
+            <div className="main-edit-profile-after-loading">
+              <h1 className="delete-account-header">
+                <Link to="/account">Your Account</Link>
                 {' '}
-                <span className="display-name-delete">{displayname}</span>
-              </p>
-              <ul className="delete-all-photos-ul">
-                <b>All</b>
+                /
                 {' '}
-                the photos and videos and associated metadata in the account
-                {' '}
-                <span className="display-name-delete">{displayname}</span>
-                {' '}
-                will be
-                {' '}
-                <b>deleted</b>
-                .
-              </ul>
-              <ul className="delete-all-photos-ul">
-                Deleting your account will
-                {' '}
-                <b>not</b>
-                {' '}
-                free up your
-                <b> screen name or personalized URL</b>
-                for use on another account.
-              </ul>
+                Delete it??
+              </h1>
+              <div className="delete-account-info-div">
+                <h2 className="delete-account-warning">
+                  Warning!
+                </h2>
+                <p className="delete-account-name-p">
+                  You are about to delete account
+                  {' '}
+                  <span className="display-name-delete">{displayname}</span>
+                </p>
+                <ul className="delete-all-photos-ul">
+                  <b>All</b>
+                  {' '}
+                  the photos and videos and associated metadata in the account
+                  {' '}
+                  <span className="display-name-delete">{displayname}</span>
+                  {' '}
+                  will be
+                  {' '}
+                  <b>deleted</b>
+                  .
+                </ul>
+                <ul className="delete-all-photos-ul">
+                  Deleting your account will
+                  {' '}
+                  <b>not</b>
+                  {' '}
+                  free up your
+                  <b> screen name or personalized URL</b>
+                  for use on another account.
+                </ul>
+              </div>
+              <button type="button" onClick={handleDelete} className="delete-account-button" id="delete-account-button">Delete Account</button>
             </div>
-            <button type="button" onClick={handleDelete} className="delete-account-button" id="delete-account-button">Delete Account</button>
-          </div>
-        )}
+          )}
+      </div>
     </div>
   );
 };
