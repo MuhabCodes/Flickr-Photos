@@ -56,15 +56,18 @@ const CoverArea = () => {
                   {Coverinfo.displayName}
                 </p>
                 <p className="following-followers-cover-list-cvuP">
+
                   {Coverinfo.Followers}
                   {' '}
                   Followers
                   {' '}
-                  <em>•</em>
-                  {' '}
-                  {Coverinfo.Following}
-                  {' '}
-                  Following
+
+                  <a href={`/followers/${Coverinfo.id}`}>
+                    {' '}
+                    {Coverinfo.Following}
+                    {' '}
+                    Following
+                  </a>
                 </p>
                 <p className="cover-spacer-cvuP" />
                 <p className="user-cover-photo-count-cvuP">

@@ -1,18 +1,10 @@
 #navbar-CR {
   background-color: #f3f5f6;
+  position: relative;
 }
 
 .nav-start {
   margin-left: 100px;
-}
-
-.CameralRoll-nav-bar {
-  top: 53px;
-  width: 100%;
-}
-
-.CameraRoll-nav-dropdown {
-  color: black;
 }
 
 .navbar-icons {

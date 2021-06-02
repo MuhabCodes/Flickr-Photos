@@ -13,7 +13,7 @@ import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
 import Footer from './Footer';
-import CameraRoll from './CameraRoll';
+import CameraRoll from '../CameraRoll/CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
@@ -26,6 +26,8 @@ import PersonalInformation from '../Account/PersonalInformation';
 import EditPersonalInfo from '../Account/EditPersonalInfo';
 import DeleteAccount from '../Account/DeleteAccount';
 import ChangePassword from '../Account/ChangePassword';
+import FollowersPage from '../Followers/FollowersPage';
+import Notification from '../Notification/Notification';
 import configData from '../config.json';
 
 function App() {
@@ -76,7 +78,7 @@ function App() {
               <NavBar />
               <HomePage />
             </Route>
-            <Route path="/Profile/About">
+            <Route path="/Profile/About/:id">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
@@ -87,6 +89,8 @@ function App() {
               <Faves />
             </Route>
             <Route path="/CameraRoll">
+              <CoverArea />
+              <SubNavBar />
               <CameraRoll />
             </Route>
             <Route path="/groups/members/">
@@ -97,6 +101,12 @@ function App() {
             </Route>
             <Route exact path="/About">
               <About />
+            </Route>
+            <Route exact path="/followers/:userid">
+              <FollowersPage />
+            </Route>
+            <Route exact path="/Notification">
+              <Notification />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }

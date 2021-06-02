@@ -1,0 +1,24 @@
+.follower-card-container {
+  width: 40%;
+  padding: 10px;
+  display: inline-block;
+}
+
+.follower-avatar {
+  width: 13%;
+  height: 30%;
+  margin-right: 10px;
+}
+
+.content {
+  display: inline-block;
+  color: black;
+}
+
+.container {
+  margin: auto;
+}
+
+.follower-name {
+  color: black;
+}
