@@ -1,4 +1,5 @@
 import React from 'react';
+import jwt from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -9,6 +10,7 @@ import {
 // Component for dropdown items
 
 function NavBarDropDown() {
+  const userjwt = jwt(localStorage.getItem('token'));
   return (
     <div>
 
@@ -28,9 +30,9 @@ function NavBarDropDown() {
             <NavDropdown.Item href="#action/3.10">Organize</NavDropdown.Item>
           </NavDropdown> */}
           <div className="dropdown-main-nav">
-            <a href="/Profile/About" className="droplink-main-nav">You</a>
+            <a href={`/Profile/About/${userjwt.sub}`} className="droplink-main-nav">You</a>
             <div className="dropdown-content">
-              <a href="/Profile/About">About</a>
+              <a href={`/Profile/About/${userjwt.sub}`}>About</a>
               <a href="/PhotoStream">Photostream</a>
               <a href="/Albums">Albums</a>
               <a href="/Profile/Faves">Faves</a>
