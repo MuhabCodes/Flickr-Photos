@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
+import configData from '../config.json';
 import defaultC from './assets/whitebg.jpg';
 import defaultA from './assets/av.jpg';
 import './Cover.css';
 
 const CoverArea = () => {
-  // const { id } = useParams();
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
+  const { id } = useParams();
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
@@ -20,8 +24,11 @@ const CoverArea = () => {
   const [dispN, setDispN] = useState('');
   const [followers, setFollowers] = useState('');
   const [following, setFollowing] = useState('');
+  const [followingArr, setFollowingArr] = useState('');
+  const currUser = (id === userjwt.sub);
+
   useEffect(() => {
-    axios.get(`/Userinfo/${userjwt.sub}`, {
+    axios.get(`/Userinfo/${id}`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
       setCover(resp.data.coverUrl);
@@ -33,6 +40,7 @@ const CoverArea = () => {
       setDispN(resp.data.displayName);
       setFollowers(resp.data.Followers);
       setFollowing(resp.data.Following);
+      setFollowingArr(resp.data.followingList);
       if (cover === '0') {
         setCover(defaultC); // setting default cover in case user hasn't set a cover
       }
@@ -55,6 +63,30 @@ const CoverArea = () => {
       }
     });
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (followingArr.indexOf(id) > -1) {
+      const ind = followingArr.indexOf(id);
+      followingArr.splice(ind);
+    } else {
+      followingArr.push(id);
+    }
+    axios.patch(`/Userinfo/${userjwt.sub}`, { followingList: followingArr })
+      .then(() => {
+        history.push(`/Profile/About/${id}`);
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        } else if (error.response.status === 404) {
+          setTimeout(() => history.push('*'), 2000); // Redirect to Error page
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
+      });
+  };
   return (
     <div className="container-fluid">
       <div className="cover-cvup">
@@ -80,12 +112,21 @@ const CoverArea = () => {
                   {' '}
                   {lastN}
                 </h1>
+                {!currUser
+                && (
                 <div className="view-follow-view-cvup" id="follow-btn-cvup">
-                  <button type="submit" className="follow-btn-fluid-cvup" id="follow-btn-true-cvup">
-                    <p id="plus-follow-btn-cvup">+ Follow</p>
-                    <p id="following-btn-cvup">Following</p>
-                  </button>
+                  {followingArr.indexOf(id) > -1 ? (
+                    <button type="submit" className="follow-btn-fluid-cvup" id="follow-btn-true-cvup" onClick={handleSubmit}>
+                      <p id="following-btn-cvup">Following</p>
+                    </button>
+                  )
+                    : (
+                      <button type="submit" className="follow-btn-fluid-cvup" id="follow-btn-false-cvup" onClick={handleSubmit}>
+                        <p id="plus-follow-btn-cvup">+ Follow</p>
+                      </button>
+                    )}
                 </div>
+                )}
               </div>
               <div className="follow-view-cvup">
                 <a href="/account/upgrade/po" id="pro-badge-cover">
