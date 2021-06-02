@@ -24,6 +24,7 @@ class Page(object):
         """
         return self.filter_exists
 
+    @property
     def has_layout(self):
         """ Check if the page has layout selection.
 
