@@ -44,14 +44,14 @@ const MainSearch = () => {
   const searchClick = (e) => {
     e.preventDefault();
     history.push(`/search?title=${search}`);
-    document.getElementById('imgDiv').style.display = 'block';
+    document.getElementById('img-div').style.display = 'block';
     return search;
   };
   // handleSearchInputChanges sets the title entered by user in the search box
   // and sets it using setSearch
   const handleSearchInputChanges = (e) => {
     e.preventDefault();
-    document.getElementById('imgDiv').style.display = 'none';
+    document.getElementById('img-div').style.display = 'none';
     setSearch(e.target.value);
   };
   // This function toggles the fav button on each image in the results by setting the src url
@@ -65,10 +65,9 @@ const MainSearch = () => {
     }
   }
   const searchData = fetchImages();
-  console.log(searchData);
   return (
     <div className="search-page">
-      <div id="searchBar">
+      <div id="search-bar">
         <Form inline className="search" onSubmit={searchClick}>
           <FormControl
             type="text"
@@ -87,7 +86,7 @@ const MainSearch = () => {
       </div>
       <div className="image-results">
         {isLoading ? <div>Loading...</div> : (
-          <div id="imgDiv" style={{ display: 'none' }}>
+          <div id="img-div" style={{ display: 'none' }}>
             <div className="image-grid-search">
               {searchData.map((photo) => (
                 <div className="image-container-search">
@@ -108,14 +107,14 @@ const MainSearch = () => {
                       {photo.user}
                     </span>
                     <span className="faves-search">
-                      <button className="fav-btn-search" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                      <button className="fav-btn-search" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
                         <img
                           className="star"
                           src="https://img.icons8.com/android/24/ffffff/star.png"
                           alt="favIcon"
                         />
                       </button>
-                      <span className="fav-count-search" id="favNum" key={photo.photoId}>
+                      <span className="fav-count-search" id="fav-num" key={photo.photoId}>
                         {photo.favs}
                       </span>
                     </span>
