@@ -30,6 +30,7 @@ import FollowersPage from '../Followers/FollowersPage';
 import Notification from '../Notification/Notification';
 import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
 import GettingStarted from '../UpgradeToPro/GettingStarted';
+import Upload from '../Upload/Upload';
 import configData from '../config.json';
 
 function App() {
@@ -107,7 +108,7 @@ function App() {
             <Route exact path="/Explore">
               <Explore />
             </Route>
-            <Route exact path="/About">
+            <Route exact path="/about">
               <About />
             </Route>
             <Route exact path="/followers/:userid">
@@ -115,6 +116,9 @@ function App() {
             </Route>
             <Route exact path="/Notification">
               <Notification />
+            </Route>
+            <Route exact path="/photos/upload">
+              <Upload />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }

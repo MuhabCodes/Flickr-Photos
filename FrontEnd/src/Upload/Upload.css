@@ -1,0 +1,341 @@
+/* upload nav bar styling */
+#upload-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  padding: 0;
+  z-index: 11;
+  height: 40px;
+  overflow: visible;
+  margin: 0;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  color: #000;
+  top: 62px;
+}
+
+#buttons {
+  position: relative;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0, rgba(241, 241, 241, 1) 100%);
+  border-bottom: 1px solid #eee;
+  padding: 8px 16px 2px 16px;
+  color: #333;
+  margin: 0;
+  font-size: 14px;
+}
+
+#upload-photo {
+  float: right;
+  display: inline;
+  margin-left: 10px;
+  padding: 0;
+  color: #333;
+}
+
+/* upload button before adding files */
+#disabled-button {
+  padding: 5px 9px;
+  text-decoration: none;
+  background: #eee;
+  color: #bbb;
+  cursor: default;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  margin: 0;
+  line-height: 13px;
+}
+
+/* upload button after adding files */
+#enabled-button {
+  animation-name: none;
+  display: inline-block;
+  animation-duration: 0.75s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  padding: 5px 9px;
+  background: #0063dc;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin: 0;
+  line-height: 13px;
+}
+
+/* add photos button styling */
+#add-photo {
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  top: -1px;
+  vertical-align: top;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#add-photo-button {
+  font-size: 14px;
+  font-weight: normal;
+  position: relative;
+  margin: 0;
+  line-height: 14px;
+  background: transparent;
+  padding: 5px 9px 2px;
+  color: #333;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+#add-files {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  color: #222;
+  font-size: 300%;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+#icon-plus {
+  display: inline-block;
+  width: 19px;
+  height: 16px;
+  background: transparent url(https://combo.staticflickr.com/pw/images/editr-icon-plus.png) no-repeat 0 0;
+  text-indent: -99em;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#custom-file-upload {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  color: #222;
+  font-size: 300%;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+/* upload working area styles */
+#working-area-container {
+  background: transparent url(https://combo.staticflickr.com/pw/images/editr-marc-by-marc-perry.png);
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000;
+  text-align: left;
+}
+
+/* upload empty state styles */
+#empty-state {
+  width: 600px;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  top: 25%;
+  left: 30%;
+  display: inline-block;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 20px 1em;
+  font-size: 225%;
+  line-height: 100%;
+  color: #eee;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  text-shadow: 0 1px 1px #000;
+}
+
+#upload-limit {
+  margin: 1.25em 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  padding: 0;
+}
+
+#upgrade-pro-upload {
+  font-size: 14px;
+  color: #898989;
+  font-weight: 300;
+  margin: 40px 0 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+#upgrade-pro-upload:hover {
+  background-color: #0063dc;
+  color: #ffff;
+}
+
+/* After adding photos state styles */
+#result {
+  top: 10%;
+  max-height: auto;
+  width: 100%;
+  background-color: #272c34;
+  margin-top: -150px;
+  margin-left: 260px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+}
+
+#added-photos {
+  width: auto;
+  height: auto;
+  border: 3px solid transparent;
+  max-width: 166px;
+  max-height: 120px;
+  border-color: #000;
+  margin: 20px;
+}
+
+/* edit panel styles */
+#edit-panel {
+  max-height: 751px;
+  position: fixed;
+  top: 78px;
+  left: 0;
+  width: 255px;
+  height: 100%;
+  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 1;
+  margin: 14px 0 0 14px;
+  padding: 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 8px rgb(0 0 0 / 33%);
+  border-radius: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+#edit-panel-title {
+  font-size: 18px;
+  font-weight: 300;
+  padding: 16px 0 16px 16px;
+  color: #999;
+  margin: 0;
+}
+
+#edit-options {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#edit-option {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-left: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-shadow: 0 1px 0 #000;
+  list-style: none;
+}
+
+#edit-option-title {
+  font-size: 14px;
+  line-height: 1em;
+  margin: 0;
+  padding: 16px 0;
+  color: white;
+  font-weight: 400;
+}
+
+#edit-input-tags {
+  font-size: 13px;
+  padding: 3px 2px;
+  box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 50%);
+  background-color: #f1f1f1;
+  color: #222;
+  display: block;
+  width: 95%;
+  border: 0;
+  margin-left: -3px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: background-color 70ms ease-in-out, color 70ms ease-in-out, box-shadow 70ms ease-in-out;
+}
+
+#edit-input-albums {
+  font-size: 13px;
+  padding: 3px 2px;
+  box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 50%);
+  background-color: #f1f1f1;
+  color: #222;
+  display: block;
+  width: 95%;
+  border: 0;
+  margin-left: -3px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: background-color 70ms ease-in-out, color 70ms ease-in-out, box-shadow 70ms ease-in-out;
+}
+
+/* close button styling */
+#cancel-button {
+  margin-left: -50px;
+  margin-top: -100px;
+}
