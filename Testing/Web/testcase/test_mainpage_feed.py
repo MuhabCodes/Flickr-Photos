@@ -5,17 +5,18 @@ import pytest
 # sys.path.append("E:\College\SPRING 2021\\CMPN203\\"
 #                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
 
-
 from common.sel_helper import SelHelper
 from pageobject.mainpage.mainpage import MainPage
 from pageobject.generalmethods.general_methods import GeneralMethods
 
 TIME_TO_WAIT = 30
+FILTER_EXISTS = True
+LAYOUT_EXISTS = True
 
 
 class TestMainPageFeedTools(object):
     helper = SelHelper()
-    main_page = MainPage(helper, TIME_TO_WAIT)
+    main_page = MainPage(helper, TIME_TO_WAIT, FILTER_EXISTS, LAYOUT_EXISTS)
     mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = main_page.LOCATOR_LIST
     driver = None
@@ -32,18 +33,29 @@ class TestMainPageFeedTools(object):
 
     # @pytest.mark.skip
     def test_filters(self, setup):
+        if not self.main_page.filter_exists:
+            pytest.skip("mainpage doesn't have filter selection")
         assert self.main_page.check_feed_filters()
 
     # @pytest.mark.skip
     def test_layout(self, setup):
+        if not self.main_page.layout_exists:
+            pytest.skip("mainpage doesn't have layout selection")
+
         assert self.main_page.check_layouts()
 
     # @pytest.mark.skip
     def test_select_filter(self, setup):
+        if not self.main_page.filter_exists:
+            pytest.skip("mainpage doesn't have filter selection")
+
         assert self.main_page.select_filter("FILTER_PEOPLE")
 
     # @pytest.mark.skip
     def test_select_layout(self, setup):
+        if not self.main_page.layout_exists:
+            pytest.skip("mainpage doesn't have layout selection")
+
         assert self.main_page.select_layout("LAYOUT_COMPACT")
 
     # @pytest.mark.skip
@@ -53,7 +65,8 @@ class TestMainPageFeedTools(object):
     # @pytest.mark.skip
     def test_click_post_icon(self, setup):
         assert self.main_page.check_feed_empty() is True
-        assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
+        if self.main_page.filter_exists:
+            assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(10)
         assert self.main_page.check_click_icon()
@@ -62,7 +75,8 @@ class TestMainPageFeedTools(object):
     # @pytest.mark.skip
     def test_click_poster_link(self, setup):
         assert self.main_page.check_feed_empty() is True
-        assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
+        if not self.main_page.filter_exists:
+            assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(10)
         assert self.main_page.check_poster_link()
@@ -71,10 +85,13 @@ class TestMainPageFeedTools(object):
     # @pytest.mark.skip
     def test_click_group_photo(self, setup):
         assert self.main_page.check_feed_empty() is True
-        assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
+
+        if not self.main_page.filter_exists:
+            assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(5)
-        assert self.main_page.select_layout("LAYOUT_COMPACT")
+        if not self.main_page.layout_exists:
+            assert self.main_page.select_layout("LAYOUT_COMPACT")
 
         sleep(10)
         assert self.main_page.check_click_group_photo()

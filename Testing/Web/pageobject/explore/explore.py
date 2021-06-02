@@ -15,8 +15,12 @@ class Explore(Page):
     """ Class that contains methods interacting with WebElement objects in
     Explore page.
     """
-    def __init__(self, helper:  SelHelper, time_to_wait: float = 100):
-        Page.__init__(self, helper, time_to_wait)
+    def __init__(self, helper:  SelHelper,
+                 time_to_wait: float = 100,
+                 filter_exists: bool = True,
+                 layout_exists: bool = True):
+        Page.__init__(self, helper, time_to_wait,
+                      filter_exists, layout_exists)
         self.LOCATOR_LIST = self.utils.get_locators_list(ExploreLocator)
         self.link = Links.EXPLORE_URL
         self.title = "Explore | Flickr"
