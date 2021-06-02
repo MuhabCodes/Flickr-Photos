@@ -1,52 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 import ExploreNavBar from './ExploreNavBar';
 import RecentPhotos from './RecentPhotos';
+import configData from '../config.json';
+// import Pagination from './Pagination';
+import ShareBtn from './Share';
 
 // The Explore.jsx will include the title of the webpage, nav bars as well as
 // the components of Recent Photos
 // Can be used by any user /guest
-function Share() { // shows link to be shared
-  document.getElementById('share-link-btn').style.display = 'none';
-  document.getElementById('shareArea').style.display = 'block';
-}
-function CancelShare() { // Cancel button that closes the link window
-  document.getElementById('share-link-btn').style.display = 'block';
-  document.getElementById('shareArea').style.display = 'none';
-}
-// Reference used: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
-function CopyLinkShare() { // Copy the link of explore webpage to clipboard
-  const copyText = document.getElementById('expLink');
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /* For mobile devices */
-  document.execCommand('copy');
-  /* Alert the copied text */
-  alert(`Copied the text: ${copyText.value}`);
-}
-const Explore = () => (
-  <div className="recent-photos">
-    <ExploreNavBar />
-    <div className="explore-page-content" id="explore">
-      <br className="break-lines" />
-      <br className="break-lines" />
-      <h1 id="exploreTitle">
-        Explore
-      </h1>
-      <div className="share-container">
-        <button type="button" id="share-link-btn" className="share-button" onClick={Share}>
-          <img src="https://img.icons8.com/ios/50/000000/forward-arrow.png" alt="" className="share-button-img" />
-          Share
-        </button>
-        <div className="share-link" id="shareArea" style={{ display: 'none' }}>
-          <div className="share-actions">
-            <button type="button" className="cancel-share" id="share-cancelbtn" onClick={CancelShare}>X</button>
-          </div>
-          <textarea name="exploreLink" id="expLink"> http://localhost:3000/Explore </textarea>
-          <button type="button" onClick={CopyLinkShare}>Copy text</button>
-        </div>
-        <RecentPhotos />
+const Explore = () => {
+  const [photos, setRecPhotos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [imagesPerPage] = useState(10);
+  // useEffect helps us fetch the photos from the mock server.
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch(`${configData.SERVER_URL}/photosExplore`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRecPhotos(data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => {
+  //     });
+  // }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      fetch(`${configData.SERVER_URL}/photosExplore`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRecPhotos(data);
+          setLoading(false);
+        })
+        .catch(() => {
+        });
+    };
+    fetchPosts();
+  }, []);
+  // useEffect(() => {
+  //   const fetchImages = async () => {
+  //     setLoading(true);
+  //     const res = await axios.get(`${configData.SERVER_URL}/photosExplore`);
+  //     setRecPhotos(res.data);
+  //     setLoading(false);
+  //   };
+
+  //   fetchImages();
+  // }, []);
+
+  // Get current posts
+  // const indexOfLastPost = currentPage * imagesPerPage;
+  // const indexOfFirstPost = indexOfLastPost - imagesPerPage;
+  // const currentImages = photos.slice(indexOfFirstPost, indexOfLastPost);
+  // // Change page
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <div className="recent-photos">
+      <ExploreNavBar />
+      <div className="explore-page-content" id="explore">
+        <br className="break-lines" />
+        <br className="break-lines" />
+        <h1 id="exploreTitle">
+          Explore
+        </h1>
+        <ShareBtn />
+        <RecentPhotos photos={photos} loading={loading} />
+        {/* <Pagination
+          imagesPerPage={imagesPerPage}
+          totalImages={photos.length}
+          paginate={paginate}
+        /> */}
       </div>
     </div>
-  </div>
-
-);
+  );
+};
 export default Explore;
