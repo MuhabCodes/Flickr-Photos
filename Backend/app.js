@@ -13,7 +13,6 @@ const cameraRouter = require('./components/camera/cameraRouter');
 const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 const urlRouter = require('./components/url/urlRoute');
 const groupRouter = require('./components/group/groupRoute');
-const galleryRouter = require('./components/Gallery/galleryRoute');
 const tagsRouter = require('./components/tags/tagsRouter');
 const notificationRouter = require('./components/notification/notificationRouter');
 
@@ -36,7 +35,6 @@ app.use('/person', personRouter);
 app.use('/user', userRouter);
 app.use('/cameras', cameraRouter);
 app.use('/cameras/brands', cameraBrandRouter);
-app.use('/gallery', galleryRouter);
 app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
 app.use('/tags', tagsRouter);
