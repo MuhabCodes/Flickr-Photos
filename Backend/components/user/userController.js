@@ -1,5 +1,5 @@
 const userDAL = require('./userDAL');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 
@@ -177,5 +177,22 @@ exports.followUser = async function followUser(req, res) {
     return res.status(200).json(userObj);
   } catch (error) {
     return res.status(500).json(error);
+  }
+};
+
+exports.becomePro = async function becomePro(req, res) {
+  const { proToken } = req.params;
+
+  try {
+    // decrypt reset token to get userID
+    const { userId } = await decryptProToken(proToken);
+    // use the id and the new password to change the current pw
+    await userDAL.becomePro(userId);
+
+    res.status(201).json({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };
