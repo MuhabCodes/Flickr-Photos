@@ -38,7 +38,7 @@ const PersonalInformation = () => {
         history.push('/login');
       } else {
         localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        setTimeout(() => history.push('/login'), 100); // Redirect to Error page
       }
     });
   }, []);

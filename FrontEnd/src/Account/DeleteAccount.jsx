@@ -27,7 +27,7 @@ const DeleteAccount = () => {
         history.push('/login');
       } else {
         localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        setTimeout(() => history.push('/login'), 100); // Redirect to Error page
       }
     });
   }, []);
@@ -39,17 +39,17 @@ const DeleteAccount = () => {
         // Invoke Logout
         localStorage.removeItem('token'); // remove Current logged in user token from local storage
         // Delete
-        setTimeout(() => history.push('/login'), 1000); // Redirect to login if Account Deleted
+        setTimeout(() => history.push('/login'), 100); // Redirect to login if Account Deleted
       })
       .catch((error) => {
         if (error.response.status === 401) {
           localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
         } else if (error.response.status === 404) {
-          setTimeout(() => history.push('*'), 2000); // Redirect to Error page
+          setTimeout(() => history.push('*'), 100); // Redirect to Error page
         } else {
           localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
         }
       });
   };
