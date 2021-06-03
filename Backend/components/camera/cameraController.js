@@ -13,7 +13,7 @@ module.exports.addCamera = async function addCamera(req, res) {
     }
     const checkCam = await cameraDAL.getModelWithName(body.name);
     if (checkCam) {
-      return res.status(409).json({
+      return res.status(403).json({
         message: 'There is already a model with this name',
       });
     }
@@ -37,7 +37,10 @@ module.exports.getBrandModels = async function getBrandModels(req, res) {
   try {
     const cameraModels = await cameraDAL.getBrandModels(params.brand);
 
-    return res.status(200).json(cameraModels);
+    return res.status(200).json({
+      cameraModels,
+      noOfModels: cameraModels.length,
+    });
   } catch (err) {
     return res.status(500).json({
       message: "couldn't connect to db",
