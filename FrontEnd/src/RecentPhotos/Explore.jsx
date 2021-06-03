@@ -15,7 +15,7 @@ const Explore = () => (
     <div className="explore-page-content" id="explore">
       <br className="break-lines" />
       <br className="break-lines" />
-      <h1 id="exploreTitle">
+      <h1 id="explore-title">
         Explore
       </h1>
       <ShareBtn />
