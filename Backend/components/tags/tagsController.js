@@ -66,6 +66,7 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
     const photoObj = await getPhotoById(params.photoId);
     // checking if the user adding the tag is the owner of the photo
 
+    // eslint-disable-next-line eqeqeq
     if (currentUser.userId != photoObj.user) {
       return res.status(403).json({
         error: 'You are not authorized to add a tag',
@@ -79,11 +80,11 @@ module.exports.addTagToPhoto = async function addTagToPhoto(req, res) {
     if (checkTag == null) {
       // creating the tag
 
-      const tagObj = await tagsDAL.createTag({
-        ownerId: currentUser.userId,
-        tagRaw: body.tagRaw,
-        tagText: ((String)(body.tagRaw)).replace(/\s/g, ''), // removing all white space from tag
-      });
+      const tagObj = await tagsDAL.createTag(
+        currentUser.userId,
+        body.tagRaw,
+
+      );
       // adding the tag to the photo
       const photoWithTag = await tagsDAL.addTagToPhoto(params.photoId, tagObj);
 
@@ -120,12 +121,13 @@ module.exports.removeTagFromPhoto = async function removeTagFromPhoto(req, res) 
     const currentUser = await decryptAuthToken(authorization);
 
     const photoObj = await getPhotoById(params.photoId);
+    // eslint-disable-next-line eqeqeq
     if (currentUser.userId != photoObj.user) {
       return res.status(403).json({
         message: 'You are not authorized to delete the tag',
       });
     }
-    const photoWithoutTag = await tagsDAL.removeTagFromPhoto(params.photoId, body.tagId);
+    await tagsDAL.removeTagFromPhoto(params.photoId, body.tagId);
     return res.status(200).json({
       message: 'Tag deleted from photo successfully',
 
@@ -145,8 +147,8 @@ module.exports.deleteTag = async function deleteTag(req, res) {
     // check if the owner of tag is the current User
     if (currentUser.userId === tagObj.ownerId) {
       // remove this tag from all the photos
-      const photoWithoutTag = await tagsDAL.removeTagFromAllPhotos(params.tagId);
-      const removedTag = await tagsDAL.removeTag(params.tagId);
+      await tagsDAL.removeTagFromAllPhotos(params.tagId);
+      await tagsDAL.removeTag(params.tagId);
       return res.status(200).json({
         message: 'Tag removed Successfully from tags and photos',
       });

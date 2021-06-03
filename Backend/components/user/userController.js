@@ -48,9 +48,9 @@ exports.addDescription = async function addDescription(req, res) {
   try {
     const userObj = await userDAL.getUserById(params.userId);
     const currentUser = await decryptAuthToken(authorization);
-    console.log(currentUser);
-    console.log(userObj._id);
-    if ((String)(currentUser.userId) !== (String)(userObj._id)) { // check whether token contains information or not
+
+    // check whether token contains information or not
+    if ((String)(currentUser.userId) !== (String)(userObj._id)) {
       return res.status(403).json({
         message: ' You are not logged in ',
       });
@@ -69,6 +69,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
   const { params } = req;
   try {
     const userObj = await userDAL.getUserById(params.userId);
+
     if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
         message: 'Not found',
@@ -89,6 +90,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       photos: userPhotos,
       photosCount: userPhotos.length,
       description: userObj.description,
+      person: userObj.personId,
 
     });
   } catch (error) {

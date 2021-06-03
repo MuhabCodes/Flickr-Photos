@@ -1,11 +1,11 @@
 const Tags = require('./tagsModel');
 const Photo = require('../photo/photoModel');
 
-module.exports.createTag = async function createTag({ ownerId, tagRaw, tagText }) {
+module.exports.createTag = async function createTag(ownerId, tagRaw) {
   const tagObj = new Tags({
     ownerId,
     tagRaw,
-    tagText,
+    tagText: ((String)(tagRaw)).replace(/\s/g, ''), // removing all white space from tag,
   });
   const tag = await tagObj.save();
   return tag;
@@ -39,11 +39,10 @@ module.exports.findPhotoWithTags = async function findPhotoWithTags(photoId) {
 };
 
 module.exports.removeTagFromPhoto = async function removeTagFromPhoto(photoId, tagId) {
-  const photoObj = await Photo.findById(photoId).update(
+  await Photo.findById(photoId).update(
     {},
     { $pull: { tags: tagId } },
   );
-  return photoObj;
 };
 
 module.exports.removeTagFromAllPhotos = async function removeTagFromAllPhotos(tagId) {
@@ -56,8 +55,7 @@ module.exports.removeTagFromAllPhotos = async function removeTagFromAllPhotos(ta
 };
 
 module.exports.removeTag = async function removeTag(tagId) {
-  const tagObj = await Tags.findById(tagId).remove();
-  return tagObj;
+  await Tags.findById(tagId).remove();
 };
 
 module.exports.getAllTags = async function getAllTags() {
