@@ -90,8 +90,8 @@ User loggedInUser = new User(
 );
 
 User userBenFlasher = new User(
-  'LoggedIn user',
-  new NetworkImage(
+  username: 'LoggedIn user',
+  profilePicture: new NetworkImage(
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],

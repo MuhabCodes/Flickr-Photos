@@ -58,11 +58,14 @@ class ImageFullscreenState extends State<ImageFullscreen> {
               ///to align widgets above each other
               alignment: Alignment.topLeft,
               child: Container(
-                width: _widthScreen,
-                constraints: BoxConstraints(maxWidth: _widthScreen),
+                //width: _widthScreen,
+                constraints: BoxConstraints(
+                  maxHeight: _heightScreen, /* maxWidth: _widthScreen * 0.2*/
+                ),
+
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  // crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Column(
                       children: [
@@ -90,12 +93,15 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                 Column(
                                   children: [
                                     Container(
+                                      constraints: BoxConstraints(
+                                          maxWidth: _widthScreen * 0.4),
                                       margin:
                                           EdgeInsets.only(top: 70, right: 50),
                                       child: TextButton(
                                         child: Text(
                                           post.user.username,
                                           style: appBarTitleStyle,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         onPressed: () {
                                           Navigator.of(context).push(
@@ -109,7 +115,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(width: 50),
+                            //SizedBox(width: 50),
                             Column(
                               children: [
                                 Container(
