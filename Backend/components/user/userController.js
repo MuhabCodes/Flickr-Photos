@@ -2,6 +2,7 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const tagDAL = require('../tags/tagsDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -75,6 +76,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
         message: 'Not found',
       });
     }
+    const userTags = await tagDAL.getUserTag(params.userId);
     const userPhotos = await userDAL.getPhotos(params.userId);
     return res.status(200).json({
       userId: userObj._id,
@@ -91,6 +93,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       photosCount: userPhotos.length,
       description: userObj.description,
       person: userObj.personId,
+      tags: userTags.length,
 
     });
   } catch (error) {
