@@ -1,3 +1,9 @@
+const { getAlbumById } = require('./services/getAlbumById');
+const { removePhotoFromAlbum } = require('./services/removePhotoFromAlbum');
+const { createNewAlbum } = require('./services/createNewAlbum');
+const { addPhotoToAlbum } = require('./services/addPhotoToAlbum');
+const { getUserAlbumsById } = require('./services/getUserAlbumsById');
+
 module.exports = {
   async getAlbum(req, res) {
     try {
@@ -36,6 +42,16 @@ module.exports = {
       return res.json({
         error: err.message,
         statusCode: 500,
+      });
+    }
+  },
+  async getUserAlbums(req, res) {
+    try {
+      return await getUserAlbumsById(req.params.authorId, res);
+    } catch (err) {
+      return res.json({
+        error: err.message,
+        statusCode: 401,
       });
     }
   },

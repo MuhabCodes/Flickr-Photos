@@ -35,4 +35,7 @@ module.exports = {
     // then save the album to the database
     return foundAlbum.save();
   },
+  async fetchUserAlbums(authorId) {
+    return await Album.find({ authorId });
+  },
 };
