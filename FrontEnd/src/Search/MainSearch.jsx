@@ -34,7 +34,7 @@ const MainSearch = () => {
   function fetchImages() {
     // useEffect helps us fetch the photos from the mock server.
     useEffect(() => {
-      axios.get(`/photos?title=${search}`)
+      axios.get(`/photosSearch?title=${search}`)
         .then((resp) => {
           setLoading(false);
           setStateImages(resp.data);
