@@ -101,7 +101,7 @@ exports.resetPassword = async function resetPw(req, res) {
     // use the id and the new password to change the current pw
     await userDAL.resetPassword(userId, newPassword);
 
-    res.status(200).json({ statusCode: 200 });
+    res.status(201).json({ statusCode: 201 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 
