@@ -28,10 +28,6 @@ module.exports = async function SendNotificationToUser(notification) {
     const FIREBASE_MESSAGING = admin.messaging();
     const FIREBASE_DATABASE = admin.database();
 
-    // .limitToLast(1) make function called only one time as child_added is made
-    // to be called on each child in one iteration so i limit that to only once
-    // and endAt() to get recently added notification
-
     // creating my Own notification that will be (pushed-up)
     const newNotification = notification;
 
@@ -46,14 +42,25 @@ module.exports = async function SendNotificationToUser(notification) {
     newNotification.icon = 'https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/flickr-512.png';
     // this icon is icon of notification in push notification (flickr icon)
     // could be changed to be sender icon but still not implemented
-    const payload = {
-      notification: newNotification,
-    };
+
+    const {
+      sender,
+      reciever,
+      recieverName,
+      senderName,
+      imageUrl,
+      id,
+      act,
+      photoId,
+      notificationDate,
+      title,
+      body,
+      icon,
+    } = notification;
 
     // querying database searching for reciever token
     // if found therefore he will be online and send to him notification
     // else will just exit
-    const { reciever } = notification;
     const tokensRef = FIREBASE_DATABASE.ref('/tokens');
     const tokenSnapshot = await tokensRef.orderByChild('userId').equalTo(reciever).once('value');
     if (!tokenSnapshot.val()) {
@@ -65,6 +72,28 @@ module.exports = async function SendNotificationToUser(notification) {
     // Object.keys(token.val())[0] is getting first key which is encryptedid
     const tokenValue = tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
 
+    console.log(notification);
+    const payload = {
+      notification: {
+        title: newNotification.title,
+        body: newNotification.body,
+        icon: newNotification.icon,
+      },
+      data: { // real data must be sent ( whole notification)
+        sender,
+        reciever,
+        recieverName,
+        senderName,
+        imageUrl,
+        id,
+        act,
+        photoId,
+        notificationDate,
+        title,
+        body,
+        icon,
+      },
+    };
     // so now we have token of reciever and we just need to send
     const response = await FIREBASE_MESSAGING.sendToDevice(tokenValue, payload);
     // will do here some database cleanups if token fails !!!
