@@ -5,6 +5,8 @@
     "/photos/:id": "/photos/:id",
     "users": 644,
     "users/:id":644,
-    "people/:userId/photos":644,
-    "photos":666
+    "photos":666,
+    "/albums": "/albums",
+    "/albums/:id": "/albums/:id",
+    "people/:userId/photos":644
 }
