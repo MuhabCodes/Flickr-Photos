@@ -152,8 +152,9 @@ exports.sendProEmail = async function sendPro(req, res) {
     res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
   }
 };
-exports.followUser = async function followUser(req, res) {
+exports.followUser = async function followUser(req, res, next) {
   const { body } = req;
+  // body.userId contain id of user you need to follow
   const { authorization } = req.headers;
   try {
     const currentUser = await decryptAuthToken(authorization);
@@ -177,7 +178,11 @@ exports.followUser = async function followUser(req, res) {
     // increase the followers of the user
     await userDAL.addPersonToFollowers(body.userId, currentUser.userId);
 
-    return res.status(200).json(userObj);
+    // forwarding info from mw / to next
+    req.sender = userObj; // since userObj is the one following
+    // no need to send reciever as its already in req.body.userId
+
+    next();
   } catch (error) {
     return res.status(500).json(error);
   }
