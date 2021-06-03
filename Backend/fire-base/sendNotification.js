@@ -23,32 +23,74 @@ async function clearInvalidToken(tokenSnapshot, result) {
 }
 // this function send live notification to user as push up notification
 module.exports = async function SendNotificationToUser(notification) {
-  try {
-    if (!admin.apps.length) { // this to check if there's app
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL: 'https://notify-d4836-default-rtdb.firebaseio.com',
-      });
-    }
-    const FIREBASE_MESSAGING = admin.messaging();
-    const FIREBASE_DATABASE = admin.database();
+  if (!admin.apps.length) { // this to check if there's app
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: 'https://notify-d4836-default-rtdb.firebaseio.com',
+    });
+  }
+  const FIREBASE_MESSAGING = admin.messaging();
+  const FIREBASE_DATABASE = admin.database();
 
-    // creating my Own notification that will be (pushed-up)
-    const newNotification = notification;
+  // creating my Own notification that will be (pushed-up)
+  const newNotification = notification;
 
-    newNotification.title = 'Flickr App';
-    if (notification.act === 'like') {
-      newNotification.body = `${notification.senderName} liked your photo`;
-    } else if (notification.act === 'comment') {
-      newNotification.body = `${notification.senderName} commented on your photo`;
-    } else {
-      newNotification.body = `${notification.senderName} followed you`;
-    }
-    newNotification.icon = 'https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/flickr-512.png';
-    // this icon is icon of notification in push notification (flickr icon)
-    // could be changed to be sender icon but still not implemented
+  newNotification.title = 'Flickr App';
+  if (notification.act === 'like') {
+    newNotification.body = `${notification.senderName} liked your photo`;
+  } else if (notification.act === 'comment') {
+    newNotification.body = `${notification.senderName} commented on your photo`;
+  } else {
+    newNotification.body = `${notification.senderName} followed you`;
+  }
+  newNotification.icon = 'https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/flickr-512.png';
+  // this icon is icon of notification in push notification (flickr icon)
+  // could be changed to be sender icon but still not implemented
 
-    const {
+  const {
+    sender,
+    reciever,
+    recieverName,
+    senderName,
+    imageUrl,
+    id,
+    act,
+    photoId,
+    notificationDate,
+    title,
+    body,
+    icon,
+  } = notification;
+
+  // querying database searching for reciever token
+  // if found therefore he will be online and send to him notification
+  // else will just exit
+  const tokensRef = FIREBASE_DATABASE.ref('/tokens');
+  const tokenSnapshot = await tokensRef.orderByChild('userId').equalTo(reciever).once('value');
+  if (!tokenSnapshot.val()) {
+    return res.status(404).json({ error: 'Not Found' });
+  }
+
+  // accessing token as its returned as
+  // { "encryptedid":{token:token,userId:userId},"encryptedid":{token:token,userId:userId} }
+  // Object.keys(token.val())[0] is getting first key which is encryptedid
+
+  // we will make array of tokens as if user is logged in in mobile and web
+  // at same time so to send to both
+  const tokensValue = [];// tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
+
+  const size = Object.keys(tokenSnapshot.val()).length;
+  for (let i = 0; i < size; i += 1) {
+    tokensValue.push(tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[i]].token);
+  }
+
+  const payload = {
+    notification: {
+      title: newNotification.title,
+      body: newNotification.body,
+      icon: newNotification.icon,
+    },
+    data: { // real data must be sent ( whole notification)
       sender,
       reciever,
       recieverName,
@@ -61,60 +103,12 @@ module.exports = async function SendNotificationToUser(notification) {
       title,
       body,
       icon,
-    } = notification;
-
-    // querying database searching for reciever token
-    // if found therefore he will be online and send to him notification
-    // else will just exit
-    const tokensRef = FIREBASE_DATABASE.ref('/tokens');
-    const tokenSnapshot = await tokensRef.orderByChild('userId').equalTo(reciever).once('value');
-    if (!tokenSnapshot.val()) {
-      console.log('failed to send notification to user');
-      return;
-    }
-
-    // accessing token as its returned as
-    // { "encryptedid":{token:token,userId:userId},"encryptedid":{token:token,userId:userId} }
-    // Object.keys(token.val())[0] is getting first key which is encryptedid
-
-    // we will make array of tokens as if user is logged in in mobile and web
-    // at same time so to send to both
-    const tokensValue = [];// tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
-
-    const size = Object.keys(tokenSnapshot.val()).length;
-    for (let i = 0; i < size; i += 1) {
-      tokensValue.push(tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[i]].token);
-    }
-
-    const payload = {
-      notification: {
-        title: newNotification.title,
-        body: newNotification.body,
-        icon: newNotification.icon,
-      },
-      data: { // real data must be sent ( whole notification)
-        sender,
-        reciever,
-        recieverName,
-        senderName,
-        imageUrl,
-        id,
-        act,
-        photoId,
-        notificationDate,
-        title,
-        body,
-        icon,
-      },
-    };
-    console.log('tokenValue', tokensValue);
+    },
+  };
     // so now we have token of reciever and we just need to send
-    const response = await FIREBASE_MESSAGING.sendToDevice(tokensValue, payload);
-    console.log('response', response);
-    // will do here some database cleanups if token fails !!!
-    await clearInvalidToken(tokenSnapshot, response.results);
-    // so if he unsubscribe or token changed --> delete it from db
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await FIREBASE_MESSAGING.sendToDevice(tokensValue, payload);
+
+  // will do here some database cleanups if token fails !!!
+  await clearInvalidToken(tokenSnapshot, response.results);
+  // so if he unsubscribe or token changed --> delete it from db
 };
