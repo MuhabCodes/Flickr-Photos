@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './MainSearch.css';
 import jwt from 'jwt-decode';
 // This page is to allow the user to search for pictures by title
-// The page is initially empty with only asearch bar on the right
+// The page is initially empty with only a search bar on the right
 // the user will be able to type the title of the desired image in the search box and retreive
 // the results on clicking on the search button
 // Afterwards, images that match the query entered will be displayed in the page
