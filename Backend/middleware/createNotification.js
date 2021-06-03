@@ -2,6 +2,7 @@ const SaveNotification = require('../fire-base/saveNotification');
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
 const { getUserById } = require('../components/user/userDAL');
+const SendNotificationToUser = require('../fire-base/sendNotification');
 
 const createLikeNotification = async (req, res) => {
   const { photoId } = req.params;
@@ -51,7 +52,9 @@ const createLikeNotification = async (req, res) => {
       notificationDate: newNotification.notificationDate.toString(),
       imageUrl: photo.imageUrl.toString(),
     };
-    await SaveNotification(firebaseNotification);
+    await SaveNotification(firebaseNotification); // saving notification in database
+    await SendNotificationToUser(firebaseNotification); // this make push up
+    // notification if the user is live only
     return res.status(201).json({
       message: 'Favorite added succesfully',
       favoriteCreated,
@@ -100,7 +103,9 @@ const createCommentNotification = async (req, res) => {
       photoId: newNotification.photoId.toString(),
       notificationDate: newNotification.notificationDate.toString(),
     };
-    await SaveNotification(firebaseNotification);
+    await SaveNotification(firebaseNotification); // saving notification in database
+    await SendNotificationToUser(firebaseNotification); // this make push up
+    // notification if the user is live only
     return res.status(201).json({
       message: 'comment added succesfully',
       commentCreated,
@@ -128,7 +133,6 @@ const createFollowNotification = async (req, res) => {
       recieverName,
       senderName,
     });
-    await SaveNotification('newNotification', newNotification);
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
     const id = newNotification._id;
     // since firebase dont allow undefined values and throw errors
@@ -144,7 +148,9 @@ const createFollowNotification = async (req, res) => {
       act: newNotification.act,
       notificationDate: newNotification.notificationDate.toString(),
     };
-    await SaveNotification(firebaseNotification);
+    await SaveNotification(firebaseNotification); // saving notification in database
+    await SendNotificationToUser(firebaseNotification); // this make push up
+    // notification if the user is live only
 
     return res.status(200).json(senderInfo);
   } catch (err) {
