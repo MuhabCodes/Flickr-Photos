@@ -144,7 +144,8 @@ function App() {
             <Route path="/search">
               <SearchPage />
             </Route>
-            <Route path="/Profile/albums/:routeId">
+            <Route path="/Profile/albums/:id">
+              <NavBar />
               <CoverArea />
               <SubNavBar />
               <Albums />

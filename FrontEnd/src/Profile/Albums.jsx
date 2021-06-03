@@ -15,12 +15,12 @@ function Albums() {
   const userjwt = jwt(localStorage.getItem('token'));
   // eslint-disable-next-line no-unused-vars
   const [enabled, setEnabled] = useState(false); // check if user
-  const { routeId } = useParams(); // grab the id of the photo to fetch
+  const { id } = useParams(); // grab the id of the photo to fetch
   const [data, setData] = useState(null);
   const [albumsData, setAlbumsData] = useState(null);
   useEffect(() => {
-    if (routeId) {
-      axios.get(`/albums/${routeId}`) // fetch data with specific album
+    if (id) {
+      axios.get(`/albums/${id}`) // fetch data with specific album
         .then((resp) => {
           setData(resp.data);
           setAlbumsData(resp.data.userAlbums);
