@@ -63,11 +63,14 @@ const PhotoSchema = new Schema({
   },
   favs: {
     type: Number,
+    default: 0,
   },
   comments: {
     type: Number,
+    default: 0,
   },
   // add the user reference when it is completed
 });
 
+PhotoSchema.index({ title: 'text', description: 'text' });
 module.exports = mongoose.model('Photo', PhotoSchema);
