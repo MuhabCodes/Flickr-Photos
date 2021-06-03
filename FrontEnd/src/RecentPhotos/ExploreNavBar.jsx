@@ -4,6 +4,7 @@ import 'bootstrap';
 import { Link } from 'react-router-dom';
 // The ExploreNavbar.jsx will include a function 'ExploreNavbar' that returns the html tags and
 // properties to make up this navbar.
+// This explore nav bar is available to any kind of user (logged in or guest)
 // The following 2 lines are jquery code to toggle the dropdown list 'More' on click
 $(document).ready(() => {
   $('.dropdown-toggle').dropdown();
@@ -13,17 +14,12 @@ function ExploreNavBar() {
   return (
     <nav className="expnav">
       <Link id="exp-menu-item" to="./" className="active">Explore</Link>
-      <Link id="exp-menu-item" to="./Trending">Trending</Link>
-      <Link id="exp-menu-item" to="./Events">Events</Link>
       <div className="animation start-home" />
-      <div className="expDropdown">
-        <button className="dropdown-toggle" type="button" id="expdropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+      <div className="exp-dropdown">
+        <button className="dropdown-toggle" type="button" id="exp-dropdown-menu-button1" data-toggle="dropdown" aria-expanded="false">
           More
         </button>
-        <div className="dropdown-menu" aria-labelledby="expdropdownMenuButton1">
-          <Link className="dropdown-item" to="./TheCommons">The Commons</Link>
-          <Link className="dropdown-item" to="./Galleries">Galleries</Link>
-          <Link className="dropdown-item" to="./WorldMap">World Map</Link>
+        <div className="dropdown-menu" aria-labelledby="exp-dropdown-menu-button1">
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
         </div>
       </div>

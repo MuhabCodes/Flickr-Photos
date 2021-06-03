@@ -1,33 +1,36 @@
-#cameraImages {
+#camera-images {
   vertical-align: bottom;
   width: fit-content;
   height: fit-content;
-  margin-bottom: 10px;
-  margin-left: 30px;
+  margin-bottom: 5%;
+  margin-left: 10%;
 }
 
-.mostPopularCameras {
-  margin-left: 190px;
+.most-popular-cameras {
+  margin-left: 10%;
   background-color: white;
   width: 73%;
   height: 450px;
-  margin: 0 auto;
+
+  /* margin: 0 auto; */
   border: 1px solid lightgray;
   display: flex;
   flex-direction: row;
   align-items: baseline;
 }
 
-.topFive {
+.top-five {
   width: 200px;
   height: 200px;
   text-align: center;
   flex-basis: 600px;
-  margin-top: 10px;
+  margin-top: 1%;
+
+  /* margin-top: 10px; */
   align-items: center;
 }
 
-#brandName {
+#brand-name {
   font-size: 20px;
   font-weight: 700;
   box-sizing: border-box;
@@ -39,14 +42,14 @@
   transform: translate(-50%, -30%);
 }
 
-#brandModel,
-#brandName {
+#brand-model,
+#brand-name {
   text-align: center;
   justify-content: center;
   vertical-align: bottom;
 }
 
-#brandModels {
+#brand-models {
   font-size: 15px;
   justify-self: center;
   position: relative;
@@ -55,29 +58,29 @@
   transform: translate(-50%, -10%);
 }
 
-#brandName .brandsClass:hover,
-#brandModels .topModelClass:hover {
+#brand-name .brands-class:hover,
+#brand-models .top-model-class:hover {
   background-color: #0063dc;
   color: white;
 }
 
 @media screen and (max-width: 1215px) {
-  .mostPopularCameras {
+  .most-popular-cameras {
     flex-direction: column;
     flex-grow: column wrap;
     height: auto;
     align-items: center;
   }
 
-  .topFive {
+  .top-five {
     flex-basis: 100px;
     justify-content: space-between;
     height: 20%;
     margin-top: 0;
   }
 
-  #brandModel,
-  #brandName {
+  #brand-model,
+  #brand-name {
     text-align: center;
     justify-content: center;
     vertical-align: bottom;

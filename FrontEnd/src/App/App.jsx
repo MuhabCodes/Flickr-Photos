@@ -22,6 +22,7 @@ import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
+import SearchPage from '../Search/SearchPage';
 import PersonalInformation from '../Account/PersonalInformation';
 import EditPersonalInfo from '../Account/EditPersonalInfo';
 import DeleteAccount from '../Account/DeleteAccount';
@@ -122,6 +123,9 @@ function App() {
             </Route>
             <Route exact path="/photoview/:routeId">
               <PhotoView />
+            </Route>
+            <Route path="/search">
+              <SearchPage />
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */ }

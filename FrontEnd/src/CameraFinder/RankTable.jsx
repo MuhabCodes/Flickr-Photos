@@ -3,9 +3,8 @@ import { cameras } from '../PopularCamerasDb.json';
 import './RankTable.css';
 // This .jsx will display the data fetched from .json as a table.
 // RankTable function has two functions renderHead and renderBody
-// 1- renderHead return the headings of the table such as Rank, Brand, Top Models, Model Types,
-// and # of Models.
-// 2- renderBody maps the objects in the json file as rows in the table,
+// 1- renderHead return the headings of the table such as Brand, Top Models, Model Types.
+// 2- renderBody maps the objects as rows in the table,
 // each row containing an object and the columns display their details.
 // 3- In the return statement, both functions mentioned above are called
 // and hence the table is displayed.
@@ -13,15 +12,16 @@ import './RankTable.css';
 function RankTable() {
   function renderHead() {
     return (
-      <thead id="tableHead">
-        <tr className="tableRow">
-          <th className="th">Rank ▾</th>
+      <thead id="table-head">
+        <tr className="table-row">
+          {/* <th className="th">Rank ▾</th> */}
           <th className="th">
-            <a className="cameraTable" href="./Brands">Brand</a>
+            <a className="camera-table" href="./Brands">Brand</a>
           </th>
           <th className="th">Top Models</th>
           <th className="th">Model Types</th>
-          <th className="th"><a className="cameraTable" href="./noOfModels"># of Models</a></th>
+          {/* <th className="th"><a className="camera-table" href="./noOfModels"># of Mod
+          //els</a></th> */}
         </tr>
       </thead>
     );
@@ -30,32 +30,32 @@ function RankTable() {
     return (
       <tbody id="tbody">
         {cameras.map((camera) => (
-          <tr className="tableRow">
-            <td className="tableCell" key={camera.rank}>{camera.rank}</td>
-            <td className="tableCell" key={camera.rank}><a className="cameraTable" href="./Brands">{camera.brand}</a></td>
-            <td className="tableCell" key={camera.rank}>
+          <tr className="table-row">
+            {/* <td className="table-cell" key={camera.rank}>{camera.rank}</td> */}
+            <td className="table-cell"><a className="camera-table" href="./Brands">{camera.brand}</a></td>
+            <td className="table-cell">
               {camera.topModels.map((sub, index) => (
-                <a className="cameraTable" href="./topModels">
+                <a className="camera-table" href="./topModels">
                   { (index ? ', ' : '') + sub }
                 </a>
               ))}
             </td>
-            <td className="tableCell" key={camera.rank}>
+            <td className="table-cell">
               { camera.modelTypes.map((sub, index) => (
-                <span className="modelTypesColumn">
+                <span className="model-types-column">
                   { (index ? ', ' : '') + sub }
                 </span>
               ))}
             </td>
-            <td className="tableCell" key={camera.rank}>{camera.noOfModel}</td>
+            {/* <td className="table-cell" key={camera.rank}>{camera.noOfModel}</td> */}
           </tr>
         ))}
       </tbody>
     );
   }
   return (
-    <div className="rankTable">
-      <table className="rankTableDetails">
+    <div className="rank-table">
+      <table className="rank-table-details">
         {renderHead()}
         {renderBody()}
       </table>

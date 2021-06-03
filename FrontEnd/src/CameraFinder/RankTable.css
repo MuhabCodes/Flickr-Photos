@@ -1,5 +1,5 @@
-.rankTable {
-  margin-left: 183px;
+.rank-table {
+  margin-left: 10%;
   border-collapse: collapse;
   text-indent: initial;
   width: 73%;
@@ -7,7 +7,7 @@
   border-spacing: 10px;
 }
 
-.tableCell {
+.table-cell {
   padding: 10px;
   font-size: 13px;
 }
@@ -18,7 +18,7 @@
   border-color: inherit;
 }
 
-.rankTable .th {
+.rank-table .th {
   padding: 4px 12px;
   background: #f3f3f3;
   border-left: 1px solid #e0e0e0;
@@ -29,47 +29,44 @@
   color: #666;
   display: table-cell;
   vertical-align: inherit;
-  font-weight: bold;
   text-align: left;
 }
 
 .th:first-child,
-.tableCell:first-child {
+.table-cell:first-child {
   text-align: center;
 }
 
-.tableRow:nth-child(1),
-.tableRow:nth-child(2),
-.tableRow:nth-child(3),
-.tableRow:nth-child(4),
-.tableRow:nth-child(5) {
+.table-row:nth-child(1),
+.table-row:nth-child(2),
+.table-row:nth-child(3) {
   font-weight: bold;
 }
 
-.tableRow:nth-child(2n) {
+.table-row:nth-child(2n) {
   border-top: 1px solid #f3f3f3;
   background-color: whitesmoke;
   border-bottom: 1px solid #f3f3f3;
 }
 
-.tableRow:hover {
+.table-row:hover {
   background-color: #e0e0e0;
 }
 
-.th .cameraTable:hover,
-.tableCell .cameraTable:hover {
+.th .camera-table:hover,
+.table-cell .camera-table:hover {
   background-color: #0063dc;
   color: white;
 }
 
 @media screen and (max-width: 1000px) {
-  .rankTable {
+  .rank-table {
     overflow-x: auto;
-    margin-left: 70px;
-    min-width: 170%;
+    margin-left: 7%;
+    min-width: 70%;
   }
 
-  .tableCell {
+  .table-cell {
     font-size: 11px;
   }
 
@@ -77,8 +74,8 @@
     min-width: 33%;
   }
 
-  .rankTable .th {
-    min-width: 33%;
+  .rank-table .th {
+    min-width: 70%;
     font-size: 13px;
   }
 }

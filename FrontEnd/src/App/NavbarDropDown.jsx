@@ -1,9 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
 import {
-  Nav, Navbar, Form, FormControl,
+  Nav, Navbar,
 } from 'react-bootstrap';
 
 // Component for dropdown items
@@ -85,14 +84,24 @@ function NavBarDropDown() {
           <div className="dropdown-main-nav">
             <a href="/GetPro" className=" droplink-main-nav">Get Pro</a>
           </div>
+          <div>
+            <a href="/Search" className=" droplink-main-nav">
+              Search
+              <img src="https://img.icons8.com/ios/20/ffffff/search--v1.png" alt="" />
+            </a>
+          </div>
         </Nav>
-        <div className="icon-bar d-flex justify-content-end">
+        {/* <div className="icon-bar d-flex justify-content-end">
           <Form inline>
-            <FormControl type="text" placeholder="Photos, people, or group" className="form-control me-2 min-vw-50" aria-label="Search" />
+            <FormControl
+              type="text"
+              placeholder="Photos, people, or group"
+              className="form-control me-2 min-vw-50"
+              aria-label="Search"
+            />
+          </Form> */}
+        {/* </div> */}
 
-          </Form>
-
-        </div>
       </Navbar.Collapse>
 
     </div>

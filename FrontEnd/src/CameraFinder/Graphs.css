@@ -1,114 +1,114 @@
-.contentBox {
+.content-box {
   display: inline-block;
   width: 540px;
   border: 0;
   margin: 20px;
-  margin-left: 90px;
+  margin-left: 2%;
   align-self: auto;
 }
 
-.contentBox2 {
+.content-box2 {
   display: inline-block;
   width: 530px;
   border: 0;
   margin: 20px;
-  margin-left: 10px;
+  margin-left: 2%;
   align-self: auto;
 }
 
-.contentBox #graph1,
-.contentBox2 #graph2 {
+.content-box #graph1,
+.content-box2 #graph2 {
   float: left;
 }
 
-.contentBox .titleOfGraph1,
-.contentBox2 .titleOfGraph2 {
-  margin: 5px;
-}
-
-.contentBox .firstBullet,
-.contentBox .secondBullet,
-.contentBox .thirdBullet,
-.contentBox .fourthBullet,
-.contentBox .fifthBullet {
-  text-align: right;
-  margin: 5px;
-}
-
-.contentBox2 .firstBullet,
-.contentBox2 .secondBullet,
-.contentBox2 .thirdBullet,
-.contentBox2 .fourthBullet,
-.contentBox2 .fifthBullet {
-  text-align: right;
-  margin: 5px;
-}
-
-#legendsOfGraph1,
-#legendsOfGraph2,
-.bullet-list-graphs {
-  text-align: left;
-  margin-left: 10px;
-  font-size: 14px;
-}
-
-#legendsOfGraph1,
-#legendsOfGraph2 {
-  list-style-type: none;
-  padding: 0;
-}
-
-.firstBullet {
-  color: #ff43ab;
-}
-
-.secondBullet {
-  color: #fff400;
-}
-
-.thirdBullet {
-  color: #14dc20;
-}
-
-.fourthBullet {
-  color: #08bff6;
-}
-
-.fifthBullet {
-  color: #9ac;
-}
-
-#legendsOfGraph1 .brandsHyperTags:hover,
-#aboutTheseGraphs .brandsHyperTags:hover,
-#legendsOfGraph2 .brandsHyperTags:hover {
-  background-color: #0063dc;
-  color: white;
-}
-
-.titleOfGraph1 {
+.title-of-graph1 {
   text-align: left;
 }
 
-.titleOfGraph2 {
+.title-of-graph2 {
   text-align: left;
 }
 
-.titleOfGraph1,
-.titleOfGraph2 {
+.title-of-graph1,
+.title-of-graph2 {
   font-weight: bold;
   color: #000;
   font-size: 20px;
 }
 
-#aboutTheseGraphs {
-  margin-top: 10px;
+.content-box .title-of-graph1,
+.content-box2 .title-of-graph2 {
+  margin: 1%;
+}
+
+.first-bullet {
+  color: #ff43ab;
+}
+
+.second-bullet {
+  color: #fff400;
+}
+
+.third-bullet {
+  color: #14dc20;
+}
+
+.fourth-bullet {
+  color: #08bff6;
+}
+
+.fifth-bullet {
+  color: #9ac;
+}
+
+.content-box .first-bullet,
+.content-box .second-bullet,
+.content-box .third-bullet,
+.content-box .fourth-bullet,
+.content-box .fifth-bullet {
+  text-align: right;
+  margin: 1%;
+}
+
+.content-box2 .first-bullet,
+.content-box2 .second-bullet,
+.content-box2 .third-bullet,
+.content-box2 .fourth-bullet,
+.content-box2 .fifth-bullet {
+  text-align: right;
+  margin: 1%;
+}
+
+#legends-of-graph1,
+#legends-of-graph2,
+.bullet-list-graphs {
+  text-align: left;
+  margin-left: 1%;
+  font-size: 14px;
+}
+
+#legends-of-graph1,
+#legends-of-graph2 {
+  list-style-type: none;
+  padding: 0;
+}
+
+#legends-of-graph1 .brands-hyper-tags:hover,
+#about-these-graphs .brands-hyper-tags:hover,
+#legends-of-graph2 .brands-hyper-tags:hover {
+  background-color: #0063dc;
+  color: white;
+}
+
+#about-these-graphs {
+  margin-top: 1%;
   font-size: 13px;
   text-align: left;
-  margin-left: 120px;
+  margin-left: 2%;
 }
 
 .graphs {
-  margin-left: 80px;
+  margin-left: 8%;
 }
 
 @media screen and (max-width: 1215px) {
@@ -116,26 +116,26 @@
     display: block;
   }
 
-  .contentBox {
+  .content-box {
     display: block;
     width: 540px;
     border: 0;
     margin: 20px;
-    margin-left: 90px;
+    margin-left: 20%;
     align-self: auto;
   }
 
-  .contentBox2 {
+  .content-box2 {
     display: inline-block;
     width: 530px;
     border: 0;
     margin: 20px;
-    margin-left: 90px;
+    margin-left: 20%;
     align-self: auto;
   }
 
-  #legendsOfGraph1,
-  #legendsOfGraph2,
+  #legends-of-graph1,
+  #legends-of-graph2,
   .bullet-list-graphs {
     font-size: 13px;
   }

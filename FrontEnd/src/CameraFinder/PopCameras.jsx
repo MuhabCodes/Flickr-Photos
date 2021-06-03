@@ -1,9 +1,9 @@
 import React from 'react';
 import './PopCameras.css';
 // The PopCameras.jsx displays the Most popular brands section
-// It fetches the top 5 ranked camera from our json file and displays their images, brand names,
+// It fetches the top 5 ranked cameras and displays their images, brand names,
 // and brand models.
-// First, we introduce the cameras variable as props which holds the objects from json file.
+// First, we introduce the cameras variable as props which holds the objects.
 // Then, We use the slice function to get the first 5 brands and store them in cam.
 // Finally, in the return statement, we use cam. map to fetch the details of each object and
 // display them on the page.
@@ -15,38 +15,37 @@ const PopCameras = (props) => {
   const cam = cameras.slice(0, 5);
   return (
     <div
-      className="mostPopularCameras"
+      className="most-popular-cameras"
     >
       {cam.map((camera) => (
         <div
-          className="topFive"
+          className="top-five"
           id="five"
-          key={camera.id}
         >
-          <div id="imagesCollection">
-            <img id="cameraImages" src={camera.image} alt="best camera brands" />
+          <div id="images-collection">
+            <img id="camera-images" src={camera.image} alt="best camera brands" />
           </div>
-          <div id="brandNameText">
+          <div id="brand-name-text">
             <h2
-              id="brandName"
+              id="brand-name"
             >
-              <a className="brandsClass" href="./brand">
+              <a className="brands-class" href="./brand">
                 {camera.brand}
               </a>
             </h2>
           </div>
-          <div id="brandModelsText">
+          <div id="brand-models-text">
             <p
-              id="brandModels"
+              id="brand-models"
             >
-              <ul className="ulTopModel">
+              <ul className="ul-top-model">
                 {camera.topModels.map((sub) => (
-                  <a className="topModelClass" href="./topModel">
+                  <a className="top-model-class" href="./topModel">
                     {sub}
                     ,
                   </a>
                 ))}
-                <a className="topModelClass" href="./topModel"> more...</a>
+                <a className="top-model-class" href="./topModel"> more...</a>
               </ul>
             </p>
           </div>

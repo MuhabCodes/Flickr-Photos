@@ -2,7 +2,6 @@
   "cameras": [
     {
       "id": 1,
-      "rank": "1",
       "brand": "Apple",
       "topModels": [
         "iPhone 7",
@@ -14,12 +13,10 @@
         "Point and Shoot",
         "Tablet"
       ],
-      "noOfModel": "37",
       "image": "https://live.staticflickr.com/cameras/72157635062339950_model_large_d77764305a.jpg"
     },
     {
       "id": 2,
-      "rank": "2",
       "brand": "Canon",
       "topModels": [
         "EOS 5D Mark III",
@@ -33,12 +30,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "284",
       "image": "https://live.staticflickr.com/cameras/72157622292089908_model_large_497d3698ba.jpg"
     },
     {
       "id": 3,
-      "rank": "3",
       "brand": "Nikon",
       "topModels": [
         "D750",
@@ -50,12 +45,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "216",
       "image": "https://live.staticflickr.com/cameras/72157647510174616_model_large_d5b7ef6582.jpg"
     },
     {
       "id": 4,
-      "rank": "4",
       "brand": "Sony",
       "topModels": [
         "ILCE-7M3",
@@ -69,12 +62,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "360",
       "image": "https://cvp.com/images/products/21%2011%2020141416567683a7%20II%20main.jpg"
     },
     {
       "id": 5,
-      "rank": "5",
       "brand": "Fujifilm",
       "topModels": [
         "X-T2",
@@ -87,12 +78,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "194",
       "image": "https://live.staticflickr.com/cameras/72157667961187030_model_large_c9528d48b3.jpg"
     },
     {
       "id": 6,
-      "rank": "6",
       "brand": "Olympus",
       "topModels": [
         "E-M1MarkII",
@@ -104,12 +93,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "188",
       "image": "https://static.bhphoto.com/images/images2500x2500/1478047926_1283565.jpg"
     },
     {
       "id": 7,
-      "rank": "7",
       "brand": "Panasonic",
       "topModels": [
         "DC-G9",
@@ -122,12 +109,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "194",
       "image": "https://static.fotokonijnenberg.nl/media/catalog/product/cache/image/800x547/602f0fa2c1f0d1ba5e241f914e856ff9/p/a/panasonic_lumix_dcg9_body_pandcg9egkdf713c413e9c3b65a8785d24fb3bfb24e7091b87_1.jpg"
     },
     {
       "id": 8,
-      "rank": "8",
       "brand": "Samsung",
       "topModels": [
         "Galaxy S7",
@@ -141,12 +126,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "278",
       "image": "https://mob4me.com/Assets/images/mobile/galaxy-s8-large.jpg"
     },
     {
       "id": 9,
-      "rank": "9",
       "brand": "Google",
       "topModels": [
         "Pixel 3",
@@ -156,12 +139,10 @@
       "modelTypes": [
         "Cameraphone"
       ],
-      "noOfModel": "9",
       "image": "https://www.gizmochina.com/wp-content/uploads/2018/08/Google-Pixel-3.jpg"
     },
     {
       "id": 10,
-      "rank": "10",
       "brand": "Leica",
       "topModels": [
         "M",
@@ -176,7 +157,6 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "33",
       "image": "https://static.leica-camera.com/var/leica/storage/images/media/media-asset-management-mam/global-international/photography/m-system/tynon5/overview/m-systemseite_teaser-hero_m10-r/2221805-1-eng-MA/M-Systemseite_Teaser-Hero_M10-R_teaser-653x484.png"
     }
   ],
@@ -539,7 +519,8 @@
       "photoId": 1,
       "user": "John Smith",
       "width": 500,
-      "height": 625
+      "height": 625,
+      "dateUploaded": "2021-05-25"
     },
     {
       "title": "Cats",
@@ -550,7 +531,8 @@
       "photoId": 2,
       "user": "Felicity Berkleef",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2020-04-25"
     },
     {
       "title": "Paris",
@@ -561,7 +543,8 @@
       "photoId": 3,
       "user": "Ferda Hejl",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2021-04-25"
     },
     {
       "title": "Ice",
@@ -572,7 +555,8 @@
       "photoId": 4,
       "user": "Farero",
       "width": 438,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2021-03-25"
     },
     {
       "title": "Sunset",
@@ -583,7 +567,8 @@
       "photoId": 5,
       "user": "Richard Larsson",
       "width": 438,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2021-02-25"
     },
     {
       "title": "Solar Circumnavigation",
@@ -594,7 +579,8 @@
       "photoId": 6,
       "user": "Bill Bowman",
       "width": 500,
-      "height": 500
+      "height": 500,
+      "dateUploaded": "2021-01-25"
     },
     {
       "title": "Boat",
@@ -605,7 +591,8 @@
       "photoId": 7,
       "user": "Jeanmarie Shelton",
       "width": 608,
-      "height": 403
+      "height": 403,
+      "dateUploaded": "2020-12-25"
     },
     {
       "title": "Infinite Beauty",
@@ -616,7 +603,8 @@
       "photoId": 8,
       "user": "Fabien Georget",
       "width": 500,
-      "height": 373
+      "height": 373,
+      "dateUploaded": "2020-11-25"
     },
     {
       "title": "The kids",
@@ -627,7 +615,8 @@
       "photoId": 9,
       "user": "Monte Stinett",
       "width": 466,
-      "height": 657
+      "height": 657,
+      "dateUploaded": "2020-10-25"
     },
     {
       "title": "Beach",
@@ -638,7 +627,8 @@
       "photoId": 10,
       "user": "Minutiae",
       "width": 500,
-      "height": 333
+      "height": 333,
+      "dateUploaded": "2020-09-25"
     },
     {
       "title": "Colors",
@@ -649,7 +639,8 @@
       "photoId": 11,
       "user": "Annie Raekone",
       "width": 360,
-      "height": 481
+      "height": 481,
+      "dateUploaded": "2020-08-25"
     },
     {
       "title": "Dolphins",
@@ -660,7 +651,8 @@
       "photoId": 12,
       "user": "Jermey Bishop",
       "width": 360,
-      "height": 240
+      "height": 240,
+      "dateUploaded": "2020-07-25"
     },
     {
       "title": "Aurora Lights",
@@ -671,7 +663,8 @@
       "photoId": 13,
       "user": "Frans Van Heerdan",
       "width": 360,
-      "height": 243
+      "height": 243,
+      "dateUploaded": "2020-06-25"
     },
     {
       "title": "Green Forest",
@@ -682,7 +675,8 @@
       "photoId": 14,
       "user": "Luis Del Rio",
       "width": 360,
-      "height": 270
+      "height": 270,
+      "dateUploaded": "2020-05-25"
     },
     {
       "title": "Food",
@@ -693,7 +687,8 @@
       "photoId": 15,
       "user": "Ella Olssen",
       "width": 608,
-      "height": 403
+      "height": 403,
+      "dateUploaded": "2021-06-25"
     }
   ],
   "Coverinfo": [
@@ -860,9 +855,9 @@
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "id": 2,
       "privacy": "Private",
-      "DateTaken": "",
+      "DateTaken": "2017-05-01T01:50:08",
       "title": "CATT",
-      "discription": "",
+      "discription": "I love water",
       "add comment": "only you",
       "add tag": "only you",
       "userId": 2
@@ -900,6 +895,7 @@
       "add tag": "only you",
       "userId": 1
     }
+    
   ],
   "Group": [
     {
@@ -1060,6 +1056,189 @@
       "notificationDate": "28/12/2020",
       "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     }
+  ],
+  "photosSearch": [
+    {
+      "title": "Ocean",
+      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Waves",
+      "favs": 103,
+      "comments": 18,
+      "photoId": 1,
+      "user": "John Smith"
+    },
+    {
+      "title": "Cats",
+      "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Cozy cats",
+      "favs": 163,
+      "comments": 128,
+      "photoId": 2,
+      "user": "Felicity Berkleef"
+    },
+    {
+      "title": "Paris",
+      "imagePath": "https://images.pexels.com/photos/358561/pexels-photo-358561.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Paris Seine Île de la Cité Pont",
+      "favs": 183,
+      "comments": 170,
+      "photoId": 3,
+      "user": "Ferda Hejl"
+    },
+    {
+      "title": "Ice",
+      "imagePath": "https://images.pexels.com/photos/2325229/pexels-photo-2325229.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Ice cave",
+      "favs": 193,
+      "comments": 140,
+      "photoId": 4,
+      "user": "Farero"
+    },
+    {
+      "title": "Sunset",
+      "imagePath": "https://images.pexels.com/photos/3347244/pexels-photo-3347244.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Sunset at Feistein Lighthouse",
+      "favs": 233,
+      "comments": 120,
+      "photoId": 5,
+      "user": "Richard Larsson"
+    },
+    {
+      "title": "Solar Circumnavigation",
+      "imagePath": "https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Solar energy sun eruption energy",
+      "favs": 121,
+      "comments": 100,
+      "photoId": 6,
+      "user": "Bill Bowman"
+    },
+    {
+      "title": "Boat",
+      "imagePath": "https://images.pexels.com/photos/722427/pexels-photo-722427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Boat in a lake",
+      "favs": 130,
+      "comments": 110,
+      "photoId": 7,
+      "user": "Jeanmarie Shelton"
+    },
+    {
+      "title": "Infinite Beauty",
+      "imagePath": "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Beautiful mountains with lake scenery ",
+      "favs": 103,
+      "comments": 12,
+      "photoId": 8,
+      "user": "Fabien Georget"
+    },
+    {
+      "title": "The kids",
+      "imagePath": "https://images.pexels.com/photos/4934920/pexels-photo-4934920.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Some baby foxes",
+      "favs": 100,
+      "comments": 10,
+      "photoId": 9,
+      "user": "Monte Stinett"
+    },
+    {
+      "title": "Beach",
+      "imagePath": "https://images.pexels.com/photos/2065837/pexels-photo-2065837.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "A woman running down the beach",
+      "favs": 143,
+      "comments": 120,
+      "photoId": 10,
+      "user": "Minutiae"
+    },
+    {
+      "title": "Colors",
+      "imagePath": "https://images.pexels.com/photos/2832432/pexels-photo-2832432.png?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Colors mixing together",
+      "favs": 183,
+      "comments": 180,
+      "photoId": 11,
+      "user": "Annie Raekone"
+    },
+    {
+      "title": "Dolphins",
+      "imagePath": "https://images.pexels.com/photos/2422915/pexels-photo-2422915.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Dolphins in the sea",
+      "favs": 193,
+      "comments": 140,
+      "photoId": 12,
+      "user": "Jermey Bishop"
+    },
+    {
+      "title": "Aurora Lights",
+      "imagePath": "https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Igloo",
+      "favs": 250,
+      "comments": 230,
+      "photoId": 13,
+      "user": "Frans Van Heerdan"
+    },
+    {
+      "title": "Green Forest",
+      "imagePath": "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "Wandering in the forest",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 14,
+      "user": "Luis Del Rio"
+    },
+    {
+      "title": "Food",
+      "imagePath": "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Food photography",
+      "favs": 280,
+      "comments": 280,
+      "photoId": 15,
+      "user": "Ella Olssen"
+    },
+    {
+      "title": "Beach",
+      "imagePath": "https://images.pexels.com/photos/3355788/pexels-photo-3355788.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Sandy beach",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 16,
+      "user": "Ellie Winters"
+    },
+    {
+      "title": "Cats",
+      "imagePath": "https://images.pexels.com/photos/2817430/pexels-photo-2817430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Sleeping cats",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 17,
+      "user": "Lisa"
+    },
+    {
+      "title": "Jellyfish",
+      "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Jellyfish in the deep ocean",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 18,
+      "user": "Luis Del Rio"
+    },
+    {
+      "title": "Mountains",
+      "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Exploring",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 19,
+      "user": "Steve Richards"
+    },
+    {
+      "title": "Beach",
+      "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Relaxing in the water",
+      "favs": 257,
+      "comments": 210,
+      "photoId": 20,
+      "user": "Luis Del Rio"
+    }
+    
   ]
 
 }

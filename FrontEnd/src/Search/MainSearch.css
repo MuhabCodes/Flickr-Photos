@@ -1,4 +1,9 @@
-.recent-photos {
+#search-bar {
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+#img-div {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   min-width: 100%;
@@ -6,9 +11,10 @@
   margin-right: auto;
   box-sizing: border-box;
   opacity: 1;
+  margin-top: 5%;
 }
 
-.image-grid {
+.image-grid-search {
   position: initial;
   display: flex;
   flex-direction: row;
@@ -18,7 +24,7 @@
   margin-right: 10%;
 }
 
-.image-container {
+.image-container-search {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -31,7 +37,7 @@
   min-width: fit-content;
 }
 
-.single-image {
+.single-image-search {
   float: left;
   object-fit: cover;
   flex-grow: 1;
@@ -40,7 +46,7 @@
   padding: 2px;
 }
 
-.text-area .title-exp {
+.text-area-search .title-search {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -54,11 +60,11 @@
   font-size: medium;
 }
 
-.image-container:hover {
+.image-container-search:hover {
   cursor: pointer;
 }
 
-.image-container:hover .text-area .title-exp {
+.image-container-search:hover .text-area-search .title-search {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -66,7 +72,7 @@
   font-weight: bold;
 }
 
-.image-container .user-name-explore {
+.image-container-search .user-name-search {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -80,7 +86,7 @@
   font-size: medium;
 }
 
-.image-container:hover .user-name-explore {
+.image-container-search:hover .user-name-search {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -88,14 +94,14 @@
   font-weight: bold;
 }
 
-.image-container .fav-btn {
+.image-container-search .fav-btn-search {
   visibility: hidden;
   transition: visibility 0s, opacity 0.5s linear;
   background: transparent;
   z-index: 9999;
 }
 
-.image-container:hover .fav-btn {
+.image-container-search:hover .fav-btn-search {
   background-color: transparent;
   border: 0;
   z-index: 9999;
@@ -104,7 +110,7 @@
   font-weight: bold;
 }
 
-.image-container .faves {
+.image-container-search .faves-search {
   position: absolute;
   bottom: 0;
   right: 15%;
@@ -117,7 +123,7 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.image-container:hover .faves {
+.image-container-search:hover .faves-search {
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;
@@ -125,7 +131,7 @@
   font-weight: bold;
 }
 
-.image-container .comments {
+.image-container-search .comments-search {
   position: absolute;
   bottom: 0;
   right: 1%;
@@ -138,7 +144,7 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.image-container:hover .comments {
+.image-container-search:hover .comments-search {
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;
