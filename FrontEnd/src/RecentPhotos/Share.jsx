@@ -1,6 +1,7 @@
 import React from 'react';
 import './Share.css';
-
+// This is a share button component, which when pressed, displays the link of the explore webpage
+// to be copied to clipboard
 function Share() { // shows link to be shared
   document.getElementById('share-link-btn').style.display = 'none';
   document.getElementById('shareArea').style.display = 'block';
