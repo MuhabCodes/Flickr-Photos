@@ -5,6 +5,7 @@
  * @apiGroup auth
  * @apiVersion  0.1.1
  * 
+ * @apiDescription When a user forgets his password, an email is sent to that user containing a url, that url if followed will change his password.
  * 
  * @apiParam  (Body) {String} email Email to send the mail to.
  * 

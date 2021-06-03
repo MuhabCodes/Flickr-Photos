@@ -4,7 +4,7 @@
  * @apiGroup auth
  * @apiVersion  0.1.1
  * 
- * @apiDescription logs a user in returning a token to be used for authorization purposes.
+ * @apiDescription logs a user in with a google account returning a token to be used for authorization purposes.
  * 
  * @apiParam  (Body) {String} email The google email the user uses to login.
  * @apiParam  (Body) {String} displayName The display name of the google account being sent

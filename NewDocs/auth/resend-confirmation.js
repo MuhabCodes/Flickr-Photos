@@ -4,6 +4,7 @@
  * @apiGroup auth
  * @apiVersion  0.1.1
  * 
+ * @apiDescription Resends an email for the user in order to activate his account.
  * 
  * @apiParam  (Body) {String} email Email to send confirmation link on.
  * 

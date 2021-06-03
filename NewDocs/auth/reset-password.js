@@ -1,12 +1,15 @@
 /**
  * 
- * @api {PUT} /auth/forgot-password/:resetToken sendResetPasswordMail
+ * @api {PUT} /auth/forgot-password/:resetToken resetPassword
  * 
  * @apiGroup auth
  * @apiVersion  0.1.1
  * 
+ * @apiDescription When the user clicks on the link in his email, A request is sent to this url (newPassword in body of that request), The password is then changed to the new password
  * 
- * @apiParam {String} resetToken Token sent to the email by the backend, return to identify user
+ * @apiParam {String} resetToken Token sent to the email by the backend, return to identify user.
+ * 
+ * @apiParam (Body) {String} newPassword The new password that'll replace the old one.
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the password has been changed.
  * 

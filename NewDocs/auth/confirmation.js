@@ -4,6 +4,7 @@
  * @apiGroup auth   
  * @apiVersion  0.1.1
  * 
+ * @apiDescription If user follow link sent to him in the email, His account will be confirmed (activated).
  * 
  * @apiParam  {String} confirmationToken A token that identifies the user that wants to confirm his account
  * 
