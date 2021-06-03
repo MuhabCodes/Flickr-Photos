@@ -68,7 +68,7 @@ module.exports = async function SendNotificationToUser(notification) {
   const tokensRef = FIREBASE_DATABASE.ref('/tokens');
   const tokenSnapshot = await tokensRef.orderByChild('userId').equalTo(reciever).once('value');
   if (!tokenSnapshot.val()) {
-    return res.status(404).json({ error: 'Not Found' });
+    return;
   }
 
   // accessing token as its returned as
