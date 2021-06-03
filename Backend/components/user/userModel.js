@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  userAvatar: {
+    type: String,
+    default: 'https://i.imgur.com/PyVmvKL.jpg',
+  },
   isActivated: {
     type: Boolean,
     default: false,
