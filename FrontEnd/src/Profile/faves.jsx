@@ -54,54 +54,70 @@ const Faves = () => {
   return (
     <div className="recent-photos">
       {!loading && (
-      <div className="image-grid">
-        {photoArr.map((photo) => (
-          <div className="image-container">
-            <LazyLoadImage
-              className="single-image"
-              src={photo.imagePath}
-              alt=""
-              key={photo.photoId}
-            />
-            <span className="text-area">
-              <span className="title-exp">
-                {photo.title}
-              </span>
-              <span className="user-name-explore">
-                by
-                {' '}
-                {photo.user}
-              </span>
-              <span className="faves">
-                <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
-                  {currUser ? (
-                    <img
-                      className="star"
-                      src="https://img.icons8.com/ios-filled/25/ffffff/star--v1.png"
-                      alt="favIcon"
-                    />
-                  ) : (
-                    <img
-                      className="star"
-                      src="https://img.icons8.com/android/24/ffffff/star.png"
-                      alt="favIcon"
-                    />
-                  )}
-                </button>
-                <span className="fav-count" id="favNum" key={photo.photoId}>
-                  {photo.favs}
-                </span>
-              </span>
-              <span className="comments">
-                <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
-                {photo.comments}
-              </span>
-            </span>
-
+        <div>
+          {!currUser && photoArr.length === 0 && (
+          <div className="empty-fav-ufv">
+            <div className="empty-bg-ufv">
+              <div>
+                <div className="actual-bg-ufv" />
+              </div>
+            </div>
+            <div className="wrap-empty-ufv">
+              <h3 className="empty-text-ufv">Use does not have any favorites yet. Stay tuned.</h3>
+            </div>
           </div>
-        ))}
-        <div />
-      </div>
+          )}
+          {currUser && photoArr.length === 0 ? (<div />) : (
+            <div className="image-grid">
+              {photoArr.map((photo) => (
+                <div className="image-container">
+                  <LazyLoadImage
+                    className="single-image"
+                    src={photo.imagePath}
+                    alt=""
+                    key={photo.photoId}
+                  />
+                  <span className="text-area">
+                    <span className="title-exp">
+                      {photo.title}
+                    </span>
+                    <span className="user-name-explore">
+                      by
+                      {' '}
+                      {photo.user}
+                    </span>
+                    <span className="faves">
+                      <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                        {currUser ? (
+                          <img
+                            className="star"
+                            src="https://img.icons8.com/ios-filled/25/ffffff/star--v1.png"
+                            alt="favIcon"
+                          />
+                        ) : (
+                          <img
+                            className="star"
+                            src="https://img.icons8.com/android/24/ffffff/star.png"
+                            alt="favIcon"
+                          />
+                        )}
+                      </button>
+                      <span className="fav-count" id="favNum" key={photo.photoId}>
+                        {photo.favs}
+                      </span>
+                    </span>
+                    <span className="comments">
+                      <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
+                      {photo.comments}
+                    </span>
+                  </span>
+
+                </div>
+              ))}
+              <div />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
