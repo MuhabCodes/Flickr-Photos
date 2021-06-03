@@ -38,10 +38,6 @@ const PhotoSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  gallery: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Gallery',
-  },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Tag',

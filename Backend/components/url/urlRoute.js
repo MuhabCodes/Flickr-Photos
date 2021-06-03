@@ -56,16 +56,4 @@ router.get('/userphotos', async (req, res) => {
 });
 // #endregion
 
-// #region urls_related_to_gallery
-// Function urls - lookupGallery // Returns gallery info, by url.
-
-router.get('/gallery', async (req, res) => {
-  try {
-    await urlController.lookupGallery(req, res);
-  } catch (err) {
-    res.status(500).send({ statusCode: 500, error: 'We Couldnt return gallery due to server errors' });
-  }
-});
-// #endregion
-
 module.exports = router;

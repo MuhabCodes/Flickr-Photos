@@ -3,7 +3,6 @@ const { join } = require('path');
 const Person = require('../components/person/personModel');
 const userSeed = require('./user.seed');
 const groupSeed = require('./group.seed');
-const gallerySeed = require('./gallery.seed');
 const photoSeed = require('./photo.seed');
 const favoriteSeed = require('./favorite.seed');
 const cameraBrandSeed = require('./camera.seed');
@@ -35,7 +34,6 @@ async function seed() {
   await userSeed();
   await personSeed();
   await groupSeed();
-  await gallerySeed();
   await photoSeed();
   await favoriteSeed();
   await cameraBrandSeed();
