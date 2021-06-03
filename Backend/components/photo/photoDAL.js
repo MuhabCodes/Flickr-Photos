@@ -20,20 +20,20 @@ module.exports = {
   async addPersonToPhotoDAL(photoId, userId) {
     await Photo.updateOne(
       { _id: photoId },
-      { $push: { peopleInPhoto: userId } },
+      { $push: { inPhoto: userId } },
     );
   },
   async removePersonFromPhotoDAL(photoId, userId) {
     await Photo.updateOne(
       { _id: photoId },
-      { $pull: { peopleInPhoto: userId } },
+      { $pull: { inPhoto: userId } },
     );
   },
   async getPeopleInPhotoDAL(photoId) {
     // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
-      .select('peopleInPhoto')
-      .populate('peopleInPhoto')
+      .select('inPhoto')
+      .populate('inPhoto')
       .select('displayName personId')
       .populate('personId');
 

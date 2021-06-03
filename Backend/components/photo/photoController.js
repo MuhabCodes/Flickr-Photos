@@ -117,9 +117,9 @@ module.exports = {
     try {
       const { photoId } = req.params;
 
-      const peopleInPhoto = await getPeopleInPhotoServ(photoId);
+      const inPhoto = await getPeopleInPhotoServ(photoId);
 
-      res.status(200).json({ statusCode: 200, peopleInPhoto: peopleInPhoto.peopleInPhoto });
+      res.status(200).json({ statusCode: 200, inPhoto: inPhoto.inPhoto });
     } catch (err) {
       res.json({
         error: 'PhotoNotFound',
