@@ -3,9 +3,8 @@ import { cameras } from '../PopularCamerasDb.json';
 import './RankTable.css';
 // This .jsx will display the data fetched from .json as a table.
 // RankTable function has two functions renderHead and renderBody
-// 1- renderHead return the headings of the table such as Rank, Brand, Top Models, Model Types,
-// and # of Models.
-// 2- renderBody maps the objects in the json file as rows in the table,
+// 1- renderHead return the headings of the table such as Brand, Top Models, Model Types.
+// 2- renderBody maps the objects as rows in the table,
 // each row containing an object and the columns display their details.
 // 3- In the return statement, both functions mentioned above are called
 // and hence the table is displayed.
@@ -33,15 +32,15 @@ function RankTable() {
         {cameras.map((camera) => (
           <tr className="table-row">
             {/* <td className="table-cell" key={camera.rank}>{camera.rank}</td> */}
-            <td className="table-cell" key={camera.id}><a className="camera-table" href="./Brands">{camera.brand}</a></td>
-            <td className="table-cell" key={camera.id}>
+            <td className="table-cell"><a className="camera-table" href="./Brands">{camera.brand}</a></td>
+            <td className="table-cell">
               {camera.topModels.map((sub, index) => (
                 <a className="camera-table" href="./topModels">
                   { (index ? ', ' : '') + sub }
                 </a>
               ))}
             </td>
-            <td className="table-cell" key={camera.id}>
+            <td className="table-cell">
               { camera.modelTypes.map((sub, index) => (
                 <span className="model-types-column">
                   { (index ? ', ' : '') + sub }
