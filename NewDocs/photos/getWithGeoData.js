@@ -1,22 +1,24 @@
 /**
  *
- * @api {GET} /photos/recent getRecent
- * @apiDescription Returns a list of the latest public photos uploaded to flickr.
+ * @api {GET} /photos/getWithGeoData getWithGeoData
+ * @apiDescription Returns a list of your geo-tagged photos
  * @apiGroup photos
  * @apiVersion  0.1.0
  *
- *
- *
  * @apiSuccess (Success 200) {Number} statusCode The status code of the request
- * @apiSuccess (Success 200) {Object[]} photos The photos that have been recently uploaded
+ * @apiSuccess (Success 200) {Object[]} photos photos that have geo tags
+ * @apiError (Error 404) {Number} statusCode The status code of the request
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
+ *
+
  *
  *
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "statusCode" : 200,
- *      "photos":[{
+ *     "photos":[{ 
  *              "title":"Waterfall",
  *              "uploadDate":"2020-05-01T01:50:08",
  *              "imagePath":"www.example.com/doasf",
@@ -29,6 +31,13 @@
  *              },{...},...]
  * }
  *
+ *  @apiErrorExample {json} Error-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "NoPhotosFound",
+ *        "statusCode":404
+ *     }
+ * 
  *  @apiErrorExample {json} Error-500:
  *     HTTP/1.1 500 InternalServerError
  *     {
