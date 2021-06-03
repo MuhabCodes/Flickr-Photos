@@ -84,7 +84,7 @@ exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
     // sends email if the user exists and is activated
     await sendResetPasswordEmail(userObj._id, email);
 
-    res.status(200).json({ statusCode: 200 });
+    res.status(201).json({ statusCode: 201 });
   } else if (userObj && !userObj.isActivated) {
     // user in db but not activated
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });

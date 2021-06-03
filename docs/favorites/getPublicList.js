@@ -22,29 +22,27 @@
 
 @apiSuccessExample {json} Success-Response:
 *    {
-   "page": "2",
-   "pages": "89",
-   "perPage": "10",
+   
    "total": "881",
    "photo": [
       {
-         "photoId": "2636",
+         "_id": "2636",
          "title": "test_04",
          "isPublic": "1",
       },
       {
-         "photoId": "2635",
+         "_id": "2635",
           "title": "test_03",
          "isPublic": "0",
       },
       {
-         "photoId": "2633",
+         "_id": "2633",
          "title": "test_01",
          "isPublic": "1",
    
       },
       {
-         "photoId": "2610",
+         "_id": "2610",
          "title": "00_tall",
          "isPublic": "1",
       }

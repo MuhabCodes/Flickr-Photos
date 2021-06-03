@@ -1,13 +1,13 @@
 /**
  * 
- * @api {POST} /auth/login login
+ * @api {POST} /auth/googleSignIn googleSignIn
  * @apiGroup auth
- * @apiVersion  0.1.0
+ * @apiVersion  0.1.1
  * 
  * @apiDescription logs a user in returning a token to be used for authorization purposes.
  * 
- * @apiParam  (Body) {String} email The email the user uses to login.
- * @apiParam  (Body) {String} password The password that corresponds to the email.
+ * @apiParam  (Body) {String} email The google email the user uses to login.
+ * @apiParam  (Body) {String} displayName The display name of the google account being sent
  * 
  * @apiSuccess (Success 201) {String} accessToken Token that is used for authentication and authorization of opertaions throughout Flickr
  * @apiSuccess (Success 201) {Number} statusCode Indicates the success of the operation.

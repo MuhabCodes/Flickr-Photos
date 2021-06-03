@@ -1,11 +1,11 @@
 /**
  * 
- * @api {POST} /auth/confirmation/:confirmationToken confirmEmailAddress
- * @apiGroup auth   
+ * @api {PUT} /user/pro/:proToken becomePro
+ * @apiGroup user   
  * @apiVersion  0.1.1
  * 
  * 
- * @apiParam  {String} confirmationToken A token that identifies the user that wants to confirm his account
+ * @apiParam  {String} proToken A token that identifies the user that wants to become pro
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the account is now activated.
  * 
