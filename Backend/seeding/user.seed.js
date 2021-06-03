@@ -30,7 +30,8 @@ async function userSeed() {
 
   }, {
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ea'),
-    personId: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
+    person: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
+    displayName: 'anna',
     email: 'mhmd@amr.com',
     password: 'e3e3e3',
 

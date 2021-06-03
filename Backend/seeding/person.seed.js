@@ -10,7 +10,7 @@ mongoose
     { useNewUrlParser: true });
 const persons = [new Person({
   _id: '507f191e810c19729de86034',
-  age: 17,
+  age: 30,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -22,7 +22,7 @@ const persons = [new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86035',
-  age: 17,
+  age: 11,
   realName: 'mohamed',
 
   description: 'hi this is me',
@@ -34,7 +34,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86036',
-  age: 17,
+  age: 18,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -46,7 +46,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86037',
-  age: 17,
+  age: 26,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -58,7 +58,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86038',
-  age: 17,
+  age: 25,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -70,9 +70,8 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86039',
-  age: 17,
+  age: 24,
   realName: 'ahmed',
-
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street it',
@@ -82,7 +81,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86040',
-  age: 17,
+  age: 19,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -96,7 +95,6 @@ new Person({
   _id: '507f191e810c19729de86041',
   age: 17,
   realName: 'ahmed',
-
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street l',
@@ -106,7 +104,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86042',
-  age: 17,
+  age: 23,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -118,7 +116,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86043',
-  age: 17,
+  age: 23,
   realName: 'ahmed',
 
   description: 'this is me',
@@ -130,7 +128,7 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86044',
-  age: 17,
+  age: 20,
   realName: 'ahmed',
 
   description: 'this is me',
