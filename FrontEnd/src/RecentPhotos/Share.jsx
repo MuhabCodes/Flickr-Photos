@@ -4,15 +4,15 @@ import './Share.css';
 // to be copied to clipboard
 function Share() { // shows link to be shared
   document.getElementById('share-link-btn').style.display = 'none';
-  document.getElementById('shareArea').style.display = 'block';
+  document.getElementById('share-area').style.display = 'block';
 }
 function CancelShare() { // Cancel button that closes the link window
   document.getElementById('share-link-btn').style.display = 'block';
-  document.getElementById('shareArea').style.display = 'none';
+  document.getElementById('share-area').style.display = 'none';
 }
 // Reference used: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 function CopyLinkShare() { // Copy the link of explore webpage to clipboard
-  const copyText = document.getElementById('expLink');
+  const copyText = document.getElementById('exp-link');
   copyText.select();
   copyText.setSelectionRange(0, 99999); /* For mobile devices */
   document.execCommand('copy');
@@ -25,12 +25,12 @@ const ShareBtn = () => (
       <img src="https://img.icons8.com/ios/50/000000/forward-arrow.png" alt="" className="share-button-img" />
       Share
     </button>
-    <div className="share-link" id="shareArea" style={{ display: 'none' }}>
+    <div className="share-link" id="share-area" style={{ display: 'none' }}>
       <div className="share-actions">
         <button type="button" className="cancel-share" id="share-cancelbtn" onClick={CancelShare}>X</button>
       </div>
-      <textarea name="exploreLink" id="expLink"> https://flick.photos/Explore </textarea>
-      <button type="button" onClick={CopyLinkShare}>Copy text</button>
+      <textarea name="exploreLink" id="exp-link"> https://flick.photos/Explore </textarea>
+      <button type="button" id="copy-link-button" onClick={CopyLinkShare}>Copy text</button>
     </div>
   </div>
 );
