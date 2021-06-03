@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const favoriteDAL = require('./favoritesDAL');
+const photoDAL = require('../photo/photoDAL');
 
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
@@ -28,6 +29,7 @@ exports.add = async function addFavorite(req, res, next) {
       favoriteDate: favorite.favoriteDate,
     };
     req.userId = userId;
+    photoDAL.addFav(req.params.photoId);
     next();
   } catch (err) {
     res.status(500).json({
@@ -93,6 +95,7 @@ exports.deleteFavorite = async function deleteFavorite(req, res) {
   const { photoId } = req.params;
   try {
     const favoriteDeleted = await favoriteDAL.deleteFavorite({ userId, photoId });
+    photoDAL.removeFav(photoId);
     return res.status(200).json(favoriteDeleted);
   } catch (err) {
     return res.status(500).json({

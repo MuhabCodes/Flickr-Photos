@@ -208,3 +208,18 @@ exports.becomePro = async function becomePro(req, res) {
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };
+
+exports.getPublicPhotos = async function getPublicPhotos(req, res) {
+  const { params } = req;
+  try {
+    const userObj = await userDAL.getUserPublicPhotos(params.userId);
+    if (userObj.length === 0) { // checking whether response is empty or not
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
+    return res.status(200).json(userObj);
+  } catch (error) {
+    return res.status(500).json(error); // returns 500 if it couldn't access db
+  }
+};

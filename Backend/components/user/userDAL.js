@@ -162,3 +162,9 @@ exports.becomePro = async function becomePro(userId) {
     throw Error(JSON.stringify({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' }));
   }
 };
+
+module.exports.getUserPublicPhotos = async function getUserPublicPhotos(userId) {
+  const photoObj = await Photo.find({ $and: [{ user: userId }, { isPublic: true }] });
+
+  return photoObj;
+};

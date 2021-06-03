@@ -8,6 +8,7 @@ router.get('/email/:email', userController.getUserByEmail);
 router.get('/:userId/info', userController.getUserInfoById);
 router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
+router.get('/:userId/photos/public', userController.getPublicPhotos);
 
 router.post('/follow', userController.followUser);
 router.post('/addDescription/:userId', userController.addDescription);

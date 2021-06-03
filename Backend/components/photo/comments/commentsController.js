@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const commentsDAL = require('./commentsDAL');
+const photoDAL = require('../photoDAL');
 
 const { decryptAuthToken } = require('../../auth/Services/decryptToken');
 
@@ -30,6 +31,7 @@ exports.add = async function addComment(req, res, next) {
       dateCreated: comment.dateCreated,
       commentText: comment.commentText,
     };
+    photoDAL.addComment(req.params.photoId);
     next();
   } catch (err) {
     return res.status(500).json({
@@ -66,6 +68,7 @@ exports.deleteComment = async function deleteComment(req, res) {
       return res.status(404).json({ message: 'Photo not Found' });
     }
     const commentDeleted = await commentsDAL.deleteComment(commentID);
+    photoDAL.removeComment(photoID);
     return res.status(200).json(commentDeleted);
   } catch (err) {
     return res.status(500).json({
@@ -108,3 +111,5 @@ exports.findComment = async function findComment(req, res) {
     });
   }
 };
+
+
