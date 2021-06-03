@@ -1,9 +1,9 @@
 import React from 'react';
 import './PopCameras.css';
 // The PopCameras.jsx displays the Most popular brands section
-// It fetches the top 5 ranked camera from our json file and displays their images, brand names,
+// It fetches the top 5 ranked cameras and displays their images, brand names,
 // and brand models.
-// First, we introduce the cameras variable as props which holds the objects from json file.
+// First, we introduce the cameras variable as props which holds the objects.
 // Then, We use the slice function to get the first 5 brands and store them in cam.
 // Finally, in the return statement, we use cam. map to fetch the details of each object and
 // display them on the page.
@@ -21,7 +21,6 @@ const PopCameras = (props) => {
         <div
           className="top-five"
           id="five"
-          key={camera.id}
         >
           <div id="images-collection">
             <img id="camera-images" src={camera.image} alt="best camera brands" />
