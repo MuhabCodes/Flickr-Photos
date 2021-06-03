@@ -17,12 +17,14 @@ import CameraRoll from '../CameraRoll/CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Faves from '../Profile/faves';
+import Faves from '../Profile/Faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import SearchPage from '../Search/SearchPage';
+import Photostream from '../Profile/Photostream';
+import EditPhotostream from '../Profile/EditPhotostream';
 import PersonalInformation from '../Account/PersonalInformation';
 import EditPersonalInfo from '../Account/EditPersonalInfo';
 import DeleteAccount from '../Account/DeleteAccount';
@@ -88,15 +90,23 @@ function App() {
               <NavBar />
               <HomePage />
             </Route>
-            <Route path="/Profile/About/:id">
+            <Route exact path="/Profile/About/:id">
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
             </Route>
-            <Route path="/Profile/Faves">
+            <Route exact path="/Profile/Faves/:id">
               <CoverArea />
               <SubNavBar />
               <Faves />
+            </Route>
+            <Route exact path="/Profile/Photostream/:id">
+              <CoverArea />
+              <SubNavBar />
+              <Photostream />
+            </Route>
+            <Route exact path="/profile/photostream/edit/:id">
+              <EditPhotostream />
             </Route>
             <Route path="/CameraRoll">
               <CoverArea />

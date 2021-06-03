@@ -1,16 +1,16 @@
-.showcase-view-scP {
+.showcase-view-scp {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   line-height: 14px;
 }
 
-.showcase-scP {
+.showcase-scp {
   position: relative;
   border-bottom: 1px solid #e3e3e3;
   padding: 40px 10%;
 }
 
-.empty-showcase-scP {
+.empty-showcase-scp {
   background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/empty-showcase.jpg);
   background-size: 100%;
   background-position: 50% 0;
@@ -27,20 +27,20 @@
   min-height: 340px;
 }
 
-.empty-title-scP {
+.empty-title-scp {
   line-height: 24px;
   font-weight: 400;
   margin: 0;
   font-size: 18px;
 }
 
-.link-scP {
+.link-scp {
   cursor: pointer;
   text-decoration: none;
   color: #006dac;
 }
 
-.title-view-scP {
+.title-view-scp {
   font-size: 16px;
   line-height: 24px;
   margin: 0;
@@ -50,13 +50,13 @@
   position: relative;
 }
 
-.showcase-container-scP {
+.showcase-container-scp {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.grid-item-scP {
+.grid-item-scp {
   object-fit: cover;
   flex-grow: 1;
   float: left;

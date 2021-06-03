@@ -7,7 +7,7 @@ const MenuItems = [
   },
   {
     title: 'Photostream',
-    url: '/photostream',
+    url: '/Profile/Photostream',
     cName: 'nav-links',
     key: 'photostream',
   },
@@ -19,7 +19,7 @@ const MenuItems = [
   },
   {
     title: 'Faves',
-    url: '/Faves',
+    url: '/Profile/Faves',
     cName: 'nav-links',
     key: 'faves',
   },

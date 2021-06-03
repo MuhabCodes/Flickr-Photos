@@ -3,13 +3,13 @@
   padding: 0;
 }
 
-.cover-cvuP {
+.cover-cvup {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   opacity: 1 !important;
 }
 
-.changing-cover-photo-bg-cvuP {
+.changing-cover-photo-bg-cvup {
   width: 100%;
   padding-top: 130px;
   background-size: 100%;
@@ -18,7 +18,7 @@
   position: relative;
 }
 
-.cover-photo-gradient-cvuP {
+.cover-photo-gradient-cvup {
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@
     );
 }
 
-.cover-content-cvuP {
+.cover-content-cvup {
   color: #fff;
   height: 120px;
   position: relative;
@@ -46,7 +46,7 @@
   box-sizing: border-box;
 }
 
-.user-cover-avatar-cvuP {
+.user-cover-avatar-cvup {
   color: #fff;
   position: relative;
   background-color: #ddd;
@@ -62,7 +62,7 @@
   margin: 0 15px 14px 0;
 }
 
-.cover-photo-editbutton-cvuP {
+.cover-photo-editbutton-cvup {
   position: absolute;
   right: 0;
   top: -105px;
@@ -76,13 +76,13 @@
   width: 0;
 }
 
-.title-content-cvuP {
+.title-content-cvup {
   color: #fff;
   display: inline-block;
   width: calc(100% - 100px - 15px);
 }
 
-.user-cover-title-cvuP {
+.user-cover-title-cvup {
   color: #fff;
   display: flex;
   -webkit-box-pack: start;
@@ -93,7 +93,7 @@
   flex-wrap: nowrap;
 }
 
-.user-cover-name-cvuP {
+.user-cover-name-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   white-space: nowrap;
@@ -106,7 +106,99 @@
   display: inline-block;
 }
 
-.follow-view-cvuP {
+.view-follow-view-cvup {
+  color: #fff;
+  -webkit-box-direction: normal;
+  display: inline;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+}
+
+#follow-btn-false-cvup {
+  -webkit-box-direction: normal;
+  margin: 0;
+  text-transform: none;
+  appearance: button;
+  outline-width: 0;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 15px;
+  background-color: #fff;
+  color: #212124;
+  margin-top: 22px;
+  margin-left: 0;
+  top: 5px;
+}
+
+#follow-btn-true-cvup {
+  -webkit-box-direction: normal;
+  margin: 0;
+  text-transform: none;
+  appearance: button;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 32px;
+  transition: padding-right 0.3s ease 0.1s;
+  color: #fff;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #fff;
+  margin-top: 22px;
+  margin-left: 0;
+  top: 5px;
+}
+
+#following-btn-cvup {
+  display: inline;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+#plus-follow-btn-cvup {
+  display: inline;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+#follow-btn-false-cvup:hover {
+  background-color: transparent;
+  color: #fff;
+  border-radius: 3px;
+  border: solid white;
+}
+
+.follow-view-cvup {
   color: #fff;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -114,7 +206,7 @@
   flex-direction: row;
 }
 
-.pro-badge-style-cvuP {
+.pro-badge-style-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   white-space: nowrap;
@@ -131,7 +223,7 @@
   border: 2px solid white;
 }
 
-.user-cover-display-name-cvuP {
+.user-cover-display-name-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   white-space: nowrap;
@@ -146,7 +238,7 @@
   flex-shrink: 1;
 }
 
-.following-followers-cover-list-cvuP {
+.following-followers-cover-list-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   white-space: nowrap;
@@ -162,7 +254,7 @@
   flex-shrink: 0;
 }
 
-.cover-spacer-cvuP {
+.cover-spacer-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   white-space: nowrap;
@@ -179,7 +271,7 @@
   flex-shrink: 1;
 }
 
-.user-cover-photo-count-cvuP {
+.user-cover-photo-count-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   font-size: 16px;
@@ -191,7 +283,7 @@
   flex-shrink: 0;
 }
 
-.user-cover-join-date-cvuP {
+.user-cover-join-date-cvup {
   color: #fff;
   -webkit-box-direction: normal;
   font-size: 16px;
