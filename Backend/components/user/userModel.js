@@ -31,6 +31,7 @@ const userSchema = mongoose.Schema({
   },
   displayName: {
     type: String,
+    required: true, // TODO made required as notifications contain name and it could have nulls
   },
   groups: {
     type: [mongoose.Schema.Types.ObjectId],

@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-
 const commentsDAL = require('./commentsDAL');
 
 const { decryptAuthToken } = require('../../auth/Services/decryptToken');
 
-exports.add = async function addComment(req, res) {
+exports.add = async function addComment(req, res, next) {
   const { authorization } = req.headers;
 
   const { userId } = await decryptAuthToken(authorization);
@@ -21,19 +20,17 @@ exports.add = async function addComment(req, res) {
       photoId: req.params.photoId,
       commenttex: req.body.commentText,
     });
-    return res.status(201).json({
-      message: 'comment added succesfully',
-      commentCreated:
-
-  {
-    _id: comment.id,
-    user: comment.user,
-    photo: comment.photo,
-    dateCreated: comment.dateCreated,
-    commentText: comment.commentText,
-
-  },
-    });
+    // bypassing into middlewares
+    req.userId = userId;
+    req.photoFound = photoFound;
+    req.commentCreated = {
+      _id: comment.id,
+      user: comment.user,
+      photo: comment.photo,
+      dateCreated: comment.dateCreated,
+      commentText: comment.commentText,
+    };
+    next();
   } catch (err) {
     return res.status(500).json({
       error: err,
