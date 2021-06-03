@@ -18,11 +18,4 @@ class TestMainPage(object):
         yield
         self.mainPage.driver.quit()
 
-    def test_profile_icon(self, setup):
-        if self.mainPage.element_clickable(self.mainPage.PROFILE_ICON):
-            self.mainPage.click_profile_icon()
-            sleep(2)
-            if self.mainPage.element_clickable(self.mainPage.SETTINGS_LABEL):
-                self.mainPage.click(self.mainPage.SETTINGS_LABEL)
-                sleep(2)
-
+    def
