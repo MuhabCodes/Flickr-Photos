@@ -76,6 +76,7 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     const favoriteOutput = await favoriteDAL.findFavorite(user);
     return res.status(200).json(
       {
+        total: favoriteOutput.length,
         owner: user,
         photo: favoriteOutput
           .filter((favorite) => favorite.photo.isPublic)
