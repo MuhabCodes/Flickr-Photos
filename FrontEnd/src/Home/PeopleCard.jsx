@@ -1,10 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+
+import { React, useState } from 'react';
 import axios from 'axios';
+import jwt from 'jwt-decode';
 import './PeopleCard.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import configData from '../config.json';
 
 const PeopleCard = (props) => {
+  const history = useHistory();
   const prop = props;
   const { Profile } = prop;
   const name = Profile.displayName;
@@ -12,8 +16,27 @@ const PeopleCard = (props) => {
   const { uName } = Profile;
   const bgImage = Profile.coverPhoto;
   const Pro = Profile.isPro;
+  const { id } = Profile;
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  // For not rendering of text boxes until user info gets fetched
+  const userjwt = jwt(localStorage.getItem('token'));
   const handleClick = ((e) => {
+    const idToFollow = id;
+    console.log(id);
     e.preventDefault();
+    axios.post('/follow', id) // No doc so we assume that we send id to follow in body
+      .then(() => {
+        // change state of button
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+        } else if (error.response.status === 404) {
+          setTimeout(() => history.push('*'), 100); // Redirect to Error page
+        }
+      });
   });
   return (
     <div className="people-card">

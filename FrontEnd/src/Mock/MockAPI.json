@@ -860,7 +860,7 @@
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "id": 2,
       "privacy": "Private",
-      "DateTaken": "",
+      "DateTaken": "2021-05-01T01:50:08",
       "title": "CATT",
       "discription": "",
       "add comment": "only you",
@@ -1060,6 +1060,30 @@
       "notificationDate": "28/12/2020",
       "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     }
-  ]
+  ],
+  "follow": [
+    {
+      "2": "",
+      "id": 1
+    },
+    {
+      "2": "",
+      "id": 2
+    },
+    {
+      "4": "",
+      "id": 3
+    },
+    {
+      "3": "",
+      "id": 4
+    },
+    {
+      "1": "",
+      "id": 5
+    }
+  ],
+  "unfollow": [
 
+  ]
 }
