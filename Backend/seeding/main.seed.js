@@ -8,6 +8,7 @@ const photoSeed = require('./photo.seed');
 const favoriteSeed = require('./favorite.seed');
 const cameraBrandSeed = require('./camera.seed');
 const cameraModelSeed = require('./cameraModel.seed');
+const tagSeed = require('./tags.seed');
 
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
@@ -24,8 +25,8 @@ async function personSeed() {
     homeTown: 'ayhaga',
     country: 'frfr',
     description: 'dedd',
-    dateCreated: 'ererer',
-    birthDate: 'ccscds',
+    age: 17,
+    dateCreated: '2021-05-31T11:20:32.710Z',
     realName: 'ewfwe',
   }]);
 }
@@ -39,6 +40,7 @@ async function seed() {
   await favoriteSeed();
   await cameraBrandSeed();
   await cameraModelSeed();
+  await tagSeed();
   await mongoose.disconnect();
 }
 

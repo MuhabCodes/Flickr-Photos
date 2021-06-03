@@ -1,12 +1,17 @@
 /**
  * 
+<<<<<<< HEAD
  * @api {PUT} /auth/forgot-password/:resetToken sendResetPasswordMail
+=======
+ * @api {PUT} /forgot-password/:resetToken resetPassword
+>>>>>>> BE_master_noTests
  * 
  * @apiGroup auth
  * @apiVersion  0.1.1
  * 
  * 
  * @apiParam {String} resetToken Token sent to the email by the backend, return to identify user
+ * @apiParam (body) {String} newPassword The new password that will be set
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the password has been changed.
  * 
