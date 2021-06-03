@@ -1,9 +1,9 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 
-async function clearInvalidToken(token, tokenSnapshot, result) {
-  // since results is array and we have only one notification therefore 0
-  // index
+async function clearInvalidToken(tokenSnapshot, result) {
+  // since results is array and we have only one notification therefore
+  // 0 is our index
   const FIREBASE_DATABASE = admin.database();
   if (!result[0].error) return;
   switch (result[0].error.code) {
@@ -72,7 +72,6 @@ module.exports = async function SendNotificationToUser(notification) {
     // Object.keys(token.val())[0] is getting first key which is encryptedid
     const tokenValue = tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
 
-    console.log(notification);
     const payload = {
       notification: {
         title: newNotification.title,
@@ -97,7 +96,7 @@ module.exports = async function SendNotificationToUser(notification) {
     // so now we have token of reciever and we just need to send
     const response = await FIREBASE_MESSAGING.sendToDevice(tokenValue, payload);
     // will do here some database cleanups if token fails !!!
-    await clearInvalidToken(tokenValue, tokenSnapshot, response.results);
+    await clearInvalidToken(tokenSnapshot, response.results);
     // so if he unsubscribe or token changed --> delete it from db
   } catch (error) {
     console.log(error);
