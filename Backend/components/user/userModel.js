@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
   },
+  userAvatar: {
+    type: String,
+    default: 'https://i.imgur.com/PyVmvKL.jpg',
+  },
   isActivated: {
     type: Boolean,
     default: false,
@@ -18,9 +22,6 @@ const userSchema = mongoose.Schema({
   isPro: {
     type: Boolean,
     default: false,
-  },
-  galleries: {
-    type: [String], // TODO : Change to gallery array when gallery is done
   },
   albums: {
     type: [String], // TODO : Change to album when album is done.
