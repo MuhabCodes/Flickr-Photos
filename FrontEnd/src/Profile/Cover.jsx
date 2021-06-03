@@ -41,10 +41,10 @@ const CoverArea = () => {
       setFollowers(resp.data.Followers);
       setFollowing(resp.data.Following);
       setFollowingArr(resp.data.followingList);
-      if (cover === '0') {
+      if (resp.data.coverUrl === '0') {
         setCover(defaultC); // setting default cover in case user hasn't set a cover
       }
-      if (avatar === '0') {
+      if (resp.data.avatarUrl === '0') {
         setAvatar(defaultA); // setting default avatar in case user hasn't set an avatar
       }
       if (resp.data.isPro === '0') { // checking whether user isPro to display or hide pro badge
