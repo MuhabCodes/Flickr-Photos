@@ -1,3 +1,52 @@
+.empty-fav-ufv {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1 !important;
+}
+
+.empty-bg-ufv {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  top: 55px;
+}
+
+.actual-bg-ufv {
+  pointer-events: none;
+  user-select: none;
+  height: 100%;
+  min-height: 425px;
+  background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/faves3.jpg);
+  background-size: 100%;
+  background-position: 50% 0;
+  background-repeat: repeat-y;
+}
+
+.wrap-empty-ufv {
+  padding-top: 0;
+  height: 100%;
+  min-height: 453px;
+}
+
+.empty-text-ufv {
+  margin: 1em 0;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
 .recent-photos {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
