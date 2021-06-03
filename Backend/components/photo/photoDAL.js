@@ -5,7 +5,8 @@ module.exports = {
     return Photo.find().sort({ $natural: -1 });
   },
   async addNewPhoto(photoInfo) {
-    return Photo.insertOne(photoInfo);
+    return Photo.collection.insertOne(photoInfo);
+    // return photoInfo.save();
   },
   async getPhotoById(photoId) {
     return Photo.findById(photoId);

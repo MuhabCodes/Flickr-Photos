@@ -45,9 +45,9 @@ module.exports = {
             statusCode: 500,
           });
         }
-        return addNew(req.body, req.file.filename, res);
+        return addNew(req.body, req.file.path, res);
       });
-      return await addNew(req.body, req.file.filename, res);
+      // return await addNew(req.body, req.file.path, res);
     } catch (err) {
       return res.json({
         error: err.message,

@@ -20,10 +20,11 @@ router.get('/recent', getRecentPhotos);
 router.post('/', addPhoto);
 
 // get photos of a user given his id
-router.get('/:userId', getUserPhotos);
+router.get('/user/:userId', getUserPhotos);
 
 // get an image with an id
 router.get('/:photoId', showPhoto);
+// router.get('/:photoId', (req, res) => res.send('yeah'));
 
 // edit a photo based on its id
 router.put('/:photoId', editPhoto);
