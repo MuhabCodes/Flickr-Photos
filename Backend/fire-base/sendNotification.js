@@ -5,15 +5,20 @@ async function clearInvalidToken(tokenSnapshot, result) {
   // since results is array and we have only one notification therefore
   // 0 is our index
   const FIREBASE_DATABASE = admin.database();
-  if (!result[0].error) return;
-  switch (result[0].error.code) {
-    case 'messaging/invalid-registration-token':
-    case 'messaging/registration-token-not-registered':
-      FIREBASE_DATABASE.ref('/tokens').child(Object.keys(tokenSnapshot.val())[0])
-        .remove();
-      break;
-    default:
-      break;
+
+  const size = Object.keys(tokenSnapshot.val()).length;
+  for (let i = 0; i < size; i += 1) {
+    // eslint-disable-next-line no-continue
+    if (!result[i].error) continue;
+    switch (result[i].error.code) {
+      case 'messaging/invalid-registration-token':
+      case 'messaging/registration-token-not-registered':
+        FIREBASE_DATABASE.ref('/tokens').child(Object.keys(tokenSnapshot.val())[i])
+          .remove();
+        break;
+      default:
+        break;
+    }
   }
 }
 // this function send live notification to user as push up notification
@@ -68,9 +73,18 @@ module.exports = async function SendNotificationToUser(notification) {
       return;
     }
 
-    // accessing token as its returned as { "encryptedid":{token:token,userId:userId}}
+    // accessing token as its returned as
+    // { "encryptedid":{token:token,userId:userId},"encryptedid":{token:token,userId:userId} }
     // Object.keys(token.val())[0] is getting first key which is encryptedid
-    const tokenValue = tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
+
+    // we will make array of tokens as if user is logged in in mobile and web
+    // at same time so to send to both
+    const tokensValue = [];// tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
+
+    const size = Object.keys(tokenSnapshot.val()).length;
+    for (let i = 0; i < size; i += 1) {
+      tokensValue.push(tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[i]].token);
+    }
 
     const payload = {
       notification: {
@@ -93,8 +107,10 @@ module.exports = async function SendNotificationToUser(notification) {
         icon,
       },
     };
+    console.log('tokenValue', tokensValue);
     // so now we have token of reciever and we just need to send
-    const response = await FIREBASE_MESSAGING.sendToDevice(tokenValue, payload);
+    const response = await FIREBASE_MESSAGING.sendToDevice(tokensValue, payload);
+    console.log('response', response);
     // will do here some database cleanups if token fails !!!
     await clearInvalidToken(tokenSnapshot, response.results);
     // so if he unsubscribe or token changed --> delete it from db
