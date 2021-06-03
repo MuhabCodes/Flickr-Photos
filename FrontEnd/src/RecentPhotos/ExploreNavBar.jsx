@@ -4,6 +4,7 @@ import 'bootstrap';
 import { Link } from 'react-router-dom';
 // The ExploreNavbar.jsx will include a function 'ExploreNavbar' that returns the html tags and
 // properties to make up this navbar.
+// This explore nav bar is available to any kind of user (logged in or guest)
 // The following 2 lines are jquery code to toggle the dropdown list 'More' on click
 $(document).ready(() => {
   $('.dropdown-toggle').dropdown();
