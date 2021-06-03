@@ -56,8 +56,8 @@ exports.resendConfirmationMail = async function resendMail(
     // if the user is already activated, we send a 409 error (conflict).
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
   } else {
-    // user doesn't exist, so will send 409 for security purposes
-    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+    // user doesn't exist, so will send 404
+    res.status(404).send({ statusCode: 404, error: 'The user is not registered on our website.' });
   }
 };
 exports.confirmUser = async function confirmUser(req, res) {

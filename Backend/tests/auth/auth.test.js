@@ -235,8 +235,8 @@ describe('auth tests', () => {
         email: 'accNotExist@aoqge.com',
       })
       .end((err, res) => {
-        expect(res.statusCode).toEqual(409);
-        expect(res.body.statusCode).toEqual(409);
+        expect(res.statusCode).toEqual(404);
+        expect(res.body.statusCode).toEqual(404);
         done();
       });
   });
