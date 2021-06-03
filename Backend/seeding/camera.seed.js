@@ -7,7 +7,7 @@ require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 async function cameraBrandSeed() {
   if (await cameraBrand.findOne()) await cameraBrand.collection.drop();
   await cameraBrand.insertMany([{
-    name: 'Nikon',
+    brand: 'Nikon',
     _id: mongoose.Types.ObjectId('1092ea18321fa5101115dfad'),
     topModels: [
       'Nikon 500s',
@@ -22,7 +22,7 @@ async function cameraBrandSeed() {
     image: 'https://live.staticflickr.com/cameras/72157647510174616_model_large_d5b7ef6582.jpg',
   },
   {
-    name: 'Canon',
+    brand: 'Canon',
     topModels: [
       'EOS 5D Mark III',
       'CANON EOS 5D MARK IV',
@@ -38,7 +38,7 @@ async function cameraBrandSeed() {
     image: 'https://live.staticflickr.com/cameras/72157622292089908_model_large_497d3698ba.jpg',
     _id: mongoose.Types.ObjectId('1092ea18321fa5101115dfae'),
   }, {
-    name: 'Apple',
+    brand: 'Apple',
     topModels: ['iPhone 7',
       'iPhone XR',
       'iPhone X'],
@@ -49,7 +49,7 @@ async function cameraBrandSeed() {
     _id: mongoose.Types.ObjectId('1092ea18321fa5101115dfaf'),
 
   }, {
-    name: 'Samsung',
+    brand: 'Samsung',
     topModels: [
       'Galaxy S7',
       'Galaxy S8',
