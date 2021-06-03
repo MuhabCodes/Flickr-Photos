@@ -96,7 +96,7 @@ module.exports.getUserGroupsById = async function getUserById(userId) {
 };
 
 module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
-  const userObj = await User.find({ displayName: displayname });
+  const userObj = await User.findOne({ displayName: displayname });
   return userObj;
 };
 
