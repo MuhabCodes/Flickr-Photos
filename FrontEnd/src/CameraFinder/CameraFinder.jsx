@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import PopCameras from './PopCameras';
 import RankTable from './RankTable';
 import Graphs from './Graphs';
@@ -16,12 +17,11 @@ import NavBar from '../App/Navbar';
 // Rank, Brand, Top Models, Model Types, and # of Models.
 
 const CameraFinder = () => {
-  const [cameras, setPopCam] = useState(null);
+  const [cameras, setPopCam] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8000/cameras')
-      .then((res) => res.json())
-      .then((data) => {
-        setPopCam(data);
+    axios.get('/cameras')
+      .then((resp) => {
+        setPopCam(resp.data);
       });
   }, []);
   return (
