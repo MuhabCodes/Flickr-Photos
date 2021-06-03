@@ -24,9 +24,6 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  galleries: {
-    type: [String], // TODO : Change to gallery array when gallery is done
-  },
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
