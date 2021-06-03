@@ -846,59 +846,86 @@
   ],
   "photos": [
     {
-      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "privacy": "public",
-      "DateTaken": "2017-05-01T01:50:08",
       "id": 1,
-      "title": "water",
-      "discription": "I love water",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
+      "src": "https://images.unsplash.com/photo-1587956517146-e4c65555d3c6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "title": "first image",
+      "user": "meeee",
+      "userId": "4",
+      "isPro": true,
+      "userAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "faves": "56",
+      "comments": "24",
+      "views": "11",
+      "tags": [
+        "Yarab Nekhlas",
+        "Insha2allah Ne5las",
+        "Yarab t3dy",
+        "3ala 5er",
+        "Insha2allah"
+      ],
+      "date": "August 8, 2015",
+      "camera": "sony",
+      "allComments": [
+        {
+          "id": 1,
+          "userName": "Ahmed",
+          "comment": "Yarab Ne5las",
+          "commentAvatar": "https://resources.premierleague.com/premierleague/photo/2020/08/11/55650e57-1935-4a40-b3be-f8d1900598e8/FPL-Statement-Lead.png"
+        },
+        {
+          "id": 2,
+          "userName": "Mahmoud",
+          "comment": "Insha2allh han5ls",
+          "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        },
+        {
+          "id": 3,
+          "userName": "Hussein",
+          "comment": "Hat3dy 3ala 5er isa",
+          "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        }
+      ]
     },
     {
-      "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "id": 2,
-      "privacy": "Private",
-      "DateTaken": "",
-      "title": "CATT",
-      "discription": "",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 2
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 3,
-      "privacy": "public",
-      "DateTaken": "2020-05-01T01:50:08",
-      "title": "jelly fish",
-      "discription": "I love jelly fish",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 4,
-      "privacy": "private",
-      "DateTaken": "2018-05-01T01:50:08",
-      "title": "compas",
-      "discription": "I love compas",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 5,
-      "privacy": "private",
-      "DateTaken": "2019-05-01T01:50:08",
-      "title": "beach",
-      "discription": "I love the beach",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
+      "src": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+      "title": "second image",
+      "user": "meeee",
+      "userId": 3,
+      "isPro": true,
+      "userAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "faves": "56",
+      "comments": "24",
+      "views": "11",
+      "date": "August 8, 2015",
+      "tags": [
+        "Yarab Nekhlas",
+        "Insha2allah Ne5las",
+        "Yarab t3dy",
+        "3ala 5er",
+        "Insha2allah"
+      ],
+      "camera": "sony",
+      "allComments": [
+        {
+          "id": 1,
+          "userName": "Ahmed",
+          "comment": "Yarab Ne5las",
+          "commentAvatar": "https://resources.premierleague.com/premierleague/photo/2020/08/11/55650e57-1935-4a40-b3be-f8d1900598e8/FPL-Statement-Lead.png"
+        },
+        {
+          "id": 2,
+          "userName": "Mahmoud",
+          "comment": "Insha2allh han5ls",
+          "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        },
+        {
+          "id": 3,
+          "userName": "Hussein",
+          "comment": "Hat3dy 3ala 5er isa",
+          "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        }
+      ]
     }
   ],
   "Group": [
@@ -1060,6 +1087,85 @@
       "notificationDate": "28/12/2020",
       "imageUrl": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     }
+  ],
+  "albums": [
+    {
+      "id": 1,
+      "userId": 4,
+      "userAlbums": [
+        {
+          "albumTitle": "Yarab Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "albumphotos": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+            "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        },
+        {
+          "albumTitle": "Insha2allah Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "albumphotos": [
+            "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "userAlbums": [
+        {
+          "albumTitle": "Insha2allah Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "albumphotos": [
+            "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        },
+        {
+          "albumTitle": "Yarab tedy 3ala 5er",
+          "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "albumphotos": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+            "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        }
+      ]
+    }
+  ],
+  "Comments": [
+    {
+      "id": 1,
+      "userName": "Ahmed",
+      "comment": "Yarab Ne5las",
+      "userId": 4,
+      "commentAvatar": "https://resources.premierleague.com/premierleague/photo/2020/08/11/55650e57-1935-4a40-b3be-f8d1900598e8/FPL-Statement-Lead.png"
+    },
+    {
+      "id": 2,
+      "userName": "Mahmoud",
+      "comment": "Insha2allh han5ls",
+      "userId": 2,
+      "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "id": 3,
+      "userName": "Hussein",
+      "comment": "Hat3dy 3ala 5er isa",
+      "userId": 3,
+      "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "comment": "zzzxz",
+      "commentAvatar": "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "userName": "meeee",
+      "userId": "4",
+      "id": 4
+    }
   ]
-
 }
