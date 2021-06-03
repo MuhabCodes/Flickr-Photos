@@ -1,39 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import './faves.css';
-import configData from '../config.json';
+import './Faves.css';
 // The Faves.jsx is the component which helps in displaying the recent photos,
 // It includes the function 'Faves' which has a code the helps in fetching the photos from
 // a mock server. This function returns the fetched images, but not all at once,
 // but a couple at a time and the more the user scrolls down,
 // the more images are fetched and displayed.
 const Faves = () => {
+  const { id } = useParams();
+  const userjwt = jwt(localStorage.getItem('token'));
+  const [loading, setLoading] = useState(true);
   const [photos, setRecPhotos] = useState([]);
   const [toggled, setToggle] = useState(false);
+  const currUser = (id === userjwt.sub);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
-    fetch(`${configData.SERVER_URL}/photosExplore`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRecPhotos(data);
-      })
-      .catch(() => {
+    axios.get(`/Photostream/${id}`, {})
+      .then((resp) => {
+        setLoading(false);
+        setRecPhotos(resp.data.photoArray);
+        // setFaveCounts(resp.data.favs);
       });
   }, []);
-  // const obj = JSON.parse(photos);
-  // console.log(obj.favs);
-  // The following changes the photos(objects) to array that can be used by the .map
-  // function in the return block.
   const photoArr = Array.from(photos);
-  // console.log(photoArr[1].favs);
-  // function IncFave() {
-  //   if (toggled === true) {
-  //     const count = document.getElementById('favNum').innerText;
-  //     console.log(count);
-  //   }
-  // }
-  // The following function toggles the fave icon on click
   function ClickMe(e) {
     if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
       e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
@@ -60,6 +53,7 @@ const Faves = () => {
   // when hovering on an image
   return (
     <div className="recent-photos">
+      {!loading && (
       <div className="image-grid">
         {photoArr.map((photo) => (
           <div className="image-container">
@@ -70,8 +64,8 @@ const Faves = () => {
               key={photo.photoId}
             />
             <span className="text-area">
-              <span className="description">
-                {photo.description}
+              <span className="title-exp">
+                {photo.title}
               </span>
               <span className="user-name-explore">
                 by
@@ -80,11 +74,19 @@ const Faves = () => {
               </span>
               <span className="faves">
                 <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
-                  <img
-                    className="star"
-                    src="https://img.icons8.com/android/24/ffffff/star.png"
-                    alt="favIcon"
-                  />
+                  {currUser ? (
+                    <img
+                      className="star"
+                      src="https://img.icons8.com/ios-filled/25/ffffff/star--v1.png"
+                      alt="favIcon"
+                    />
+                  ) : (
+                    <img
+                      className="star"
+                      src="https://img.icons8.com/android/24/ffffff/star.png"
+                      alt="favIcon"
+                    />
+                  )}
                 </button>
                 <span className="fav-count" id="favNum" key={photo.photoId}>
                   {photo.favs}
@@ -100,6 +102,7 @@ const Faves = () => {
         ))}
         <div />
       </div>
+      )}
     </div>
   );
 };
