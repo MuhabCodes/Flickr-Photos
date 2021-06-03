@@ -40,7 +40,7 @@
   text-decoration: none;
 }
 
-#expdropdownMenuButton1 {
+#exp-dropdown-menu-button1 {
   background-color: white;
   color: rgba(5, 0, 0, 0.753);
   padding: 16px;
@@ -78,7 +78,7 @@
   border-bottom: transparent;
 }
 
-.exp-dropdown:hover #expdropdownMenuButton1 {
+.exp-dropdown:hover #exp-dropdown-menu-button1 {
   background-color: white;
   color: black;
 }
