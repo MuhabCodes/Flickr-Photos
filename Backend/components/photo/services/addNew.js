@@ -1,9 +1,10 @@
-const { addNewPhotos } = require('../photoDAL');
+const { addNewPhoto } = require('../photoDAL');
 
-const addNew = async (photosInfo, res) => {
+const addNew = async (photoInfo, photoName, res) => {
   try {
-    // photosinfo is an array of photos to be added to the server
-    await addNewPhotos(photosInfo);
+    // change the location attribute in the photoInfo
+    photoInfo.imageUrl = `./public/uploads/${photoName}`;
+    await addNewPhoto(photoInfo);
     return res.json({ statusCode: 201 });
   } catch (err) {
     return res.json({ error: err });

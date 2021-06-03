@@ -15,7 +15,7 @@ const {
 // get the most recent photos
 router.get('/recent', getRecentPhotos);
 
-// add a new photo it can also add multiple photos
+// add a new photo
 router.post('/', addPhoto);
 
 // get an image with an id
