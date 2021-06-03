@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     backgrounColor: 'transparent',
-    marginTop: '680px',
+    marginTop: '750px',
     fontSize: '16px',
   },
   paper2: {
     padding: theme.spacing(20),
     textAlign: 'center',
-    marginTop: '680px',
+    marginTop: '750px',
     backgroundImage: `url(${graph1})`,
     backgroundRepeat: 'no-repeat',
 
