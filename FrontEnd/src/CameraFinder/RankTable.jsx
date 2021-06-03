@@ -15,13 +15,14 @@ function RankTable() {
     return (
       <thead id="table-head">
         <tr className="table-row">
-          <th className="th">Rank ▾</th>
+          {/* <th className="th">Rank ▾</th> */}
           <th className="th">
             <a className="camera-table" href="./Brands">Brand</a>
           </th>
           <th className="th">Top Models</th>
           <th className="th">Model Types</th>
-          <th className="th"><a className="camera-table" href="./noOfModels"># of Models</a></th>
+          {/* <th className="th"><a className="camera-table" href="./noOfModels"># of Mod
+          //els</a></th> */}
         </tr>
       </thead>
     );
@@ -31,23 +32,23 @@ function RankTable() {
       <tbody id="tbody">
         {cameras.map((camera) => (
           <tr className="table-row">
-            <td className="table-cell" key={camera.rank}>{camera.rank}</td>
-            <td className="table-cell" key={camera.rank}><a className="camera-table" href="./Brands">{camera.brand}</a></td>
-            <td className="table-cell" key={camera.rank}>
+            {/* <td className="table-cell" key={camera.rank}>{camera.rank}</td> */}
+            <td className="table-cell" key={camera.id}><a className="camera-table" href="./Brands">{camera.brand}</a></td>
+            <td className="table-cell" key={camera.id}>
               {camera.topModels.map((sub, index) => (
                 <a className="camera-table" href="./topModels">
                   { (index ? ', ' : '') + sub }
                 </a>
               ))}
             </td>
-            <td className="table-cell" key={camera.rank}>
+            <td className="table-cell" key={camera.id}>
               { camera.modelTypes.map((sub, index) => (
                 <span className="model-types-column">
                   { (index ? ', ' : '') + sub }
                 </span>
               ))}
             </td>
-            <td className="table-cell" key={camera.rank}>{camera.noOfModel}</td>
+            {/* <td className="table-cell" key={camera.rank}>{camera.noOfModel}</td> */}
           </tr>
         ))}
       </tbody>
