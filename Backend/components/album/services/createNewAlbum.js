@@ -1,4 +1,4 @@
-const addNewAlbum = require('../albumDAL');
+const { addNewAlbum } = require('../albumDAL');
 
 const createNewAlbum = async (albumInfo, res) => {
   try {

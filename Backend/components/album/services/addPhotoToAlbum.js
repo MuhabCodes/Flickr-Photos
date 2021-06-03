@@ -1,4 +1,4 @@
-const addNewPhotoToAlbum = require('../albumDAL');
+const { addNewPhotoToAlbum } = require('../albumDAL');
 
 const addPhotoToAlbum = async (albumId, photoInfo, res) => {
   try {

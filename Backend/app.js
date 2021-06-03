@@ -8,6 +8,8 @@ const app = express();
 
 // middleware here (no routing)
 app.use(express.json());
+// use the static path
+app.use(express.static('./public'));
 
 // use routing i.e. app.use('foo', bar)
 app.route('/').get((req, res) => {

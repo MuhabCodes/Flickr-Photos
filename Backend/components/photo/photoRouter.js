@@ -7,6 +7,7 @@ const {
   showPhoto,
   editPhoto,
   deletePhoto,
+  getUserPhotos,
 } = require('./photoController');
 // get the required functions from the controller
 
@@ -17,6 +18,9 @@ router.get('/recent', getRecentPhotos);
 
 // add a new photo
 router.post('/', addPhoto);
+
+// get photos of a user given his id
+router.get('/:userId', getUserPhotos);
 
 // get an image with an id
 router.get('/:photoId', showPhoto);

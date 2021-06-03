@@ -1,4 +1,4 @@
-const fetchUserAlbums = require('../albumDAL');
+const { fetchUserAlbums } = require('../albumDAL');
 
 const getUserAlbumsById = async (authorId, res) => {
   try {

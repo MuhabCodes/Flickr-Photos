@@ -5,6 +5,7 @@ const { addNew } = require('./services/addNew');
 const { getInfo } = require('./services/getInfo');
 const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
+const { getUserPhotosById } = require('./services/getUserPhotosById');
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
@@ -77,6 +78,16 @@ module.exports = {
   async deletePhoto(req, res) {
     try {
       return await deletePhoto(req.params.photoId, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async getUserPhotos(req, res) {
+    try {
+      return await getUserPhotosById(req.params.userId, res);
     } catch (err) {
       return res.json({
         error: 'PhotoNotFound',

@@ -1,4 +1,4 @@
-const fetchAlbum = require('../albumDAL');
+const { fetchAlbum } = require('../albumDAL');
 
 const getAlbumById = async (albumId, res) => {
   try {

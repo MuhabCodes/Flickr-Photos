@@ -1,4 +1,4 @@
-const removeFromAlbum = require('../albumDAL');
+const { removeFromAlbum } = require('../albumDAL');
 
 const removePhotoFromAlbum = async (albumId, photoId, res) => {
   try {

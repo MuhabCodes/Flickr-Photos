@@ -16,4 +16,7 @@ module.exports = {
   async removePhoto(photoToRemove) {
     return photoToRemove.remove();
   },
+  async fetchUserPhotos(userId) {
+    return Photo.find({ user: userId });
+  },
 };
