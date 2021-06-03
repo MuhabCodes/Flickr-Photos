@@ -15,7 +15,7 @@ const urlRouter = require('./components/url/urlRoute');
 const groupRouter = require('./components/group/groupRoute');
 const tagsRouter = require('./components/tags/tagsRouter');
 const notificationRouter = require('./components/notification/notificationRouter');
-
+const searchRouter = require('./components/search/searchRouter');
 // declaring app
 const app = express();
 
@@ -39,6 +39,7 @@ app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
 app.use('/tags', tagsRouter);
 app.use('/notifications', notificationRouter);
+app.use('/search', searchRouter);
 // exporting
 
 module.exports = app;

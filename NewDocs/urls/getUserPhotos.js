@@ -7,7 +7,7 @@
  * 
  * @apiDescription Returns the url to a user's photos.
  * 
- * @apiParam  (query) {String} userId The Id of the user to fetch the url for. If omitted, the calling user is assumed.
+ * @apiParam  (Query) {String} userId The Id of the user to fetch the url for. If omitted, the calling user is assumed.
  * 
  * 
  * @apiSuccess (Success 200) {Object} userPhotosUrl the url to a user's photos.

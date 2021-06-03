@@ -7,7 +7,7 @@
  * 
  * 
  * @apiParam {String} resetToken Token sent to the email by the backend, return to identify user
- * @apiParam (body) {String} newPassword The new password that will be set
+ * @apiParam (Body) {String} newPassword The new password that will be set
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the password has been changed.
  * 
