@@ -26,9 +26,10 @@
 *     }
 
 * @apiSuccessExample {json} Success-Response:
-*    {
+*    {    "photo_Id": "5d6ede6a0ba62570afcedd3d",
+           "total": 2,
    "comment": {
-      "_id": "6065-109722179-72057594077818641",
+      "commentId": "6065-109722179-72057594077818641",
       "authorId": "35468159852@N01",
       "authorName": "Rev Dan Catt",
       "dateCreate": "1141841470",
