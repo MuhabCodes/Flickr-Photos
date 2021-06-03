@@ -45,6 +45,7 @@ module.exports = {
 
     return inPhoto;
   },
+
 };
 
 module.exports.removeFav = async function removeFav(photoId) {
@@ -69,4 +70,12 @@ module.exports.removeComment = async function removeComment(photoId) {
   const photoObj = await Photo.findById(photoId);
   photoObj.comments -= 1;
   photoObj.save();
+};
+
+module.exports.searchPhotosDAL = async function searchPhotosDAL(searchWord) {
+  const searchPhotos = await Photo.find({ $text: { $search: searchWord } })
+    .select('title favs comments user imageUrl description _id')
+    .populate('user', '_id displayName');
+
+  return searchPhotos;
 };
