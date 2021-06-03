@@ -61,16 +61,16 @@
 }
 
 .grid-item-euph {
-  position: absolute;
+  position: relative;
+  display: inline-block;
   background-repeat: no-repeat;
   background-position: 50%;
   background-color: #fff;
   background-size: cover;
-  display: block;
   background-position-y: calc(50% - 45px);
-  transform: translate(0 px, 0 px);
   width: 301px;
   height: 402px;
+  margin-left: 2px;
 }
 
 .interactions-bar-placeholder-euph {
