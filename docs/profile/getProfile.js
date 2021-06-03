@@ -21,7 +21,7 @@
 *    {
    "_id": "85826296@N00",
    "realName": "Hal",
-   "birthDate": "12-12-2000",
+   "age": "18",
    "description": "This is me, this is my story",
    "occupation": "Super Conductor",
    "homeTown": "Melbourne, Australia",
