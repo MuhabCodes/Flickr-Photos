@@ -32,11 +32,8 @@ module.exports = async function SendNotificationToUser(notification) {
     // to be called on each child in one iteration so i limit that to only once
     // and endAt() to get recently added notification
 
-    console.log(notification);
     // creating my Own notification that will be (pushed-up)
     const newNotification = notification;
-    // TODO JUST FOR TESTING
-    newNotification.senderName = 'EBBBOOO';
 
     newNotification.title = 'Flickr App';
     if (notification.act === 'like') {
@@ -52,7 +49,6 @@ module.exports = async function SendNotificationToUser(notification) {
     const payload = {
       notification: newNotification,
     };
-    console.log('payload', payload);
 
     // querying database searching for reciever token
     // if found therefore he will be online and send to him notification
@@ -68,10 +64,9 @@ module.exports = async function SendNotificationToUser(notification) {
     // accessing token as its returned as { "encryptedid":{token:token,userId:userId}}
     // Object.keys(token.val())[0] is getting first key which is encryptedid
     const tokenValue = tokenSnapshot.val()[Object.keys(tokenSnapshot.val())[0]].token;
-    console.log(tokenValue);
+
     // so now we have token of reciever and we just need to send
     const response = await FIREBASE_MESSAGING.sendToDevice(tokenValue, payload);
-    console.log(response);
     // will do here some database cleanups if token fails !!!
     await clearInvalidToken(tokenValue, tokenSnapshot, response.results);
     // so if he unsubscribe or token changed --> delete it from db
