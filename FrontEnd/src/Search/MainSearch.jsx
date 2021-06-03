@@ -21,7 +21,6 @@ const MainSearch = () => {
   // when searching with title=query
   const [stateImages, setStateImages] = useState([]); // used to set the images fetched
   const [isLoading, setLoading] = useState(true); // for loading purpose
-  // const [faveCounts, setFaveCounts] = useState([]);
   // The following function loadPage is used to check if token exists,
   // and displays the image's details on hovering for the logged in user and none for the guest.
   let userjwt = [];
@@ -39,12 +38,10 @@ const MainSearch = () => {
         .then((resp) => {
           setLoading(false);
           setStateImages(resp.data);
-          // setFaveCounts(resp.data.favs);
         });
     }, [search]);
     return stateImages;
   }
-  // console.log(faveCounts);
   // function searchClick: on clicking on the search button, the images will be fetched and the url
   // will be changed to match the results' title
   const searchClick = (e) => {
@@ -65,13 +62,6 @@ const MainSearch = () => {
     if (userjwt) {
       if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
         e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
-        // let FavesC = { faveCounts };
-        // FavesC += 1;
-        // axios.patch(`/photos?title=${search}`, FavesC)
-        //   .then(() => {
-        //     setFaveCounts(FavesC);
-        //     history.push(`/search?title=${search}`);
-        //   });
       } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
         e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
       }
