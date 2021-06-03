@@ -14,6 +14,8 @@ const cameraBrandRouter = require('./components/cameraBrand/cameraBrandRouter');
 const urlRouter = require('./components/url/urlRoute');
 const groupRouter = require('./components/group/groupRoute');
 const galleryRouter = require('./components/Gallery/galleryRoute');
+const tagsRouter = require('./components/tags/tagsRouter');
+const notificationRouter = require('./components/notification/notificationRouter');
 
 // declaring app
 const app = express();
@@ -23,6 +25,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // use routing i.e. app.use('foo', bar)
 app.use('/auth', authRouter);
@@ -35,6 +39,8 @@ app.use('/cameras/brands', cameraBrandRouter);
 app.use('/gallery', galleryRouter);
 app.use('/groups', groupRouter);
 app.use('/urls', urlRouter);
+app.use('/tags', tagsRouter);
+app.use('/notifications', notificationRouter);
 // exporting
 
 module.exports = app;

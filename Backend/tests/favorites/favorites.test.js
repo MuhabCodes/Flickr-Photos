@@ -10,9 +10,9 @@ const profileReached = {
   _id: '507f191e810c19729de860ef',
   homeTown: 'ayhaga',
   country: 'frfr',
+  dateCreated: '2021-05-31T11:20:32.710Z',
   description: 'dedd',
-  dateCreated: 'ererer',
-  birthDate: 'ccscds',
+  age: 17,
   realName: 'ewfwe',
   __v: 0,
 };

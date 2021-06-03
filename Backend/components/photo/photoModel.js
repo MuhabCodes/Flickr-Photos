@@ -44,7 +44,7 @@ const PhotoSchema = new Schema({
   },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Comment',
+    ref: 'Tag',
   },
   width: {
     type: Number,
@@ -62,7 +62,9 @@ const PhotoSchema = new Schema({
   { type: Boolean },
   isFriend:
   { type: Boolean },
-
+  location: {
+    type: String,
+  },
   // add the user reference when it is completed
 });
 

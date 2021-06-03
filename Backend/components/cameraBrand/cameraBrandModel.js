@@ -6,6 +6,15 @@ const cameraBrandSchema = new Schema({
     unique: true,
     required: true,
   },
+  topModels: {
+    type: [String],
+  },
+  modelTypes: {
+    type: [String],
+  },
+  image: {
+    type: String,
+  },
 
 });
 module.exports = model('cameraBrand', cameraBrandSchema);

@@ -13,7 +13,8 @@ module.exports.createBrand = async function createBrand(brandName) {
 };
 
 module.exports.getAllBrands = async function getAllBrands() {
-  const brandObj = await CameraBrand.find().select('name _id');
+  const brandObj = await CameraBrand.find();
+
   return brandObj;
 };
 
