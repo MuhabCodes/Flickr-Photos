@@ -77,14 +77,14 @@ const RecentPhotos = () => {
                 {photo.user}
               </span>
               <span className="faves">
-                <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                <button className="fav-btn" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
                   <img
                     className="star"
                     src="https://img.icons8.com/android/24/ffffff/star.png"
                     alt="favIcon"
                   />
                 </button>
-                <span className="fav-count" id="favNum" key={photo.photoId}>
+                <span className="fav-count" id="fav-num" key={photo.photoId}>
                   {photo.favs}
                 </span>
               </span>
