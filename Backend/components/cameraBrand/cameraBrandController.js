@@ -5,10 +5,10 @@ module.exports.createBrand = async function createBrand(req, res) {
   const { body } = req;
   try {
     // checking if there is  a brand already named like this
-    const brandObj = await cameraBrandDAL.createBrand(body.name);
+    const brandObj = await cameraBrandDAL.createBrand(body.brand);
     if (!brandObj) {
       return res.status(404).json({
-        message: `There is already a brand named like this ${body.name}`,
+        message: `There is already a brand named like this ${body.brand}`,
       });
     }
     return res.status(200).json(brandObj); //  else create the brand

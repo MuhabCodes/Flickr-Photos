@@ -2,6 +2,7 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const tagDAL = require('../tags/tagsDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -75,6 +76,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
         message: 'Not found',
       });
     }
+    const userTags = await tagDAL.getUserTag(params.userId);
     const userPhotos = await userDAL.getPhotos(params.userId);
     return res.status(200).json({
       userId: userObj._id,
@@ -91,6 +93,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       photosCount: userPhotos.length,
       description: userObj.description,
       person: userObj.personId,
+      tags: userTags.length,
 
     });
   } catch (error) {
@@ -131,7 +134,6 @@ exports.getPhotos = async function getPhotos(req, res) {
 exports.sendProEmail = async function sendPro(req, res) {
   const { authorization } = req.headers;
   if (!authorization) res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
-
   try {
     const { userId } = await decryptAuthToken(authorization);
     const user = await userDAL.getUserById(userId);
@@ -146,7 +148,8 @@ exports.sendProEmail = async function sendPro(req, res) {
       res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
     }
   } catch (err) {
-    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+    // user not in db
+    res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
   }
 };
 exports.followUser = async function followUser(req, res) {

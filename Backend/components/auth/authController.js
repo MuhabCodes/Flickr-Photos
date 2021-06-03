@@ -56,8 +56,8 @@ exports.resendConfirmationMail = async function resendMail(
     // if the user is already activated, we send a 409 error (conflict).
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
   } else {
-    // user doesn't exist, so will send 409 for security purposes
-    res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
+    // user doesn't exist, so will send 404
+    res.status(404).send({ statusCode: 404, error: 'The user is not registered on our website.' });
   }
 };
 exports.confirmUser = async function confirmUser(req, res) {
@@ -84,7 +84,7 @@ exports.sendResetPasswordEmail = async function sendRstPw(req, res) {
     // sends email if the user exists and is activated
     await sendResetPasswordEmail(userObj._id, email);
 
-    res.status(200).json({ statusCode: 200 });
+    res.status(201).json({ statusCode: 201 });
   } else if (userObj && !userObj.isActivated) {
     // user in db but not activated
     res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
@@ -101,7 +101,7 @@ exports.resetPassword = async function resetPw(req, res) {
     // use the id and the new password to change the current pw
     await userDAL.resetPassword(userId, newPassword);
 
-    res.status(200).json({ statusCode: 200 });
+    res.status(201).json({ statusCode: 201 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 

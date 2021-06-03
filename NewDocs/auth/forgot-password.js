@@ -10,6 +10,9 @@
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the email is sent.
  * 
+ * @apiError (Error 404) {String} error The server can not find the requested resource. 
+ * @apiError (Error 404) {Number} statusCode The status code
+ * 
  * @apiError (Error 409) {String} error Indicates that the user is not activated.
  * @apiError (Error 409) {Number} statusCode The status code
  * 
