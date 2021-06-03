@@ -2,14 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import configData from '../config.json';
 import edit from './assets/edit_icon.png';
 import './AboutBio.css';
 
 const AboutBio = () => {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
   const { id } = useParams();
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
