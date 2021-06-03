@@ -2,7 +2,6 @@
   "cameras": [
     {
       "id": 1,
-      "rank": "1",
       "brand": "Apple",
       "topModels": [
         "iPhone 7",
@@ -14,12 +13,10 @@
         "Point and Shoot",
         "Tablet"
       ],
-      "noOfModel": "37",
       "image": "https://live.staticflickr.com/cameras/72157635062339950_model_large_d77764305a.jpg"
     },
     {
       "id": 2,
-      "rank": "2",
       "brand": "Canon",
       "topModels": [
         "EOS 5D Mark III",
@@ -33,12 +30,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "284",
       "image": "https://live.staticflickr.com/cameras/72157622292089908_model_large_497d3698ba.jpg"
     },
     {
       "id": 3,
-      "rank": "3",
       "brand": "Nikon",
       "topModels": [
         "D750",
@@ -50,12 +45,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "216",
       "image": "https://live.staticflickr.com/cameras/72157647510174616_model_large_d5b7ef6582.jpg"
     },
     {
       "id": 4,
-      "rank": "4",
       "brand": "Sony",
       "topModels": [
         "ILCE-7M3",
@@ -69,12 +62,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "360",
       "image": "https://cvp.com/images/products/21%2011%2020141416567683a7%20II%20main.jpg"
     },
     {
       "id": 5,
-      "rank": "5",
       "brand": "Fujifilm",
       "topModels": [
         "X-T2",
@@ -87,12 +78,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "194",
       "image": "https://live.staticflickr.com/cameras/72157667961187030_model_large_c9528d48b3.jpg"
     },
     {
       "id": 6,
-      "rank": "6",
       "brand": "Olympus",
       "topModels": [
         "E-M1MarkII",
@@ -104,12 +93,10 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "188",
       "image": "https://static.bhphoto.com/images/images2500x2500/1478047926_1283565.jpg"
     },
     {
       "id": 7,
-      "rank": "7",
       "brand": "Panasonic",
       "topModels": [
         "DC-G9",
@@ -122,12 +109,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "194",
       "image": "https://static.fotokonijnenberg.nl/media/catalog/product/cache/image/800x547/602f0fa2c1f0d1ba5e241f914e856ff9/p/a/panasonic_lumix_dcg9_body_pandcg9egkdf713c413e9c3b65a8785d24fb3bfb24e7091b87_1.jpg"
     },
     {
       "id": 8,
-      "rank": "8",
       "brand": "Samsung",
       "topModels": [
         "Galaxy S7",
@@ -141,12 +126,10 @@
         "Point and Shoot",
         "Video Camera"
       ],
-      "noOfModel": "278",
       "image": "https://mob4me.com/Assets/images/mobile/galaxy-s8-large.jpg"
     },
     {
       "id": 9,
-      "rank": "9",
       "brand": "Google",
       "topModels": [
         "Pixel 3",
@@ -156,12 +139,10 @@
       "modelTypes": [
         "Cameraphone"
       ],
-      "noOfModel": "9",
       "image": "https://www.gizmochina.com/wp-content/uploads/2018/08/Google-Pixel-3.jpg"
     },
     {
       "id": 10,
-      "rank": "10",
       "brand": "Leica",
       "topModels": [
         "M",
@@ -176,7 +157,6 @@
         "Mirrorless Camera",
         "Point and Shoot"
       ],
-      "noOfModel": "33",
       "image": "https://static.leica-camera.com/var/leica/storage/images/media/media-asset-management-mam/global-international/photography/m-system/tynon5/overview/m-systemseite_teaser-hero_m10-r/2221805-1-eng-MA/M-Systemseite_Teaser-Hero_M10-R_teaser-653x484.png"
     }
   ],
