@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-
 const commentsDAL = require('./commentsDAL');
+const photoDAL = require('../photoDAL');
 
 const { decryptAuthToken } = require('../../auth/Services/decryptToken');
 
-exports.add = async function addComment(req, res) {
+exports.add = async function addComment(req, res, next) {
   const { authorization } = req.headers;
 
   const { userId } = await decryptAuthToken(authorization);
@@ -21,19 +21,18 @@ exports.add = async function addComment(req, res) {
       photoId: req.params.photoId,
       commenttex: req.body.commentText,
     });
-    return res.status(201).json({
-      message: 'comment added succesfully',
-      commentCreated:
-
-  {
-    _id: comment.id,
-    user: comment.user,
-    photo: comment.photo,
-    dateCreated: comment.dateCreated,
-    commentText: comment.commentText,
-
-  },
-    });
+    // bypassing into middlewares
+    req.userId = userId;
+    req.photoFound = photoFound;
+    req.commentCreated = {
+      _id: comment.id,
+      user: comment.user,
+      photo: comment.photo,
+      dateCreated: comment.dateCreated,
+      commentText: comment.commentText,
+    };
+    photoDAL.addComment(req.params.photoId);
+    next();
   } catch (err) {
     return res.status(500).json({
       error: err,
@@ -69,6 +68,7 @@ exports.deleteComment = async function deleteComment(req, res) {
       return res.status(404).json({ message: 'Photo not Found' });
     }
     const commentDeleted = await commentsDAL.deleteComment(commentID);
+    photoDAL.removeComment(photoID);
     return res.status(200).json(commentDeleted);
   } catch (err) {
     return res.status(500).json({
@@ -111,3 +111,5 @@ exports.findComment = async function findComment(req, res) {
     });
   }
 };
+
+

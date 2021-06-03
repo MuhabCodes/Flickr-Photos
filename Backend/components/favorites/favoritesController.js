@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const favoriteDAL = require('./favoritesDAL');
+const photoDAL = require('../photo/photoDAL');
 
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
@@ -12,7 +13,7 @@ exports.add = async function addFavorite(req, res, next) {
     const favoriteIfFound = await
     favoriteDAL.findFavoriteByUserAndPhoto({ userId, photoId: req.params.photoId });
     if (favoriteIfFound.length !== 0) {
-      res.status(404).json({ message: 'You already liked this photo' });
+      return res.status(409).json({ message: 'You already liked this photo' });
     }
     const favorite = await favoriteDAL.createFavorite({
       id: new mongoose.Types.ObjectId(),
@@ -20,13 +21,15 @@ exports.add = async function addFavorite(req, res, next) {
       favoriteDa: Date.now(),
       photoId: req.params.photoId,
     });
-
+    // req.userId=userId; // just passing to next middleware
     req.favoriteCreated = {
       _id: favorite.id,
       user: favorite.user,
       photoId: favorite.photo,
       favoriteDate: favorite.favoriteDate,
     };
+    req.userId = userId;
+    photoDAL.addFav(req.params.photoId);
     next();
   } catch (err) {
     res.status(500).json({
@@ -48,10 +51,10 @@ exports.findFavorite = async function findFavorite(req, res) {
       {
         total: favoriteOutput.length,
         owner: user,
-        photos: favoriteOutput.map((doc) => ({
-          photo: doc.photo,
+        photo: favoriteOutput.map((doc) => (
+          doc.photo
 
-        })),
+        )),
       },
     );
   } catch (err) {
@@ -72,8 +75,9 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     const favoriteOutput = await favoriteDAL.findFavorite(user);
     return res.status(200).json(
       {
+        total: favoriteOutput.length,
         owner: user,
-        photos: favoriteOutput
+        photo: favoriteOutput
           .filter((favorite) => favorite.photo.isPublic)
           .map((favorite) => favorite.photo),
       },
@@ -91,6 +95,7 @@ exports.deleteFavorite = async function deleteFavorite(req, res) {
   const { photoId } = req.params;
   try {
     const favoriteDeleted = await favoriteDAL.deleteFavorite({ userId, photoId });
+    photoDAL.removeFav(photoId);
     return res.status(200).json(favoriteDeleted);
   } catch (err) {
     return res.status(500).json({

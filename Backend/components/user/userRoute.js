@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('./userController');
+const { createFollowNotification } = require('../../middleware/createNotification');
 
 const router = express.Router();
 router.get('/displayname/:displayName', userController.getUserbyDisplayName);
@@ -7,6 +8,7 @@ router.get('/email/:email', userController.getUserByEmail);
 router.get('/:userId/info', userController.getUserInfoById);
 router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
+router.get('/:userId/photos/public', userController.getPublicPhotos);
 
 router.post('/follow', userController.followUser);
 router.post('/addDescription/:userId', userController.addDescription);
@@ -19,7 +21,10 @@ router.route('/pro').put(async (req, res) => {
   }
 });
 
-router.route('/pro/:proToken').put(async (req, res) => {
+router.post('/follow', userController.followUser, createFollowNotification);
+router.post('/addDescription/:userId', userController.addDescription);
+
+router.route('/pro/:proToken').post(async (req, res) => {
   try {
     await userController.becomePro(req, res);
   } catch (_) {

@@ -3,7 +3,6 @@ const { join } = require('path');
 const Person = require('../components/person/personModel');
 const userSeed = require('./user.seed');
 const groupSeed = require('./group.seed');
-const gallerySeed = require('./gallery.seed');
 const photoSeed = require('./photo.seed');
 const favoriteSeed = require('./favorite.seed');
 const cameraBrandSeed = require('./camera.seed');
@@ -24,9 +23,9 @@ async function personSeed() {
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
     homeTown: 'ayhaga',
     country: 'frfr',
+    age: '23',
     description: 'dedd',
-    age: 17,
-    dateCreated: '2021-05-31T11:20:32.710Z',
+    dateCreated: Date.now(),
     realName: 'ewfwe',
   }]);
 }
@@ -35,7 +34,6 @@ async function seed() {
   await userSeed();
   await personSeed();
   await groupSeed();
-  await gallerySeed();
   await photoSeed();
   await favoriteSeed();
   await cameraBrandSeed();

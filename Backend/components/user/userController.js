@@ -2,6 +2,8 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const tagDAL = require('../tags/tagsDAL');
+const favouriteDAL = require('../favorites/favoritesDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -75,7 +77,10 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
         message: 'Not found',
       });
     }
-    const userPhotos = await userDAL.getPhotos(params.userId);
+    const userFavs = await favouriteDAL.findFavorite(params.userId);
+    const userTags = await tagDAL.getUserTag(params.userId);
+    const userPhotos = await userDAL.getPhotos(params.userId); // array of photos
+
     return res.status(200).json({
       userId: userObj._id,
       followersCount: userObj.followers.length,
@@ -91,6 +96,8 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       photosCount: userPhotos.length,
       description: userObj.description,
       person: userObj.personId,
+      tags: userTags.length,
+      favs: userFavs.length,
 
     });
   } catch (error) {
@@ -131,7 +138,6 @@ exports.getPhotos = async function getPhotos(req, res) {
 exports.sendProEmail = async function sendPro(req, res) {
   const { authorization } = req.headers;
   if (!authorization) res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
-
   try {
     const { userId } = await decryptAuthToken(authorization);
     const user = await userDAL.getUserById(userId);
@@ -146,11 +152,13 @@ exports.sendProEmail = async function sendPro(req, res) {
       res.status(409).send({ statusCode: 409, error: 'The request could not be completed due to a conflict with the current state of the resource.' });
     }
   } catch (err) {
-    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+    // user not in db
+    res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
   }
 };
-exports.followUser = async function followUser(req, res) {
+exports.followUser = async function followUser(req, res, next) {
   const { body } = req;
+  // body.userId contain id of user you need to follow
   const { authorization } = req.headers;
   try {
     const currentUser = await decryptAuthToken(authorization);
@@ -174,7 +182,11 @@ exports.followUser = async function followUser(req, res) {
     // increase the followers of the user
     await userDAL.addPersonToFollowers(body.userId, currentUser.userId);
 
-    return res.status(200).json(userObj);
+    // forwarding info from mw / to next
+    req.sender = userObj; // since userObj is the one following
+    // no need to send reciever as its already in req.body.userId
+
+    next();
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -194,5 +206,20 @@ exports.becomePro = async function becomePro(req, res) {
     const errMsg = JSON.parse(err.message);
 
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.getPublicPhotos = async function getPublicPhotos(req, res) {
+  const { params } = req;
+  try {
+    const userObj = await userDAL.getUserPublicPhotos(params.userId);
+    if (userObj.length === 0) { // checking whether response is empty or not
+      return res.status(404).json({
+        message: 'Not found',
+      });
+    }
+    return res.status(200).json(userObj);
+  } catch (error) {
+    return res.status(500).json(error); // returns 500 if it couldn't access db
   }
 };

@@ -38,10 +38,6 @@ const PhotoSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  gallery: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Gallery',
-  },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Tag',
@@ -54,7 +50,7 @@ const PhotoSchema = new Schema({
     type: Number,
     required: true,
   },
-  peopleInPhoto: {
+  inPhoto: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
   },
@@ -64,6 +60,12 @@ const PhotoSchema = new Schema({
   { type: Boolean },
   location: {
     type: String,
+  },
+  favs: {
+    type: Number,
+  },
+  comments: {
+    type: Number,
   },
   // add the user reference when it is completed
 });
