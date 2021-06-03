@@ -8,6 +8,7 @@ import { Link, useHistory } from 'react-router-dom';
 import configData from '../config.json';
 
 const PeopleCard = (props) => {
+  const [isFollowed, setIsFollowed] = useState(false);
   const history = useHistory();
   const prop = props;
   const { Profile } = prop;
@@ -26,23 +27,37 @@ const PeopleCard = (props) => {
     const idToFollow = id;
     console.log(id);
     e.preventDefault();
-    axios.post('/follow', id) // No doc so we assume that we send id to follow in body
-      .then(() => {
-        // change state of button
-      }).catch((error) => {
-        if (error.response.status === 401) {
-          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
-        } else if (error.response.status === 404) {
-          setTimeout(() => history.push('*'), 100); // Redirect to Error page
-        }
-      });
+    if (!isFollowed) {
+      axios.post('/follow', id) // No doc so we assume that we send id to follow in body
+        .then(() => {
+          setIsFollowed(true);
+        }).catch((error) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+            setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+          } else if (error.response.status === 404) {
+            setTimeout(() => history.push('*'), 100); // Redirect to Error page
+          }
+        });
+    } else if (isFollowed) {
+      axios.post('/unfollow', id) // No doc so we assume that we send id to unfollow in body
+        .then(() => {
+          setIsFollowed(false);
+        }).catch((error) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+            setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+          } else if (error.response.status === 404) {
+            setTimeout(() => history.push('*'), 100); // Redirect to Error page
+          }
+        });
+    }
   });
   return (
     <div className="people-card">
       <div className="upper-container">
         {/* Container for image of profiles */}
-        <Link to="/ProfileURLHERE">
+        <Link to={`/photos/${id}`}>
           {/* Redirects to profile */}
           <div className="card-img-container">
             <img className="card-img" src={bgImage} alt="" />
@@ -53,12 +68,12 @@ const PeopleCard = (props) => {
         <div className="lower-container-left">
           {/* Contaianer for avatar and names of profiles */}
           <div className="avatar-img-container">
-            <Link to="/ProfileURLHERE">
+            <Link to={`/photos/${id}`}>
               <img src={avatar} alt="" className="avatar-img" />
             </Link>
           </div>
           <div className="profile-names">
-            <Link to="/ProfileURLHERE">
+            <Link to={`/photos/${id}`}>
               <div className="display-name">
                 { name }
               </div>
@@ -71,7 +86,7 @@ const PeopleCard = (props) => {
         </div>
         <div className="lower-container-right">
           <button className="btn btn-primary btn-sm" id="people-card-follow-btn" type="button" onClick={handleClick}>
-            Follow
+            { isFollowed ? 'Followed' : 'Follow' }
           </button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import jwt from 'jwt-decode';
 import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
+import PostsFeed from './PostsFeed';
 import './HomePage.css';
 import configData from '../config.json';
 
@@ -71,7 +72,7 @@ const HomePage = () => {
               </div>
             ) : (
               <div className="following-homepage-main-container">
-                Main Pagefeed
+                <PostsFeed />
               </div>
             ) }
           </div>
