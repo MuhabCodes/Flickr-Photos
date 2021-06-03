@@ -3,6 +3,7 @@ const { decryptAuthToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 const tagDAL = require('../tags/tagsDAL');
+const favouriteDAL = require('../favorites/favoritesDAL');
 
 exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
@@ -76,6 +77,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
         message: 'Not found',
       });
     }
+    const userFavs = await favouriteDAL.findFavorite(params.userId);
     const userTags = await tagDAL.getUserTag(params.userId);
     const userPhotos = await userDAL.getPhotos(params.userId);
     return res.status(200).json({
@@ -94,6 +96,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       description: userObj.description,
       person: userObj.personId,
       tags: userTags.length,
+      favs: userFavs.length,
 
     });
   } catch (error) {
