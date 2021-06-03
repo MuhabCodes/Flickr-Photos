@@ -81,7 +81,7 @@ const MainSearch = () => {
             onInput={handleSearchInputChanges}
             name="title"
           />
-          <button type="submit">
+          <button type="submit" id="search-button-btn">
             <img src="https://img.icons8.com/ios/25/000000/search--v1.png" alt="" />
             {' '}
           </button>
@@ -114,7 +114,7 @@ const MainSearch = () => {
                         <img
                           className="star"
                           src="https://img.icons8.com/android/24/ffffff/star.png"
-                          alt="favIcon"
+                          alt=""
                         />
                       </button>
                       <span onChange={ClickMe} value={photo.favs} className="fav-count-search" id="fav-num" key={photo.photoId}>
