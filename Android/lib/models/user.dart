@@ -14,7 +14,7 @@ class User {
   List<User> following;
   List<Post> savedPosts;
   bool hasStory;
-  int userId;
+  String userId;
   String profileId;
   String nsId;
   String showCaseSet;
@@ -27,6 +27,7 @@ class User {
   String homeTown;
   String city;
   String country;
+  bool isPro;
 
   User(
       {this.age,
@@ -51,7 +52,8 @@ class User {
       this.country,
       this.email,
       this.password,
-      this.token});
+      this.token,
+      this.isPro});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         profileId: json["profileId"],
