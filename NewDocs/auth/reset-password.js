@@ -1,10 +1,6 @@
 /**
  * 
-<<<<<<< HEAD
- * @api {PUT} /auth/forgot-password/:resetToken sendResetPasswordMail
-=======
  * @api {PUT} /forgot-password/:resetToken resetPassword
->>>>>>> BE_master_noTests
  * 
  * @apiGroup auth
  * @apiVersion  0.1.1
