@@ -11,15 +11,12 @@ class Photos {
 }
 
 class Photo {
-  Photo({
-    this.uploadDate,
-    this.imagePath,
-    this.captureDate,
-  });
+  Photo({this.uploadDate, this.imagePath, this.captureDate});
 
   String uploadDate;
   String imagePath;
   String captureDate;
+  bool selected = false;
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
         uploadDate: json["uploadDate"],
