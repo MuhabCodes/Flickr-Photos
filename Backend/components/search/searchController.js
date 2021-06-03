@@ -16,5 +16,5 @@ exports.searchPhoto = async function searchPhoto(req, res) {
 
   const searchPhotos = await searchPhotosDAL(searchWord);
   const returnVals = searchPhotos.map(renameObject);
-  res.status(200).json(returnVals);
+  res.status(200).json({ photosSearch: returnVals });
 };
