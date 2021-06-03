@@ -33,6 +33,7 @@ import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import configData from '../config.json';
+import Logout from '../Logout/Logout';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
@@ -40,7 +41,7 @@ function App() {
   axios.defaults.headers.common.Authorization = localStorage.getItem('token');
   return (
     <div className="flickr-main">
-      {/* <NavBar /> */}
+      <Logout />
       <Router>
         <div className="app">
           <Switch>
