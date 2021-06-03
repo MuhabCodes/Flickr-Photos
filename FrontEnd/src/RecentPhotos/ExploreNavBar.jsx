@@ -16,10 +16,10 @@ function ExploreNavBar() {
       <Link id="exp-menu-item" to="./" className="active">Explore</Link>
       <div className="animation start-home" />
       <div className="exp-dropdown">
-        <button className="dropdown-toggle" type="button" id="expdropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+        <button className="dropdown-toggle" type="button" id="exp-dropdown-menu-button1" data-toggle="dropdown" aria-expanded="false">
           More
         </button>
-        <div className="dropdown-menu" aria-labelledby="expdropdownMenuButton1">
+        <div className="dropdown-menu" aria-labelledby="exp-dropdown-menu-button1">
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
         </div>
       </div>
