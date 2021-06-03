@@ -24,9 +24,9 @@ async function personSeed() {
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
     homeTown: 'ayhaga',
     country: 'frfr',
+    age: '23',
     description: 'dedd',
-    age: 17,
-    dateCreated: '2021-05-31T11:20:32.710Z',
+    dateCreated: Date.now(),
     realName: 'ewfwe',
   }]);
 }

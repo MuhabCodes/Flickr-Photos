@@ -49,10 +49,10 @@ exports.findFavorite = async function findFavorite(req, res) {
       {
         total: favoriteOutput.length,
         owner: user,
-        photos: favoriteOutput.map((doc) => ({
-          photo: doc.photo,
+        photo: favoriteOutput.map((doc) => (
+          doc.photo
 
-        })),
+        )),
       },
     );
   } catch (err) {
@@ -74,7 +74,7 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
     return res.status(200).json(
       {
         owner: user,
-        photos: favoriteOutput
+        photo: favoriteOutput
           .filter((favorite) => favorite.photo.isPublic)
           .map((favorite) => favorite.photo),
       },
