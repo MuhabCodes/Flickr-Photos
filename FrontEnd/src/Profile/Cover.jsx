@@ -74,7 +74,7 @@ const CoverArea = () => {
     }
     axios.patch(`/Userinfo/${userjwt.sub}`, { followingList: followingArr })
       .then(() => {
-        history.push(`/Profile/About/${id}`);
+        history.push(0);
       }).catch((error) => {
         if (error.response.status === 401) {
           localStorage.removeItem('token'); // remove token and redirect to login if not authorized
@@ -136,17 +136,17 @@ const CoverArea = () => {
                   {dispN}
                 </p>
                 <p className="following-followers-cover-list-cvup">
-                  {followers}
-                  {' '}
-                  Followers
+                  <Link className="following-user-cuvp" to={`/followers/${id}`}>
+                    {followers}
+                    {' '}
+                    Followers
+                  </Link>
                   {' '}
                   <em>•</em>
                   {' '}
-                  <Link to={`/followers/${id}`}>
-                    {following}
-                    {' '}
-                    Following
-                  </Link>
+                  {following}
+                  {' '}
+                  Following
                 </p>
                 <p className="cover-spacer-cvup" />
                 <p className="user-cover-photo-count-cvup">

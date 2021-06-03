@@ -466,17 +466,19 @@
       "isPro": true,
       "coverPhoto": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "url": "Profiles/1",
-      "isFollowed": false
+      "isFollowed": false,
+      "userId": "85@N00"
     },
     {
       "id": 2,
-      "displayName": "Mohamed Ahmed",
-      "uName": "MAhmed",
+      "displayName": "Manar Nassef",
+      "uName": "Manarr",
       "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "isPro": false,
       "coverPhoto": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdmVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       "url": "Profiles/2",
-      "isFollowed": false
+      "isFollowed": false,
+      "userId": "173@N00"
     },
     {
       "id": 3,
@@ -1152,7 +1154,6 @@
       "add tag": "only you",
       "userId": 1
     }
-    
   ],
   "Group": [
     {
@@ -1230,11 +1231,11 @@
       "email": "Hosny@gmail.com",
       "password": "$2a$10$Si9a4yViUENLOgAnU8Cvw.rZ/oD45Wl12adJiSX8YtVNuRV6fQIi6",
       "firstname": "Abdelrahman",
-      "lastname": "Hosdadada",
+      "lastname": "HosHos",
       "age": 20,
       "id": 4,
       "gender": "Male",
-      "displayname": "Hosda",
+      "displayname": "HosHos",
       "ispro": "true",
       "followers": [
         {
@@ -1277,7 +1278,7 @@
       "item": "5",
       "useravatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "Url": "https://www.flickr.com/people/cannon_s5_is/",
-      "userId": 1
+      "userId": 4
     },
     {
       "id": 2,
@@ -1285,7 +1286,7 @@
       "item": "15",
       "useravatar": "https://i.pinimg.com/564x/b8/03/78/b80378993da7282e58b35bdd3adbce89.jpg",
       "Url": "https://www.flickr.com/people/cannon_s5_is/",
-      "userId": "85826296@N00"
+      "userId": 4
     },
     {
       "id": 3,
@@ -1293,7 +1294,7 @@
       "item": "20",
       "useravatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "Url": "https://www.flickr.com/people/cannon_s5_is/",
-      "userId": "85826296@N00"
+      "userId": 4
     }
   ],
   "Notification": [
@@ -1495,9 +1496,7 @@
       "photoId": 20,
       "user": "Luis Del Rio"
     }
-    
   ],
-
   "Photostream": [
     {
       "id": "4",
@@ -1700,9 +1699,8 @@
       ]
     },
     {
-    "id": "85@N00",
-    "photoArray": []
+      "id": "85@N00",
+      "photoArray": []
     }
   ]
-  
 }

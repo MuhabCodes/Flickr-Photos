@@ -5,7 +5,7 @@ import jwt from 'jwt-decode';
 import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
-import './homePage.css';
+import './HomePage.css';
 import configData from '../config.json';
 
 const HomePage = () => {

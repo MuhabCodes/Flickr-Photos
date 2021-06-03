@@ -12,6 +12,7 @@ const PeopleCard = (props) => {
   const { uName } = Profile;
   const bgImage = Profile.coverPhoto;
   const Pro = Profile.isPro;
+  const { userId } = Profile;
   const handleClick = ((e) => {
     e.preventDefault();
   });
@@ -19,7 +20,7 @@ const PeopleCard = (props) => {
     <div className="people-card">
       <div className="upper-container">
         {/* Container for image of profiles */}
-        <Link to="/ProfileURLHERE">
+        <Link to={`/Profile/PhotoStream/${userId}`}>
           {/* Redirects to profile */}
           <div className="card-img-container">
             <img className="card-img" src={bgImage} alt="" />
@@ -30,12 +31,12 @@ const PeopleCard = (props) => {
         <div className="lower-container-left">
           {/* Contaianer for avatar and names of profiles */}
           <div className="avatar-img-container">
-            <Link to="/ProfileURLHERE">
+            <Link to={`/Profile/PhotoStream/${userId}`}>
               <img src={avatar} alt="" className="avatar-img" />
             </Link>
           </div>
           <div className="profile-names">
-            <Link to="/ProfileURLHERE">
+            <Link to={`/Profile/PhotoStream/${userId}`}>
               <div className="display-name">
                 { name }
               </div>

@@ -38,6 +38,19 @@ const ChangePassword = () => {
         <form onSubmit={handleSubmit} className="change-password-form">
           <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
             <div className="edit-your-profile-label-text">
+              Current Password
+            </div>
+            <input
+              id="edit-last-name-text-box"
+              className="edit-name-text-box"
+              type="password"
+              required
+              value={newPassword}
+              onChange={(e) => setnewpassword(e.target.value)}
+            />
+          </label>
+          <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
+            <div className="edit-your-profile-label-text">
               New Password
             </div>
             <input

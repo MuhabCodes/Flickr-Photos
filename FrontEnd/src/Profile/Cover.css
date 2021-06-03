@@ -295,3 +295,11 @@
   flex-shrink: 0;
   margin-right: 0;
 }
+
+.following-user-cuvp {
+  color: white;
+}
+
+.following-user-cuvp:hover {
+  color: white;
+}
