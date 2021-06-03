@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
   albums: {
     type: [String], // TODO : Change to album when album is done.
   },
-  person: {
+  personId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Person',
   },
