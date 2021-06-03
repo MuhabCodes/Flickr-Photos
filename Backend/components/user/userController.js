@@ -79,7 +79,8 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
     }
     const userFavs = await favouriteDAL.findFavorite(params.userId);
     const userTags = await tagDAL.getUserTag(params.userId);
-    const userPhotos = await userDAL.getPhotos(params.userId);
+    const userPhotos = await userDAL.getPhotos(params.userId); // array of photos
+
     return res.status(200).json({
       userId: userObj._id,
       followersCount: userObj.followers.length,

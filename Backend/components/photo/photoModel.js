@@ -65,6 +65,12 @@ const PhotoSchema = new Schema({
   location: {
     type: String,
   },
+  favs: {
+    type: Number,
+  },
+  comments: {
+    type: Number,
+  },
   // add the user reference when it is completed
 });
 
