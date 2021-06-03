@@ -13,7 +13,7 @@
  * 
  *  
  * @apiSuccessExample {json} Success-Response:
- * {
+ *{
     "userId": "507f191e810c19729de860ea",
     "followersCount": 0,
     "followingCount": 0,
@@ -26,7 +26,8 @@
     "photos": [],
     "photosCount": 0,
     "person": "507f191e810c19729de860ef",
-    "tags": 0
+    "tags": 0,
+    "favs": 0
 }
  * 
  * 
