@@ -57,29 +57,25 @@ class TestAccountSettingsPage(object):
         print("\nPass is valid")
 
     def test_help_link(self, setup):
-        if self.accountsettingsPage.element_clickable(self.accountsettingsPage.HELP_LINK):
-            self.accountsettingsPage.click(self.accountsettingsPage.HELP_LINK)
-            sleep(2)
-            assert self.accountsettingsPage.page_url() == TestData.HELP_URL
-            print("\nHelp link is working and redirects to help page")
+        self.accountsettingsPage.click(self.accountsettingsPage.HELP_LINK)
+        sleep(2)
+        assert self.accountsettingsPage.page_url() == TestData.HELP_URL
+        print("\nHelp link is working and redirects to help page")
 
     def test_delete_account(self, setup):
-        if self.accountsettingsPage.element_clickable(self.accountsettingsPage.DELETE_ACCOUNT):
-            self.accountsettingsPage.click(self.accountsettingsPage.DELETE_ACCOUNT)
-            sleep(2)
-            assert self.accountsettingsPage.page_url() == TestData.ACCOUNT_DELETE_URL
-            print("\n Delete link is working and redirects to delete account page")
+        self.accountsettingsPage.click(self.accountsettingsPage.DELETE_ACCOUNT)
+        sleep(2)
+        assert self.accountsettingsPage.page_url() == TestData.ACCOUNT_DELETE_URL
+        print("\n Delete link is working and redirects to delete account page")
 
     def test_change_real_name(self, setup):
-        if self.accountsettingsPage.element_clickable(self.accountsettingsPage.REAL_NAME_CHANGE):
-            self.accountsettingsPage.click(self.accountsettingsPage.REAL_NAME_CHANGE)
-            sleep(2)
-            assert self.accountsettingsPage.page_url() == TestData.PROFILE_EDIT_URL
-            print("\n Change real name link is working and redirects to profile edit page")
+        self.accountsettingsPage.click(self.accountsettingsPage.REAL_NAME_CHANGE)
+        sleep(2)
+        assert self.accountsettingsPage.page_url() == TestData.PROFILE_EDIT_URL
+        print("\n Change real name link is working and redirects to profile edit page")
 
     def test_change_display_name(self, setup):
-        if self.accountsettingsPage.element_clickable(self.accountsettingsPage.DISPLAY_NAME_CHANGE):
-            self.accountsettingsPage.click(self.accountsettingsPage.DISPLAY_NAME_CHANGE)
-            sleep(2)
-            assert self.accountsettingsPage.page_url() == TestData.DISPLAY_NAME_URL
-            print("\n Change display link is working and redirects to screen name edit page")
+        self.accountsettingsPage.click(self.accountsettingsPage.DISPLAY_NAME_CHANGE)
+        sleep(2)
+        assert self.accountsettingsPage.page_url() == TestData.DISPLAY_NAME_URL
+        print("\n Change display link is working and redirects to screen name edit page")
