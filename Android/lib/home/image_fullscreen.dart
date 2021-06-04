@@ -1,4 +1,4 @@
-///[ImageFullscreen] class which displays a given image with zoom in and ou feature and
+///[ImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
 
 import 'package:flickr/models/global.dart';
@@ -94,7 +94,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                   children: [
                                     Container(
                                       constraints: BoxConstraints(
-                                          maxWidth: _widthScreen * 0.4),
+                                          maxWidth: _widthScreen * 0.26),
                                       margin:
                                           EdgeInsets.only(top: 70, right: 50),
                                       child: TextButton(
@@ -104,10 +104,11 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         onPressed: () {
-                                          Navigator.of(context).push(
+                                          /*Navigator.of(context).push(
                                               MaterialPageRoute(builder: (_) {
                                             return Profile();
                                           }));
+                                        */
                                         },
                                       ),
                                     ),
@@ -115,7 +116,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                 ),
                               ],
                             ),
-                            //SizedBox(width: 50),
+                            SizedBox(width: 50),
                             Column(
                               children: [
                                 Container(
@@ -240,12 +241,23 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                      post.likes.length.toString() +
-                                          " Faves\n" +
-                                          post.comments.length.toString() +
-                                          " Comments",
-                                      style: appBarTitleStyle,
-                                      textAlign: TextAlign.right)
+                                    post.likes == null
+                                        ? "0 Faves"
+                                        : (post.likes.length.toString() +
+                                            " Faves"),
+                                    style: appBarTitleStyle,
+                                    textAlign: TextAlign.right,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    post.comments == null
+                                        ? "0 Comments"
+                                        : (post.comments.length.toString() +
+                                            " Comments"),
+                                    style: appBarTitleStyle,
+                                    textAlign: TextAlign.right,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ]),
                           ],
                         ),
