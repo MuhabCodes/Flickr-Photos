@@ -1,29 +1,60 @@
+//import 'dart:html';
+
 import 'package:flickr/login/sign_in.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
-class GetStarted extends StatelessWidget {
+class GetStarted extends StatefulWidget {
   static final List<String> _imageList = [
     'lib/assets/columnone.jpg',
     'lib/assets/columntwo.jpg',
     'lib/assets/columnthree.jpg',
     'lib/assets/columnfour.jpg',
-  ]; //list of panorama image blocks   (private for this class)
+  ];
+  @override
+  State<GetStarted> createState() => _GetStartedState();
+}
+
+class _GetStartedState extends State<GetStarted> {
   final List<String> _qoutesHeader = [
     'Powerful',
     'Keep your memories safe',
     'Organisation simplified',
     'Sharing made easy',
-  ]; //list of qoutes headers
+  ];
   final List<String> _qoutes = [
     'Save all your photos and videos in one place.',
     'Your uploaded photos stay private until you choose to share them.',
     'Search, edit and organise in seconds.',
     'Share with friends, family and the world',
-  ]; //list of qoutes
+  ];
+  var authentication;
+
+  Future<void> _getStartedSubmit() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    try {
+      await _auth.getStarted();
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+      return;
+    }
+    if (_auth.status == Status.Success) {
+      Navigator.of(context).pop();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SignIn()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    authentication = Provider.of<Authentication>(context, listen: true);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -40,12 +71,12 @@ class GetStarted extends StatelessWidget {
                   activeColor: Colors.white,
                   color: Colors.grey,
                 )), //locate the pagnition and designed as dots
-            itemCount: _imageList.length,
+            itemCount: GetStarted._imageList.length,
             itemBuilder: (context, index) {
               return Stack(
                 children: [
                   Image.asset(
-                    _imageList[index],
+                    GetStarted._imageList[index],
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
@@ -107,10 +138,7 @@ class GetStarted extends StatelessWidget {
                 bottom: MediaQuery.of(context).size.height * 0.1),
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignIn()),
-                  );
+                  _getStartedSubmit();
                 },
                 child: const Text(
                   'Get started',
