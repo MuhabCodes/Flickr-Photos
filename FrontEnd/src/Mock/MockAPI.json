@@ -1101,63 +1101,7 @@
       "photoArray": []
     }
   ],
-  "photos": [
-    {
-      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "privacy": "public",
-      "DateTaken": "2017-05-01T01:50:08",
-      "id": 1,
-      "title": "water",
-      "discription": "I love water",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "id": 2,
-      "privacy": "Private",
-      "DateTaken": "2017-05-01T01:50:08",
-      "title": "CATT",
-      "discription": "I love water",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 2
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 3,
-      "privacy": "public",
-      "DateTaken": "2020-05-01T01:50:08",
-      "title": "jelly fish",
-      "discription": "I love jelly fish",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 4,
-      "privacy": "private",
-      "DateTaken": "2018-05-01T01:50:08",
-      "title": "compas",
-      "discription": "I love compas",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    },
-    {
-      "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "id": 5,
-      "privacy": "private",
-      "DateTaken": "2019-05-01T01:50:08",
-      "title": "beach",
-      "discription": "I love the beach",
-      "add comment": "only you",
-      "add tag": "only you",
-      "userId": 1
-    }
-  ],
+  
   "Group": [
     {
       "Name": "Yarab Nekhlas!!",
