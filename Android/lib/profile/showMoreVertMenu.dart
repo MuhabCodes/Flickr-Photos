@@ -1,5 +1,9 @@
 import 'package:flickr/login/get_started.dart';
+import 'package:flickr/navigations/about_button.dart';
+import 'package:flickr/navigations/privacy_and_safety.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ShowMoreVertMenu extends StatefulWidget {
@@ -32,6 +36,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
 
   @override
   Widget build(BuildContext context) {
+    var authentication = Provider.of<Authentication>(context, listen: true);
     var size = MediaQuery.of(context).size;
     var height = size.height * 0.7;
     return Container(
@@ -126,7 +131,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
                     builder: (BuildContext context) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.95,
-                        //child: PrivacySafetyButton(),
+                        child: PrivacySafetyButton(),
                       );
                     });
               },
@@ -196,7 +201,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
                     builder: (BuildContext context) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.95,
-                        //child: AboutButton(),
+                        child: AboutButton(),
                       );
                     });
               },
@@ -239,6 +244,7 @@ class _ShowMoreVertMenuState extends State<ShowMoreVertMenu> {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               onPressed: () {
+                authentication.signOut();
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
                 Navigator.push(
