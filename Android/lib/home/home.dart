@@ -10,6 +10,7 @@ import 'package:flickr/models/post.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import '../models/global.dart';
@@ -48,6 +49,19 @@ class HomeState extends State<Home> {
         return ImageFullscreen(photoFullscreen, thePost);
       }
     }));
+  }
+
+  double getCommentsLikesHeight(
+    Post post,
+  ) {
+    double ans = 140;
+    if (post.comments == null && post.likes == null) {
+      ans = 0;
+    } else if (post.comments == null && post.likes != null ||
+        post.comments != null && post.likes == null) {
+      ans = 75;
+    }
+    return ans;
   }
 
   /* void arangePostsWithUploadDate() {
@@ -129,9 +143,11 @@ class HomeState extends State<Home> {
       return [Container()];
     }
     for (Post post in userHomePostsMock) {
-      // we will loop on all posts created in global.dart and add them to our home page
+      ///Loops on all posts created in global.dart and add them to our home page
       if (post.photo.length == 1) {
-        posts.add(getPost(context, post, index));
+        {
+          posts.add(getPost(context, post, index));
+        }
       } else if (post.photo.length > 1) {
         if (post.photo.length == 2) {
           posts.add(getPostTwoPhotos(context, post, index));
@@ -206,10 +222,22 @@ class HomeState extends State<Home> {
                         backgroundImage: post.user.profilePicture,
                       ),
                     ),
-                    Text(
-                      post.user.username,
-                      style: textStyleBold,
-                    )
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          post.user.username,
+                          style: textStyleBold,
+                        ),
+                        post.title == null
+                            ? Container()
+                            : Text(
+                                (post.title),
+                                style: textStyle,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                      ],
+                    ),
                   ],
                 ),
                 Text(
@@ -219,39 +247,41 @@ class HomeState extends State<Home> {
               ],
             ),
           ),
-          ContainerResponsive(
-            ///Post description container
-            //Post  title (limit = 100 characters) not description
-            //height: 10,
-            constraints: BoxConstraints(
-              maxWidth: widthScreen,
-              minWidth: widthScreen - 20,
-            ),
-            decoration: BoxDecoration(
-              // 'decoration:' doesn't allow writing 'color:' after or before it
-              border: Border.all(
-                color: Colors.white, // white as border color
-                width: 0,
-              ),
-              color: Colors.white,
-            ),
-            heightResponsive: true,
-            widthResponsive: true,
-            //constraints: BoxConstraints.expand(height: 60),
-            padding: EdgeInsets.only(left: 20, right: 10),
-            //color: Colors.red,
+          post.description == null
+              ? Container()
+              : ContainerResponsive(
+                  ///Post description container
+                  //Post  title (limit = 100 characters) not description
+                  //height: 10,
+                  constraints: BoxConstraints(
+                    maxWidth: widthScreen,
+                    minWidth: widthScreen - 20,
+                  ),
+                  decoration: BoxDecoration(
+                    // 'decoration:' doesn't allow writing 'color:' after or before it
+                    border: Border.all(
+                      color: Colors.white, // white as border color
+                      width: 0,
+                    ),
+                    color: Colors.white,
+                  ),
+                  heightResponsive: true,
+                  widthResponsive: true,
+                  //constraints: BoxConstraints.expand(height: 60),
+                  padding: EdgeInsets.only(left: 20, right: 10),
+                  //color: Colors.red,
 
-            child: Column(
-              children: <Widget>[
-                Text(
-                  post.description,
-                  style: textStyle,
-                  maxLines: 5,
-                ) //+
-                // " hi life is a journey and i need patience is the description box flexible with text?"),
-              ],
-            ),
-          ),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        post.description,
+                        style: textStyle,
+                        maxLines: 5,
+                      ) //+
+                      // " hi life is a journey and i need patience is the description box flexible with text?"),
+                    ],
+                  ),
+                ),
           Container(
             ///Draw horizontal line container
             constraints: BoxConstraints.expand(height: 20, width: widthScreen),
@@ -271,7 +301,7 @@ class HomeState extends State<Home> {
                   child: Container(
                     height: 2.2,
                     width: widthScreen - 21, //340.0,
-                    color: Colors.grey,
+                    color: Colors.grey[200],
                   ),
                 ),
               ],
@@ -317,7 +347,8 @@ class HomeState extends State<Home> {
                         ),
                       ],
                     ),
-                    Text(post.likes.length.toString(),
+                    Text(
+                        post.likes == null ? "0" : post.likes.length.toString(),
                         style: textStyleLigthGrey),
                   ],
                 ),
@@ -334,7 +365,9 @@ class HomeState extends State<Home> {
                       },
                     ),
                     Text(
-                      "" + post.comments.length.toString(),
+                      post.comments == null
+                          ? "0"
+                          : "" + post.comments.length.toString(),
                       style: textStyleLigthGrey,
                     ),
                   ],
@@ -353,140 +386,162 @@ class HomeState extends State<Home> {
           ),
           Container(
             ///Likers and comments row
-            constraints: BoxConstraints.expand(height: 140, width: widthScreen),
+            constraints: BoxConstraints.expand(
+                height: getCommentsLikesHeight(post), width: widthScreen),
             color: Colors.grey[200],
             //alignment: AlignmentDirectional.topCenter,
             //padding: EdgeInsets.only(left: 10, right: 10),
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  //sub-Container #1
-                  padding: EdgeInsets.only(
-                    top: 10,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(
-                                  left: 15,
-                                  bottom: 10,
-                                  top: 0,
-                                ),
-                                child: Icon(
-                                  Icons.star,
-                                  size: 22,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: TextButton(
-                          child: post.likes.length >= 2
-                              ? Text(
-                                  post.likes[0].username +
-                                      ", " +
-                                      post.likes[1].username +
-                                      " and " +
-                                      (post.likes.length - 2 + 1).toString() +
-                                      " others faved",
-                                  style: textStyleBold,
-                                )
-                              : Text(
-                                  post.likes[0].username,
-                                  style: textStyleBold,
-                                ),
-                          onPressed: () {
-                            selectScreen(context, 2,
-                                thePost: post,
-                                favComIndex: 1,
-                                isFaves: true,
-                                commentFavPage: 1);
-
-                            setState(() {});
-                          },
+                post.likes == null
+                    ? Container()
+                    : Container(
+                        //sub-Container #1
+                        padding: EdgeInsets.only(
+                          top: 10,
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  //sub-Container #2
-                  padding: EdgeInsets.only(
-                    top: 10,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(
-                                  left: 15,
-                                  bottom: 25,
-                                ),
-                                child: Icon(
-                                  Icons.mode_comment_rounded,
-                                  size: 20,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Flexible(
-                        child: TextButton(
-                          child: Container(
-                            //alignment: AlignmentDirectional.topStart,
-                            child: Column(
+                        child: Row(
+                          children: <Widget>[
+                            Row(
                               children: <Widget>[
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                Column(
                                   children: <Widget>[
-                                    Text(post.comments[0].user.username,
-                                        style: textStyleBold),
-                                    Text(
-                                      post.comments.length.toString() +
-                                          " of " +
-                                          post.comments.length.toString(),
-                                      style: textStyleDarkGrey,
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        left: 15,
+                                        bottom: 10,
+                                        top: 0,
+                                      ),
+                                      child: Icon(
+                                        Icons.star,
+                                        size: 22,
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ],
                                 ),
-                                Row(children: <Widget>[
-                                  Text(
-                                    post.comments[post.comments.length - 1]
-                                        .comment,
-                                    style: textStyle,
-                                  ),
-                                ])
                               ],
                             ),
-                          ),
-                          onPressed: () {
-                            selectScreen(context, 2,
-                                thePost: post,
-                                favComIndex: 1,
-                                isFaves: true,
-                                commentFavPage: 2);
-                            setState(() {});
-                          },
+                            Flexible(
+                              fit: FlexFit.loose,
+                              child: post.likes == null
+                                  ? Container()
+                                  : TextButton(
+                                      child: post.likes.length >= 2
+                                          ? Text(
+                                              post.likes[0].username +
+                                                  ", " +
+                                                  post.likes[1].username +
+                                                  " and " +
+                                                  (post.likes.length - 2)
+                                                      .toString() +
+                                                  " others faved",
+                                              style: textStyleBold,
+                                            )
+                                          : Text(
+                                              post.likes[0].username,
+                                              style: textStyleBold,
+                                            ),
+                                      onPressed: () {
+                                        selectScreen(context, 2,
+                                            thePost: post,
+                                            favComIndex: 1,
+                                            isFaves: true,
+                                            commentFavPage: 1);
+
+                                        setState(() {});
+                                      },
+                                    ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                post.comments == null
+                    ? Container()
+                    : Container(
+                        //sub-Container #2
+                        padding: EdgeInsets.only(
+                          top: 10,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        left: 15,
+                                        bottom: 25,
+                                      ),
+                                      child: Icon(
+                                        Icons.mode_comment_rounded,
+                                        size: 20,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Flexible(
+                              child: post.comments == null
+                                  ? Container()
+                                  : TextButton(
+                                      child: Container(
+                                        //alignment: AlignmentDirectional.topStart,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: <Widget>[
+                                                Text(
+                                                    post.comments[0].user
+                                                        .username,
+                                                    style: textStyleBold),
+                                                Text(
+                                                  post.comments == null
+                                                      ? "0 of 0"
+                                                      : post.comments.length
+                                                              .toString() +
+                                                          " of " +
+                                                          post.comments.length
+                                                              .toString(),
+                                                  style: textStyleDarkGrey,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(children: <Widget>[
+                                              Text(
+                                                post.comments.length == 1
+                                                    ? (post.comments[0].comment)
+                                                    : (post
+                                                        .comments[post.comments
+                                                                .length -
+                                                            1]
+                                                        .comment),
+                                                style: textStyle,
+                                              ),
+                                            ])
+                                          ],
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        selectScreen(context, 2,
+                                            thePost: post,
+                                            favComIndex: 1,
+                                            isFaves: true,
+                                            commentFavPage: 2);
+                                        setState(() {});
+                                      },
+                                    ),
+                            ),
+                          ],
+                        ),
+                      ),
               ],
             ),
           ),

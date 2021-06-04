@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/about_provider.dart';
+import '../providers/user_provider.dart';
 import '../providers/photo_provider.dart';
 
 class AboutTap extends StatefulWidget {
@@ -12,7 +12,7 @@ class AboutTap extends StatefulWidget {
 class _AboutTapState extends State<AboutTap> {
   @override
   Widget build(BuildContext context) {
-    final _aboutProvider = Provider.of<AboutProvider>(context);
+    final _userProvider = Provider.of<UserProvider>(context);
     final _photoProvider = Provider.of<PhotoProvider>(context, listen: true);
     return ListView(
       children: [
@@ -36,27 +36,27 @@ class _AboutTapState extends State<AboutTap> {
         ),
         newCard(
           'Description',
-          _aboutProvider.about.description,
+          _userProvider.user.description,
           context,
         ),
         newCard(
           'Occupation',
-          _aboutProvider.about.occupation,
+          _userProvider.user.occupation,
           context,
         ),
         newCard(
           'Current City',
-          _aboutProvider.about.city,
+          _userProvider.user.city,
           context,
         ),
         newCard(
           'HomeTown',
-          _aboutProvider.about.homeTown,
+          _userProvider.user.homeTown,
           context,
         ),
         newCard(
           'Website',
-          _aboutProvider.about.website,
+          _userProvider.user.website,
           context,
         ),
         newCard(
