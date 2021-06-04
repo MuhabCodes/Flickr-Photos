@@ -61,6 +61,7 @@ class PostProviderInteg with ChangeNotifier {
       Uri.parse("https://run.mocky.io/v3/bfbb0fd8-09dd-4970-8803-6bb62150a171");
   Future<void> getUserPublicPhotos(List<dynamic> jsonFollowingIds) async {
     /// get request
+    /// getPublicPhotos
     // response = await http.get(_urlUserPublicPhotosMock);
     int jsonFollowingIdsSize = jsonFollowingIds.length;
     for (int i = 0; i < jsonFollowingIdsSize; i++) {
