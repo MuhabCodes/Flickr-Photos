@@ -1703,54 +1703,76 @@
       "photoArray": []
     }
   ],
-  "albums":[
+  "albums": [
     {
-    "id":4,
-    "userId":4,
-    "userAlbums":[
-    {"albumTitle":"Yarab Nekhlas!!",
-    "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    "albumphotos":[
-      "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
-      "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    ]},
-    {
-    "albumTitle":"Insha2allah Nekhlas!!",
-    "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "albumphotos":[
-      "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    ]
-    }
-  ]
-
-    },
+      "id": 4,
+      "userId": 4,
+      "userAlbums": [
         {
-    "id":2,
-    "userId": 3,
-    "userAlbums":[
-      {
-    "albumTitle":"Insha2allah Nekhlas!!",
-    "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "albumphotos":[
-      "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    ]
-  },
-  {"albumTitle":"Yarab tedy 3ala 5er",
-    "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    "albumphotos":[
-      "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
-      "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    ]}
-  ]
+          "albumTitle": "Yarab Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "albumphotos": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+            "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        },
+        {
+          "albumTitle": "Insha2allah Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "albumphotos": [
+            "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "userAlbums": [
+        {
+          "albumTitle": "Insha2allah Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "albumphotos": [
+            "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        },
+        {
+          "albumTitle": "Yarab tedy 3ala 5er",
+          "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "albumphotos": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+            "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        }
+      ]
     }
-
   ],
   "change-password": [
+    {
+      "oldPassword": "12345",
+      "newPassword": "12345",
+      "id": 1
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 2
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 3
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 4
+    }
   ]
 }
