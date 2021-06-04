@@ -27,7 +27,9 @@
     "photosCount": 0,
     "person": "507f191e810c19729de860ef",
     "tags": 0,
-    "favs": 0
+    "favs": 0,
+    "userAvatar": "https://i.imgur.com/PyVmvKL.jpg"
+
 }
  * 
  * 

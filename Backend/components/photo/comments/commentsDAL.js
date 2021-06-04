@@ -30,7 +30,7 @@ module.exports.deleteComment = async function deleteComment(commentToDeleteId) {
 };
 module.exports.findComment = async function findComment(photoID) {
   const foundComment = await Comment.find({ photo: photoID })
-    .populate('user', 'displayName')
+    .populate('user', 'displayName userAvatar ')
     .exec();
   return foundComment;
 };
