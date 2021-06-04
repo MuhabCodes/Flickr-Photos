@@ -27,3 +27,7 @@ module.exports.createPerson = async function createPerson(firstName, lastName, a
   const person = await personObj.save();
   return person;
 };
+
+module.exports.deletePersonDAL = async function deletePerson(personId) {
+  await Person.deleteOne({ _id: personId });
+};
