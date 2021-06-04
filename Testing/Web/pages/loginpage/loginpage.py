@@ -9,12 +9,15 @@ class LoginPage(BasePage):
     EMAIL_FIELD = (By.ID, "login-email")
     PASSWORD_FIELD = (By.ID, "login-password")
     NEXT_BUTTON = (By.XPATH, '//*[@id="login-form"]/button')
+    FORGOT_PASSWORD = (By.XPATH, '/html/body/div/div/div[2]/div/div[2]/div[2]/div/div/p/a')
     SIGNUP_LINK = (By.LINK_TEXT, "Sign up here.")
     TRYAGAIN_BUTTON = (By.XPATH, '/html/body/div/div[2]/div/div/div/button[2]')
     YAHOO_BUTTON = (By.XPATH, '/html/body/div/div[2]/div/div/div/button[1]/span')
     HELP_LINK = (By.LINK_TEXT, "Help")
     PRIVACY_LINK = (By.LINK_TEXT, "Privacy")
     TERMS_LINK = (By.LINK_TEXT, "Terms")
+    FORGOT_PASSWORD_EMAIL_FIELD = (By.ID, "forgot-password-email")
+    FORGOT_PASSWORD_SEND_EMAIL = (By.XPATH, '/html/body/div/div/div[2]/div/div[1]/form/button')
 
     def __init__(self, driver):
         super().__init__(driver)
