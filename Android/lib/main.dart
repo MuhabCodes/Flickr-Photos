@@ -1,6 +1,7 @@
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/navigations/privacy_and_safety.dart';
 import 'package:flickr/profile/description.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/photo_provider.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: AboutProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Authentication(),
         ),
         ChangeNotifierProvider.value(
           value: PhotoProvider(),
