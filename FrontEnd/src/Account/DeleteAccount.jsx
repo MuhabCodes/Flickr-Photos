@@ -91,10 +91,9 @@ const DeleteAccount = () => {
                 <ul className="delete-all-photos-ul">
                   Deleting your account will
                   {' '}
-                  <b>not</b>
-                  {' '}
                   free up your
                   <b> screen name or personalized URL</b>
+                  {' '}
                   for use on another account.
                 </ul>
               </div>

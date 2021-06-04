@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import axios from 'axios';
-import jwt from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../App/Navbar';
 import './ChangePassword.css';
@@ -12,16 +11,16 @@ const ChangePassword = () => {
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
-  const userjwt = jwt(localStorage.getItem('token'));
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
-  const [newPassword, setnewpassword] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const handleSubmit = (e) => { // Submission of form to put request
     e.preventDefault();
     const ProfileInfo = {
-      newPassword,
+      oldPassword, newPassword,
     };
-    axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
+    axios.put('/change-password', ProfileInfo)
       .then(() => {
         history.push('/account'); // if successful we redirect to account
       }).catch((err) => {
@@ -45,8 +44,8 @@ const ChangePassword = () => {
               className="edit-name-text-box"
               type="password"
               required
-              value={newPassword}
-              onChange={(e) => setnewpassword(e.target.value)}
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
             />
           </label>
           <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
@@ -59,7 +58,7 @@ const ChangePassword = () => {
               type="password"
               required
               value={newPassword}
-              onChange={(e) => setnewpassword(e.target.value)}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </label>
           <button className="change-pw-btn" type="submit" id="change-password-btn">Change Password</button>
