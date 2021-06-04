@@ -47,81 +47,84 @@ class CommentsFavsState extends State<CommentsFavs> {
   ///[getLikes] returns a widget screen to display comments and likes
   Widget getLikes(List<User> likes) {
     List<Widget> likers = [];
-    for (User follower in likes) {
-      likers.add(new Container(
-          constraints: BoxConstraints(
-            maxWidth: _widthScreen,
-          ),
-          //height: 70,
-          padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
-          child: TextButton(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                        //this container is related to the circle avatar only (tiny box contains an avatar)
-                        //color: Colors.white,
-                        margin: EdgeInsets.only(
-                            right: 10), //user name padding away from pp
-                        child: Row(
-                          children: <Widget>[
-                            CircleAvatar(
-                              backgroundImage: follower.profilePicture,
-                            ),
-                            Text("  " + follower.username,
-                                style: textStyleBold),
-                          ],
-                        )),
-                    Container(
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(0))),
-                      child: TextButton(
-                        //height: 30,
-                        child: Text(
-                            loggedInUser.following.contains(follower)
-                                ? "✓"
-                                : "+ Follow",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color: loggedInUser.following.contains(follower)
-                                    ? Colors.black
-                                    : Colors.black)),
-                        onPressed: () {
-                          setState(() {
-                            if (loggedInUser.following.contains(follower)) {
-                              loggedInUser.following.remove(follower);
-                            } else {
-                              loggedInUser.following.add(follower);
-                            }
-                          });
-                        },
-                      ),
-                    )
-                  ],
-                ),
-                Container(
-                    alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(left: 30),
-                    margin: const EdgeInsets.only(right: 90.0),
-                    //constraints: BoxConstraints.expand(width: 200, height: 20),
-                    child: Text(
-                      "38 Photos -1.2k F ollowers",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      //textWidthBasis: TextWidthBasis.longestLine,
-                    )),
-              ],
+    if (likes != null) {
+      for (User follower in likes) {
+        likers.add(new Container(
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
             ),
-            onPressed: () {},
-          )));
+            //height: 70,
+            padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
+            child: TextButton(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                          //this container is related to the circle avatar only (tiny box contains an avatar)
+                          //color: Colors.white,
+                          margin: EdgeInsets.only(
+                              right: 10), //user name padding away from pp
+                          child: Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                backgroundImage: follower.profilePicture,
+                              ),
+                              Text("  " + follower.username,
+                                  style: textStyleBold),
+                            ],
+                          )),
+                      Container(
+                        height: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.all(Radius.circular(0))),
+                        child: TextButton(
+                          //height: 30,
+                          child: Text(
+                              loggedInUser.following.contains(follower)
+                                  ? "✓"
+                                  : "+ Follow",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      loggedInUser.following.contains(follower)
+                                          ? Colors.black
+                                          : Colors.black)),
+                          onPressed: () {
+                            setState(() {
+                              if (loggedInUser.following.contains(follower)) {
+                                loggedInUser.following.remove(follower);
+                              } else {
+                                loggedInUser.following.add(follower);
+                              }
+                            });
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.only(left: 30),
+                      margin: const EdgeInsets.only(right: 90.0),
+                      //constraints: BoxConstraints.expand(width: 200, height: 20),
+                      child: Text(
+                        "38 Photos -1.2k F ollowers",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        //textWidthBasis: TextWidthBasis.longestLine,
+                      )),
+                ],
+              ),
+              onPressed: () {},
+            )));
+      }
     }
 
     return DefaultTabController(
@@ -140,9 +143,14 @@ class CommentsFavsState extends State<CommentsFavs> {
                 indicatorColor: Colors.white,
                 tabs: <Widget>[
                   Tab(
-                    text: thePost.likes.length.toString() + " Faves",
+                    text: thePost.likes == null
+                        ? "0 Faves"
+                        : thePost.likes.length.toString() + " Faves",
                   ),
-                  Tab(text: thePost.comments.length.toString() + " Comments"),
+                  Tab(
+                      text: thePost.comments == null
+                          ? "0 Comments"
+                          : thePost.comments.length.toString() + " Comments"),
                 ]),
             backgroundColor: Colors.grey[900],
             leading: IconButton(
@@ -158,9 +166,12 @@ class CommentsFavsState extends State<CommentsFavs> {
           ),
           body: TabBarView(children: <Widget>[
             //getLikes(thePost.likes),
-            ListView(
-              children: likers,
-            ),
+            likers == null
+                ? Container()
+                : ListView(
+                    children: likers,
+                  ),
+
             getCommentsFaves(thePost.comments),
 
             //Container(),
@@ -173,77 +184,80 @@ class CommentsFavsState extends State<CommentsFavs> {
   ///purpose is to avoid drawing the AppBar twice
   Widget getFavesComments(List<User> likes) {
     List<Widget> likers = [];
-    for (User follower in likes) {
-      likers.add(new Container(
-          constraints: BoxConstraints(
-            maxWidth: _widthScreen,
-          ),
-          //height: 70,
-          padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
-          child: TextButton(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                        //this container is related to the circle avatar only (tiny box contains an avatar)
-                        //color: Colors.white,
-                        margin: EdgeInsets.only(
-                            right: 10), //user name padding away from pp
-                        child: Row(
-                          children: <Widget>[
-                            CircleAvatar(
-                              backgroundImage: follower.profilePicture,
-                            ),
-                            Text("  " + follower.username,
-                                style: textStyleBold),
-                          ],
-                        )),
-                    Container(
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(0))),
-                      child: TextButton(
-                        child: Text(
-                            loggedInUser.following.contains(follower)
-                                ? "✓"
-                                : "+ Follow",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: loggedInUser.following.contains(follower)
-                                    ? Colors.black
-                                    : Colors.black)),
-                        onPressed: () {
-                          setState(() {
-                            if (loggedInUser.following.contains(follower)) {
-                              loggedInUser.following.remove(follower);
-                            } else {
-                              loggedInUser.following.add(follower);
-                            }
-                          });
-                        },
-                      ),
-                    )
-                  ],
-                ),
-                Container(
-                    alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(left: 30),
-                    margin: const EdgeInsets.only(right: 90.0),
-                    //constraints: BoxConstraints.expand(width: 200, height: 20),
-                    child: Text(
-                      "38 Photos -1.2k Followers",
-                      style: textStyleDarkGrey,
-                      overflow: TextOverflow.ellipsis,
-                      //textWidthBasis: TextWidthBasis.longestLine,
-                    )),
-              ],
+    if (likes != null) {
+      for (User follower in likes) {
+        likers.add(new Container(
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
             ),
-            onPressed: () {},
-          )));
+            //height: 70,
+            padding: EdgeInsets.only(left: 0, right: 4, top: 8, bottom: 5),
+            child: TextButton(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                          //this container is related to the circle avatar only (tiny box contains an avatar)
+                          //color: Colors.white,
+                          margin: EdgeInsets.only(
+                              right: 10), //user name padding away from pp
+                          child: Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                backgroundImage: follower.profilePicture,
+                              ),
+                              Text("  " + follower.username,
+                                  style: textStyleBold),
+                            ],
+                          )),
+                      Container(
+                        height: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.all(Radius.circular(0))),
+                        child: TextButton(
+                          child: Text(
+                              loggedInUser.following.contains(follower)
+                                  ? "✓"
+                                  : "+ Follow",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                  color:
+                                      loggedInUser.following.contains(follower)
+                                          ? Colors.black
+                                          : Colors.black)),
+                          onPressed: () {
+                            setState(() {
+                              if (loggedInUser.following.contains(follower)) {
+                                loggedInUser.following.remove(follower);
+                              } else {
+                                loggedInUser.following.add(follower);
+                              }
+                            });
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.only(left: 30),
+                      margin: const EdgeInsets.only(right: 90.0),
+                      //constraints: BoxConstraints.expand(width: 200, height: 20),
+                      child: Text(
+                        "38 Photos -1.2k Followers",
+                        style: textStyleDarkGrey,
+                        overflow: TextOverflow.ellipsis,
+                        //textWidthBasis: TextWidthBasis.longestLine,
+                      )),
+                ],
+              ),
+              onPressed: () {},
+            )));
+      }
     }
 
     return DefaultTabController(
@@ -251,9 +265,11 @@ class CommentsFavsState extends State<CommentsFavs> {
         child: Scaffold(
           body:
               //getLikes(thePost.likes),
-              ListView(
-            children: likers,
-          ),
+              likers == null
+                  ? Container()
+                  : ListView(
+                      children: likers,
+                    ),
           //getCommentsFaves(thePost.comments),
         ));
   }
@@ -261,75 +277,77 @@ class CommentsFavsState extends State<CommentsFavs> {
   Widget getComments(List<Comment> commentsList) {
     List<Widget> comments = [];
     //DateTime now = DateTime.now();
-    for (Comment comment in commentsList) {
-      //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
-      comments.add(new Container(
-          constraints: BoxConstraints(
-            maxWidth: _widthScreen,
-          ),
-          // height: 45,
-          padding: EdgeInsets.only(top: 10),
-          child: TextButton(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(right: 10),
-                      width: 40,
-                      height: 40,
-                      child: CircleAvatar(
-                        backgroundImage: comment.user.profilePicture,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        RichText(
-                          text: new TextSpan(
-                            style: textStyleBold,
-                            children: <TextSpan>[
-                              new TextSpan(
-                                text: comment.user.username + "\n",
-                                style: textStyleBold,
-                              ),
-                              new TextSpan(text: '', style: textStyle),
-                              new TextSpan(
-                                  text: comment.comment, style: textStyle),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(right: 0, top: 0),
-                              child: Text(
-                                getPostTime(comment.dateOfComment),
-                                style: textStyleLigthGrey,
-                              ),
-                            ),
-                            Container(
-                              child: Text(
-                                " • Reply",
-                                style: textStyleLigthGrey,
-                              ),
-                              margin: EdgeInsets.only(right: 10, top: 0),
-                            )
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ],
+    if (commentsList != null) {
+      for (Comment comment in commentsList) {
+        //int hoursAgo = (now.hour) - (comment.dateOfComment.hour - 1);
+        comments.add(new Container(
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
             ),
-            onPressed: () {},
-          )));
+            // height: 45,
+            padding: EdgeInsets.only(top: 10),
+            child: TextButton(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 40,
+                        height: 40,
+                        child: CircleAvatar(
+                          backgroundImage: comment.user.profilePicture,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          RichText(
+                            text: new TextSpan(
+                              style: textStyleBold,
+                              children: <TextSpan>[
+                                new TextSpan(
+                                  text: comment.user.username + "\n",
+                                  style: textStyleBold,
+                                ),
+                                new TextSpan(text: '', style: textStyle),
+                                new TextSpan(
+                                    text: comment.comment, style: textStyle),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: 0, top: 0),
+                                child: Text(
+                                  getPostTime(comment.dateOfComment),
+                                  style: textStyleLigthGrey,
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  " • Reply",
+                                  style: textStyleLigthGrey,
+                                ),
+                                margin: EdgeInsets.only(right: 10, top: 0),
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              onPressed: () {},
+            )));
+      }
     }
 
     return DefaultTabController(
@@ -350,9 +368,14 @@ class CommentsFavsState extends State<CommentsFavs> {
               indicatorColor: Colors.blue,
               tabs: <Widget>[
                 Tab(
-                  text: thePost.likes.length.toString() + " Faves",
+                  text: thePost.likes == null
+                      ? "0 Faves"
+                      : thePost.likes.length.toString() + " Faves",
                 ),
-                Tab(text: thePost.comments.length.toString() + " Comments"),
+                Tab(
+                    text: thePost.comments == null
+                        ? "0 Comments"
+                        : thePost.comments.length.toString() + " Comments"),
               ]),
           backgroundColor: Colors.grey[900],
           leading: IconButton(
@@ -376,90 +399,94 @@ class CommentsFavsState extends State<CommentsFavs> {
     );
   }
 
-  Widget getCommentsFaves(List<Comment> likes) {
+  Widget getCommentsFaves(List<Comment> commenters) {
     bool isAdded = false;
     List<Widget> comments = [];
     //DateTime now = DateTime.now();
-    for (Comment comment in likes) {
-      comments.add(new Container(
-          constraints: BoxConstraints(
-            maxWidth: _widthScreen,
-          ),
-          // height: 45,
-          padding: EdgeInsets.only(top: 10),
-          child: TextButton(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(right: 10),
-                      width: 40,
-                      height: 40,
-                      child: CircleAvatar(
-                        backgroundImage: comment.user.profilePicture,
+    if (commenters != null) {
+      for (Comment comment in commenters) {
+        comments.add(new Container(
+            constraints: BoxConstraints(
+              maxWidth: _widthScreen,
+            ),
+            // height: 45,
+            padding: EdgeInsets.only(top: 10),
+            child: TextButton(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 40,
+                        height: 40,
+                        child: CircleAvatar(
+                          backgroundImage: comment.user.profilePicture,
+                        ),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          constraints:
-                              BoxConstraints(maxWidth: _widthScreen - 80),
-                          child: RichText(
-                            maxLines: null,
-                            text: new TextSpan(
-                              style: textStyle,
-                              children: <TextSpan>[
-                                new TextSpan(
-                                    text: comment.user.username + "\n",
-                                    style: textStyleBold),
-                                new TextSpan(text: '', style: textStyle),
-                                new TextSpan(
-                                    text: comment.comment, style: textStyle),
-                              ],
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            constraints:
+                                BoxConstraints(maxWidth: _widthScreen - 80),
+                            child: RichText(
+                              maxLines: null,
+                              text: new TextSpan(
+                                style: textStyle,
+                                children: <TextSpan>[
+                                  new TextSpan(
+                                      text: comment.user.username + "\n",
+                                      style: textStyleBold),
+                                  new TextSpan(text: '', style: textStyle),
+                                  new TextSpan(
+                                      text: comment.comment, style: textStyle),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(right: 0, top: 0),
-                              child: Text(
-                                getPostTime(comment.dateOfComment),
-                                style: textStyleLigthGrey,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: 0, top: 0),
+                                child: Text(
+                                  getPostTime(comment.dateOfComment),
+                                  style: textStyleLigthGrey,
+                                ),
                               ),
-                            ),
-                            Container(
-                              child: Text(
-                                " • Reply",
-                                style: textStyleLigthGrey,
-                              ),
-                              margin: EdgeInsets.only(right: 10, top: 0),
-                            )
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ],
-            ),
-            onPressed: () {},
-          )));
+                              Container(
+                                child: Text(
+                                  " • Reply",
+                                  style: textStyleLigthGrey,
+                                ),
+                                margin: EdgeInsets.only(right: 10, top: 0),
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              onPressed: () {},
+            )));
+      }
     }
 
     return Scaffold(
         body: Container(
-          child: ListView(
-            children: comments,
-            padding: EdgeInsets.only(bottom: 80),
-          ),
+          child: comments == null
+              ? Container()
+              : ListView(
+                  children: comments,
+                  padding: EdgeInsets.only(bottom: 80),
+                ),
         ),
         bottomSheet: Container(
           constraints: BoxConstraints(
