@@ -1,6 +1,7 @@
 ///This file contains data used across the app
 import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'comment.dart';
 import 'post.dart';
@@ -179,153 +180,6 @@ User follower3 = new User(
   following: [],
   followers: [],
 );
-/*
-//Create a list which contains the posts in home page
-List<Post> userHomePosts = [
-  new Post(
-    [
-      new Photo(
-        imagePath:
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
-      ),
-      new Photo(
-        imagePath:
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
-      ),
-      new Photo(
-        imagePath:
-            'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
-      ),
-    ],
-    user,
-    "Deeply Exhausted",
-    DateTime(2021, 05, 31, 20, 38, 59),
-    [follower1, follower2, follower3],
-    [
-      new Comment(
-        follower1,
-        "This was amazing!",
-        DateTime.now(),
-      ),
-      new Comment(
-        follower2,
-        "Cool one",
-        DateTime.now(),
-      ),
-    ],
-    false,
-    false,
-  ),
-  new Post(
-    [
-      new Photo(
-        imagePath:
-            'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg',
-      ),
-      new Photo(
-        imagePath:
-            'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg',
-      ),
-    ],
-    follower1,
-    "This is such a great post though",
-    DateTime.now(),
-    [user, follower2, follower3, follower1, follower2],
-    [
-      new Comment(
-        follower3,
-        "This was super cool!",
-        DateTime.now(),
-      ),
-      new Comment(
-        follower1,
-        "I can't believe it's not \nbutter!",
-        DateTime.now(),
-      ),
-      new Comment(
-        user,
-        "I know rite!",
-        DateTime.now(),
-      ),
-      new Comment(
-        follower3,
-        "I'm batman",
-        DateTime.now(),
-      )
-    ],
-    false,
-    false,
-  ),
-  new Post(
-    //['lib/assets/photo5.jpg']
-    [
-      new Photo(
-        imagePath:
-            'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
-      ),
-    ],
-    follower2,
-    "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
-    DateTime.now(),
-    [user, follower2, follower3, follower3, follower1],
-    [
-      new Comment(
-        follower3,
-        "This was super cool!",
-        DateTime.now(),
-      ),
-      new Comment(
-        follower1,
-        "I can't believe it's not \nbutter!",
-        DateTime.now(),
-      ),
-      new Comment(
-        user,
-        "I know rite!",
-        DateTime.now(),
-      ),
-    ],
-    false,
-    false,
-  ),
-  new Post(
-    [
-      new Photo(
-        imagePath:
-            'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
-      ),
-    ],
-    follower3,
-    "Found this in my backyard. \nThought I'd post it jk lol lol lolol",
-    DateTime.now(),
-    [
-      user,
-      /*follower2,
-      follower3,*/
-    ],
-    [
-      new Comment(
-        follower3,
-        "This was super cool!",
-        DateTime.now(),
-      ),
-      new Comment(
-        follower1,
-        "I can't believe it's not \nbutter!",
-        DateTime.now(),
-      ),
-      new Comment(
-        user,
-        "I know rite!",
-        DateTime.now(),
-      ),
-    ],
-    false,
-    false,
-  ),
-];
-
-*/
 
 ///[getPostTime] this function calculates returns how long
 ///the post or comment has been posted
@@ -413,13 +267,10 @@ String getPostTime(DateTime postTime) {
   return result;
 }
 
-double convertDateToNum(DateTime postTime) {
-  double total = 0;
-  total = postTime.year +
-      postTime.month +
-      postTime.hour +
-      postTime.minute / 10 +
-      postTime.second / 100;
-
-  return total;
+DateTime postDateParsing(String stringdate) {
+  final dateStr = stringdate;
+  final formatter = DateFormat("yyyy-MM-ddTHH:mm:ss");
+  final dateTimeFromStr = formatter.parse(dateStr);
+  print(dateTimeFromStr);
+  return dateTimeFromStr;
 }
