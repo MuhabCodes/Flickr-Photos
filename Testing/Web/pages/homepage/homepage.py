@@ -16,7 +16,7 @@ class HomePage(BasePage):
     DEVELOPERS_LINK = (By.LINK_TEXT, "Developers")
     GUIDELINES_LINK = (By.LINK_TEXT, "Guidelines")
     HELP_LINK = (By.XPATH, '/html/body/div[1]/div/div[3]/footer/div[1]/div[1]/ul/li[8]/a')
-    HELP_FORUM_LINK = (By.XPATH, '//*[@id="yui_3_16_0_1_1620345937339_936"]/footer/div[1]/div[1]/ul/li[10]/a')
+    HELP_FORUM_LINK = (By.XPATH, '/html/body/div[1]/div/div[3]/footer/div[1]/div[1]/ul/li[10]/a')
     PRIVACY_LINK = (By.LINK_TEXT, "Privacy")
     TERMS_LINK = (By.LINK_TEXT, "Terms")
     COOKIES_LINK = (By.LINK_TEXT, "Cookies")
