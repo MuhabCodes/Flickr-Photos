@@ -168,3 +168,11 @@ module.exports.getUserPublicPhotos = async function getUserPublicPhotos(userId) 
 
   return photoObj;
 };
+
+exports.changePasswordDAL = async function changePwDal(userId, newPassword) {
+  const hashedPassword = await utilsPassword.hashPassword(newPassword);
+
+  await User.updateOne(
+    { _id: userId }, { $set: { password: hashedPassword } },
+  );
+};
