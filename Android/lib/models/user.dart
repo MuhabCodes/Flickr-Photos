@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'post.dart';
 
-///[User] class used when generating a comment, logged in user, when liking a comment
 class User {
-  String _id;
   String email;
+  String googleEmail;
   String password;
+  String token;
+  String googleToken;
   String username;
   List<Post> posts;
   NetworkImage profilePicture = new NetworkImage(
@@ -15,12 +17,64 @@ class User {
   List<Post> savedPosts;
   bool hasStory;
   int userId;
+  String profileId;
+  String nsId;
+  String showCaseSet;
+  String firstName;
+  String lastName;
+  String age;
+  String description;
+  String website;
+  String occupation;
+  String homeTown;
+  String city;
+  String country;
+  String displayName;
 
-  User(this.username, this.profilePicture,
-      {this.followers,
-      this.following,
-      this.posts,
-      this.savedPosts,
-      this.hasStory,
-      this.userId});
+  User({
+    this.username,
+    this.profilePicture,
+    this.followers,
+    this.following,
+    this.posts,
+    this.savedPosts,
+    this.hasStory,
+    this.userId,
+    this.profileId,
+    this.nsId,
+    this.showCaseSet,
+    this.firstName,
+    this.lastName,
+    this.description,
+    this.website,
+    this.occupation,
+    this.homeTown,
+    this.city,
+    this.country,
+    this.email,
+    this.googleEmail,
+    this.password,
+    this.token,
+    this.age,
+    this.displayName,
+    this.googleToken,
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        profileId: json["profileId"],
+        nsId: json["nsId"],
+        showCaseSet: json["showcaseSet"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        description: json["description"],
+        website: json["website"],
+        occupation: json["occupation"],
+        homeTown: json["homeTown"],
+        city: json["city"],
+        country: json["country"],
+      );
+
+  factory User.fromJson2(Map<String, dynamic> json) => User(
+        token: json["token"],
+      );
 }
