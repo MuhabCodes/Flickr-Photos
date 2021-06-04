@@ -66,16 +66,34 @@ class TestAccountSettingsPage(object):
         self.accountsettingsPage.click(self.accountsettingsPage.DELETE_ACCOUNT)
         sleep(2)
         assert self.accountsettingsPage.page_url() == TestData.ACCOUNT_DELETE_URL
-        print("\n Delete link is working and redirects to delete account page")
+        print("\nDelete link is working and redirects to delete account page")
 
     def test_change_real_name(self, setup):
         self.accountsettingsPage.click(self.accountsettingsPage.REAL_NAME_CHANGE)
         sleep(2)
         assert self.accountsettingsPage.page_url() == TestData.PROFILE_EDIT_URL
-        print("\n Change real name link is working and redirects to profile edit page")
+        print("\nChange real name link is working and redirects to profile edit page")
 
     def test_change_display_name(self, setup):
         self.accountsettingsPage.click(self.accountsettingsPage.DISPLAY_NAME_CHANGE)
         sleep(2)
         assert self.accountsettingsPage.page_url() == TestData.DISPLAY_NAME_URL
-        print("\n Change display link is working and redirects to screen name edit page")
+        print("\nChange display link is working and redirects to screen name edit page")
+
+    def test_privacy_permissions_label(self, setup):
+        self.accountsettingsPage.click(self.accountsettingsPage.PRIVACY_PERMISSIONS_LABEL)
+        assert self.accountsettingsPage.page_url() == TestData.PRIVACY_PERMISSIONS_URL
+        sleep(2)
+        print("\nOpens privacy & permissions link")
+
+    def test_email_notifications_label(self, setup):
+        self.accountsettingsPage.click(self.accountsettingsPage.EMAIL_NOTIFICATIONS_LABEL)
+        assert "email" in self.accountsettingsPage.page_url()
+        sleep(2)
+        print("\nOpens email and notifications link")
+
+    def test_sharing_extending_label(self, setup):
+        self.accountsettingsPage.click(self.accountsettingsPage.SHARING_EXTENDING_LABEL)
+        assert self.accountsettingsPage.page_url() == TestData.SHARING_EXTENDING_URL
+        sleep(2)
+        print("\nOpens sharing and extending link")
