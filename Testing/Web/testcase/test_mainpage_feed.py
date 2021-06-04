@@ -75,7 +75,7 @@ class TestMainPageFeedTools(object):
     # @pytest.mark.skip
     def test_click_poster_link(self, setup):
         assert self.main_page.check_feed_empty() is True
-        if not self.main_page.filter_exists:
+        if self.main_page.filter_exists:
             assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(10)
@@ -90,7 +90,7 @@ class TestMainPageFeedTools(object):
             assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
 
         sleep(5)
-        if not self.main_page.layout_exists:
+        if self.main_page.layout_exists:
             assert self.main_page.select_layout("LAYOUT_COMPACT")
 
         sleep(10)

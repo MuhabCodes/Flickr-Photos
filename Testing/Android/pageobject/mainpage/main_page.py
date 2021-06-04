@@ -8,22 +8,7 @@ from selenium.webdriver.common.by import By
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from pageobject.page import Page
-
-
-class MainPageLocator(object):
-    flickr_view_id = "com.flickr.android:id/fragment_explore_photo_list"
-    post_xpath = '//android.widget.RelativeLayout'
-    photo_group_id = "com.flickr.android:id/photo_card_grid"
-
-    # inside a photo
-    fave_count_id = "com.flickr.android:id/activity_lightbox_fav_count_left"
-    post_activity_footer_id = "com.flickr.android:id/activity_lightbox_footer"
-    comment_count_id = \
-        "com.flickr.android:id/activity_lightbox_comment_count_left"
-    # Inside comment view
-    add_comment_field_id = "com.flickr.android:id/add_comment_content"
-    comment_post_button_id = "com.flickr.android:id/add_comment_post"
-    comment_back_button_id = "com.flickr.android:id/fragment_header_back"
+from pageobject.locator import Locator
 
 
 class MainPage(Page):
@@ -33,11 +18,11 @@ class MainPage(Page):
     def refresh_feed(self):
         """ Refresh mainpage feed. """
         flickr_view = self.driver.find_element_by_id(
-            MainPageLocator.flickr_view_id
+            Locator.flickr_view_id
         )
 
         post_list = flickr_view.find_elements_by_xpath(
-            '.' + MainPageLocator.post_xpath)
+            '.' + Locator.post_xpath)
 
         self.driver.scroll(post_list[1], post_list[0])
 
@@ -64,7 +49,7 @@ class MainPage(Page):
         :param y: photo's y-coordinate
         """
         photo_group = post_item.find_element_by_id(
-            MainPageLocator.photo_group_id)
+            Locator.photo_group_id)
 
         action = TouchAction(self.driver)
         action.tap(photo_group, x=x, y=y).perform()
@@ -72,11 +57,11 @@ class MainPage(Page):
     def test_tap_photo(self):
         """ Test tapping in a feed photo. """
         flickr_view = self.driver.find_element_by_id(
-            MainPageLocator.flickr_view_id
+            Locator.flickr_view_id
         )
 
         post_list = flickr_view.find_elements_by_xpath(
-            '.' + MainPageLocator.post_xpath)
+            '.' + Locator.post_xpath)
 
         self.tap_feed_photo(post_list[0], 10, 10)
 
@@ -85,7 +70,7 @@ class MainPage(Page):
         :return: String favourite count
         """
         fave_count = self.driver.find_element_by_id(
-            MainPageLocator.fave_count_id)
+            Locator.fave_count_id)
         return fave_count.text
 
     def get_comments_count(self):
@@ -94,13 +79,13 @@ class MainPage(Page):
         :return: String comment count
         """
         comment_count = self.driver.find_element_by_id(
-            MainPageLocator.comment_count_id)
+            Locator.comment_count_id)
         return comment_count.text
 
     def tap_fave(self):
         """ Tap on fave button inside a photo. """
         post_activity_footer = self.driver.find_element_by_id(
-            MainPageLocator.post_activity_footer_id
+            Locator.post_activity_footer_id
         )
         footer_width = 576
         footer_height = 84
@@ -116,11 +101,11 @@ class MainPage(Page):
         :return: boolean to check if the operation is successful
         """
         flickr_view = self.driver.find_element_by_id(
-            MainPageLocator.flickr_view_id
+            Locator.flickr_view_id
         )
 
         post_list = flickr_view.find_elements_by_xpath(
-            '.' + MainPageLocator.post_xpath)
+            '.' + Locator.post_xpath)
         self.tap_feed_photo(post_list[0], 10, 10)
 
         fave_count = self.get_fave_count()
@@ -133,7 +118,7 @@ class MainPage(Page):
     def tap_comments(self):
         """ Open comment section."""
         post_activity_footer = self.driver.find_element_by_id(
-            MainPageLocator.post_activity_footer_id
+            Locator.post_activity_footer_id
         )
         footer_width = 576
         footer_height = 84
@@ -156,23 +141,23 @@ class MainPage(Page):
         """
         comment_field: WebElement = WebDriverWait(self.driver, 60).until(
             EC.element_to_be_clickable(
-                (By.ID, MainPageLocator.add_comment_field_id)
+                (By.ID, Locator.add_comment_field_id)
             )
         )
         comment_field.send_keys(text)
         self.driver.hide_keyboard()
 
         self.driver.find_element_by_id(
-            MainPageLocator.comment_post_button_id).click()
+            Locator.comment_post_button_id).click()
 
     def test_commenting(self):
         """ Test typing a comment."""
         flickr_view = self.driver.find_element_by_id(
-            MainPageLocator.flickr_view_id
+            Locator.flickr_view_id
         )
 
         post_list = flickr_view.find_elements_by_xpath(
-            '.' + MainPageLocator.post_xpath)
+            '.' + Locator.post_xpath)
         self.tap_feed_photo(post_list[0], 10, 10)
 
         # comment_count = self.get_comments_count()

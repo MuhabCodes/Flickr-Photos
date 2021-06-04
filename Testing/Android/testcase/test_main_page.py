@@ -3,15 +3,15 @@ from time import sleep
 import pytest
 from appium import webdriver
 from common.properties import PropertiesMiA1, PropertiesNox
-from pageobject.generalmethods.general_methods import MockMethods
-from pageobject.mainpage.mainpage import MainPage
+from pageobject.generalmethods.general_methods import GeneralMethods
+from pageobject.mainpage.main_page import MainPage
 
 
 class TestMainPage(object):
     driver = None
     desired_caps = PropertiesMiA1.desired_caps
     # desired_caps = PropertiesNox.desired_caps
-    mock_methods = MockMethods()
+    general_methods = GeneralMethods()
     main_page = MainPage()
     link = "http://localhost:4723/wd/hub"
 
@@ -23,10 +23,10 @@ class TestMainPage(object):
         )
         self.driver.implicitly_wait(30)
 
-        self.mock_methods.set_driver(self.driver)
+        self.general_methods.set_driver(self.driver)
         self.main_page.set_driver(self.driver)
 
-        self.mock_methods.login()
+        self.general_methods.login()
         sleep(5)
 
     # @pytest.mark.skip

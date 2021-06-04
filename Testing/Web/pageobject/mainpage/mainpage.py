@@ -426,17 +426,17 @@ class MainPage(Page):
         """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
-            try:
-                feed_layout_list = self.get_feed_layout_list(time_to_wait)
+        try:
+            feed_layout_list = self.get_feed_layout_list(time_to_wait)
 
-                feed_item_list = self.get_feed_item_list(feed_layout_list[0])
+            feed_item_list = self.get_feed_item_list(feed_layout_list[0])
 
-                post_icon = self.get_poster_icon(feed_item_list[0])
-                post_icon.click()
-                return True
-            except (TimeoutException, TypeError, IndexError) as e:
-                traceback.print_exception(*sys.exc_info())
-                raise e
+            post_icon = self.get_poster_icon(feed_item_list[0])
+            post_icon.click()
+            return True
+        except (TimeoutException, TypeError, IndexError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
 
     def check_poster_link(self, time_to_wait: float = None):
         """ Test clicking poster name.
@@ -446,17 +446,17 @@ class MainPage(Page):
         """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
-            try:
-                feed_layout_list = self.get_feed_layout_list(time_to_wait)
+        try:
+            feed_layout_list = self.get_feed_layout_list(time_to_wait)
 
-                feed_item_list = self.get_feed_item_list(feed_layout_list[0])
+            feed_item_list = self.get_feed_item_list(feed_layout_list[0])
 
-                poster_link = self.get_poster_link(feed_item_list[0])
-                poster_link.click()
-                return True
-            except (TimeoutException, TypeError, IndexError) as e:
-                traceback.print_exception(*sys.exc_info())
-                raise e
+            poster_link = self.get_poster_link(feed_item_list[0])
+            poster_link.click()
+            return True
+        except (TimeoutException, TypeError, IndexError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
 
     def check_click_group_photo(self, time_to_wait: float = None):
         """ Test clicking group photo.
@@ -466,18 +466,18 @@ class MainPage(Page):
         """
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
-            try:
-                feed_layout_list = self.get_feed_layout_list(time_to_wait)
+        try:
+            feed_layout_list = self.get_feed_layout_list(time_to_wait)
 
-                feed_item_list = self.get_feed_item_list(feed_layout_list[0])
+            feed_item_list = self.get_feed_item_list(feed_layout_list[0])
 
-                batch_list = self.get_group_photo_batch_list(feed_item_list[1])
-                photo_link = self.get_group_photo_link(batch_list[1])
+            batch_list = self.get_group_photo_batch_list(feed_item_list[1])
+            photo_link = self.get_group_photo_link(batch_list[1])
 
-                # self.page_helper.remove_footer_banner()
-                self.helper.scroll_to_element(photo_link)
-                photo_link.click()
-                return True
-            except (TimeoutException, TypeError, IndexError) as e:
-                traceback.print_exception(*sys.exc_info())
-                raise e
+            # self.page_helper.remove_footer_banner()
+            self.helper.scroll_to_element(photo_link)
+            photo_link.click()
+            return True
+        except (TimeoutException, TypeError, IndexError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
