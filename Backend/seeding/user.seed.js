@@ -34,7 +34,7 @@ async function userSeed() {
     personId: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
     displayName: 'anna',
     email: 'mhmd@amr.com',
-    password: 'e3e3e3',
+    password: 'hashedPw',
     isActivated: true,
 
   },
