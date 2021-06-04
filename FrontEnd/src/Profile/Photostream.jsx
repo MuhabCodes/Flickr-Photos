@@ -105,28 +105,28 @@ const Photostream = () => {
               </div>
             </div>
             )}
-            <div className="recent-photos">
-              <div className="image-grid">
+            <div className="photostream-area-uph">
+              <div className="photo-grid-uph">
                 {photoArr.map((photo) => (
-                  <div className="image-container">
+                  <div className="photo-container-uph">
                     <LazyLoadImage
-                      className="single-image"
+                      className="single-photo-uph"
                       src={photo.imagePath}
                       alt=""
                       key={photo.photoId}
                       onLoad={loadPage}
                     />
-                    <span className="text-area" style={{ display: 'none' }}>
-                      <span className="title-exp">
+                    <span className="interaction-bar-uph" style={{ visibility: 'hidden' }}>
+                      <span className="title-photo-uph">
                         {photo.title}
                       </span>
-                      <span className="user-name-explore">
+                      <span className="user-name-photo-uph">
                         by
                         {' '}
                         {photo.user}
                       </span>
-                      <span className="faves">
-                        <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                      <span className="faves-view-uph">
+                        <button className="fav-btn-uph" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
                           <img
                             className="star"
                             src="https://img.icons8.com/android/24/ffffff/star.png"
@@ -137,7 +137,7 @@ const Photostream = () => {
                           {photo.favs}
                         </span>
                       </span>
-                      <span className="comments">
+                      <span className="comments-view-uph">
                         <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                         {photo.comments}
                       </span>

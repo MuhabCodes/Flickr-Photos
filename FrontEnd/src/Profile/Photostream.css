@@ -160,7 +160,7 @@
   color: #fff;
 }
 
-.recent-photos {
+.photostream-area-uph {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   min-width: 100%;
@@ -170,7 +170,7 @@
   opacity: 1;
 }
 
-.image-grid {
+.photo-grid-uph {
   position: initial;
   display: flex;
   flex-direction: row;
@@ -180,7 +180,7 @@
   margin-right: 10%;
 }
 
-.image-container {
+.photo-container-uph {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -193,7 +193,7 @@
   min-width: fit-content;
 }
 
-.single-image {
+.single-photo-uph {
   float: left;
   object-fit: cover;
   flex-grow: 1;
@@ -202,7 +202,7 @@
   padding: 2px;
 }
 
-.text-area .title-exp {
+.interaction-bar-uph .title-photo-uph {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -216,11 +216,11 @@
   font-size: medium;
 }
 
-.image-container:hover {
+.photo-container-uph:hover {
   cursor: pointer;
 }
 
-.image-container:hover .text-area .title-exp {
+.photo-container-uph:hover .interaction-bar-uph .title-photo-uph {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -228,7 +228,7 @@
   font-weight: bold;
 }
 
-.image-container .user-name-explore {
+.photo-container-uph .user-name-photo-uph {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -242,7 +242,7 @@
   font-size: medium;
 }
 
-.image-container:hover .user-name-explore {
+.photo-container-uph:hover .user-name-photo-uph {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -250,14 +250,14 @@
   font-weight: bold;
 }
 
-.image-container .fav-btn {
+.photo-container-uph .fav-btn-uph {
   visibility: hidden;
   transition: visibility 0s, opacity 0.5s linear;
   background: transparent;
   z-index: 9999;
 }
 
-.image-container:hover .fav-btn {
+.photo-container-uph:hover .fav-btn-uph {
   background-color: transparent;
   border: 0;
   z-index: 9999;
@@ -266,7 +266,7 @@
   font-weight: bold;
 }
 
-.image-container .faves {
+.photo-container-uph .faves-view-uph {
   position: absolute;
   bottom: 0;
   left: 80%;
@@ -279,7 +279,7 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.image-container:hover .faves {
+.photo-container-uph:hover .faves-view-uph {
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;
@@ -287,7 +287,7 @@
   font-weight: bold;
 }
 
-.image-container .comments {
+.photo-container-uph .comments-view-uph {
   position: absolute;
   bottom: 0;
   left: 65%;
@@ -300,7 +300,7 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.image-container:hover .comments {
+.photo-container-uph:hover .comments-view-uph {
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;

@@ -27,7 +27,7 @@
   user-select: none;
   height: 100%;
   min-height: 425px;
-  background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/faves3.jpg);
+  background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/faves-view-ufv3.jpg);
   background-size: 100%;
   background-position: 50% 0;
   background-repeat: repeat-y;
@@ -47,7 +47,7 @@
   margin-bottom: 15px;
 }
 
-.recent-photos {
+.faves-view-ufv-area-ufv {
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
   color: #212124;
   min-width: 100%;
@@ -57,7 +57,7 @@
   opacity: 1;
 }
 
-.image-grid {
+.photo-grid-ufv {
   position: initial;
   display: flex;
   flex-direction: row;
@@ -67,7 +67,7 @@
   margin-right: 10%;
 }
 
-.image-container {
+.photo-container-ufv {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -80,7 +80,7 @@
   min-width: fit-content;
 }
 
-.single-image {
+.single-photo-ufv {
   float: left;
   object-fit: cover;
   flex-grow: 1;
@@ -89,7 +89,7 @@
   padding: 2px;
 }
 
-.text-area .title-exp {
+.interaction-bar-ufv .photo-title-ufv {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -103,11 +103,11 @@
   font-size: medium;
 }
 
-.image-container:hover {
+.photo-container-ufv:hover {
   cursor: pointer;
 }
 
-.image-container:hover .text-area .title-exp {
+.photo-container-ufv:hover .interaction-bar-ufv .photo-title-ufv {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -115,7 +115,7 @@
   font-weight: bold;
 }
 
-.image-container .user-name-explore {
+.photo-container-ufv .user-name-ufv {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -129,7 +129,7 @@
   font-size: medium;
 }
 
-.image-container:hover .user-name-explore {
+.photo-container-ufv:hover .user-name-ufv {
   min-width: 150px;
   padding: 8px 15px;
   visibility: visible;
@@ -137,14 +137,14 @@
   font-weight: bold;
 }
 
-.image-container .fav-btn {
+.photo-container-ufv .fav-btn-ufv {
   visibility: hidden;
   transition: visibility 0s, opacity 0.5s linear;
   background: transparent;
   z-index: 9999;
 }
 
-.image-container:hover .fav-btn {
+.photo-container-ufv:hover .fav-btn-ufv {
   background-color: transparent;
   border: 0;
   z-index: 9999;
@@ -153,28 +153,7 @@
   font-weight: bold;
 }
 
-.image-container .faves {
-  position: absolute;
-  bottom: 0;
-  left: 80%;
-  background: transparent;
-  color: white;
-  margin-bottom: 3.5%;
-  font-family: sans-serif;
-  opacity: 0;
-  visibility: hidden;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.image-container:hover .faves {
-  min-width: 0;
-  padding: 8px 15px;
-  visibility: visible;
-  opacity: 1;
-  font-weight: bold;
-}
-
-.image-container .comments {
+.photo-container-ufv .faves-view-ufv {
   position: absolute;
   bottom: 0;
   left: 65%;
@@ -187,11 +166,32 @@
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.image-container:hover .comments {
+.photo-container-ufv:hover .faves-view-ufv {
   min-width: 0;
   padding: 8px 15px;
   visibility: visible;
-  right: 15%;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-ufv .comments-view-ufv {
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.photo-container-ufv:hover .comments-view-ufv {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  left: 80%;
   opacity: 1;
   font-weight: bold;
 }

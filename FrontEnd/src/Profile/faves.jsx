@@ -52,7 +52,7 @@ const Faves = () => {
   // The next lines are to display the image description, username, faves and comments count
   // when hovering on an image
   return (
-    <div className="recent-photos">
+    <div className="faves-area-ufv">
       {!loading && (
         <div>
           {!currUser && photoArr.length === 0 && (
@@ -68,26 +68,26 @@ const Faves = () => {
           </div>
           )}
           {currUser && photoArr.length === 0 ? (<div />) : (
-            <div className="image-grid">
+            <div className="photo-grid-ufv">
               {photoArr.map((photo) => (
-                <div className="image-container">
+                <div className="photo-container-ufv">
                   <LazyLoadImage
-                    className="single-image"
+                    className="single-photo-ufv"
                     src={photo.imagePath}
                     alt=""
                     key={photo.photoId}
                   />
-                  <span className="text-area">
-                    <span className="title-exp">
+                  <span className="interaction-bar-ufv">
+                    <span className="photo-title-ufv">
                       {photo.title}
                     </span>
-                    <span className="user-name-explore">
+                    <span className="user-name-ufv">
                       by
                       {' '}
                       {photo.user}
                     </span>
-                    <span className="faves">
-                      <button className="fav-btn" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                    <span className="faves-view-ufv">
+                      <button className="fav-btn-ufv" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
                         {currUser ? (
                           <img
                             className="star"
@@ -106,7 +106,7 @@ const Faves = () => {
                         {photo.favs}
                       </span>
                     </span>
-                    <span className="comments">
+                    <span className="comments-view-ufv">
                       <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
                       {photo.comments}
                     </span>
