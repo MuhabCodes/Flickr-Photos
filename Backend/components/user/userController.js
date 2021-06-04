@@ -33,10 +33,10 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
         message: 'Not found',
       });
     }
-    return res.status(200).json({ // else returns user
+    return res.status(200).json( // else returns user
       userObj,
 
-    });
+    );
   } catch (err) {
     return res.status(500).json({ // returns 500 if it couldn't access db
       error: err,
@@ -98,6 +98,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       person: userObj.personId,
       tags: userTags.length,
       favs: userFavs.length,
+      userAvatar: userObj.userAvatar,
 
     });
   } catch (error) {
