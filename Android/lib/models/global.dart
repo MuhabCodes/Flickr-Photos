@@ -51,7 +51,7 @@ List<Post> userHomePostsInteg = [];
 bool addUserHomePosts(Map<String, dynamic> json) {
   Post newPost = new Post(
       photo: [
-        new Photo(imagePath: json["photoUrl"]),
+        new Photo(imageUrl: json["photoUrl"]),
       ],
       postId: json["postId"],
       user: new User(
@@ -99,7 +99,7 @@ User createUserFollowing(Map<String, dynamic> json) {
 bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
   Post newPost = new Post(
     photo: [
-      new Photo(imagePath: json["imageUrl"]),
+      new Photo(imageUrl: json["imageUrl"]),
     ],
     photoId: json["_id"],
     title: json["title"],
@@ -136,7 +136,7 @@ User userBenFlasher = new User(
 Post postBenFlasher = new Post(
   photo: [
     new Photo(
-      imagePath:
+      imageUrl:
           'https://live.staticflickr.com/4532/38021230015_8934884e7b_h.jpg',
     ),
   ],
@@ -161,11 +161,11 @@ Post postBenFlasher = new Post(
 Post post1 = new Post(
   photo: [
     new Photo(
-      imagePath:
+      imageUrl:
           'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
     ),
     new Photo(
-      imagePath:
+      imageUrl:
           'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
     )
   ],
