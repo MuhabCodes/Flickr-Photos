@@ -12,9 +12,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
+import firebase from 'firebase/app';
+import jwt from 'jwt-decode';
 import style from './loginStyles';
 import icon from './flickrlogo.png';
 import configData from '../config.json';
+// import FBlogin from './firebaselogin2';
+
+import('firebase/messaging');
+import('firebase/database');
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -33,6 +39,22 @@ const schema = yup.object().shape({
   password: yup.string().min(5).required(),
   email: yup.string().email().required(),
 });
+const FBlogin = async () => {
+  const FIREBASE_MESSAGING = firebase.messaging();
+  const FIREBASE_DATABASE = firebase.database();
+  console.log(FIREBASE_DATABASE);
+  // so starting here the next steps which is getting token && saving token
+  await FIREBASE_MESSAGING.getToken()
+    .then((token) => {
+      const userjwt = jwt(localStorage.getItem('token'));
+      console.log('token to be save', token);
+      // saving token in database
+      FIREBASE_DATABASE.ref('/tokens').push({
+        token,
+        userId: userjwt.sub,
+      });
+    });
+};
 
 export default function SignUp() {
   // the passing of the scheme using the useForm from the react hook library
@@ -54,6 +76,7 @@ export default function SignUp() {
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
+      FBlogin();
       localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
       history.push('/');
     });
