@@ -28,28 +28,18 @@
     position: absolute;
     z-index: 108;
 }
-#star-button{
-    right: 0px;
+
+#starBorderOutlined {
+    color: #ffffff !important;
+    position: absolute;
+    z-index: 108;
+    right: -120px;
     bottom: 0px;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    color: #fff;
-    position: absolute;
-    z-index: 108;
+
 }
 
-#star-filled-button{
-    right: 0px;
-    bottom: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    color: #fff;
-    position: absolute;
-    z-index: 108;
-}
-#star-hidden-button{
-    visibility: hidden;
-}
 
 #back-button{
     left: 0px;
