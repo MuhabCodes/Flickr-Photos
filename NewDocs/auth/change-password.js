@@ -1,6 +1,6 @@
 /**
  * 
- * @api {PUT} /change-password changePassword
+ * @api {PUT} /auth/change-password changePassword
  * 
  * @apiGroup auth
  * @apiVersion  0.1.1
