@@ -1,5 +1,5 @@
 import 'package:flickr/login/get_started.dart';
-import 'package:flickr/navigations/privacy_and_safety.dart';
+import 'package:flickr/profile/privacy_and_safety.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/photo_provider.dart';
@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'providers/about_provider.dart';
 import 'providers/camera_provider.dart';
 import 'providers/tag_provider.dart';
 
@@ -24,9 +23,7 @@ class MyApp extends StatelessWidget {
     ]);
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(
-          value: AboutProvider(),
-        ),
+        
         ChangeNotifierProvider.value(
           value: Authentication(),
         ),
