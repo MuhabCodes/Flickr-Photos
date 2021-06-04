@@ -1740,6 +1740,7 @@
       "userId": 4,
       "userAlbums": [
         {
+          "albumId":1,
           "albumTitle": "Yarab Nekhlas!!",
           "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "albumphotos": [
@@ -1749,6 +1750,7 @@
           ]
         },
         {
+          "albumId":2,
           "albumTitle": "Insha2allah Nekhlas!!",
           "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
           "albumphotos": [
@@ -1764,6 +1766,7 @@
       "userId": 3,
       "userAlbums": [
         {
+          "albumId":1,
           "albumTitle": "Insha2allah Nekhlas!!",
           "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
           "albumphotos": [
@@ -1773,6 +1776,7 @@
           ]
         },
         {
+          "albumId":2,
           "albumTitle": "Yarab tedy 3ala 5er",
           "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "albumphotos": [
