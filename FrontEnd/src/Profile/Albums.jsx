@@ -5,6 +5,8 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Albums.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import configData from '../config.json';
 
 function Albums() {
@@ -32,13 +34,25 @@ function Albums() {
     }
   }, []);
 
+  // handle delete
+  const deleteAlbum = (i) => {
+    const toBeDeleted = {};
+    toBeDeleted.albumId = albumsData[i].albumId;
+    axios.delete(`/albums/${id}`, toBeDeleted).then(() => {
+      setAlbumsData((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
+      if (error.response.status === 404) {
+        history.push('*'); // Redirect to Error page
+      }
+    });
+  };
   // Render albums for preview
-  const renderPhotos = (source) => source.map((photo) => (
+  const renderPhotos = (source) => source.map((photo, index) => (
     <div key={photo.albumCover}>
 
       <div id="album-container">
         <img
-          id="added-photos"
+          id="album-added-photos"
           src={photo.albumCover}
           alt=""
         />
@@ -48,12 +62,17 @@ function Albums() {
           {' '}
           photos
         </span>
+        {(id === userjwt.sub) && (
+        <IconButton id="delete-albums-button" onClick={() => deleteAlbum(index)}>
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+        )}
       </div>
     </div>
   ));
 
   return (data ? (
-    <div id="result">{albumsData && renderPhotos(albumsData)}</div>) : <div>loading...</div>
+    <div id="result-albums">{albumsData && renderPhotos(albumsData)}</div>) : <div>loading...</div>
   );
 }
 
