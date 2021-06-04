@@ -101,6 +101,7 @@ exports.findComment = async function findComment(req, res) {
           text: doc.commentText,
           author: doc.user.displayName,
           authorId: doc.user._id,
+          userAvatar: doc.user.userAvatar,
 
         })),
       },
@@ -111,5 +112,3 @@ exports.findComment = async function findComment(req, res) {
     });
   }
 };
-
-
