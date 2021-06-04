@@ -1,7 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-
+from selenium.webdriver.common.keys import Keys
 # Base class for all pages
 # Important functions used in multiple pages
 
@@ -35,3 +35,7 @@ class BasePage(object):
 
     def get_page_title(self):
         return str(self.driver.title)
+
+    def clear_field(self, locator):
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).send_keys(Keys.CONTROL + "a")
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).send_keys(Keys.DELETE)
