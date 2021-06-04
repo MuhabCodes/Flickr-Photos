@@ -18,6 +18,7 @@ class Post {
   String userId;
   int numLikes;
   int numComments;
+  String photoId;
   //List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
@@ -39,5 +40,6 @@ class Post {
     this.userId,
     this.numComments,
     this.numLikes,
+    this.photoId,
   });
 }
