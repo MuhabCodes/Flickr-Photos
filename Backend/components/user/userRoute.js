@@ -29,4 +29,12 @@ router.route('/pro/:proToken').post(async (req, res) => {
   }
 });
 
+router.route('/delete-account').delete(async (req, res) => {
+  try {
+    await userController.deleteAccount(req, res);
+  } catch (_) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
+});
+
 module.exports = router;
