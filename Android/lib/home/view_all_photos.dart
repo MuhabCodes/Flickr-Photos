@@ -11,7 +11,7 @@ class ViewAllPhotos extends StatelessWidget {
   String textTitle = "";
   List<Photo> photo = [
     new Photo(
-      imagePath: 'www.google.com',
+      imageUrl: 'www.google.com',
     )
   ];
   double _widthScreen = 0;
@@ -90,7 +90,7 @@ class ViewAllPhotos extends StatelessWidget {
                   ),
                   color: Colors.white,
                   image: DecorationImage(
-                    image: NetworkImage(image.imagePath),
+                    image: NetworkImage(image.imageUrl),
                     fit: BoxFit.cover,
                   )),
             ),
