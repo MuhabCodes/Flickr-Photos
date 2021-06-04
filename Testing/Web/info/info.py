@@ -26,3 +26,5 @@ class TestData(object):
     RECENT_ACTIVITY_URL = "https://www.flickr.com/activity"
     FORGOT_PASSWORD_URL = "https://identity.flickr.com/forgot-password"
     CHECK_EMAIL_FORGOT_PASS_URL = "https://identity.flickr.com/check-email/forgot-password"
+    PRIVACY_PERMISSIONS_URL = "https://www.flickr.com/account/privacy"
+    SHARING_EXTENDING_URL = "https://www.flickr.com/account/sharing"
