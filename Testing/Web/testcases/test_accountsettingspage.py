@@ -4,7 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from time import sleep
 from pages.loginpage.loginpage import LoginPage
-from pages.mainpage.mainpage import MainPage
 from info.info import TestData
 
 
@@ -15,8 +14,7 @@ class TestAccountSettingsPage(object):
         self.accountsettingsPage = AccountSettingsPage(self.driver)
         self.mockLogin = LoginPage(self.driver)
         self.mockLogin.log_in("george_joseph99@hotmail.com", "ejnHG3v35gueXhE")
-        self.mainPage = MainPage(self.driver)
-        self.mainPage.click_settings_label()
+        self.driver.get(TestData.ACCOUNT_URL)
         self.accountsettingsPage.driver.maximize_window()
         yield
         self.accountsettingsPage.driver.quit()
@@ -52,7 +50,7 @@ class TestAccountSettingsPage(object):
 
     def test_change_password4(self, setup):
         self.accountsettingsPage.click_change_password_link()
-        self.accountsettingsPage.change_password("qwertyuiopas", "ejnHG3v35gueXhE")
+        self.accountsettingsPage.change_password("ejnHG3v35gueXhE", "ejnHG3v35gueXhE")
         sleep(2)
         assert self.accountsettingsPage.page_url() == TestData.PASSWORD_CHANGE_SUCCESS_URL
         sleep(2)
@@ -85,9 +83,3 @@ class TestAccountSettingsPage(object):
             sleep(2)
             assert self.accountsettingsPage.page_url() == TestData.DISPLAY_NAME_URL
             print("\n Change display link is working and redirects to screen name edit page")
-
-
-    def test_upload_photo_icon(self, setup):
-        if self.accountsettingsPage.element_clickable(self.accountsettingsPage.AVATAR_PHOTO_UPLOAD):
-            self.accountsettingsPage.click(self.accountsettingsPage.AVATAR_PHOTO_UPLOAD)
-            sleep(2)
