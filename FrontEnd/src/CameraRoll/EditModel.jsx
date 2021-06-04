@@ -17,7 +17,7 @@ function EditModel() {
     const edit = {
       title, discription, DateTaken,
     };
-    axios.patch('/photos/2', edit)
+    axios.patch('/cameraroll/2', edit)
       .then((resp) => {
         console.log(resp);
       });

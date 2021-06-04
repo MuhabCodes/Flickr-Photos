@@ -18,7 +18,7 @@ function PrivacyModel() {
     const Privacy = {
       privacy,
     };
-    axios.patch('/photos/2', Privacy)
+    axios.patch('/cameraroll/2', Privacy)
       .then((resp) => {
         console.log(resp);
       });
