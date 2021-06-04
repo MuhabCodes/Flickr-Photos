@@ -17,7 +17,7 @@ import CameraRoll from '../CameraRoll/CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Faves from '../Profile/Faves';
+// import Faves from '../Profile/Faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
@@ -37,6 +37,8 @@ import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import configData from '../config.json';
 import Albums from '../Profile/Albums';
+import FirebaseLogin from '../Login/firebaselogin';
+// import FBlogin from '../Login/firebaselogin2';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
@@ -45,6 +47,7 @@ function App() {
   localStorage.setItem('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ikhvc255QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ3MTMzOSwiZXhwIjoxNjIyNDc0OTM5LCJzdWIiOiI0In0.zZmIFi2i7ZYp9OuW96b48H59a-dTqdJNa_F4gZP3QSI');
   return (
     <div className="flickr-main">
+      <FirebaseLogin />
       <Router>
         <div className="app">
           <Switch>
@@ -102,7 +105,7 @@ function App() {
               <NavBar />
               <CoverArea />
               <SubNavBar />
-              <Faves />
+              {/* <Faves /> */}
             </Route>
             <Route exact path="/Profile/Photostream/:id">
               <NavBar />
