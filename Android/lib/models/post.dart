@@ -15,6 +15,9 @@ class Post {
   bool isLiked;
   bool isSaved;
   String postId;
+  String userId;
+  int numLikes;
+  int numComments;
   //List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
@@ -33,5 +36,8 @@ class Post {
     this.title = "",
     this.likes,
     this.comments,
+    this.userId,
+    this.numComments,
+    this.numLikes,
   });
 }
