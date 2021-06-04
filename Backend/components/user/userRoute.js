@@ -10,9 +10,6 @@ router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
 router.get('/:userId/photos/public', userController.getPublicPhotos);
 
-router.post('/follow', userController.followUser);
-router.post('/addDescription/:userId', userController.addDescription);
-
 router.route('/pro').put(async (req, res) => {
   try {
     await userController.sendProEmail(req, res);
