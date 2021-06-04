@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:flickr/login/send_email.dart';
 import 'package:flickr/login/sign_in.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'auth_services.dart';
+import '../models/user.dart';
+import '../providers/auth.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -17,7 +18,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  var token;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _firstNameController = TextEditingController();
@@ -90,7 +90,31 @@ class _SignUpState extends State<SignUp> {
     }
   } //launcher to go to a certain website
 
+  Future<void> _signUpSubmit() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    try {
+      await _auth.register();
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+      return;
+    }
+    if (_auth.status == Status.Success) {
+      Navigator.of(context).pop();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SendEmail(
+                  text: _emailController.text,
+                  specialNum: 1,
+                )),
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
+    var authentication = Provider.of<Authentication>(context, listen: true);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -365,35 +389,14 @@ class _SignUpState extends State<SignUp> {
                                         _height * 0.065)),
                                 onPressed: () async {
                                   if (formKey.currentState.validate()) {
-                                    AuthService1()
-                                        .signUp(
-                                            _firstNameController,
-                                            _lastNameController,
-                                            _ageController,
-                                            _emailController.text,
-                                            _passwordController.text)
-                                        .then((val) {
-                                      if (val.statusCode == 201) {
-                                        token = val.data['token'];
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => SendEmail(
-                                                  text: _emailController.text)),
-                                        );
-                                        Fluttertoast.showToast(
-                                          msg: 'Authenticated',
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.BOTTOM,
-                                          timeInSecForIosWeb: 1,
-                                          backgroundColor:
-                                              Colors.lightGreenAccent,
-                                          textColor: Colors.white,
-                                          fontSize: 16.0,
-                                        );
-                                      }
-                                    });
+                                    authentication.currentUser = new User(
+                                        firstName: _firstNameController.text,
+                                        lastName: _lastNameController.text,
+                                        age: _ageController.text,
+                                        email: _emailController.text,
+                                        password: _passwordController.text);
+
+                                    _signUpSubmit();
                                   } else {
                                     print('unsuccessful');
                                   }
