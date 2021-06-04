@@ -27,10 +27,11 @@
 
 * @apiSuccessExample {json} Success-Response:
 *    {    "photo_Id": "5d6ede6a0ba62570afcedd3d",
-           "total": 2,
+           "total": 1,
    "comments": {
       "commentId": "6065-109722179-72057594077818641",
       "authorId": "35468159852@N01",
+      "userAvatar": "https://i.imgur.com/PyVmvKL.jpg"
       "author": "Rev Dan Catt",
       "dateCreate": "1141841470",
       "text": "Umm, I'm not sure, can I get back to you on that one?"
