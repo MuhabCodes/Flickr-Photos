@@ -1202,5 +1202,77 @@
       "photoId": "1",
       "id": 2
     }
+  ],
+  "fav": [
+    {
+      "userFav": 3,
+      "id": 1
+    }
+  ],
+  "unfav": [
+    {
+      "userUnfav": 3,
+      "id": 1
+    }
+  ],
+  "follow": [
+    {
+      "3": "",
+      "id": 1
+    },
+    {
+      "3": "",
+      "id": 2
+    },
+    {
+      "3": "",
+      "id": 3
+    },
+    {
+      "3": "",
+      "id": 4
+    },
+    {
+      "userFollowed": 3,
+      "id": 5
+    },
+    {
+      "userFollowed": 3,
+      "id": 6
+    },
+    {
+      "userFollowed": 3,
+      "id": 7
+    }
+  ],
+  "unfollow": [
+    {
+      "3": "",
+      "id": 1
+    },
+    {
+      "3": "",
+      "id": 2
+    },
+    {
+      "3": "",
+      "id": 3
+    },
+    {
+      "3": "",
+      "id": 4
+    },
+    {
+      "userUnfollowed": 3,
+      "id": 5
+    },
+    {
+      "userUnfollowed": 3,
+      "id": 6
+    },
+    {
+      "userUnfollowed": 3,
+      "id": 7
+    }
   ]
 }
