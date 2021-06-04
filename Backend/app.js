@@ -40,6 +40,7 @@ app.use('/urls', urlRouter);
 app.use('/tags', tagsRouter);
 app.use('/notifications', notificationRouter);
 app.use('/search', searchRouter);
+app.use('/user', userRouter);
 // exporting
 
 module.exports = app;

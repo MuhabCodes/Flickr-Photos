@@ -22,7 +22,10 @@
  * }
  * 
  * 
- * 
+ * @apiSuccessExample {type} Success-Response:
+ * {
+ *     "message" : "user followed successfully"
+ * }
  * 
  * @apiError (Error 403) {String} error The client does not have access rights to the content;
  * @apiError (Error 404)  {Number} statusCode The status code.

@@ -7,7 +7,7 @@
  * 
  * @apiDescription Removes a photo from a user's favorites list.
  *
- * 
+ *@apiParam (header) {string} userId The id of the user who deletes the favorite
  * @apiParam (Body){String}  photoId The id of the photo to remove from the user's favorites.
  * 
  * 
