@@ -29,6 +29,7 @@ function PhotoView() {
   const [photoComments, setPhotoComments] = useState(null);
   const [commentText, setcommentText] = useState(''); // set photo album on input change
   const [activeStar, setActiveStar] = useState(false);
+  const [followButton, setFollowButton] = useState(false);
 
   useEffect(() => {
     if (routeId) {
@@ -63,6 +64,17 @@ function PhotoView() {
         setTimeout(() => history.go(-1), 100); // Redirect to last page visited
       }).catch(() => { history.push('*'); });
   };
+  // follow button handle
+  const follow = () => {
+    const send = {};
+    send.userFollowed = data.userId;
+    axios.post('follow', send).catch(() => { history.push('*'); });
+  };
+  const unfollow = () => {
+    const send = {};
+    send.userUnfollowed = data.userId;
+    axios.post('unfollow', send).catch(() => { history.push('*'); });
+  };
 
   // handle edit tag
   const editTag = (i) => {
@@ -76,12 +88,17 @@ function PhotoView() {
     });
   };
   // handle Fav icon
-  // eslint-disable-next-line no-unused-vars
-  const handleFav = () => {
-    if (userJwt === '') {
-      history.push('*');
-    }
+  const fav = () => {
+    const send = {};
+    send.userFav = data.userId;
+    axios.post('fav', send).catch(() => { history.push('*'); });
   };
+  const unfav = () => {
+    const send = {};
+    send.userUnfav = data.userId;
+    axios.post('unfav', send).catch(() => { history.push('*'); });
+  };
+
   // handle comments
   const handleComment = (e) => {
     e.preventDefault();
@@ -137,9 +154,9 @@ function PhotoView() {
         {!enabled && (
         <IconButton onClick={() => setActiveStar(!activeStar)}>
           {activeStar ? (
-            <StarOutlined fontSize="large" id="starBorderOutlined" />
+            <StarOutlined fontSize="large" id="starBorderOutlined" onClick={() => unfav()} />
           ) : (
-            <StarBorderOutlined fontSize="large" id="starBorderOutlined" />
+            <StarBorderOutlined fontSize="large" id="starBorderOutlined" onClick={() => fav()} />
           )}
         </IconButton>
         )}
@@ -162,7 +179,8 @@ function PhotoView() {
                 </Link>
                 )}
                 {/* Checking if the member is owner of the photo to hide the follow button */}
-                {!enabled && <button type="button" id="author-follow-button" className="btn btn-primary">+ Follow</button>}
+                {!enabled && !followButton && <button type="button" id="author-follow-button" className="btn btn-primary" onClick={() => { setFollowButton(!followButton); follow(); }}>+ Follow</button>}
+                {!enabled && followButton && <button type="button" id="author-follow-button" className="btn btn-primary" onClick={() => { setFollowButton(!followButton); unfollow(); }}>Following</button>}
               </div>
             </div>
             {/* photo name */}
