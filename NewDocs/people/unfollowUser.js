@@ -21,6 +21,10 @@
  *     "userId" : "6092ea68326fa5101115dfad"  
  * }
  * 
+ * @apiSuccessExample {type} Success-Response:
+ * {
+ *     "message" : "user unfollowed successfully"
+ * }
  * 
  * 
  * 
