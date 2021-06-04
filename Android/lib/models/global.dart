@@ -11,6 +11,7 @@ TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
   fontSize: 15,
   color: Colors.black,
+  fontWeight: FontWeight.normal,
 );
 TextStyle textStyleBold = new TextStyle(
     fontFamily: 'Gotham',
