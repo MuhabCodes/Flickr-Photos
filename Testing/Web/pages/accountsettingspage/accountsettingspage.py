@@ -15,6 +15,9 @@ class AccountSettingsPage(BasePage):
     CURRENT_PASSWORD_FIELD = (By.ID, "current-password")
     NEW_PASSWORD_FIELD = (By.ID, "new-password")
     CHANGE_PASS_BUTTON = (By.XPATH, '/html/body/div/div/div[2]/div/div[2]/form/button/span')
+    PRIVACY_PERMISSIONS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div[1]/ul/li[2]/a')
+    EMAIL_NOTIFICATIONS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div[1]/ul/li[3]/a')
+    SHARING_EXTENDING_LABEL = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div[1]/ul/li[4]/a')
 
     def __init__(self, driver):
         super().__init__(driver)
