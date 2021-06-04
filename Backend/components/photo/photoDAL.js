@@ -39,9 +39,17 @@ module.exports = {
     // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
       .select('inPhoto')
-      .populate('inPhoto')
-      .select('displayName personId')
-      .populate('personId');
+      .populate({
+
+        path: 'inPhoto',
+        model: 'User',
+        select: 'userAvatar displayName personId isPro',
+        populate: {
+          path: 'personId',
+          model: 'Person',
+        },
+
+      });
 
     return inPhoto;
   },
