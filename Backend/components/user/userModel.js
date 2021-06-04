@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   userAvatar: {
     type: String,
@@ -33,12 +32,27 @@ const userSchema = mongoose.Schema({
   },
   displayName: {
     type: String,
+    required: true, // TODO made required as notifications contain name and it could have nulls
   },
   groups: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Group',
   },
-  // TODO : Add proper data structure to store following and followers
+  followers: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'User',
+  },
+  isGoogleUser: {
+    type: Boolean,
+    default: false,
+  },
+  following: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  description: {
+    type: String,
+  },
+
 },
 { autoCreate: true });
 

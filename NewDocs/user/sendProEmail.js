@@ -9,6 +9,10 @@
  * 
  * @apiSuccess (Success 201) {Number} statusCode Indicates that the email is sent.
  * 
+ * @apiError (Error 401) {String} error The user passing the token is unauthorized to do this action (Not logged in).
+ * @apiError (Error 401) {Number} statusCode The status code
+ * 
+ * 
  * @apiError (Error 409) {String} error Indicates that the user is not activated.
  * @apiError (Error 409) {Number} statusCode The status code
  * 

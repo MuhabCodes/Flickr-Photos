@@ -12,6 +12,7 @@
  * @apiError (Error 400) {String} error The token passed in the url is invalid.
  * @apiError (Error 400) {Number} statusCode The status code
  * 
+ * 
  * @apiError (Error 409) {String} error The request could not be completed due to a conflict with the current state of the resource.
  * @apiError (Error 409) {Number} statusCode The status code
  * 
