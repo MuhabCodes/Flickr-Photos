@@ -18,7 +18,7 @@ class AccountSettingsPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver.get(TestData.ACCOUNT_URL)
+        self.driver.get(TestData.LOGIN_URL)
 
     def click_change_password_link(self):
         if self.element_clickable(self.PASSWORD_CHANGE):
