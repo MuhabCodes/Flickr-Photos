@@ -118,11 +118,12 @@ module.exports = {
       const { photoId } = req.params;
 
       const inPhoto = await getPeopleInPhotoServ(photoId);
-      const retObj = inPhoto.inPhoto.map((photo) => ({
-        userAvatar: photo.userAvatar,
-        userId: photo._id,
-        displayName: photo.displayName,
-        realName: photo.realName,
+      const retObj = inPhoto.inPhoto.map((user) => ({
+        userAvatar: user.userAvatar,
+        userId: user._id,
+        displayName: user.displayName,
+        realName: user.realName,
+        isPro: user.isPro,
       }));
       // TODO : check with ayoub if it is needed the same way as the docs
       res.status(200).json({
