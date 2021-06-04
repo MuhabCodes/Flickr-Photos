@@ -11,22 +11,22 @@ class Photos {
 }
 
 class Photo {
-  Photo({this.uploadDate, this.imagePath, this.captureDate});
+  Photo({this.uploadDate, this.imageUrl, this.captureDate});
 
   String uploadDate;
-  String imagePath;
+  String imageUrl;
   String captureDate;
   bool selected = false;
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
         uploadDate: json["uploadDate"],
-        imagePath: json["imagePath"],
+        imageUrl: json["imageUrl"],
         captureDate: json["captureDate"],
       );
 
   Map<String, dynamic> toJson() => {
         "uploadDate": uploadDate,
-        "imagePath": imagePath,
+        "imageUrl": imageUrl,
         "captureDate": captureDate,
       };
 }
