@@ -1,14 +1,18 @@
-import 'package:flickr/login/auth_services.dart';
 import 'package:flickr/login/forgot_password.dart';
 import 'package:flickr/login/sign_up.dart';
-import 'package:flickr/models/global.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';
+
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -16,7 +20,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  var token;
+  bool _isLoading = false;
+  GoogleSignInAccount _user;
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscureText = true; //show password boolean
@@ -45,8 +51,69 @@ class _SignInState extends State<SignIn> {
     }
   } //launcher to go to a certain website
 
+  var authentication;
+
+  Future<void> _submit() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    try {
+      await _auth.signIn();
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+      return;
+    }
+    if (_auth.status == Status.Success) {
+      Navigator.of(context).pop();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TopNavigationBar()),
+      );
+    }
+  }
+
+  Future<void> _submitWithGoogle() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    await _auth.googleSignIn.signIn().then((userData) {
+      _user = userData;
+
+      if (_user.email != null && _user.displayName != null) {
+        print(_user.email);
+        print(_user.displayName);
+        _auth.currentUser =
+            new User(googleEmail: _user.email, displayName: _user.displayName);
+        print('current =');
+        print(_auth.currentUser.googleEmail);
+      }
+    }).catchError((value) {
+      print(value);
+      print("loko");
+    });
+    print('current =');
+    // print(_auth.currentUser.googleEmail);
+    try {
+      await _auth.signInWithGoogle();
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+
+      return;
+    }
+    if (authentication.status == Status.Success) {
+      //Navigator.of(context).pop();
+      Navigator.of(context).pop();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TopNavigationBar()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    authentication = Provider.of<Authentication>(context, listen: true);
+
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -204,32 +271,10 @@ class _SignInState extends State<SignIn> {
                                     // await Provider.of<Auth>(context).login(
                                     //     _emailController.text,
                                     //     _passwordController.text);
-                                    AuthService()
-                                        .login(_emailController.text,
-                                            _passwordController.text)
-                                        .then((val) {
-                                      if (val.statusCode == 201) {
-                                        token = val.data['token'];
-                                        Navigator.of(context).pop();
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  TopNavigationBar()),
-                                        );
-                                        Fluttertoast.showToast(
-                                          msg: 'Authenticated',
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.BOTTOM,
-                                          timeInSecForIosWeb: 1,
-                                          backgroundColor:
-                                              Colors.lightGreenAccent,
-                                          textColor: Colors.white,
-                                          fontSize: 16.0,
-                                        );
-                                      }
-                                    });
+                                    authentication.currentUser = new User(
+                                        email: _emailController.text,
+                                        password: _passwordController.text);
+                                    _submit();
                                   } else {
                                     _emailSwitch();
                                   }
@@ -301,30 +346,15 @@ class _SignInState extends State<SignIn> {
                           ],
                         )),
                         SizedBox(
-                          height: _height * 0.02,
+                          height: 0.05 * _height,
                         ),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                                minimumSize: Size(_width, _height * 0.07)),
-                            onPressed: () {},
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "lib/assets/google.png",
-                                  height: _height * 0.09,
-                                  width: _width * 0.09,
-                                ),
-                                SizedBox(
-                                  width: _width * 0.05,
-                                ),
-                                Text(
-                                  "Sign in with Google",
-                                  style: TextStyle(color: Colors.black),
-                                )
-                              ],
-                            ))
+                        SignInButton(
+                          Buttons.Google,
+                          text: "Sign in with Google",
+                          onPressed: () {
+                            _submitWithGoogle();
+                          },
+                        )
                       ],
                     ),
                   ],
