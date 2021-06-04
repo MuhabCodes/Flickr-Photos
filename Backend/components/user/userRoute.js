@@ -10,8 +10,9 @@ router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
 router.get('/:userId/photos/public', userController.getPublicPhotos);
 
-router.post('/follow', userController.followUser);
-router.post('/description/:userId', userController.addDescription);
+// router.post('/follow', userController.followUser);
+router.post('/unfollow', userController.unFollowUser);
+// router.post('/description/:userId', userController.addDescription);
 
 router.route('/pro').put(async (req, res) => {
   try {
@@ -22,7 +23,7 @@ router.route('/pro').put(async (req, res) => {
 });
 
 router.post('/follow', userController.followUser, createFollowNotification);
-router.post('/addDescription/:userId', userController.addDescription);
+router.post('/description/:userId', userController.addDescription);
 
 router.route('/pro/:proToken').post(async (req, res) => {
   try {

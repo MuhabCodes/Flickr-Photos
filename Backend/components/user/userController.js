@@ -224,3 +224,40 @@ exports.getPublicPhotos = async function getPublicPhotos(req, res) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
   }
 };
+
+exports.unFollowUser = async function unFollowUser(req, res, next) {
+  const { body } = req;
+  // body.userId contain id of user you need to follow
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+    if (currentUser == null) { // check whether token contains information or not
+      return res.status(403).json({
+        message: ' You are not logged in ',
+      });
+    }
+    const userObj = await userDAL.getUserById(currentUser.userId);
+    const isFollowing = checkFollowing(userObj.following, body.userId);
+
+    if (isFollowing === false) {
+      return res.status(403).json({
+        message: 'You are already not following the user',
+      });
+    }
+
+    // add the userid to the following array of the calling user
+    await userDAL.removeFromFollowing(currentUser.userId, body.userId);
+
+    // increase the followers of the user
+    await userDAL.removeFromFollowers(body.userId, currentUser.userId);
+
+    // forwarding info from mw / to next
+    req.sender = userObj; // since userObj is the one following
+    // no need to send reciever as its already in req.body.userId
+    return res.status(200).json({
+      message: 'user unfollowed successfully',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};

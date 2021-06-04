@@ -168,3 +168,15 @@ module.exports.getUserPublicPhotos = async function getUserPublicPhotos(userId) 
 
   return photoObj;
 };
+
+module.exports.removeFromFollowing = async function removeFromFollowing(userId, followingId) {
+  const userObj = await User.findById(userId);
+  userObj.following = userObj.following.filter((user) => (String)(user) !== (String)(followingId));
+  userObj.save();
+};
+
+module.exports.removeFromFollowers = async function removeFromFollower(userId, followerId) {
+  const userObj = await User.findById(userId);
+  userObj.followers = userObj.followers.filter((user) => (String)(user) !== (String)(followerId));
+  userObj.save();
+};
