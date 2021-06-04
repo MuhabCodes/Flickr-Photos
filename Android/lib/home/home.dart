@@ -10,6 +10,7 @@ import 'package:flickr/models/post.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import '../models/global.dart';
@@ -142,7 +143,7 @@ class HomeState extends State<Home> {
       return [Container()];
     }
     for (Post post in userHomePostsMock) {
-      // we will loop on all posts created in global.dart and add them to our home page
+      ///Loops on all posts created in global.dart and add them to our home page
       if (post.photo.length == 1) {
         {
           posts.add(getPost(context, post, index));
@@ -221,10 +222,22 @@ class HomeState extends State<Home> {
                         backgroundImage: post.user.profilePicture,
                       ),
                     ),
-                    Text(
-                      post.user.username,
-                      style: textStyleBold,
-                    )
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          post.user.username,
+                          style: textStyleBold,
+                        ),
+                        post.title == null
+                            ? Container()
+                            : Text(
+                                (post.title),
+                                style: textStyle,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                      ],
+                    ),
                   ],
                 ),
                 Text(
@@ -288,7 +301,7 @@ class HomeState extends State<Home> {
                   child: Container(
                     height: 2.2,
                     width: widthScreen - 21, //340.0,
-                    color: Colors.grey,
+                    color: Colors.grey[200],
                   ),
                 ),
               ],
@@ -503,11 +516,13 @@ class HomeState extends State<Home> {
                                             ),
                                             Row(children: <Widget>[
                                               Text(
-                                                post
-                                                    .comments[
-                                                        post.comments.length -
+                                                post.comments.length == 1
+                                                    ? (post.comments[0].comment)
+                                                    : (post
+                                                        .comments[post.comments
+                                                                .length -
                                                             1]
-                                                    .comment,
+                                                        .comment),
                                                 style: textStyle,
                                               ),
                                             ])
