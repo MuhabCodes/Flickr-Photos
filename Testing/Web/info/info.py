@@ -22,3 +22,7 @@ class TestData(object):
     ACCOUNT_DELETE_URL = "https://www.flickr.com/account/delete"
     PROFILE_EDIT_URL = "https://www.flickr.com/profile_edit.gne?from=personal"
     DISPLAY_NAME_URL = "https://www.flickr.com/account/prefs/screenname/?from=personal"
+    FLICKR_MAIL_URL = "https://www.flickr.com/mail"
+    RECENT_ACTIVITY_URL = "https://www.flickr.com/activity"
+    FORGOT_PASSWORD_URL = "https://identity.flickr.com/forgot-password"
+    CHECK_EMAIL_FORGOT_PASS_URL = "https://identity.flickr.com/check-email/forgot-password"
