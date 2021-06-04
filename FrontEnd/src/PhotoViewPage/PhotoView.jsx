@@ -13,11 +13,9 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Button from '@material-ui/core/Button';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles } from '@material-ui/core/styles';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-// eslint-disable-next-line no-unused-vars
-import StarIcon from '@material-ui/icons/Star';
-// eslint-disable-next-line no-unused-vars
-import SimpleModal from './LoginModal';
+import StarBorderOutlined from '@material-ui/icons/StarBorderOutlined';
+import StarOutlined from '@material-ui/icons/StarOutlined';
+import MenuListComposition from './AddToAlbums';
 
 // import configData from '../config.json';
 
@@ -30,6 +28,7 @@ function PhotoView() {
   const [tags, setPhotoTags] = useState(null);
   const [photoComments, setPhotoComments] = useState(null);
   const [commentText, setcommentText] = useState(''); // set photo album on input change
+  const [activeStar, setActiveStar] = useState(false);
 
   useEffect(() => {
     if (routeId) {
@@ -77,6 +76,7 @@ function PhotoView() {
     });
   };
   // handle Fav icon
+  // eslint-disable-next-line no-unused-vars
   const handleFav = () => {
     if (userJwt === '') {
       history.push('*');
@@ -133,9 +133,14 @@ function PhotoView() {
           <DeleteIcon fontSize="large" />
         </IconButton>
         )}
+        {enabled && <MenuListComposition />}
         {!enabled && (
-        <IconButton id="star-button" onClick={handleFav}>
-          <StarBorderIcon fontSize="large" />
+        <IconButton onClick={() => setActiveStar(!activeStar)}>
+          {activeStar ? (
+            <StarOutlined fontSize="large" id="starBorderOutlined" />
+          ) : (
+            <StarBorderOutlined fontSize="large" id="starBorderOutlined" />
+          )}
         </IconButton>
         )}
         <IconButton id="back-button" onClick={() => history.go(-1)}>
@@ -178,8 +183,8 @@ function PhotoView() {
                       </div>
                       <p className="text">{photoComment.comment}</p>
                       {(photoComment.userId == userJwt.sub) && (
-                      <IconButton id="delete-comments-button">
-                        <DeleteIcon fontSize="small" onClick={() => deleteComment(index)} />
+                      <IconButton id="delete-comments-button" onClick={() => deleteComment(index)}>
+                        <DeleteIcon fontSize="small" />
                       </IconButton>
                       )}
                     </div>
