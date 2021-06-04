@@ -1,6 +1,5 @@
 from info.info import TestData
 from selenium.webdriver.common.by import By
-from time import sleep
 from pages.basepage import BasePage
 
 
