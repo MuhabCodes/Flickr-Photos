@@ -44,6 +44,7 @@ TextStyle postTitleStyle = new TextStyle(
 ///is the list of posts which are displayed is home page
 ///and it's data is received through a get request
 List<Post> userHomePostsMock = [];
+List<Post> userHomePostsInteg = [];
 
 ///[this function is called in PostProvider Class
 ///to fill in the data members of the post
@@ -83,12 +84,46 @@ bool addUserHomePosts(Map<String, dynamic> json) {
   return true;
 }
 
+///[createUserFollowing] completes fill the data of each post in [userHomePostsInteg]
+User createUserFollowing(Map<String, dynamic> json) {
+  User newUser = new User(
+      username: json["username"],
+      profilePicture: new NetworkImage(json["userAvatar"]));
+
+  //print(newPost.like);
+
+  return newUser;
+}
+
+///[addUserHomePostsInteg] function fills [userHomePostsInteg] list with posts without fill likes ,comment of each post
+bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
+  Post newPost = new Post(
+    photo: [
+      new Photo(imagePath: json["imageUrl"]),
+    ],
+    photoId: json["_id"],
+    title: json["title"],
+    description: json["description"],
+    date: postDateParsing(json["uploadDate"]),
+    userId: json["user"],
+    numComments: json["commentsCount"],
+    numLikes: json["likesCount"],
+    user: userFollowingInfo,
+  );
+  //print(newPost.like);
+  userHomePostsInteg.add(newPost);
+
+  return true;
+}
+
+String host = "api.flick.photos";
 User loggedInUser = new User(
   username: 'LoggedIn user',
   profilePicture: new NetworkImage(
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
+  userId: "507f191e810c19729de860ea",
 );
 
 User userBenFlasher = new User(
