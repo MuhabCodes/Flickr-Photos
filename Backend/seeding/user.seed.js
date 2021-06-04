@@ -17,6 +17,7 @@ async function userSeed() {
     email: 'hamoksha@hotmail.com',
     password: hashedPw,
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfae'),
+    displayName: 'mhmd',
   }, {
     email: 'activated@gmail.com',
     password: hashedPw,
