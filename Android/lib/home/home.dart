@@ -64,24 +64,6 @@ class HomeState extends State<Home> {
     return ans;
   }
 
-  /* void arangePostsWithUploadDate() {
-    
-    for (int i = 0; i < userHomePosts.length; i++) {
-      List<Post> tempList = [];
-      tempList.add(userHomePosts[0]);;
-      
-
-      for (int j = i + 1; j < userHomePosts.length; j++) {
-        if (userHomePosts[i].date == userHomePosts[j].date) {
-          tempList.add(userHomePosts[j]);
-          i++;
-        }
-      }
-      
-    }
-    userHomePosts=tempList;
-  }*/
-
   //List<Widget> likers = [];
 
   var globalProvider;
@@ -101,9 +83,13 @@ class HomeState extends State<Home> {
   int isDone = 0;
   @override
   Widget build(BuildContext context) {
+    DateTime test = postDateParsing("2021-12-01T19:11:08");
+
     if (isDone == 0) {
       globalProvider =
           Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
+
+      Provider.of<PostProvider>(context, listen: true).getUserFollowing();
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
