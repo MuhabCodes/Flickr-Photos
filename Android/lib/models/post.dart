@@ -19,10 +19,10 @@ class Post {
   int numLikes;
   int numComments;
   String photoId;
-  //List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
+  //List<NetworkImage> imageUrl = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
-      imagePath: 'www.google.com',
+      imageUrl: 'www.google.com',
     )
   ];
 
