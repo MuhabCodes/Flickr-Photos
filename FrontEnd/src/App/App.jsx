@@ -17,7 +17,7 @@ import CameraRoll from '../CameraRoll/CameraRoll';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-// import Faves from '../Profile/Faves';
+import Faves from '../Profile/Faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
@@ -114,7 +114,7 @@ function App() {
               <NavBar />
               <CoverArea />
               <SubNavBar />
-              {/* <Faves /> */}
+              <Faves />
             </Route>
             <Route exact path="/Profile/Photostream/:id">
               <NavBar />
