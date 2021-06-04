@@ -18,13 +18,16 @@ class PostProvider with ChangeNotifier {
   String userId;
   User userLoggedIn;
   List<String> followingIds;
+  User userFollowingInfo;
+
   PostProvider(
       {this.baseUrl,
       this.context,
       this.userHomePostsString,
       this.userId,
       this.userLoggedIn,
-      this.followingIds});
+      this.followingIds,
+      this.userFollowingInfo});
 
   var _urlUserHomePosts =
       Uri.parse("https://run.mocky.io/v3/8b56c903-aa47-4432-a540-5d8c6873afb2");
@@ -37,7 +40,7 @@ class PostProvider with ChangeNotifier {
       var extractData = jsonDecode(response.body);
       List<dynamic> json = extractData["posts"];
 
-      print(json);
+      //print(json);
       for (int i = 0; i < json.length; i++) {
         addUserHomePosts(json[i]);
       }
@@ -50,30 +53,86 @@ class PostProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<User> putLikePost() async {
-    /// put request from backend
+  var _urlUserFollowing =
+      Uri.parse(host + "/people/" + loggedInUser.userId + "/info");
 
-    status = Status.Loading;
-    final response = await http.put(
-      _urlUserHomePosts,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{}),
-    );
+  var _urlUserFollowingMock =
+      Uri.parse("https://run.mocky.io/v3/bfbb0fd8-09dd-4970-8803-6bb62150a171");
+  Future<void> getUserFollowing() async {
+    /// get request
+    var response = await http.get(_urlUserFollowingMock);
     if (response.statusCode == 200) {
-      print(response.body);
       status = Status.Success;
       notifyListeners();
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
+      var extractData = jsonDecode(response.body);
+      List<dynamic> json = extractData["following"];
+      print(json);
 
-      return User.fromJson(jsonDecode(response.body));
+      if (json != null) {}
     } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
+      /// If the server did not return a 200 CREATED response,
+      /// then throw an exception.
       status = Status.Fail;
-      throw Exception('Failed to load album');
+      throw Exception('Failed to followings');
     }
+    notifyListeners();
+  }
+
+  var _urlUserPublicPhotosMock =
+      Uri.parse("https://run.mocky.io/v3/bfbb0fd8-09dd-4970-8803-6bb62150a171");
+  Future<void> getUserPublicPhotos(List<dynamic> jsonFollowingIds) async {
+    /// get request
+    // response = await http.get(_urlUserPublicPhotosMock);
+    int jsonFollowingIdsSize = jsonFollowingIds.length;
+    for (int i = 0; i < jsonFollowingIdsSize; i++) {
+      var _urlUserPublicPhotosMock =
+          Uri.parse(host + "/people/" + jsonFollowingIds[i] + "/photos/public");
+      //each follwing has his own list of public photos
+      var response = await http.get(_urlUserPublicPhotosMock);
+      if (response.statusCode == 200) {
+        status = Status.Success;
+        notifyListeners();
+        var extractData = jsonDecode(response.body);
+        List<dynamic> jsonPhotosList = extractData;
+        print(jsonPhotosList);
+        if (jsonPhotosList != null) {
+          String userFollowingId = jsonFollowingIds[i];
+          getUserFollowingInfo(userFollowingId);
+          //Loops on the list of public photos of each following
+          for (int j = 0; j < jsonPhotosList.length; j++) {
+            addUserHomePostsInteg(jsonPhotosList[i], userFollowingInfo);
+          }
+        }
+      } else {
+        /// If the server did not return a 200 CREATED response,
+        /// then throw an exception.
+        status = Status.Fail;
+        throw Exception('Failed to followings');
+      }
+      notifyListeners();
+    } //end looping on following list
+  }
+
+  Future<void> getUserFollowingInfo(String userFollowingId) async {
+    /// get request
+    //getInfo
+    var _urlUserFollowingInfo =
+        Uri.parse(host + "/people/" + userFollowingId + "/info");
+
+    var response = await http.get(_urlUserFollowingInfo);
+    if (response.statusCode == 200) {
+      status = Status.Success;
+      notifyListeners();
+      //var extractData = jsonDecode(response.body);
+      Map<String, dynamic> json = jsonDecode(response.body);
+      print(json);
+      userFollowingInfo = createUserFollowing(json);
+    } else {
+      /// If the server did not return a 200 CREATED response,
+      /// then throw an exception.
+      status = Status.Fail;
+      throw Exception('Failed to followings');
+    }
+    notifyListeners();
   }
 }
