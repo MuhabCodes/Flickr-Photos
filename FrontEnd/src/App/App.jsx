@@ -35,6 +35,7 @@ import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
 import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
+import EmailNotifications from '../Emails&Notifications/EmailNotifications';
 import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
@@ -58,6 +59,9 @@ function App() {
             <Route exact path="/account/privacy">
               <NavBar />
               <PrivacyPermissions />
+            </Route>
+            <Route exact path="/emailnotif">
+              <EmailNotifications />
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
