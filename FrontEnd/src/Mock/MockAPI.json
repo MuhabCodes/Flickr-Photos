@@ -459,6 +459,28 @@
   ],
   "getpeopletofollow": [
     {
+      "id": 1,
+      "displayName": "Ahmed Mostafa",
+      "uName": "A.Mostafa",
+      "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "isPro": true,
+      "coverPhoto": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "url": "Profiles/1",
+      "isFollowed": false,
+      "userId": "85@N00"
+    },
+    {
+      "id": 2,
+      "displayName": "Manar Nassef",
+      "uName": "Manarr",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "isPro": false,
+      "coverPhoto": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdmVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "url": "Profiles/2",
+      "isFollowed": false,
+      "userId": "173@N00"
+    },
+    {
       "id": 3,
       "displayName": "Mahmoud Ali",
       "uName": "Hooduini",
@@ -1714,11 +1736,37 @@
   ],
   "albums": [
     {
+      "id": 4,
+      "userId": 4,
+      "userAlbums": [
+        {
+          "albumId":1,
+          "albumTitle": "Yarab Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "albumphotos": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/02/16/12/Dortmund1602abcde.jpg",
+            "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        },
+        {
+          "albumId":2,
+          "albumTitle": "Insha2allah Nekhlas!!",
+          "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "albumphotos": [
+            "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.unsplash.com/photo-1556830805-7cec0906aee6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG93bmxvYWR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          ]
+        }
+      ]
+    },
+    {
       "id": 2,
       "userId": 3,
       "userAlbums": [
         {
-          "albumId": 1,
+          "albumId":1,
           "albumTitle": "Insha2allah Nekhlas!!",
           "albumCover": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
           "albumphotos": [
@@ -1728,7 +1776,7 @@
           ]
         },
         {
-          "albumId": 2,
+          "albumId":2,
           "albumTitle": "Yarab tedy 3ala 5er",
           "albumCover": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "albumphotos": [
@@ -1743,6 +1791,17 @@
   "change-password": [],
   "cameraroll": [
     {
+      "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "privacy": "public",
+      "DateTaken": "2017-05-01T01:50:08",
+      "id": 1,
+      "title": "water",
+      "discription": "I love water",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
+    },
+    {
       "imagePath": "https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "id": 2,
       "privacy": "Public",
@@ -1752,6 +1811,39 @@
       "add comment": "only you",
       "add tag": "only you",
       "userId": 2
+    },
+    {
+      "imagePath": "https://images.pexels.com/photos/753266/pexels-photo-753266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "id": 3,
+      "privacy": "public",
+      "DateTaken": "2020-05-01T01:50:08",
+      "title": "jelly fish",
+      "discription": "I love jelly fish",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
+    },
+    {
+      "imagePath": "https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "id": 4,
+      "privacy": "private",
+      "DateTaken": "2018-05-01T01:50:08",
+      "title": "compas",
+      "discription": "I love compas",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
+    },
+    {
+      "imagePath": "https://images.pexels.com/photos/4353638/pexels-photo-4353638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "id": 5,
+      "privacy": "private",
+      "DateTaken": "2019-05-01T01:50:08",
+      "title": "beach",
+      "discription": "I love the beach",
+      "add comment": "only you",
+      "add tag": "only you",
+      "userId": 1
     }
   ],
   "Comments": [
@@ -1807,6 +1899,12 @@
     }
   ],
   "albumsPhotos": [
+    {
+      "albumId": 1,
+      "userId": "4",
+      "photoId": "1",
+      "id": 1
+    },
     {
       "albumId": 2,
       "photoId": "1",
