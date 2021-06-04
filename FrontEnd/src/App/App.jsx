@@ -12,8 +12,8 @@ import Login from '../Login/logIn';
 import ForgotPassword from '../Login/forgotPassword';
 import SendEmail from '../Login/SendEmail';
 import HomePage from '../Home/HomePage';
-import Footer from './Footer';
 import CameraRoll from '../CameraRoll/CameraRoll';
+// import Footer from './Footer';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
@@ -37,6 +37,7 @@ import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import configData from '../config.json';
 import Albums from '../Profile/Albums';
+import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 
 function App() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
@@ -53,6 +54,10 @@ function App() {
             </Route>
             <Route exact path="/GettingStarted">
               <GettingStarted />
+            </Route>
+            <Route exact path="/account/privacy">
+              <NavBar />
+              <PrivacyPermissions />
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
@@ -156,7 +161,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
       </Router>
     </div>
   );

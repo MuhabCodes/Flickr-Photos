@@ -1,0 +1,88 @@
+.header1 {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.header2{
+    font-size: 18px;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #ff0084;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+ .hr22{
+    border-top: 2px solid rgb(230, 224, 224);
+}
+th{
+    padding: 10px 15px 10px 10px;
+    width: 30%;
+    color: #000;
+    border: 0;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: top;
+}
+td{
+    padding: 10px 0;
+    width: 100%;
+    vertical-align: top;
+    font-size: 12px;
+    /* border: 1px solid black; */
+}
+tr{
+    border-bottom: 1px solid rgb(230, 224, 224);
+}
+tr:first-child {
+    border-top: none;
+  }
+tr:last-child {
+    border-bottom: none;
+  }
+
+.header3{
+    margin-top:20px;
+    font-size: 18px;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #ff0084;
+    font-weight: normal;
+    margin-bottom: 10px;
+
+  }
+.edit1{
+    padding: 10px 10px 10px 0;
+    width: 10%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+justify-content: center;
+  }
+
+  .column {
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  .left, .right {
+    width: 20%;
+  }
+  
+  .middle {
+    width: 60%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
