@@ -103,8 +103,7 @@ class _ProfileState extends State<Profile> {
                               Colors.black.withOpacity(0.3), BlendMode.dstATop),
                           //background image for profile
                           image: NetworkImage(
-                            "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg",
-                          ),
+                              "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -114,8 +113,8 @@ class _ProfileState extends State<Profile> {
                           children: [
                             CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(
-                                    "https://farm4.staticflickr.com/3914/15118079089_489aa62638_b.jpg"),
+                                backgroundImage:
+                                    NetworkImage(userProvider.user.userAvatar),
                                 // ignore: deprecated_member_use
                                 child: FlatButton(
                                   onPressed: () {},
@@ -133,7 +132,8 @@ class _ProfileState extends State<Profile> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("0",
+                                Text(
+                                    userProvider.user.followersCount.toString(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
@@ -158,7 +158,8 @@ class _ProfileState extends State<Profile> {
                                     style: TextStyle(
                                       color: Colors.white,
                                     )),
-                                Text("1",
+                                Text(
+                                    userProvider.user.followingCount.toString(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
