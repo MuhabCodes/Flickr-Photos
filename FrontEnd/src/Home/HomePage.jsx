@@ -6,7 +6,7 @@ import SideBar from './SideBar';
 import useFetch from '../useFetch';
 import CardsContainer from './CardsContainer';
 import PostsFeed from './PostsFeed';
-import './HomePage.css';
+import './Homepage.css';
 import configData from '../config.json';
 
 const HomePage = () => {
