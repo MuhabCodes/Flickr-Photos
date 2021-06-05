@@ -10,6 +10,8 @@ router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
 router.get('/:userId/photos/public', userController.getPublicPhotos);
 
+router.post('/unfollow', userController.unFollowUser);
+
 router.route('/pro').put(async (req, res) => {
   try {
     await userController.sendProEmail(req, res);
@@ -19,7 +21,7 @@ router.route('/pro').put(async (req, res) => {
 });
 
 router.post('/follow', userController.followUser, createFollowNotification);
-router.post('/addDescription/:userId', userController.addDescription);
+router.post('/description/:userId', userController.addDescription);
 
 router.route('/pro/:proToken').post(async (req, res) => {
   try {
