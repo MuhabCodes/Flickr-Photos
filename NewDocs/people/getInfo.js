@@ -14,22 +14,38 @@
  *  
  * @apiSuccessExample {json} Success-Response:
  *{
-    "userId": "507f191e810c19729de860ea",
+    "userId": "6092ea68326fa5101115dfad",
     "followersCount": 0,
-    "followingCount": 0,
+    "followingCount": 4,
     "followers": [],
-    "following": [],
+    "following": [
+        "6092ea68326fa5101115dfae",
+        "6092ea68326fa5101115dfaf",
+        "6092ea68326fa5101115dfb0",
+        "111111111111111111111111"
+    ],
     "isActivated": false,
     "isPro": false,
     "albums": [],
-    "email": "mhmd@amr.com",
+    "email": "hamoksha@live.com",
+    "displayName": "keka",
     "photos": [],
     "photosCount": 0,
-    "person": "507f191e810c19729de860ef",
+    "description": "hi",
+    "person": {
+        "dateCreated": "2021-06-05T08:06:47.561Z",
+        "_id": "60bb2d70c77326753f3975dc",
+        "realName": "Yousef Qadry",
+        "city": "giza",
+        "homeTown": "cairo",
+        "occupation": "nothing",
+        "country": "Egypt"
+    },
     "tags": 0,
     "favs": 0,
-    "userAvatar": "https://i.imgur.com/PyVmvKL.jpg"
-
+    "userAvatar": "https://i.imgur.com/PyVmvKL.jpg",
+    "firstName": "Yousef",
+    "lastName": "Qadry"
 }
  * 
  * 
