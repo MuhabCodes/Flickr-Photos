@@ -19,7 +19,7 @@ Widget listView(
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.network(
-            photoProvider.triple[index].imagePath,
+            photoProvider.triple[index].imageUrl,
             fit: BoxFit.cover,
           ),
           Container(
@@ -36,8 +36,8 @@ Widget listView(
                       margin: EdgeInsets.only(
                           right: 10), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://farm4.staticflickr.com/3914/15118079089_489aa62638_b.jpg"),
+                        backgroundImage:
+                            NetworkImage(userProvider.user.userAvatar),
                       ),
                     ),
                     Text(
@@ -59,7 +59,7 @@ Widget listView(
           ),
           Container(
             child: Text(
-              "This is Description",
+              photoProvider.triple[index].description,
               style: TextStyle(fontSize: 12, color: Colors.black),
               maxLines: 5,
             ),
@@ -84,7 +84,7 @@ Widget listView(
                         onPressed: () {},
                       ),
                       Text(
-                        "2",
+                        photoProvider.triple[index].favs.toString(),
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       )
                     ],
@@ -98,7 +98,7 @@ Widget listView(
                           color: Colors.grey,
                           onPressed: () {}),
                       Text(
-                        "2",
+                        photoProvider.triple[index].comments.toString(),
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       )
                     ],
@@ -109,6 +109,26 @@ Widget listView(
                     color: Colors.grey,
                   )
                 ]),
+          ),
+          Card(
+            child: Card(
+              margin: EdgeInsets.only(
+                top: 2,
+                left: 20,
+                right: 20,
+              ),
+              child: Container(
+                padding: EdgeInsets.only(top: 27, bottom: 27),
+                margin: EdgeInsets.only(left: 15),
+                child: Text(
+                  "${photoProvider.triple[index].views} views  ",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
           )
         ],
       ),
