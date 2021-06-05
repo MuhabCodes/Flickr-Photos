@@ -44,7 +44,10 @@
  *      "total": 1,
  *      "people": [
  *                  {
- *                   "id": "1253153dw", "addedBy": "1efgg1@f324$", "username": "ned_winterfell", "realName": "Eddard Stark"
+            "userAvatar": "https://i.imgur.com/PyVmvKL.jpg",
+            "userId": "60b9b68766e14e0ce564ca02",
+            "displayName": "NedStark",
+            "isPro": false
  *                  }
  *                ]
  *      

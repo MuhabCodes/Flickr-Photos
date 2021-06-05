@@ -7,8 +7,8 @@
  * @apiVersion  0.1.0
  * 
  * 
- * @apiParam (body) {String} name name of the model you want to add
- * @apiParam (body) {String} brandName name of brand you want to add model to
+ * @apiParam (Body) {String} name name of the model you want to add
+ * @apiParam (Body) {String} brandName name of brand you want to add model to
  * 
  *@apiSuccess (Success 200) {Number} statusCode The status code
  * 

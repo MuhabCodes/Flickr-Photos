@@ -2,8 +2,9 @@ const { join } = require('path');
 const userDAL = require('../user/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
 const { sendConfirmationEmail, sendResetPasswordEmail } = require('./Services/sendEmail.js');
-const { decryptConfirmationToken, decryptResetPasswordToken } = require('./Services/decryptToken');
+const { decryptConfirmationToken, decryptResetPasswordToken, decryptAuthToken } = require('./Services/decryptToken');
 const { signInGoogleServ } = require('./Services/signInGoogle');
+const { changePasswordServ } = require('./Services/changePassword');
 require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {
@@ -116,6 +117,21 @@ exports.signInGoogle = async function signInGoogle(req, res) {
     // create Account Google
     const token = await signInGoogleServ(email, displayName);
     res.status(201).send({ statusCode: 201, token });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.changePassword = async function changePw(req, res) {
+  // get inputs of the request
+  const { authorization } = req.headers;
+  const { oldPassword, newPassword } = req.body;
+  const { userId } = await decryptAuthToken(authorization);
+  try {
+    await changePasswordServ(userId, oldPassword, newPassword);
+    res.status(201).send({ statusCode: 201 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 

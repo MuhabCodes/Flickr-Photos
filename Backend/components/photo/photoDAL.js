@@ -39,12 +39,21 @@ module.exports = {
     // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
       .select('inPhoto')
-      .populate('inPhoto')
-      .select('displayName personId')
-      .populate('personId');
+      .populate({
+
+        path: 'inPhoto',
+        model: 'User',
+        select: 'userAvatar displayName personId isPro',
+        populate: {
+          path: 'personId',
+          model: 'Person',
+        },
+
+      });
 
     return inPhoto;
   },
+
 };
 
 module.exports.removeFav = async function removeFav(photoId) {
@@ -69,4 +78,18 @@ module.exports.removeComment = async function removeComment(photoId) {
   const photoObj = await Photo.findById(photoId);
   photoObj.comments -= 1;
   photoObj.save();
+};
+
+module.exports.searchPhotosDAL = async function searchPhotosDAL(searchWord) {
+  // searches the title description and title of all photos and return them
+  const searchPhotos = await Photo.find({ $text: { $search: searchWord } })
+    .select('title favs comments user imageUrl description _id')
+    .populate('user', '_id displayName');
+
+  return searchPhotos;
+};
+
+module.exports.deleteUserPhotosDAL = async function deleteUserPhotos(userId) {
+  // delete all user photos
+  await Photo.deleteMany({ user: userId });
 };

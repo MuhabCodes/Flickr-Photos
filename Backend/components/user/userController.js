@@ -2,6 +2,7 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const { deleteAccountServ } = require('./Services/deleteAccount');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -9,7 +10,6 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
   try {
     // call getUser by display name from DAL
-    // TODO: might be changed to userName won't change alot
     const userObj = await userDAL.getUserByDisplayName(displayName);
     if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
@@ -161,6 +161,7 @@ exports.sendProEmail = async function sendPro(req, res) {
     res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
   }
 };
+// eslint-disable-next-line consistent-return
 exports.followUser = async function followUser(req, res, next) {
   const { body } = req;
   // body.userId contain id of user you need to follow
@@ -229,7 +230,7 @@ exports.getPublicPhotos = async function getPublicPhotos(req, res) {
   }
 };
 
-exports.unFollowUser = async function unFollowUser(req, res, next) {
+exports.unFollowUser = async function unFollowUser(req, res) {
   const { body } = req;
   // body.userId contain id of user you need to follow
   const { authorization } = req.headers;
@@ -263,5 +264,18 @@ exports.unFollowUser = async function unFollowUser(req, res, next) {
     });
   } catch (error) {
     return res.status(500).json(error);
+  }
+};
+
+exports.deleteAccount = async function delAcc(req, res) {
+  const { authorization } = req.headers;
+  try {
+    const { userId } = await decryptAuthToken(authorization);
+    await deleteAccountServ(userId);
+    res.status(201).send({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };
