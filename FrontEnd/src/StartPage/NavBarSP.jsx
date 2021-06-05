@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './NavBar.css';
+// import './NavBarSP.css';
 import { useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '14px',
     marginLeft: '8rem',
     marginRight: '0.5rem',
-    color: 'inherit',
+    color: 'white',
   },
   button2: {
     padding: '5px 25px',
@@ -58,17 +58,24 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '0.5rem',
     color: 'inherit',
   },
+  navbarheader: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: '1.6rem',
+    paddingTop: '2px',
+    marginLeft: '1rem',
+    marginRight: '8rem',
+  },
 }));
 
 // component for the whole navigation bar
 function NavBar() {
-  const history = useHistory();
+  const historyLogin = useHistory();
   const routeLogin = () => {
-    history.push('/login');
+    historyLogin.push('/login');
   };
-  const history1 = useHistory();
+  const historySignup = useHistory();
   const routeSignup = () => {
-    history1.push('/signup');
+    historySignup.push('/signup');
   };
   const classes = useStyles();
   return (

@@ -17,7 +17,7 @@ import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
 import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
-// import NavBar from './Navbar';
+import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
 import About from '../AboutPage/About';
 import StartPage from '../StartPage/StartPage';
@@ -52,6 +52,7 @@ function App() {
               <SendEmail />
             </Route>
             <Route exact path="/">
+              <NavBar />
               <HomePage />
             </Route>
             <Route path="/Profile/About">
