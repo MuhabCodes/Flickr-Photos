@@ -20,9 +20,7 @@
  * @apiParam (Body) {String} [cameraName] The name of the camera used
  * @apiParam (Body) {Number} width the width of the image
  * @apiParam (Body) {Number} height the height of the image
- * @apiParam (File) {File} fileInput The photo you wish to add
- * @apiParam (File) {String} path the path on the server to the save the image in (public/uploads/<image_name>.<format>)
- * @apiParam (File) {String} fieldname the name of the filed (fileInput)
+ * @apiParam (Body) {String} photo the photo in base64 format
  *
  *
  * @apiSuccess (Success 201) {Number} statusCode The status code
@@ -41,6 +39,7 @@
  *      "height":2000,
  *      "isPublic":true,
  *      "secret":"dfabhfu234",
+ *      "photo":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/4RD..."
  *      "favorites":false,
  *      "inPhoto":[{...},{...},...],
  *      "tags":[{...},{...},...],

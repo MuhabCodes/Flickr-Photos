@@ -29,18 +29,18 @@
  *     "authorId" : "asdgfyvwer32",
  *      "title":"My album",
  *      "description":"The album description",
- *      "updateDate":"1-1-2010",
- *      "createDate":"1-1-2009",
+ *      "updateDate":"2021-12-01T19:11:08",
+ *      "createDate":"2020-05-01T01:50:08",
  *      "countPhotos":17,
  *      "statusCode":200,
  *      "photos":[{
  *              "title":"Waterfall",
- *              "uploadDate":"1-2-2020",
+ *              "uploadDate":"2021-12-01T19:11:08",
  *              "imagePath":"www.example.com/doasf",
  *              "isPublic":true,
  *              "description" :"This is the description",
  *              "views":123,
- *              "captureDate":"1-1-2020",
+ *              "captureDate":"2020-05-01T01:50:08",
  *              "secret":"dfjio324",
  *              "photoId":"dsphnfio2"
  *              },{...},...]
