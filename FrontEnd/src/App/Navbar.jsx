@@ -39,7 +39,7 @@ function NavBar() {
   const history = useHistory();
   const logout = () => {
     FBlogout();
-    // localStorage.clear();
+    localStorage.clear();
     history.push('/login');
   };
   const account = () => {
