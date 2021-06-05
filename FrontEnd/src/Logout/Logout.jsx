@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import jwt from 'jwt-decode';
 
 export default function Logout() {

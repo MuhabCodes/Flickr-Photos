@@ -13,7 +13,7 @@ const ExploreCard = (props) => {
       </h6>
       <div className="images-container-explore-card">
         {ExplorePhotos.map((Photo) => (
-          <Link className="images-container-explore-card-link" key={Photo.photoId} to="PHOTOURLHERE">
+          <Link className="images-container-explore-card-link" key={Photo.photoId} to={`/photoview/${Photo.photoId}`}>
             <img className="images-container-explore-card-img" src={Photo.imagePath} alt="" />
           </Link>
         ))}
