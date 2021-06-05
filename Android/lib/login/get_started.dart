@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import 'package:flickr/login/sign_in.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +39,11 @@ class _GetStartedState extends State<GetStarted> {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('No Internet Connection')));
       return;
     }
     if (_auth.status == Status.Success) {
-      Navigator.of(context).pop();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => SignIn()),
