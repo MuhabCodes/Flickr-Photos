@@ -81,6 +81,8 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
     const userTags = await tagDAL.getUserTag(params.userId);
     const userPhotos = await userDAL.getPhotos(params.userId); // array of photos
 
+    const name = userObj.personId.realName;
+
     return res.status(200).json({
       userId: userObj._id,
       followersCount: userObj.followers.length,
@@ -99,6 +101,8 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       tags: userTags.length,
       favs: userFavs.length,
       userAvatar: userObj.userAvatar,
+      firstName: name.slice(0, name.indexOf(' ')),
+      lastName: name.slice(name.indexOf(' ') + 1, name.length),
 
     });
   } catch (error) {

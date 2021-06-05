@@ -79,7 +79,7 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
 };
 
 module.exports.getUserById = async (id) => {
-  const user = (await User.findById(id)).populate('personId');
+  const user = await User.findById(id).populate('personId');
   return user;
 };
 module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
