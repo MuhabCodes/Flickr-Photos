@@ -29,7 +29,7 @@ class User {
     this.homeTown,
     this.googleEmail,
     this.username,
-    //this.displayName,
+    this.displayName,
     this.googleToken,
     this.city,
     this.country,
@@ -64,6 +64,7 @@ class User {
   String country;
   int favs;
   int tags;
+  String displayName;
 
   factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
 
