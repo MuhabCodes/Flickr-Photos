@@ -76,7 +76,18 @@ export default function SignUp() {
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      FBlogin();
+      // FBlogin();
+      Notification.requestPermission().then((permission) => {
+        // If the user accepts, let's create a notification
+        if (permission === 'granted') {
+          // so he allowed us to send notification to browser
+          // so starting here the next steps which is getting token && saving token
+          console.log('granted');
+          FBlogin();
+        } else {
+          console.log('User didnt give permission');
+        }
+      });
       localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
       history.push('/');
     });

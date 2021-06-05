@@ -37,7 +37,7 @@ function NavBarDropDown() {
               <a href="/Profile/Faves">Faves</a>
               <a href="/Galleries">Galleries</a>
               <a href="/Groups">Groups</a>
-              <a href="/CameraRoll">Camera Roll</a>
+              <a href={`CameraRoll/${userjwt.sub}`}>Camera Roll</a>
               <a href="/Notifications">Recent</a>
               <a href="/People">People</a>
               <a href="/Organize">Organize</a>

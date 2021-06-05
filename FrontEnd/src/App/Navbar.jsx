@@ -62,7 +62,7 @@ function NavBar() {
       </Navbar.Brand>
       <NavBarDropDown />
       <div className="icons">
-        <a href="#home">
+        <a href="/photos/upload">
           <i className="fas fa-cloud-upload-alt" />
           {' '}
         </a>

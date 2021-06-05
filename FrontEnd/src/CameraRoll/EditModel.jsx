@@ -8,9 +8,9 @@ function EditModel() {
     const modal = document.getElementById('editmodel');
     modal.style.display = 'none';
   }
-  const [title, setTitle] = useState('');
-  const [discription, setdiscription] = useState('');
-  const [DateTaken, setdate] = useState('');
+  const [title, setTitle] = useState('CAT');
+  const [discription, setdiscription] = useState('Default');
+  const [DateTaken, setdate] = useState('2020-05-01T01:50:08');
 
   const handleSubmit = (e) => {
     e.preventDefault();
