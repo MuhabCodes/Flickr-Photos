@@ -4,7 +4,7 @@ const getInfo = async (photoId, res) => {
   try {
     const photo = await getPhotoById(photoId);
     return res.json({
-      authorId: photo.user,
+      authorId: photo.user._id,
       title: photo.title,
       description: photo.description,
       captureDate: photo.captureDate,

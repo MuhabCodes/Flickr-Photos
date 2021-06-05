@@ -1,21 +1,12 @@
-const { addNewPhoto } = require('../photoDAL');
-const Photo = require('../photoModel');
-const { addTag } = require('../../tags/services/addTag');
+const { addNewPhotos } = require('../photoDAL');
 
-const addNew = async (photoInfo, photoPath, res) => {
+const addNew = async (photosInfo, res) => {
   try {
-    // change the location attribute in the photoInfo
-    photoInfo.imageUrl = photoPath;
-    const newTags = [];
-    photoInfo.tags.forEach((tag) => {
-      newTags.push(addTag(tag, photoInfo.user));
-    });
-    photoInfo.tags = newTags;
-    const newPhoto = new Photo(photoInfo);
-    await addNewPhoto(newPhoto);
+    // photosinfo is an array of photos to be added to the server
+    await addNewPhotos(photosInfo);
     return res.json({ statusCode: 201 });
   } catch (err) {
-    return res.json({ error: err, statusCode: 500 });
+    return res.json({ error: err });
   }
 };
 module.exports = {
