@@ -208,7 +208,7 @@ class _SelectPhotoState extends State<SelectPhoto> {
                               i < photoProvider.selectedPhotos.length;
                               i++) {
                             toshare
-                                .add(photoProvider.selectedPhotos[i].imagePath);
+                                .add(photoProvider.selectedPhotos[i].imageUrl);
                           }
                           Share.share(toshare.join("\n\n"));
                           //Share.shareFiles(toshare);
