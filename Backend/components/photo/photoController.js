@@ -106,7 +106,7 @@ module.exports = {
         }
       });
 
-      return await addNew(req.body, `/public/uploads/${photoName}.jpeg`, res);
+      return await addNew(req.body, `/public/uploads/${photoName}.jpg`, res);
     } catch (err) {
       return res.json({
         error: err.message,
