@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import '../models/global.dart';
 import 'comments_fav_page.dart';
-import 'image_fullscreen_home.dart';
+import 'image_fullscreen.dart';
 
 class Home extends StatefulWidget {
   @override
