@@ -7,6 +7,8 @@ import PrivacyModel from './PrivacyModel';
 // this function is to render popout model when clicking on an image
 function PopoutImageModel(prop) {
   const { image } = prop;
+  const { imageid } = prop;
+
   // set privacymodel initial state to false
   const [privacyModel, setPrivacyModel] = useState(false);
   // set edit model intial state to false
@@ -18,19 +20,16 @@ function PopoutImageModel(prop) {
   // show privacy model when clicking on it by changing its state to true
   function ShowPrivacyModel() {
     setPrivacyModel(!privacyModel);
-    console.log(privacyModel);
   }
 
   // show edit model when clicking on it by changing its state to true
   function ShowEditModel() {
     setEditModel(!editModel);
-    console.log(editModel);
   }
 
   // show delete model when clicking on it by changing its state to true
   function ShowDeleteModel() {
     setdelete(!deleteModel);
-    console.log(deleteModel);
   }
   return (
     <>
@@ -74,8 +73,8 @@ function PopoutImageModel(prop) {
           </div>
         </div>
       </div>
-      {privacyModel ? <PrivacyModel /> : null }
-      {editModel ? <EditModel /> : null }
+      {privacyModel ? <PrivacyModel imageid={imageid} /> : null }
+      {editModel ? <EditModel imageid={imageid} /> : null }
       {deleteModel ? <DeleteModel /> : null }
     </>
   );

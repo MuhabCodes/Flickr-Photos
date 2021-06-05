@@ -32,7 +32,7 @@ function NavBarDropDown() {
             <a href={`/Profile/About/${userjwt.sub}`} className="droplink-main-nav">You</a>
             <div className="dropdown-content">
               <a href={`/Profile/About/${userjwt.sub}`}>About</a>
-              <a href="/PhotoStream">Photostream</a>
+              <a href={`/Profile/photostream/${userjwt.sub}`}>Photostream</a>
               <a href="/Albums">Albums</a>
               <a href="/Profile/Faves">Faves</a>
               <a href="/Galleries">Galleries</a>

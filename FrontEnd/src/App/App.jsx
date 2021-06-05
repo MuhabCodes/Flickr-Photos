@@ -114,8 +114,10 @@ function App() {
               <PrivacyPermissions />
               <Footer />
             </Route>
-            <Route exact path="/emailnotif">
+            <Route exact path="/account/email">
+              <NavBar />
               <EmailNotifications />
+              <Footer />
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />

@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './EditModel.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-function EditModel() {
+function EditModel(prop) {
+  const { imageid } = prop;
   function closeModel() {
     const modal = document.getElementById('editmodel');
     modal.style.display = 'none';
   }
-  const [title, setTitle] = useState('CAT');
-  const [discription, setdiscription] = useState('Default');
-  const [DateTaken, setdate] = useState('2020-05-01T01:50:08');
+  const [title, setTitle] = useState('');
+  const [discription, setdiscription] = useState('');
+  const [DateTaken, setdate] = useState('');
+
+  useEffect(() => {
+    axios.get(`/cameraroll/${imageid}`)
+      .then((resp) => {
+        setTitle(resp.data.title);
+        setdiscription(resp.data.discription);
+        setdate(resp.data.DateTaken);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const edit = {
       title, discription, DateTaken,
     };
-    axios.patch('/cameraroll/2', edit)
+    axios.patch(`/cameraroll/${imageid}`, edit)
       .then((resp) => {
         console.log(resp);
       });

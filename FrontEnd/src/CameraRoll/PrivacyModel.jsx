@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PrivacyModel.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 // this function is to render the component that edit the photo privacy
-function PrivacyModel() {
+function PrivacyModel(prop) {
+  const { imageid } = prop;
+  console.log(imageid);
   // close the model when clicking close button or close sign
   function closeModel() {
     const modal = document.getElementById('privacyModel');
@@ -12,13 +14,19 @@ function PrivacyModel() {
   }
 
   const [privacy, setprivacy] = useState('');
+  useEffect(() => {
+    axios.get(`/cameraroll/${imageid}`)
+      .then((resp) => {
+        setprivacy(resp.data.privacy);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const Privacy = {
       privacy,
     };
-    axios.patch('/cameraroll/2', Privacy)
+    axios.patch(`/cameraroll/${imageid}`, Privacy)
       .then((resp) => {
         console.log(resp);
       });
@@ -87,7 +95,7 @@ function PrivacyModel() {
               }}
             />
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor="family">Public</label>
+            <label htmlFor="family">Family</label>
 
             <br />
             <div className="privacy-model-buttons">

@@ -9,6 +9,7 @@ function CameraRoll() {
   const [photos, setphotos] = useState([]);
   const [showModel, setshowModel] = useState(false);
   const [images, setimage] = useState([]);
+  const [imagesid, setimageid] = useState([]);
   useEffect(() => {
     cameraRollContent()
       .then((items) => {
@@ -16,9 +17,10 @@ function CameraRoll() {
       });
   }, []);
 
-  function handleImageClick(image) {
+  function handleImageClick(image, imageid) {
     setshowModel(!showModel);
     setimage(image);
+    setimageid(imageid);
   }
 
   // this line split the code and arrange it according to taken date
@@ -58,7 +60,7 @@ function CameraRoll() {
         day.map((image) => (
           <div className="images">
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-            <img key={image.photoId} src={image.imagePath} alt="" id="image-size" onClick={() => handleImageClick(image.imagePath)} onKeyDown={handleImageClick} />
+            <img key={image.id} src={image.imagePath} alt="" id="image-size" onClick={() => handleImageClick(image.imagePath, image.id)} onKeyDown={handleImageClick} />
 
             {/* this is the model that is shown when i want to have full screen image */}
             <div id="myModal" className="modal">
@@ -119,7 +121,7 @@ function CameraRoll() {
 
       <div className="main">
         {days}
-        {showModel ? <PopoutImageModel image={images} /> : null}
+        {showModel ? <PopoutImageModel image={images} imageid={imagesid} /> : null}
 
       </div>
     </div>

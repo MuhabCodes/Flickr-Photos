@@ -16,7 +16,9 @@ function FollowersCard(props) {
             <h6 className="follower-name">
               {Follower.item}
               {' '}
-              items | view profile
+              items |
+              {' '}
+              <a href="Profile/photostream/4">view profile</a>
               {' '}
             </h6>
           </div>
