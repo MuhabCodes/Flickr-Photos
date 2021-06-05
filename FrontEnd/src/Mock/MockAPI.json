@@ -1788,7 +1788,6 @@
       ]
     }
   ],
-  "change-password": [],
   "cameraroll": [
     {
       "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -1981,6 +1980,28 @@
     {
       "userUnfollowed": 3,
       "id": 7
+    }
+  ],
+  "change-password": [
+    {
+      "oldPassword": "12345",
+      "newPassword": "12345",
+      "id": 1
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 2
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 3
+    },
+    {
+      "oldPassword": "12345",
+      "newPassword": "123456",
+      "id": 4
     }
   ]
 }
