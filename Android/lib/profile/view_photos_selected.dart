@@ -271,12 +271,12 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                                 ? photoProvider
                                                     .photosWithUploadDate[index]
                                                     .images[index2]
-                                                    .imagePath
+                                                    .imageUrl
                                                 : photoProvider
                                                     .photosWithCaptureDate[
                                                         index]
                                                     .images[index2]
-                                                    .imagePath,
+                                                    .imageUrl,
                                             fit: BoxFit.cover,
                                             height: size.width * 0.23,
                                             width: size.width * 0.23,
