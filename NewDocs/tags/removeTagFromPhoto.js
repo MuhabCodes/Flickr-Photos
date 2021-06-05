@@ -9,7 +9,7 @@
  * @apiHeader  {String} authorization authorization Value
  * @apiHeaderExample {json} Request-Example:
  *    {
- *        "Authorization": "Bearer   dksjfbdsjkfbusafbjaadsf"
+ *        "Authorization": "dksjfbdsjkfbusafbjaadsf"
  *     } 
  * @apiParam  {String} photoId photoId to remove the tag from
  * @apiParam  {String} tagId Id of the tag you want to remove
