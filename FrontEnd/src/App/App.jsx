@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
@@ -40,11 +39,11 @@ import EmailNotifications from '../Emails&Notifications/EmailNotifications';
 import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
-import CheckLoggedIn from '../CheckLoggedIn';
 import FirebaseLogin from '../Login/firebaselogin';
 // import FBlogin from '../Login/firebaselogin2';
 
 function App() {
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   return (
     <div className="flickr-main">

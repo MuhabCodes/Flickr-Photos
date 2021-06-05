@@ -3,7 +3,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import axios from 'axios';
 import $ from 'jquery';
 import jwt from 'jwt-decode';
-import CheckLoggedIn from '../CheckLoggedIn';
 // The RecentPhotos.jsx is the component which helps in displaying the recent photos,
 // It includes the function 'RecentPhotos' which has a code the helps in fetching the photos.
 // This function returns the fetched images, but not all at once,
@@ -20,7 +19,7 @@ const RecentPhotos = () => {
   // images details accordingly.
   let userjwt = [];
   function loadPage() {
-    if (CheckLoggedIn()) {
+    if (localStorage.getItem('token')) {
       userjwt = jwt(localStorage.getItem('token'));
       $('.text-area').css('display', 'block');
     }
