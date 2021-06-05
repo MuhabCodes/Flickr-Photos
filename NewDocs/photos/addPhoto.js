@@ -14,7 +14,6 @@
  * @apiParam (Body) {Date} [uploadDate="Now"] The date that the photo was uploaded on
  * @apiParam (Body) {Boolean} [isPublic=true] If this photo is public for anyone to see
  * @apiParam (Body) {String} secret The secret of this photo
- * @apiParam (Body) {String} imageUrl The url of this photo
  * @apiParam (Body) {Boolean} [favorites=false] If this photo is in the author's favourites
  * @apiParam (Body) {Object[]} [inPhoto] Array of user objects in the photo
  * @apiParam (Body) {Object[]} [tags] Array of tag objects in the photo
