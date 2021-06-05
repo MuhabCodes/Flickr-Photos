@@ -2,8 +2,8 @@ import 'dart:async';
 
 ///Importing library to send http requests.
 import 'dart:convert';
-
 import 'package:flickr/models/user.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -114,7 +114,7 @@ class UserProvider with ChangeNotifier {
   }
 
   var _url =
-      Uri.parse("https://run.mocky.io/v3/fc9fb004-03d0-4e9f-a93f-493f6dacb9bf");
+      Uri.parse("https://run.mocky.io/v3/8b6dd354-cdd4-4b73-b8ec-c568ebfa66bf");
 
   Future<void> setUser() async {
     // get request
@@ -143,9 +143,7 @@ class UserProvider with ChangeNotifier {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        "profileId": user.profileId,
-        "nsId": user.nsId,
-        "showcaseSet": user.showCaseSet,
+        "profileId": user.userId,
         "firstName": user.firstName,
         "lastName": user.lastName,
         "description": user.description,
