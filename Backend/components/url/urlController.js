@@ -69,6 +69,7 @@ exports.lookUpGroup = async (req, res) => {
       }
     } else {
       // so it will be pool-id so we will substring it after pool- to end of string
+      // eslint-disable-next-line no-lonely-if
       if (emptyQuotes === 1) {
         id = urlSplit[urlSplit.length - 2].substring(5);
       } else {
