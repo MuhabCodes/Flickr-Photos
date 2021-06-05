@@ -59,4 +59,12 @@ authRouter.route('/googleSignIn').post(async (req, res) => {
   }
 });
 
+authRouter.route('/change-password').put(async (req, res) => {
+  try {
+    await authController.changePassword(req, res);
+  } catch (err) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
+});
+
 module.exports = authRouter;

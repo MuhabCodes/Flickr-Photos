@@ -2,6 +2,7 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const { deleteAccountServ } = require('./Services/deleteAccount');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -9,7 +10,6 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
   try {
     // call getUser by display name from DAL
-    // TODO: might be changed to userName won't change alot
     const userObj = await userDAL.getUserByDisplayName(displayName);
     if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
@@ -33,10 +33,10 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
         message: 'Not found',
       });
     }
-    return res.status(200).json({ // else returns user
+    return res.status(200).json( // else returns user
       userObj,
 
-    });
+    );
   } catch (err) {
     return res.status(500).json({ // returns 500 if it couldn't access db
       error: err,
@@ -81,6 +81,8 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
     const userTags = await tagDAL.getUserTag(params.userId);
     const userPhotos = await userDAL.getPhotos(params.userId); // array of photos
 
+    const name = userObj.personId.realName;
+
     return res.status(200).json({
       userId: userObj._id,
       followersCount: userObj.followers.length,
@@ -98,6 +100,9 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       person: userObj.personId,
       tags: userTags.length,
       favs: userFavs.length,
+      userAvatar: userObj.userAvatar,
+      firstName: name.slice(0, name.indexOf(' ')),
+      lastName: name.slice(name.indexOf(' ') + 1, name.length),
 
     });
   } catch (error) {
@@ -156,6 +161,7 @@ exports.sendProEmail = async function sendPro(req, res) {
     res.status(401).send({ statusCode: 401, error: 'Unauthorized' });
   }
 };
+// eslint-disable-next-line consistent-return
 exports.followUser = async function followUser(req, res, next) {
   const { body } = req;
   // body.userId contain id of user you need to follow
@@ -221,5 +227,55 @@ exports.getPublicPhotos = async function getPublicPhotos(req, res) {
     return res.status(200).json(userObj);
   } catch (error) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
+  }
+};
+
+exports.unFollowUser = async function unFollowUser(req, res) {
+  const { body } = req;
+  // body.userId contain id of user you need to follow
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+    if (currentUser == null) { // check whether token contains information or not
+      return res.status(403).json({
+        message: ' You are not logged in ',
+      });
+    }
+    const userObj = await userDAL.getUserById(currentUser.userId);
+    const isFollowing = checkFollowing(userObj.following, body.userId);
+
+    if (isFollowing === false) {
+      return res.status(403).json({
+        message: 'You are already not following the user',
+      });
+    }
+
+    // add the userid to the following array of the calling user
+    await userDAL.removeFromFollowing(currentUser.userId, body.userId);
+
+    // increase the followers of the user
+    await userDAL.removeFromFollowers(body.userId, currentUser.userId);
+
+    // forwarding info from mw / to next
+    req.sender = userObj; // since userObj is the one following
+    // no need to send reciever as its already in req.body.userId
+    return res.status(200).json({
+      message: 'user unfollowed successfully',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+exports.deleteAccount = async function delAcc(req, res) {
+  const { authorization } = req.headers;
+  try {
+    const { userId } = await decryptAuthToken(authorization);
+    await deleteAccountServ(userId);
+    res.status(201).send({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };

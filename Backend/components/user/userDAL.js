@@ -79,7 +79,7 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
 };
 
 module.exports.getUserById = async (id) => {
-  const user = (await User.findById(id)).populate('personId');
+  const user = await User.findById(id).populate('personId');
   return user;
 };
 module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
@@ -96,7 +96,7 @@ module.exports.getUserGroupsById = async function getUserById(userId) {
 };
 
 module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
-  const userObj = await User.find({ displayName: displayname });
+  const userObj = await User.findOne({ displayName: displayname });
   return userObj;
 };
 
@@ -167,4 +167,30 @@ module.exports.getUserPublicPhotos = async function getUserPublicPhotos(userId) 
   const photoObj = await Photo.find({ $and: [{ user: userId }, { isPublic: true }] });
 
   return photoObj;
+};
+
+module.exports.removeFromFollowing = async function removeFromFollowing(userId, followingId) {
+  const userObj = await User.findById(userId);
+  userObj.following = userObj.following.filter((user) => (String)(user) !== (String)(followingId));
+  userObj.save();
+};
+
+module.exports.removeFromFollowers = async function removeFromFollower(userId, followerId) {
+  const userObj = await User.findById(userId);
+  userObj.followers = userObj.followers.filter((user) => (String)(user) !== (String)(followerId));
+  userObj.save();
+};
+module.exports.changePasswordDAL = async function changePwDal(userId, newPassword) {
+  const hashedPassword = await utilsPassword.hashPassword(newPassword);
+
+  await User.updateOne(
+    { _id: userId }, { $set: { password: hashedPassword } },
+  );
+};
+
+module.exports.deleteUserDAL = async function deleteUser(userId) {
+  // deletes user and returns personId to delete person related to user
+  const user = await User.findByIdAndDelete({ _id: userId });
+  if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
+  return user.personId;
 };

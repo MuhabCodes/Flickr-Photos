@@ -118,8 +118,18 @@ module.exports = {
       const { photoId } = req.params;
 
       const inPhoto = await getPeopleInPhotoServ(photoId);
-
-      res.status(200).json({ statusCode: 200, inPhoto: inPhoto.inPhoto });
+      const retObj = inPhoto.inPhoto.map((user) => ({
+        userAvatar: user.userAvatar,
+        userId: user._id,
+        displayName: user.displayName,
+        realName: user.realName,
+        isPro: user.isPro,
+      }));
+      // TODO : check with ayoub if it is needed the same way as the docs
+      res.status(200).json({
+        statusCode: 200,
+        inPhoto: retObj,
+      });
     } catch (err) {
       res.json({
         error: 'PhotoNotFound',
