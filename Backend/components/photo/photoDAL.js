@@ -1,5 +1,5 @@
 const Photo = require('./photoModel');
-require('../user/userModel');
+require('../User/userModel');
 
 const favoritesModel = require('../favorites/favoritesModel');
 
@@ -7,8 +7,9 @@ module.exports = {
   async getLatestPhotos() {
     return Photo.find().sort({ $natural: -1 });
   },
-  async addNewPhotos(photosInfo) {
-    return Photo.insertMany(photosInfo);
+  async addNewPhoto(photoInfo) {
+    return Photo.collection.insertOne(photoInfo);
+    // return photoInfo.save();
   },
   async getPhotoById(photoId) {
     return Photo.findById(photoId);
@@ -19,6 +20,11 @@ module.exports = {
   async removePhoto(photoToRemove) {
     return photoToRemove.remove();
   },
+
+  async fetchUserPhotos(userId) {
+    return Photo.find({ user: userId });
+  },
+
   async addPersonToPhotoDAL(photoId, userId) {
     await Photo.updateOne(
       { _id: photoId },
