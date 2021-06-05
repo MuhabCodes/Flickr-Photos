@@ -8,6 +8,17 @@ import 'post.dart';
 import 'user.dart';
 
 ///Some text foramts used in several files
+TextStyle textStyleComments = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 18,
+  color: Colors.black,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleBoldComments = new TextStyle(
+    fontFamily: 'Gotham',
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontSize: 18);
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
   fontSize: 15,
@@ -44,6 +55,7 @@ TextStyle postTitleStyle = new TextStyle(
 ///is the list of posts which are displayed is home page
 ///and it's data is received through a get request
 List<Post> userHomePostsMock = [];
+List<Post> userHomePostsInteg = [];
 
 ///[this function is called in PostProvider Class
 ///to fill in the data members of the post
@@ -53,20 +65,22 @@ bool addUserHomePosts(Map<String, dynamic> json) {
         new Photo(imageUrl: json["photoUrl"]),
       ],
       postId: json["postId"],
-      user:
-          new User(username: json["username"], userAvatar: json["userAvatar"]),
+      user: new User(
+        username: "Hannah", //json["username"],
+        userAvatar: json["userAvatar"],
+      ),
       title: json["title"],
       description: json["description"],
       date: DateTime(2021, 05, 31, 20, 38, 59),
       likes: [
         new User(
-            username: json["likes"][0]["userName"],
+            username: "Hannah", //json["likes"][0]["userName"],
             userAvatar: json["likes"][0]["userAvatarUrl"]),
       ],
       comments: [
         new Comment(
           new User(
-              username: json["likes"][0]["userName"],
+              username: "Hannah", //json["likes"][0]["userName"],
               userAvatar: json["likes"][0]["userAvatarUrl"]),
           json["commenters"][0]["text"],
           DateTime(2021, 05, 31, 20, 38, 59),
@@ -80,12 +94,45 @@ bool addUserHomePosts(Map<String, dynamic> json) {
   return true;
 }
 
+///[createUserFollowing] completes fill the data of each post in [userHomePostsInteg]
+User createUserFollowing(Map<String, dynamic> json) {
+  User newUser = new User(
+      username: "Hannah" /* json["username"]*/, userAvatar: json["userAvatar"]);
+
+  //print(newPost.like);
+
+  return newUser;
+}
+
+///[addUserHomePostsInteg] function fills [userHomePostsInteg] list with posts without fill likes ,comment of each post
+bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
+  Post newPost = new Post(
+    photo: [
+      new Photo(imageUrl: json["imageUrl"]),
+    ],
+    photoId: json["_id"],
+    title: json["title"],
+    description: json["description"],
+    date: postDateParsing(json["uploadDate"]),
+    userId: json["user"],
+    numComments: json["commentsCount"],
+    numLikes: json["likesCount"],
+    user: userFollowingInfo,
+  );
+  //print(newPost.like);
+  userHomePostsInteg.add(newPost);
+
+  return true;
+}
+
+String host = "api.flick.photos";
 User loggedInUser = new User(
   username: 'LoggedIn user',
   userAvatar:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
+  userId: "507f191e810c19729de860ea",
 );
 
 User userBenFlasher = new User(
@@ -164,7 +211,7 @@ User follower1 = new User(
   following: [],
 );
 User follower2 = new User(
-  username: 'Mehrez',
+  username: 'Hannow',
   userAvatar:
       'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg',
   followers: [],

@@ -311,15 +311,17 @@ class CommentsFavsState extends State<CommentsFavs> {
                         children: <Widget>[
                           RichText(
                             text: new TextSpan(
-                              style: textStyleBold,
+                              style: textStyleBoldComments,
                               children: <TextSpan>[
                                 new TextSpan(
                                   text: comment.user.username + "\n",
                                   style: textStyleBold,
                                 ),
-                                new TextSpan(text: '', style: textStyle),
                                 new TextSpan(
-                                    text: comment.comment, style: textStyle),
+                                    text: '', style: textStyleComments),
+                                new TextSpan(
+                                    text: comment.comment,
+                                    style: textStyleComments),
                               ],
                             ),
                           ),
@@ -445,10 +447,12 @@ class CommentsFavsState extends State<CommentsFavs> {
                                 children: <TextSpan>[
                                   new TextSpan(
                                       text: comment.user.username + "\n",
-                                      style: textStyleBold),
-                                  new TextSpan(text: '', style: textStyle),
+                                      style: textStyleBoldComments),
                                   new TextSpan(
-                                      text: comment.comment, style: textStyle),
+                                      text: '', style: textStyleComments),
+                                  new TextSpan(
+                                      text: comment.comment,
+                                      style: textStyleComments),
                                 ],
                               ),
                             ),
