@@ -194,3 +194,19 @@ module.exports.deleteUserDAL = async function deleteUser(userId) {
   if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
   return user.personId;
 };
+
+module.exports.getFollowersDAL = async function getFollow(userId) {
+  // deletes user and returns personId to delete person related to user
+  const user = await User.findById({ _id: userId });
+  if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
+
+  const follower = await User.findById({ _id: userId })
+    .select('followers')
+    .populate({
+      path: 'followers',
+      model: 'User',
+      select: 'userAvatar displayName _id',
+    });
+  console.log(follower);
+  return follower;
+};
