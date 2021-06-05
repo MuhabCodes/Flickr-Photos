@@ -210,4 +210,9 @@ module.exports = {
       });
     }
   },
+  // async getHome(req, res) {
+  //   try {
+
+  //   }
+  // }
 };

@@ -1,5 +1,5 @@
 const groupDAL = require('./groupDAL');
-const UserDAL = require('../user/userDAL');
+const UserDAL = require('../User/userDAL');
 
 require('dotenv').config();
 const { decryptAuthToken } = require('../auth/Services/decryptToken');

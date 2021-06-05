@@ -1,7 +1,7 @@
 const { join } = require('path');
 require('dotenv').config({ path: join(__dirname, '/../../../secret/', '.env') });
 const jwt = require('jsonwebtoken');
-const userDAL = require('../../user/userDAL');
+const userDAL = require('../../User/userDAL');
 const utilsPassword = require('../../../utils/passwords');
 
 module.exports.verifyPassword = async function verifyPassword({ email, password }) {

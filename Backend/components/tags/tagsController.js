@@ -1,6 +1,6 @@
 const tagsDAL = require('./tagsDAL');
 const { getPhotoById } = require('../photo/photoDAL');
-const { getUserById } = require('../user/userDAL');
+const { getUserById } = require('../User/userDAL');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 const { getTagFromPhoto } = require('./services/checkTagInPhoto');
 

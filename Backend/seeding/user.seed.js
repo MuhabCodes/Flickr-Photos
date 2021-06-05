@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { join } = require('path');
 const utilsPassword = require('../utils/passwords');
-const User = require('../components/user/userModel');
+const User = require('../components/User/userModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 async function userSeed() {

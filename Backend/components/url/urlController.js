@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
 const { findGroupById } = require('../group/groupDAL');
-const { getUserById } = require('../user/userDAL');
+const { getUserById } = require('../User/userDAL');
 
 exports.getGroupById = async (req, res) => {
   const { groupId } = req.params;

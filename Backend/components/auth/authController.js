@@ -1,5 +1,5 @@
 const { join } = require('path');
-const userDAL = require('../user/userDAL');
+const userDAL = require('../User/userDAL');
 const { verifyPassword } = require('./Services/verifyPassword');
 const { sendConfirmationEmail, sendResetPasswordEmail } = require('./Services/sendEmail.js');
 const { decryptConfirmationToken, decryptResetPasswordToken, decryptAuthToken } = require('./Services/decryptToken');
