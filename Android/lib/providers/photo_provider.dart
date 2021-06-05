@@ -38,7 +38,7 @@ class PhotoProvider with ChangeNotifier {
   }
 
   var url =
-      Uri.parse("https://run.mocky.io/v3/67c647b0-1a0f-45f6-99e1-7da292898854");
+      Uri.parse("https://run.mocky.io/v3/5b50aefb-82a8-4e2e-a888-834ef0f61200");
   var response;
   Future<void> setPhotos() async {
     await http.get(url).then((value) {
@@ -88,8 +88,8 @@ class PhotoProvider with ChangeNotifier {
     for (int i = 0; i < images.length; i++) {
       List<Photo> tempList = [];
       tempList.add(images[i]);
-      DateWithImages temp = new DateWithImages(
-          date: dateParsing(images[i].uploadDate), images: tempList);
+      DateWithImages temp =
+          new DateWithImages(date: images[i].uploadDate, images: tempList);
       photosWithUploadDate.add(temp);
 
       for (int j = i + 1; j < images.length; j++) {
@@ -108,8 +108,8 @@ class PhotoProvider with ChangeNotifier {
     for (int i = 0; i < images.length; i++) {
       List<Photo> tempList = [];
       tempList.add(images[i]);
-      DateWithImages temp = new DateWithImages(
-          date: dateParsing(images[i].captureDate), images: tempList);
+      DateWithImages temp =
+          new DateWithImages(date: images[i].captureDate, images: tempList);
       photosWithCaptureDate.add(temp);
 
       for (int j = i + 1; j < images.length; j++) {

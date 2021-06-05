@@ -1,5 +1,5 @@
 ///[ViewAllPhotos] class which returns screen to view all photos in a post with have more than 1 photo
-import 'package:flickr/home/image_fullscreen.dart';
+import 'image_fullscreen.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
@@ -11,7 +11,7 @@ class ViewAllPhotos extends StatelessWidget {
   String textTitle = "";
   List<Photo> photo = [
     new Photo(
-      imagePath: 'www.google.com',
+      imageUrl: 'www.google.com',
     )
   ];
   double _widthScreen = 0;
@@ -90,7 +90,7 @@ class ViewAllPhotos extends StatelessWidget {
                   ),
                   color: Colors.white,
                   image: DecorationImage(
-                    image: NetworkImage(image.imagePath),
+                    image: NetworkImage(image.imageUrl),
                     fit: BoxFit.cover,
                   )),
             ),
