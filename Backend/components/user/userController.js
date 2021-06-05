@@ -2,6 +2,7 @@ const userDAL = require('./userDAL');
 const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
+const { deleteAccountServ } = require('./Services/deleteAccount');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -9,7 +10,6 @@ exports.getUserbyDisplayName = async function getWithDisplayName(req, res) {
   const { displayName } = req.params;
   try {
     // call getUser by display name from DAL
-    // TODO: might be changed to userName won't change alot
     const userObj = await userDAL.getUserByDisplayName(displayName);
     if (userObj.length === 0) { // checking whether response is empty or not
       return res.status(404).json({
@@ -222,5 +222,18 @@ exports.getPublicPhotos = async function getPublicPhotos(req, res) {
     return res.status(200).json(userObj);
   } catch (error) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
+  }
+};
+
+exports.deleteAccount = async function delAcc(req, res) {
+  const { authorization } = req.headers;
+  try {
+    const { userId } = await decryptAuthToken(authorization);
+    await deleteAccountServ(userId);
+    res.status(201).send({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
   }
 };

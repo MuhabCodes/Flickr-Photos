@@ -15,7 +15,7 @@
  *@apiSuccess (Success 200) {Number} statusCode The status code
  *
  * 
-
+*@apiParam (header) {string} userId The id of the user who adds the comment
 * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
 * @apiError (Error 500) {Number} statusCode The status code
 

@@ -168,3 +168,18 @@ module.exports.getUserPublicPhotos = async function getUserPublicPhotos(userId) 
 
   return photoObj;
 };
+
+exports.changePasswordDAL = async function changePwDal(userId, newPassword) {
+  const hashedPassword = await utilsPassword.hashPassword(newPassword);
+
+  await User.updateOne(
+    { _id: userId }, { $set: { password: hashedPassword } },
+  );
+};
+
+exports.deleteUserDAL = async function deleteUser(userId) {
+  // deletes user and returns personId to delete person related to user
+  const user = await User.findByIdAndDelete({ _id: userId });
+  if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
+  return user.personId;
+};

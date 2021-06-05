@@ -9,13 +9,9 @@ module.exports = async function getNotifications(userId) {
     });
   }
   const FIREBASE_DATABASE = admin.database();
-  try {
-    const snapshot = await FIREBASE_DATABASE.ref('/notifications').orderByChild('reciever').equalTo(userId)
-      .once('value');
-    if (snapshot.val()
+  const snapshot = await FIREBASE_DATABASE.ref('/notifications').orderByChild('reciever').equalTo(userId)
+    .once('value');
+  if (snapshot.val()
     && snapshot.val()[Object.keys(snapshot.val())[0]] === undefined) { return null; }
-    return snapshot.val();
-  } catch (err) {
-    console.log(err);
-  }
+  return snapshot.val();
 };

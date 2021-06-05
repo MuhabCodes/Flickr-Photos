@@ -10,9 +10,6 @@ router.get('/:userId/groups', userController.getGroups);
 router.get('/:userId/photos', userController.getPhotos);
 router.get('/:userId/photos/public', userController.getPublicPhotos);
 
-router.post('/follow', userController.followUser);
-router.post('/description/:userId', userController.addDescription);
-
 router.route('/pro').put(async (req, res) => {
   try {
     await userController.sendProEmail(req, res);
@@ -22,11 +19,19 @@ router.route('/pro').put(async (req, res) => {
 });
 
 router.post('/follow', userController.followUser, createFollowNotification);
-router.post('/addDescription/:userId', userController.addDescription);
+router.post('/description/:userId', userController.addDescription);
 
 router.route('/pro/:proToken').post(async (req, res) => {
   try {
     await userController.becomePro(req, res);
+  } catch (_) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
+});
+
+router.route('/delete-account').delete(async (req, res) => {
+  try {
+    await userController.deleteAccount(req, res);
   } catch (_) {
     res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
   }
