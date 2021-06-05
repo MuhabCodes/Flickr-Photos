@@ -8,7 +8,7 @@
  *
  *
  * @apiParam  {String} albumId The id of the album
- * @apiParam  {String} photoId The id of the photo to be added
+ * @apiParam (Body) {String} photoId The id of the photo to be added
  *
  * @apiSuccess (Success 200) {Number} statusCode The status code
  * @apiError (Error 404) {String} error The server can not find the requested resource. 
