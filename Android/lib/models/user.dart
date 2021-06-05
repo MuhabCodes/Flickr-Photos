@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'post.dart';
 // To parse this JSON data, do
 //
 //     final loggedUser = loggedUserFromJson(jsonString);
@@ -30,15 +27,20 @@ class User {
     this.website,
     this.occupation,
     this.homeTown,
+    this.googleEmail,
+    this.username,
+    //this.displayName,
+    this.googleToken,
     this.city,
     this.country,
     this.favs,
     this.tags,
-    this.username,
   });
   String email;
+  String googleEmail;
   String password;
   String token;
+  String googleToken;
   String userId;
   List<dynamic> followers;
   List<dynamic> following;
@@ -47,6 +49,7 @@ class User {
   int followingCount;
   String userAvatar;
   String age;
+  String username;
   String isPro;
   List<dynamic> albums;
   List<dynamic> photos;
@@ -61,7 +64,6 @@ class User {
   String country;
   int favs;
   int tags;
-  String username;
 
   factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
 

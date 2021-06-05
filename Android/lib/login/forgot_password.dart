@@ -1,7 +1,10 @@
 import 'package:flickr/login/send_email.dart';
+import 'package:flickr/models/user.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,8 +18,8 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController
       _emailController; //controller for using the input of the email textfield
-  final GlobalKey<FormState> formKey =
-      GlobalKey<FormState>(); //used for validation of email
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var token; //used for validation of email
 
   void initState() {
     super.initState();
@@ -32,7 +35,31 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     }
   } //launcher to go to a certain link
 
+  Future<void> _forgetSubmit() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    try {
+      await _auth.sendForgotPassword();
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+      return;
+    }
+    if (_auth.status == Status.Success) {
+      Navigator.of(context).pop();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SendEmail(
+                  text: _emailController.text,
+                  specialNum: 2,
+                )),
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
+    var authentication = Provider.of<Authentication>(context, listen: true);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -139,13 +166,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       _height * 0.065)),
                               onPressed: () {
                                 if (formKey.currentState.validate()) {
-                                  Navigator.of(context).pop();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SendEmail(
-                                            text: _emailController.text)),
+                                  authentication.currentUser = new User(
+                                    email: _emailController.text,
                                   );
+                                  _forgetSubmit();
                                 } else {
                                   print('unsuccessful');
                                 }

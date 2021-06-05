@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/photo_provider.dart';
+import 'fullscreen_image.dart';
 
 class ViewPhotos extends StatelessWidget {
   @override
@@ -55,19 +56,38 @@ class ViewPhotos extends StatelessWidget {
                                   Container(
                                     margin:
                                         EdgeInsets.only(right: 5, bottom: 5),
-                                    child: Image.network(
-                                      photoProvider.dateTaken
-                                          ? photoProvider
-                                              .photosWithUploadDate[index]
-                                              .images[index2]
-                                              .imagePath
-                                          : photoProvider
-                                              .photosWithCaptureDate[index]
-                                              .images[index2]
-                                              .imagePath,
-                                      fit: BoxFit.cover,
-                                      height: size.width * 0.23,
-                                      width: size.width * 0.23,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FullscreenImage(
+                                                      photoProvider.dateTaken
+                                                          ? photoProvider
+                                                              .photosWithUploadDate[
+                                                                  index]
+                                                              .images[index2]
+                                                          : photoProvider
+                                                              .photosWithCaptureDate[
+                                                                  index]
+                                                              .images[index2],
+                                                    )));
+                                      },
+                                      child: Image.network(
+                                        photoProvider.dateTaken
+                                            ? photoProvider
+                                                .photosWithUploadDate[index]
+                                                .images[index2]
+                                                .imageUrl
+                                            : photoProvider
+                                                .photosWithCaptureDate[index]
+                                                .images[index2]
+                                                .imageUrl,
+                                        fit: BoxFit.cover,
+                                        height: size.width * 0.23,
+                                        width: size.width * 0.23,
+                                      ),
                                     ),
                                   ),
                                 ],

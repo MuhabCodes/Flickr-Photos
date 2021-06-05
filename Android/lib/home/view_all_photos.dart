@@ -1,5 +1,5 @@
 ///[ViewAllPhotos] class which returns screen to view all photos in a post with have more than 1 photo
-import 'package:flickr/home/image_fullscreen.dart';
+import 'image_fullscreen.dart';
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';

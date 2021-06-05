@@ -90,8 +90,9 @@ class _CameraRollState extends State<CameraRoll> {
                 left: size.width * 0.7,
                 child: Container(
                   height: 30,
-                  width: size.width * 0.23,
+                  width: size.width * 0.27,
                   child: Container(
+                    width: size.width * 0.27,
                     decoration: BoxDecoration(shape: BoxShape.rectangle),
                     child: OutlinedButton(
                       onPressed: () {

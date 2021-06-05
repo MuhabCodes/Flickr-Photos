@@ -29,8 +29,10 @@ class PostProvider with ChangeNotifier {
       this.followingIds,
       this.userFollowingInfo});
 
+  // var _urlUserHomePosts =
+  // Uri.parse("https://run.mocky.io/v3/8b56c903-aa47-4432-a540-5d8c6873afb2");
   var _urlUserHomePosts =
-      Uri.parse("https://run.mocky.io/v3/8b56c903-aa47-4432-a540-5d8c6873afb2");
+      Uri.parse("https://run.mocky.io/v3/33142052-e5b7-4dc4-b4e2-e022a1461c76");
   Future<void> getUserHomePosts() async {
     /// get request
     var response = await http.get(_urlUserHomePosts);
