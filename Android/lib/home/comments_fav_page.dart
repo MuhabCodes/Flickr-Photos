@@ -69,7 +69,8 @@ class CommentsFavsState extends State<CommentsFavs> {
                           child: Row(
                             children: <Widget>[
                               CircleAvatar(
-                                backgroundImage: follower.profilePicture,
+                                backgroundImage:
+                                    NetworkImage(follower.userAvatar),
                               ),
                               Text("  " + follower.username,
                                   style: textStyleBold),
@@ -206,7 +207,8 @@ class CommentsFavsState extends State<CommentsFavs> {
                           child: Row(
                             children: <Widget>[
                               CircleAvatar(
-                                backgroundImage: follower.profilePicture,
+                                backgroundImage:
+                                    NetworkImage(follower.userAvatar),
                               ),
                               Text("  " + follower.username,
                                   style: textStyleBold),
@@ -300,7 +302,8 @@ class CommentsFavsState extends State<CommentsFavs> {
                         width: 40,
                         height: 40,
                         child: CircleAvatar(
-                          backgroundImage: comment.user.profilePicture,
+                          backgroundImage:
+                              NetworkImage(comment.user.userAvatar),
                         ),
                       ),
                       Column(
@@ -308,15 +311,17 @@ class CommentsFavsState extends State<CommentsFavs> {
                         children: <Widget>[
                           RichText(
                             text: new TextSpan(
-                              style: textStyleBold,
+                              style: textStyleBoldComments,
                               children: <TextSpan>[
                                 new TextSpan(
                                   text: comment.user.username + "\n",
                                   style: textStyleBold,
                                 ),
-                                new TextSpan(text: '', style: textStyle),
                                 new TextSpan(
-                                    text: comment.comment, style: textStyle),
+                                    text: '', style: textStyleComments),
+                                new TextSpan(
+                                    text: comment.comment,
+                                    style: textStyleComments),
                               ],
                             ),
                           ),
@@ -425,7 +430,8 @@ class CommentsFavsState extends State<CommentsFavs> {
                         width: 40,
                         height: 40,
                         child: CircleAvatar(
-                          backgroundImage: comment.user.profilePicture,
+                          backgroundImage:
+                              NetworkImage(comment.user.userAvatar),
                         ),
                       ),
                       Column(
@@ -441,10 +447,12 @@ class CommentsFavsState extends State<CommentsFavs> {
                                 children: <TextSpan>[
                                   new TextSpan(
                                       text: comment.user.username + "\n",
-                                      style: textStyleBold),
-                                  new TextSpan(text: '', style: textStyle),
+                                      style: textStyleBoldComments),
                                   new TextSpan(
-                                      text: comment.comment, style: textStyle),
+                                      text: '', style: textStyleComments),
+                                  new TextSpan(
+                                      text: comment.comment,
+                                      style: textStyleComments),
                                 ],
                               ),
                             ),

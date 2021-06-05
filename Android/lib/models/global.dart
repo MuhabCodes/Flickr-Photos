@@ -8,6 +8,17 @@ import 'post.dart';
 import 'user.dart';
 
 ///Some text foramts used in several files
+TextStyle textStyleComments = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 18,
+  color: Colors.black,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleBoldComments = new TextStyle(
+    fontFamily: 'Gotham',
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontSize: 18);
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
   fontSize: 15,
@@ -55,23 +66,22 @@ bool addUserHomePosts(Map<String, dynamic> json) {
       ],
       postId: json["postId"],
       user: new User(
-          username: json["username"],
-          profilePicture: new NetworkImage(json["userAvatar"])),
+        username: "Hannah", //json["username"],
+        userAvatar: json["userAvatar"],
+      ),
       title: json["title"],
       description: json["description"],
       date: DateTime(2021, 05, 31, 20, 38, 59),
       likes: [
         new User(
-            username: json["likes"][0]["userName"],
-            profilePicture:
-                new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+            username: "Hannah", //json["likes"][0]["userName"],
+            userAvatar: json["likes"][0]["userAvatarUrl"]),
       ],
       comments: [
         new Comment(
           new User(
-              username: json["likes"][0]["userName"],
-              profilePicture:
-                  new NetworkImage(json["likes"][0]["userAvatarUrl"])),
+              username: "Hannah", //json["likes"][0]["userName"],
+              userAvatar: json["likes"][0]["userAvatarUrl"]),
           json["commenters"][0]["text"],
           DateTime(2021, 05, 31, 20, 38, 59),
         )
@@ -87,8 +97,7 @@ bool addUserHomePosts(Map<String, dynamic> json) {
 ///[createUserFollowing] completes fill the data of each post in [userHomePostsInteg]
 User createUserFollowing(Map<String, dynamic> json) {
   User newUser = new User(
-      username: json["username"],
-      profilePicture: new NetworkImage(json["userAvatar"]));
+      username: "Hannah" /* json["username"]*/, userAvatar: json["userAvatar"]);
 
   //print(newPost.like);
 
@@ -119,8 +128,8 @@ bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
 String host = "api.flick.photos";
 User loggedInUser = new User(
   username: 'LoggedIn user',
-  profilePicture: new NetworkImage(
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
+  userAvatar:
+      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
   userId: "507f191e810c19729de860ea",
@@ -128,8 +137,8 @@ User loggedInUser = new User(
 
 User userBenFlasher = new User(
   username: 'LoggedIn user',
-  profilePicture: new NetworkImage(
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*'),
+  userAvatar:
+      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
 );
@@ -188,30 +197,30 @@ Post post1 = new Post(
 );
 final User user = new User(
   username: 'Hannah Hatem',
-  profilePicture: new NetworkImage(
-      'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg'),
+  userAvatar:
+      'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
 );
 
 User follower1 = new User(
   username: 'ZiadAkram',
-  profilePicture: new NetworkImage(
-      'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg'),
+  userAvatar:
+      'https://www.shemazing.net/wp-content/uploads/2018/06/beefeater-pink-peppercorn-rose-656x415.jpg',
   followers: [],
   following: [],
 );
 User follower2 = new User(
-  username: 'Mehrez',
-  profilePicture: new NetworkImage(
-      'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg'),
+  username: 'Hannow',
+  userAvatar:
+      'https://www.dusttexhonolulu.com/wp-content/uploads/2019/06/summer-drinks.jpg',
   followers: [],
   following: [],
 );
 User follower3 = new User(
   username: 'MostafaUsama',
-  profilePicture: new NetworkImage(
-      'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg'),
+  userAvatar:
+      'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg',
   following: [],
   followers: [],
 );

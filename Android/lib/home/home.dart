@@ -130,6 +130,7 @@ class HomeState extends State<Home> {
     }
     for (Post post in userHomePostsMock) {
       ///Loops on all posts created in global.dart and add them to our home page
+      // post.user.username = post.user.firstName + " " + post.user.lastName;
       if (post.photo.length == 1) {
         {
           posts.add(getPost(context, post, index));
@@ -205,7 +206,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 10), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Column(
@@ -657,7 +658,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Column(
@@ -807,7 +808,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Container(
