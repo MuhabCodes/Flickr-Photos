@@ -1,3 +1,4 @@
+.gitignore
 node_modules/
 secret/
 .vscode/
@@ -5,3 +6,5 @@ secret/
 *.png
 *.jpeg
 *jpg
+myUser/
+

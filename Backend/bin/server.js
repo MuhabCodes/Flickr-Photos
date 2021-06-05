@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // DB Connection
 mongoose
   .connect(process.env.MONGO_URI_CLOUD,
-    { useNewUrlParser: true })
+    { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 // Server Connection
@@ -17,5 +17,6 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port);
-module.exports = app;
+if (process.env.NODE_ENV !== 'test') server.listen(port);
+
+module.exports = app; //  exported for testing purposes

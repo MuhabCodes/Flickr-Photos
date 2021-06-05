@@ -19,6 +19,7 @@ const getInfo = async (photoId, res) => {
       statusCode: 200,
       width: photo.width,
       height: photo.height,
+      location: photo.location,
     });
   } catch (err) {
     return res.json({ statusCode: 404, error: 'PhotoNotFound' });

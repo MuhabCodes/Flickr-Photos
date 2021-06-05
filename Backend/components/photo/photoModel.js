@@ -38,13 +38,9 @@ const PhotoSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  gallery: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Gallery',
-  },
   tags: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Comment',
+    ref: 'Tag',
   },
   width: {
     type: Number,
@@ -58,7 +54,23 @@ const PhotoSchema = new Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
   },
+  isFamily:
+  { type: Boolean },
+  isFriend:
+  { type: Boolean },
+  location: {
+    type: String,
+  },
+  favs: {
+    type: Number,
+    default: 0,
+  },
+  comments: {
+    type: Number,
+    default: 0,
+  },
   // add the user reference when it is completed
 });
 
+PhotoSchema.index({ title: 'text', description: 'text' });
 module.exports = mongoose.model('Photo', PhotoSchema);

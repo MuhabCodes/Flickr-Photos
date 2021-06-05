@@ -1,0 +1,29 @@
+.testimonials-view-tP{
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    color: #212124;
+    position: relative;
+    padding: 10px;
+}
+.testimonials-container-tP{
+    background: #fff;
+    box-shadow: 0 0 0 1px #e3e3e3;
+    padding-bottom: 0;
+}
+.test-filter-bar-tP{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.testimonials-list-tP{
+    color: #212124;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+}
+#empty-testimonials{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+    padding: 20px;
+}
