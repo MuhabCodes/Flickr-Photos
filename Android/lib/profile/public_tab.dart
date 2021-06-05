@@ -1,3 +1,4 @@
+import 'package:flickr/profile/fullscreen_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,11 +12,14 @@ import 'list_view.dart';
 
 String timeAgo(PhotoProvider photoProvider, Photo image) {
   DateTime now = DateTime.now();
-  int year = now.year - photoProvider.dateParsing(image.uploadDate).year;
-  int month =
-      year * 12 + now.month - photoProvider.dateParsing(image.uploadDate).month;
-  int days =
-      month * 30 + now.day - photoProvider.dateParsing(image.uploadDate).day;
+  int year =
+      now.year - photoProvider.dateParsing(image.uploadDate.toString()).year;
+  int month = year * 12 +
+      now.month -
+      photoProvider.dateParsing(image.uploadDate.toString()).month;
+  int days = month * 30 +
+      now.day -
+      photoProvider.dateParsing(image.uploadDate.toString()).day;
   final fifteenAgo = DateTime.now().subtract(Duration(days: days));
 
   // Add a new locale messages
@@ -243,9 +247,18 @@ Widget gridView(PhotoProvider photoProvider) {
       staggeredTileBuilder: (index) => index % 7 == 1 || index % 7 == 2
           ? StaggeredTile.count(1, 1)
           : StaggeredTile.count(2, 1),
-      itemBuilder: (context, index) => Image.network(
-        photoProvider.triple[index].imagePath,
-        fit: BoxFit.fill,
+      itemBuilder: (context, index) => InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FullscreenImage(photoProvider.triple[index])));
+        },
+        child: Image.network(
+          photoProvider.triple[index].imageUrl,
+          fit: BoxFit.fill,
+        ),
       ),
       itemCount: photoProvider.triple.length,
     )

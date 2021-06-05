@@ -1,6 +1,6 @@
 import 'package:flickr/login/get_started.dart';
-import 'package:flickr/navigations/about_button.dart';
-import 'package:flickr/navigations/privacy_and_safety.dart';
+import 'package:flickr/profile/about_button.dart';
+import 'package:flickr/profile/privacy_and_safety.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

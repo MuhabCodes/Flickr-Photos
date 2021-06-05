@@ -1,34 +1,34 @@
+import 'package:flickr/home/comments_fav_page.dart';
+
 ///[ImageFullscreen] class which displays a given image with zoom in and ou feature and
 ///like comment feature
+
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/profile/profile.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'comments_fav_page.dart';
-import 'comments_page.dart';
-
-class ImageFullscreen extends StatefulWidget {
+class FullscreenImage extends StatefulWidget {
   Photo myPhoto;
   double _widthScreen = 0;
   double _heightScreen = 0;
-  Post post;
-  ImageFullscreen(this.myPhoto, this.post);
+  FullscreenImage(this.myPhoto);
   @override
-  ImageFullscreenState createState() =>
-      ImageFullscreenState(this.myPhoto, this.post);
+  ImageFullscreenState createState() => ImageFullscreenState(this.myPhoto);
 }
 
-class ImageFullscreenState extends State<ImageFullscreen> {
+class ImageFullscreenState extends State<FullscreenImage> {
   String textTitle = "";
   //NetworkImage imageUrl = new NetworkImage('www.google.com');
   Photo myPhoto;
   double _widthScreen = 0;
   double _heightScreen = 0;
-  Post post;
-  ImageFullscreenState(this.myPhoto, this.post);
+
+  ImageFullscreenState(this.myPhoto);
 
   void selectScreen(BuildContext ctx, NetworkImage imageRoll) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
@@ -38,6 +38,11 @@ class ImageFullscreenState extends State<ImageFullscreen> {
 
   @override
   Widget build(BuildContext context) {
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
+    Post post = new Post(
+        user: userProvider.user,
+        description: myPhoto.description,
+        title: myPhoto.title);
     bool isClicked = true;
     _widthScreen = MediaQuery.of(context).size.width;
     _heightScreen = MediaQuery.of(context).size.height;
@@ -56,13 +61,14 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                           //user name padding away from pp
 
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(post.user.userAvatar),
-                          ),
+                              backgroundImage: NetworkImage(
+                            userProvider.user.userAvatar,
+                          )),
                         ),
                         Container(
                           child: TextButton(
                             child: Text(
-                              post.user.username,
+                              userProvider.user.firstName,
                               style: appBarTitleStyle,
                             ),
                             onPressed: () {
@@ -115,7 +121,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      (post.title != null) ? post.title : "MyTitle",
+                      (myPhoto.title != null) ? myPhoto.title : "",
                       style: postTitleStyle,
                     ),
                   ),
@@ -132,16 +138,10 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: post.isLiked
-                              ? Icon(Icons.star)
-                              : Icon(Icons.star_border),
+                          icon: Icon(Icons.star_border),
                           color: Colors.grey,
                           iconSize: 35,
-                          onPressed: () {
-                            addLikers(post);
-
-                            setState(() {});
-                          },
+                          onPressed: () {},
                         ),
                         IconButton(
                             padding: EdgeInsets.only(top: 8, left: 15),
@@ -149,10 +149,10 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                             color: Colors.grey,
                             iconSize: 30,
                             onPressed: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (_) {
-                                return CommentsFavs(post, 1, false, 2);
-                              }));
+                              // Navigator.of(context)
+                              //     .push(MaterialPageRoute(builder: (_) {
+                              //   return CommentsFavs(post, 1, false, 2);
+                              // }));
                               setState(() {});
                             }),
                         IconButton(
@@ -179,16 +179,21 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          post.likes.length.toString() + (" faves"),
-                          style: TextStyle(color: Colors.white, fontSize: 14),
-                          textAlign: TextAlign.end,
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            myPhoto.favs.toString() + (" faves"),
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
                         ),
-                        Text(
-                          post.comments.length.toString() + (" comments"),
-                          style: TextStyle(color: Colors.white, fontSize: 14),
-                          textAlign: TextAlign.end,
-                        )
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              myPhoto.comments.toString() + (" comments"),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                              textAlign: TextAlign.end,
+                            ))
                       ],
                     )
                   ],

@@ -187,7 +187,7 @@ class HomeState extends State<Home> {
                   ),
                   color: Colors.white,
                   image: DecorationImage(
-                    image: NetworkImage(post.photo[0].imagePath),
+                    image: NetworkImage(post.photo[0].imageUrl),
                     fit: BoxFit.cover,
                   )),
 
@@ -219,7 +219,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 10), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Column(
@@ -585,7 +585,7 @@ class HomeState extends State<Home> {
                             width: 5,
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(post.photo[0].imagePath),
+                            image: NetworkImage(post.photo[0].imageUrl),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -617,8 +617,7 @@ class HomeState extends State<Home> {
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 image: DecorationImage(
-                                    image:
-                                        NetworkImage(post.photo[1].imagePath),
+                                    image: NetworkImage(post.photo[1].imageUrl),
                                     fit: BoxFit.cover)),
                           ),
                           onTap: () {
@@ -641,8 +640,7 @@ class HomeState extends State<Home> {
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 image: DecorationImage(
-                                    image:
-                                        NetworkImage(post.photo[2].imagePath),
+                                    image: NetworkImage(post.photo[2].imageUrl),
                                     fit: BoxFit.cover)),
                           ),
                           onTap: () {
@@ -673,7 +671,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Column(
@@ -765,7 +763,7 @@ class HomeState extends State<Home> {
                         ),
                         color: Colors.white,
                         image: DecorationImage(
-                          image: NetworkImage(post.photo[0].imagePath),
+                          image: NetworkImage(post.photo[0].imageUrl),
                           fit: BoxFit.cover,
                         )),
 
@@ -793,7 +791,7 @@ class HomeState extends State<Home> {
                         ),
                         color: Colors.white,
                         image: DecorationImage(
-                          image: NetworkImage(post.photo[1].imagePath),
+                          image: NetworkImage(post.photo[1].imageUrl),
                           fit: BoxFit.cover,
                         )),
 
@@ -823,7 +821,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 0, bottom: 8), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: post.user.profilePicture,
+                        backgroundImage: NetworkImage(post.user.userAvatar),
                       ),
                     ),
                     Container(
