@@ -1,13 +1,16 @@
+const mongoose = require('mongoose');
 const Album = require('./albumModel');
 const Photo = require('../photo/photoModel');
 
 module.exports = {
   async fetchAlbum(albumId) {
-    return Album.find({ _Id: albumId });
+    const objectId = mongoose.Types.ObjectId(albumId);
+    return Album.find({ _id: objectId });
+    // return Album.find({ });
   },
   async removeFromAlbum(albumId, photoId) {
     // first find the image in the album
-    const foundAlbum = await Album.find({ _Id: albumId });
+    const foundAlbum = await Album.find({ _id: albumId });
     let index = -1;
     for (let i = 0; i < foundAlbum.photos.length; i++) {
       if (foundAlbum.photos[i]._id === photoId) {

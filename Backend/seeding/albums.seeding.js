@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { join } = require('path');
 const Album = require('../components/album/albumModel');
+const Photo = require('../components/photo/photoModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 async function connect() {
@@ -11,13 +12,14 @@ async function connect() {
 
 async function albumSeed() {
   await Album.collection.drop();
-  await Album.collection.insertOne({
+  await Album.insertMany([{
     authorId: 'gb239v342',
     title: 'My Album',
     updateDate: '2021-12-01T19:11:08',
     createDate: '2020-05-01T01:50:08',
+    _id: '7092ea68326fa5101215dfaa',
     countPhotos: 3,
-    photos: [{
+    photos: [Photo({
       description: 'Great pic',
       captureDate: '2020-01-01T08:11:08',
       uploadDate: '2021-01-01T09:11:08',
@@ -27,9 +29,9 @@ async function albumSeed() {
       width: 1920,
       height: 1195,
       user: '6092ea68326fa5101115dfae',
-      _id: '7092ea68326fa5101115dfbe',
-    },
-    {
+
+    }),
+    Photo({
       description: 'Great pic',
       captureDate: '2020-05-01T01:50:08',
       uploadDate: '2021-12-01T19:11:08',
@@ -39,9 +41,9 @@ async function albumSeed() {
       width: 3456,
       height: 2304,
       user: '6092ea68326fa5101115dfae',
-      _id: '7092ea68326fa5101115dfea',
-    },
-    {
+
+    }),
+    Photo({
       description: 'Great pic',
       captureDate: '2021-01-01T08:11:08',
       uploadDate: '2021-05-01T14:16:11',
@@ -51,10 +53,10 @@ async function albumSeed() {
       width: 2201,
       height: 1240,
       user: '6092ea68326fa5101115dfae',
-      _id: '7092ea68326fa5101115dfee',
-    },
+
+    }),
     ],
-  });
+  }]);
 }
 
 async function seed() {

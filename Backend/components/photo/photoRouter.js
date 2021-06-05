@@ -8,6 +8,7 @@ const {
   editPhoto,
   deletePhoto,
   getUserPhotos,
+  addPhoto64,
 } = require('./photoController');
 // get the required functions from the controller
 
@@ -18,6 +19,10 @@ router.get('/recent', getRecentPhotos);
 
 // add a new photo
 router.post('/', addPhoto);
+
+//  add new base 64 photo
+router.post('/64', addPhoto64);
+// router.post('/64', (req, res) => res.send('yayayayayay'));
 
 // get photos of a user given his id
 router.get('/user/:userId', getUserPhotos);
