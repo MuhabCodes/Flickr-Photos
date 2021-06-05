@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 mongoose
   .connect(process.env.MONGO_URI_CLOUD,
     { useNewUrlParser: true, useUnifiedTopology: true })
-  .then()
-  .catch();
+  .then(() => console.log('MongoDB Connected'))
+  .catch((err) => console.log(err));
 // Server Connection
 const http = require('http');
 const app = require('../app');
