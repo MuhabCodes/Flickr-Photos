@@ -1,13 +1,34 @@
+const multer = require('multer');
+const path = require('path');
+const base64Img = require('base64-img');
+
 const { getRecent } = require('./services/getRecent');
 const { addNew } = require('./services/addNew');
 const { getInfo } = require('./services/getInfo');
 const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
+
+const { getUserPhotosById } = require('./services/getUserPhotosById');
+
+// Set The Storage Engine
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+// Init Upload
+const upload = multer({
+  storage,
+}).single('fileInput');
+
 const { addPersonToPhotoServ } = require('./services/addPersonToPhoto');
 const { removePersonFromPhotoServ } = require('./services/removePersonFromPhoto');
 const { isInPhoto } = require('./services/isInPhoto.validation');
 const { getPeopleInPhotoServ } = require('./services/getPeopleInPhoto');
 const { addLocation } = require('./services/addLocation');
+
 
 module.exports = {
   async getRecentPhotos(req, res) {
@@ -23,7 +44,16 @@ module.exports = {
   },
   async addPhoto(req, res) {
     try {
-      return await addNew(req.body, res);
+      upload(req, res, (err) => {
+        if (err) {
+          return res.json({
+            error: err.message,
+            statusCode: 500,
+          });
+        }
+        return addNew(req.body, req.file.path, res);
+      });
+      // return await addNew(req.body, req.file.path, res);
     } catch (err) {
       return res.json({
         error: err.message,
@@ -61,6 +91,36 @@ module.exports = {
       });
     }
   },
+
+  async getUserPhotos(req, res) {
+    try {
+      return await getUserPhotosById(req.params.userId, res);
+    } catch (err) {
+      return res.json({
+        error: 'PhotoNotFound',
+        statusCode: 404,
+      });
+    }
+  },
+  async addPhoto64(req, res) {
+    try {
+      const { photo } = req.body;
+      const photoName = `fileInput-${Date.now()}`;
+      base64Img.img(photo, './public/uploads', photoName, (err) => {
+        if (err) {
+          return res.json({
+            error: err.message,
+            statusCode: 500,
+          });
+        }
+      });
+
+      return await addNew(req.body, `/public/uploads/${photoName}.jpg`, res);
+    } catch (err) {
+      return res.json({
+        error: err.message,
+        statusCode: 500,
+
   async addPersonToPhoto(req, res) {
     try {
       // get ids from  request
@@ -144,6 +204,7 @@ module.exports = {
       return res.json({
         error: 'PhotoNotFound',
         statusCode: 404,
+
       });
     }
   },
