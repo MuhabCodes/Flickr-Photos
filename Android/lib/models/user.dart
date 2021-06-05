@@ -1,28 +1,61 @@
-import 'package:flutter/material.dart';
+// To parse this JSON data, do
+//
+//     final loggedUser = loggedUserFromJson(jsonString);
 
-import 'post.dart';
+import 'dart:convert';
 
 class User {
+  User({
+    this.password,
+    this.age,
+    this.token,
+    this.userId,
+    this.followers,
+    this.following,
+    this.isActivated,
+    this.followersCount,
+    this.followingCount,
+    this.userAvatar,
+    this.isPro,
+    this.albums,
+    this.email,
+    this.photos,
+    this.photosCount,
+    this.firstName,
+    this.lastName,
+    this.description,
+    this.googleEmail,
+    this.website,
+    this.occupation,
+    this.homeTown,
+    this.username,
+    this.displayName,
+    this.googleToken,
+    this.city,
+    this.country,
+    this.favs,
+    this.tags,
+  });
   String email;
   String googleEmail;
   String password;
   String token;
   String googleToken;
+  String userId;
+  List<dynamic> followers;
+  List<dynamic> following;
+  String isActivated;
+  int followersCount;
+  int followingCount;
+  String userAvatar;
+  String age;
   String username;
-  List<Post> posts;
-  NetworkImage profilePicture = new NetworkImage(
-      'https://static01.nyt.com/images/2021/05/30/multimedia/30ah-coolers1/merlin_188253867_acb3eef8-762e-4f66-a4b1-37e1e694ed93-superJumbo.jpg');
-  List<User> followers;
-  List<User> following;
-  List<Post> savedPosts;
-  bool hasStory;
-  int userId;
-  String profileId;
-  String nsId;
-  String showCaseSet;
+  String isPro;
+  List<dynamic> albums;
+  List<dynamic> photos;
+  int photosCount;
   String firstName;
   String lastName;
-  String age;
   String description;
   String website;
   String occupation;
@@ -30,40 +63,26 @@ class User {
   String city;
   String country;
   String displayName;
+  int favs;
+  int tags;
 
-  User({
-    this.username,
-    this.profilePicture,
-    this.followers,
-    this.following,
-    this.posts,
-    this.savedPosts,
-    this.hasStory,
-    this.userId,
-    this.profileId,
-    this.nsId,
-    this.showCaseSet,
-    this.firstName,
-    this.lastName,
-    this.description,
-    this.website,
-    this.occupation,
-    this.homeTown,
-    this.city,
-    this.country,
-    this.email,
-    this.googleEmail,
-    this.password,
-    this.token,
-    this.age,
-    this.displayName,
-    this.googleToken,
-  });
+  factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        profileId: json["profileId"],
-        nsId: json["nsId"],
-        showCaseSet: json["showcaseSet"],
+        userId: json["userId"],
+        followers: List<dynamic>.from(json["followers"].map((x) => x)),
+        following: List<dynamic>.from(json["following"].map((x) => x)),
+        isActivated: json["isActivated"],
+        followersCount: json["followersCount"],
+        followingCount: json["followingCount"],
+        userAvatar: json["userAvatar"],
+        isPro: json["isPro"],
+        albums: List<dynamic>.from(json["albums"].map((x) => x)),
+        email: json["email"],
+        photos: List<dynamic>.from(json["photos"].map((x) => x)),
+        photosCount: json["photosCount"],
         firstName: json["firstName"],
         lastName: json["lastName"],
         description: json["description"],
@@ -72,8 +91,34 @@ class User {
         homeTown: json["homeTown"],
         city: json["city"],
         country: json["country"],
+        favs: json["favs"],
+        tags: json["tags"],
       );
 
+  Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "followers": List<dynamic>.from(followers.map((x) => x)),
+        "following": List<dynamic>.from(following.map((x) => x)),
+        "isActivated": isActivated,
+        "followersCount": followersCount,
+        "followingCount": followingCount,
+        "userAvatar": userAvatar,
+        "isPro": isPro,
+        "albums": List<dynamic>.from(albums.map((x) => x)),
+        "email": email,
+        "photos": List<dynamic>.from(photos.map((x) => x)),
+        "photosCount": photosCount,
+        "firstName": firstName,
+        "lastName": lastName,
+        "description": description,
+        "website": website,
+        "occupation": occupation,
+        "homeTown": homeTown,
+        "city": city,
+        "country": country,
+        "favs": favs,
+        "tags": tags,
+      };
   factory User.fromJson2(Map<String, dynamic> json) => User(
         token: json["token"],
       );
