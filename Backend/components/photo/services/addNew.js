@@ -6,13 +6,15 @@ const addNew = async (photoInfo, photoPath, res) => {
   try {
     // change the location attribute in the photoInfo
     photoInfo.imageUrl = photoPath;
-    const newTags = [];
-    photoInfo.tags.forEach((tag) => {
-      newTags.push(addTag(tag, photoInfo.user));
-    });
-    photoInfo.tags = newTags;
+
     const newPhoto = new Photo(photoInfo);
     await addNewPhoto(newPhoto);
+
+    await photoInfo.tags.forEach(async (tag) => {
+      await addTag(tag, photoInfo.user);
+      // console.log(newTag);
+      // newTags.push(newTag);
+    });
     return res.json({ statusCode: 201 });
   } catch (err) {
     return res.json({ error: err, statusCode: 500 });
