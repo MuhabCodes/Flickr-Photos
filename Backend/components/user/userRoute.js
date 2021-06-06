@@ -21,7 +21,7 @@ router.route('/pro').put(async (req, res) => {
 });
 
 router.post('/follow', userController.followUser, createFollowNotification);
-router.post('/description/:userId', userController.addDescription);
+// router.post('/description/:userId', userController.addDescription);
 
 router.route('/pro/:proToken').post(async (req, res) => {
   try {

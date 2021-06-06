@@ -48,9 +48,9 @@ const userSchema = mongoose.Schema({
   following: {
     type: [mongoose.Schema.Types.ObjectId],
   },
-  description: {
-    type: String,
-  },
+  // description: {
+  //   type: String,
+  // },
   urlCover: {
     type: String,
     default: 'https://i.imgur.com/EWN8anz.png',

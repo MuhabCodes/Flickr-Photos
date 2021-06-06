@@ -143,12 +143,12 @@ module.exports.addPersonToFollowers = async function addPersonToFollowers(userId
   userObj.save();
 };
 
-module.exports.addDescription = async function addDescription(userId, description) {
-  const userObj = await User.findById(userId);
-  userObj.description = description;
-  userObj.save();
-  return userObj;
-};
+// module.exports.addDescription = async function addDescription(userId, description) {
+//   const userObj = await User.findById(userId);
+//   userObj.description = description;
+//   userObj.save();
+//   return userObj;
+// };
 
 exports.becomePro = async function becomePro(userId) {
   const user = await User.findById(userId);

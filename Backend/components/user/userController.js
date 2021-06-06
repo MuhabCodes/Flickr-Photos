@@ -45,28 +45,28 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
   }
 };
 
-exports.addDescription = async function addDescription(req, res) {
-  const { body, params } = req;
-  const { authorization } = req.headers;
-  try {
-    const userObj = await userDAL.getUserById(params.userId);
-    const currentUser = await decryptAuthToken(authorization);
+// exports.addDescription = async function addDescription(req, res) {
+//   const { body, params } = req;
+//   const { authorization } = req.headers;
+//   try {
+//     const userObj = await userDAL.getUserById(params.userId);
+//     const currentUser = await decryptAuthToken(authorization);
 
-    // check whether token contains information or not
-    if ((String)(currentUser.userId) !== (String)(userObj._id)) {
-      return res.status(403).json({
-        message: ' You are not logged in ',
-      });
-    }
-    await userDAL.addDescription(params.userId, body.description);
-    return res.status(200).json({
-      message: 'added description',
-      description: userObj.description,
-    });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-};
+//     // check whether token contains information or not
+//     if ((String)(currentUser.userId) !== (String)(userObj._id)) {
+//       return res.status(403).json({
+//         message: ' You are not logged in ',
+//       });
+//     }
+//     await userDAL.addDescription(params.userId, body.description);
+//     return res.status(200).json({
+//       message: 'added description',
+//       description: userObj.description,
+//     });
+//   } catch (error) {
+//     return res.status(500).json(error);
+//   }
+// };
 
 exports.getUserInfoById = async function getUserInfoById(req, res) {
   const { params } = req;

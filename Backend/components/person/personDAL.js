@@ -40,6 +40,7 @@ module.exports.updateInfo = async function updatePerson(personId, newInfo) {
         occupation: newInfo.occupation,
         city: newInfo.city,
         country: newInfo.country,
+        description: newInfo.description,
       },
     },
   );
