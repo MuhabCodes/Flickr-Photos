@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flickr/login/forgot_password.dart';
 import 'package:flickr/login/sign_up.dart';
 import 'package:flickr/models/user.dart';
@@ -5,13 +7,13 @@ import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/material.dart';
-
+import 'package:flickr/providers/user_provider.dart' as user;
 import 'package:google_sign_in/google_sign_in.dart';
 
 class SignIn extends StatefulWidget {
@@ -50,11 +52,6 @@ class _SignInState extends State<SignIn> {
     }
   } //launcher to go to a certain website
 
-  void noInternet() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('No Internet Connection')));
-  }
-
   var authentication;
 
   Future<void> _submit() async {
@@ -65,11 +62,25 @@ class _SignInState extends State<SignIn> {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
-      noInternet();
-      setState(() {});
+      if (_auth.statusNum == 401) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('The email or password entered were not correct.')));
+      } else if (_auth.statusNum == 403) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("This client hasn't activated their account.")));
+      } else if (_auth.statusNum == 500) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("This email isn't registered")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("No internet Connection")));
+      }
       return;
     }
     if (_auth.status == Status.Success) {
+      var loggeduser = Provider.of<user.UserProvider>(context, listen: false);
+
+      loggeduser.user = _auth.currentUser;
       Navigator.of(context).pop();
       Navigator.of(context).pop();
       Navigator.push(
@@ -97,11 +108,21 @@ class _SignInState extends State<SignIn> {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
-
-      noInternet();
+      if (_auth.statusNum == 401) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('The email or password entered were not correct.')));
+      } else if (_auth.statusNum == 403) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("This client hasn't activated their account.")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("No internet Connection")));
+      }
       return;
     }
     if (authentication.status == Status.Success) {
+      var loggeduser = Provider.of<user.UserProvider>(context, listen: false);
+      loggeduser.user = _auth.currentUser;
       Navigator.of(context).pop();
       Navigator.of(context).pop();
       Navigator.push(
@@ -114,6 +135,13 @@ class _SignInState extends State<SignIn> {
   Future<Null> refresh() async {
     await Future.delayed(Duration(seconds: 2));
     setState(() {});
+  }
+
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setEnabledSystemUIOverlays(
+        [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+    super.initState();
   }
 
   @override
