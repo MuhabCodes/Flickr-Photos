@@ -38,7 +38,7 @@ TextStyle flagThisPhoto = new TextStyle(
 );
 TextStyle textStyleTags = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: globalWidthScreen * 0.05,
+  fontSize: globalWidthScreen * 0.04,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );

@@ -92,8 +92,8 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                             left:
                                                 30), //user name padding away from pp
                                         child: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              post.user.userAvatar),
+                                          backgroundImage:
+                                              NetworkImage(post.userAvatar),
                                         ),
                                       ),
                                     ],
@@ -107,7 +107,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                             top: 5 /*70*/, right: 50),
                                         child: TextButton(
                                           child: Text(
-                                            post.user.username,
+                                            post.postUsername,
                                             style: appBarTitleStyle,
                                             overflow: TextOverflow.ellipsis,
                                           ),

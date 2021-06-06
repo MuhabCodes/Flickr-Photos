@@ -96,18 +96,18 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                       ),*/
                 //=============================================================
                 SizedBox(
-                  height: _photoUser.username == null ? 0 : 30,
+                  height: _post.postUsername == null ? 0 : 30,
                 ),
-                _photoUser.username == null
+                _post.postUsername == null
                     ? Container()
                     : Text(
                         "TAKEN BY",
                         style: textStyleInfoTitle,
                       ),
-                _photoUser.username == null
+                _post.postUsername == null
                     ? Container()
                     : Container(
-                        child: Text(_photoUser.username, style: textStyleInfo),
+                        child: Text(_post.postUsername, style: textStyleInfo),
                       ),
                 //=============================================================
                 SizedBox(
