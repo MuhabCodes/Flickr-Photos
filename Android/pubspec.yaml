@@ -55,6 +55,8 @@ dependencies:
   jwt_decode: ^0.3.1
   google_sign_in: ^5.0.4
   firebase_core: ^1.2.1
+  multipart_request: ^0.3.1
+  pull_to_refresh: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
