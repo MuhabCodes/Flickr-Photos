@@ -1,3 +1,5 @@
+import 'package:flickr/home/share_link.dart';
+
 /// Class Home contains 3 impartant widgets
 /// [getPost] which takes every post with single photo in list userHomePosts and creates it's design
 ///[getPostMultiPhotos] does the same thing that [getPost] does but, it takes posts which have 3 photo or more
@@ -8,6 +10,7 @@ import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/providers/post_provider.dart';
+import 'package:flickr/providers/post_provider_integration.dart';
 import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -92,8 +95,8 @@ class HomeState extends State<Home> {
     if (isDone == 0) {
       globalProvider =
           Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
-
-      Provider.of<PostProvider>(context, listen: true).getUserFollowing();
+      /* Provider.of<PostProviderInteg>(context, listen: true)
+              .getUserFollowing();*/
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
@@ -229,9 +232,19 @@ class HomeState extends State<Home> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          post.user.username,
-                          style: textStyleBold,
+                        Row(
+                          children: [
+                            Text(
+                              post.user.username + "  ",
+                              style: textStyleBold,
+                            ),
+                            post.user.isPro == false
+                                ? Container()
+                                : Icon(
+                                    Icons.verified_rounded,
+                                    color: Colors.blue,
+                                  ),
+                          ],
                         ),
                         post.photo[0].title == null
                             ? Container()
@@ -380,10 +393,18 @@ class HomeState extends State<Home> {
                 ),
                 Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.share_outlined,
-                      size: 30,
-                      color: Colors.grey,
+                    IconButton(
+                      icon: Icon(
+                        Icons.share_outlined,
+                        size: 30,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) {
+                          return ShareLinkScreen(post.photo[0], post);
+                        }));
+                      },
                     ),
                   ],
                 ),
