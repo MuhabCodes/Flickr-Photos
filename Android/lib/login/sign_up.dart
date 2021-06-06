@@ -99,7 +99,16 @@ class _SignUpState extends State<SignUp> {
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
 
-      noInternet();
+      if (_auth.statusNum == 400) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Incorrect Input.')));
+      } else if (_auth.statusNum == 500) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('No Internet Connection.')));
+      } else if (_auth.statusNum == 409) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("This email is already registered")));
+      }
 
       return;
     }
@@ -114,11 +123,6 @@ class _SignUpState extends State<SignUp> {
                 )),
       );
     }
-  }
-
-  void noInternet() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('No Internet Connection')));
   }
 
   Future<Null> refresh() async {
