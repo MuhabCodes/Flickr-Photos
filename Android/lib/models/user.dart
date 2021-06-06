@@ -16,7 +16,7 @@ class User {
     this.followersCount,
     this.followingCount,
     this.userAvatar,
-    this.isPro,
+    this.isPro = false,
     this.albums,
     this.email,
     this.photos,
@@ -44,13 +44,13 @@ class User {
   String userId;
   List<dynamic> followers;
   List<dynamic> following;
-  String isActivated;
+  bool isActivated;
   int followersCount;
   int followingCount;
   String userAvatar;
   String age;
   String username;
-  String isPro;
+  bool isPro;
   List<dynamic> albums;
   List<dynamic> photos;
   int photosCount;

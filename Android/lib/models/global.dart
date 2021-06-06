@@ -136,18 +136,21 @@ User createUserFollowing(Map<String, dynamic> json) {
 bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
   Post newPost = new Post(
     photo: [
-      new Photo(imageUrl: json["imageUrl"]),
+      new Photo(imageUrl: json["photoUrl"]),
     ],
-    photoId: json["_id"],
+    photoId: json["photoId"],
     title: json["title"],
     description: json["description"],
     date: postDateParsing(json["uploadDate"]),
-    userId: json["user"],
-    numComments: json["commentsCount"],
-    numLikes: json["likesCount"],
+    userId: json["ownerId"],
+    numComments: json["comments"],
+    numLikes: json["faves"],
     user: userFollowingInfo,
+    postUsername: json["userName"],
+    userAvatar: json["userAvatar"],
+    isPro: json["isPro"],
   );
-  //print(newPost.like);
+  print("added post 1");
   userHomePostsInteg.add(newPost);
 
   return true;

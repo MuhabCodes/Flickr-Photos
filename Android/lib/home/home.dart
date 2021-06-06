@@ -1,3 +1,4 @@
+import 'package:flickr/home/comments_page.dart';
 import 'package:flickr/home/share_link.dart';
 
 /// Class Home contains 3 impartant widgets
@@ -59,10 +60,13 @@ class HomeState extends State<Home> {
     Post post,
   ) {
     double ans = 140;
-    if (post.comments == null && post.likes == null) {
+    if ((post.comments == null || post.comments.length == 0) &&
+        (post.likes == null || post.likes.length == 0)) {
       ans = 0;
-    } else if (post.comments == null && post.likes != null ||
-        post.comments != null && post.likes == null) {
+    } else if (((post.comments == null || post.comments.length == 0) &&
+            (post.likes != null && post.likes.length > 0)) ||
+        (post.likes == null || post.likes.length == 0) &&
+            (post.comments != null && post.comments.length > 0)) {
       ans = 75;
     }
     return ans;
@@ -137,10 +141,10 @@ class HomeState extends State<Home> {
     List<Widget> posts = [];
     int index = 0;
 
-    if (userHomePostsMock == null) {
+    if (userHomePostsInteg == null) {
       return [Container()];
     }
-    for (Post post in userHomePostsMock) {
+    for (Post post in userHomePostsInteg) {
       ///Loops on all posts created in global.dart and add them to our home page
       // post.user.username = post.user.firstName + " " + post.user.lastName;
       post.photo[0].tags = [
@@ -226,7 +230,7 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 10), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(post.user.userAvatar),
+                        backgroundImage: NetworkImage(post.userAvatar),
                       ),
                     ),
                     Column(
@@ -235,10 +239,10 @@ class HomeState extends State<Home> {
                         Row(
                           children: [
                             Text(
-                              post.user.username + "  ",
+                              post.postUsername + "  ",
                               style: textStyleBold,
                             ),
-                            post.user.isPro == false
+                            post.isPro == false
                                 ? Container()
                                 : Icon(
                                     Icons.verified_rounded,
@@ -353,13 +357,14 @@ class HomeState extends State<Home> {
                           iconSize: 35,
                           onPressed: () {
                             setState(() {
-                              userHomePostsMock[index].isLiked =
+                              /*userHomePostsInteg[index].isLiked =
                                   post.isLiked ? false : true;
                               if (!post.isLiked) {
                                 post.likes.remove(loggedInUser);
                               } else {
                                 post.likes.add(loggedInUser);
-                              }
+                              }*/
+                              addLikers(post);
                             });
                             //print(post.likes.length);
                           },
@@ -421,7 +426,7 @@ class HomeState extends State<Home> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                post.likes == null
+                (post.likes == null || post.likes.length == 0)
                     ? Container()
                     : Container(
                         //sub-Container #1
@@ -452,34 +457,35 @@ class HomeState extends State<Home> {
                             ),
                             Flexible(
                               fit: FlexFit.loose,
-                              child: post.likes == null
-                                  ? Container()
-                                  : TextButton(
-                                      child: post.likes.length >= 2
-                                          ? Text(
-                                              post.likes[0].username +
-                                                  ", " +
-                                                  post.likes[1].username +
-                                                  " and " +
-                                                  (post.likes.length - 2)
-                                                      .toString() +
-                                                  " others faved",
-                                              style: textStyleBold,
-                                            )
-                                          : Text(
-                                              post.likes[0].username,
-                                              style: textStyleBold,
-                                            ),
-                                      onPressed: () {
-                                        selectScreen(context, 2,
-                                            thePost: post,
-                                            favComIndex: 1,
-                                            isFaves: true,
-                                            commentFavPage: 1);
+                              child:
+                                  (post.likes == null || post.likes.length == 0)
+                                      ? Container()
+                                      : TextButton(
+                                          child: post.likes.length >= 2
+                                              ? Text(
+                                                  post.likes[0].username +
+                                                      ", " +
+                                                      post.likes[1].username +
+                                                      " and " +
+                                                      (post.likes.length - 2)
+                                                          .toString() +
+                                                      " others faved",
+                                                  style: textStyleBold,
+                                                )
+                                              : Text(
+                                                  post.likes[0].username,
+                                                  style: textStyleBold,
+                                                ),
+                                          onPressed: () {
+                                            selectScreen(context, 2,
+                                                thePost: post,
+                                                favComIndex: 1,
+                                                isFaves: true,
+                                                commentFavPage: 1);
 
-                                        setState(() {});
-                                      },
-                                    ),
+                                            setState(() {});
+                                          },
+                                        ),
                             ),
                           ],
                         ),
@@ -579,7 +585,7 @@ class HomeState extends State<Home> {
 
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
     ///[textTitle1] this string is used in AppBar title when navigating between screens
-    String textTitle1 = post.user.username +
+    String textTitle1 = post.postUsername +
         " uploaded " +
         post.photo.length.toString() +
         " photos";
@@ -705,7 +711,7 @@ class HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          "  " + post.user.username,
+                          "  " + post.postUsername,
                           style: textStyleBold,
                         ),
                         Text(
@@ -755,7 +761,7 @@ class HomeState extends State<Home> {
   }
 
   Widget getPostTwoPhotos(BuildContext context, Post post, int index) {
-    String textTitle1 = post.user.username +
+    String textTitle1 = post.postUsername +
         " uploaded " +
         post.photo.length.toString() +
         " photos";
@@ -858,7 +864,7 @@ class HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            post.user.username,
+                            post.postUsername,
                             style: textStyleBold,
                           ),
                           Text(
