@@ -186,6 +186,7 @@ function PhotoView() {
             {/* photo name */}
             <div id="title-conatiner">
               <h1 id="selected-photo-title">{data.title}</h1>
+              {(data.description !== '') && <h2 id="selected-photo-description">{data.description}</h2>}
             </div>
             {/* comments section */}
             {photoComments && (photoComments.map((photoComment, index) => (
