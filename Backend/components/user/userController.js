@@ -104,6 +104,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       userAvatar: userObj.userAvatar,
       firstName: name.slice(0, name.indexOf(' ')),
       lastName: name.slice(name.indexOf(' ') + 1, name.length),
+      urlCover: userObj.urlCover,
 
     });
   } catch (error) {

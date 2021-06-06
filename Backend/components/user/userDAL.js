@@ -2,6 +2,7 @@ const User = require('./userModel');
 const utilsPassword = require('../../utils/passwords');
 const Photo = require('../photo/photoModel');
 const personDAL = require('../person/personDAL');
+require('../person/personModel');
 
 const isUniqueDisplayName = async function isUnique(displayName) {
   // checks whether or not display name is unique
