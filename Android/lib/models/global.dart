@@ -25,6 +25,30 @@ TextStyle textStyle = new TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
+TextStyle textStyleInfo = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 15,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
+TextStyle flagThisPhoto = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 20,
+  color: Colors.blue,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleTags = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 10,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleInfoTitle = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: 10,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
 TextStyle textStyleBold = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
@@ -127,7 +151,7 @@ bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
 
 String host = "api.flick.photos";
 User loggedInUser = new User(
-  username: 'LoggedIn user',
+  username: 'Hard Coded',
   userAvatar:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
@@ -150,7 +174,7 @@ Post postBenFlasher = new Post(
     ),
   ],
   title: "Sutro Shore",
-  user: user,
+  user: user2,
   description: "My first post",
   date: DateTime.now(),
   likes: [follower1, follower2, follower3],
@@ -178,7 +202,7 @@ Post post1 = new Post(
           'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
     )
   ],
-  user: user,
+  user: user2,
   description: "My first post",
   date: DateTime.now(),
   likes: [follower1, follower2, follower3],
@@ -195,7 +219,7 @@ Post post1 = new Post(
     ),
   ],
 );
-final User user = new User(
+final User user2 = new User(
   username: 'Hannah Hatem',
   userAvatar:
       'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg',
