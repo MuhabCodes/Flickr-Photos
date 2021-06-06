@@ -42,11 +42,6 @@ class _SendEmailState extends State<SendEmail> {
     }); //pause for 5 seconds
   } //button resend again animation
 
-  void noInternet() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('No Internet Connection')));
-  }
-
   Future<void> _resendSubmit() async {
     final _auth = Provider.of<Authentication>(context, listen: false);
     try {
@@ -68,7 +63,16 @@ class _SendEmailState extends State<SendEmail> {
           'Could not authenticate you. Please try again later.';
 
       print(errorMessage);
-      noInternet();
+      if (_auth.statusNum == 404) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('The server can not find the requested resource.')));
+      } else if (_auth.statusNum == 409) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Indicates that the user is already activated.")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("No Internet Connection")));
+      }
       return;
     }
     if (_auth.status == Status.Success) {}
