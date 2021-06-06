@@ -28,7 +28,7 @@ class _DescriptionState extends State<Description> {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final String title = routeArgs['title'];
-    final String initialtext = routeArgs['initialtext'];
+    final String initialtext = routeArgs['initialText'];
     userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       appBar: AppBar(

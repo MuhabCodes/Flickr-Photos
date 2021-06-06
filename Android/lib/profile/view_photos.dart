@@ -1,14 +1,13 @@
+import 'package:flickr/profile/fullscreen_image.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/photo_provider.dart';
-import 'fullscreen_image.dart';
-
 class ViewPhotos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
     return IndexedStack(children: [
       Wrap(
@@ -16,9 +15,9 @@ class ViewPhotos extends StatelessWidget {
           spacing: 10,
           //runSpacing: 20,
           children: List.generate(
-              photoProvider.dateTaken
-                  ? photoProvider.photosWithUploadDate.length
-                  : photoProvider.photosWithCaptureDate.length, (index) {
+              userProvider.dateTaken
+                  ? userProvider.photosWithUploadDate.length
+                  : userProvider.photosWithCaptureDate.length, (index) {
             return Container(
                 padding: EdgeInsets.only(left: 10),
                 width: size.width,
@@ -28,11 +27,10 @@ class ViewPhotos extends StatelessWidget {
                       Container(
                         width: size.width,
                         child: Text(
-                          DateFormat("EEEE — MMM d,yyyy").format(photoProvider
+                          DateFormat("EEEE — MMM d,yyyy").format(userProvider
                                   .dateTaken
-                              ? photoProvider.photosWithUploadDate[index].date
-                              : photoProvider
-                                  .photosWithCaptureDate[index].date),
+                              ? userProvider.photosWithUploadDate[index].date
+                              : userProvider.photosWithCaptureDate[index].date),
                           overflow: TextOverflow.fade,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
@@ -44,10 +42,10 @@ class ViewPhotos extends StatelessWidget {
                       Wrap(
                         direction: Axis.horizontal,
                         children: List.generate(
-                          photoProvider.dateTaken
-                              ? photoProvider
+                          userProvider.dateTaken
+                              ? userProvider
                                   .photosWithUploadDate[index].images.length
-                              : photoProvider
+                              : userProvider
                                   .photosWithCaptureDate[index].images.length,
                           (index2) {
                             return Container(
@@ -63,24 +61,24 @@ class ViewPhotos extends StatelessWidget {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     FullscreenImage(
-                                                      photoProvider.dateTaken
-                                                          ? photoProvider
+                                                      userProvider.dateTaken
+                                                          ? userProvider
                                                               .photosWithUploadDate[
                                                                   index]
                                                               .images[index2]
-                                                          : photoProvider
+                                                          : userProvider
                                                               .photosWithCaptureDate[
                                                                   index]
                                                               .images[index2],
                                                     )));
                                       },
                                       child: Image.network(
-                                        photoProvider.dateTaken
-                                            ? photoProvider
+                                        userProvider.dateTaken
+                                            ? userProvider
                                                 .photosWithUploadDate[index]
                                                 .images[index2]
                                                 .imageUrl
-                                            : photoProvider
+                                            : userProvider
                                                 .photosWithCaptureDate[index]
                                                 .images[index2]
                                                 .imageUrl,
