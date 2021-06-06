@@ -352,9 +352,11 @@ exports.removeFromShowCase = async function removeFromShowCase(req, res) {
     const inPhotos = photoByUser(photosByUser, body.photoId);
 
     if (inPhotos) {
+      const userShowCase = await userDAL.getShowCase(params.userId);
+      if (userShowCase.showCase.length === 0) { return res.status(403).json({ message: 'showCase is Empty' }); }
       await userDAL.removeFromShowCase(params.userId, body.photoId);
       return res.status(200).json({
-        message: 'photo removed showCase Successfully',
+        message: 'photo removed from showCase Successfully',
       });
     }
     return res.status(404).json({
