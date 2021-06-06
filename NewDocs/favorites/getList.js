@@ -5,10 +5,9 @@
  * @apiGroup favorites
  * @apiVersion  0.1.0
  * @apiDescription Returns a list of the user's favorite photos. Only photos which the calling user has permission to see are returned.
- * 
+ * @apiParam   {String} userId The NSID of the user to fetch the favorites list for.
  * 
  *
- * @apiParam  (Body) {String} userId The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.
  * 
  * @apiSuccess (Success 200) {Object[]} favoritesList List of all user favorites
  * @apiSuccess (Success 200) {Number} statusCode The status code

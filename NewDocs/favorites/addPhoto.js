@@ -6,8 +6,7 @@
 * @apiVersion  0.1.0
 * @apiDescription Adds a photo to a user's favorites list.
 * 
-*@apiParam (header) {string} userId The id of the user who adds the favorite
-*@apiParam  (Body){String} photoId The id of the photo to add to the user's favorites
+ *@apiParam  {String} photoId The id of the photo to add to the user's favorites
 * 
 * @apiSuccess (Success 200) {Number} statusCode The status code
 *
@@ -58,3 +57,5 @@
 
 // * @apiError (Error 429) {String} error Too Many Requests ; the user has sent too many requests in a given amount of time ("rate limiting").
 // * @apiError (Error 429) {Number} statusCode The status code
+// *@apiParam (header) {string} userId The id of the user who adds the favorite
+//
