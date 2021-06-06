@@ -1,8 +1,7 @@
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/photo_provider.dart';
 
 class ViewPhotosSelected extends StatefulWidget {
   @override
@@ -13,7 +12,7 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
   List<bool> selected = [];
   @override
   Widget build(BuildContext context) {
-    var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
     return IndexedStack(children: [
       Wrap(
@@ -21,9 +20,9 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
           spacing: 10,
           //runSpacing: 20,
           children: List.generate(
-              photoProvider.dateTaken
-                  ? photoProvider.photosWithUploadDate.length
-                  : photoProvider.photosWithCaptureDate.length, (index) {
+              userProvider.dateTaken
+                  ? userProvider.photosWithUploadDate.length
+                  : userProvider.photosWithCaptureDate.length, (index) {
             selected.add(false);
             return Container(
                 width: size.width,
@@ -35,48 +34,48 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                           Checkbox(
                               value: selected[index],
                               onChanged: (val) {
-                                photoProvider.setSelected(val);
+                                userProvider.setSelected(val);
 
                                 setState(() {
                                   selected[index] = val;
 
-                                  if (photoProvider.dateTaken) {
+                                  if (userProvider.dateTaken) {
                                     for (int i = 0;
                                         i <
-                                            photoProvider
+                                            userProvider
                                                 .photosWithUploadDate[index]
                                                 .images
                                                 .length;
                                         i++) {
-                                      photoProvider.photosWithUploadDate[index]
+                                      userProvider.photosWithUploadDate[index]
                                           .images[i].selected = val;
                                       val
-                                          ? photoProvider.selectedPhotos.add(
-                                              photoProvider
+                                          ? userProvider.selectedPhotos.add(
+                                              userProvider
                                                   .photosWithUploadDate[index]
                                                   .images[i])
-                                          : photoProvider.selectedPhotos.remove(
-                                              photoProvider
+                                          : userProvider.selectedPhotos.remove(
+                                              userProvider
                                                   .photosWithUploadDate[index]
                                                   .images[i]);
                                     }
                                   } else {
                                     for (int i = 0;
                                         i <
-                                            photoProvider
+                                            userProvider
                                                 .photosWithCaptureDate[index]
                                                 .images
                                                 .length;
                                         i++) {
-                                      photoProvider.photosWithCaptureDate[index]
+                                      userProvider.photosWithCaptureDate[index]
                                           .images[i].selected = val;
                                       val
-                                          ? photoProvider.selectedPhotos.add(
-                                              photoProvider
+                                          ? userProvider.selectedPhotos.add(
+                                              userProvider
                                                   .photosWithCaptureDate[index]
                                                   .images[i])
-                                          : photoProvider.selectedPhotos.remove(
-                                              photoProvider
+                                          : userProvider.selectedPhotos.remove(
+                                              userProvider
                                                   .photosWithCaptureDate[index]
                                                   .images[i]);
                                     }
@@ -87,10 +86,10 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                             //width: size.width,
                             child: Text(
                               DateFormat("EEEE — MMM d,yyyy").format(
-                                  photoProvider.dateTaken
-                                      ? photoProvider
+                                  userProvider.dateTaken
+                                      ? userProvider
                                           .photosWithUploadDate[index].date
-                                      : photoProvider
+                                      : userProvider
                                           .photosWithCaptureDate[index].date),
                               overflow: TextOverflow.fade,
                               style: TextStyle(
@@ -107,10 +106,10 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                         child: Wrap(
                           direction: Axis.horizontal,
                           children: List.generate(
-                            photoProvider.dateTaken
-                                ? photoProvider
+                            userProvider.dateTaken
+                                ? userProvider
                                     .photosWithUploadDate[index].images.length
-                                : photoProvider
+                                : userProvider
                                     .photosWithCaptureDate[index].images.length,
                             (index2) {
                               return Container(
@@ -123,65 +122,65 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                       child: InkWell(
                                         onTap: () {
                                           setState(() {
-                                            if (photoProvider.dateTaken) {
-                                              photoProvider
+                                            if (userProvider.dateTaken) {
+                                              userProvider
                                                       .photosWithUploadDate[index]
                                                       .images[index2]
                                                       .selected =
-                                                  !photoProvider
+                                                  !userProvider
                                                       .photosWithUploadDate[
                                                           index]
                                                       .images[index2]
                                                       .selected;
 
-                                              photoProvider
+                                              userProvider
                                                       .photosWithUploadDate[
                                                           index]
                                                       .images[index2]
                                                       .selected
-                                                  ? photoProvider.selectedPhotos
-                                                      .add(photoProvider
+                                                  ? userProvider.selectedPhotos
+                                                      .add(userProvider
                                                           .photosWithUploadDate[
                                                               index]
                                                           .images[index2])
-                                                  : photoProvider.selectedPhotos
-                                                      .remove(photoProvider
+                                                  : userProvider.selectedPhotos
+                                                      .remove(userProvider
                                                           .photosWithUploadDate[
                                                               index]
                                                           .images[index2]);
-                                              photoProvider.setSelected(
-                                                  photoProvider
+                                              userProvider.setSelected(
+                                                  userProvider
                                                       .photosWithUploadDate[
                                                           index]
                                                       .images[index2]
                                                       .selected);
                                             } else {
-                                              photoProvider
+                                              userProvider
                                                       .photosWithCaptureDate[index]
                                                       .images[index2]
                                                       .selected =
-                                                  !photoProvider
+                                                  !userProvider
                                                       .photosWithCaptureDate[
                                                           index]
                                                       .images[index2]
                                                       .selected;
-                                              photoProvider
+                                              userProvider
                                                       .photosWithCaptureDate[
                                                           index]
                                                       .images[index2]
                                                       .selected
-                                                  ? photoProvider.selectedPhotos
-                                                      .add(photoProvider
+                                                  ? userProvider.selectedPhotos
+                                                      .add(userProvider
                                                           .photosWithCaptureDate[
                                                               index]
                                                           .images[index2])
-                                                  : photoProvider.selectedPhotos
-                                                      .remove(photoProvider
+                                                  : userProvider.selectedPhotos
+                                                      .remove(userProvider
                                                           .photosWithCaptureDate[
                                                               index]
                                                           .images[index2]);
-                                              photoProvider.setSelected(
-                                                  photoProvider
+                                              userProvider.setSelected(
+                                                  userProvider
                                                       .photosWithCaptureDate[
                                                           index]
                                                       .images[index2]
@@ -192,23 +191,23 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                             if (selected[index]) {
                                               selected[index] = false;
                                             } else {
-                                              if (photoProvider.dateTaken) {
+                                              if (userProvider.dateTaken) {
                                                 for (int i = 0;
                                                     i <
-                                                        photoProvider
+                                                        userProvider
                                                             .photosWithUploadDate[
                                                                 index]
                                                             .images
                                                             .length;
                                                     i++) {
-                                                  if (photoProvider
+                                                  if (userProvider
                                                       .photosWithUploadDate[
                                                           index]
                                                       .images[i]
                                                       .selected) temp++;
                                                 }
                                                 temp ==
-                                                        photoProvider
+                                                        userProvider
                                                             .photosWithUploadDate[
                                                                 index]
                                                             .images
@@ -218,20 +217,20 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                               } else {
                                                 for (int i = 0;
                                                     i <
-                                                        photoProvider
+                                                        userProvider
                                                             .photosWithCaptureDate[
                                                                 index]
                                                             .images
                                                             .length;
                                                     i++) {
-                                                  if (photoProvider
+                                                  if (userProvider
                                                       .photosWithCaptureDate[
                                                           index]
                                                       .images[i]
                                                       .selected) temp++;
                                                 }
                                                 temp ==
-                                                        photoProvider
+                                                        userProvider
                                                             .photosWithCaptureDate[
                                                                 index]
                                                             .images
@@ -246,8 +245,8 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                           decoration: BoxDecoration(
                                               color: selected[index]
                                                   ? Colors.blue
-                                                  : photoProvider.dateTaken
-                                                      ? photoProvider
+                                                  : userProvider.dateTaken
+                                                      ? userProvider
                                                                   .photosWithUploadDate[
                                                                       index]
                                                                   .images[
@@ -256,7 +255,7 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                                               true
                                                           ? Colors.blue
                                                           : Colors.transparent
-                                                      : photoProvider
+                                                      : userProvider
                                                                   .photosWithCaptureDate[
                                                                       index]
                                                                   .images[
@@ -267,12 +266,12 @@ class _ViewPhotosSelectedState extends State<ViewPhotosSelected> {
                                                           : Colors.transparent),
                                           padding: EdgeInsets.all(2.5),
                                           child: Image.network(
-                                            photoProvider.dateTaken
-                                                ? photoProvider
+                                            userProvider.dateTaken
+                                                ? userProvider
                                                     .photosWithUploadDate[index]
                                                     .images[index2]
                                                     .imageUrl
-                                                : photoProvider
+                                                : userProvider
                                                     .photosWithCaptureDate[
                                                         index]
                                                     .images[index2]

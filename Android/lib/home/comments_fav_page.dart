@@ -134,13 +134,14 @@ class CommentsFavsState extends State<CommentsFavs> {
           appBar: AppBar(
             title: Column(children: [
               Text(
-                thePost.user.username + "'s Photo",
+                thePost.postUsername + "'s Photo",
                 style: appBarTitleStyle,
               ),
             ]),
             bottom: TabBar(
                 //labelColor: Colors.white,
                 //unselectedLabelColor: Colors.white,
+                labelStyle: appBarTitleStyle,
                 indicatorColor: Colors.white,
                 tabs: <Widget>[
                   Tab(
@@ -311,15 +312,17 @@ class CommentsFavsState extends State<CommentsFavs> {
                         children: <Widget>[
                           RichText(
                             text: new TextSpan(
-                              style: textStyleBold,
+                              style: textStyleBoldComments,
                               children: <TextSpan>[
                                 new TextSpan(
                                   text: comment.user.username + "\n",
                                   style: textStyleBold,
                                 ),
-                                new TextSpan(text: '', style: textStyle),
                                 new TextSpan(
-                                    text: comment.comment, style: textStyle),
+                                    text: '', style: textStyleComments),
+                                new TextSpan(
+                                    text: comment.comment,
+                                    style: textStyleComments),
                               ],
                             ),
                           ),
@@ -360,12 +363,13 @@ class CommentsFavsState extends State<CommentsFavs> {
         appBar: AppBar(
           title: Column(children: [
             Text(
-              thePost.user.username + "'s Photo",
+              thePost.postUsername + "'s Photo",
               style: appBarTitleStyle,
             ),
           ]),
           bottom: TabBar(
               labelColor: Colors.white,
+              labelStyle: appBarTitleStyle,
               //key: 2,
               unselectedLabelColor: Colors.white,
               indicatorColor: Colors.blue,
@@ -445,10 +449,12 @@ class CommentsFavsState extends State<CommentsFavs> {
                                 children: <TextSpan>[
                                   new TextSpan(
                                       text: comment.user.username + "\n",
-                                      style: textStyleBold),
-                                  new TextSpan(text: '', style: textStyle),
+                                      style: textStyleBoldComments),
                                   new TextSpan(
-                                      text: comment.comment, style: textStyle),
+                                      text: '', style: textStyleComments),
+                                  new TextSpan(
+                                      text: comment.comment,
+                                      style: textStyleComments),
                                 ],
                               ),
                             ),

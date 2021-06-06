@@ -1,10 +1,15 @@
+import 'package:flickr/camera/Pages/camera_view.dart';
+//import 'package:flickr/camera/Pages/redirect_camera_view.dart';
 import 'package:flickr/explore/search.dart';
 import 'package:flickr/home/home.dart';
 import 'package:flickr/notifications/notifications.dart';
 import 'package:flickr/profile/profile.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
+//import '../camera/pages/redirect_camera_view.dart';
 import '../camera/Pages/camera_view.dart';
 
 class TopNavigationBar extends StatefulWidget {
@@ -15,6 +20,9 @@ class TopNavigationBar extends StatefulWidget {
 class TopNavigationBarState extends State<TopNavigationBar> {
   @override
   Widget build(BuildContext context) {
+    var loggedUser = Provider.of<UserProvider>(context, listen: false);
+    loggedUser.setUser();
+
     return DefaultTabController(
       length: 5, //number of tabs
       child: new Scaffold(
@@ -63,7 +71,7 @@ class TopNavigationBarState extends State<TopNavigationBar> {
                 Home(),
                 Search(),
                 Profile(),
-                Notifications(),
+                NotificationsPage(),
                 CameraView(),
               ],
             )),

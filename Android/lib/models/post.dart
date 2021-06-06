@@ -1,5 +1,3 @@
-import 'package:flickr/models/photos.dart';
-import 'package:flutter/material.dart';
 import 'comment.dart';
 import 'user.dart';
 
@@ -18,7 +16,11 @@ class Post {
   String userId;
   int numLikes;
   int numComments;
-  //List<NetworkImage> imagePath = [new NetworkImage('www.google.com')];
+  String photoId;
+  String postUsername;
+  String userAvatar;
+  bool isPro = false;
+  //List<NetworkImage> imageUrl = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
       imageUrl: 'www.google.com',
@@ -39,5 +41,9 @@ class Post {
     this.userId,
     this.numComments,
     this.numLikes,
+    this.photoId,
+    this.postUsername,
+    this.userAvatar,
+    this.isPro,
   });
 }

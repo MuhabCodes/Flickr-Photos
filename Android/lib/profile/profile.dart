@@ -3,13 +3,12 @@ import 'package:flickr/profile/showMoreVertMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './followers.dart';
 import './about_tap.dart';
 import './camera_roll.dart';
+import './followers.dart';
 import './following.dart';
 import './stats.dart';
 import '../providers/user_provider.dart';
-import '../providers/photo_provider.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class Profile extends StatefulWidget {
@@ -20,18 +19,7 @@ class Profile extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _ProfileState extends State<Profile> {
   var userProvider;
-  var photoProvider;
   int _initialIndex = 2;
-
-  @override
-  void initState() {
-    userProvider = Provider.of<UserProvider>(context, listen: false);
-    userProvider.setUser();
-    photoProvider = Provider.of<PhotoProvider>(context, listen: false);
-    photoProvider.setPhotos();
-    //photoProvider.arangePhoto();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +90,7 @@ class _ProfileState extends State<Profile> {
                           colorFilter: new ColorFilter.mode(
                               Colors.black.withOpacity(0.3), BlendMode.dstATop),
                           //background image for profile
-                          image: NetworkImage(
-                              "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg"),
+                          image: AssetImage("lib/assets/background.jpg"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -113,17 +100,21 @@ class _ProfileState extends State<Profile> {
                           children: [
                             CircleAvatar(
                                 radius: 30,
-                                backgroundImage:
-                                    NetworkImage(userProvider.user.userAvatar),
+                                backgroundImage: userProvider.user.userAvatar !=
+                                        null
+                                    ? NetworkImage(userProvider.user.userAvatar)
+                                    : AssetImage('lib/assets/follower2.jpg'),
                                 // ignore: deprecated_member_use
                                 child: FlatButton(
                                   onPressed: () {},
                                   child: null,
                                 )),
                             Text(
-                              userProvider.user.firstName +
-                                  " " +
-                                  userProvider.user.lastName,
+                              userProvider.user.firstName == null
+                                  ? "Logged User"
+                                  : userProvider.user.firstName +
+                                      " " +
+                                      userProvider.user.lastName,
                               style: TextStyle(
                                   fontSize: 23,
                                   color: Colors.white,

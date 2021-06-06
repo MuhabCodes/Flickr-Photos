@@ -2,10 +2,12 @@ import 'dart:async';
 
 ///Importing library to send http requests.
 import 'dart:convert';
-import 'package:flickr/models/user.dart';
+import 'dart:io';
 
+import 'package:flickr/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 import '../models/user.dart';
 
@@ -16,7 +18,12 @@ class UserProvider with ChangeNotifier {
   Status status = Status.Loading;
   final BuildContext context;
   User user;
-
+  List<Photo> triple = [];
+  List<DateWithImages> photosWithUploadDate = [];
+  List<DateWithImages> photosWithCaptureDate = [];
+  List<Photo> selectedPhotos = [];
+  bool isSelected = false; //check if one is selected
+  bool dateTaken = true;
   UserProvider({this.baseUrl, this.context, this.user});
 
   void getMember(String member, String val) {
@@ -24,36 +31,24 @@ class UserProvider with ChangeNotifier {
     switch (member) {
       case "Description":
         {
-          val = user.description;
+          val = user.person.description;
         }
         break;
 
       case "Current City":
         {
-          val = user.city;
-        }
-        break;
-
-      case "country":
-        {
-          val = user.country;
+          val = user.person.city;
         }
         break;
 
       case "Occupation":
         {
-          val = user.occupation;
+          val = user.person.occupation;
         }
         break;
-      case "Website":
-        {
-          val = user.website;
-        }
-        break;
-
       case "HomeTown":
         {
-          val = user.homeTown;
+          val = user.person.homeTown;
         }
         break;
 
@@ -71,36 +66,31 @@ class UserProvider with ChangeNotifier {
     switch (member) {
       case "Description":
         {
-          user.description = val;
+          user.person.description = val;
         }
         break;
 
       case "Current City":
         {
-          user.city = val;
+          user.person.city = val;
         }
         break;
 
       case "country":
         {
-          user.country = val;
+          user.person.country = val;
         }
         break;
 
       case "Occupation":
         {
-          user.occupation = val;
-        }
-        break;
-      case "Website":
-        {
-          user.website = val;
+          user.person.occupation = val;
         }
         break;
 
       case "HomeTown":
         {
-          user.homeTown = val;
+          user.person.homeTown = val;
         }
         break;
 
@@ -113,15 +103,28 @@ class UserProvider with ChangeNotifier {
     //notifyListeners();
   }
 
-  var _url =
-      Uri.parse("https://run.mocky.io/v3/8b6dd354-cdd4-4b73-b8ec-c568ebfa66bf");
+  // var _url =
+  //     Uri.parse("https://run.mocky.io/v3/ce0a9a20-6269-4f8c-ba2b-02c36824afd8");
 
   Future<void> setUser() async {
+    var _url = Uri.parse("https://api.flick.photos/people/${user.userId}/info");
     // get request
-    var response = await http.get(_url);
+    var response = await http.get(
+      _url,
+    );
     if (response.statusCode == 200) {
+      if (user.photos != null) {
+        user.photos.clear();
+        photosWithUploadDate.clear();
+        photosWithCaptureDate.clear();
+      }
+
       user = User.fromJson(jsonDecode(response.body));
       status = Status.Success;
+      arangeWithUploadDate();
+      arangewithCaptureDate();
+      triplephotos();
+
       notifyListeners();
     } else {
       // If the server did not return a 200 CREATED response,
@@ -129,6 +132,10 @@ class UserProvider with ChangeNotifier {
       status = Status.Fail;
       throw Exception('Failed to load album');
     }
+    notifyListeners();
+  }
+
+  void notify() {
     notifyListeners();
   }
 
@@ -146,12 +153,6 @@ class UserProvider with ChangeNotifier {
         "profileId": user.userId,
         "firstName": user.firstName,
         "lastName": user.lastName,
-        "description": user.description,
-        "website": user.website,
-        "occupation": user.occupation,
-        "homeTown": user.homeTown,
-        "city": user.city,
-        "country": user.country,
       }),
     );
     if (response.statusCode == 200) {
@@ -169,5 +170,86 @@ class UserProvider with ChangeNotifier {
       status = Status.Fail;
       throw Exception('Failed to load album');
     }
+  }
+
+  void setSelected(bool val) {
+    isSelected = val;
+    notifyListeners();
+  }
+
+  void setDateTaken(String date) {
+    if ("Date Taken" == date)
+      dateTaken = true;
+    else {
+      dateTaken = false;
+    }
+    notifyListeners();
+  }
+
+  DateTime dateParsing(String stringdate) {
+    final dateStr = stringdate;
+    final formatter = DateFormat("yyyy-MM-dd");
+    final dateTimeFromStr = formatter.parse(dateStr);
+    return dateTimeFromStr;
+  }
+
+  void triplephotos() {
+    for (int i = 0; i < user.photos.length; i++) {
+      triple.add(user.photos[i]);
+      triple.add(user.photos[i]);
+      triple.add(user.photos[i]);
+    }
+  }
+
+  void arangeWithUploadDate() {
+    int dateCounter = 0;
+
+    for (int i = 0; i < user.photos.length; i++) {
+      List<Photo> tempList = [];
+      tempList.add(user.photos[i]);
+      DateWithImages temp =
+          new DateWithImages(date: user.photos[i].uploadDate, images: tempList);
+      photosWithUploadDate.add(temp);
+
+      for (int j = i + 1; j < user.photos.length; j++) {
+        if (user.photos[i].uploadDate == user.photos[j].uploadDate) {
+          photosWithUploadDate[dateCounter].images.add(user.photos[j]);
+          i++;
+        }
+      }
+      dateCounter++;
+    }
+  }
+
+  void arangewithCaptureDate() {
+    int dateCounter = 0;
+
+    for (int i = 0; i < user.photos.length; i++) {
+      List<Photo> tempList = [];
+      tempList.add(user.photos[i]);
+      DateWithImages temp = new DateWithImages(
+          date: user.photos[i].captureDate, images: tempList);
+      photosWithCaptureDate.add(temp);
+
+      for (int j = i + 1; j < user.photos.length; j++) {
+        if (user.photos[i].captureDate == user.photos[j].captureDate) {
+          photosWithCaptureDate[dateCounter].images.add(user.photos[j]);
+          i++;
+        }
+      }
+      dateCounter++;
+    }
+  }
+
+  void removeSelected() {
+    for (var i = 0; i < selectedPhotos.length; i++) {
+      user.photos.remove(selectedPhotos[i]);
+    }
+    photosWithUploadDate.clear();
+    photosWithCaptureDate.clear();
+    arangewithCaptureDate();
+    arangeWithUploadDate();
+    selectedPhotos.clear();
+    notifyListeners();
   }
 }

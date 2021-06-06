@@ -8,24 +8,39 @@ import 'package:flickr/models/post.dart';
 bool postComment(String commentController, Post thePost) {
   bool isAdded = false;
   if (commentController.isEmpty == false) {
-    thePost.comments.add(
-      new Comment(
-        loggedInUser,
-        commentController,
-        DateTime.now(),
-      ),
-    );
-    isAdded = true;
+    if (thePost.comments != null) {
+      thePost.comments.add(
+        new Comment(
+          loggedInUser,
+          commentController,
+          DateTime.now(),
+        ),
+      );
+      isAdded = true;
+    } else if (thePost.comments == null) {
+      thePost.comments = [];
+      thePost.comments.add(
+        new Comment(
+          loggedInUser,
+          commentController,
+          DateTime.now(),
+        ),
+      );
+      isAdded = true;
+    }
   }
   return isAdded;
 }
 
 ///[addLikers] adds the user who liked to likes list on clicking like button
 void addLikers(Post post) {
+  if (post.likes == null) {
+    post.likes = [];
+  }
   post.isLiked = post.isLiked ? false : true;
-  if (!post.isLiked && post.likes != null) {
-    post.likes.remove(loggedInUser);
-  } else {
+  if (post.isLiked && post.likes != null) {
     post.likes.add(loggedInUser);
+  } else if (post.likes.length > 0) {
+    post.likes.remove(loggedInUser);
   }
 }

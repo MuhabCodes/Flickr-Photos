@@ -2,17 +2,18 @@
 /// [getPost] which takes every post with single photo in list userHomePosts and creates it's design
 ///[getPostMultiPhotos] does the same thing that [getPost] does but, it takes posts which have 3 photo or more
 ///[getPostTwoPhotos] does the same thing but, takes posts with two photos only
-
+import 'package:flickr/home/comments_page.dart';
+import 'package:flickr/home/share_link.dart';
 import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+
 import '../models/global.dart';
 import 'comments_fav_page.dart';
 import 'image_fullscreen.dart';
@@ -55,32 +56,17 @@ class HomeState extends State<Home> {
     Post post,
   ) {
     double ans = 140;
-    if (post.comments == null && post.likes == null) {
+    if ((post.comments == null || post.comments.length == 0) &&
+        (post.likes == null || post.likes.length == 0)) {
       ans = 0;
-    } else if (post.comments == null && post.likes != null ||
-        post.comments != null && post.likes == null) {
+    } else if (((post.comments == null || post.comments.length == 0) &&
+            (post.likes != null && post.likes.length > 0)) ||
+        (post.likes == null || post.likes.length == 0) &&
+            (post.comments != null && post.comments.length > 0)) {
       ans = 75;
     }
     return ans;
   }
-
-  /* void arangePostsWithUploadDate() {
-    
-    for (int i = 0; i < userHomePosts.length; i++) {
-      List<Post> tempList = [];
-      tempList.add(userHomePosts[0]);;
-      
-
-      for (int j = i + 1; j < userHomePosts.length; j++) {
-        if (userHomePosts[i].date == userHomePosts[j].date) {
-          tempList.add(userHomePosts[j]);
-          i++;
-        }
-      }
-      
-    }
-    userHomePosts=tempList;
-  }*/
 
   //List<Widget> likers = [];
 
@@ -93,20 +79,31 @@ class HomeState extends State<Home> {
   }*/
 
   static int page = 1;
-
+  var loggedUser;
   double widthScreen = 0;
+  double _heightScreen = 0;
   //final controller = TextEditingController();
 
   //CommentsPage _myCommentsPage;
   int isDone = 0;
   @override
   Widget build(BuildContext context) {
+    DateTime test = postDateParsing("2021-12-01T19:11:08");
+    // loggedUser = Provider.of<UserProvider>(context, listen: false);
+    //loggedInUser = loggedUser.user;
+
     if (isDone == 0) {
       globalProvider =
           Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
+      /* Provider.of<PostProviderInteg>(context, listen: true)
+              .getUserFollowing();*/
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
+    _heightScreen = MediaQuery.of(context).size.height;
+    print(_heightScreen);
+    globalHeightScreen = _heightScreen;
+    globalWidthScreen = widthScreen;
     Map<int, Widget> _pageview = {
       1: getMain(),
       //2: getLikes(thePost.likes),
@@ -139,11 +136,21 @@ class HomeState extends State<Home> {
     //arangePostsWithUploadDate();
     List<Widget> posts = [];
     int index = 0;
-    if (userHomePostsMock == null) {
+
+    if (userHomePostsInteg == null) {
       return [Container()];
     }
-    for (Post post in userHomePostsMock) {
+    for (Post post in userHomePostsInteg) {
       ///Loops on all posts created in global.dart and add them to our home page
+      // post.user.username = post.user.firstName + " " + post.user.lastName;
+      post.photo[0].tags = [
+        "summer",
+        "fall",
+        /*"spring",
+        "life",
+        "heaven",
+        "moonlight"*/
+      ];
       if (post.photo.length == 1) {
         {
           posts.add(getPost(context, post, index));
@@ -219,20 +226,30 @@ class HomeState extends State<Home> {
                       margin: EdgeInsets.only(
                           right: 10), //user name padding away from pp
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(post.user.userAvatar),
+                        backgroundImage: NetworkImage(post.userAvatar),
                       ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          post.user.username,
-                          style: textStyleBold,
+                        Row(
+                          children: [
+                            Text(
+                              post.postUsername + "  ",
+                              style: textStyleBold,
+                            ),
+                            post.isPro == false
+                                ? Container()
+                                : Icon(
+                                    Icons.verified_rounded,
+                                    color: Colors.blue,
+                                  ),
+                          ],
                         ),
-                        post.title == null
+                        post.photo[0].title == null
                             ? Container()
                             : Text(
-                                (post.title),
+                                (post.photo[0].title),
                                 style: textStyle,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -247,7 +264,7 @@ class HomeState extends State<Home> {
               ],
             ),
           ),
-          post.description == null
+          post.photo[0].description == null
               ? Container()
               : ContainerResponsive(
                   ///Post description container
@@ -273,11 +290,13 @@ class HomeState extends State<Home> {
 
                   child: Column(
                     children: <Widget>[
-                      Text(
-                        post.description,
-                        style: textStyle,
-                        maxLines: 5,
-                      ) //+
+                      post.photo[0].description == null
+                          ? null
+                          : Text(
+                              post.photo[0].description,
+                              style: textStyle,
+                              maxLines: 5,
+                            ) //+
                       // " hi life is a journey and i need patience is the description box flexible with text?"),
                     ],
                   ),
@@ -334,13 +353,14 @@ class HomeState extends State<Home> {
                           iconSize: 35,
                           onPressed: () {
                             setState(() {
-                              userHomePostsMock[index].isLiked =
+                              /*userHomePostsInteg[index].isLiked =
                                   post.isLiked ? false : true;
                               if (!post.isLiked) {
                                 post.likes.remove(loggedInUser);
                               } else {
                                 post.likes.add(loggedInUser);
-                              }
+                              }*/
+                              addLikers(post);
                             });
                             //print(post.likes.length);
                           },
@@ -374,10 +394,27 @@ class HomeState extends State<Home> {
                 ),
                 Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.share_outlined,
-                      size: 30,
-                      color: Colors.grey,
+                    IconButton(
+                      icon: Icon(
+                        Icons.share_outlined,
+                        size: 30,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        /*Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) {
+                          return ShareLinkScreen(post.photo[0], post);
+                        }));*/
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: _heightScreen * 0.4,
+                                child: ShareLinkScreen(post.photo[0], post),
+                              );
+                            });
+                      },
                     ),
                   ],
                 ),
@@ -394,7 +431,7 @@ class HomeState extends State<Home> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                post.likes == null
+                (post.likes == null || post.likes.length == 0)
                     ? Container()
                     : Container(
                         //sub-Container #1
@@ -425,34 +462,35 @@ class HomeState extends State<Home> {
                             ),
                             Flexible(
                               fit: FlexFit.loose,
-                              child: post.likes == null
-                                  ? Container()
-                                  : TextButton(
-                                      child: post.likes.length >= 2
-                                          ? Text(
-                                              post.likes[0].username +
-                                                  ", " +
-                                                  post.likes[1].username +
-                                                  " and " +
-                                                  (post.likes.length - 2)
-                                                      .toString() +
-                                                  " others faved",
-                                              style: textStyleBold,
-                                            )
-                                          : Text(
-                                              post.likes[0].username,
-                                              style: textStyleBold,
-                                            ),
-                                      onPressed: () {
-                                        selectScreen(context, 2,
-                                            thePost: post,
-                                            favComIndex: 1,
-                                            isFaves: true,
-                                            commentFavPage: 1);
+                              child:
+                                  (post.likes == null || post.likes.length == 0)
+                                      ? Container()
+                                      : TextButton(
+                                          child: post.likes.length >= 2
+                                              ? Text(
+                                                  post.likes[0].username +
+                                                      ", " +
+                                                      post.likes[1].username +
+                                                      " and " +
+                                                      (post.likes.length - 2)
+                                                          .toString() +
+                                                      " others faved",
+                                                  style: textStyleBold,
+                                                )
+                                              : Text(
+                                                  post.likes[0].username,
+                                                  style: textStyleBold,
+                                                ),
+                                          onPressed: () {
+                                            selectScreen(context, 2,
+                                                thePost: post,
+                                                favComIndex: 1,
+                                                isFaves: true,
+                                                commentFavPage: 1);
 
-                                        setState(() {});
-                                      },
-                                    ),
+                                            setState(() {});
+                                          },
+                                        ),
                             ),
                           ],
                         ),
@@ -552,7 +590,7 @@ class HomeState extends State<Home> {
 
   Widget getPostMultiPhotos(BuildContext context, Post post, int index) {
     ///[textTitle1] this string is used in AppBar title when navigating between screens
-    String textTitle1 = post.user.username +
+    String textTitle1 = post.postUsername +
         " uploaded " +
         post.photo.length.toString() +
         " photos";
@@ -678,7 +716,7 @@ class HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          "  " + post.user.username,
+                          "  " + post.postUsername,
                           style: textStyleBold,
                         ),
                         Text(
@@ -728,7 +766,7 @@ class HomeState extends State<Home> {
   }
 
   Widget getPostTwoPhotos(BuildContext context, Post post, int index) {
-    String textTitle1 = post.user.username +
+    String textTitle1 = post.postUsername +
         " uploaded " +
         post.photo.length.toString() +
         " photos";
@@ -831,7 +869,7 @@ class HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            post.user.username,
+                            post.postUsername,
                             style: textStyleBold,
                           ),
                           Text(

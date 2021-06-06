@@ -4,7 +4,7 @@ import 'package:flickr/home/comments_fav_page.dart';
 ///like comment feature
 
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/photos.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/profile/profile.dart';
 import 'package:flickr/providers/user_provider.dart';
@@ -61,14 +61,17 @@ class ImageFullscreenState extends State<FullscreenImage> {
                           //user name padding away from pp
 
                           child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                            userProvider.user.userAvatar,
-                          )),
+                              backgroundImage:
+                                  userProvider.user.userAvatar != null
+                                      ? NetworkImage(
+                                          userProvider.user.userAvatar,
+                                        )
+                                      : AssetImage("lib/assets/follower2.jpg")),
                         ),
                         Container(
                           child: TextButton(
                             child: Text(
-                              userProvider.user.firstName,
+                              userProvider.user.displayName,
                               style: appBarTitleStyle,
                             ),
                             onPressed: () {
