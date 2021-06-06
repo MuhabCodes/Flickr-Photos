@@ -1,32 +1,28 @@
 /**
  * 
- * @api {POST} /people/description/:userId addDescription
- * @apiDescription add description to a given user
+ * @api {POST} /people/:userId/showcase addToShowCase
+ * @apiDescription add a given photo to showCase
  * @apiGroup people
  * @apiVersion  0.1.0
  * 
  * 
- * @apiParam  {String} userId userId you want to add description to
+ * @apiParam  {String} userId userId you will add photo to his showCase
  * @apiHeader  {String} authorization authorization Value
  * @apiHeaderExample {json} Request-Example:
  *    {
  *        "Authorization": "dksjfbdsjkfbusafbjaadsf"
+ *     } 
+ * @apiParam  (body) {String} photoId Id of photo you want to add 
+ * @apiParamExample  {string} Request-Example:
+ *    {
+ *        "photoId" : "5d6ede6a0ba62570afcedd3d"
  *     }
  * 
- * @apiSuccess (Success 200) {Object} message message claiming that you added description successfully
- * @apiSuccess (Success 200) {Number} statusCode The status code
- * 
- * @apiParamExample  {string} Request-Example:
- * {
- *     "description" : "Hello world!"
- * }
- * 
- * 
- * @apiSuccessExample {type} Success-Response:
- * {
- *     "message" : "description added successfully"
- * }
- * 
+ *@apiSuccess (Success 200) {Number} statusCode The status code
+ * @apiSuccessExample {json} Success-Response:
+ *{
+    "message": "photo added to showCase Successfully"
+}
  * 
  * @apiError (Error 403) {String} error The client does not have access rights to the content;
  * @apiError (Error 404)  {Number} statusCode The status code.
@@ -37,18 +33,30 @@
  * 
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
- * 
- * 
  * @apiErrorExample {json} Error-404:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "userNotFound",
+ *       "error": "PhotoNotFound",
  *        "statusCode":404
  *     }
- * * @apiErrorExample {json} Error-403:
+ * @apiErrorExample {json} Error-403:
  *     HTTP/1.1 403 Not Authorized
  *     {
- *       "message": "you arenot authorized to add description",
+ *       "message": "you arenot authorized" ,
  *        "statusCode":403
  *     }
+ * @apiErrorExample {json} Error-403:
+ *     HTTP/1.1 403 Not Authorized
+ *     {
+ *      "message": "limit exceded" ,
+ *        "statusCode":403
+ *     }
+ * @apiErrorExample {json} Error-403:
+ *     HTTP/1.1 403 Not Authorized
+ *     {
+ *       "message": "photo already in ShowCase",
+ *        "statusCode":403
+ *     }
+ * 
+ * 
  */
