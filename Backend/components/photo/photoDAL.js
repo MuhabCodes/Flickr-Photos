@@ -59,8 +59,19 @@ module.exports = {
 
     return inPhoto;
   },
-  async fetchFollowerPhotos(userIds, page) {
-    const found = await Photo.find({ $or: [{ user: { $in: userIds } }] }).skip(page * 10).limit(10).sort({ $natural: -1 });
+  async fetchFollowerPhotos(userIds) {
+    // date six months ago
+    const date = Date.now() - 7776000;
+    const found = await Photo.find({
+      $and:
+       [{ user: { $in: userIds } }, { uploadDate: { $gte: date } }],
+    })
+      .limit(100)
+      .populate({
+        path: 'user',
+        model: 'User',
+      })
+      .sort({ uploadDate: -1 });
     return found;
   },
 

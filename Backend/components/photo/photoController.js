@@ -2,14 +2,16 @@ const multer = require('multer');
 const path = require('path');
 const base64Img = require('base64-img');
 
+const { getUserById } = require('../user/userDAL');
 const { getRecent } = require('./services/getRecent');
 const { addNew } = require('./services/addNew');
 const { getInfo } = require('./services/getInfo');
 const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
-
 const { getUserPhotosById } = require('./services/getUserPhotosById');
 const { getFollowerPhotos } = require('./services/getFollowerPhotos');
+
+const { decryptAuthToken } = require('../auth/Services/decryptToken');
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
@@ -212,19 +214,19 @@ module.exports = {
     }
   },
   async getHome(req, res) {
+    const { authorization } = req.headers;
+    if (!authorization) { return res.status(401).send({ error: 'The user is not authorized' }); }
+
     try {
-      const { userIds } = req.body;
-      let { page } = req.body;
-      if (!page) {
-        page = 0;
-      }
+      const { userId } = await decryptAuthToken(authorization);
 
-      const photos = await getFollowerPhotos(userIds, page);
-
-      // console.log(photos);
-      return await res.json({ photos });
+      const user = await getUserById(userId);
+      if (!user) res.status(404).send({ error: 'The user is not found' });
+      const { following } = user;
+      const photos = await getFollowerPhotos(following);
+      return res.status(200).json(photos);
     } catch (err) {
-      res.json({
+      return res.json({
         error: "Server couldn't handle the request",
         statusCode: 500,
       });

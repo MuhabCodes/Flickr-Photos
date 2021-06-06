@@ -46,7 +46,7 @@ router.put('/:photoId', editPhoto);
 router.delete('/:photoId', deletePhoto);
 
 // get the homepage
-router.get('/', getHome);
+router.route('/').get(getHome);
 
 // add person to photo
 router.route('/:photoId/people').post(addPersonToPhoto);
