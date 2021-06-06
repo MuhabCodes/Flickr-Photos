@@ -1,25 +1,23 @@
+import 'package:flickr/models/user.dart';
 import 'package:flickr/profile/fullscreen_image.dart';
+import 'package:flickr/profile/list_view.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import '../models/photos.dart';
-import '../providers/user_provider.dart';
-import '../providers/photo_provider.dart';
-import 'list_view.dart';
-
-String timeAgo(PhotoProvider photoProvider, Photo image) {
+String timeAgo(UserProvider userProvider, Photo image) {
   DateTime now = DateTime.now();
   int year =
-      now.year - photoProvider.dateParsing(image.uploadDate.toString()).year;
+      now.year - userProvider.dateParsing(image.uploadDate.toString()).year;
   int month = year * 12 +
       now.month -
-      photoProvider.dateParsing(image.uploadDate.toString()).month;
+      userProvider.dateParsing(image.uploadDate.toString()).month;
   int days = month * 30 +
       now.day -
-      photoProvider.dateParsing(image.uploadDate.toString()).day;
+      userProvider.dateParsing(image.uploadDate.toString()).day;
   final fifteenAgo = DateTime.now().subtract(Duration(days: days));
 
   // Add a new locale messages
@@ -39,7 +37,6 @@ class _PublicState extends State<Public> {
   Widget build(BuildContext context) {
     var userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
-    var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,9 +225,8 @@ class _PublicState extends State<Public> {
         Expanded(
           child: SizedBox(
             height: size.height * 0.6,
-            child: isGrid
-                ? gridView(photoProvider)
-                : listView(photoProvider, userProvider, size),
+            child:
+                isGrid ? gridView(userProvider) : listView(userProvider, size),
           ),
         ),
       ],
@@ -238,7 +234,7 @@ class _PublicState extends State<Public> {
   }
 }
 
-Widget gridView(PhotoProvider photoProvider) {
+Widget gridView(UserProvider userProvider) {
   return CustomScrollView(slivers: <Widget>[
     SliverStaggeredGrid.countBuilder(
       mainAxisSpacing: 5,
@@ -253,14 +249,14 @@ Widget gridView(PhotoProvider photoProvider) {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      FullscreenImage(photoProvider.triple[index])));
+                      FullscreenImage(userProvider.triple[index])));
         },
         child: Image.network(
-          photoProvider.triple[index].imageUrl,
+          userProvider.triple[index].imageUrl,
           fit: BoxFit.fill,
         ),
       ),
-      itemCount: photoProvider.triple.length,
+      itemCount: userProvider.triple.length,
     )
   ]);
 }
