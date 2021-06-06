@@ -4,8 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from time import sleep
 from pages.loginpage.loginpage import LoginPage
-from info.info import TestData
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 class TestUserProfilePage(object):
@@ -25,6 +23,7 @@ class TestUserProfilePage(object):
         sleep(2)
         assert "people" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nAbout tab is working")
 
     def test_edit_description(self, setup):
         self.userprofilePage.click(self.userprofilePage.ABOUT_LABEL)
@@ -37,6 +36,7 @@ class TestUserProfilePage(object):
         sleep(2)
         assert self.userprofilePage.element_located(self.userprofilePage.EDIT_DESC)
         sleep(2)
+        print("\nEditing description in About")
 
     def test_edit_profile_info(self, setup):
         self.userprofilePage.click(self.userprofilePage.ABOUT_LABEL)
@@ -58,6 +58,7 @@ class TestUserProfilePage(object):
         self.userprofilePage.click(self.userprofilePage.DONE_BUTTON)
         assert self.userprofilePage.element_located(self.userprofilePage.EDIT_PROFILE_INFO)
         sleep(2)
+        print("\nEditing profile information in About")
 
     def test_photostream_label(self, setup):
         action = webdriver.ActionChains(self.driver)
@@ -67,6 +68,7 @@ class TestUserProfilePage(object):
         sleep(2)
         assert "photos" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nPhotostream tab is working")
 
     def test_albums_label(self, setup):
         action = webdriver.ActionChains(self.driver)
@@ -76,36 +78,42 @@ class TestUserProfilePage(object):
         sleep(2)
         assert "albums" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nAlbums tab is working")
 
     def test_faves_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.FAVES_LABEL)
         sleep(2)
         assert "favorites" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nFavourites tab is working")
 
     def test_galleries_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.GALLERIES_LABEL)
         sleep(2)
         assert "galleries" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nGalleries tab is working")
 
     def test_groups_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.GROUPS_LABEL)
         sleep(2)
         assert "groups" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nGroups tab is working")
 
     def test_stats_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.STATS_LABEL)
         sleep(2)
         assert "stats" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nStats tab is working")
 
     def test_cameraroll_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.CAMERAROLL_LABEL)
         sleep(2)
         assert "cameraroll" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nCameraroll tab is working")
 
     def test_followers_link(self, setup):
         action = webdriver.ActionChains(self.driver)
@@ -115,6 +123,7 @@ class TestUserProfilePage(object):
         sleep(2)
         assert "rev" and "contacts" in self.userprofilePage.page_url()
         sleep(2)
+        print("\nFollowers link is working and redirects to followers page")
 
     def test_following_link(self, setup):
         action = webdriver.ActionChains(self.driver)
@@ -123,3 +132,4 @@ class TestUserProfilePage(object):
         self.userprofilePage.click(self.userprofilePage.FOLLOWING_LINK)
         sleep(2)
         assert "contacts" in self.userprofilePage.page_url() and "rev" not in self.userprofilePage.page_url()
+        print("\nFollowing link is working and redirects to people followed by the user page")
