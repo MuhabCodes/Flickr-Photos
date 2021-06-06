@@ -130,14 +130,17 @@ function App() {
               <Footer />
             </Route>
             <Route exact path="/account/delete">
+              <NavBar />
               <DeleteAccount />
               <Footer />
             </Route>
             <Route exact path="/account/edit-profile">
+              <NavBar />
               <EditPersonalInfo />
               <Footer />
             </Route>
             <Route exact path="/change-password">
+              <NavBar />
               <ChangePassword />
               <Footer />
             </Route>

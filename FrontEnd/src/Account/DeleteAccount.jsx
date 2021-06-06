@@ -2,7 +2,6 @@ import { React, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import Navbar from '../App/Navbar';
 import './DeleteAccount.css';
 import configData from '../config.json';
 
@@ -55,7 +54,6 @@ const DeleteAccount = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="delete-account-main">
         {isLoading ? <div>Loading...</div>
           : (
