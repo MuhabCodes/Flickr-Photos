@@ -51,6 +51,10 @@ const userSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  urlCover: {
+    type: String,
+    default: 'https://i.imgur.com/EWN8anz.png',
+  },
 
 },
 { autoCreate: true });
