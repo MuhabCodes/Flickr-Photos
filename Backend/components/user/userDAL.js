@@ -214,7 +214,7 @@ module.exports.getPersonId = async function getPersonId(userId) {
 };
 
 module.exports.getShowCase = async function getShowCase(userId) {
-  const user = await User.findById(userId).select('showCase').populate('showCase');
+  const user = await User.findById(userId).select('showCase');
   if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
   return user;
 };

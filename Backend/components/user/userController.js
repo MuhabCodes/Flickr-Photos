@@ -4,7 +4,7 @@ const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 const { deleteAccountServ } = require('./Services/deleteAccount');
 const { getFollowersServ } = require('./Services/getFollowers');
-const { photoByUser } = require('./Services/photoByUser');
+const { photoByUser, inShowCase } = require('./Services/photoByUser');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -311,10 +311,21 @@ exports.addToShowCase = async function addToShowCase(req, res) {
     const inPhotos = photoByUser(photosByUser, body.photoId);
 
     if (inPhotos) {
-      await userDAL.addToShowCase(params.userId, body.photoId);
-      return res.status(200).json({
-        message: 'photo added to showCase Successfully',
-      });
+      // get user ShowCase
+      const userShowCase = await userDAL.getShowCase(params.userId);
+
+      // check whether this photo is in showCase or not
+      const inCase = inShowCase(userShowCase.showCase, body.photoId);
+
+      if (userShowCase.length === 25) { return res.status(403).json({ message: 'limit exceded' }); }
+
+      if (inCase === false) {
+        await userDAL.addToShowCase(params.userId, body.photoId);
+        return res.status(200).json({
+          message: 'photo added to showCase Successfully',
+        });
+      }
+      return res.status(403).json({ message: 'photo already in ShowCase' });
     }
     return res.status(404).json({
       message: 'photo Not Found',
