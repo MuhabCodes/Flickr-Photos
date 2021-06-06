@@ -29,23 +29,63 @@
     "albums": [],
     "email": "hamoksha@live.com",
     "displayName": "keka",
-    "photos": [],
-    "photosCount": 0,
-    "description": "hi",
+    "photos": [
+        {
+            "views": 0,
+            "isPublic": true,
+            "tags": [],
+            "inPhoto": [],
+            "favs": 0,
+            "comments": 0,
+            "_id": "5d6ede6a0ba62570afcedd3d",
+            "peopleInPhoto": [],
+            "title": "hi",
+            "uploadDate": "2021-05-01T12:16:11.000Z",
+            "secret": "secret key",
+            "imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+            "width": 1920,
+            "height": 1195,
+            "user": "6092ea68326fa5101115dfad",
+            "__v": 0
+        }
+    ],
+    "photosCount": 1,
     "person": {
-        "dateCreated": "2021-06-05T08:06:47.561Z",
+        "dateCreated": "2021-06-06T20:17:04.917Z",
         "_id": "60bb2d70c77326753f3975dc",
         "realName": "Yousef Qadry",
-        "city": "giza",
-        "homeTown": "cairo",
-        "occupation": "nothing",
-        "country": "Egypt"
+        "city": "keka City",
+        "homeTown": "Giza",
+        "occupation": "student",
+        "country": "Egypt",
+        "description": "Hello mohamed amr afifi"
     },
     "tags": 0,
     "favs": 0,
     "userAvatar": "https://i.imgur.com/PyVmvKL.jpg",
     "firstName": "Yousef",
-    "lastName": "Qadry"
+    "lastName": "Qadry",
+    "urlCover": "https://i.imgur.com/EWN8anz.png",
+    "showCase": [
+        {
+            "views": 0,
+            "isPublic": true,
+            "tags": [],
+            "inPhoto": [],
+            "favs": 0,
+            "comments": 0,
+            "_id": "5d6ede6a0ba62570afcedd3d",
+            "peopleInPhoto": [],
+            "title": "hi",
+            "uploadDate": "2021-05-01T12:16:11.000Z",
+            "secret": "secret key",
+            "imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+            "width": 1920,
+            "height": 1195,
+            "user": "6092ea68326fa5101115dfad",
+            "__v": 0
+        }
+    ]
 }
  * 
  * 

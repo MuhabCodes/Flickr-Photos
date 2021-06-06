@@ -1,6 +1,6 @@
 /**
  *
- * @api {GET} /myNotifications getMyNotifications
+ * @api {GET} /notifications/myNotifications getMyNotifications
  * @apiDescription Get the Notifications of certain user
  * @apiGroup notifications
  * @apiVersion  0.1.0
