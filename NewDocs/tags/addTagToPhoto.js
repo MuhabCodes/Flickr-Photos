@@ -10,7 +10,7 @@
  * @apiHeader  {String} authorization authorization Value
  * @apiHeaderExample {json} Request-Example:
  *    {
- *        "Authorization": "Bearer   dksjfbdsjkfbusafbjaadsf"
+ *        "Authorization": "dksjfbdsjkfbusafbjaadsf"
  *     } 
  * @apiParam  {String} tagRaw Raw text as entered by user 
  * @apiParamExample  {string} Request-Example:

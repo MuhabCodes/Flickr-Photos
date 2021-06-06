@@ -10,7 +10,7 @@
  * @apiHeader  {String} authorization authorization Value
  * @apiHeaderExample {json} Request-Example:
  *    {
- *        "Authorization": "Bearer   dksjfbdsjkfbusafbjaadsf"
+ *        "Authorization": "dksjfbdsjkfbusafbjaadsf"
  *     }
  * 
  * @apiSuccess (Success 200) {Object} message message claiming that you added description successfully
