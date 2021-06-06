@@ -108,6 +108,8 @@ function PhotoView() {
       newComment.commentAvatar = data.userAvatar;
       newComment.userName = data.user;
       newComment.userId = userJwt.sub;
+      const d = new Date();
+      newComment.time = d.getTime();
       axios.post('/Comments', newComment).then(() => {
         // update comments
         axios.get('/Comments') // fetch comments
@@ -124,22 +126,32 @@ function PhotoView() {
   };
   // handle delete comments
   const deleteComment = (i) => {
-    const toBeDeleted = photoComments[i];
+    const toBeDeleted = {};
     setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
+    toBeDeleted.commentId = photoComments[i].id;
     axios.delete('/Comments', toBeDeleted).then(() => {
-      // update comments
-      axios.get('/Comments') // fetch comments
-        .then((response) => {
-          setPhotoComments(response.data);
 
-          return response.data;
-        });
+      // update comments
     }).catch((error) => {
       if (error.response.status === 404) {
         history.push('*'); // Redirect to Error page
       }
     });
   };
+  // calculate time from now for comments
+  function msToTime(ds) {
+    const d = new Date();
+    const n = d.getTime();
+    const ms = n - ds;
+    const seconds = (ms / 1000).toFixed(1);
+    const minutes = (ms / (1000 * 60)).toFixed(1);
+    const hours = (ms / (1000 * 60 * 60)).toFixed(1);
+    const days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
+    if (seconds < 60) return `${Math.ceil(seconds)} Sec ago`;
+    if (minutes < 60) return `${Math.floor(minutes)} Min ago`;
+    if (hours < 24) return `${Math.floor(hours)} Hrs ago`;
+    return `${Math.floor(days)} Days ago`;
+  }
   return (data ? (
     <div>
       {/* photo container */}
@@ -201,6 +213,7 @@ function PhotoView() {
                         <Link to={`/profile/photostream/${userJwt.sub}`} id="username-text" className="user pt-2">{photoComment.userName}</Link>
                       </div>
                       <p className="text">{photoComment.comment}</p>
+                      <p id="comment-date">{msToTime(photoComment.time)}</p>
                       {(photoComment.userId == userJwt.sub) && (
                       <IconButton id="delete-comments-button" onClick={() => deleteComment(index)}>
                         <DeleteIcon fontSize="small" />
