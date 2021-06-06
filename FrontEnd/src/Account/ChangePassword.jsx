@@ -8,7 +8,7 @@ import './ChangePassword.css';
 import configData from '../config.json';
 
 const ChangePassword = () => {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
@@ -22,7 +22,7 @@ const ChangePassword = () => {
     const ProfileInfo = {
       oldPassword, newPassword,
     };
-    axios.put('/change-password', ProfileInfo)
+    axios.post('/auth/change-password', ProfileInfo)
       .then(() => {
         setChangeStatus('Password Changed Successfully, Redirecting to account...');
         setTimeout(() => history.push('/account'), 2000); // Redirect to Error page
