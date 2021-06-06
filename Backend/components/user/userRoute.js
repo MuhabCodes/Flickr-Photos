@@ -47,5 +47,5 @@ router.route('/:userId/followers').get(async (req, res) => {
   }
 });
 router.post('/:userId/showcase', userController.addToShowCase);
-
+router.delete('/:userId/showcase', userController.removeFromShowCase);
 module.exports = router;

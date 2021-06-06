@@ -323,3 +323,33 @@ exports.addToShowCase = async function addToShowCase(req, res) {
     return res.status(500).json(error);
   }
 };
+
+exports.removeFromShowCase = async function removeFromShowCase(req, res) {
+  const { params, body } = req;
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+
+    if (currentUser.userId !== params.userId) {
+      return res.status(403).json({
+        message: ' You are not authorized ',
+      });
+    }
+    const photosByUser = await userDAL.getPhotos(params.userId);
+
+    // checking whether photo being added is in photoByUser array or not
+    const inPhotos = photoByUser(photosByUser, body.photoId);
+
+    if (inPhotos) {
+      await userDAL.removeFromShowCase(params.userId, body.photoId);
+      return res.status(200).json({
+        message: 'photo removed showCase Successfully',
+      });
+    }
+    return res.status(404).json({
+      message: 'photo Not Found',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
