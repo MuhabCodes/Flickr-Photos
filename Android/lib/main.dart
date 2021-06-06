@@ -1,3 +1,4 @@
+import 'package:flickr/login/confirm_email.dart';
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/profile/privacy_and_safety.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
         home: GetStarted(),
         routes: {
           '/description': (ctx) => Description(),
-          '/selectphotos': (ctx) => SelectPhoto()
+          '/selectphotos': (ctx) => SelectPhoto(),
         },
         theme: ThemeData(fontFamily: "ProximaNova"),
         debugShowCheckedModeBanner: false, //remove debug sign
