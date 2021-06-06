@@ -1,21 +1,45 @@
+import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
 import 'comment.dart';
 import 'user.dart';
 
+///[Post] class
 class Post {
-  //AssetImage image;
-  List<AssetImage> image = [new AssetImage('lib/assets/photo5.jpg')];
-  //List<String> image;
-  //image= [];
+  //List<AssetImage> image = [new AssetImage('lib/assets/photo5.jpg')];
   String description;
+  String title;
   User user;
   List<User> likes;
   List<Comment> comments;
   DateTime date;
   bool isLiked;
   bool isSaved;
-  //List<AssetImage> img1 = [new AssetImage('lib/assets/photo5.jpg')];
+  String postId;
+  String userId;
+  int numLikes;
+  int numComments;
+  String photoId;
+  //List<NetworkImage> imageUrl = [new NetworkImage('www.google.com')];
+  List<Photo> photo = [
+    new Photo(
+      imageUrl: 'www.google.com',
+    )
+  ];
 
-  Post(this.image, this.user, this.description, this.date, this.likes,
-      this.comments, this.isLiked, this.isSaved);
+  Post({
+    this.photo,
+    this.user,
+    this.date,
+    this.isLiked = false,
+    this.isSaved = false,
+    this.postId,
+    this.description = "",
+    this.title = "",
+    this.likes,
+    this.comments,
+    this.userId,
+    this.numComments,
+    this.numLikes,
+    this.photoId,
+  });
 }

@@ -1,15 +1,20 @@
 import 'dart:async';
 
 // import 'package:flickr/models/global.dart';
+import 'package:flickr/models/user.dart';
+import 'package:flickr/providers/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SendEmail extends StatefulWidget {
   final String text;
-  SendEmail({Key key, @required this.text}) : super(key: key);
+  int specialNum;
+  SendEmail({Key key, @required this.text, @required this.specialNum})
+      : super(key: key);
 
   @override
   _SendEmailState createState() => _SendEmailState();
@@ -37,8 +42,32 @@ class _SendEmailState extends State<SendEmail> {
     }); //pause for 5 seconds
   } //button resend again animation
 
+  Future<void> _resendSubmit() async {
+    final _auth = Provider.of<Authentication>(context, listen: false);
+    try {
+      if (widget.specialNum == 1) {
+        _auth.currentUser = new User(
+          email: widget.text,
+        );
+        await _auth.resendConfirmation();
+      } else {
+        _auth.currentUser = new User(
+          email: widget.text,
+        );
+        await _auth.sendForgotPassword();
+      }
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      print(errorMessage);
+      return;
+    }
+    if (_auth.status == Status.Success) {}
+  }
+
   @override
   Widget build(BuildContext context) {
+    var authentication = Provider.of<Authentication>(context, listen: true);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -134,7 +163,10 @@ class _SendEmailState extends State<SendEmail> {
                                     minimumSize: Size(
                                         MediaQuery.of(context).size.width,
                                         _height * 0.065)),
-                                onPressed: _switchButton,
+                                onPressed: () {
+                                  _switchButton();
+                                  _resendSubmit();
+                                },
                                 child: Text('Resend email'))
                             : ElevatedButton(
                                 style: ElevatedButton.styleFrom(

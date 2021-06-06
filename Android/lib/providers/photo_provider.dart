@@ -16,25 +16,44 @@ class PhotoProvider with ChangeNotifier {
   final BuildContext context;
   bool dateTaken = true;
   List<Photo> images = [];
+  List<Photo> triple = [];
   List<DateWithImages> photosWithUploadDate = [];
   List<DateWithImages> photosWithCaptureDate = [];
+  List<Photo> selectedPhotos = [];
+  bool isSelected = false; //check if one is selected
   PhotoProvider({this.baseUrl, this.context});
-  void setDateTaken() {
-    dateTaken = !dateTaken;
+
+  void setSelected(bool val) {
+    isSelected = val;
+    notifyListeners();
+  }
+
+  void setDateTaken(String date) {
+    if ("Date Taken" == date)
+      dateTaken = true;
+    else {
+      dateTaken = false;
+    }
     notifyListeners();
   }
 
   var url =
-      Uri.parse("https://run.mocky.io/v3/9407f7b1-30ab-4ee8-a2a2-b3c3df6a9630");
+      Uri.parse("https://run.mocky.io/v3/5b50aefb-82a8-4e2e-a888-834ef0f61200");
   var response;
   Future<void> setPhotos() async {
     await http.get(url).then((value) {
       if (value.statusCode == 200) {
+        if (images.isNotEmpty) {
+          images.clear();
+          photosWithUploadDate.clear();
+          photosWithCaptureDate.clear();
+        }
         images = Photos.fromJson(jsonDecode(value.body)).photos;
         status = PhotoStatus.Success;
 
         arangeWithUploadDate();
         arangewithCaptureDate();
+        triplephotos();
         print(images.length);
         notifyListeners();
       } else {
@@ -55,14 +74,22 @@ class PhotoProvider with ChangeNotifier {
     return dateTimeFromStr;
   }
 
+  void triplephotos() {
+    for (int i = 0; i < images.length; i++) {
+      triple.add(images[i]);
+      triple.add(images[i]);
+      triple.add(images[i]);
+    }
+  }
+
   void arangeWithUploadDate() {
     int dateCounter = 0;
 
     for (int i = 0; i < images.length; i++) {
       List<Photo> tempList = [];
       tempList.add(images[i]);
-      DateWithImages temp = new DateWithImages(
-          date: dateParsing(images[i].uploadDate), images: tempList);
+      DateWithImages temp =
+          new DateWithImages(date: images[i].uploadDate, images: tempList);
       photosWithUploadDate.add(temp);
 
       for (int j = i + 1; j < images.length; j++) {
@@ -81,8 +108,8 @@ class PhotoProvider with ChangeNotifier {
     for (int i = 0; i < images.length; i++) {
       List<Photo> tempList = [];
       tempList.add(images[i]);
-      DateWithImages temp = new DateWithImages(
-          date: dateParsing(images[i].captureDate), images: tempList);
+      DateWithImages temp =
+          new DateWithImages(date: images[i].captureDate, images: tempList);
       photosWithCaptureDate.add(temp);
 
       for (int j = i + 1; j < images.length; j++) {
@@ -93,5 +120,17 @@ class PhotoProvider with ChangeNotifier {
       }
       dateCounter++;
     }
+  }
+
+  void removeSelected() {
+    for (var i = 0; i < selectedPhotos.length; i++) {
+      images.remove(selectedPhotos[i]);
+    }
+    photosWithUploadDate.clear();
+    photosWithCaptureDate.clear();
+    arangewithCaptureDate();
+    arangeWithUploadDate();
+    selectedPhotos.clear();
+    notifyListeners();
   }
 }

@@ -2,57 +2,58 @@ import 'dart:async';
 
 ///Importing library to send http requests.
 import 'dart:convert';
+import 'package:flickr/models/user.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/about.dart';
+import '../models/user.dart';
 
 enum Status { Success, Fail, Loading }
 
-class AboutProvider with ChangeNotifier {
+class UserProvider with ChangeNotifier {
   final String baseUrl;
   Status status = Status.Loading;
   final BuildContext context;
-  About about;
+  User user;
 
-  AboutProvider({this.baseUrl, this.context, this.about});
+  UserProvider({this.baseUrl, this.context, this.user});
 
   void getMember(String member, String val) {
     // getter for certain member
     switch (member) {
       case "Description":
         {
-          val = about.description;
+          val = user.description;
         }
         break;
 
       case "Current City":
         {
-          val = about.city;
+          val = user.city;
         }
         break;
 
       case "country":
         {
-          val = about.country;
+          val = user.country;
         }
         break;
 
       case "Occupation":
         {
-          val = about.occupation;
+          val = user.occupation;
         }
         break;
       case "Website":
         {
-          val = about.website;
+          val = user.website;
         }
         break;
 
       case "HomeTown":
         {
-          val = about.homeTown;
+          val = user.homeTown;
         }
         break;
 
@@ -65,41 +66,41 @@ class AboutProvider with ChangeNotifier {
     //notifyListeners();
   }
 
-  void setmember(String member, String val) {
+  void setMember(String member, String val) {
     // setter for certain member
     switch (member) {
       case "Description":
         {
-          about.description = val;
+          user.description = val;
         }
         break;
 
       case "Current City":
         {
-          about.city = val;
+          user.city = val;
         }
         break;
 
       case "country":
         {
-          about.country = val;
+          user.country = val;
         }
         break;
 
       case "Occupation":
         {
-          about.occupation = val;
+          user.occupation = val;
         }
         break;
       case "Website":
         {
-          about.website = val;
+          user.website = val;
         }
         break;
 
       case "HomeTown":
         {
-          about.homeTown = val;
+          user.homeTown = val;
         }
         break;
 
@@ -113,13 +114,13 @@ class AboutProvider with ChangeNotifier {
   }
 
   var _url =
-      Uri.parse("https://run.mocky.io/v3/fc9fb004-03d0-4e9f-a93f-493f6dacb9bf");
+      Uri.parse("https://run.mocky.io/v3/8b6dd354-cdd4-4b73-b8ec-c568ebfa66bf");
 
-  Future<void> setabout() async {
+  Future<void> setUser() async {
     // get request
     var response = await http.get(_url);
     if (response.statusCode == 200) {
-      about = About.fromJson(jsonDecode(response.body));
+      user = User.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
     } else {
@@ -131,37 +132,37 @@ class AboutProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<About> createAbout() async {
+  var _geturl =
+      Uri.parse("https://run.mocky.io/v3/2e226f67-30da-4160-bd74-f88464cac234");
+  Future<void> createUser() async {
     // post request from backend
-    print(about.description);
     status = Status.Loading;
     final response = await http.post(
-      _url,
+      _geturl,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        "profileId": about.profileId,
-        "nsId": about.nsId,
-        "showcaseSet": about.showCaseSet,
-        "firstName": about.firstName,
-        "lastName": about.lastName,
-        "description": about.description,
-        "website": about.website,
-        "occupation": about.occupation,
-        "homeTown": about.homeTown,
-        "city": about.city,
-        "country": about.country,
+        "profileId": user.userId,
+        "firstName": user.firstName,
+        "lastName": user.lastName,
+        "description": user.description,
+        "website": user.website,
+        "occupation": user.occupation,
+        "homeTown": user.homeTown,
+        "city": user.city,
+        "country": user.country,
       }),
     );
     if (response.statusCode == 200) {
       print(response.body);
+      user = User.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
 
-      return About.fromJson(jsonDecode(response.body));
+      return;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
