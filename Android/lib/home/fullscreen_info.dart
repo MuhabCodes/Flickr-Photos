@@ -1,4 +1,4 @@
-///[ImageFullscreen] class which displays a given image with zoom in and out feature and
+///[InfoImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
 
 import 'package:flickr/models/global.dart';
