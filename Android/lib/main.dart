@@ -1,6 +1,8 @@
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/profile/description.dart';
+import 'package:flickr/profile/description_with_privacy.dart';
+import 'package:flickr/profile/most_popular.dart';
 import 'package:flickr/profile/privacy_and_safety.dart';
 import 'package:flickr/profile/select_photos.dart';
 import 'package:flickr/providers/auth.dart';
@@ -44,9 +46,6 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => UserProvider(),
         ),
         ChangeNotifierProvider.value(
-          value: PhotoProvider(),
-        ),
-        ChangeNotifierProvider.value(
           value: CameraProvider(),
         ),
         ChangeNotifierProvider.value(
@@ -72,7 +71,9 @@ class MyApp extends StatelessWidget {
         home: GetStarted(),
         routes: {
           '/description': (ctx) => Description(),
-          '/selectphotos': (ctx) => SelectPhoto()
+          '/selectphotos': (ctx) => SelectPhoto(),
+          '/mostpopular': (ctx) => MostPopular(),
+          '/descriptionwithprivacy': (ctx) => DescriptionWithPrivacy(),
         },
         theme: ThemeData(fontFamily: "ProximaNova"),
         debugShowCheckedModeBanner: false, //remove debug sign
