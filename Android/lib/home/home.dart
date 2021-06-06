@@ -8,6 +8,7 @@ import 'package:flickr/models/global.dart';
 import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/providers/post_provider.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -75,7 +76,7 @@ class HomeState extends State<Home> {
   }*/
 
   static int page = 1;
-
+  var loggedUser;
   double widthScreen = 0;
   //final controller = TextEditingController();
 
@@ -84,7 +85,8 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     DateTime test = postDateParsing("2021-12-01T19:11:08");
-
+    // loggedUser = Provider.of<UserProvider>(context, listen: false);
+    //loggedInUser = loggedUser.user;
     if (isDone == 0) {
       globalProvider =
           Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
@@ -131,6 +133,14 @@ class HomeState extends State<Home> {
     for (Post post in userHomePostsMock) {
       ///Loops on all posts created in global.dart and add them to our home page
       // post.user.username = post.user.firstName + " " + post.user.lastName;
+      post.photo[0].tags = [
+        "summer",
+        "fall",
+        /*"spring",
+        "life",
+        "heaven",
+        "moonlight"*/
+      ];
       if (post.photo.length == 1) {
         {
           posts.add(getPost(context, post, index));
@@ -216,10 +226,10 @@ class HomeState extends State<Home> {
                           post.user.username,
                           style: textStyleBold,
                         ),
-                        post.title == null
+                        post.photo[0].title == null
                             ? Container()
                             : Text(
-                                (post.title),
+                                (post.photo[0].title),
                                 style: textStyle,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -234,7 +244,7 @@ class HomeState extends State<Home> {
               ],
             ),
           ),
-          post.description == null
+          post.photo[0].description == null
               ? Container()
               : ContainerResponsive(
                   ///Post description container
@@ -260,11 +270,13 @@ class HomeState extends State<Home> {
 
                   child: Column(
                     children: <Widget>[
-                      Text(
-                        post.description,
-                        style: textStyle,
-                        maxLines: 5,
-                      ) //+
+                      post.photo[0].description == null
+                          ? null
+                          : Text(
+                              post.photo[0].description,
+                              style: textStyle,
+                              maxLines: 5,
+                            ) //+
                       // " hi life is a journey and i need patience is the description box flexible with text?"),
                     ],
                   ),
@@ -324,9 +336,9 @@ class HomeState extends State<Home> {
                               userHomePostsMock[index].isLiked =
                                   post.isLiked ? false : true;
                               if (!post.isLiked) {
-                                post.likes.remove(loggedInUser);
+                                post.likes.remove(loggedUser.user);
                               } else {
-                                post.likes.add(loggedInUser);
+                                post.likes.add(loggedUser.user);
                               }
                             });
                             //print(post.likes.length);
