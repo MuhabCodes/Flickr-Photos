@@ -1,17 +1,9 @@
 ///[ImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
-
 import 'package:flickr/models/global.dart';
-//import 'package:flickr/models/photos.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
-import 'package:flickr/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_widgets/responsive_widgets.dart';
-import 'package:photo_view/photo_view.dart';
-
-import 'comments_fav_page.dart';
-import 'comments_page.dart';
 
 class ShareLinkScreen extends StatefulWidget {
   Photo _myPhoto;
@@ -38,18 +30,20 @@ class ShareLinkScreenState extends State<ShareLinkScreen> {
     this._post,
   );
 
-  void selectScreen(BuildContext ctx, NetworkImage imageRoll) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {}));
-  }
-
   @override
   Widget build(BuildContext context) {
     return SnackBar(
         content: Column(
       children: [
         Container(
-          height: globalHeightScreen * 0.4,
-        )
+            height: globalHeightScreen * 0.4,
+            child: IconButton(
+                icon: Icon(
+                  Icons.share_outlined,
+                  size: 30,
+                  color: Colors.grey,
+                ),
+                onPressed: () {}))
       ],
     ));
     /*Container(

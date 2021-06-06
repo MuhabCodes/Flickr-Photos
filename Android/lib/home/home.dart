@@ -1,23 +1,19 @@
-import 'package:flickr/home/comments_page.dart';
-import 'package:flickr/home/share_link.dart';
-
 /// Class Home contains 3 impartant widgets
 /// [getPost] which takes every post with single photo in list userHomePosts and creates it's design
 ///[getPostMultiPhotos] does the same thing that [getPost] does but, it takes posts which have 3 photo or more
 ///[getPostTwoPhotos] does the same thing but, takes posts with two photos only
-
+import 'package:flickr/home/comments_page.dart';
+import 'package:flickr/home/share_link.dart';
 import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/user.dart';
 import 'package:flickr/models/post.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/providers/post_provider.dart';
-import 'package:flickr/providers/post_provider_integration.dart';
-import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+
 import '../models/global.dart';
 import 'comments_fav_page.dart';
 import 'image_fullscreen.dart';
@@ -405,10 +401,19 @@ class HomeState extends State<Home> {
                         color: Colors.grey,
                       ),
                       onPressed: () {
-                        Navigator.of(context)
+                        /*Navigator.of(context)
                             .push(MaterialPageRoute(builder: (_) {
                           return ShareLinkScreen(post.photo[0], post);
-                        }));
+                        }));*/
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: _heightScreen * 0.4,
+                                child: ShareLinkScreen(post.photo[0], post),
+                              );
+                            });
                       },
                     ),
                   ],

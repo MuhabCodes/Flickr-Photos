@@ -1,17 +1,9 @@
 ///[InfoImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
-
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/user.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
-import 'package:flickr/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_widgets/responsive_widgets.dart';
-import 'package:photo_view/photo_view.dart';
-
-import 'comments_fav_page.dart';
-import 'comments_page.dart';
 
 class InfoImageFullscreen extends StatefulWidget {
   Photo _myPhoto;
