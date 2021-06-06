@@ -55,6 +55,10 @@ const userSchema = mongoose.Schema({
     type: String,
     default: 'https://i.imgur.com/EWN8anz.png',
   },
+  showCase: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Photo',
+  },
 
 },
 { autoCreate: true });

@@ -80,7 +80,7 @@ module.exports.resetPassword = async function rstPw(id, newPassword) {
 };
 
 module.exports.getUserById = async (id) => {
-  const user = await User.findById(id).populate('personId');
+  const user = await User.findById(id).populate('personId showCase');
   return user;
 };
 module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
@@ -211,4 +211,22 @@ module.exports.getPersonId = async function getPersonId(userId) {
   const user = await User.findById(userId).select('personId');
   if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
   return user;
+};
+
+module.exports.getShowCase = async function getShowCase(userId) {
+  const user = await User.findById(userId).select('showCase').populate('showCase');
+  if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
+  return user;
+};
+
+module.exports.addToShowCase = async function addToShowCase(userId, photoId) {
+  const userObj = await User.findById(userId).select('showCase');
+  userObj.showCase.push(photoId);
+  userObj.save();
+};
+
+module.exports.removeFromShowCase = async function removeFromShowCase(userId, photoId) {
+  const userObj = await User.findById(userId).select('showCase');
+  userObj.showCase = userObj.showCase.filter((photo) => (String)(photo) !== (String)(photoId));
+  userObj.save();
 };

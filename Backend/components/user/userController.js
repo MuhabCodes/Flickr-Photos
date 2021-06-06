@@ -4,6 +4,7 @@ const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 const { deleteAccountServ } = require('./Services/deleteAccount');
 const { getFollowersServ } = require('./Services/getFollowers');
+const { photoByUser } = require('./Services/photoByUser');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -105,7 +106,7 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       firstName: name.slice(0, name.indexOf(' ')),
       lastName: name.slice(name.indexOf(' ') + 1, name.length),
       urlCover: userObj.urlCover,
-
+      showCase: userObj.showCase,
     });
   } catch (error) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
@@ -290,5 +291,35 @@ exports.getFollowers = async function getFollowers(req, res) {
     const errMsg = JSON.parse(err.message);
 
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.addToShowCase = async function addToShowCase(req, res) {
+  const { params, body } = req;
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+
+    if (currentUser.userId !== params.userId) {
+      return res.status(403).json({
+        message: ' You are not authorized ',
+      });
+    }
+    const photosByUser = await userDAL.getPhotos(params.userId);
+
+    // checking whether photo being added is in photoByUser array or not
+    const inPhotos = photoByUser(photosByUser, body.photoId);
+
+    if (inPhotos) {
+      await userDAL.addToShowCase(params.userId, body.photoId);
+      return res.status(200).json({
+        message: 'photo added to showCase Successfully',
+      });
+    }
+    return res.status(404).json({
+      message: 'photo Not Found',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
   }
 };

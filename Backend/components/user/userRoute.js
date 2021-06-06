@@ -46,5 +46,6 @@ router.route('/:userId/followers').get(async (req, res) => {
     res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
   }
 });
+router.post('/:userId/showcase', userController.addToShowCase);
 
 module.exports = router;
