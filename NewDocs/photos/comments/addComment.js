@@ -9,13 +9,13 @@
  * 
  *
  * 
- * @apiParam  (Body){String} photoId The id of the photo to add a comment to.
+ * @apiParam   {String} photoId The id of the photo to add a comment to.
  * @apiParam  (Body){String} commentText Text of the comment
  * 
  *@apiSuccess (Success 200) {Number} statusCode The status code
  *
  * 
-*@apiParam (header) {string} userId The id of the user who adds the comment
+
 * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
 * @apiError (Error 500) {Number} statusCode The status code
 
@@ -60,3 +60,4 @@
 // *       "error": "Unauthorized User",
 // *        "statusCode":401
 // *     }
+// *@apiParam (header) {string} userId The id of the user who adds the comment

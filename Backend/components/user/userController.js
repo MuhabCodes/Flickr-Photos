@@ -3,6 +3,8 @@ const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptT
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 const { deleteAccountServ } = require('./Services/deleteAccount');
+const { getFollowersServ } = require('./Services/getFollowers');
+const { photoByUser, inShowCase } = require('./Services/photoByUser');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -44,28 +46,28 @@ exports.getUserByEmail = async function getWithEmail(req, res) {
   }
 };
 
-exports.addDescription = async function addDescription(req, res) {
-  const { body, params } = req;
-  const { authorization } = req.headers;
-  try {
-    const userObj = await userDAL.getUserById(params.userId);
-    const currentUser = await decryptAuthToken(authorization);
+// exports.addDescription = async function addDescription(req, res) {
+//   const { body, params } = req;
+//   const { authorization } = req.headers;
+//   try {
+//     const userObj = await userDAL.getUserById(params.userId);
+//     const currentUser = await decryptAuthToken(authorization);
 
-    // check whether token contains information or not
-    if ((String)(currentUser.userId) !== (String)(userObj._id)) {
-      return res.status(403).json({
-        message: ' You are not logged in ',
-      });
-    }
-    await userDAL.addDescription(params.userId, body.description);
-    return res.status(200).json({
-      message: 'added description',
-      description: userObj.description,
-    });
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-};
+//     // check whether token contains information or not
+//     if ((String)(currentUser.userId) !== (String)(userObj._id)) {
+//       return res.status(403).json({
+//         message: ' You are not logged in ',
+//       });
+//     }
+//     await userDAL.addDescription(params.userId, body.description);
+//     return res.status(200).json({
+//       message: 'added description',
+//       description: userObj.description,
+//     });
+//   } catch (error) {
+//     return res.status(500).json(error);
+//   }
+// };
 
 exports.getUserInfoById = async function getUserInfoById(req, res) {
   const { params } = req;
@@ -103,23 +105,9 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       userAvatar: userObj.userAvatar,
       firstName: name.slice(0, name.indexOf(' ')),
       lastName: name.slice(name.indexOf(' ') + 1, name.length),
-
+      urlCover: userObj.urlCover,
+      showCase: userObj.showCase,
     });
-  } catch (error) {
-    return res.status(500).json(error); // returns 500 if it couldn't access db
-  }
-};
-
-exports.getGroups = async function getGroupps(req, res) {
-  const { params } = req;
-  try {
-    const userObj = await userDAL.getUserGroupsById(params.userId);
-    if (userObj.length === 0) { // checking whether response is empty or not
-      return res.status(404).json({
-        message: 'Not found',
-      });
-    }
-    return res.status(200).json(userObj.groups);
   } catch (error) {
     return res.status(500).json(error); // returns 500 if it couldn't access db
   }
@@ -277,5 +265,90 @@ exports.deleteAccount = async function delAcc(req, res) {
     const errMsg = JSON.parse(err.message);
 
     res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.getFollowers = async function getFollowers(req, res) {
+  const { userId } = req.params;
+  try {
+    const followers = await getFollowersServ(userId);
+    res.status(200).json({ followers: followers.followers, statusCode: 200 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.addToShowCase = async function addToShowCase(req, res) {
+  const { params, body } = req;
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+
+    if (currentUser.userId !== params.userId) {
+      return res.status(403).json({
+        message: ' You are not authorized ',
+      });
+    }
+    const photosByUser = await userDAL.getPhotos(params.userId);
+
+    // checking whether photo being added is in photoByUser array or not
+    const inPhotos = photoByUser(photosByUser, body.photoId);
+
+    if (inPhotos) {
+      // get user ShowCase
+      const userShowCase = await userDAL.getShowCase(params.userId);
+
+      // check whether this photo is in showCase or not
+      const inCase = inShowCase(userShowCase.showCase, body.photoId);
+
+      if (userShowCase.length === 25) { return res.status(403).json({ message: 'limit exceded' }); }
+
+      if (inCase === false) {
+        await userDAL.addToShowCase(params.userId, body.photoId);
+        return res.status(200).json({
+          message: 'photo added to showCase Successfully',
+        });
+      }
+      return res.status(403).json({ message: 'photo already in ShowCase' });
+    }
+    return res.status(404).json({
+      message: 'photo Not Found',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+exports.removeFromShowCase = async function removeFromShowCase(req, res) {
+  const { params, body } = req;
+  const { authorization } = req.headers;
+  try {
+    const currentUser = await decryptAuthToken(authorization);
+
+    if (currentUser.userId !== params.userId) {
+      return res.status(403).json({
+        message: ' You are not authorized ',
+      });
+    }
+    const photosByUser = await userDAL.getPhotos(params.userId);
+
+    // checking whether photo being added is in photoByUser array or not
+    const inPhotos = photoByUser(photosByUser, body.photoId);
+
+    if (inPhotos) {
+      const userShowCase = await userDAL.getShowCase(params.userId);
+      if (userShowCase.showCase.length === 0) { return res.status(403).json({ message: 'showCase is Empty' }); }
+      await userDAL.removeFromShowCase(params.userId, body.photoId);
+      return res.status(200).json({
+        message: 'photo removed from showCase Successfully',
+      });
+    }
+    return res.status(404).json({
+      message: 'photo Not Found',
+    });
+  } catch (error) {
+    return res.status(500).json(error);
   }
 };

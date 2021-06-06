@@ -8,7 +8,7 @@
  *
  * 
 *
-* @apiParam  (Body){String} commentId The id of the comment to edit.
+* @apiParam   {String} commentId The id of the comment to edit.
 *
 * @apiParam  (Body){String} commentText Update the comment to this text.
 *

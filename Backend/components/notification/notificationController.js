@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const getNotifications = require('../../fire-base/getNotifications');
 const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { getNotifications } = require('./notificationDAL');
 
 exports.getMyNotifications = async (req, res) => {
   const { authorization } = req.headers;

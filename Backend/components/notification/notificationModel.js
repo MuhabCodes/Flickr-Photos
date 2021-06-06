@@ -31,6 +31,9 @@ const notificationSchema = mongoose.Schema({
   notificationDate: {
     type: Date,
   },
+  senderImageUrl: {
+    type: String,
+  },
 
 });
 
