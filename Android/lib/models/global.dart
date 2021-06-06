@@ -10,7 +10,7 @@ import 'user.dart';
 ///Some text foramts used in several files
 TextStyle textStyleComments = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 18,
+  fontSize: globalWidthScreen * 0.055,
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
@@ -18,34 +18,34 @@ TextStyle textStyleBoldComments = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
     color: Colors.black,
-    fontSize: 18);
+    fontSize: globalWidthScreen * 0.055);
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
 TextStyle textStyleInfo = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );
 TextStyle flagThisPhoto = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 20,
+  fontSize: globalWidthScreen * 0.06,
   color: Colors.blue,
   fontWeight: FontWeight.normal,
 );
 TextStyle textStyleTags = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 10,
+  fontSize: globalWidthScreen * 0.05,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );
 TextStyle textStyleInfoTitle = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 10,
+  fontSize: globalWidthScreen * 0.05,
   color: Colors.white,
   fontWeight: FontWeight.normal,
 );
@@ -53,28 +53,31 @@ TextStyle textStyleBold = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
     color: Colors.black,
-    fontSize: 15);
+    fontSize: globalWidthScreen * 0.05);
 TextStyle textStyleLigthGrey = new TextStyle(
   fontFamily: 'Gotham',
   color: Colors.grey,
-  fontSize: 14,
+  fontSize: globalWidthScreen * 0.042,
   fontWeight: FontWeight.bold,
 );
 TextStyle textStyleDarkGrey = new TextStyle(
   fontFamily: 'Gotham',
   color: Colors.grey,
-  fontSize: 13,
+  fontSize: globalWidthScreen * 0.045,
   fontWeight: FontWeight.bold,
 );
 TextStyle appBarTitleStyle = new TextStyle(
   color: Colors.white,
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
   fontWeight: FontWeight.bold,
 );
 TextStyle postTitleStyle = new TextStyle(
   color: Colors.white,
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
 );
+
+double globalWidthScreen = 0;
+double globalHeightScreen = 0;
 
 ///is the list of posts which are displayed is home page
 ///and it's data is received through a get request
