@@ -173,9 +173,11 @@ class _AboutTapState extends State<AboutTap> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed(
-                      '/mostpopular',
-                    );
+                    _userProvider.user.photosCount != 0
+                        ? Navigator.of(context).pushNamed(
+                            '/mostpopular',
+                          )
+                        : "";
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
