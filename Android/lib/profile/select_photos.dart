@@ -1,8 +1,7 @@
+import 'package:flickr/profile/view_photos_selected.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/photo_provider.dart';
-import 'view_photos_selected.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SelectPhoto extends StatefulWidget {
@@ -13,7 +12,7 @@ class SelectPhoto extends StatefulWidget {
 class _SelectPhotoState extends State<SelectPhoto> {
   @override
   Widget build(BuildContext context) {
-    var photoProvider = Provider.of<PhotoProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -22,7 +21,7 @@ class _SelectPhotoState extends State<SelectPhoto> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             children: [
-              Text(photoProvider.selectedPhotos.length.toString(),
+              Text(userProvider.selectedPhotos.length.toString(),
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -38,25 +37,25 @@ class _SelectPhotoState extends State<SelectPhoto> {
           ),
           OutlinedButton(
             onPressed: () {
-              photoProvider.isSelected = false;
-              //photoProvider.removeSelected();
-              photoProvider.selectedPhotos = [];
+              userProvider.isSelected = false;
+              //userProvider.removeSelected();
+              userProvider.selectedPhotos = [];
               for (int i = 0;
-                  i < photoProvider.photosWithUploadDate.length;
+                  i < userProvider.photosWithUploadDate.length;
                   i++) {
                 for (int j = 0;
-                    j < photoProvider.photosWithUploadDate[i].images.length;
+                    j < userProvider.photosWithUploadDate[i].images.length;
                     j++)
-                  photoProvider.photosWithUploadDate[i].images[j].selected =
+                  userProvider.photosWithUploadDate[i].images[j].selected =
                       false;
               }
               for (int i = 0;
-                  i < photoProvider.photosWithCaptureDate.length;
+                  i < userProvider.photosWithCaptureDate.length;
                   i++) {
                 for (int j = 0;
-                    j < photoProvider.photosWithCaptureDate[i].images.length;
+                    j < userProvider.photosWithCaptureDate[i].images.length;
                     j++)
-                  photoProvider.photosWithCaptureDate[i].images[j].selected =
+                  userProvider.photosWithCaptureDate[i].images[j].selected =
                       false;
               }
               Navigator.pop(context);
@@ -89,7 +88,7 @@ class _SelectPhotoState extends State<SelectPhoto> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: photoProvider.selectedPhotos.length != 0
+        child: userProvider.selectedPhotos.length != 0
             ? Container(
                 decoration: BoxDecoration(color: Colors.grey[900]),
                 child: Row(
@@ -205,10 +204,10 @@ class _SelectPhotoState extends State<SelectPhoto> {
                         onPressed: () {
                           List<String> toshare = [];
                           for (var i = 0;
-                              i < photoProvider.selectedPhotos.length;
+                              i < userProvider.selectedPhotos.length;
                               i++) {
                             toshare
-                                .add(photoProvider.selectedPhotos[i].imageUrl);
+                                .add(userProvider.selectedPhotos[i].imageUrl);
                           }
                           Share.share(toshare.join("\n\n"));
                           //Share.shareFiles(toshare);
@@ -219,7 +218,7 @@ class _SelectPhotoState extends State<SelectPhoto> {
                           color: Colors.grey,
                         ),
                         onPressed: () {
-                          photoProvider.removeSelected();
+                          userProvider.removeSelected();
                         }),
                   ],
                 ),

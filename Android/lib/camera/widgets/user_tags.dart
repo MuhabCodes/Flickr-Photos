@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import './new_tag.dart';
 import './tags_list.dart';
 import '../../models/tag.dart';
 
+import '../../providers/new_post_provider.dart';
 
 class UserTags extends StatefulWidget {
   final List<Tag> tagsList;
@@ -15,14 +17,14 @@ class UserTags extends StatefulWidget {
 class _UserTagsState extends State<UserTags> {
   int tagID;
 
-  void _incrementTagID() {  //Increment TagID
+  void _incrementTagID() {
     if (tagID == null)
       tagID = 0;
     else
       tagID++;
   }
 
-  void addNewTag(String inputText, int tagID) {   //Add a new tag to the list
+  void addNewTag(String inputText, int tagID) {
     final newTag = Tag(inputText: inputText, tagID: tagID);
     setState(() {
       widget.tagsList.add(newTag);
@@ -30,7 +32,7 @@ class _UserTagsState extends State<UserTags> {
     });
   }
 
-  void removeTag(int requiredID) {  // Remove a tag from the list
+  void removeTag(int requiredID) {
     setState(() {
       widget.tagsList.removeWhere((tag) => tag.tagID == requiredID);
     });
@@ -40,7 +42,7 @@ class _UserTagsState extends State<UserTags> {
   Widget build(BuildContext context) {
     return Column(children: [
       NewTag(addNewTag, tagID),
-      TagsList(widget.tagsList, removeTag),
+      TagsList(widget.tagsList, removeTag, widget.tagsList),
     ]);
   }
 }

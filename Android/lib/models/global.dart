@@ -1,5 +1,4 @@
 ///This file contains data used across the app
-import 'package:flickr/models/photos.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

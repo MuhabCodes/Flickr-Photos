@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../providers/user_provider.dart';
-import '../providers/photo_provider.dart';
+
 import 'public_tab.dart';
 
-Widget listView(
-    PhotoProvider photoProvider, UserProvider userProvider, Size size) {
+Widget listView(UserProvider userProvider, Size size) {
   return CustomScrollView(slivers: <Widget>[
     SliverStaggeredGrid.extentBuilder(
       mainAxisSpacing: 5,
-      itemCount: photoProvider.triple.length,
+      itemCount: userProvider.triple.length,
       maxCrossAxisExtent: size.width,
       staggeredTileBuilder: (index) =>
           StaggeredTile.extent(1, size.height * 0.6),
@@ -19,7 +18,7 @@ Widget listView(
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.network(
-            photoProvider.triple[index].imageUrl,
+            userProvider.triple[index].imageUrl,
             fit: BoxFit.cover,
           ),
           Container(
@@ -50,8 +49,7 @@ Widget listView(
                   ],
                 ),
                 Text(
-                  timeAgo(photoProvider, photoProvider.triple[index])
-                      .toString(),
+                  timeAgo(userProvider, userProvider.triple[index]).toString(),
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -59,7 +57,7 @@ Widget listView(
           ),
           Container(
             child: Text(
-              photoProvider.triple[index].description,
+              userProvider.triple[index].description,
               style: TextStyle(fontSize: 12, color: Colors.black),
               maxLines: 5,
             ),
@@ -84,7 +82,7 @@ Widget listView(
                         onPressed: () {},
                       ),
                       Text(
-                        photoProvider.triple[index].favs.toString(),
+                        userProvider.triple[index].favs.toString(),
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       )
                     ],
@@ -98,7 +96,7 @@ Widget listView(
                           color: Colors.grey,
                           onPressed: () {}),
                       Text(
-                        photoProvider.triple[index].comments.toString(),
+                        userProvider.triple[index].comments.toString(),
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                       )
                     ],
@@ -121,7 +119,7 @@ Widget listView(
                 padding: EdgeInsets.only(top: 27, bottom: 27),
                 margin: EdgeInsets.only(left: 15),
                 child: Text(
-                  "${photoProvider.triple[index].views} views  ",
+                  "${userProvider.triple[index].views} views  ",
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,

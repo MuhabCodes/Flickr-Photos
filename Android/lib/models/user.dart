@@ -16,25 +16,20 @@ class User {
     this.followersCount,
     this.followingCount,
     this.userAvatar,
-    this.isPro = false,
+    this.person,
+    this.isPro,
     this.albums,
     this.email,
     this.photos,
     this.photosCount,
     this.firstName,
     this.lastName,
-    this.description,
-    this.website,
-    this.occupation,
-    this.homeTown,
     this.googleEmail,
-    this.username,
     this.displayName,
     this.googleToken,
-    this.city,
-    this.country,
     this.favs,
     this.tags,
+    this.username,
   });
   String email;
   String googleEmail;
@@ -44,27 +39,24 @@ class User {
   String userId;
   List<dynamic> followers;
   List<dynamic> following;
+  String username;
   bool isActivated;
   int followersCount;
   int followingCount;
   String userAvatar;
   String age;
-  String username;
   bool isPro;
   List<dynamic> albums;
-  List<dynamic> photos;
+  List<Photo> photos;
   int photosCount;
   String firstName;
   String lastName;
-  String description;
-  String website;
-  String occupation;
-  String homeTown;
-  String city;
-  String country;
+  String emailVisibility = "Anyone";
+  String cityVisibility = "Anyone";
+  Person person;
+  String displayName;
   int favs;
   int tags;
-  String displayName;
 
   factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
 
@@ -81,16 +73,12 @@ class User {
         isPro: json["isPro"],
         albums: List<dynamic>.from(json["albums"].map((x) => x)),
         email: json["email"],
-        photos: List<dynamic>.from(json["photos"].map((x) => x)),
+        photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
         photosCount: json["photosCount"],
         firstName: json["firstName"],
+        displayName: json["displayName"],
         lastName: json["lastName"],
-        description: json["description"],
-        website: json["website"],
-        occupation: json["occupation"],
-        homeTown: json["homeTown"],
-        city: json["city"],
-        country: json["country"],
+        person: Person.fromJson(json["person"]),
         favs: json["favs"],
         tags: json["tags"],
       );
@@ -106,20 +94,157 @@ class User {
         "isPro": isPro,
         "albums": List<dynamic>.from(albums.map((x) => x)),
         "email": email,
-        "photos": List<dynamic>.from(photos.map((x) => x)),
+        "photos": List<dynamic>.from(photos.map((x) => x.toJson())),
         "photosCount": photosCount,
         "firstName": firstName,
         "lastName": lastName,
-        "description": description,
-        "website": website,
-        "occupation": occupation,
-        "homeTown": homeTown,
-        "city": city,
-        "country": country,
+        "person": person.toJson(),
         "favs": favs,
         "tags": tags,
       };
   factory User.fromJson2(Map<String, dynamic> json) => User(
         token: json["token"],
       );
+}
+
+class Person {
+  Person({
+    this.dateCreated,
+    this.id,
+    this.realName,
+    this.city,
+    this.homeTown,
+    this.occupation,
+    this.country,
+    this.description,
+  });
+
+  DateTime dateCreated;
+  String id;
+  String realName = "   asdasd";
+  String city;
+  String homeTown;
+  String occupation;
+  String country;
+  String description;
+
+  factory Person.fromRawJson(String str) => Person.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Person.fromJson(Map<String, dynamic> json) => Person(
+        dateCreated: DateTime.parse(json["dateCreated"]),
+        id: json["_id"],
+        realName: json["realName"],
+        city: json["city"],
+        homeTown: json["homeTown"],
+        occupation: json["occupation"],
+        country: json["country"],
+        description: json["description"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "dateCreated": dateCreated.toIso8601String(),
+        "_id": id,
+        "realName": realName,
+        "city": city,
+        "homeTown": homeTown,
+        "occupation": occupation,
+        "country": country,
+        "description": description,
+      };
+}
+
+class Photo {
+  Photo({
+    this.views,
+    this.isPublic,
+    this.tags,
+    this.peopleInPhoto,
+    this.id,
+    this.description,
+    this.title,
+    this.captureDate,
+    this.uploadDate,
+    this.secret,
+    this.imageUrl,
+    this.width,
+    this.height,
+    this.user,
+    this.photoV,
+    this.favs,
+    this.comments,
+    this.v,
+  });
+  bool selected = false;
+  int views;
+  bool isPublic;
+  List<String> tags;
+  List<dynamic> peopleInPhoto;
+  String id;
+  String description;
+  String title;
+  DateTime captureDate;
+  DateTime uploadDate;
+  String secret;
+  String imageUrl;
+  int width;
+  int height;
+  String user;
+  int photoV;
+  int favs;
+  int comments;
+  int v;
+
+  factory Photo.fromRawJson(String str) => Photo.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Photo.fromJson(Map<String, dynamic> json) => Photo(
+        views: json["views"],
+        isPublic: json["isPublic"],
+        tags: List<String>.from(json["tags"].map((x) => x)),
+        peopleInPhoto: List<dynamic>.from(json["peopleInPhoto"].map((x) => x)),
+        id: json["_id"],
+        description: json["description"] == null ? null : json["description"],
+        title: json["title"] == null ? null : json["title"],
+        captureDate: DateTime.parse(json["captureDate"]),
+        uploadDate: DateTime.parse(json["uploadDate"]),
+        secret: json["secret"],
+        imageUrl: json["imageUrl"],
+        width: json["width"],
+        height: json["height"],
+        favs: json["favs"],
+        comments: json["comments"],
+        user: json["user"],
+        photoV: json["v"] == null ? null : json["v"],
+        v: json["__v"] == null ? null : json["__v"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "views": views,
+        "isPublic": isPublic,
+        "tags": List<dynamic>.from(tags.map((x) => x)),
+        "peopleInPhoto": List<dynamic>.from(peopleInPhoto.map((x) => x)),
+        "_id": id,
+        "description": description == null ? null : description,
+        "title": title == null ? null : title,
+        "captureDate": captureDate.toIso8601String(),
+        "uploadDate": uploadDate.toIso8601String(),
+        "favs": favs,
+        "comments": comments,
+        "secret": secret,
+        "imageUrl": imageUrl,
+        "width": width,
+        "height": height,
+        "user": user,
+        "v": photoV == null ? null : photoV,
+        "__v": v == null ? null : v,
+      };
+}
+
+class DateWithImages {
+  DateTime date;
+  List<Photo> images;
+  DateWithImages({this.date, this.images});
 }

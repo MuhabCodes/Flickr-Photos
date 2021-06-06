@@ -443,6 +443,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  jwt_decode:
+    dependency: "direct main"
+    description:
+      name: jwt_decode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   logging:
     dependency: transitive
     description:
@@ -492,6 +499,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.8.00"
+  multipart_request:
+    dependency: "direct main"
+    description:
+      name: multipart_request
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   nested:
     dependency: transitive
     description:
@@ -615,6 +629,13 @@ packages:
     dependency: transitive
     description:
       name: pub_semver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  pull_to_refresh:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"

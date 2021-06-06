@@ -4,7 +4,7 @@ import 'package:flickr/home/fullscreen_info.dart';
 ///like comment feature
 
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/photos.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/profile/profile.dart';
 import 'package:flutter/material.dart';

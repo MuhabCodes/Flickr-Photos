@@ -1,5 +1,3 @@
-import 'package:flickr/models/photos.dart';
-import 'package:flutter/material.dart';
 import 'comment.dart';
 import 'user.dart';
 

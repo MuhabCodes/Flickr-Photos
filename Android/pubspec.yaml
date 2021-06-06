@@ -53,8 +53,11 @@ dependencies:
   google_fonts: ^2.1.0
   dartdoc: ^0.44.0
   flutter_signin_button: ^2.0.0
+  jwt_decode: ^0.3.1
   google_sign_in: ^5.0.4
   firebase_core: ^1.2.1
+  multipart_request: ^0.3.1
+  pull_to_refresh: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -83,6 +86,7 @@ flutter:
     - lib/assets/their_profile.jpeg
     - lib/assets/photo_1.jpeg
     - lib/assets/follower2.jpg
+    - lib/assets/background.jpg
     - lib/assets/follower3.jpeg
     - lib/assets/post2.jpg
     - lib/assets/photo4.jpg
