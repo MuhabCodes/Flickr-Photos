@@ -23,11 +23,13 @@ async function userSeed() {
     password: hashedPw,
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfaf'),
     isActivated: true,
+    displayName: 'omar aski',
   }, {
     email: 'activated@hotmail.com',
     password: hashedPw,
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfb0'),
     isActivated: true,
+    displayName: 'keka2',
 
   }, {
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ea'),

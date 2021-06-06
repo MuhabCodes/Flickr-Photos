@@ -39,4 +39,12 @@ router.route('/delete-account').delete(async (req, res) => {
   }
 });
 
+router.route('/:userId/followers').get(async (req, res) => {
+  try {
+    await userController.getFollowers(req, res);
+  } catch (_) {
+    res.status(500).send({ statusCode: 500, error: 'The server couldn\'t handle the request' });
+  }
+});
+
 module.exports = router;

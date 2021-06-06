@@ -3,6 +3,7 @@ const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptT
 const { sendProEmail } = require('../auth/Services/sendEmail');
 const { checkFollowing } = require('./Services/checkFollow');
 const { deleteAccountServ } = require('./Services/deleteAccount');
+const { getFollowersServ } = require('./Services/getFollowers');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 
@@ -181,7 +182,6 @@ exports.followUser = async function followUser(req, res, next) {
         message: 'You are already following the user',
       });
     }
-
     // add the userid to the following array of the calling user
     await userDAL.addPersonToFollowing(currentUser.userId, body.userId);
 
@@ -273,6 +273,18 @@ exports.deleteAccount = async function delAcc(req, res) {
     const { userId } = await decryptAuthToken(authorization);
     await deleteAccountServ(userId);
     res.status(201).send({ statusCode: 201 });
+  } catch (err) {
+    const errMsg = JSON.parse(err.message);
+
+    res.status(errMsg.statusCode).send({ statusCode: errMsg.statusCode, error: errMsg.error });
+  }
+};
+
+exports.getFollowers = async function getFollowers(req, res) {
+  const { userId } = req.params;
+  try {
+    const followers = await getFollowersServ(userId);
+    res.status(200).json({ followers: followers.followers, statusCode: 200 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 
