@@ -21,7 +21,7 @@ const createLikeNotification = async (req, res) => {
     }
     const recieverInfo = await getUserById(reciever);
     const senderInfo = await getUserById(req.userId);
-    if (req.userId !== reciever) {
+    if (req.userId.toString() !== reciever.toString()) {
       // just checking sender != reciever as we cant notify that you liked yourself
       let senderName = senderInfo.displayName;
       let recieverName = recieverInfo.displayName;
@@ -80,7 +80,7 @@ const createCommentNotification = async (req, res) => {
     const senderInfo = await getUserById(req.userId);
     let senderName = senderInfo.displayName;
     let recieverName = recieverInfo.displayName;
-    if (reciever !== req.userId) {
+    if (reciever.toString() !== req.userId.toString()) {
       // just checking sender != reciever as we cant notify that you liked yourself
       const newNotification = new Notification({
         sender: req.userId,
@@ -133,7 +133,7 @@ const createFollowNotification = async (req, res) => {
     const senderInfo = req.sender; // as i forwarded it
     let senderName = senderInfo.displayName;
     let recieverName = recieverInfo.displayName;
-    if (reciever !== senderInfo._id) {
+    if (reciever.toString() !== senderInfo._id.toString()) {
       // just checking sender != reciever as we cant notify that you liked yourself
 
       const newNotification = new Notification({
