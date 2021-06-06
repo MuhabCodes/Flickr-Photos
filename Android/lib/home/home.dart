@@ -78,6 +78,7 @@ class HomeState extends State<Home> {
   static int page = 1;
   var loggedUser;
   double widthScreen = 0;
+  double _heightScreen = 0;
   //final controller = TextEditingController();
 
   //CommentsPage _myCommentsPage;
@@ -87,6 +88,7 @@ class HomeState extends State<Home> {
     DateTime test = postDateParsing("2021-12-01T19:11:08");
     // loggedUser = Provider.of<UserProvider>(context, listen: false);
     //loggedInUser = loggedUser.user;
+
     if (isDone == 0) {
       globalProvider =
           Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
@@ -95,6 +97,10 @@ class HomeState extends State<Home> {
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
+    _heightScreen = MediaQuery.of(context).size.height;
+    print(_heightScreen);
+    globalHeightScreen = _heightScreen;
+    globalWidthScreen = widthScreen;
     Map<int, Widget> _pageview = {
       1: getMain(),
       //2: getLikes(thePost.likes),
@@ -127,6 +133,7 @@ class HomeState extends State<Home> {
     //arangePostsWithUploadDate();
     List<Widget> posts = [];
     int index = 0;
+
     if (userHomePostsMock == null) {
       return [Container()];
     }
@@ -336,9 +343,9 @@ class HomeState extends State<Home> {
                               userHomePostsMock[index].isLiked =
                                   post.isLiked ? false : true;
                               if (!post.isLiked) {
-                                post.likes.remove(loggedUser.user);
+                                post.likes.remove(loggedInUser);
                               } else {
-                                post.likes.add(loggedUser.user);
+                                post.likes.add(loggedInUser);
                               }
                             });
                             //print(post.likes.length);
