@@ -224,7 +224,7 @@ module.exports = {
       if (!user) return res.status(404).send({ error: 'The user is not found' });
       const { following } = user;
       const photos = await getFollowerPhotos(following);
-      return res.status(200).json(photos);
+      return res.status(200).json({ photos });
     } catch (err) {
       return res.json({
         error: "Server couldn't handle the request",
