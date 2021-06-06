@@ -82,18 +82,6 @@ module.exports.getUserById = async (id) => {
   const user = await User.findById(id).populate('personId showCase');
   return user;
 };
-module.exports.addGroupToUser = async function addGroupToUser(userId, groupObj) {
-  const userObj = await User.findById(userId);
-
-  userObj.groups.push(groupObj._id);
-  userObj.save();
-  return userObj;
-};
-
-module.exports.getUserGroupsById = async function getUserById(userId) {
-  const userObj = await User.findById(userId).populate('groups');
-  return userObj;
-};
 
 module.exports.getUserByDisplayName = async function getUserByDisplayName(displayname) {
   const userObj = await User.findOne({ displayName: displayname });

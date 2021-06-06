@@ -33,10 +33,6 @@ const userSchema = mongoose.Schema({
   displayName: {
     type: String,
   },
-  groups: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Group',
-  },
   followers: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',

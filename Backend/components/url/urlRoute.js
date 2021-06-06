@@ -4,27 +4,6 @@ const router = express.Router();
 
 const urlController = require('./urlController');
 
-// #region urls_related_to_group
-
-// Function getGroup: returns url to a certain group
-router.get('/groups/:groupId', async (req, res) => {
-  try {
-    await urlController.getGroupById(req, res);
-  } catch (err) {
-    res.status(500).send({ statusCode: 500, error: 'We Couldnt return group due to server errors' });
-  }
-});
-
-// Function urls - lookupGroup // Returns a group Id, given the url to a group's page or photo pool.
-router.get('/group', async (req, res) => {
-  try {
-    await urlController.lookUpGroup(req, res);
-  } catch (err) {
-    res.status(500).send({ statusCode: 500, error: 'We Couldnt return group due to server errors' });
-  }
-});
-// #endregion
-
 // #region urls_related_to_user
 // Function (urls - lookupUser)-Returns a user NSID, given the url to a user's photos or profile
 router.get('/user', async (req, res) => {

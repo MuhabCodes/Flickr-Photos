@@ -113,21 +113,6 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
   }
 };
 
-exports.getGroups = async function getGroupps(req, res) {
-  const { params } = req;
-  try {
-    const userObj = await userDAL.getUserGroupsById(params.userId);
-    if (userObj.length === 0) { // checking whether response is empty or not
-      return res.status(404).json({
-        message: 'Not found',
-      });
-    }
-    return res.status(200).json(userObj.groups);
-  } catch (error) {
-    return res.status(500).json(error); // returns 500 if it couldn't access db
-  }
-};
-
 exports.getPhotos = async function getPhotos(req, res) {
   const { params } = req;
   try {
