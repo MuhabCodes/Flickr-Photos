@@ -35,11 +35,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     }
   } //launcher to go to a certain link
 
-  void noInternet() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('No Internet Connection')));
-  }
-
   Future<void> _forgetSubmit() async {
     final _auth = Provider.of<Authentication>(context, listen: false);
     try {
@@ -48,7 +43,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
-      noInternet();
+      if (_auth.statusNum == 404) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('The server can not find the requested resource.')));
+      } else if (_auth.statusNum == 409) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Indicates that the user is not activated.")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("No Internet Connection")));
+      }
       return;
     }
     if (_auth.status == Status.Success) {
