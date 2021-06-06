@@ -1,16 +1,18 @@
+import 'package:flickr/camera/Pages/camera_view.dart';
+//import 'package:flickr/camera/Pages/redirect_camera_view.dart';
 import 'package:flickr/explore/search.dart';
 import 'package:flickr/home/home.dart';
 import 'package:flickr/notifications/notifications.dart';
 import 'package:flickr/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+//import '../camera/pages/redirect_camera_view.dart';
 import '../camera/Pages/camera_view.dart';
 
 class TopNavigationBar extends StatefulWidget {
   @override
   TopNavigationBarState createState() => TopNavigationBarState();
-}
+} 
 
 class TopNavigationBarState extends State<TopNavigationBar> {
   @override
@@ -63,7 +65,7 @@ class TopNavigationBarState extends State<TopNavigationBar> {
                 Home(),
                 Search(),
                 Profile(),
-                Notifications(),
+                NotificationsPage(),
                 CameraView(),
               ],
             )),
