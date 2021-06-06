@@ -1,6 +1,4 @@
 import 'dart:async';
-
-///Importing library to send http requests.
 import 'dart:convert';
 import 'dart:io';
 
