@@ -197,7 +197,7 @@ function PhotoView() {
                     </span>
                     <div className="media-body">
                       <div className="row d-flex">
-                        <Link to={`/profile/photostream/${userJwt.sub}`} className="user pt-2">{photoComment.userName}</Link>
+                        <Link to={`/profile/photostream/${userJwt.sub}`} id="username-text" className="user pt-2">{photoComment.userName}</Link>
                       </div>
                       <p className="text">{photoComment.comment}</p>
                       {(photoComment.userId == userJwt.sub) && (

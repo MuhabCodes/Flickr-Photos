@@ -287,3 +287,6 @@
 #comments-section:hover{
 background-color: #ffffff;
 }
+#username-text{
+    margin-left: -390px;
+}
