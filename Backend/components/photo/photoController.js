@@ -9,6 +9,7 @@ const { editPhoto } = require('./services/editPhoto');
 const { deletePhoto } = require('./services/deletePhoto');
 
 const { getUserPhotosById } = require('./services/getUserPhotosById');
+const { getFollowerPhotos } = require('./services/getFollowerPhotos');
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
@@ -210,9 +211,23 @@ module.exports = {
       });
     }
   },
-  // async getHome(req, res) {
-  //   try {
+  async getHome(req, res) {
+    try {
+      const { userIds } = req.body;
+      let { page } = req.body;
+      if (!page) {
+        page = 0;
+      }
 
-  //   }
-  // }
+      const photos = await getFollowerPhotos(userIds, page);
+
+      // console.log(photos);
+      return await res.json({ photos });
+    } catch (err) {
+      res.json({
+        error: "Server couldn't handle the request",
+        statusCode: 500,
+      });
+    }
+  },
 };

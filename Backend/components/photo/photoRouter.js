@@ -15,7 +15,7 @@ const {
   removePersonFromPhoto,
   getPeopleInPhoto,
   addLocation,
-  // getHome,
+  getHome,
 } = require('./photoController');
 // get the required functions from the controller
 
@@ -46,7 +46,7 @@ router.put('/:photoId', editPhoto);
 router.delete('/:photoId', deletePhoto);
 
 // get the homepage
-// router.get('/home', getHome);
+router.get('/', getHome);
 
 // add person to photo
 router.route('/:photoId/people').post(addPersonToPhoto);

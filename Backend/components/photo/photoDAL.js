@@ -59,6 +59,10 @@ module.exports = {
 
     return inPhoto;
   },
+  async fetchFollowerPhotos(userIds, page) {
+    const found = await Photo.find({ $or: [{ user: { $in: userIds } }] }).skip(page * 10).limit(10);
+    return found;
+  },
 
 };
 
