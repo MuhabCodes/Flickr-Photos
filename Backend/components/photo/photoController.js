@@ -221,7 +221,7 @@ module.exports = {
       const { userId } = await decryptAuthToken(authorization);
 
       const user = await getUserById(userId);
-      if (!user) res.status(404).send({ error: 'The user is not found' });
+      if (!user) return res.status(404).send({ error: 'The user is not found' });
       const { following } = user;
       const photos = await getFollowerPhotos(following);
       return res.status(200).json(photos);
