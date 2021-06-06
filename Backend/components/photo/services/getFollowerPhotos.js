@@ -4,7 +4,7 @@ const getFollowerPhotos = async (userIds, page) => {
   try {
     return fetchFollowerPhotos(userIds, page);
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 

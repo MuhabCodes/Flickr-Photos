@@ -224,7 +224,7 @@ module.exports = {
       // console.log(photos);
       return await res.json({ photos });
     } catch (err) {
-      res.json({
+      return res.json({
         error: "Server couldn't handle the request",
         statusCode: 500,
       });
