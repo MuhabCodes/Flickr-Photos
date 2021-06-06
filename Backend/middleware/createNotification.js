@@ -32,7 +32,7 @@ const createLikeNotification = async (req, res) => {
       photoId,
       notificationDate: favoriteCreated.favoriteDate,
       imageUrl: photo.imageUrl,
-      senderImgUrl: senderInfo.senderImageUrl,
+      senderImageUrl: senderInfo.userAvatar,
     });
 
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
@@ -52,7 +52,7 @@ const createLikeNotification = async (req, res) => {
       photoId: newNotification.photoId.toString(),
       notificationDate: newNotification.notificationDate.toString(),
       imageUrl: photo.imageUrl.toString(),
-      senderImgUrl: senderInfo.senderImageUrl.toString(),
+      senderImageUrl: senderInfo.userAvatar.toString(),
     };
     await SaveNotification(firebaseNotification); // saving notification in database
     await SendNotificationToUser(firebaseNotification); // this make push up
@@ -87,7 +87,7 @@ const createCommentNotification = async (req, res) => {
       recieverName,
       imageUrl: req.photoFound.imageUrl,
       senderName,
-      senderImgUrl: senderInfo.senderImageUrl,
+      senderImageUrl: senderInfo.userAvatar,
     });
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
     const id = newNotification._id;
@@ -105,7 +105,7 @@ const createCommentNotification = async (req, res) => {
       act: newNotification.act,
       photoId: newNotification.photoId.toString(),
       notificationDate: newNotification.notificationDate.toString(),
-      senderImgUrl: senderInfo.senderImageUrl.toString(),
+      senderImageUrl: senderInfo.userAvatar.toString(),
     };
     await SaveNotification(firebaseNotification); // saving notification in database
     await SendNotificationToUser(firebaseNotification); // this make push up
@@ -136,7 +136,7 @@ const createFollowNotification = async (req, res) => {
       notificationDate: Date.now(),
       recieverName,
       senderName,
-      senderImgUrl: senderInfo.senderImageUrl,
+      senderImageUrl: senderInfo.userAvatar,
     });
     // firebase dont allow ".", "#", "$", "/", "[", or "]" in keys
     const id = newNotification._id;
@@ -152,7 +152,7 @@ const createFollowNotification = async (req, res) => {
       id: id.toString(),
       act: newNotification.act,
       notificationDate: newNotification.notificationDate.toString(),
-      senderImgUrl: senderInfo.senderImageUrl.toString(),
+      senderImageUrl: senderInfo.userAvatar.toString(),
     };
     await SaveNotification(firebaseNotification); // saving notification in database
     await SendNotificationToUser(firebaseNotification); // this make push up
