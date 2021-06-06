@@ -44,6 +44,8 @@ import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
+import StartPage from '../StartPage/StartPage';
+import NavBarSP from '../StartPage/NavBarSP';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -241,11 +243,16 @@ function App() {
               <Albums />
               <Footer />
             </Route>
+            <Route exact path="/ex">
+              <NavBarSP />
+              <StartPage />
+            </Route>
             <Route path="*">
               { /* path for all pages that don't exist */}
               <NotFound />
               <Footer />
             </Route>
+
           </Switch>
         </div>
       </Router>
