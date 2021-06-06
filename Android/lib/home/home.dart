@@ -5,7 +5,7 @@
 
 import 'package:flickr/home/view_all_photos.dart';
 import 'package:flickr/models/global.dart';
-import 'package:flickr/models/photos.dart';
+import 'package:flickr/models/user.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flutter/material.dart';

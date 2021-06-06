@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/photo_provider.dart';
 import '../providers/user_provider.dart';
 
 class AboutTap extends StatefulWidget {
@@ -40,7 +39,7 @@ class _AboutTapState extends State<AboutTap> {
         newCard(
           'Description',
           _userProvider.user.person != null
-              ? _userProvider.user.description
+              ? _userProvider.user.person.description
               : "Add Description",
           context,
         ),
