@@ -98,7 +98,8 @@ bool addUserHomePosts(Map<String, dynamic> json) {
       ),
       title: json["title"],
       description: json["description"],
-      date: DateTime(2021, 05, 31, 20, 38, 59),
+      date: postDateParsing(
+          "2020-5-01T19:11:08"), //DateTime(2021, 05, 31, 20, 38, 59),
       likes: [
         new User(
             username: "Hannah", //json["likes"][0]["userName"],
@@ -159,7 +160,7 @@ User loggedInUser = new User(
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
-  userId: "507f191e810c19729de860ea",
+  userId: "6092ea68326fa5101115dfad",
 );
 
 User userBenFlasher = new User(
