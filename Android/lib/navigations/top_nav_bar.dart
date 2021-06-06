@@ -7,18 +7,15 @@ import 'package:flickr/profile/profile.dart';
 import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-<<<<<<< HEAD
 import 'package:provider/provider.dart';
 
-=======
 //import '../camera/pages/redirect_camera_view.dart';
->>>>>>> Android_master
 import '../camera/Pages/camera_view.dart';
 
 class TopNavigationBar extends StatefulWidget {
   @override
   TopNavigationBarState createState() => TopNavigationBarState();
-} 
+}
 
 class TopNavigationBarState extends State<TopNavigationBar> {
   @override
