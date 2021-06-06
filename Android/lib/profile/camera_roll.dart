@@ -161,11 +161,14 @@ class _CameraRollState extends State<CameraRoll> {
                     ),
                   ),
                 ),
-                Text(
-                  "space",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    "space",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
                 Container(
