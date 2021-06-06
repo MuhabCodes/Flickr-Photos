@@ -4,9 +4,9 @@
  * @apiGroup photos-comments
  * @apiVersion  0.1.0
  * @apiDescription Delete a comment as the currently authenticated user.
-* 
+* @apiParam {String} commentId The id of the comment to delete.
 *
-* @apiParam  (Body){String} commentId The id of the comment to delete.
+
 *
 * 
 *@apiSuccess (Success 200) {Number} statusCode The status code
@@ -50,3 +50,4 @@
 // * @apiError (Error 403) {Number} statusCode The status code
 // *@apiError (Error 400) {Number} statusCode The status code
 // *@apiError (Error 400) {String} error The server could not understand the request due to invalid syntax.
+// * 
