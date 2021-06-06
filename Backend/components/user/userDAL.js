@@ -205,3 +205,9 @@ module.exports.getFollowersDAL = async function getFollow(userId) {
     .populate('followers');
   return followers;
 };
+
+module.exports.getPersonId = async function getPersonId(userId) {
+  const user = await User.findById(userId).select('personId');
+  if (!user) throw Error(JSON.stringify({ statusCode: 404, error: 'This user is not found.' }));
+  return user;
+};

@@ -31,3 +31,16 @@ module.exports.createPerson = async function createPerson(firstName, lastName, a
 module.exports.deletePersonDAL = async function deletePerson(personId) {
   await Person.deleteOne({ _id: personId });
 };
+
+module.exports.updateInfo = async function updatePerson(personId, newInfo) {
+  await Person.updateOne(
+    { _id: personId }, {
+      $set: {
+        homeTown: newInfo.homeTown,
+        occupation: newInfo.occupation,
+        city: newInfo.city,
+        country: newInfo.country,
+      },
+    },
+  );
+};
