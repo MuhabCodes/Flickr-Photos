@@ -1,3 +1,4 @@
+import 'package:flickr/login/confirm_email.dart';
 import 'package:flickr/login/get_started.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/profile/description_with_privacy.dart';

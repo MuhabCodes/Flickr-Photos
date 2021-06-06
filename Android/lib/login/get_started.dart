@@ -1,6 +1,8 @@
-//import 'dart:html';
+import 'dart:async';
 
+import 'package:flickr/login/dynamic_link_service.dart';
 import 'package:flickr/login/sign_in.dart';
+import 'package:flickr/login/splash_screen.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -18,7 +20,37 @@ class GetStarted extends StatefulWidget {
   State<GetStarted> createState() => _GetStartedState();
 }
 
-class _GetStartedState extends State<GetStarted> {
+class _GetStartedState extends State<GetStarted> with WidgetsBindingObserver {
+  // final DynamicLinkService _dynamicLinkService = DynamicLinkService();
+  // Timer _timerLink;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addObserver(this);
+  // }
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.resumed) {
+  //     _timerLink = new Timer(
+  //       const Duration(milliseconds: 1000),
+  //       () {
+  //         _dynamicLinkService.retrieveDynamicLink(context);
+  //       },
+  //     );
+  //   }
+  // }
+
+  // @override
+  // void dispose() {
+  //   WidgetsBinding.instance.removeObserver(this);
+  //   if (_timerLink != null) {
+  //     _timerLink.cancel();
+  //   }
+  //   super.dispose();
+  // }
+
   final List<String> _qoutesHeader = [
     'Powerful',
     'Keep your memories safe',
@@ -41,13 +73,17 @@ class _GetStartedState extends State<GetStarted> {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('No Internet Connection')));
       return;
     }
     if (_auth.status == Status.Success) {
-      Navigator.of(context).pop();
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SignIn()),
+        MaterialPageRoute(
+            builder: (context) => LoadingScreen(
+                  nextScreen: SignIn(),
+                )),
       );
     }
   }
