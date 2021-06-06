@@ -16,7 +16,7 @@ import firebase from 'firebase/app';
 import jwt from 'jwt-decode';
 import style from './loginStyles';
 import icon from './flickrlogo.png';
-import configData from '../config.json';
+// import configData from '../config.json';
 // import FBlogin from './firebaselogin2';
 
 import('firebase/messaging');
@@ -57,6 +57,8 @@ const FBlogin = async () => {
 };
 
 export default function SignUp() {
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   // the passing of the scheme using the useForm from the react hook library
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -71,7 +73,7 @@ export default function SignUp() {
     const UserInfo = {
       email, password,
     };
-    axios(`${configData.SERVER_URL}/login/`, {
+    axios('/auth/login', {
       method: 'post',
       data: UserInfo,
     }).then((resp) => {
@@ -88,7 +90,8 @@ export default function SignUp() {
           console.log('User didnt give permission');
         }
       });
-      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
+      localStorage.setItem('token', `${resp.data.token}`);
+      // console.log('token');
       history.push('/');
     });
   };
