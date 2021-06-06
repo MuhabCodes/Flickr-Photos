@@ -1,6 +1,7 @@
 from info.info import TestData
 from pages.basepage import BasePage
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 
 class MainPage(BasePage):
@@ -17,6 +18,15 @@ class MainPage(BasePage):
     UPLOAD_BUTTON = (By.XPATH, '/html/body/div[4]/div[1]/div[2]/div/div/div[4]/div[1]/div[1]/input')
     CONFIRM_UPLOAD = (By.XPATH, '/html/body/div[14]/div/div/div/div[2]/div[2]/div[2]/input[1]')
     IMAGE_LOCAL_URL = r"C:\Users\George\Desktop\image2.jpg"
+    SEARCH_FIELD = (By.ID, "search-field")
+    TEXT_TO_SEARCH = "cat"
+    PHOTOS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/ul[1]/li[1]')
+    PEOPLE_LABEL = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/ul[1]/li[2]')
+    GROUPS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/ul[1]/li[3]')
+    EXAMPLE_PHOTO = (By.XPATH, '')
+    FAV_PHOTO = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[5]/div[1]/div')
+    ADD_PHOTO_TO = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[5]/span')
+    COMMENT_FIELD = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/div[4]/div/div[2]/div[2]/textarea[1]')
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -29,3 +39,7 @@ class MainPage(BasePage):
     def click_upload_icon(self):
         if self.element_clickable(self.UPLOAD_ICON):
             self.click(self.UPLOAD_ICON)
+
+    def search(self, text):
+        self.send(self.SEARCH_FIELD, text)
+        self.send(self.SEARCH_FIELD, Keys.RETURN)
