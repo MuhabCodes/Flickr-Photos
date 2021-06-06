@@ -2,6 +2,8 @@
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 
+import('firebase/messaging');
+
 export default function FirebaseLogin() {
   const firebaseConfig = {
     apiKey: 'AIzaSyBhoW86v4GTGCoQJO1meS-JGDJNdBaVIjs',
@@ -15,11 +17,12 @@ export default function FirebaseLogin() {
   };
   // Initialize Firebase
   console.log(firebase);
-  if (!firebase.apps.length) {
+  if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   } else {
     firebase.app(); // if already initialized, use that one
   }
   firebase.analytics();
+
   return (null);
 }

@@ -40,6 +40,30 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+      <script src="/__/firebase/8.6.3/firebase-messaging.js"></script>
+    <script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyBhoW86v4GTGCoQJO1meS-JGDJNdBaVIjs",
+    authDomain: "notify-d4836.firebaseapp.com",
+    databaseURL: "https://notify-d4836-default-rtdb.firebaseio.com/",
+    projectId: "notify-d4836",
+    storageBucket: "notify-d4836.appspot.com",
+    messagingSenderId: "655264697952",
+    appId: "1:655264697952:web:4feeebd4172696c164bd05",
+    measurementId: "G-PQ2YH8NWKS"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+      const FIREBASE_MESSAGING = firebase.messaging();
+      console.log('booo');
+      FIREBASE_MESSAGING.usePublicVapidKey('BHJ6Jx3l8mZncJgAYB1ZcFo76ZGSk5DiRr52t3Zq4Vmmg F-U1gYfAreDuXjeh66xjUNrC-qDrdYrfC_OG-S3-w');
+      FIREBASE_MESSAGING.onMessage((payload) => {
+      console.log('Message received. ', payload);
+       // Update the UI to include the received message.
+      });
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
