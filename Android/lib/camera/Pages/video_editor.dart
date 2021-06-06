@@ -27,7 +27,7 @@ class _VideoEditorPageState extends State<VideoEditorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
           Container(
             height: 0.03 * MediaQuery.of(context).size.height,
@@ -35,30 +35,9 @@ class _VideoEditorPageState extends State<VideoEditorPage> {
             color: Colors.black,
           ),
           Container(
-            color: Colors.black,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-               IconButton(
-                    icon: Icon(Icons.arrow_forward_sharp,size:0.05*MediaQuery.of(context).size.height),
-                    color: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  (UploadPage(widget.video, 2, controller))));
-                    },
-                  ),
-                
-              ],
-            ),
-          ),
-          Container(
-            height: 0.8* MediaQuery.of(context).size.height,
+            height: 0.9 * MediaQuery.of(context).size.height,
             decoration: BoxDecoration(color: Colors.black),
-                      child: Flexible(
+            child: Flexible(
               child: controller.value.isInitialized
                   ? AspectRatio(
                       aspectRatio: controller.value.aspectRatio,
@@ -68,7 +47,33 @@ class _VideoEditorPageState extends State<VideoEditorPage> {
             ),
           ),
           Container(
-            width: MediaQuery.of(context).size.width,height: 0.1*MediaQuery.of(context).size.height,
+            color: Colors.black,
+            width: MediaQuery.of(context).size.width,
+            height: 0.12 * MediaQuery.of(context).size.height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_forward_sharp,
+                      size: 0.05 * MediaQuery.of(context).size.height),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                (UploadPage(widget.video, 2, controller))));
+                  },
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 0.9 * MediaQuery.of(context).size.height,
+            ),
+            width: MediaQuery.of(context).size.width,
+            height: 0.1 * MediaQuery.of(context).size.height,
             color: Colors.black,
             child: FloatingActionButton(
               backgroundColor: Colors.black,
