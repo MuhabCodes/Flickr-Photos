@@ -42,7 +42,6 @@ module.exports = {
     return photoFavs;
   },
   async getPeopleInPhotoDAL(photoId) {
-    // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
       .select('inPhoto')
       .populate({
