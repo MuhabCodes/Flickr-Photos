@@ -37,7 +37,6 @@ class UserProfilePage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver.get(TestData.LOGIN_URL)
 
     def clear_profile_info_fields(self):
         self.clear_field(self.OCCUPATION_FIELD)
