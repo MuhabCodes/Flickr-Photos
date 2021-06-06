@@ -6,12 +6,13 @@
  * @apiVersion  0.1.0
  *
  * 
- * @apiParam (Body) {String[]} userIds the ids of the followers
- * @apiParam (Body) {Number} page the number of the page retrived begins from 0
  *
  *
-
  * @apiSuccess (Success 200) {Object[]} photos The photos that have been recently uploaded by followers
+ * 
+ * 
+ * @apiError (Error 401) {String} error The user is not known to the server.
+ * @apiError (Error 401) {Number} statusCode The status code.
  * @apiError (Error 500) {String} error The server has encountered a situation it doesn't know how to handle.
  * @apiError (Error 500) {Number} statusCode The status code
  *
@@ -20,17 +21,18 @@
  * {
  *    
  *      "photos":[{
- *              "title":"Waterfall",
- *              "uploadDate":"2020-05-01T01:50:08",
- *              "imagePath":"www.example.com/doasf",
- *              "isPublic":true,
- *              "description" :"This is the description",
- *              "views":123,
- *              "captureDate":"2021-12-01T19:11:08",
- *              "secret":"dfjio324",
- *              "photoId":"dsphnfio2",
- *              "user":"17489yhfgbv8vbc83"
- *              },{...},...]
+        "userName": "mhmd",
+        "userAvatar": "https://i.imgur.com/PyVmvKL.jpg",
+        "title": "photo 2",
+        "faves": 0,
+        "comments": 0,
+        "isPro": false,
+        "description": "Great pic",
+        "ownerId": "6092ea68326fa5101115dfae",
+        "photoId": "7092ea68326fa5101115dfea",
+        "uploadDate": "2021-12-01T17:11:08.000Z",
+        "photoUrl": "https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg"
+    },{...},...]
  * }
  *
  *  @apiErrorExample {json} Error-500:
