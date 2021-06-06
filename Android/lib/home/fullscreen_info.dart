@@ -132,6 +132,12 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                 ),
                 _myPhoto.tags == null
                     ? Container()
+                    : Text("TAGS", style: textStyleInfoTitle),
+                SizedBox(
+                  height: _myPhoto.tags == null ? 0 : 5,
+                ),
+                _myPhoto.tags == null
+                    ? Container()
                     : Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
