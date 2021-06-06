@@ -284,7 +284,7 @@ exports.getFollowers = async function getFollowers(req, res) {
   const { userId } = req.params;
   try {
     const followers = await getFollowersServ(userId);
-    res.status(200).json(followers);
+    res.status(200).json({ followers: followers.followers, statusCode: 200 });
   } catch (err) {
     const errMsg = JSON.parse(err.message);
 
