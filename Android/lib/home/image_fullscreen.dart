@@ -1,3 +1,5 @@
+import 'package:flickr/home/fullscreen_info.dart';
+
 ///[ImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
 
@@ -153,7 +155,9 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  (post.title != null) ? post.title : "MyTitle",
+                                  (myPhoto.title != null)
+                                      ? post.title
+                                      : "MyTitle",
                                   style: postTitleStyle,
                                 ),
                               ]),
@@ -239,7 +243,13 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                 color: Colors.grey,
                                 iconSize: 32,
                                 onPressed: () {
-                                  setState(() {});
+                                  setState(() {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(builder: (_) {
+                                      return InfoImageFullscreen(
+                                          myPhoto, post, post.user);
+                                    }));
+                                  });
                                 }),
                             Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
