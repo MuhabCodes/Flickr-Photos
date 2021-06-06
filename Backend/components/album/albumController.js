@@ -17,7 +17,7 @@ module.exports = {
   },
   async addPhoto(req, res) {
     try {
-      return addPhotoToAlbum(req.params.albumId, req.body, res);
+      return addPhotoToAlbum(req.params.albumId, req.body.photoId, res);
     } catch (err) {
       return res.json({
         error: err.message,
@@ -47,7 +47,7 @@ module.exports = {
   },
   async getUserAlbums(req, res) {
     try {
-      return await getUserAlbumsById(req.params.authorId, res);
+      return await getUserAlbumsById(req.body.authorId, res);
     } catch (err) {
       return res.json({
         error: err.message,

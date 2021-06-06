@@ -1,5 +1,5 @@
 const Photo = require('./photoModel');
-require('../User/userModel');
+require('../user/userModel');
 
 const favoritesModel = require('../favorites/favoritesModel');
 

@@ -29,7 +29,6 @@ const { isInPhoto } = require('./services/isInPhoto.validation');
 const { getPeopleInPhotoServ } = require('./services/getPeopleInPhoto');
 const { addLocation } = require('./services/addLocation');
 
-
 module.exports = {
   async getRecentPhotos(req, res) {
     try {
@@ -120,6 +119,9 @@ module.exports = {
       return res.json({
         error: err.message,
         statusCode: 500,
+      });
+    }
+  },
 
   async addPersonToPhoto(req, res) {
     try {
@@ -208,4 +210,9 @@ module.exports = {
       });
     }
   },
+  // async getHome(req, res) {
+  //   try {
+
+  //   }
+  // }
 };
