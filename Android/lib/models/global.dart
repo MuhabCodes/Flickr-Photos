@@ -9,7 +9,7 @@ import 'user.dart';
 ///Some text foramts used in several files
 TextStyle textStyleComments = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 18,
+  fontSize: globalWidthScreen * 0.055,
   color: Colors.black,
   fontWeight: FontWeight.normal,
 );
@@ -17,39 +17,66 @@ TextStyle textStyleBoldComments = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
     color: Colors.black,
-    fontSize: 18);
+    fontSize: globalWidthScreen * 0.055);
 TextStyle textStyle = new TextStyle(
   fontFamily: 'Gotham',
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
   color: Colors.black,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleInfo = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: globalWidthScreen * 0.05,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
+TextStyle flagThisPhoto = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: globalWidthScreen * 0.06,
+  color: Colors.blue,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleTags = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: globalWidthScreen * 0.04,
+  color: Colors.white,
+  fontWeight: FontWeight.normal,
+);
+TextStyle textStyleInfoTitle = new TextStyle(
+  fontFamily: 'Gotham',
+  fontSize: globalWidthScreen * 0.05,
+  color: Colors.white,
   fontWeight: FontWeight.normal,
 );
 TextStyle textStyleBold = new TextStyle(
     fontFamily: 'Gotham',
     fontWeight: FontWeight.bold,
     color: Colors.black,
-    fontSize: 15);
+    fontSize: globalWidthScreen * 0.05);
 TextStyle textStyleLigthGrey = new TextStyle(
   fontFamily: 'Gotham',
   color: Colors.grey,
-  fontSize: 14,
+  fontSize: globalWidthScreen * 0.042,
   fontWeight: FontWeight.bold,
 );
 TextStyle textStyleDarkGrey = new TextStyle(
   fontFamily: 'Gotham',
   color: Colors.grey,
-  fontSize: 13,
+  fontSize: globalWidthScreen * 0.045,
   fontWeight: FontWeight.bold,
 );
 TextStyle appBarTitleStyle = new TextStyle(
   color: Colors.white,
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
   fontWeight: FontWeight.bold,
 );
 TextStyle postTitleStyle = new TextStyle(
   color: Colors.white,
-  fontSize: 15,
+  fontSize: globalWidthScreen * 0.05,
 );
+
+double globalWidthScreen = 0;
+double globalHeightScreen = 0;
 
 ///is the list of posts which are displayed is home page
 ///and it's data is received through a get request
@@ -70,7 +97,8 @@ bool addUserHomePosts(Map<String, dynamic> json) {
       ),
       title: json["title"],
       description: json["description"],
-      date: DateTime(2021, 05, 31, 20, 38, 59),
+      date: postDateParsing(
+          "2020-5-01T19:11:08"), //DateTime(2021, 05, 31, 20, 38, 59),
       likes: [
         new User(
             username: "Hannah", //json["likes"][0]["userName"],
@@ -107,18 +135,21 @@ User createUserFollowing(Map<String, dynamic> json) {
 bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
   Post newPost = new Post(
     photo: [
-      new Photo(imageUrl: json["imageUrl"]),
+      new Photo(imageUrl: json["photoUrl"]),
     ],
-    photoId: json["_id"],
+    photoId: json["photoId"],
     title: json["title"],
     description: json["description"],
     date: postDateParsing(json["uploadDate"]),
-    userId: json["user"],
-    numComments: json["commentsCount"],
-    numLikes: json["likesCount"],
+    userId: json["ownerId"],
+    numComments: json["comments"],
+    numLikes: json["faves"],
     user: userFollowingInfo,
+    postUsername: json["userName"],
+    userAvatar: json["userAvatar"],
+    isPro: json["isPro"],
   );
-  //print(newPost.like);
+  print("added post 1");
   userHomePostsInteg.add(newPost);
 
   return true;
@@ -126,12 +157,12 @@ bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
 
 String host = "api.flick.photos";
 User loggedInUser = new User(
-  username: 'LoggedIn user',
+  username: 'Hard Coded',
   userAvatar:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-tipsy-mermaid-punch-3-1531851652.jpg?crop=0.564xw:1.00xh;0.223xw,0&resize=640:*',
   following: [follower1, follower2, follower3],
   followers: [follower1, follower2, follower3],
-  userId: "507f191e810c19729de860ea",
+  userId: "6092ea68326fa5101115dfad",
 );
 
 User userBenFlasher = new User(
@@ -149,7 +180,7 @@ Post postBenFlasher = new Post(
     ),
   ],
   title: "Sutro Shore",
-  user: user,
+  user: user2,
   description: "My first post",
   date: DateTime.now(),
   likes: [follower1, follower2, follower3],
@@ -177,7 +208,7 @@ Post post1 = new Post(
           'https://img.static-af.com/images/meta/IDname/CITY-IST-1?aspect_ratio=2:1&max_width=1920',
     )
   ],
-  user: user,
+  user: user2,
   description: "My first post",
   date: DateTime.now(),
   likes: [follower1, follower2, follower3],
@@ -194,7 +225,7 @@ Post post1 = new Post(
     ),
   ],
 );
-final User user = new User(
+final User user2 = new User(
   username: 'Hannah Hatem',
   userAvatar:
       'https://assets.bonappetit.com/photos/5aec939cabfd55654bd1e6bf/master/pass/rose-sangria-verde-1.jpg',

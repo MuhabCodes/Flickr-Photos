@@ -1,3 +1,5 @@
+import 'package:flickr/home/fullscreen_info.dart';
+
 ///[ImageFullscreen] class which displays a given image with zoom in and out feature and
 ///like comment feature
 
@@ -42,6 +44,8 @@ class ImageFullscreenState extends State<ImageFullscreen> {
   Widget build(BuildContext context) {
     _widthScreen = MediaQuery.of(context).size.width;
     _heightScreen = MediaQuery.of(context).size.height;
+    print("width screen");
+    print(_widthScreen);
     return Scaffold(
       body: Stack(
         children: [
@@ -71,7 +75,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                       children: [
                         //AppBar
                         Container(
-                          margin: EdgeInsets.only(top: 30),
+                          margin: EdgeInsets.only(top: 20),
                           child: Row(
                             children: [
                               Row(
@@ -81,14 +85,15 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                       Container(
                                         //this container is related to the circle avatar only (tiny box contains an avatar)
                                         //color: Colors.white,
+                                        //width: _widthScreen / 4,
                                         margin: EdgeInsets.only(
                                             right: 10,
                                             /*top: 65,*/
                                             left:
                                                 30), //user name padding away from pp
                                         child: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              post.user.userAvatar),
+                                          backgroundImage:
+                                              NetworkImage(post.userAvatar),
                                         ),
                                       ),
                                     ],
@@ -97,12 +102,12 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                     children: [
                                       Container(
                                         constraints: BoxConstraints(
-                                            maxWidth: _widthScreen * 0.26),
+                                            maxWidth: _widthScreen / 4),
                                         margin: EdgeInsets.only(
                                             top: 5 /*70*/, right: 50),
                                         child: TextButton(
                                           child: Text(
-                                            post.user.username,
+                                            post.postUsername,
                                             style: appBarTitleStyle,
                                             overflow: TextOverflow.ellipsis,
                                           ),
@@ -119,12 +124,12 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 50),
+                              SizedBox(width: _widthScreen / 4),
                               Column(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(
-                                        right: 5, /*top: 60,*/ left: 5),
+                                    /*margin: EdgeInsets.only(
+                                        right: 5, /*top: 60,*/ left: 5),*/
                                     child: IconButton(
                                         //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
                                         icon: Icon(Icons.close_rounded,
@@ -153,14 +158,16 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  (post.title != null) ? post.title : "MyTitle",
+                                  (myPhoto.title != null)
+                                      ? post.title
+                                      : "MyTitle",
                                   style: postTitleStyle,
                                 ),
                               ]),
                         ),
                         Container(
                           //Draw horizontal line
-                          margin: EdgeInsets.only(bottom: 5),
+                          margin: EdgeInsets.only(bottom: 0),
                           constraints: BoxConstraints.expand(
                               height: 20, width: _widthScreen),
                           decoration: BoxDecoration(
@@ -188,81 +195,101 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                         ),
                         Row(
                           children: [
-                            Stack(
-                              alignment: Alignment(0, 0),
-                              children: <Widget>[
-                                Icon(
-                                  Icons.star_border,
-                                  size: 35,
-                                  color: post.isLiked
-                                      ? Colors.transparent
-                                      : Colors.grey,
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.star),
-                                  color: post.isLiked
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  iconSize: 35,
-                                  onPressed: () {
-                                    addLikers(post);
-
-                                    setState(() {});
-                                  },
-                                ),
-                              ],
-                            ),
-                            IconButton(
-                                padding: EdgeInsets.only(top: 8, left: 15),
-                                icon: Icon(Icons.mode_comment_outlined),
-                                color: Colors.grey,
-                                iconSize: 30,
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .push(MaterialPageRoute(builder: (_) {
-                                    return CommentsFavs(post, 1, false, 2);
-                                  }));
-                                  setState(() {});
-                                }),
-                            IconButton(
-                                padding: EdgeInsets.only(top: 8, left: 25),
-                                icon: Icon(Icons.share_outlined),
-                                color: Colors.grey,
-                                iconSize: 30,
-                                onPressed: () {
-                                  setState(() {});
-                                }),
-                            IconButton(
-                                padding: EdgeInsets.only(
-                                    top: 9, left: 25, right: 20),
-                                icon: Icon(Icons.info_outline),
-                                color: Colors.grey,
-                                iconSize: 32,
-                                onPressed: () {
-                                  setState(() {});
-                                }),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                            Container(
+                              constraints:
+                                  BoxConstraints(maxWidth: _widthScreen / 1.4),
+                              child: Row(
                                 children: [
-                                  Text(
-                                    post.likes == null
-                                        ? "0 Faves"
-                                        : (post.likes.length.toString() +
-                                            " Faves"),
-                                    style: appBarTitleStyle,
-                                    textAlign: TextAlign.right,
-                                    overflow: TextOverflow.ellipsis,
+                                  Stack(
+                                    alignment: Alignment(0, 0),
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.star_border,
+                                        size: 40,
+                                        color: post.isLiked
+                                            ? Colors.transparent
+                                            : Colors.grey,
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.star),
+                                        color: post.isLiked
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        iconSize: 40,
+                                        onPressed: () {
+                                          addLikers(post);
+
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    post.comments == null
-                                        ? "0 Comments"
-                                        : (post.comments.length.toString() +
-                                            " Comments"),
-                                    style: appBarTitleStyle,
-                                    textAlign: TextAlign.right,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ]),
+                                  IconButton(
+                                      padding:
+                                          EdgeInsets.only(top: 8, left: 15),
+                                      icon: Icon(Icons.mode_comment_outlined),
+                                      color: Colors.grey,
+                                      iconSize: 35,
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(builder: (_) {
+                                          return CommentsFavs(
+                                              post, 1, false, 2);
+                                        }));
+                                        setState(() {});
+                                      }),
+                                  IconButton(
+                                      padding:
+                                          EdgeInsets.only(top: 8, left: 25),
+                                      icon: Icon(Icons.share_outlined),
+                                      color: Colors.grey,
+                                      iconSize: 35,
+                                      onPressed: () {
+                                        setState(() {});
+                                      }),
+                                  IconButton(
+                                      padding: EdgeInsets.only(
+                                          top: 9, left: 25, right: 20),
+                                      icon: Icon(Icons.info_outline),
+                                      color: Colors.grey,
+                                      iconSize: 38,
+                                      onPressed: () {
+                                        setState(() {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (_) {
+                                            return InfoImageFullscreen(
+                                                myPhoto, post, post.user);
+                                          }));
+                                        });
+                                      }),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              //constraints: BoxConstraints(maxWidth: ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      post.likes == null
+                                          ? "0 Faves"
+                                          : (post.likes.length.toString() +
+                                              " Faves"),
+                                      style: appBarTitleStyle,
+                                      textAlign: TextAlign.right,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      post.comments == null
+                                          ? "0 Comments"
+                                          : (post.comments.length.toString() +
+                                              " Comments"),
+                                      style: appBarTitleStyle,
+                                      textAlign: TextAlign.right,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ]),
+                            ),
                           ],
                         ),
                       ],

@@ -17,6 +17,9 @@ class Post {
   int numLikes;
   int numComments;
   String photoId;
+  String postUsername;
+  String userAvatar;
+  bool isPro = false;
   //List<NetworkImage> imageUrl = [new NetworkImage('www.google.com')];
   List<Photo> photo = [
     new Photo(
@@ -39,5 +42,8 @@ class Post {
     this.numComments,
     this.numLikes,
     this.photoId,
+    this.postUsername,
+    this.userAvatar,
+    this.isPro,
   });
 }
