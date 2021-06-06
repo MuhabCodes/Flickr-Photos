@@ -24,7 +24,6 @@ function Upload() {
       const restDataArray = [];
       Array.from(e.target.files).forEach((file) => {
         const data = {};
-        console.log(file);
         data.fileName = file.name; // get the file name
         data.fileDate = new Date(); // get the photo upload date
         data.fileCapture = file.lastModifiedDate;
