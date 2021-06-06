@@ -55,5 +55,6 @@ test('should return a deleted favorite photo id ', async () => {
 });
 test('should return a added favorite id ', async () => {
   const profileFound = await personDAL.findProfile(userId);
-  expect(JSON.stringify(profileFound.person._id)).toEqual(JSON.stringify(personIfFound));
+  console.log(profileFound);
+  expect(JSON.stringify(profileFound.personId._id)).toEqual(JSON.stringify(personIfFound));
 });
