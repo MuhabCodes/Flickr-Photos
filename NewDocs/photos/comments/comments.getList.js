@@ -6,10 +6,8 @@
  * @apiDescription Returns the comments for a photo
  * 
  * 
- *
- * @apiParam  (Body){String} photoId The id of the photo to fetch comments for.
- * @apiParam  (Body){Date} [minCommentDate] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
- * @apiParam  (Body){Date} [maxCommentDate] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
+ ** @apiParam {String} photoId The id of the photo to fetch comments for.
+
  *
  *@apiSuccess (Success 200) {Object[]} commentsList List of all Comments 
 *@apiSuccess (Success 200) {Number} statusCode The status code
@@ -59,3 +57,6 @@
 // *       "error": "Unauthorized User",
 // *        "statusCode":401
 // *     }
+// 
+// * @apiParam  (Body){Date} [minCommentDate] Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
+// * @apiParam  (Body){Date} [maxCommentDate] Maximum date that a comment was added. The date should be in the form of a unix timestamp.
