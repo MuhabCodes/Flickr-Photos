@@ -7,8 +7,9 @@ module.exports = {
   async getLatestPhotos() {
     return Photo.find().sort({ $natural: -1 });
   },
-  async addNewPhotos(photosInfo) {
-    return Photo.insertMany(photosInfo);
+  async addNewPhoto(photoInfo) {
+    return Photo.collection.insertOne(photoInfo);
+    // return photoInfo.save();
   },
   async getPhotoById(photoId) {
     return Photo.findById(photoId);
@@ -19,6 +20,11 @@ module.exports = {
   async removePhoto(photoToRemove) {
     return photoToRemove.remove();
   },
+
+  async fetchUserPhotos(userId) {
+    return Photo.find({ user: userId });
+  },
+
   async addPersonToPhotoDAL(photoId, userId) {
     await Photo.updateOne(
       { _id: photoId },
@@ -36,7 +42,6 @@ module.exports = {
     return photoFavs;
   },
   async getPeopleInPhotoDAL(photoId) {
-    // TODO : revisit the population to check what is needed per person
     const inPhoto = await Photo.findById(photoId)
       .select('inPhoto')
       .populate({
@@ -52,6 +57,21 @@ module.exports = {
       });
 
     return inPhoto;
+  },
+  async fetchFollowerPhotos(userIds) {
+    // date six months ago
+    const date = Date.now() - 7776000;
+    const found = await Photo.find({
+      $and:
+       [{ user: { $in: userIds } }, { uploadDate: { $gte: date } }],
+    })
+      .limit(100)
+      .populate({
+        path: 'user',
+        model: 'User',
+      })
+      .sort({ uploadDate: -1 });
+    return found;
   },
 
 };

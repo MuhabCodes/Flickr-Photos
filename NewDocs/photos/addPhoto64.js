@@ -1,6 +1,6 @@
 /**
  *
- * @api {POST} /photos addPhoto
+ * @api {POST} /photos/64 addPhoto64
  * @apiDescription Add a new photo
  * @apiGroup photos
  * @apiVersion  0.1.0

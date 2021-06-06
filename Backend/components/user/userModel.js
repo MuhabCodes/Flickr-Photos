@@ -33,10 +33,6 @@ const userSchema = mongoose.Schema({
   displayName: {
     type: String,
   },
-  groups: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Group',
-  },
   followers: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
@@ -50,6 +46,14 @@ const userSchema = mongoose.Schema({
   },
   description: {
     type: String,
+  },
+  urlCover: {
+    type: String,
+    default: 'https://i.imgur.com/EWN8anz.png',
+  },
+  showCase: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Photo',
   },
 
 },
