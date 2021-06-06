@@ -82,7 +82,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                         child: Text(_myPhoto.description, style: textStyleInfo),
                       ),
                 //==============================================================
-                SizedBox(
+                /*SizedBox(
                   height: _photoUser.website == null ? 0 : 30,
                 ),
                 Text(
@@ -93,7 +93,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                     ? Container()
                     : Container(
                         child: Text(_photoUser.website, style: textStyleInfo),
-                      ),
+                      ),*/
                 //=============================================================
                 SizedBox(
                   height: _photoUser.username == null ? 0 : 30,
