@@ -11,9 +11,10 @@ module.exports = {
   async removeFromAlbum(albumId, photoId) {
     // first find the image in the album
     const foundAlbum = await Album.find({ _id: albumId });
+
     let index = -1;
-    for (let i = 0; i < foundAlbum.photos.length; i++) {
-      if (foundAlbum.photos[i]._id === photoId) {
+    for (let i = 0; i < foundAlbum[0].photos.length; i++) {
+      if (foundAlbum[0].photos[i]._id == photoId) {
         index = i;
         break;
       }
@@ -21,22 +22,22 @@ module.exports = {
 
     // then remove the element from the array
     if (index !== -1) {
-      foundAlbum.photos.splice(index, 1);
+      foundAlbum[0].photos.splice(index, 1);
     }
-    return foundAlbum.save();
+    return foundAlbum[0].save();
   },
   async addNewAlbum(albumInfo) {
-    return Album.insertOne(albumInfo);
+    return Album.collection.insertOne(albumInfo);
   },
   async addNewPhotoToAlbum(albumId, photoId) {
     // first get the album based on the id
-    const foundAlbum = await Album.find({ _Id: albumId });
+    const foundAlbum = await Album.find({ _id: albumId });
     // get the photo to be added to the album
-    const foundPhoto = await Photo.find({ _Id: photoId });
+    const foundPhoto = await Photo.find({ _id: photoId });
     // add the photo to the photos in this album
-    foundAlbum.photos.push(foundPhoto);
+    foundAlbum[0].photos.push(foundPhoto[0]._id);
     // then save the album to the database
-    return foundAlbum.save();
+    return foundAlbum[0].save();
   },
   async fetchUserAlbums(authorId) {
     return await Album.find({ authorId });

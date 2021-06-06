@@ -1,7 +1,7 @@
 const { join } = require('path');
 require('dotenv').config({ path: join(__dirname, '/../../../secret/', '.env') });
 const jwt = require('jsonwebtoken');
-const userDAL = require('../../User/userDAL');
+const userDAL = require('../../user/userDAL');
 
 module.exports.signInGoogleServ = async function signInGoogle(email, displayName) {
   // get user from DB

@@ -1,4 +1,4 @@
-const User = require('../User/userModel');
+const User = require('../user/userModel');
 
 const Person = require('./personModel');
 

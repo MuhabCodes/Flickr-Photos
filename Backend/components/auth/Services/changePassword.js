@@ -1,5 +1,5 @@
 const { comparePassword } = require('../../../utils/passwords');
-const { getUserById, changePasswordDAL } = require('../../User/userDAL');
+const { getUserById, changePasswordDAL } = require('../../user/userDAL');
 
 exports.changePasswordServ = async function changePw(userId, oldPassword, newPasword) {
   // get user

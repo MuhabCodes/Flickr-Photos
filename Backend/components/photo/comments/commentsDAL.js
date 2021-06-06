@@ -1,6 +1,6 @@
 const Comment = require('./commentsModel');
 const Photo = require('../photoModel');
-require('../../User/userModel');
+require('../../user/userModel');
 
 module.exports.createComment = async function createComment(
   CommentParameter,

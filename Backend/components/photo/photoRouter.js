@@ -15,7 +15,7 @@ const {
   removePersonFromPhoto,
   getPeopleInPhoto,
   addLocation,
-  // getHome
+  // getHome,
 } = require('./photoController');
 // get the required functions from the controller
 

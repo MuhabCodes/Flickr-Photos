@@ -1,7 +1,7 @@
 const SaveNotification = require('../fire-base/saveNotification');
 const Notification = require('../components/notification/notificationModel');
 const { getPhotoById } = require('../components/photo/photoDAL');
-const { getUserById } = require('../components/User/userDAL');
+const { getUserById } = require('../components/user/userDAL');
 const SendNotificationToUser = require('../fire-base/sendNotification');
 
 const createLikeNotification = async (req, res) => {
