@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../../fire-base/serviceAccountKey.json');
+const serviceAccount = require('../../secret/serviceAccountKey.json');
 
 module.exports.getNotifications = async function getNotifications(userId) {
   if (!admin.apps.length) { // this to check if there's app
