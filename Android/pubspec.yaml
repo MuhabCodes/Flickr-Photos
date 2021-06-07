@@ -101,6 +101,7 @@ flutter:
     - lib/assets/toothpaste.jpeg
     - lib/assets/perfume1.jpeg
     - lib/assets/perfume2.jpeg
+    - lib/assets/google.png
     - lib/assets/flickersmall.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
