@@ -5,6 +5,7 @@ const { addTag } = require('../../tags/services/addTag');
 const addNew = async (photoInfo, photoPath, res) => {
   try {
     // change the location attribute in the photoInfo
+    // eslint-disable-next-line no-param-reassign
     photoInfo.imageUrl = photoPath;
 
     const newPhoto = new Photo(photoInfo);
