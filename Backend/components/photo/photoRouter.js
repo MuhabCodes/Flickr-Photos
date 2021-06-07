@@ -1,5 +1,6 @@
 const express = require('express');
 const commentsController = require('./comments/commentsController');
+const favoritesController = require('../favorites/favoritesController');
 const { createCommentNotification } = require('../../middleware/createNotification');
 
 const router = express.Router();
@@ -73,4 +74,7 @@ router.delete('/:photoId/comments/:commentId', commentsController.deleteComment)
 
 router.get('/:photoId/comments', commentsController.findComment);
 
+/// ///favorites part
+
+router.get('/:photoId/favorites', favoritesController.findPhotoLikers);
 module.exports = router;
