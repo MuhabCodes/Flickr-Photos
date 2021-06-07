@@ -14,7 +14,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import icon from './flickrlogo.png';
 import style from './signupStyles';
-import configData from '../config.json';
+// import configData from '../config.json';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -39,6 +39,8 @@ const schema = yup.object().shape({
 });
 
 export default function SignUp() {
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -58,12 +60,12 @@ export default function SignUp() {
     const UserInfo = {
       firstName, lastName, age, email, password, isPro,
     };
-    axios(`${configData.SERVER_URL}/register/`, {
+    axios('/auth/register', {
       method: 'post',
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
+      localStorage.setItem('token', `${resp.data.token}`);
       history.push('/');
     });
   };
