@@ -1,12 +1,11 @@
 import 'package:flickr/login/get_started.dart';
-import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/profile/description.dart';
 import 'package:flickr/profile/privacy_and_safety.dart';
 import 'package:flickr/profile/select_photos.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/camera_provider.dart';
 import 'package:flickr/providers/notification_provider.dart';
-import 'package:flickr/providers/post_provider.dart';
+import 'package:flickr/providers/post_provider_integration.dart';
 import 'package:flickr/providers/tag_provider.dart';
 import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
           value: TagProvider(),
         ),
         ChangeNotifierProvider.value(
-          value: PostProvider(),
+          value: PostProviderInteg(),
         ),
         ChangeNotifierProvider<SingleNotifier1>(
           create: (_) => SingleNotifier1(),

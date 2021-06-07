@@ -122,7 +122,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: _widthScreen / 4),
+                              SizedBox(width: _widthScreen / 5),
                               Column(
                                 children: [
                                   Container(
@@ -131,7 +131,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                     child: IconButton(
                                         //padding: EdgeInsets.only(right: 20, top: 50, left: 10),
                                         icon: Icon(Icons.close_rounded,
-                                            size: 30, color: Colors.white),
+                                            size: 20, color: Colors.white),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         }),
@@ -203,7 +203,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.star_border,
-                                        size: 40,
+                                        size: 20,
                                         color: post.isLiked
                                             ? Colors.transparent
                                             : Colors.grey,
@@ -213,7 +213,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                         color: post.isLiked
                                             ? Colors.white
                                             : Colors.transparent,
-                                        iconSize: 40,
+                                        iconSize: 30,
                                         onPressed: () {
                                           addLikers(post);
 
@@ -227,7 +227,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                           EdgeInsets.only(top: 8, left: 15),
                                       icon: Icon(Icons.mode_comment_outlined),
                                       color: Colors.grey,
-                                      iconSize: 35,
+                                      iconSize: 25,
                                       onPressed: () {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(builder: (_) {
@@ -241,7 +241,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                           EdgeInsets.only(top: 8, left: 25),
                                       icon: Icon(Icons.share_outlined),
                                       color: Colors.grey,
-                                      iconSize: 35,
+                                      iconSize: 25,
                                       onPressed: () {
                                         setState(() {});
                                       }),
@@ -250,7 +250,7 @@ class ImageFullscreenState extends State<ImageFullscreen> {
                                           top: 9, left: 25, right: 20),
                                       icon: Icon(Icons.info_outline),
                                       color: Colors.grey,
-                                      iconSize: 38,
+                                      iconSize: 28,
                                       onPressed: () {
                                         setState(() {
                                           Navigator.of(context).push(

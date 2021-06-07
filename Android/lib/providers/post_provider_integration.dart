@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/user.dart';
-import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 enum Status { Success, Fail, Loading }
 
@@ -19,6 +18,7 @@ class PostProviderInteg with ChangeNotifier {
   User userLoggedIn;
   List<String> followingIds;
   User userFollowingInfo;
+  String token;
   var loggedUser;
   PostProviderInteg(
       {this.baseUrl,
@@ -120,18 +120,22 @@ class PostProviderInteg with ChangeNotifier {
 
   var _urlUserHomePosts =
       Uri.parse("https://run.mocky.io/v3/65636216-3a63-45fa-9b4a-fc1c4f644ece");
-  var _urlUserFollowingsInteg =
-      Uri.parse(host + "/getHome/${loggedInUser.userId}");
+  var _urlUserFollowingsInteg = Uri.parse(host + "/photos");
   Future<void> getUserHomePosts() async {
     /// get request
-    loggedUser = Provider.of<UserProvider>(context, listen: false);
-    var response = await http.get(_urlUserFollowingsInteg);
+    //loggedUser = Provider.of<UserProvider>(context, listen: false);
+    var response = await http.get(
+      _urlUserFollowingsInteg,
+      headers: {
+        HttpHeaders.authorizationHeader: token,
+      },
+    );
     if (response.statusCode == 200) {
       status = Status.Success;
       notifyListeners();
       var extractData = jsonDecode(response.body);
       List<dynamic> json = extractData["posts"];
-      print(json);
+      print(extractData);
       if (json != null) {
         //String userFollowingId = jsonFollowingIds[i];
 
