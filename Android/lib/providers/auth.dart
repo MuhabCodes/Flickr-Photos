@@ -1,13 +1,10 @@
 import 'dart:async';
-//import 'dart:html';
-import 'package:jwt_decode/jwt_decode.dart';
-
-///Importing library to send http requests.
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
 
 import '../models/user.dart';
 
@@ -21,7 +18,7 @@ class Authentication with ChangeNotifier {
   User currentUser;
   String token;
   GoogleSignIn googleSignIn = GoogleSignIn();
-  String confirmationToken;
+  // String confirmationToken;
 
   Authentication({this.baseUrl, this.context, this.token, this.currentUser});
 
@@ -247,6 +244,12 @@ class Authentication with ChangeNotifier {
       status = Status.Fail;
       statusNum = 403;
       throw Exception('Failed to sign in');
+    } else if (response.statusCode == 409) {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      status = Status.Fail;
+      statusNum = 409;
+      throw Exception('Failed to sign in');
     } else if (response.statusCode == 500) {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
@@ -257,12 +260,12 @@ class Authentication with ChangeNotifier {
   }
 
   var _sendForgotPasswordUrl =
-      // Uri.parse("https://run.mocky.io/v3/690da7d6-d2a2-4c7a-87c1-a02effa19ba7");
+      //Uri.parse("https://run.mocky.io/v3/690da7d6-d2a2-4c7a-87c1-a02effa19ba7");
       Uri.parse("https://api.flick.photos/auth/forgot-password");
   Future<void> sendForgotPassword() async {
     // post request from backend
     status = Status.Loading;
-    final response = await http.post(
+    final response = await http.put(
       _sendForgotPasswordUrl,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
