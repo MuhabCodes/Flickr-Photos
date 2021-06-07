@@ -14,7 +14,7 @@ function Upload() {
   const [selectedFiles, setSelectedFiles] = useState([]); // images state (intially empty)
   const [restData, setRestData] = useState([]); // rest File data
   const [photoTag, setPhotoTag] = useState(''); // set photo tags on input change
-  const [photoAlbum, setPhotoAlbum] = useState(''); // set photo album on input change
+  const [photoDescription, setPhotoDescription] = useState(''); // set photo Descriptionon input change
   const [photoPrivacy, setPhotoPrivacy] = useState('public'); // set privacy on change (default public)
   const imgElement = React.useRef(null); // to get image dimensions
 
@@ -26,6 +26,7 @@ function Upload() {
         const data = {};
         data.fileName = file.name; // get the file name
         data.fileDate = new Date(); // get the photo upload date
+        data.fileCapture = file.lastModifiedDate;
         restDataArray.push(data);
       });
       setRestData((prevData) => prevData.concat(restDataArray)); // merge arrays
@@ -85,17 +86,18 @@ function Upload() {
         const data = {}; // create data object
         data.title = restData[index].fileName; // set photo name
         data.date = restData[index].fileDate; // set photo upload date
+        data.captureDate = restData[index].fileCapture; // set photo Capture date
         data.width = restData[index].photoWidth;
         data.height = restData[index].photoHeight;
         data.userId = userjwt.sub;
         data.tag = photoTag;
-        data.album = photoAlbum;
+        data.description = photoDescription;
         data.privacy = photoPrivacy;
         toDataUrl(selectedFile)
           .then((dataUrl) => {
             data.src = dataUrl; // set image src
             dataArray.push(data);
-            axios.post('/photos', data)
+            axios.post('/photosUp', data)
               .then(() => {
                 history.push(`/profile/photostream/${userjwt.sub}`); // redirect to photostream after upload
               });
@@ -166,8 +168,8 @@ function Upload() {
                 <input type="text" name="tag" id="edit-input-tags" placeholder="Separate tags with a space" onChange={(event) => setPhotoTag(event.target.value)} />
               </li>
               <li id="edit-option">
-                <h4 id="edit-option-title">Add to album</h4>
-                <input type="text" name="album" id="edit-input-albums" placeholder="Type your album" onChange={(event) => setPhotoAlbum(event.target.value)} />
+                <h4 id="edit-option-title">Add description</h4>
+                <input type="text" name="description" id="edit-input-description" placeholder="Type your description" onChange={(event) => setPhotoDescription(event.target.value)} />
               </li>
               <li id="edit-option">
                 <h4 id="edit-option-title">Privacy</h4>

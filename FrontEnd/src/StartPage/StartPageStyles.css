@@ -1,0 +1,39 @@
+.backgroundimg {
+  background-image: url(./img1.jpg);
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.div1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 235px;
+  font-size: 56px;
+  color: aliceblue;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+.div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 34px;
+  color: aliceblue;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}

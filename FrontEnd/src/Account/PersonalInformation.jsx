@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import './PersonalInformation.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import Navbar from '../App/Navbar';
 import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
 import configData from '../config.json';
 
@@ -44,7 +43,6 @@ const PersonalInformation = () => {
   }, []);
   return (
     <div>
-      <Navbar />
       <div className="container-personal-information">
         <div className="container-sub-nav-bar-account-settings">
           <SubNavBarPersonalInformation />

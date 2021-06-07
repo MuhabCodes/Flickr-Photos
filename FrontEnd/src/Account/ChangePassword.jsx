@@ -4,7 +4,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import Navbar from '../App/Navbar';
 import './ChangePassword.css';
 import configData from '../config.json';
 
@@ -42,7 +41,6 @@ const ChangePassword = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="main-change-password-after-loading">
         <form onSubmit={handleSubmit} className="change-password-form">
           <label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">

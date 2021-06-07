@@ -44,6 +44,8 @@ import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
+import StartPage from '../StartPage/StartPage';
+import NavBarSP from '../StartPage/NavBarSP';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -128,14 +130,17 @@ function App() {
               <Footer />
             </Route>
             <Route exact path="/account/delete">
+              <NavBar />
               <DeleteAccount />
               <Footer />
             </Route>
             <Route exact path="/account/edit-profile">
+              <NavBar />
               <EditPersonalInfo />
               <Footer />
             </Route>
             <Route exact path="/change-password">
+              <NavBar />
               <ChangePassword />
               <Footer />
             </Route>
@@ -241,11 +246,16 @@ function App() {
               <Albums />
               <Footer />
             </Route>
+            <Route exact path="/ex">
+              <NavBarSP />
+              <StartPage />
+            </Route>
             <Route path="*">
               { /* path for all pages that don't exist */}
               <NotFound />
               <Footer />
             </Route>
+
           </Switch>
         </div>
       </Router>

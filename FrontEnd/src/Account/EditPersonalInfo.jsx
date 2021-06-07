@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import './EditProfileInfo.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import Navbar from '../App/Navbar';
 import configData from '../config.json';
 
 const EditPersonalInfo = () => {
@@ -63,7 +62,6 @@ const EditPersonalInfo = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="edit-your-profile-main-container">
         {isLoading ? <div>Loading...</div>
           : (
