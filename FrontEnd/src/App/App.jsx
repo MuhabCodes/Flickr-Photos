@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { React, useEffect } from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
@@ -222,7 +223,7 @@ function App() {
               <FollowersPage />
               <Footer />
             </Route>
-            <Route exact path="/Notification">
+            <Route exact path="/myNotification">
               <Notification />
               <Footer />
             </Route>

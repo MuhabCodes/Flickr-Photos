@@ -36,9 +36,7 @@
   position: relative;
 }
 
-input[type=text],
-select,
-textarea {
+.edit-text {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
