@@ -20,36 +20,6 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> with WidgetsBindingObserver {
-  // final DynamicLinkService _dynamicLinkService = DynamicLinkService();
-  // Timer _timerLink;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance.addObserver(this);
-  // }
-
-  // @override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   if (state == AppLifecycleState.resumed) {
-  //     _timerLink = new Timer(
-  //       const Duration(milliseconds: 1000),
-  //       () {
-  //         _dynamicLinkService.retrieveDynamicLink(context);
-  //       },
-  //     );
-  //   }
-  // }
-
-  // @override
-  // void dispose() {
-  //   WidgetsBinding.instance.removeObserver(this);
-  //   if (_timerLink != null) {
-  //     _timerLink.cancel();
-  //   }
-  //   super.dispose();
-  // }
-
   final List<String> _qoutesHeader = [
     'Powerful',
     'Keep your memories safe',
