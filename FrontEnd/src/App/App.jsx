@@ -46,6 +46,7 @@ import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
+import VerificationPage from '../Signup/LoadingPage';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -101,6 +102,9 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/verification/:confirtoken">
+              <VerificationPage />
+            </Route>
             <Route exact path="/UpgradeToPro">
               <NavBar />
               <UpgradeToPro />
