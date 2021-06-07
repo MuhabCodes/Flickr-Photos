@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { join } = require('path');
 
-const cameraBrand = require('../components/cameraBrand/cameraBrandModel');
+const cameraBrand = require('../../components/cameraBrand/cameraBrandModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 async function cameraBrandSeed() {
