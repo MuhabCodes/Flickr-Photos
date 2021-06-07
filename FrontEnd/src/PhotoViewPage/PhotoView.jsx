@@ -39,13 +39,13 @@ function PhotoView() {
           setPhotoTags(resp.data.tags);
           // check if it is the user's photo to set enable to true to give rights
           if (resp.data.userId === userJwt.sub) { setEnabled(true); }
-          axios.get('/Comments') // fetch comments
+          axios.get(`/photos/${routeId}/comments`) // fetch comments
             .then((response) => {
               setPhotoComments(response.data);
               return response.data;
             });
           return resp.data;
-        }).catch(() => { history.push('*'); });
+        }).catch(() => { history.push('*//'); });
     }
   }, []);
 
@@ -62,18 +62,18 @@ function PhotoView() {
       .then(() => {
         // Delete
         setTimeout(() => history.go(-1), 100); // Redirect to last page visited
-      }).catch(() => { history.push('*'); });
+      }).catch(() => { history.push('*//'); });
   };
   // follow button handle
   const follow = () => {
     const send = {};
     send.userFollowed = data.userId;
-    axios.post('follow', send).catch(() => { history.push('*'); });
+    axios.post('/people/follow', send).catch(() => { history.push('*//'); });
   };
   const unfollow = () => {
     const send = {};
     send.userUnfollowed = data.userId;
-    axios.post('unfollow', send).catch(() => { history.push('*'); });
+    axios.post('/people/unfollow', send).catch(() => { history.push('*//'); });
   };
 
   // handle edit tag
@@ -83,20 +83,16 @@ function PhotoView() {
     setData(data);
     axios.put(`/photos/${routeId}`, data).catch((error) => {
       if (error.response.status === 404) {
-        setTimeout(() => history.push('*'), 100); // Redirect to Error page
+        setTimeout(() => history.push('*//'), 100); // Redirect to Error page
       }
     });
   };
   // handle Fav icon
   const fav = () => {
-    const send = {};
-    send.userFav = data.userId;
-    axios.post('fav', send).catch(() => { history.push('*'); });
+    axios.post(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
   const unfav = () => {
-    const send = {};
-    send.userUnfav = data.userId;
-    axios.post('unfav', send).catch(() => { history.push('*'); });
+    axios.delete(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
 
   // handle comments
@@ -105,37 +101,36 @@ function PhotoView() {
     if (commentText !== '') {
       const newComment = {};
       newComment.comment = commentText;
-      newComment.commentAvatar = data.userAvatar;
+      /* newComment.commentAvatar = data.userAvatar;
       newComment.userName = data.user;
       newComment.userId = userJwt.sub;
       const d = new Date();
-      newComment.time = d.getTime();
-      axios.post('/Comments', newComment).then(() => {
+      newComment.time = d.getTime(); */
+      axios.post(`/photos/${routeId}/comments/`, newComment).then(() => {
         // update comments
-        axios.get('/Comments') // fetch comments
+        axios.get(`/photos/${routeId}/comments`) // fetch comments
           .then((response) => {
             setPhotoComments(response.data);
             return response.data;
           });
       }).catch((error) => {
         if (error.response.status === 404) {
-          setTimeout(() => history.push('*'), 100); // Redirect to Error page
-        }
+          setTimeout(() => history.push('*//'), 100); // Redirect to Error page
+        } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
       });
     }
   };
   // handle delete comments
   const deleteComment = (i) => {
-    const toBeDeleted = {};
-    setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
-    toBeDeleted.commentId = photoComments[i].id;
-    axios.delete('/Comments', toBeDeleted).then(() => {
-
+    /* const toBeDeleted = {};
+    toBeDeleted.commentId = photoComments[i].id; */
+    axios.delete(`/photos/${routeId}/comments/${photoComments[i].id}`).then(() => {
+      setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
       // update comments
     }).catch((error) => {
       if (error.response.status === 404) {
-        history.push('*'); // Redirect to Error page
-      }
+        history.push('*//'); // Redirect to Error page
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
     });
   };
   // calculate time from now for comments
