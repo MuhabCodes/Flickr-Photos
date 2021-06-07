@@ -94,6 +94,35 @@ class TestUserProfilePage(object):
         sleep(2)
         print("\nGalleries tab is working")
 
+    def test_add_new_gallery(self, setup):
+        self.userprofilePage.click(self.userprofilePage.GALLERIES_LABEL)
+        if self.userprofilePage.element_clickable(self.userprofilePage.ADD_NEW_GALLERY_BUTTON):
+            self.userprofilePage.click(self.userprofilePage.ADD_NEW_GALLERY_BUTTON)
+            sleep(2)
+            self.userprofilePage.send(self.userprofilePage.GALLERY_NAME_FIELD, "Test12345")
+            self.userprofilePage.send(self.userprofilePage.GALLERY_DESC_FIELD, "This is a test")
+            self.userprofilePage.click(self.userprofilePage.SAVE_GALLERY_BUTTON)
+            sleep(2)
+        else :
+            if self.userprofilePage.element_clickable(self.userprofilePage.PLUS_NEW_GALLERY_BUTTON):
+                self.userprofilePage.click(self.userprofilePage.PLUS_NEW_GALLERY_BUTTON)
+                sleep(2)
+                self.userprofilePage.send(self.userprofilePage.GALLERY_NAME_FIELD, "Test125")
+                self.userprofilePage.send(self.userprofilePage.GALLERY_DESC_FIELD, "This is a second test")
+                self.userprofilePage.click(self.userprofilePage.SAVE_GALLERY_BUTTON)
+
+        sleep(2)
+
+    def test_delete_gallery(self, setup):
+        self.userprofilePage.click(self.userprofilePage.GALLERIES_LABEL)
+        sleep(2)
+        self.userprofilePage.click(self.userprofilePage.EXAMPLE_GALLERY)
+        sleep(2)
+        self.userprofilePage.click(self.userprofilePage.EDIT_GALLERY_ICON)
+        sleep(2)
+        self.userprofilePage.click(self.userprofilePage.DELETE_GALLERY_BUTTON)
+        sleep(2)
+
     def test_groups_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.GROUPS_LABEL)
         sleep(2)
@@ -133,3 +162,4 @@ class TestUserProfilePage(object):
         sleep(2)
         assert "contacts" in self.userprofilePage.page_url() and "rev" not in self.userprofilePage.page_url()
         print("\nFollowing link is working and redirects to people followed by the user page")
+
