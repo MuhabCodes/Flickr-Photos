@@ -1,11 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './About.css';
+import jwt from 'jwt-decode';
 import AA from './TeamPhotos/AA.jpeg';
 import AM from './TeamPhotos/AM.jfif';
 import pp from './TeamPhotos/test.jpg';
 
 function About() {
+  const userJwt = jwt(localStorage.getItem('token'));
   return (
     <div id="about-page">
       <div className="container-fluid">
@@ -18,10 +20,12 @@ function About() {
               <li id="about-sidebar-li"><a href="../guidelines/">Community guidelines</a></li>
               <li id="about-sidebar-li"><a href="../jobs/">Jobs</a></li>
             </ul>
+            {(userJwt !== '') && (
             <p id="about-join">
               <a href="/SignUp/"><img src="https://combo.staticflickr.com/pw/images/tour/en-us/create-account-button.png" width="193" height="39" alt="Create Account" /></a>
               <a href="/Login/">or Sign In</a>
             </p>
+            )}
 
             <h3 id="about-sidebar-h3">Need help?</h3>
             <p>
