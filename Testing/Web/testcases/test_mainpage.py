@@ -91,19 +91,19 @@ class TestMainPage(object):
         assert "groups" and self.mainPage.TEXT_TO_SEARCH in self.mainPage.page_url()
         sleep(2)
 
-    def test_interacting_photo(self, setup):
-        self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
+    def test_fav_and_comment_photo(self, setup):
+        self.mainPage.search_and_click_photo(self.mainPage.TEXT_TO_SEARCH)
+        self.mainPage.click(self.mainPage.FAV_PHOTO)
         sleep(2)
-        self.mainPage.click(self.mainPage.PHOTOS_LABEL)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.mainPage.clear_field(self.mainPage.COMMENT_FIELD)
+        self.mainPage.send(self.mainPage.COMMENT_FIELD, "Nice")
+        self.mainPage.click(self.mainPage.COMMENT_BUTTON)
         sleep(2)
-        action = webdriver.ActionChains(self.driver)
-        action. move_to_element('/html/body/div[1]/div/main/div[1]/div/div/div[1]/div/div/a').click().perform()
-        #self.mainPage.click(self.mainPage.EXAMPLE_PHOTO)
-        #sleep(2)
-        #self.mainPage.click(self.mainPage.FAV_PHOTO)
-        #sleep(2)
-        #self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        #self.mainPage.clear_field(self.mainPage.COMMENT_FIELD)
-        #self.mainPage.send(self.mainPage.COMMENT_FIELD, "Nice")
-        #sleep(2)
 
+    @pytest.mark.skip
+    def test_add_to_gallery_photo(self, setup):
+        self.mainPage.search_and_click_photo(self.mainPage.TEXT_TO_SEARCH)
+        sleep(2)
+        self.mainPage.click(self.mainPage.ADD_PHOTO_TO)
+        sleep(2)
