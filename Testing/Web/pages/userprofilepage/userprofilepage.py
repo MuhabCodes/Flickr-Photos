@@ -34,6 +34,15 @@ class UserProfilePage(BasePage):
     PINTEREST_FIELD = (By.NAME, 'pinterest')
     TUMBLR_FIELD = (By.NAME, 'tumblr')
     DONE_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[4]/div[1]/div/div[3]/div/div/ul[2]/li[7]/span[2]/button')
+    """GALLERY PAGE"""
+    ADD_NEW_GALLERY_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[5]/div[1]/button')  #first gallery created
+    GALLERY_NAME_FIELD = (By.XPATH, '/html/body/div[6]/div/div/div/div/div/div[1]/input')
+    GALLERY_DESC_FIELD = (By.XPATH, '/html/body/div[6]/div/div/div/div/div/textarea')
+    SAVE_GALLERY_BUTTON = (By.CSS_SELECTOR, 'button.mini.button-action')
+    PLUS_NEW_GALLERY_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[4]/div[1]/div/a')
+    EXAMPLE_GALLERY = (By.XPATH, '/html/body/div[1]/div/div[4]/div[2]/div[1]/div/div[1]/a')
+    EDIT_GALLERY_ICON = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[2]/a[1]')
+    DELETE_GALLERY_BUTTON = (By.XPATH, '/html/body/div[6]/div/div/div/div/div[1]/div[4]/a')
 
     def __init__(self, driver):
         super().__init__(driver)
