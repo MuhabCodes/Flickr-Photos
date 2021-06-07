@@ -156,7 +156,7 @@ class _SendEmailState extends State<SendEmail> {
                               ),
                               TextSpan(
                                 text:
-                                    "please check your email to reset your password.",
+                                    " please check your email to reset your password.",
                                 style: TextStyle(color: Colors.black),
                               ),
                             ])),

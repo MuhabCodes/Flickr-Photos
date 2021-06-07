@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flickr/login/dynamic_link_service.dart';
 import 'package:flickr/login/sign_in.dart';
 import 'package:flickr/login/splash_screen.dart';
 import 'package:flickr/providers/auth.dart';
