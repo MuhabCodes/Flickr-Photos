@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches a snapshot 1`] = `
+<button
+  aria-expanded="false"
+  className="dropdown-toggle"
+  data-testid="more-test"
+  data-toggle="dropdown"
+  id="exp-dropdown-menu-button1"
+  type="button"
+>
+  More
+</button>
+`;
