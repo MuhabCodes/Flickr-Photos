@@ -96,9 +96,9 @@ class HomeState extends State<Home> {
 
     if (isDone == 0) {
       print("inside global provider req");
-      globalProvider =
-          Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
-      //Provider.of<PostProviderInteg>(context, listen: true).getUserHomePosts();
+      //globalProvider =
+      //  Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
+      Provider.of<PostProviderInteg>(context, listen: true).getUserHomePosts();
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
