@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:jwt_decode/jwt_decode.dart';
 
 import '../models/user.dart';
-
+import 'package:jwt_decode/jwt_decode.dart';
 enum Status { Success, Fail, Loading }
 
 class Authentication with ChangeNotifier {
@@ -28,6 +28,7 @@ class Authentication with ChangeNotifier {
 
   var _getStartedUrl =
       Uri.parse("https://run.mocky.io/v3/d05b01df-d142-49aa-917a-a4fb129cfdd3");
+    
   Future<void> getStarted() async {
     // post request from backend
     status = Status.Loading;
@@ -54,8 +55,10 @@ class Authentication with ChangeNotifier {
     }
   }
 
-  //var _getUrl =Uri.parse("https://run.mocky.io/v3/a907c913-8f07-4c9f-855d-80bea973a8d2");
-  var _getUrl = Uri.parse("https://api.flick.photos/auth/login");
+  var _getUrl =
+        Uri.parse("https://api.flick.photos/auth/login");
+        
+        //Uri.parse("https://run.mocky.io/v3/a907c913-8f07-4c9f-855d-80bea973a8d2");
   Future<void> signIn() async {
     // post request from backend
 

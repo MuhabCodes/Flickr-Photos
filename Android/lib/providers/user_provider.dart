@@ -1,6 +1,4 @@
 import 'dart:async';
-
-///Importing library to send http requests.
 import 'dart:convert';
 import 'dart:io';
 
@@ -26,7 +24,7 @@ class UserProvider with ChangeNotifier {
   bool isSelected = false; //check if one is selected
   bool dateTaken = true;
   UserProvider({this.baseUrl, this.context, this.user});
-
+  int cameraNavigationIndex=0;
   void getMember(String member, String val) {
     // getter for certain member
     switch (member) {
@@ -258,5 +256,22 @@ class UserProvider with ChangeNotifier {
     arangeWithUploadDate();
     selectedPhotos.clear();
     notifyListeners();
+  }
+
+  Photo returnPhoto(String id)
+  {
+    for(int i=0;i<user.photos.length;i++)
+    {
+      if(user.photos[i].id==id);
+      {
+        return user.photos[i];
+      }
+    }
+    return null;
+  }
+  double resetCameraNavigationIndex(double height)
+  {
+   cameraNavigationIndex=0;
+   return height;
   }
 }

@@ -80,12 +80,9 @@ class _SignInState extends State<SignIn> {
     }
     if (_auth.status == Status.Success) {
       var loggedUser = Provider.of<user.UserProvider>(context, listen: false);
-      var notificationProvider =
-          Provider.of<io.NotificationProvider>(context, listen: false);
-      notificationProvider.token = _auth.token;
-      loggedUser.token = _auth.token;
       loggedUser.user = _auth.currentUser;
-
+          var notificationProvider = Provider.of<io.NotificationProvider>(context, listen: false);
+          notificationProvider.token=_auth.token;
       print(loggedUser.user.token);
       print(loggedUser.user.userId);
       Navigator.of(context).pop();
