@@ -13,7 +13,8 @@
     "rules": {
         "linebreak-style": "off",
         "no-underscore-dangle": ["error" , {"allow": ["_id"] }],
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "no-plusplus": "off"
     }
 }
 

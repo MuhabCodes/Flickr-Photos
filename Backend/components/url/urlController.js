@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 const mongoose = require('mongoose');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 
 const { getUserById } = require('../user/userDAL');
 

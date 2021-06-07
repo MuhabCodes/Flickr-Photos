@@ -1,3 +1,4 @@
+const moment = require('moment');
 const Photo = require('./photoModel');
 require('../user/userModel');
 
@@ -59,18 +60,17 @@ module.exports = {
     return inPhoto;
   },
   async fetchFollowerPhotos(userIds) {
-    // date six months ago
-    const date = Date.now() - 7776000;
+    // gets the most recent 100 photos
     const found = await Photo.find({
       $and:
-       [{ user: { $in: userIds } }, { uploadDate: { $gte: date } }],
+       [{ user: { $in: userIds } }, { uploadDate: { $gte: moment().subtract(6, 'months') } }],
     })
+      .sort({ uploadDate: -1 })
       .limit(100)
       .populate({
         path: 'user',
         model: 'User',
-      })
-      .sort({ uploadDate: -1 });
+      });
     return found;
   },
 

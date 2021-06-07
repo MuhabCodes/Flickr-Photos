@@ -1,7 +1,7 @@
 const tagsDAL = require('./tagsDAL');
 const { getPhotoById } = require('../photo/photoDAL');
 const { getUserById } = require('../user/userDAL');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 const { getTagFromPhoto } = require('./services/checkTagInPhoto');
 
 module.exports.getPhotoTags = async function getPhotoTags(req, res) {

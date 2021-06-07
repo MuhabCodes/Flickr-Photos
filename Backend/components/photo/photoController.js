@@ -11,7 +11,7 @@ const { deletePhoto } = require('./services/deletePhoto');
 const { getUserPhotosById } = require('./services/getUserPhotosById');
 const { getFollowerPhotos } = require('./services/getFollowerPhotos');
 
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 
 // Set The Storage Engine
 const storage = multer.diskStorage({

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const favoriteDAL = require('./favoritesDAL');
 const photoDAL = require('../photo/photoDAL');
 
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 
 exports.add = async function addFavorite(req, res, next) {
   const { authorization } = req.headers;
@@ -66,6 +66,7 @@ exports.findFavorite = async function findFavorite(req, res) {
 // error here makes non sense
 exports.findPublicFavorite = async function findPublicFavorite(req, res) {
   const user = req.params.userId;
+
   try {
     if (!mongoose.isValidObjectId(user)) {
       return res.status(404).json({
@@ -73,9 +74,13 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
       });
     }
     const favoriteOutput = await favoriteDAL.findFavorite(user);
+    let count = 0;
+    for (let i = 0; i < favoriteOutput.length; i += 1) {
+      if (favoriteOutput[i].photo.isPublic === true) count += 1;
+    }
     return res.status(200).json(
       {
-        total: favoriteOutput.length,
+        total: count,
         owner: user,
         photo: favoriteOutput
           .filter((favorite) => favorite.photo.isPublic)
@@ -97,6 +102,29 @@ exports.deleteFavorite = async function deleteFavorite(req, res) {
     const favoriteDeleted = await favoriteDAL.deleteFavorite({ userId, photoId });
     photoDAL.removeFav(photoId);
     return res.status(200).json(favoriteDeleted);
+  } catch (err) {
+    return res.status(500).json({
+      error: err,
+    });
+  }
+};
+exports.findPhotoLikers = async function findPhotoLikers(req, res) {
+  const photo = req.params.photoId;
+  try {
+    if (!mongoose.isValidObjectId(photo)) {
+      return res.status(404).json({
+        error: 'Invalid photoId',
+      });
+    }
+    const favoriteOutput = await favoriteDAL.findFavoriteLikers(photo);
+    return res.status(200).json(
+      {
+        photoLikers: favoriteOutput.map((doc) => (
+          doc.user
+
+        )),
+      },
+    );
   } catch (err) {
     return res.status(500).json({
       error: err,
