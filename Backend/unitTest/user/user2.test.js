@@ -35,3 +35,13 @@ test('should getUser By Email', async () => {
   const userFound = await userDAL.getUserByEmail(userToGetInfo);
   expect(JSON.stringify(userFound.email)).toEqual(JSON.stringify(userToGetInfo));
 });
+
+test('should unfollow a given user', async () => {
+  const users = await getAllUsers();
+  const userToUnfollow = users[0].following[0];
+  const followingBefore = users[0].following.length;
+  await userDAL.removeFromFollowing(users[0]._id, userToUnfollow);
+  await userDAL.removeFromFollowers(userToUnfollow, users[0]._id);
+  const updatedUser = await getAllUsers();
+  expect(updatedUser[0].following.length).toEqual(followingBefore - 1);
+});
