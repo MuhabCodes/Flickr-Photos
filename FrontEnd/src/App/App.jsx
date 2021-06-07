@@ -48,6 +48,7 @@ import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
 import VerificationPage from '../Signup/LoadingPage';
+import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -107,6 +108,11 @@ function App() {
             <Route exact path="/UpgradeToPro">
               <NavBar />
               <UpgradeToPro />
+              <Footer />
+            </Route>
+            <Route exact path="/uptoVerification/:proToken">
+              <NavBar />
+              <UpToProIntegration />
               <Footer />
             </Route>
             <Route exact path="/GettingStarted">
