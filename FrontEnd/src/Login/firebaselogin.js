@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import firebase from 'firebase/app';
 import 'firebase/analytics';

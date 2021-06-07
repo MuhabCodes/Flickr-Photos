@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavbarFooter.css';
@@ -66,7 +67,7 @@ function NavBar() {
           <i className="fas fa-cloud-upload-alt" />
           {' '}
         </a>
-        <a href="/Notification">
+        <a href="/myNotification">
           <i className="fas fa-bell" />
           {' '}
         </a>

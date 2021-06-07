@@ -7,18 +7,15 @@ function FollowersCard(props) {
   return (
     <div className="container">
       { followers.map((Follower) => (
-        <div className="follower-card-container" key={Follower.id}>
+        <div className="follower-card-container">
 
-          <img className="follower-avatar" src={Follower.useravatar} alt="avatar" />
+          <img className="follower-avatar" src={Follower.userAvatar} alt="avatar" />
 
           <div className="content">
-            <h6 className="follower-name">{Follower.UserName}</h6>
+            <h6 className="follower-name">{Follower.userName}</h6>
             <h6 className="follower-name">
-              {Follower.item}
               {' '}
-              items |
-              {' '}
-              <a href="Profile/photostream/4">view profile</a>
+              <a href={`Profile/Photostream/${Follower.userId}`}>view profile</a>
               {' '}
             </h6>
           </div>
