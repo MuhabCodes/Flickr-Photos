@@ -98,7 +98,6 @@ exports.getUserInfoById = async function getUserInfoById(req, res) {
       displayName: userObj.displayName,
       photos: userPhotos,
       photosCount: userPhotos.length,
-      description: userObj.description,
       person: userObj.personId,
       tags: userTags.length,
       favs: userFavs.length,

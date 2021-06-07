@@ -7,7 +7,7 @@ function generatePhotoData(userArray) {
     for (let i = 0; i < 1 + Math.floor(7 * Math.random()); i++) {
       const description = faker.lorem.sentence();
       const captureDate = faker.date.between('01-01-2015', '06-07-2021');
-      const uploadDate = faker.date.between('10-10-2019', '06-07-2021');
+      const uploadDate = faker.date.between('06-07-2020', '06-07-2021');
       const title = faker.lorem.word();
       const height = Math.floor(500 + Math.random() * 1000);
       const width = Math.floor(500 + Math.random() * 1000);
