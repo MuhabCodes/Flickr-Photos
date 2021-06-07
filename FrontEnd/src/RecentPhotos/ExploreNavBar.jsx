@@ -21,6 +21,7 @@ function ExploreNavBar() {
         </button>
         <div className="dropdown-menu" aria-labelledby="exp-dropdown-menu-button1">
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
+          <Link className="dropdown-item" to="./TheCommons">The Commons</Link>
         </div>
       </div>
     </nav>
