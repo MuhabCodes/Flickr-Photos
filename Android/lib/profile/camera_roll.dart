@@ -173,14 +173,14 @@ class _CameraRollState extends State<CameraRoll> {
                 ),
                 Container(
                   height: 30,
-                  width: size.width * 0.3,
+                  width: size.width * 0.34,
                   child: Container(
-                    width: size.width * 0.3,
+                    width: size.width * 0.34,
                     decoration: BoxDecoration(shape: BoxShape.rectangle),
                     // ignore: deprecated_member_use
                     child: RaisedButton(
                       onPressed: () {
-                        userProvider.cameraNavigationIndex=1;
+                        userProvider.cameraNavigationIndex = 1;
                         userProvider.notify();
                         setState(() {
                           Navigator.push(
@@ -188,9 +188,7 @@ class _CameraRollState extends State<CameraRoll> {
                             MaterialPageRoute(
                                 builder: (context) => CameraView()),
                           );
-                      
                         });
-                       
                       },
                       color: Colors.grey[50],
                       shape: RoundedRectangleBorder(
