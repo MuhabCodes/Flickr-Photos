@@ -1,5 +1,5 @@
 const faker = require('faker');
-const User = require('../../components/user/userModel');
+const User = require('../../../components/user/userModel');
 
 function generateUserData(numUsers) {
   const userArray = [];

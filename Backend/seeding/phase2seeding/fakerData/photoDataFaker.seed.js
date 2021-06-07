@@ -1,5 +1,5 @@
 const faker = require('faker');
-const Photo = require('../../components/photo/photoModel');
+const Photo = require('../../../components/photo/photoModel');
 
 function generatePhotoData(userArray) {
   const photoArray = [];
