@@ -70,3 +70,22 @@
   clear: both;
   border-top: 1px solid #e3e3e3;
 }
+
+.add-btn-scp {
+  line-height: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #006dac;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+
+.add-icon-scp {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
+  overflow: hidden;
+  color: #999;
+}

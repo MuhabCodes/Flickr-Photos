@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Popup from 'reactjs-popup';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
+import 'reactjs-popup/dist/index.css';
 // import jwt from 'jwt-decode';
+import add from './assets/add-icon.png';
 import './Showcase.css';
+import AddModalShowcase from './AddModalShowcase';
 // import images from './imagesArray';
 
 const Showcase = () => {
@@ -38,6 +42,17 @@ const Showcase = () => {
               <span>Showcase</span>
             </p>
           </div>
+          <Popup
+            trigger={(
+              <button type="button" className="add-btn-scp">
+                <img src={add} className="add-icon-scp" alt="" />
+              </button>
+              )}
+            modal
+            nested
+          >
+            <AddModalShowcase />
+          </Popup>
           { showCase && Object.keys(showCase).length !== 0 ? (
             <div className="showcase-container-scp" id="user-sc-full">
               {showCase.map((image) => (
