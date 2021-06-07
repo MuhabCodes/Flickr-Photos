@@ -38,6 +38,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Future<void> _forgetSubmit() async {
     final _auth = Provider.of<Authentication>(context, listen: false);
     try {
+      _auth.currentUser = new User(
+        email: _emailController.text,
+      );
       await _auth.sendForgotPassword();
     } catch (error) {
       const errorMessage =
