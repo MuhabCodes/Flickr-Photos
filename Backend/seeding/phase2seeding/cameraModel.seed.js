@@ -1,6 +1,6 @@
 const { join } = require('path');
 
-const cameraModel = require('../components/camera/cameraModel');
+const cameraModel = require('../../components/camera/cameraModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 async function cameraModelSeed() {

@@ -66,6 +66,7 @@ exports.findFavorite = async function findFavorite(req, res) {
 // error here makes non sense
 exports.findPublicFavorite = async function findPublicFavorite(req, res) {
   const user = req.params.userId;
+
   try {
     if (!mongoose.isValidObjectId(user)) {
       return res.status(404).json({
@@ -73,9 +74,13 @@ exports.findPublicFavorite = async function findPublicFavorite(req, res) {
       });
     }
     const favoriteOutput = await favoriteDAL.findFavorite(user);
+    let count = 0;
+    for (let i = 0; i < favoriteOutput.length; i += 1) {
+      if (favoriteOutput[i].photo.isPublic === true) count += 1;
+    }
     return res.status(200).json(
       {
-        total: favoriteOutput.length,
+        total: count,
         owner: user,
         photo: favoriteOutput
           .filter((favorite) => favorite.photo.isPublic)
