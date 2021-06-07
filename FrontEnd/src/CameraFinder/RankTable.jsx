@@ -1,5 +1,5 @@
 import React from 'react';
-import { cameras } from '../PopularCamerasDb.json';
+import { cameras } from '../Mock/MockAPI.json';
 import './RankTable.css';
 // This .jsx will display the data fetched from .json as a table.
 // RankTable function has two functions renderHead and renderBody
@@ -15,11 +15,11 @@ function RankTable() {
       <thead id="table-head">
         <tr className="table-row">
           {/* <th className="th">Rank ▾</th> */}
-          <th className="th">
+          <th className="table-header-th">
             <a className="camera-table" href="./Brands">Brand</a>
           </th>
-          <th className="th">Top Models</th>
-          <th className="th">Model Types</th>
+          <th className="table-header-th">Top Models</th>
+          <th className="table-header-th">Model Types</th>
           {/* <th className="th"><a className="camera-table" href="./noOfModels"># of Mod
           //els</a></th> */}
         </tr>
@@ -28,7 +28,7 @@ function RankTable() {
   }
   function renderBody() {
     return (
-      <tbody id="tbody">
+      <tbody id="table-body">
         {cameras.map((camera) => (
           <tr className="table-row">
             {/* <td className="table-cell" key={camera.rank}>{camera.rank}</td> */}
