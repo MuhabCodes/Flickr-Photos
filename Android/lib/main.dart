@@ -1,10 +1,12 @@
 import 'package:flickr/login/get_started.dart';
-import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/profile/description.dart';
+import 'package:flickr/profile/description_with_privacy.dart';
+import 'package:flickr/profile/most_popular.dart';
 import 'package:flickr/profile/privacy_and_safety.dart';
 import 'package:flickr/profile/select_photos.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/camera_provider.dart';
+import 'package:flickr/providers/new_post_provider.dart';
 import 'package:flickr/providers/notification_provider.dart';
 import 'package:flickr/providers/post_provider.dart';
 import 'package:flickr/providers/tag_provider.dart';
@@ -49,6 +51,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: TagProvider(),
         ),
+         ChangeNotifierProvider.value(
+          value: NewPostProvider(),
+        ),
         ChangeNotifierProvider.value(
           value: PostProvider(),
         ),
@@ -73,6 +78,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/description': (ctx) => Description(),
           '/selectphotos': (ctx) => SelectPhoto(),
+          '/descriptionwithprivacy': (ctx) => DescriptionWithPrivacy(),
+          '/mostpopular': (ctx) => MostPopular(),
         },
         theme: ThemeData(fontFamily: "ProximaNova"),
         debugShowCheckedModeBanner: false, //remove debug sign
