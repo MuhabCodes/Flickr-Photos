@@ -18,26 +18,30 @@ class _CameraButtonsState extends State<CameraButtons> {
   int _mode = 0;
   Color _cameraButtonColor = Colors.white;
   Color _videoButtonColor = Colors.grey.shade600;
-  void setCameraColor() {   //Set Camera button's color
+  void setCameraColor() {
+    //Set Camera button's color
     _initialCircleColor = Colors.white;
     _cameraButtonColor = Colors.white;
     _videoButtonColor = Colors.grey.shade600;
     setState(() {});
   }
 
-  void setVideoColor() {   //Set Video button's color
+  void setVideoColor() {
+    //Set Video button's color
     _initialCircleColor = Colors.red;
     _cameraButtonColor = Colors.grey.shade600;
     _videoButtonColor = Colors.white;
     setState(() {});
   }
 
-  void setVideoMode() {    //Set mode to video
+  void setVideoMode() {
+    //Set mode to video
     _mode = 1;
     setState(() {});
   }
 
-  void setPhotoMode() {    //Set photo to video
+  void setPhotoMode() {
+    //Set photo to video
     _mode = 0;
     setState(() {});
   }
@@ -51,7 +55,10 @@ class _CameraButtonsState extends State<CameraButtons> {
       builder: (_, index, __) {
         return Wrap(children: [
           IconButton(
-            icon: FaIcon(FontAwesomeIcons.video,size:24,),
+            icon: FaIcon(
+              FontAwesomeIcons.video,
+              size: 24,
+            ),
             color: _videoButtonColor,
             onPressed: () {
               setVideoColor();
@@ -60,9 +67,10 @@ class _CameraButtonsState extends State<CameraButtons> {
           ),
           HoldDetector(
             onHold: () {
-              _mode==1
-              ?Provider.of<CameraProvider>(context, listen: false).startVideo()
-              : print("Video Mode!");
+              _mode == 1
+                  ? Provider.of<CameraProvider>(context, listen: false)
+                      .startVideo()
+                  : print("Video Mode!");
             },
             onCancel: () async {
               await Provider.of<CameraProvider>(context, listen: false)
@@ -75,7 +83,10 @@ class _CameraButtonsState extends State<CameraButtons> {
               });
             },
             child: IconButton(
-              icon: Icon(Icons.circle,size: 24,),
+              icon: Icon(
+                Icons.circle,
+                size: 24,
+              ),
               color: _initialCircleColor,
               onPressed: () async {
                 if (_mode == 0) {
@@ -95,7 +106,10 @@ class _CameraButtonsState extends State<CameraButtons> {
             ),
           ),
           IconButton(
-            icon: FaIcon(FontAwesomeIcons.camera,size: 24,),
+            icon: FaIcon(
+              FontAwesomeIcons.camera,
+              size: 24,
+            ),
             color: _cameraButtonColor,
             onPressed: () {
               setCameraColor();
