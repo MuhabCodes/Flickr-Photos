@@ -104,7 +104,6 @@ exports.deleteFavorite = async function deleteFavorite(req, res) {
   }
 };
 exports.findPhotoLikers = async function findPhotoLikers(req, res) {
-  console.log('here')
   const photo = req.params.photoId;
   try {
     if (!mongoose.isValidObjectId(photo)) {
