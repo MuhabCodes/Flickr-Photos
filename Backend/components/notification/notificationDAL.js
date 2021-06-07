@@ -1,11 +1,13 @@
 const admin = require('firebase-admin');
+const { join } = require('path');
 const serviceAccount = require('../../secret/serviceAccountKey.json');
+require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 module.exports.getNotifications = async function getNotifications(userId) {
   if (!admin.apps.length) { // this to check if there's app
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: 'https://notify-d4836-default-rtdb.firebaseio.com',
+      databaseURL: process.env.FIREBASE_URL,
     });
   }
   const FIREBASE_DATABASE = admin.database();
