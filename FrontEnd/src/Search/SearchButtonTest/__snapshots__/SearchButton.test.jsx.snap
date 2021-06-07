@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches a snapshot 1`] = `
+<div
+  className="search-but"
+>
+  <button
+    data-testid="search-button-test"
+    id="search-button-btn"
+    type="submit"
+  >
+    <img
+      alt=""
+      src="https://img.icons8.com/ios/25/000000/search--v1.png"
+    />
+     
+  </button>
+</div>
+`;
