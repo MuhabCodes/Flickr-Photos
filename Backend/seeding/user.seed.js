@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { join } = require('path');
 const utilsPassword = require('../utils/passwords');
-const User = require('../components/User/userModel');
+const User = require('../components/user/userModel');
 require('dotenv').config({ path: join(__dirname, '/../secret/', '.env') });
 
 async function userSeed() {
@@ -17,6 +17,7 @@ async function userSeed() {
     email: 'hamoksha@hotmail.com',
     password: hashedPw,
     _id: mongoose.Types.ObjectId('6092ea68326fa5101115dfae'),
+    displayName: 'mhmd',
   }, {
     email: 'activated@gmail.com',
     password: hashedPw,
@@ -31,8 +32,10 @@ async function userSeed() {
   }, {
     _id: mongoose.Types.ObjectId('507f191e810c19729de860ea'),
     personId: mongoose.Types.ObjectId('507f191e810c19729de860ef'),
+    displayName: 'anna',
     email: 'mhmd@amr.com',
-    password: 'e3e3e3',
+    password: 'hashedPw',
+    isActivated: true,
 
   },
   {
