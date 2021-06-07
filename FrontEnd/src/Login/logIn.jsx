@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -115,7 +116,9 @@ export default function SignUp() {
         </form>
         <Link to="/forgotpassword" className={classes.linkStyle}>Forgot Password?</Link>
         <div style={{
-          fontSize: '0.875rem', position: 'relative', alignSelf: 'center',
+          fontSize: '0.875rem',
+          position: 'relative',
+          alignSelf: 'center',
         }}
         >
           <p style={{ marginTop: '15px' }}>

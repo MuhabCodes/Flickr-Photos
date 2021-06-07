@@ -8,7 +8,7 @@ function FollowersPage() {
   const { userid } = useParams();
   const [followers, setfollowers] = useState([]);
   useEffect(() => {
-    axios.get(`followers?userId=${userid}`)
+    axios.get(`/user/${userid}/followers`)
       .then((items) => {
         setfollowers(items.data);
       });
