@@ -30,14 +30,17 @@
 }
 
 #starBorderOutlined {
-    color: #ffffff !important;
-    position: absolute;
-    z-index: 108;
-    right: -120px;
+    right: 0px;
     bottom: 0px;
+    text-align: right;
     margin-bottom: 0px;
     padding-bottom: 0px;
-
+    color: #fff;
+    position: absolute;
+    z-index: 108;
+    margin-right: 0%;
+    float:right;
+    align-items: flex-end;
 }
 
 
