@@ -14,8 +14,17 @@ describe('search test', async () => {
   test('search for pictures', async () => {
     const searchResult = await searchPhotosServ('et');
     expect(searchResult[0]).toHaveProperty('title');
+    expect(searchResult[0]).toHaveProperty('imagePath');
+    expect(searchResult[0]).toHaveProperty('description');
+    expect(searchResult[0]).toHaveProperty('comments');
+    expect(searchResult[0]).toHaveProperty('photoId');
+    expect(searchResult[0]).toHaveProperty('user');
   });
 
+  test('search for pictures', async () => {
+    const searchResult = await searchPhotosServ('qg jqgeoqngjeqgn');
+    expect(searchResult).toEqual([]);
+  });
   afterAll(async () => {
     await connection.close();
   });
