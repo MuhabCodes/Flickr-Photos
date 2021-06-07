@@ -11,7 +11,7 @@ import { grey } from '@material-ui/core/colors';
 import configData from '../config.json';
 
 const Post = (props) => {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
   axios.defaults.headers.authorization = localStorage.getItem('token');
   const history = useHistory();
@@ -32,7 +32,7 @@ const Post = (props) => {
   const [favCount, setFavCount] = useState(faves);
   const handleFave = (e) => {
     if (!isFaved) {
-      axios.post(`/favorites/${photoId}`, ownerId)
+      axios.post(`/favorites/${photoId}`)
         .then(() => {
           setIsFaved(true);
         })
@@ -96,7 +96,7 @@ const Post = (props) => {
       <div className="posts-bottom-container">
         <div className="posts-comment-button">
           <Link to={`/photoview/${photoId}`}>
-            <button type="button">
+            <button type="button" id="post-comment-button">
               <ChatBubbleOutlineOutlinedIcon style={{ fontSize: 18, color: grey }} />
             </button>
           </Link>
@@ -105,7 +105,7 @@ const Post = (props) => {
           </div>
         </div>
         <div className="posts-fav-button">
-          <button type="button" id="post-like-button" onClick={handleFave}>
+          <button type="button" id="post-fave-button" onClick={handleFave}>
             <div className="post-comment-count">
               { isFaved ? <AiTwotoneStar style={{ fontSize: 20 }} />
                 : <AiOutlineStar style={{ fontSize: 20 }} /> }
