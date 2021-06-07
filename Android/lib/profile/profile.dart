@@ -42,6 +42,7 @@ class _ProfileState extends State<Profile> {
             headerSliverBuilder: (context, value) {
               return [
                 SliverAppBar(
+                  automaticallyImplyLeading: false,
                   backgroundColor: Colors.white,
                   primary: true,
                   pinned: true,
@@ -72,7 +73,7 @@ class _ProfileState extends State<Profile> {
                                     return Container(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.8,
+                                              0.9,
                                       child: ShowMoreVertMenu(),
                                     );
                                   });

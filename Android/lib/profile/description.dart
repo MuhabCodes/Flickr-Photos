@@ -18,8 +18,6 @@ class _DescriptionState extends State<Description> {
   @override
   void initState() {
     super.initState();
-    userProvider = Provider.of<UserProvider>(context, listen: false);
-    userProvider.setUser();
     myFocusNode = FocusNode();
   }
 
@@ -53,9 +51,9 @@ class _DescriptionState extends State<Description> {
                 }
                 if (changedText != null) {
                   userProvider.setMember(title, changedText);
-                  userProvider.createUser();
                 }
                 if (close == 2) {
+                  userProvider.updateInfo();
                   Navigator.pop(context);
                 }
               },
@@ -87,7 +85,7 @@ class _DescriptionState extends State<Description> {
           onChanged: (value) => {changedText = value},
           onFieldSubmitted: (value) => {
             userProvider.setMember(title, value),
-            userProvider.createUser(),
+            userProvider.updateInfo(),
             Navigator.pop(context)
           },
           cursorHeight: 30,

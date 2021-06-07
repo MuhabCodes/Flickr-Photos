@@ -179,6 +179,8 @@ Post postBenFlasher = new Post(
           'https://live.staticflickr.com/4532/38021230015_8934884e7b_h.jpg',
     ),
   ],
+  userAvatar: 'https://live.staticflickr.com/4532/38021230015_8934884e7b_h.jpg',
+  postUsername: "Ben Flishr",
   title: "Sutro Shore",
   user: user2,
   description: "My first post",
