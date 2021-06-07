@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import './new_tag.dart';
 import './tags_list.dart';
 import '../../models/tag.dart';
-
-import '../../providers/new_post_provider.dart';
 
 class UserTags extends StatefulWidget {
   final List<Tag> tagsList;
