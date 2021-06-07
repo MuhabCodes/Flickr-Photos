@@ -18,6 +18,10 @@ function Upload() {
   const [photoPrivacy, setPhotoPrivacy] = useState('public'); // set privacy on change (default public)
   const imgElement = React.useRef(null); // to get image dimensions
 
+  if (userjwt === '') {
+    history.push('/Login');
+  }
+
   // handle input change
   const handleImageChange = (e) => {
     if (e.target.files) {
@@ -78,29 +82,34 @@ function Upload() {
   // Handling upload event
   const handleUpload = (e) => {
     e.preventDefault();
-    const uploadButton = document.getElementById('enabled-button');
-    uploadButton.id = 'disabled-button'; // set the upload to disabled
+    if (userjwt === '') {
+      history.push('/Login');
+    }
+    if (document.getElementById('enabled-button')) {
+      const uploadButton = document.getElementById('enabled-button');
+      uploadButton.id = 'disabled-button'; // set the upload to disabled
+    }
     if (selectedFiles.length > 0) {
-      const dataArray = [];
       selectedFiles.forEach((selectedFile, index) => {
         const data = {}; // create data object
         data.title = restData[index].fileName; // set photo name
-        data.date = restData[index].fileDate; // set photo upload date
+        data.uploadDate = restData[index].fileDate; // set photo upload date
         data.captureDate = restData[index].fileCapture; // set photo Capture date
         data.width = restData[index].photoWidth;
         data.height = restData[index].photoHeight;
-        data.userId = userjwt.sub;
-        data.tag = photoTag;
+        data.user = userjwt.sub;
+        data.tags = photoTag;
         data.description = photoDescription;
-        data.privacy = photoPrivacy;
+        if (photoPrivacy === 'public') {
+          data.isPublic = true;
+        } else { data.isPublic = false; }
         toDataUrl(selectedFile)
           .then((dataUrl) => {
-            data.src = dataUrl; // set image src
-            dataArray.push(data);
-            axios.post('/photosUp', data)
+            data.photo = dataUrl; // set image src
+            axios.post('/photos/64', data)
               .then(() => {
                 history.push(`/profile/photostream/${userjwt.sub}`); // redirect to photostream after upload
-              });
+              }).catch(() => { history.push('*'); });
           });
       });
     }
