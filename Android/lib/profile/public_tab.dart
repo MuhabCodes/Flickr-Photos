@@ -249,14 +249,14 @@ Widget gridView(UserProvider userProvider) {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      FullscreenImage(userProvider.triple[index])));
+                      FullscreenImage(userProvider.user.photos[index])));
         },
         child: Image.network(
-          userProvider.triple[index].imageUrl,
+          userProvider.user.photos[index].imageUrl,
           fit: BoxFit.fill,
         ),
       ),
-      itemCount: userProvider.triple.length,
+      itemCount: userProvider.user.photos.length,
     )
   ]);
 }

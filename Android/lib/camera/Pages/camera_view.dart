@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/camera_provider.dart';
-import '../../providers/new_post_provider.dart';
 import '../widgets/camera.dart';
 import '../widgets/camera_buttons_container.dart';
 import '../widgets/flash.dart';
@@ -60,7 +60,7 @@ class _CameraViewState extends State<CameraView> {
 
   @override
   Widget build(BuildContext context) {
-    var newPostProvider = Provider.of<NewPostProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       body: FutureBuilder(
         future: Provider.of<CameraProvider>(context, listen: false).init(),
@@ -76,9 +76,11 @@ class _CameraViewState extends State<CameraView> {
                     ),
                     Column(children: <Widget>[
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 0.6 * MediaQuery.of(context).size.height,
-                      ),
+                          width: MediaQuery.of(context).size.width,
+                          height: userProvider.cameraNavigationIndex == 1
+                              ? userProvider.resetCameraNavigationIndex(
+                                  0.73 * MediaQuery.of(context).size.height)
+                              : 0.6 * MediaQuery.of(context).size.height),
                       Container(
                         height: 0.10 * MediaQuery.of(context).size.height,
                         color: Colors.black87,

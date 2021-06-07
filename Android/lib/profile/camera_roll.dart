@@ -154,7 +154,7 @@ class _CameraRollState extends State<CameraRoll> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
-                    "Got a lot of photos? Wed've got a lot",
+                    "Got a lot of photos? We've got a lot",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -164,7 +164,7 @@ class _CameraRollState extends State<CameraRoll> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    "space",
+                    "of space",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -173,13 +173,15 @@ class _CameraRollState extends State<CameraRoll> {
                 ),
                 Container(
                   height: 30,
-                  width: size.width * 0.27,
+                  width: size.width * 0.34,
                   child: Container(
-                    width: size.width * 0.27,
+                    width: size.width * 0.34,
                     decoration: BoxDecoration(shape: BoxShape.rectangle),
                     // ignore: deprecated_member_use
                     child: RaisedButton(
                       onPressed: () {
+                        userProvider.cameraNavigationIndex = 1;
+                        userProvider.notify();
                         setState(() {
                           Navigator.push(
                             context,

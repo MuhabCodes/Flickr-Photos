@@ -1,0 +1,21 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apidoc": "^0.27.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doctest": "npx apidoc -e node_modules/ -o C:\\Users\\ESC\\Desktop\\Documentation",
+    "doctest_linux": "npx apidoc -e node_modules/ -o ~/Desktop/createdDocs",
+    "linux_nodemon:docs": "npx nodemon --exec \"npm run doctest_linux\" ./docs/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

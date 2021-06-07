@@ -38,6 +38,7 @@ class SingleNotification {
       );
 
   Map<String, dynamic> toJson() => {
+        
         "sender": sender,
         "senderName": senderName,
         "reciever": reciever,
@@ -61,6 +62,7 @@ class NotificationsList {
   factory NotificationsList.fromJson(Map<String, dynamic> json) =>
       NotificationsList(
         notificationsList: List<SingleNotification>.from(
-            json["notifications"].map((x) => SingleNotification.fromJson(x))),
+            json["myNotificationsarray"]
+                .map((x) => SingleNotification.fromJson(x))),
       );
 }

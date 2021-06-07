@@ -9,6 +9,8 @@ import 'package:flickr/models/global.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
 import 'package:flickr/providers/post_provider.dart';
+import 'package:flickr/providers/post_provider_integration.dart';
+import 'package:flickr/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -89,14 +91,14 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     DateTime test = postDateParsing("2021-12-01T19:11:08");
-    // loggedUser = Provider.of<UserProvider>(context, listen: false);
-    //loggedInUser = loggedUser.user;
+    loggedUser = Provider.of<UserProvider>(context, listen: false);
+    loggedInUser = loggedUser.user;
 
     if (isDone == 0) {
-      globalProvider =
-          Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
-      /* Provider.of<PostProviderInteg>(context, listen: true)
-              .getUserFollowing();*/
+      print("inside global provider req");
+      //globalProvider =
+      //  Provider.of<PostProvider>(context, listen: true).getUserHomePosts();
+      Provider.of<PostProviderInteg>(context, listen: true).getUserHomePosts();
       isDone++;
     }
     widthScreen = MediaQuery.of(context).size.width;
@@ -151,6 +153,11 @@ class HomeState extends State<Home> {
         "heaven",
         "moonlight"*/
       ];
+      /*
+      if (post.user.person != null || post.user.person.realName != null) {
+        post.user.username = post.user.person.realName;
+      }*/
+
       if (post.photo.length == 1) {
         {
           posts.add(getPost(context, post, index));

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/user.dart';
@@ -17,7 +18,8 @@ class PostProviderInteg with ChangeNotifier {
   User userLoggedIn;
   List<String> followingIds;
   User userFollowingInfo;
-
+  String token;
+  var loggedUser;
   PostProviderInteg(
       {this.baseUrl,
       this.context,
@@ -26,7 +28,7 @@ class PostProviderInteg with ChangeNotifier {
       this.userLoggedIn,
       this.followingIds,
       this.userFollowingInfo});
-
+/*
   var _urlUserFollowingsInteg =
       Uri.parse(host + "/people/" + loggedInUser.userId + "/info");
 
@@ -111,6 +113,69 @@ class PostProviderInteg with ChangeNotifier {
       /// then throw an exception.
       status = Status.Fail;
       throw Exception('Failed to followings');
+    }
+    notifyListeners();
+  }
+*/
+
+  var _urlUserHomePosts =
+      Uri.parse("https://run.mocky.io/v3/65636216-3a63-45fa-9b4a-fc1c4f644ece");
+  var _urlUserFollowingsInteg = Uri.parse(host + "/photos");
+  Future<void> getUserHomePosts() async {
+    /// get request
+    //loggedUser = Provider.of<UserProvider>(context, listen: false);
+    var response = await http.get(
+      _urlUserFollowingsInteg,
+      headers: {
+        HttpHeaders.authorizationHeader: token,
+      },
+    );
+    if (response.statusCode == 200) {
+      status = Status.Success;
+      notifyListeners();
+      var extractData = jsonDecode(response.body);
+      List<dynamic> json = extractData["posts"];
+      print(extractData);
+      if (json != null) {
+        //String userFollowingId = jsonFollowingIds[i];
+
+        for (int i = 0; i < json.length; i++) {
+          userId = json[i]["ownerId"];
+          getUserFollowingInfo(userId);
+          //addUserHomePosts(json[i]);
+          addUserHomePostsInteg(json[i], userFollowingInfo);
+        }
+      } else
+        print("List of posts was empty");
+    } else {
+      /// If the server did not return a 200 CREATED response,
+      /// then throw an exception.
+      status = Status.Fail;
+      throw Exception('Failed to followings');
+    }
+    notifyListeners();
+  }
+
+  Future<void> getUserFollowingInfo(String userFollowingId) async {
+    /// get request
+    //getInfo
+
+    var _urlUserFollowingInfo =
+        Uri.parse(host + "/people/" + userFollowingId + "/info");
+
+    var response = await http.get(_urlUserFollowingInfo);
+    if (response.statusCode == 200) {
+      status = Status.Success;
+      notifyListeners();
+      //var extractData = jsonDecode(response.body);
+      Map<String, dynamic> json = jsonDecode(response.body);
+      print(json);
+      userFollowingInfo = User.fromJson(jsonDecode(response.body));
+    } else {
+      /// If the server did not return a 200 CREATED response,
+      /// then throw an exception.
+      status = Status.Fail;
+      throw Exception('Failed to create userPost');
     }
     notifyListeners();
   }

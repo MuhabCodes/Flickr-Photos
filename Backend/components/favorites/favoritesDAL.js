@@ -16,8 +16,16 @@ module.exports.createFavorite = async function createFavorite(
 };
 module.exports.findFavorite = async function findFavorite(userID) {
   const foundFavorite = await Favorite.find({ user: userID })
-    .select('photo')
-    .populate('photo', 'title isPublic')
+    .populate({
+      path: 'photo',
+      model: 'Photo',
+      populate: {
+        path: 'user',
+        model: 'User',
+
+      },
+
+    })
     .exec();
   return foundFavorite;
 };
