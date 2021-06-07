@@ -10,7 +10,7 @@ test('Should not be added since there is already a model with this name Fail', a
       name: 'Nikon 500s',
       brandName: 'Nikon',
     })
-    .expect(409);
+    .expect(403);
   done();
 });
 
@@ -18,7 +18,7 @@ test('Should be added to model Success', async (done) => {
   await request
     .post('/cameras')
     .send({
-      name: 'Nikon 666m',
+      name: 'Nikon 534',
       brandName: 'Nikon',
     })
     .expect(200);
