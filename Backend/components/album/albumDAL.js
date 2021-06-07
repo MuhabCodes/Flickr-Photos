@@ -40,6 +40,7 @@ module.exports = {
     return foundAlbum[0].save();
   },
   async fetchUserAlbums(authorId) {
-    return await Album.find({ authorId });
+    const album = await Album.find({ authorId });
+    return album;
   },
 };
