@@ -30,21 +30,60 @@ function PhotoView() {
   const [commentText, setcommentText] = useState(''); // set photo album on input change
   const [activeStar, setActiveStar] = useState(false);
   const [followButton, setFollowButton] = useState(false);
+  const [commentsNum, setcommentsNum] = useState(0);
+  const [FavesNum, setFavesNum] = useState(0);
 
   useEffect(() => {
     if (routeId) {
-      axios.get(`/photos/${routeId}`) // fetch data with specific photo id
+      axios.get(`/photos/${routeId}/info`) // fetch photo info with specific photo id
         .then((resp) => {
-          setData(resp.data);
+          const pass = {};
+          pass.userId = resp.data.authorId;
+          pass.title = resp.data.title;
+          pass.description = resp.data.description;
+          const d = new Date(resp.data.uploadDate);
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          pass.date = `${d.getDay()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+          pass.views = resp.data.views;
+          pass.camera = resp.data.cameraName;
+          axios.get(`/people/${pass.userId}/info`) // fetch user avtar, ispro,name
+            .then((response) => {
+              pass.user = response.data.displayName;
+              pass.userAvatar = response.data.userAvatar;
+              pass.isPro = response.data.isPro;
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          axios.get('/search/photos') // fetch photo imagepath
+            .then((response) => {
+              pass.src = response.data.photosSearch.find((x) => x.photoId == routeId).imagePath;
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          setData(pass);
           setPhotoTags(resp.data.tags);
+          axios.get(`/photos/${routeId}/favorites`) // fetch faves number
+            .then((response) => {
+              setFavesNum(response.data.photoLikers.length);
+              return response.data;
+            }).catch(() => { history.push('*//'); });
           // check if it is the user's photo to set enable to true to give rights
-          if (resp.data.userId === userJwt.sub) { setEnabled(true); }
+          if (pass.userId === userJwt.sub) { setEnabled(true); }
           axios.get(`/photos/${routeId}/comments`) // fetch comments
             .then((response) => {
-              setPhotoComments(response.data);
-              return response.data;
-            });
-          return resp.data;
+              const whole = {};
+              whole.total = response.data.total;
+              setcommentsNum(whole.total);
+              whole.temp = response.data.comments.map((row) => ({
+                id: row.commentId,
+                userName: row.author,
+                comment: row.text,
+                userId: row.authorId,
+                time: row.dateCreate,
+                commentAvatar: row.userAvatar,
+              }));
+              setPhotoComments(whole.temp);
+              return whole;
+            }).catch(() => { history.push('*//'); });
+          return pass;
         }).catch(() => { history.push('*//'); });
     }
   }, []);
@@ -78,13 +117,15 @@ function PhotoView() {
 
   // handle edit tag
   const editTag = (i) => {
-    setPhotoTags((currentItems) => currentItems.filter((item, index) => index !== i));
-    data.tags = tags;
-    setData(data);
-    axios.put(`/photos/${routeId}`, data).catch((error) => {
+    const toBeDeleted = {};
+    // eslint-disable-next-line no-underscore-dangle
+    toBeDeleted.tagId = tags[i]._id;
+    axios.delete(`/tags/photo/${routeId}`, data).then(() => {
+      setPhotoTags((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
       if (error.response.status === 404) {
         setTimeout(() => history.push('*//'), 100); // Redirect to Error page
-      }
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
     });
   };
   // handle Fav icon
@@ -101,18 +142,24 @@ function PhotoView() {
     if (commentText !== '') {
       const newComment = {};
       newComment.comment = commentText;
-      /* newComment.commentAvatar = data.userAvatar;
-      newComment.userName = data.user;
-      newComment.userId = userJwt.sub;
-      const d = new Date();
-      newComment.time = d.getTime(); */
       axios.post(`/photos/${routeId}/comments/`, newComment).then(() => {
         // update comments
         axios.get(`/photos/${routeId}/comments`) // fetch comments
           .then((response) => {
-            setPhotoComments(response.data);
-            return response.data;
-          });
+            const whole = {};
+            whole.total = response.data.total;
+            setcommentsNum(whole.total);
+            whole.temp = response.data.comments.map((row) => ({
+              id: row.commentId,
+              userName: row.author,
+              comment: row.text,
+              userId: row.authorId,
+              time: row.dateCreate,
+              commentAvatar: row.userAvatar,
+            }));
+            setPhotoComments(whole.temp);
+            return whole;
+          }).catch(() => { history.push('*//'); });
       }).catch((error) => {
         if (error.response.status === 404) {
           setTimeout(() => history.push('*//'), 100); // Redirect to Error page
@@ -122,8 +169,6 @@ function PhotoView() {
   };
   // handle delete comments
   const deleteComment = (i) => {
-    /* const toBeDeleted = {};
-    toBeDeleted.commentId = photoComments[i].id; */
     axios.delete(`/photos/${routeId}/comments/${photoComments[i].id}`).then(() => {
       setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
       // update comments
@@ -159,11 +204,11 @@ function PhotoView() {
         )}
         {enabled && <MenuListComposition />}
         {!enabled && (
-        <IconButton onClick={() => setActiveStar(!activeStar)}>
+        <IconButton id="starBorderOutlined" onClick={() => setActiveStar(!activeStar)}>
           {activeStar ? (
-            <StarOutlined fontSize="large" id="starBorderOutlined" onClick={() => unfav()} />
+            <StarOutlined fontSize="large" onClick={() => unfav()} />
           ) : (
-            <StarBorderOutlined fontSize="large" id="starBorderOutlined" onClick={() => fav()} />
+            <StarBorderOutlined fontSize="large" onClick={() => fav()} />
           )}
         </IconButton>
         )}
@@ -252,14 +297,14 @@ function PhotoView() {
 
                 <div className="stat-item">
                   <span className="count-label">
-                    {data.faves}
+                    {FavesNum}
                   </span>
                   <span className="stats-label">faves</span>
                 </div>
 
                 <div className="stat-item">
                   <span className="count-label">
-                    {data.comments}
+                    {commentsNum}
                   </span>
                   <span className="stats-label">comments</span>
                 </div>
@@ -293,7 +338,7 @@ function PhotoView() {
                     className={classes.button}
                     endIcon={enabled && <ClearIcon fontSize="small" onClick={() => editTag(index)} />}
                   >
-                    {tag}
+                    {tag.tagText}
                   </Button>
                 ))}
               </div>
