@@ -1,5 +1,6 @@
 const Favorite = require('./favoritesModel');
 require('../photo/photoModel');
+require('../user/userModel');
 
 module.exports.createFavorite = async function createFavorite(
   favoriteParameter,
@@ -41,6 +42,12 @@ module.exports.findFavoriteByUserAndPhoto = async function
 findFavoriteByUserAndPhoto(favoriteToFind) {
   const foundFavorite = await
   Favorite.find({ user: favoriteToFind.userId, photo: favoriteToFind.photoId })
+    .exec();
+  return foundFavorite;
+};
+module.exports.findFavoriteLikers = async function findFavoriteLikers(photoID) {
+  const foundFavorite = await Favorite.find({ photo: photoID })
+    .populate('user', 'displayName userAvatar isPro _id')
     .exec();
   return foundFavorite;
 };

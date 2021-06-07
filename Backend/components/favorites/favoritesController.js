@@ -103,3 +103,27 @@ exports.deleteFavorite = async function deleteFavorite(req, res) {
     });
   }
 };
+exports.findPhotoLikers = async function findPhotoLikers(req, res) {
+  console.log('here')
+  const photo = req.params.photoId;
+  try {
+    if (!mongoose.isValidObjectId(photo)) {
+      return res.status(404).json({
+        error: 'Invalid photoId',
+      });
+    }
+    const favoriteOutput = await favoriteDAL.findFavoriteLikers(photo);
+    return res.status(200).json(
+      {
+        photoLikers: favoriteOutput.map((doc) => (
+          doc.user
+
+        )),
+      },
+    );
+  } catch (err) {
+    return res.status(500).json({
+      error: err,
+    });
+  }
+};
