@@ -6,23 +6,22 @@ import edit from './assets/edit_icon.png';
 import './AboutBio.css';
 
 const AboutBio = () => {
-  const { id } = useParams();
+  axios.defaults.baseURL = 'api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  const { userId } = useParams();
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [text, setText] = useState('');
-  const currUser = (id === userjwt.sub);
+  const currUser = (userId === userjwt.userId);
   useEffect(() => {
-    axios.get(`/Userinfo/${id}`, {
+    axios.get(`/people/${userId}/info/`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
-      if (resp.data.bio === '0') {
-        if (currUser) {
-          setText('Write a little about yourself');
-        }
-      } else {
-        setText(resp.data.bio);
-      }
+      resp.data.person.map((item) => {
+        if (item.description === null) setText('Write a little about yourself');
+        return resp.data;
+      });
       return resp.data;
     }).catch((error) => {
       if (error.response.status === 401) {
@@ -55,7 +54,7 @@ const AboutBio = () => {
     const add = document.getElementById('usertextarea').value;
     axios.patch(`/Userinfo/${userjwt.sub}`, { bio: add })
       .then(() => {
-        history.push(`/Profile/About/${id}`);
+        history.push(`/Profile/About/${userId}`);
       }).catch((error) => {
         if (error.response.status === 401) {
           localStorage.removeItem('token'); // remove token and redirect to login if not authorized
