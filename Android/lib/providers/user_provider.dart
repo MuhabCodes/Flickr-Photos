@@ -16,6 +16,7 @@ class UserProvider with ChangeNotifier {
   Status status = Status.Loading;
   final BuildContext context;
   User user;
+  String token;
   List<Photo> triple = [];
   List<DateWithImages> photosWithUploadDate = [];
   List<DateWithImages> photosWithCaptureDate = [];
@@ -98,11 +99,11 @@ class UserProvider with ChangeNotifier {
         }
         break;
     }
-    //notifyListeners();
+    notifyListeners();
   }
 
   // var _url =
-  //     Uri.parse("https://run.mocky.io/v3/ce0a9a20-6269-4f8c-ba2b-02c36824afd8");
+  //     Uri.parse("https://run.mocky.io/v3/474d062b-0683-472c-a9d8-61a08f879fe9");
 
   Future<void> setUser() async {
     var _url = Uri.parse("https://api.flick.photos/people/${user.userId}/info");
@@ -111,10 +112,12 @@ class UserProvider with ChangeNotifier {
       _url,
     );
     if (response.statusCode == 200) {
-      if (user.photos != null) {
-        user.photos.clear();
-        photosWithUploadDate.clear();
-        photosWithCaptureDate.clear();
+      if (user != null) {
+        if (user.photosCount != 0 && user.photosCount != null) {
+          user.photos.clear();
+          photosWithUploadDate.clear();
+          photosWithCaptureDate.clear();
+        }
       }
 
       user = User.fromJson(jsonDecode(response.body));
@@ -137,25 +140,30 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  var _geturl =
-      Uri.parse("https://run.mocky.io/v3/2e226f67-30da-4160-bd74-f88464cac234");
-  Future<void> createUser() async {
+  // var _geturl =
+  //     Uri.parse("https://run.mocky.io/v3/2e226f67-30da-4160-bd74-f88464cac234");
+
+  Future<void> updateInfo() async {
+    var _geturl =
+        Uri.parse("https://api.flick.photos/person/${user.userId}/info");
     // post request from backend
     status = Status.Loading;
     final response = await http.post(
       _geturl,
-      headers: <String, String>{
+      headers: {
         'Content-Type': 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: token,
       },
       body: jsonEncode(<String, String>{
-        "profileId": user.userId,
-        "firstName": user.firstName,
-        "lastName": user.lastName,
+        "city": user.person.city,
+        "homeTown": user.person.homeTown,
+        "occupation": user.person.occupation,
+        "country": user.person.country,
+        "description": user.person.description,
       }),
     );
     if (response.statusCode == 200) {
       print(response.body);
-      user = User.fromJson(jsonDecode(response.body));
       status = Status.Success;
       notifyListeners();
       // If the server did return a 201 CREATED response,
@@ -165,8 +173,7 @@ class UserProvider with ChangeNotifier {
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
-      status = Status.Fail;
-      throw Exception('Failed to load album');
+      throw Exception('Failed to Update info');
     }
   }
 

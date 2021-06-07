@@ -1,6 +1,4 @@
 import 'dart:async';
-
-///Importing library to send http requests.
 import 'dart:convert';
 
 import 'package:flickr/models/global.dart';
@@ -36,7 +34,7 @@ class PostProviderInteg with ChangeNotifier {
       Uri.parse("https://run.mocky.io/v3/bfbb0fd8-09dd-4970-8803-6bb62150a171");
   Future<void> getUserFollowing() async {
     /// get request
-    var response = await http.get(_urlUserFollowingMock);
+    var response = await http.get(_urlUserFollowingsInteg);
     if (response.statusCode == 200) {
       status = Status.Success;
       notifyListeners();
@@ -106,7 +104,8 @@ class PostProviderInteg with ChangeNotifier {
       //var extractData = jsonDecode(response.body);
       Map<String, dynamic> json = jsonDecode(response.body);
       print(json);
-      userFollowingInfo = createUserFollowing(json);
+      //userFollowingInfo = createUserFollowing(json);
+      userFollowingInfo = User.fromJson(jsonDecode(response.body));
     } else {
       /// If the server did not return a 200 CREATED response,
       /// then throw an exception.

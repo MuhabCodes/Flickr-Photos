@@ -38,11 +38,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Future<void> _forgetSubmit() async {
     final _auth = Provider.of<Authentication>(context, listen: false);
     try {
+      _auth.currentUser = new User(
+        email: _emailController.text,
+      );
       await _auth.sendForgotPassword();
     } catch (error) {
       const errorMessage =
           'Could not authenticate you. Please try again later.';
       print(errorMessage);
+      if (_auth.statusNum == 404) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('The server can not find the requested resource.')));
+      } else if (_auth.statusNum == 409) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Indicates that the user is not activated.")));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("No Internet Connection")));
+      }
       return;
     }
     if (_auth.status == Status.Success) {
@@ -56,6 +69,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 )),
       );
     }
+  }
+
+  Future<Null> refresh() async {
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {});
   }
 
   Widget build(BuildContext context) {
@@ -86,184 +104,187 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          Container(
-            child: Form(
-              key: formKey,
-              child: SafeArea(
-                child: ListView(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: _width * 0.08,
-                  ),
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: _height * 0.04,
-                        ),
-                        Icon(FontAwesomeIcons.lock, color: Colors.black54),
-                        SizedBox(
-                          height: _height * 0.02,
-                        ),
-                        Text(
-                          'Change your Flickr password.',
-                          style: TextStyle(fontSize: 20),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: _height * 0.03,
-                        ),
-                        ContainerResponsive(
-                          alignment: Alignment.center,
-                          widthResponsive: true,
-                          heightResponsive: true,
-                          child: Text(
-                            "Please enter your email address below and we'll send you instructions on how to reset your password.",
-                            style: TextStyle(fontSize: 15),
+      body: RefreshIndicator(
+        onRefresh: refresh,
+        child: Stack(
+          children: [
+            Container(
+              child: Form(
+                key: formKey,
+                child: SafeArea(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: _width * 0.08,
+                    ),
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: _height * 0.04,
+                          ),
+                          Icon(FontAwesomeIcons.lock, color: Colors.black54),
+                          SizedBox(
+                            height: _height * 0.02,
+                          ),
+                          Text(
+                            'Change your Flickr password.',
+                            style: TextStyle(fontSize: 20),
                             textAlign: TextAlign.center,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: _height * 0.03,
-                    ),
-                    new TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Email Address",
-                        labelStyle: TextStyle(fontSize: 15),
-                        filled: false,
+                          SizedBox(
+                            height: _height * 0.03,
+                          ),
+                          ContainerResponsive(
+                            alignment: Alignment.center,
+                            widthResponsive: true,
+                            heightResponsive: true,
+                            child: Text(
+                              "Please enter your email address below and we'll send you instructions on how to reset your password.",
+                              style: TextStyle(fontSize: 15),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Required!';
-                        }
-                        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                            .hasMatch(value)) {
-                          return "please enter email correctly";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(
-                      height: _height * 0.04,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        ButtonTheme(
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: Color(0xff128fdc),
-                                  shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(5.0),
-                                  ),
-                                  minimumSize: Size(
-                                      MediaQuery.of(context).size.width,
-                                      _height * 0.065)),
-                              onPressed: () {
-                                if (formKey.currentState.validate()) {
-                                  authentication.currentUser = new User(
-                                    email: _emailController.text,
-                                  );
-                                  _forgetSubmit();
-                                } else {
-                                  print('unsuccessful');
-                                }
-                              },
-                              child: Text('Send email')),
+                      SizedBox(
+                        height: _height * 0.03,
+                      ),
+                      new TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Email Address",
+                          labelStyle: TextStyle(fontSize: 15),
+                          filled: false,
                         ),
-                        SizedBox(
-                          height: _height * 0.03,
-                        ),
-                        RichText(
-                            text: TextSpan(
-                          text: "Can't access your email?",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xff128fdc)),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () => _launchURL("https://help.flickr.com"),
-                        )),
-                      ],
-                    ),
-                  ],
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Required!';
+                          }
+                          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                              .hasMatch(value)) {
+                            return "please enter email correctly";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(
+                        height: _height * 0.04,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          ButtonTheme(
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: Color(0xff128fdc),
+                                    shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5.0),
+                                    ),
+                                    minimumSize: Size(
+                                        MediaQuery.of(context).size.width,
+                                        _height * 0.065)),
+                                onPressed: () {
+                                  if (formKey.currentState.validate()) {
+                                    authentication.currentUser = new User(
+                                      email: _emailController.text,
+                                    );
+                                    _forgetSubmit();
+                                  } else {
+                                    print('unsuccessful');
+                                  }
+                                },
+                                child: Text('Send email')),
+                          ),
+                          SizedBox(
+                            height: _height * 0.03,
+                          ),
+                          RichText(
+                              text: TextSpan(
+                            text: "Can't access your email?",
+                            style: TextStyle(
+                                fontSize: 15, color: Color(0xff128fdc)),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap =
+                                  () => _launchURL("https://help.flickr.com"),
+                          )),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: _height * 0.8),
-            height: 0.1 * _height,
-            //alignment: Alignment.bottomCenter,
-            //color: Colors.white,
-            child: Row(
-              children: [
-                ButtonTheme(
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
-                          onPrimary: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(0.0),
-                          ),
-                          minimumSize: Size(_width / 3, _height * 0.1)),
-                      onPressed: () => _launchURL("https://help.flickr.com"),
-                      child: Text('Help',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-                ButtonTheme(
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
-                          onPrimary: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(0.0),
-                          ),
-                          minimumSize: Size(
-                              MediaQuery.of(context).size.width / 3,
-                              _height * 0.1)),
-                      onPressed: () =>
-                          _launchURL("https://www.flickr.com/help/privacy"),
-                      child: Text('Privacy',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-                ButtonTheme(
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
-                          onPrimary: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(0.0),
-                          ),
-                          minimumSize: Size(_width / 3, _height * 0.1)),
-                      onPressed: () =>
-                          _launchURL("https://www.flickr.com/help/terms"),
-                      child: Text('Terms',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300,
-                          ))),
-                ),
-              ],
+            Container(
+              margin: EdgeInsets.only(top: _height * 0.8),
+              height: 0.1 * _height,
+              //alignment: Alignment.bottomCenter,
+              //color: Colors.white,
+              child: Row(
+                children: [
+                  ButtonTheme(
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.transparent,
+                            onPrimary: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(0.0),
+                            ),
+                            minimumSize: Size(_width / 3, _height * 0.1)),
+                        onPressed: () => _launchURL("https://help.flickr.com"),
+                        child: Text('Help',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w300,
+                            ))),
+                  ),
+                  ButtonTheme(
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.transparent,
+                            onPrimary: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(0.0),
+                            ),
+                            minimumSize: Size(
+                                MediaQuery.of(context).size.width / 3,
+                                _height * 0.1)),
+                        onPressed: () =>
+                            _launchURL("https://www.flickr.com/help/privacy"),
+                        child: Text('Privacy',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w300,
+                            ))),
+                  ),
+                  ButtonTheme(
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.transparent,
+                            onPrimary: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(0.0),
+                            ),
+                            minimumSize: Size(_width / 3, _height * 0.1)),
+                        onPressed: () =>
+                            _launchURL("https://www.flickr.com/help/terms"),
+                        child: Text('Terms',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w300,
+                            ))),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
