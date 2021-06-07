@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/new_post_provider.dart';
 
+// ignore: must_be_immutable
 class PrivacyButton extends StatefulWidget {
   var choice = "Public";
   String privacy = "Public";
