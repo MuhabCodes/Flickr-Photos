@@ -8,7 +8,6 @@ import configData from '../config.json';
 
 const PostsFeed = () => {
   const [posts, setPosts] = useState('');
-  // axios.defaults.baseURL = `${configData.SERVER_URL}`;
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const history = useHistory();
@@ -22,7 +21,6 @@ const PostsFeed = () => {
     }).then((resp) => {
       setLoading(false);
       setPosts(resp.data.photos);
-      console.log(resp.data.photos);
     }).catch((err) => {
       setError(err.error);
       console.log(err);
@@ -30,7 +28,6 @@ const PostsFeed = () => {
   }, []);
   return (
     <div className="posts-main-container">
-      { isLoading && <div className="">Loading....</div> }
       { error && <div>{ error }</div> }
       { isLoading ? <div>Loading...</div> : posts && posts.map((post) => (
         <div className="single-post" key={post.photoId}>
