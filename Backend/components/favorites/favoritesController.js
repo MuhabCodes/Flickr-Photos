@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const favoriteDAL = require('./favoritesDAL');
 const photoDAL = require('../photo/photoDAL');
 
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 
 exports.add = async function addFavorite(req, res, next) {
   const { authorization } = req.headers;
