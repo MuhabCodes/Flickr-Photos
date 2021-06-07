@@ -6,6 +6,8 @@ import { Form, FormControl } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './MainSearch.css';
 import jwt from 'jwt-decode';
+import SearchButton from './SearchButton';
+import FaveButtonSearch from './SearchFaveButton';
 // This page is to allow the user to search for pictures by title
 // The page is initially empty with only a search bar on the right
 // the user will be able to type the title of the desired image in the search box and retreive
@@ -81,10 +83,11 @@ const MainSearch = () => {
             onInput={handleSearchInputChanges}
             name="title"
           />
-          <button type="submit" id="search-button-btn">
+          {/* <button type="submit" id="search-button-btn">
             <img src="https://img.icons8.com/ios/25/000000/search--v1.png" alt="" />
             {' '}
-          </button>
+          </button> */}
+          <SearchButton />
         </Form>
       </div>
       <div className="image-results">
@@ -110,13 +113,15 @@ const MainSearch = () => {
                       {photo.user}
                     </span>
                     <span className="faves-search">
-                      <button className="fav-btn-search" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
+                      {/* <button className="fav-btn-search" type="button"
+                      id="fave-button" key={photo.photoId} onClick={ClickMe}>
                         <img
                           className="star"
                           src="https://img.icons8.com/android/24/ffffff/star.png"
                           alt=""
                         />
-                      </button>
+                      </button> */}
+                      <FaveButtonSearch ClickMe={ClickMe} />
                       <span onChange={ClickMe} value={photo.favs} className="fav-count-search" id="fav-num" key={photo.photoId}>
                         {photo.favs}
                       </span>
