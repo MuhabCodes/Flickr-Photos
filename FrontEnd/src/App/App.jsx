@@ -46,6 +46,7 @@ import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
+import TheCommons from '../TheCommons/TheCommons';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -123,6 +124,9 @@ function App() {
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
+            </Route>
+            <Route exact path="/TheCommons">
+              <TheCommons />
             </Route>
             <Route exact path="/account">
               <NavBar />
