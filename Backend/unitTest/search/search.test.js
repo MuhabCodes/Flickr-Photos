@@ -19,6 +19,7 @@ describe('search test', async () => {
     expect(searchResult[0]).toHaveProperty('comments');
     expect(searchResult[0]).toHaveProperty('photoId');
     expect(searchResult[0]).toHaveProperty('user');
+    expect(searchResult[0]).toHaveProperty('favs');
   });
 
   test('search for pictures', async () => {
