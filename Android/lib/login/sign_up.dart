@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../models/user.dart';
 import '../providers/auth.dart';
 
