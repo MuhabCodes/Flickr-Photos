@@ -5,16 +5,16 @@ import 'package:flickr/login/sign_up.dart';
 import 'package:flickr/models/user.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/providers/auth.dart';
+import 'package:flickr/providers/user_provider.dart' as user;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 //import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flickr/providers/user_provider.dart' as user;
-import 'package:google_sign_in/google_sign_in.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -114,9 +114,13 @@ class _SignInState extends State<SignIn> {
       } else if (_auth.statusNum == 403) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("This client hasn't activated their account.")));
+      } else if (_auth.statusNum == 409) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("This email is already registered.")));
+        _auth.googleSignIn.signOut();
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("No internet Connection")));
+            .showSnackBar(SnackBar(content: Text("No internet Connection.")));
       }
       return;
     }
