@@ -12,8 +12,8 @@ import configData from '../config.json';
 
 const Post = (props) => {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
+  axios.defaults.headers.authorization = localStorage.getItem('token');
   const history = useHistory();
   const [isFaved, setIsFaved] = useState(false);
   const prop = props;
