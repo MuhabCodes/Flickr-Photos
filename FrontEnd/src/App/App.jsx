@@ -83,7 +83,7 @@ function App() {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         const decodedData = jwt(storedToken);
-        const expirationDate = decodedData.exp;
+        const expirationDate = decodedData.iat + 86400;
         const currenttime = (Date.now() / 1000);
         console.log(expirationDate);
         console.log(currenttime);
