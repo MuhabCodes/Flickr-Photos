@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -54,7 +54,6 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const isPro = useState('false');
   // const history = useHistory();
-  const history = useHistory();
   const submitForm = () => {
     // history.push('/verifysignup');
     const UserInfo = {
@@ -65,8 +64,7 @@ export default function SignUp() {
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', `${resp.data.token}`);
-      history.push('/');
+      // history.push('/');
     });
   };
 

@@ -30,19 +30,17 @@ const CssTextField = withStyles({
 export default function GettingStarted() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  // const userjwt = jwt(localStorage.getItem('token'));
   const [email, setEmail] = useState('');
-  const [ispro, setIsPro] = useState(false);
   const getPro = () => {
-    setIsPro(true);
-    const UserInfo = {
-      ispro,
-    };
-    axios('/users/pro', {
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    axios('/user/pro', {
+      baseURL: 'https://api.flick.photos',
       method: 'put',
-      data: UserInfo,
-    }).then(() => {
+    }).then((resp) => {
       <Typography>Check Your Mail</Typography>;
+      console.log(resp);
+    }).catch((err) => {
+      console.log(err);
     });
   };
 

@@ -48,11 +48,12 @@ const FBlogin = async () => {
   await FIREBASE_MESSAGING.getToken()
     .then((token) => {
       const userjwt = jwt(localStorage.getItem('token'));
+      localStorage.setItem('firebase', `${token}`);
       console.log('token to be save', token);
       // saving token in database
       FIREBASE_DATABASE.ref('/tokens').push({
         token,
-        userId: userjwt.sub,
+        userId: userjwt.userId,
       });
     });
 };
@@ -125,7 +126,11 @@ export default function SignUp() {
         }}
         >
           <p style={{ marginTop: '15px' }}>
-            Not a Flickr member? Sign up here.
+            Not a Flickr member?
+            {' '}
+            <Link to="/signup">
+              Sign up here.
+            </Link>
           </p>
         </div>
 

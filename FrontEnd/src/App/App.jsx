@@ -255,7 +255,7 @@ function App() {
               <Albums />
               <Footer />
             </Route>
-            <Route exact path="/ex">
+            <Route exact path="/start">
               <NavBarSP />
               <StartPage />
             </Route>
