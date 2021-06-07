@@ -6,6 +6,9 @@ const { seedFavorite } = require('./favorite.seed');
 const { seedComment } = require('./comment.seed');
 const { seedPhoto } = require('./photo.seed');
 const { seedPerson } = require('./person.seed');
+const cameraBrandSeed = require('./camera.seed');
+const cameraModelSeed = require('./cameraModel.seed');
+const tagSeed = require('./tags.seed');
 
 async function connect() {
   await mongoose
@@ -20,6 +23,9 @@ async function seed() {
   await seedPerson();
   await seedFavorite();
   await seedComment();
+  await cameraBrandSeed();
+  await cameraModelSeed();
+  await tagSeed();
 }
 
 seed().then(() => console.log('done')).catch((err) => console.log(err));
