@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class SendEmail extends StatefulWidget {
   final String text;
   int specialNum;
@@ -85,7 +86,6 @@ class _SendEmailState extends State<SendEmail> {
 
   @override
   Widget build(BuildContext context) {
-    var authentication = Provider.of<Authentication>(context, listen: true);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
