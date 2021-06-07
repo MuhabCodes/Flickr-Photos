@@ -102,7 +102,7 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
-            <Route exact path="/verification/:confirtoken">
+            <Route exact path="/verification/:confirToken">
               <VerificationPage />
             </Route>
             <Route exact path="/UpgradeToPro">
