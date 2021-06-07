@@ -4,7 +4,7 @@ const { generatePhotoData } = require('./photoDataFaker.seed');
 const { generateCommentData } = require('./commentDataFaker.seed');
 const { generateFavouritesData } = require('./favoriteDataFaker.seed');
 
-const numUsers = 5;
+const numUsers = 20;
 
 const userArray = generateUserData(numUsers);
 
@@ -15,3 +15,7 @@ const photoArray = generatePhotoData(userArray);
 const favouriteArray = generateFavouritesData(userArray, photoArray);
 
 const commentArray = generateCommentData(userArray, photoArray);
+
+module.exports = {
+  userArray, personArray, photoArray, favouriteArray, commentArray,
+};

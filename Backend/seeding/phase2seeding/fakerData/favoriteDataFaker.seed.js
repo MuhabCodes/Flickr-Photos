@@ -1,5 +1,5 @@
 const faker = require('faker');
-const Favorite = require('../../components/favorites/favoritesModel');
+const Favorite = require('../../../components/favorites/favoritesModel');
 
 module.exports.generateFavouritesData = function generateFavouritesData(userArray, photoArray) {
   const favoriteArray = [];

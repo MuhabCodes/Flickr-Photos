@@ -1,5 +1,5 @@
 const faker = require('faker');
-const Comment = require('../../components/photo/comments/commentsModel');
+const Comment = require('../../../components/photo/comments/commentsModel');
 
 module.exports.generateCommentData = function generateCommentData(userArray, photoArray) {
   const commentArray = [];
