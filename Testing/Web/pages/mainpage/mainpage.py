@@ -8,18 +8,22 @@ from selenium import webdriver
 
 class MainPage(BasePage):
     """Locators"""
+    """PROFILE ICON MENU"""
     PROFILE_ICON = (By.XPATH, '/html/body/div[1]/div/div[1]/div/div[3]/div/ul[2]/li[4]/div')
     FLICKR_MAIL_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/section[3]/ul/li[1]/a')
     SETTINGS_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/section[3]/ul/li[2]')
     HELP_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/section[3]/ul/li[3]/a')
     LOGOUT_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/section[3]/ul/li[4]/a')
+    """UPLOAD"""
     UPLOAD_ICON = (By.XPATH, '/html/body/div[1]/div/div[1]/div/div[3]/div/ul[2]/li[2]/a/i')
-    NOTIFICATION_ICON = (By.XPATH, '/html/body/div[1]/div/div[1]/div/div[3]/div/ul[2]/li[3]/div/a')
-    RECENT_ACTIVITY_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/a')
     UPLOAD_FILE = (By.ID, "choose-photos-and-videos")
     UPLOAD_BUTTON = (By.XPATH, '/html/body/div[4]/div[1]/div[2]/div/div/div[4]/div[1]/div[1]/input')
     CONFIRM_UPLOAD = (By.XPATH, '/html/body/div[14]/div/div/div/div[2]/div[2]/div[2]/input[1]')
     IMAGE_LOCAL_URL = r"C:\Users\George\Desktop\image2.jpg"
+    """NOTIFICATIONS"""
+    NOTIFICATION_ICON = (By.XPATH, '/html/body/div[1]/div/div[1]/div/div[3]/div/ul[2]/li[3]/div/a')
+    RECENT_ACTIVITY_LABEL = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/a')
+    """SEARCH"""
     SEARCH_FIELD = (By.ID, "search-field")
     TEXT_TO_SEARCH = "cat"
     PHOTOS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/ul[1]/li[1]')
@@ -27,11 +31,12 @@ class MainPage(BasePage):
     GROUPS_LABEL = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/ul[1]/li[3]')
     EXAMPLE_PHOTO_XPATH = '/html/body/div[1]/div/main/div[1]/div/div/div[1]/div/div/a'
     FAV_PHOTO = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[5]/div[1]/div')
-    ADD_PHOTO_TO = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[5]/span')
+    ADD_PHOTO_TO_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[5]/span')
     COMMENT_FIELD = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/div[4]/div/div[2]/div[2]/textarea[1]')
     COMMENT_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/div[4]/div/button')
-    #ADD_TO_GALLERY = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/div[1]/ul/li[1]')
-    #ADD_TO_GROUP = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div/div/div[1]/ul/li[2]')
+    ADD_TO_GALLERY = (By.XPATH, '//li[contains(@class, "tab-item") and contains(@class, "gallery-tab")]')
+    ADD_TO_GROUP = (By.XPATH, '//li[contains(@class, "tab-item") and contains(@class, "group-tab")]')
+    FOLLOW_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div[2]/div/div[1]/div[2]/div/button')
 
     def __init__(self, driver):
         super().__init__(driver)
