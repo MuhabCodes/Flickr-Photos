@@ -41,6 +41,11 @@ describe('homepage test', async () => {
     expect(photos[0]).toHaveProperty('photoUrl');
   });
 
+  test('return empty homepage', async () => {
+    const photos = await getFollowerPhotos([]);
+    expect(photos).toEqual([]);
+  });
+
   afterAll(async () => {
     await connection.close();
   });
