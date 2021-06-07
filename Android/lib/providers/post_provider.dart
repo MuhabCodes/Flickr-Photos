@@ -30,7 +30,8 @@ class PostProvider with ChangeNotifier {
       this.userFollowingInfo});
 
   var _urlUserHomePosts =
-      Uri.parse("https://run.mocky.io/v3/65636216-3a63-45fa-9b4a-fc1c4f644ece");
+      Uri.parse("https://run.mocky.io/v3/0feac5cd-e53b-4545-bb6d-262324505047");
+
   Future<void> getUserHomePosts() async {
     /// get request
     var response = await http.get(_urlUserHomePosts);
@@ -64,7 +65,7 @@ class PostProvider with ChangeNotifier {
     /// get request
     //getInfo
     var _urlUserFollowingInfo = Uri.parse(
-        "https://run.mocky.io/v3/349cc68c-4152-4d82-a435-516df0e31a5f" /*host + "/people/" + userFollowingId + "/info"*/);
+        "https://run.mocky.io/v3/349cc68c-4152-4d82-a435-516df0e31a5f");
 
     var response = await http.get(_urlUserFollowingInfo);
     if (response.statusCode == 200) {
