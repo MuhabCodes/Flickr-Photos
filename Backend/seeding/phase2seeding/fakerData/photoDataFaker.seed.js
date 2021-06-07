@@ -16,6 +16,9 @@ function generatePhotoData(userArray) {
       const favs = Math.floor(Math.random() * 5000);
       const comments = Math.floor(Math.random() * 5000);
       const user = element._id;
+      const tag = ['60b7be952c71e90dcc0f5062', '60b7be952c71e90dcc0f5063', '60b7be952c71e90dcc0f5064', '60b7be952c71e90dcc0f5065'];
+      const tagInPhoto = Math.floor(Math.random() * 3);
+      const tags = [tag[tagInPhoto]];
       const photoObj = new Photo({
         description,
         captureDate,
@@ -26,6 +29,7 @@ function generatePhotoData(userArray) {
         imageUrl,
         isPublic,
         favs,
+        tags,
         comments,
         user,
       });
