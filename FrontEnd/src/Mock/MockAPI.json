@@ -695,29 +695,38 @@
   ],
   "Userinfo": [
     {
-      "id": "4",
+      "userId": "4",
       "firstName": "Hosny",
       "lastName": "Abdo",
-      "displayName": "hos_A",
-      "Followers": "2",
-      "followersList": [
-        "173@N00",
-        "85@N00"
+      "followersCount": 0,
+      "followingCount": 4,
+      "followers": [],
+      "following": [
+          "6092ea68326fa5101115dfae",
+          "6092ea68326fa5101115dfaf",
+          "6092ea68326fa5101115dfb0",
+          "111111111111111111111111"
       ],
-      "Following": "1",
-      "followingList": [
-        "4",
-        "85@N00"
-      ],
-      "Photos": "10",
-      "Joined": "2010",
-      "JoinedMonth": "January",
-      "isPro": "0",
-      "avatarUrl": "https://images.unsplash.com/photo-1619857154353-eff1ffd9ffe4?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8UzRNS0xBc0JCNzR8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "coverUrl": "https://images.unsplash.com/photo-1619985200248-a2ef331a0468?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "url": "Profiles/4",
-      "bio": "hello world",
-      "email": "hosny@gmail.com",
+      "isActivated": false,
+      "isPro": false,
+      "albums": [],
+      "email": "hamoksha@live.com",
+      "displayName": "keka",
+      "photosCount": 1,
+      "person": {
+        "dateCreated": "2021-06-06T20:17:04.917Z",
+        "_id": "60bb2d70c77326753f3975dc",
+        "realName": "Yousef Qadry",
+        "city": "keka City",
+        "homeTown": "Giza",
+        "occupation": "student",
+        "country": "Egypt",
+        "description": "Hello mohamed amr afifi"
+        },
+      "userAvatar": "https://images.unsplash.com/photo-1619857154353-eff1ffd9ffe4?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8UzRNS0xBc0JCNzR8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "urlCover": "https://images.unsplash.com/photo-1619985200248-a2ef331a0468?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "tags": 0,
+      "favs": 0,
       "mostPopPhotos": [
         {
           "id": "1",
@@ -767,7 +776,7 @@
           "faves": "2"
         }
       ],
-      "showcasePhotos": [
+      "showCase": [
         {
           "title": "Ocean",
           "imagePath": "https://images.pexels.com/photos/5326990/pexels-photo-5326990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
