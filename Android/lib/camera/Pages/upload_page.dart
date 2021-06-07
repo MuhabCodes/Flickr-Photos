@@ -6,6 +6,7 @@ import 'package:video_player/video_player.dart';
 
 import './album.dart';
 import '../../providers/new_post_provider.dart';
+import '../../providers/user_provider.dart';
 import '../widgets/privacy_button.dart';
 import '../widgets/tags_button.dart';
 
@@ -27,6 +28,7 @@ class UploadPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var newPostProvider = Provider.of<NewPostProvider>(context, listen: true);
+    var userProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey[800],
@@ -42,12 +44,12 @@ class UploadPage extends StatelessWidget {
                   uploadDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
                   print(uploadDate);
                   newPostProvider.newPost = new NewPost(
-                    title: title,
-                    description: description,
-                    passedFile: passedFile,
-                    stringTags: stringTags,
-                    uploadDate: uploadDate,
-                  );
+                      title: title,
+                      description: description,
+                      passedFile: passedFile,
+                      stringTags: stringTags,
+                      uploadDate: uploadDate,
+                      userId: userProvider.user.userId);
                   newPostProvider.createNewPost();
                   count = 0;
                   Navigator.popUntil(context, (route) {

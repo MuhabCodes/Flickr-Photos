@@ -38,6 +38,7 @@ class SingleNotification {
       );
 
   Map<String, dynamic> toJson() => {
+        
         "sender": sender,
         "senderName": senderName,
         "reciever": reciever,

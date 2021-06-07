@@ -14,13 +14,16 @@ class NewPost {
   String description;
   var passedFile;
   String uploadDate;
+  String userId;
+
   List<String> stringTags;
   NewPost(
       {this.title,
       this.description,
       this.passedFile,
       this.stringTags,
-      this.uploadDate});
+      this.uploadDate,
+      this.userId});
 }
 
 enum Status { Success, Fail, Loading }
@@ -30,6 +33,7 @@ class NewPostProvider with ChangeNotifier {
   Status status = Status.Loading;
   final BuildContext context;
   NewPost newPost;
+
   NewPostProvider({this.baseUrl, this.context, this.newPost});
   String uploadDate;
   List<Tag> tagsList = [];
@@ -37,13 +41,11 @@ class NewPostProvider with ChangeNotifier {
   String privacy = "Public";
 
   File image;
-  var _decodedImage;
   var _imageAsBytes;
   String imageBase64;
   int imageWidth;
   int imageHeight;
-  var _url =
-      Uri.parse("https://run.mocky.io/v3/fc9fb004-03d0-4e9f-a93f-493f6dacb9bf");
+  var _url = Uri.parse("https://api.flick.photos/photos/64");
 
   void setPhotoParameter() async {
     _imageAsBytes = newPost.passedFile.readAsBytesSync();
@@ -71,19 +73,20 @@ class NewPostProvider with ChangeNotifier {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        "user": " 1123",
+        "authorId": newPost.userId,
         "title": newPost.title,
         "description": newPost.description,
         "tags": newPost.stringTags,
         "isPublic": privacy,
-        "photo": imageBase64,
+        "photo": "data:image/jpeg;base64," + imageBase64,
         "uploadDate": newPost.uploadDate,
         "secret": "secret",
-        "height": _decodedImage.height,
-        "width": _decodedImage.width
+        "height": 1920,
+        "width": 2000,
       }),
     );
-    if (response.statusCode == 200) {
+
+    if (response.statusCode == 201) {
       print(response.body);
       status = Status.Success;
       notifyListeners();
