@@ -49,7 +49,7 @@ export default function GettingStarted() {
           flickr
           <span>pro</span>
         </p>
-        <Card className="root">
+        <Card className="card-root">
           <form>
             <CssTextField
               name="email"

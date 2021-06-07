@@ -17,33 +17,11 @@
   font-family: 'Inter', sans-serif;
 }
 
-.first {
+.first-paragraph {
 font-size: 28px;
 color: aliceblue;
 font-family: 'proxima-nova', sans-serif;
 font-style: normal;
 font-weight: 100;
-
-}
-
-.graph {
-    background-image: url(./graph1.png);
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 85vh;
-    margin-top: 900px;
-    margin-left: 750px;
-    text-align: center;
-    background-repeat: no-repeat;
-}
-
-.para{
-    margin-top: 900px;
-    margin-right: 900px;
 
 }
