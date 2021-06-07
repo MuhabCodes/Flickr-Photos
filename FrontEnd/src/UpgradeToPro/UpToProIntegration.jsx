@@ -17,7 +17,7 @@ export default function UpToProPage() {
   const classes = useStyles();
   const { proToken } = useParams();
   useEffect(() => {
-    axios.post(`/user/pro/${proToken}`, {
+    axios.put(`/user/pro/${proToken}`, {
     }).then(() => {
       history.push('/');
     }).catch((err) => {

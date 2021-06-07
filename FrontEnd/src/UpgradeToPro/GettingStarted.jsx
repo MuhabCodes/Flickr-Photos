@@ -39,7 +39,7 @@ export default function GettingStarted() {
       ispro,
     };
     axios('/users/pro', {
-      method: 'patch',
+      method: 'put',
       data: UserInfo,
     }).then(() => {
       <Typography>Check Your Mail</Typography>;
