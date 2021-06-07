@@ -3,7 +3,12 @@ import InstitutionsImage from './InstitutionsImage.JPG';
 import './TheCommons.css';
 import NavBar from '../App/Navbar';
 import Footer from '../App/Footer';
-
+// This .jsx is what makes up the commons static webpage, it is composed of 4 parts.
+// The first part is an introductory block on the commons.
+// The second part is about the commons-sampler.
+// The third part is more information about the commons.
+// The fourth part is a FAQ section.
+// This webpage is available to all kinds of users whether logged in or logged out.
 const TheCommons = () => (
   <div className="commons-full">
     <NavBar />
@@ -11,6 +16,8 @@ const TheCommons = () => (
       <div className="header">
         <img alt="" className="img-header" src="https://www.preusmuseum.no/var/plain_site/storage/images/media/images/commons_dolores2/26376-1-eng-GB/commons_dolores2.jpg" />
       </div>
+      {/* This is the introductory section on the commons
+      */}
       <h3 className="the-commons-title">Welcome!</h3>
       <div className="intro-contain">
         <div className="institutions">
@@ -62,6 +69,8 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      {/* This is the commons sampler section, where there are 3 photos and some text below each
+      */}
       <div className="commons-sampler">
         <h3 className="commons-sampler-title">
           A Commons Sampler
@@ -93,6 +102,8 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      {/* This is section provides more information about the commons
+      */}
       <div className="more-about-commons">
         <h3 className="more-title">More about The Commons</h3>
         <div className="more-about-commons-container">
@@ -132,6 +143,8 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      {/* This is a FAQ section abou the commons and their purpose
+      */}
       <div className="frequently-asked-questions">
         <h3 className="faq-title"> FAQ</h3>
         <div className=" freq-asked-content">
