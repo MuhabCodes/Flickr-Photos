@@ -86,8 +86,6 @@ function App() {
         const decodedData = jwt(storedToken);
         const expirationDate = decodedData.iat + 86400;
         const currenttime = (Date.now() / 1000);
-        console.log(expirationDate);
-        console.log(currenttime);
         // eslint-disable-next-line no-self-compare
         if (currenttime > expirationDate) {
           FBlogout();

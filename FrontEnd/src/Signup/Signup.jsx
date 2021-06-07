@@ -33,7 +33,7 @@ const useStyles = makeStyles(style);
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  password: yup.string().min(12).required(),
+  password: yup.string().min(5).required(),
   // age: yup.required,
   email: yup.string().email().required(),
 });
