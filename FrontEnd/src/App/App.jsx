@@ -41,7 +41,7 @@ import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import EmailNotifications from '../Emails&Notifications/EmailNotifications';
-import configData from '../config.json';
+// import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
@@ -79,7 +79,6 @@ const FBlogout = () => {
 };
 
 function App() {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     const interval = setInterval(() => {

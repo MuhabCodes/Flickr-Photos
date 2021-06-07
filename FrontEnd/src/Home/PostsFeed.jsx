@@ -7,15 +7,16 @@ import Post from './Post';
 import configData from '../config.json';
 
 const PostsFeed = () => {
+  axios.defaults.baseURL = 'https://api.flick.photos';
   const [posts, setPosts] = useState('');
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const history = useHistory();
   const userjwt = jwt(localStorage.getItem('token'));
   useEffect(() => {
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.defaults.headers.authorization = localStorage.getItem('token');
     axios({
-      baseURL: 'https://api.flick.photos',
       method: 'get',
       url: '/photos',
     }).then((resp) => {
@@ -23,7 +24,7 @@ const PostsFeed = () => {
       setPosts(resp.data.photos);
     }).catch((err) => {
       setError(err.error);
-      console.log(err);
+      console.log(err.error);
     });
   }, []);
   return (

@@ -40,6 +40,17 @@ const Post = (props) => {
           if (error.response.status === 401) {
             localStorage.removeItem('token');
             history.push('/login'); // If unauth error then redirect to login and clear token
+          } else if (error.response.status === 409) {
+            axios.delete(`/favorites/${photoId}`)
+              .then(() => {
+                setIsFaved(false);
+              })
+              .catch((err) => {
+                if (err.response.status === 401) {
+                  localStorage.removeItem('token');
+                  history.push('/login'); // If unauth error then redirect to login and clear token
+                }
+              });
           }
         });
     } else {
