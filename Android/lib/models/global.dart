@@ -155,7 +155,7 @@ bool addUserHomePostsInteg(Map<String, dynamic> json, User userFollowingInfo) {
   return true;
 }
 
-String host = "api.flick.photos";
+String host = "https://api.flick.photos";
 User loggedInUser = new User(
   username: 'Hard Coded',
   userAvatar:

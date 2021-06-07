@@ -6,6 +6,7 @@ import 'package:flickr/models/user.dart';
 import 'package:flickr/navigations/top_nav_bar.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/notification_provider.dart' as io;
+import 'package:flickr/providers/post_provider_integration.dart' as post;
 import 'package:flickr/providers/user_provider.dart' as user;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -79,9 +80,15 @@ class _SignInState extends State<SignIn> {
     }
     if (_auth.status == Status.Success) {
       var loggedUser = Provider.of<user.UserProvider>(context, listen: false);
+      loggedUser.token = _auth.token;
       loggedUser.user = _auth.currentUser;
-          var notificationProvider = Provider.of<io.NotificationProvider>(context, listen: false);
-          notificationProvider.token=_auth.token;
+      var notificationProvider =
+          Provider.of<io.NotificationProvider>(context, listen: false);
+      var postProvider =
+          Provider.of<post.PostProviderInteg>(context, listen: false);
+
+      postProvider.token = _auth.token;
+      notificationProvider.token = _auth.token;
       print(loggedUser.user.token);
       print(loggedUser.user.userId);
       Navigator.of(context).pop();
@@ -130,7 +137,10 @@ class _SignInState extends State<SignIn> {
       var loggedUser = Provider.of<user.UserProvider>(context, listen: false);
       var notificationProvider =
           Provider.of<io.NotificationProvider>(context, listen: false);
+      var postProvider =
+          Provider.of<post.PostProviderInteg>(context, listen: false);
       notificationProvider.token = _auth.token;
+      postProvider.token = _auth.token;
       loggedUser.token = _auth.token;
       loggedUser.user = _auth.currentUser;
       Navigator.of(context).pop();

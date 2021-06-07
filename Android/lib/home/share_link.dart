@@ -32,38 +32,21 @@ class ShareLinkScreenState extends State<ShareLinkScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SnackBar(
-        content: Column(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
             height: globalHeightScreen * 0.4,
             child: IconButton(
-                icon: Icon(
-                  Icons.share_outlined,
-                  size: 30,
-                  color: Colors.grey,
-                ),
-                onPressed: () {}))
+                icon: Icon(Icons.copy_rounded, size: 55, color: Colors.black),
+                onPressed: () {})),
+        /*Text(
+          "Copy Link",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        )*/
       ],
-    ));
-    /*Container(
-      height: globalHeightScreen * 0.4,
-      color: Colors.transparent,
-      constraints: BoxConstraints(
-        maxHeight: globalHeightScreen * 0.4,
-      ),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              height: globalHeightScreen * 0.4,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 10, bottom: 10, top: 5),
-              color: Colors.blue,
-            ),
-          ]),
     );
-  */
   }
 } //end class
