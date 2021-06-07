@@ -12,13 +12,13 @@
   font-size: 13px;
 }
 
-#tbody {
+#table-body {
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
 }
 
-.rank-table .th {
+.rank-table .table-header-th {
   padding: 4px 12px;
   background: #f3f3f3;
   border-left: 1px solid #e0e0e0;
@@ -32,7 +32,7 @@
   text-align: left;
 }
 
-.th:first-child,
+.table-header-th:first-child,
 .table-cell:first-child {
   text-align: center;
 }
@@ -53,7 +53,7 @@
   background-color: #e0e0e0;
 }
 
-.th .camera-table:hover,
+.table-header-th .camera-table:hover,
 .table-cell .camera-table:hover {
   background-color: #0063dc;
   color: white;
@@ -70,11 +70,11 @@
     font-size: 11px;
   }
 
-  #tbody {
+  #table-body {
     min-width: 33%;
   }
 
-  .rank-table .th {
+  .rank-table .table-header-th {
     min-width: 70%;
     font-size: 13px;
   }
