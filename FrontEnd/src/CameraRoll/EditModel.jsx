@@ -43,8 +43,8 @@ function EditModel(prop) {
           <h4>Editting 1 photo</h4>
           <br />
           <form onSubmit={handleSubmit}>
-            <input type="text" id="fname" name="firstname" placeholder="Change title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <input type="text" id="fname" name="firstname" placeholder="Change discription" value={discription} onChange={(e) => setdiscription(e.target.value)} />
+            <input className="edit-text" type="text" id="fname" name="firstname" placeholder="Change title" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input className="edit-text" type="text" id="fname" name="firstname" placeholder="Change discription" value={discription} onChange={(e) => setdiscription(e.target.value)} />
             <br />
             <br />
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

@@ -315,7 +315,7 @@ input[type="file"] {
   transition: background-color 70ms ease-in-out, color 70ms ease-in-out, box-shadow 70ms ease-in-out;
 }
 
-#edit-input-albums {
+#edit-input-description {
   font-size: 13px;
   padding: 3px 2px;
   box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 50%);

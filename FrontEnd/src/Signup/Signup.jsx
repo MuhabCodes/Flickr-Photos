@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -14,7 +14,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import icon from './flickrlogo.png';
 import style from './signupStyles';
-import configData from '../config.json';
+// import configData from '../config.json';
 
 // Styles Added to The inputs
 const CssTextField = withStyles({
@@ -33,12 +33,14 @@ const useStyles = makeStyles(style);
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  password: yup.string().min(12).required(),
+  password: yup.string().min(5).required(),
   // age: yup.required,
   email: yup.string().email().required(),
 });
 
 export default function SignUp() {
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -52,19 +54,17 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const isPro = useState('false');
   // const history = useHistory();
-  const history = useHistory();
   const submitForm = () => {
     // history.push('/verifysignup');
     const UserInfo = {
       firstName, lastName, age, email, password, isPro,
     };
-    axios(`${configData.SERVER_URL}/register/`, {
+    axios('/auth/register', {
       method: 'post',
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
-      history.push('/');
+      // history.push('/');
     });
   };
 
@@ -86,6 +86,7 @@ export default function SignUp() {
             className={classes.signUpButton}
             disableElevation
             type="submit"
+            id="sign-up-btn"
           >
             sign up
           </Button>

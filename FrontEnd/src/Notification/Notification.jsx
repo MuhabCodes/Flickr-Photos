@@ -5,7 +5,7 @@ import NotificationCard from './NotificationCard';
 function Notification() {
   const [notification, setnotification] = useState([]);
   useEffect(() => {
-    axios.get('Notification?reciever=1')
+    axios.get('notifications/myNotification')
       .then((items) => {
         setnotification(items.data);
       });

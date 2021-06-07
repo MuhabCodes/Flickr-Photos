@@ -14,23 +14,26 @@ const HomePage = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [currLoggedInFollowing, setCurrLoggedInFollowing] = useState('');
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
+  axios.defaults.headers.authorization = localStorage.getItem('token');
   // For not rendering of text boxes until user info gets fetched
   if (localStorage.getItem('token') === null) {
-    history.push('/login');
+    history.push('/start');
   } else {
     const userjwt = jwt(localStorage.getItem('token')); // get token from local storage to get curr user id
     useEffect(() => {
-      axios.get(`/users/${userjwt.sub}`, {
+      axios.get(`people/${userjwt.userId}/info`, {
       }).then((resp) => {
         setLoading(false); // set loading to false as it is dont and fetched data
         setCurrLoggedInFollowing(resp.data.following);
       }).catch((err) => {
         if (err.response.status === 401) {
-          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          history.push('/login');
+          // localStorage.removeItem('token'); // remove token and redirect login if not authorized
+          // history.push('/login');
         } else {
-          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+          // localStorage.removeItem('token'); // remove token and redirect login if not authorized
+          // setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
         }
       });
     }, []);
@@ -72,7 +75,7 @@ const HomePage = () => {
               </div>
             ) : (
               <div className="following-homepage-main-container">
-                <PostsFeed />
+                { isLoading ? <div>Loading...</div> : <PostsFeed />}
               </div>
             ) }
           </div>

@@ -26,7 +26,6 @@ const PeopleCard = (props) => {
   const userjwt = jwt(localStorage.getItem('token'));
   const handleClick = ((e) => {
     const idToFollow = id;
-    console.log(id);
     e.preventDefault();
     if (!isFollowed) {
       axios.post('/follow', id) // No doc so we assume that we send id to follow in body

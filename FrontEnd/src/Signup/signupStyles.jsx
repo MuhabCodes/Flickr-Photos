@@ -20,6 +20,7 @@ const signUpStyle = () => ({
   title: {
     fontSize: '1.25rem',
     color: 'black',
+    marginTop: 18,
     marginLeft: 105,
   },
   pos: {
@@ -62,6 +63,7 @@ const signUpStyle = () => ({
   },
   cardIcon: {
     display: 'flex',
+    marginTop: 30,
     width: '90px',
     justifyContent: 'center',
     alignSelf: 'center',

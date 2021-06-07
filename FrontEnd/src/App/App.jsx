@@ -47,6 +47,8 @@ import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
+import VerificationPage from '../Signup/LoadingPage';
+import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -84,10 +86,8 @@ function App() {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         const decodedData = jwt(storedToken);
-        const expirationDate = decodedData.exp;
+        const expirationDate = decodedData.iat + 86400;
         const currenttime = (Date.now() / 1000);
-        console.log(expirationDate);
-        console.log(currenttime);
         // eslint-disable-next-line no-self-compare
         if (currenttime > expirationDate) {
           FBlogout();
@@ -102,9 +102,17 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/verification/:confirToken">
+              <VerificationPage />
+            </Route>
             <Route exact path="/UpgradeToPro">
               <NavBar />
               <UpgradeToPro />
+              <Footer />
+            </Route>
+            <Route exact path="/uptoVerification/:proToken">
+              <NavBar />
+              <UpToProIntegration />
               <Footer />
             </Route>
             <Route exact path="/GettingStarted">
@@ -223,7 +231,7 @@ function App() {
               <FollowersPage />
               <Footer />
             </Route>
-            <Route exact path="/Notification">
+            <Route exact path="/myNotification">
               <Notification />
               <Footer />
             </Route>
@@ -247,7 +255,7 @@ function App() {
               <Albums />
               <Footer />
             </Route>
-            <Route exact path="/ex">
+            <Route exact path="/start">
               <NavBarSP />
               <StartPage />
             </Route>

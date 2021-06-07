@@ -8,5 +8,7 @@
     "users": 644,
     "users/:id":644,
     "photos":666,
-    "people/:userId/photos":644
+    "people/:userId/photos":644,
+    "/notifications/myNotification": "/myNotification",
+    "/user/:userId/followers": "/followers"
 }
