@@ -21,7 +21,7 @@ function CopyLinkShare() { // Copy the link of explore webpage to clipboard
 }
 const ShareBtn = () => (
   <div className="share-container">
-    <button type="button" id="share-link-btn" className="share-button" onClick={Share}>
+    <button type="button" id="share-link-btn" data-testid="share-test" className="share-button" onClick={Share}>
       <img src="https://img.icons8.com/ios/50/000000/forward-arrow.png" alt="" className="share-button-img" />
       Share
     </button>
@@ -29,7 +29,7 @@ const ShareBtn = () => (
       <div className="share-actions">
         <button type="button" className="cancel-share" id="share-cancelbtn" onClick={CancelShare}>X</button>
       </div>
-      <textarea name="exploreLink" id="exp-link"> https://flick.photos/Explore </textarea>
+      <textarea name="exploreLink" id="exp-link" value="https://flick.photos/Explore" readOnly="https://flick.photos/Explore"> </textarea>
       <button type="button" id="copy-link-button" onClick={CopyLinkShare}>Copy text</button>
     </div>
   </div>
