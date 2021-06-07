@@ -277,7 +277,7 @@ function PhotoView() {
                   </div>
                   <br />
                   <div className="mt-2 text-right">
-                    <button className="btn btn-primary btn-sm ml-1 shadow-none" type="button" onClick={handleComment}>comment</button>
+                    <button id="comment-submit-button" className="btn btn-primary btn-sm ml-1 shadow-none" type="button" onClick={handleComment}>comment</button>
                   </div>
                 </li>
               </ul>
@@ -335,6 +335,7 @@ function PhotoView() {
                     size="small"
                     variant="contained"
                     color="default"
+                    id="delete-tag-button"
                     className={classes.button}
                     endIcon={enabled && <ClearIcon fontSize="small" onClick={() => editTag(index)} />}
                   >
