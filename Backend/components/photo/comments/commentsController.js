@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const commentsDAL = require('./commentsDAL');
 const photoDAL = require('../photoDAL');
 
-const { decryptAuthToken } = require('../../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../../auth/services/decryptToken');
 
 exports.add = async function addComment(req, res, next) {
   const { authorization } = req.headers;
