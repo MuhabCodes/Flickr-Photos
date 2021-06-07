@@ -2,6 +2,7 @@ import React from 'react';
 import InstitutionsImage from './InstitutionsImage.JPG';
 import './TheCommons.css';
 import NavBar from '../App/Navbar';
+import Footer from '../App/Footer';
 
 const TheCommons = () => (
   <div className="commons-full">
@@ -131,6 +132,53 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      <div className="frequently-asked-questions">
+        <h3 className="faq-title"> FAQ</h3>
+        <div className=" freq-asked-content">
+          <div className="faq-container1">
+            <p>
+              <b>
+                I work for a cultural heritage institution that would like to be a
+                part of
+                The Commons.
+                How do we do that?
+              </b>
+              <br />
+              Please let us know you&apos;re interested by registering here.
+              It helps a lot if you let us know some background about your institution,
+              and direct us to any online photo collections you already have.
+            </p>
+          </div>
+          <div className="faq-container2">
+            <p>
+              <b>How can I get involved?</b>
+              <br />
+              We&apos;ve already seen fantastic contribution from the Flickr membership.
+              Your tags and conversations about the content in The Commons has been wonderful!
+              The best way to get involved is to add a tag or two to the photos you see,
+              and if you happen to know anything else about the subject, by all means add a comment.
+            </p>
+          </div>
+          <div className="faq-container3">
+            <p>
+              <b>
+                {' '}
+                What&apos;s &quot;no known copyright restrictions?&quot;
+              </b>
+              <br />
+              This new rights statement is being contained to the institutions
+              participating in The Commons,
+              at the account level.
+              It is a requirement for participation in the program that institutions may
+              rightly claim &quot;no known copyright
+              restrictions&quot; on the content
+              they share.
+              More information.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   </div>
 );
