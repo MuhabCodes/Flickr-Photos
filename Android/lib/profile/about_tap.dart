@@ -241,7 +241,7 @@ GestureDetector newCard(
   return GestureDetector(
     onTap: () {
       Navigator.of(context).pushNamed('/description',
-          arguments: {'title': primaryText, 'initialtext': secondryText});
+          arguments: {'title': primaryText, 'initialText': secondryText});
     },
     child: Card(
       margin: EdgeInsets.only(
