@@ -101,9 +101,9 @@ class TestMainPage(object):
         self.mainPage.click(self.mainPage.COMMENT_BUTTON)
         sleep(2)
 
-    @pytest.mark.skip
-    def test_add_to_gallery_photo(self, setup):
-        self.mainPage.search_and_click_photo(self.mainPage.TEXT_TO_SEARCH)
+    def test_search_people_follow(self, setup):
+        self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
         sleep(2)
-        self.mainPage.click(self.mainPage.ADD_PHOTO_TO)
+        self.mainPage.click(self.mainPage.PEOPLE_LABEL)
         sleep(2)
+        self.mainPage.click(self.mainPage.FOLLOW_BUTTON)
