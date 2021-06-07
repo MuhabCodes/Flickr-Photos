@@ -5,6 +5,7 @@ import 'package:flickr/profile/select_photos.dart';
 import 'package:flickr/providers/auth.dart';
 import 'package:flickr/providers/camera_provider.dart';
 import 'package:flickr/providers/notification_provider.dart';
+import 'package:flickr/providers/post_provider.dart';
 import 'package:flickr/providers/post_provider_integration.dart';
 import 'package:flickr/providers/tag_provider.dart';
 import 'package:flickr/providers/user_provider.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: PostProviderInteg(),
+        ),
+        ChangeNotifierProvider.value(
+          value: PostProvider(),
         ),
         ChangeNotifierProvider<SingleNotifier1>(
           create: (_) => SingleNotifier1(),
