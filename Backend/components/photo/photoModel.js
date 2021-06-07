@@ -17,10 +17,10 @@ const PhotoSchema = new Schema({
     type: Number,
     default: 0,
   },
-  secret: {
-    type: String,
-    required: true,
-  },
+  // secret: {
+  //   type: String,
+  //   required: true,
+  // },
   title: {
     type: String,
     required: true,
