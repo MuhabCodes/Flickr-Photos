@@ -7,9 +7,10 @@ import TextField from '@material-ui/core/TextField';
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 import axios from 'axios';
 import './GettingStarted.css';
+import { Typography } from '@material-ui/core';
 
 const CssTextField = withStyles({
   root: {
@@ -27,7 +28,9 @@ const CssTextField = withStyles({
 // });
 
 export default function GettingStarted() {
-  const userjwt = jwt(localStorage.getItem('token'));
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  // const userjwt = jwt(localStorage.getItem('token'));
   const [email, setEmail] = useState('');
   const [ispro, setIsPro] = useState(false);
   const getPro = () => {
@@ -35,10 +38,11 @@ export default function GettingStarted() {
     const UserInfo = {
       ispro,
     };
-    axios(`/users/${userjwt.sub}`, {
+    axios('/users/pro', {
       method: 'patch',
       data: UserInfo,
     }).then(() => {
+      <Typography>Check Your Mail</Typography>;
     });
   };
 
