@@ -39,7 +39,7 @@ export default function UpgradeToPro() {
   };
   return (
     <div>
-      <div className="backgroundimg">
+      <div className="backgroundimg-uptopro">
         <p>
           flickr
           <span>pro</span>

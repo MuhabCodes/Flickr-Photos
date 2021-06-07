@@ -102,7 +102,7 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
-            <Route exact path="/UpgradeToPro">
+            <Route exact path="/GetPro">
               <NavBar />
               <UpgradeToPro />
               <Footer />

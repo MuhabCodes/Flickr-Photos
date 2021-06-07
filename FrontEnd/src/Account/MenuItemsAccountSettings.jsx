@@ -7,7 +7,7 @@ const MenuItemsAccountSettings = [
   },
   {
     title: 'Emails & Notifications',
-    url: '/acount/email',
+    url: '/account/email',
     cName: 'nav-links',
     key: 'email',
   },
