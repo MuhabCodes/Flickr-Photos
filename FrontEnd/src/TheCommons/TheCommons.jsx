@@ -92,6 +92,45 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      <div className="more-about-commons">
+        <h3 className="more-title">More about The Commons</h3>
+        <div className="more-about-commons-container">
+          <div className="img-cap">
+            <img src="https://combo.staticflickr.com/pw/images/en-us/commons_add_info.png" alt="" />
+            <p className="caption">A new way to share photos on Flickr</p>
+          </div>
+          <div className="more-about-text">
+            <p className="text-more">
+              The Commons was launched on January 16 2008, when we released our pilot project
+              <br />
+              in partnership with The Library of Congress. Both Flickr and the Library were
+              <br />
+              overwhelmed
+              by the positive response to the project! Thank you!
+              <br />
+              The program has two main objectives:
+              <ol className="list-objec">
+                <li className="point-one">
+                  <b> To increase access </b>
+                  {' '}
+                  to publicly-held photography collections, and
+                </li>
+                <li className="point-two">
+                  To provide a way for the general public to
+                  {' '}
+                  <b>
+                    {' '}
+                    contribute information
+                    and knowledge.
+                  </b>
+                  <br />
+                  (Then watch what happens when they do!)
+                </li>
+              </ol>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 );
