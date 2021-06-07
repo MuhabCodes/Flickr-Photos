@@ -25,7 +25,7 @@ module.exports.sendConfirmationEmail = async function sendEmail(
   {
     expiresIn: '1d',
   });
-  const confirmationLinkFE = `${process.env.HOST}:${process.env.PORT}/auth/confirmation/${confirmationToken}`;
+  const confirmationLinkFE = `flick.photos/verification/${confirmationToken}`;
 
   const message = {
     from: 'noreply@flick.photos',
