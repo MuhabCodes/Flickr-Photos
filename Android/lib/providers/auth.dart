@@ -72,11 +72,11 @@ class Authentication with ChangeNotifier {
     );
     if (response.statusCode == 201) {
       token = User.fromJson2(jsonDecode(response.body)).token;
+      currentUser.token = token;
       status = Status.Success;
       Map<String, dynamic> payload = Jwt.parseJwt(token);
 
       currentUser.userId = payload["userId"];
-      status = Status.Success;
       print(token);
       print(response.body);
       print("User Signed in");

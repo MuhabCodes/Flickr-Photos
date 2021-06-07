@@ -18,8 +18,6 @@ class _DescriptionStateWithPrivacy extends State<DescriptionWithPrivacy> {
   @override
   void initState() {
     super.initState();
-    userProvider = Provider.of<UserProvider>(context, listen: false);
-    userProvider.setUser();
     myFocusNode = FocusNode();
   }
 
@@ -54,7 +52,7 @@ class _DescriptionStateWithPrivacy extends State<DescriptionWithPrivacy> {
                 }
                 if (changedText != null) {
                   userProvider.setMember(title, changedText);
-                  userProvider.createUser();
+                  userProvider.updateInfo();
                 }
                 if (close == 2) {
                   Navigator.pop(context);
@@ -91,7 +89,7 @@ class _DescriptionStateWithPrivacy extends State<DescriptionWithPrivacy> {
               onChanged: (value) => {changedText = value},
               onFieldSubmitted: (value) => {
                 userProvider.setMember(title, value),
-                userProvider.createUser(),
+                userProvider.updateInfo(),
                 Navigator.pop(context)
               },
               cursorHeight: 30,
