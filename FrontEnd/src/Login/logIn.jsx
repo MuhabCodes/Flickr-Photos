@@ -114,6 +114,7 @@ export default function SignUp() {
             className={classes.loginButton}
             disableElevation
             type="submit"
+            id="login-btn"
           >
             sign in
           </Button>
