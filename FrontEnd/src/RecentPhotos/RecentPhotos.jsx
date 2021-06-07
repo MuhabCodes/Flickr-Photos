@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import axios from 'axios';
 import $ from 'jquery';
 import jwt from 'jwt-decode';
+import FaveButton from './ExploreFaveButton';
 // The RecentPhotos.jsx is the component which helps in displaying the recent photos,
 // It includes the function 'RecentPhotos' which has a code the helps in fetching the photos.
 // This function returns the fetched images, but not all at once,
@@ -77,13 +78,15 @@ const RecentPhotos = () => {
                 {photo.user}
               </span>
               <span className="faves">
-                <button className="fav-btn" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
+                {/* <button className="fav-btn" type="button" id="fave-button"
+                key={photo.photoId} onClick={ClickMe}>
                   <img
                     className="star"
                     src="https://img.icons8.com/android/24/ffffff/star.png"
                     alt="favIcon"
                   />
-                </button>
+                </button> */}
+                <FaveButton ClickMe={ClickMe} />
                 <span className="fav-count" id="fav-num" key={photo.photoId}>
                   {photo.favs}
                 </span>
