@@ -1,4 +1,5 @@
 const Camera = require('./cameraModel');
+const cameraBrandModel = require('../cameraBrand/cameraBrandModel');
 
 module.exports.addCamera = async function addCamera({
   name, brandName,
@@ -13,6 +14,10 @@ module.exports.addCamera = async function addCamera({
     // zoom,
   });
   const cameras = await cameraObj.save();
+  const cameraBrand = await cameraBrandModel.findOne({ brand: brandName });
+  cameraBrand.topModels.push(name); // add this model to the brand
+  cameraBrand.save();
+
   return cameras;
 };
 

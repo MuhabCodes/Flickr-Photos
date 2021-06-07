@@ -1,10 +1,19 @@
 const { Schema, model } = require('mongoose');
 
 const cameraBrandSchema = new Schema({
-  name: {
+  brand: {
     type: String,
     unique: true,
     required: true,
+  },
+  topModels: {
+    type: [String],
+  },
+  modelTypes: {
+    type: [String],
+  },
+  image: {
+    type: String,
   },
 
 });

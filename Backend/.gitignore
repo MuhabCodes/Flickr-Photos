@@ -1,5 +1,10 @@
+.gitignore
 node_modules/
 secret/
 .vscode/
 *.rest
+*.png
+*.jpeg
+*jpg
 myUser/
+

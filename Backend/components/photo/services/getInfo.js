@@ -4,7 +4,7 @@ const getInfo = async (photoId, res) => {
   try {
     const photo = await getPhotoById(photoId);
     return res.json({
-      authorId: photo.user._id,
+      authorId: photo.user,
       title: photo.title,
       description: photo.description,
       captureDate: photo.captureDate,
@@ -19,6 +19,7 @@ const getInfo = async (photoId, res) => {
       statusCode: 200,
       width: photo.width,
       height: photo.height,
+      location: photo.location,
     });
   } catch (err) {
     return res.json({ statusCode: 404, error: 'PhotoNotFound' });

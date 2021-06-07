@@ -10,9 +10,9 @@ mongoose
     { useNewUrlParser: true });
 const persons = [new Person({
   _id: '507f191e810c19729de86034',
-  birthDate: '12-12-2000',
+  age: 30,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street t',
@@ -22,9 +22,9 @@ const persons = [new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86035',
-  birthDate: '12-04-2000',
+  age: 11,
   realName: 'mohamed',
-  dateCreated: '12-12-2004',
+
   description: 'hi this is me',
   homeTown: 'dokki',
   occupation: 'street tji',
@@ -34,9 +34,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86036',
-  birthDate: '12-12-2001',
+  age: 18,
   realName: 'ahmed',
-  dateCreated: '12-11-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street t',
@@ -46,9 +46,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86037',
-  birthDate: '12-10-2002',
+  age: 26,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street t',
@@ -58,9 +58,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86038',
-  birthDate: '12-09-2003',
+  age: 25,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street t',
@@ -70,9 +70,8 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86039',
-  birthDate: '12-08-2004',
+  age: 24,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street it',
@@ -82,9 +81,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86040',
-  birthDate: '12-07-2005',
+  age: 19,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street l',
@@ -94,9 +93,8 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86041',
-  birthDate: '12-06-2006',
+  age: 17,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street l',
@@ -106,9 +104,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86042',
-  birthDate: '12-03-2007',
+  age: 23,
   realName: 'ahmed',
-  dateCreated: '12-12-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street l',
@@ -118,9 +116,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86043',
-  birthDate: '12-03-2008',
+  age: 23,
   realName: 'ahmed',
-  dateCreated: '12-02-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street y',
@@ -130,9 +128,9 @@ new Person({
 }),
 new Person({
   _id: '507f191e810c19729de86044',
-  birthDate: '12-12-2009',
+  age: 20,
   realName: 'ahmed',
-  dateCreated: '12-02-2007',
+
   description: 'this is me',
   homeTown: 'maadi',
   occupation: 'street k',
