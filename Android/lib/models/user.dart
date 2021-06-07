@@ -73,7 +73,9 @@ class User {
         isPro: json["isPro"],
         albums: List<dynamic>.from(json["albums"].map((x) => x)),
         email: json["email"],
-        photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
+        photos: json["photos"] != []
+            ? List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x)))
+            : [],
         photosCount: json["photosCount"],
         firstName: json["firstName"],
         displayName: json["displayName"],
@@ -169,6 +171,7 @@ class Photo {
     this.secret,
     this.imageUrl,
     this.width,
+    this.inPhoto,
     this.height,
     this.user,
     this.photoV,
@@ -183,6 +186,7 @@ class Photo {
   List<dynamic> peopleInPhoto;
   String id;
   String description;
+  List<dynamic> inPhoto;
   String title;
   DateTime captureDate;
   DateTime uploadDate;
@@ -202,13 +206,15 @@ class Photo {
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
         views: json["views"],
-        isPublic: json["isPublic"],
+        isPublic: json["isPublic"] == null ? null : json["isPublic"],
         tags: List<String>.from(json["tags"].map((x) => x)),
-        peopleInPhoto: List<dynamic>.from(json["peopleInPhoto"].map((x) => x)),
+        peopleInPhoto: List<dynamic>.from(json["inPhoto"].map((x) => x)),
         id: json["_id"],
         description: json["description"] == null ? null : json["description"],
         title: json["title"] == null ? null : json["title"],
-        captureDate: DateTime.parse(json["captureDate"]),
+        captureDate: json["captureDate"] == null
+            ? null
+            : DateTime.parse(json["captureDate"]),
         uploadDate: DateTime.parse(json["uploadDate"]),
         secret: json["secret"],
         imageUrl: json["imageUrl"],
@@ -216,7 +222,7 @@ class Photo {
         height: json["height"],
         favs: json["favs"],
         comments: json["comments"],
-        user: json["user"],
+        user: json["user"] == null ? null : json["user"],
         photoV: json["v"] == null ? null : json["v"],
         v: json["__v"] == null ? null : json["__v"],
       );
@@ -229,7 +235,8 @@ class Photo {
         "_id": id,
         "description": description == null ? null : description,
         "title": title == null ? null : title,
-        "captureDate": captureDate.toIso8601String(),
+        "captureDate":
+            captureDate == null ? null : captureDate.toIso8601String(),
         "uploadDate": uploadDate.toIso8601String(),
         "favs": favs,
         "comments": comments,
