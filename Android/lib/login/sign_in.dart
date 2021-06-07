@@ -22,7 +22,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  bool _isLoading = false;
   GoogleSignInAccount _user;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
