@@ -61,6 +61,37 @@ const TheCommons = () => (
           </div>
         </div>
       </div>
+      <div className="commons-sampler">
+        <h3 className="commons-sampler-title">
+          A Commons Sampler
+        </h3>
+        <div className="commons-sampler-container">
+          <div className="commons-sample1">
+            <img src="https://live.staticflickr.com/8542/8636135413_4aa4cd88e6_m.jpg" alt="" />
+            <p className="sampler-text">
+              <b> XXI OCTOBER MDCCCV</b>
+              <br />
+              from National Library of Ireland on The Commons
+            </p>
+          </div>
+          <div className="commons-sample2">
+            <img src="https://live.staticflickr.com/2807/9391940890_0ab87407f5_m.jpg" alt="" />
+            <p className="sampler-text">
+              <b>  Wash and brush-up for Loco 42… </b>
+              <br />
+              from National Library of Ireland on The Commons
+            </p>
+          </div>
+          <div className="commons-sample2">
+            <img src="https://live.staticflickr.com/65535/51047830258_87aca072db_m.jpg" alt="" />
+            <p className="sampler-text">
+              <b>Creels and wheels and Peelers... </b>
+              <br />
+              from National Library of Ireland on The Commons
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 );
