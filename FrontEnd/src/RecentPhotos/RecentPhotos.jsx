@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import axios from 'axios';
 import $ from 'jquery';
 import jwt from 'jwt-decode';
+import FaveButton from './ExploreFaveButton';
 // The RecentPhotos.jsx is the component which helps in displaying the recent photos,
 // It includes the function 'RecentPhotos' which has a code the helps in fetching the photos.
 // This function returns the fetched images, but not all at once,
@@ -14,9 +15,11 @@ import jwt from 'jwt-decode';
 
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]); // sets the images fetched
-  const [loading, setLoading] = useState(false); // for loading purpose
+  const [isLoading, setLoading] = useState(true); // for loading purpose
+  const [error, setError] = useState(null);
   // The following loadPage function, checks if the user is a guest or logged in and displays
   // images details accordingly.
+  axios.defaults.baseURL = 'http://localhost:8000';
   let userjwt = [];
   function loadPage() {
     if (localStorage.getItem('token')) {
@@ -26,10 +29,14 @@ const RecentPhotos = () => {
   }
   // useEffect helps us fetch the photos from the server.
   useEffect(() => {
+    axios.defaults.baseURL = 'http://localhost:8000';
     axios.get('/photosExplore?_sort=dateUploaded&_order=desc')
       .then((resp) => {
         setLoading(false);
         setRecPhotos(resp.data);
+      }).catch((err) => {
+        setError(err.response);
+        console.log(err);
       });
   }, []);
   // The following changes the photos(objects) to array that can be used by the .map
@@ -47,9 +54,9 @@ const RecentPhotos = () => {
   }
 
   // The following if condition checks if no images are in photos (fetched), display loading.
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
+  // if (loading) {
+  //   return <h1>Loading</h1>;
+  // }
   // The following part returns the fetched images.
   // The lazy load Image component is used to display the images but not all at once,
   // when the user scrolls down more images are fetched to be displayed.
@@ -58,7 +65,8 @@ const RecentPhotos = () => {
   return (
     <div className="recent-photos">
       <div className="image-grid">
-        {photoArr.map((photo) => (
+        {error && <div>{error}</div>}
+        {isLoading ? <div> Loading </div> : (photoArr.map((photo) => (
           <div className="image-container">
             <LazyLoadImage
               className="single-image"
@@ -77,13 +85,15 @@ const RecentPhotos = () => {
                 {photo.user}
               </span>
               <span className="faves">
-                <button className="fav-btn" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
+                {/* <button className="fav-btn" type="button" id="fave-button"
+                key={photo.photoId} onClick={ClickMe}>
                   <img
                     className="star"
                     src="https://img.icons8.com/android/24/ffffff/star.png"
                     alt="favIcon"
                   />
-                </button>
+                </button> */}
+                <FaveButton ClickMe={ClickMe} />
                 <span className="fav-count" id="fav-num" key={photo.photoId}>
                   {photo.favs}
                 </span>
@@ -95,7 +105,7 @@ const RecentPhotos = () => {
             </span>
 
           </div>
-        ))}
+        )))}
         <div />
       </div>
     </div>

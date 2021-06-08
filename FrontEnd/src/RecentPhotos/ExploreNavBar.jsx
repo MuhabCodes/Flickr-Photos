@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import 'bootstrap';
 import { Link } from 'react-router-dom';
+import MoreButton from './MoreButton';
 // The ExploreNavbar.jsx will include a function 'ExploreNavbar' that returns the html tags and
 // properties to make up this navbar.
 // This explore nav bar is available to any kind of user (logged in or guest)
@@ -16,11 +17,10 @@ function ExploreNavBar() {
       <Link id="exp-menu-item" to="./" className="active">Explore</Link>
       <div className="animation start-home" />
       <div className="exp-dropdown">
-        <button className="dropdown-toggle" type="button" id="exp-dropdown-menu-button1" data-toggle="dropdown" aria-expanded="false">
-          More
-        </button>
+        <MoreButton />
         <div className="dropdown-menu" aria-labelledby="exp-dropdown-menu-button1">
           <Link className="dropdown-item" to="./CameraFinder">Camera Finder</Link>
+          <Link className="dropdown-item" to="./TheCommons">The Commons</Link>
         </div>
       </div>
     </nav>

@@ -1,7 +1,8 @@
-import React from 'react';
-import { cameras } from '../PopularCamerasDb.json';
+import React, { useEffect, useState } from 'react';
+// import { cameras } from '../Mock/MockAPI.json';
 import './RankTable.css';
-// This .jsx will display the data fetched from .json as a table.
+import axios from 'axios';
+// This .jsx will display the data fetches data from our api
 // RankTable function has two functions renderHead and renderBody
 // 1- renderHead return the headings of the table such as Brand, Top Models, Model Types.
 // 2- renderBody maps the objects as rows in the table,
@@ -9,29 +10,43 @@ import './RankTable.css';
 // 3- In the return statement, both functions mentioned above are called
 // and hence the table is displayed.
 // Reference used: https://codesandbox.io/s/cranky-faraday-pogb0?file=/src/components/MoviesTable.js
-function RankTable() {
+const RankTable = () => {
+  const [cameras, setPopCam] = useState([]); // sets the cameras fetched from the server
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  axios.defaults.baseURL = 'https://api.flick.photos';
+  axios.defaults.headers.Authorization = localStorage.getItem('token');
+  // useEffect and axios used to make get request to fetch cameras' details
+  useEffect(() => {
+    axios.get('/cameras/brands')
+      .then((resp) => {
+        setLoading(false);
+        setPopCam(resp.data.cameras);
+        console.log(resp.data);
+        return resp.data;
+      }).catch((err) => {
+        setError(err.response);
+        console.log(err);
+      });
+  }, []);
   function renderHead() {
     return (
       <thead id="table-head">
         <tr className="table-row">
-          {/* <th className="th">Rank ▾</th> */}
-          <th className="th">
+          <th className="table-header-th">
             <a className="camera-table" href="./Brands">Brand</a>
           </th>
-          <th className="th">Top Models</th>
-          <th className="th">Model Types</th>
-          {/* <th className="th"><a className="camera-table" href="./noOfModels"># of Mod
-          //els</a></th> */}
+          <th className="table-header-th">Top Models</th>
+          <th className="table-header-th">Model Types</th>
         </tr>
       </thead>
     );
   }
   function renderBody() {
     return (
-      <tbody id="tbody">
+      <tbody id="table-body">
         {cameras.map((camera) => (
           <tr className="table-row">
-            {/* <td className="table-cell" key={camera.rank}>{camera.rank}</td> */}
             <td className="table-cell"><a className="camera-table" href="./Brands">{camera.brand}</a></td>
             <td className="table-cell">
               {camera.topModels.map((sub, index) => (
@@ -47,7 +62,6 @@ function RankTable() {
                 </span>
               ))}
             </td>
-            {/* <td className="table-cell" key={camera.rank}>{camera.noOfModel}</td> */}
           </tr>
         ))}
       </tbody>
@@ -55,11 +69,16 @@ function RankTable() {
   }
   return (
     <div className="rank-table">
-      <table className="rank-table-details">
-        {renderHead()}
-        {renderBody()}
-      </table>
+      {error && <div>{error}</div>}
+      {isLoading ? <div> Loading </div>
+        : (
+          <table className="rank-table-details">
+            {renderHead()}
+            {renderBody()}
+          </table>
+        )}
     </div>
+
   );
-}
+};
 export default RankTable;

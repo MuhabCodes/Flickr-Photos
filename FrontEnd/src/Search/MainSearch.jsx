@@ -6,6 +6,8 @@ import { Form, FormControl } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './MainSearch.css';
 import jwt from 'jwt-decode';
+import SearchButton from './SearchButton';
+import FaveButtonSearch from './SearchFaveButton';
 // This page is to allow the user to search for pictures by title
 // The page is initially empty with only a search bar on the right
 // the user will be able to type the title of the desired image in the search box and retreive
@@ -21,6 +23,9 @@ const MainSearch = () => {
   // when searching with title=query
   const [stateImages, setStateImages] = useState([]); // used to set the images fetched
   const [isLoading, setLoading] = useState(true); // for loading purpose
+  const [error, setError] = useState(null);
+  axios.defaults.baseURL = 'https://api.flick.photos';
+  axios.defaults.headers.Authorization = localStorage.getItem('token');
   // The following function loadPage is used to check if token exists,
   // and displays the image's details on hovering for the logged in user and none for the guest.
   let userjwt = [];
@@ -30,14 +35,20 @@ const MainSearch = () => {
       $('.text-area-search').css('display', 'block');
     }
   }
+  console.log(userjwt);
   // fetchImages is the function that handles the fetching process
   function fetchImages() {
-    // useEffect helps us fetch the photos from the mock server.
+    // useEffect helps us fetch the photos from our api.
     useEffect(() => {
-      axios.get(`/photosSearch?title=${search}`)
+      axios.get(`/search/photos?searchWord=${search}`)
         .then((resp) => {
           setLoading(false);
-          setStateImages(resp.data);
+          setStateImages(resp.data.photosSearch);
+          console.log(resp.data);
+          return resp.data;
+        }).catch((err) => {
+          setError(err.response);
+          console.log(err);
         });
     }, [search]);
     return stateImages;
@@ -46,7 +57,7 @@ const MainSearch = () => {
   // will be changed to match the results' title
   const searchClick = (e) => {
     e.preventDefault();
-    history.push(`/search?title=${search}`);
+    history.push(`/search?searchWord=${search}`);
     document.getElementById('img-div').style.display = 'block';
     return search;
   };
@@ -81,14 +92,12 @@ const MainSearch = () => {
             onInput={handleSearchInputChanges}
             name="title"
           />
-          <button type="submit" id="search-button-btn">
-            <img src="https://img.icons8.com/ios/25/000000/search--v1.png" alt="" />
-            {' '}
-          </button>
+          <SearchButton />
         </Form>
       </div>
       <div className="image-results">
-        {isLoading ? <div>Loading...</div> : (
+        {error && <div>{error}</div>}
+        {isLoading ? <div> Loading </div> : (
           <div id="img-div" style={{ display: 'none' }}>
             <div className="image-grid-search">
               {searchData.map((photo) => (
@@ -110,14 +119,14 @@ const MainSearch = () => {
                       {photo.user}
                     </span>
                     <span className="faves-search">
-                      <button className="fav-btn-search" type="button" id="fave-button" key={photo.photoId} onClick={ClickMe}>
-                        <img
-                          className="star"
-                          src="https://img.icons8.com/android/24/ffffff/star.png"
-                          alt=""
-                        />
-                      </button>
-                      <span onChange={ClickMe} value={photo.favs} className="fav-count-search" id="fav-num" key={photo.photoId}>
+                      <FaveButtonSearch ClickMe={ClickMe} />
+                      <span
+                        value={photo.favs}
+                        className="fav-count
+                      -search"
+                        id="fav-num"
+                        key={photo.photoId}
+                      >
                         {photo.favs}
                       </span>
                     </span>

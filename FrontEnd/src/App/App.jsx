@@ -22,7 +22,7 @@ import Footer from './Footer';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Faves from '../Profile/Faves';
+import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
@@ -46,6 +46,7 @@ import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
+import TheCommons from '../TheCommons/TheCommons';
 import VerificationPage from '../Signup/LoadingPage';
 import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
 
@@ -130,6 +131,9 @@ function App() {
             </Route>
             <Route exact path="/CameraFinder">
               <CameraFinder />
+            </Route>
+            <Route exact path="/TheCommons">
+              <TheCommons />
             </Route>
             <Route exact path="/account">
               <NavBar />
