@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
-import edit from './assets/edit_icon.png';
 import './AboutBio.css';
+import EditBioButton from './EditBioButton';
 
+/**
+ * This component renders the description area for each user in the about page
+ * @component AboutBio
+ * @function AboutBio
+ * @example <AboutBio/>
+ * @returns bio container
+ */
 const AboutBio = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -33,22 +40,7 @@ const AboutBio = () => {
       });
     }
   }, [userId]);
-  function Read() {
-    //  Read function that checks whether user wants to read more or read less
-    const dots = document.getElementById('dots');
-    const moreText = document.getElementById('more');
-    const btnText = document.getElementById('readbtn');
 
-    if (dots.style.display === 'none') {
-      dots.style.display = 'inline';
-      btnText.innerHTML = 'Read more';
-      moreText.style.display = 'none';
-    } else {
-      dots.style.display = 'none';
-      btnText.innerHTML = 'Read less';
-      moreText.style.display = 'inline';
-    }
-  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const add = document.getElementById('usertextarea').value;
@@ -73,27 +65,14 @@ const AboutBio = () => {
       <div className="bio-container">
           {/* edit bio button for user */}
           {currUser && (
-          <button
-            type="button"
-            id="user-edit-biobtn"
-            className="edit-button"
-            onClick={() => { // hide text area and show edit text area
-              document.getElementById('textcontainer').style.display = 'none';
-              if (text.length > 200) {
-                document.getElementById('readbtn').style.display = 'none';
-              }
-              document.getElementById('editingarea').style.display = 'block';
-              document.getElementById('usertextarea').innerHTML = text;
-            }}
-          >
-            <img src={edit} alt="" className="edit-button-img" />
-          </button>
+            <EditBioButton text={text} />
           )}
         <div className="edit-bio" id="editingarea" style={{ display: 'none' }}>
           <textarea name="userbio" id="usertextarea" />
           <div className="editbio-actions">
             <button
               type="button"
+              data-testid="savebio-btn-test"
               className="save-bio"
               id="editbio-savebtn"
               onClick={(e) => { // save changes to text value and hide editing area, show text area
@@ -138,7 +117,27 @@ const AboutBio = () => {
                 <span id="more" style={{ display: 'none' }}>
                   {text.substring(201, text.length)}
                 </span>
-                <button type="button" onClick={Read} id="readbtn">Read more</button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const dots = document.getElementById('dots');
+                    const moreText = document.getElementById('more');
+                    const btnText = document.getElementById('readbtn');
+
+                    if (dots.style.display === 'none') {
+                      dots.style.display = 'inline';
+                      btnText.innerHTML = 'Read more';
+                      moreText.style.display = 'none';
+                    } else {
+                      dots.style.display = 'none';
+                      btnText.innerHTML = 'Read less';
+                      moreText.style.display = 'inline';
+                    }
+                  }}
+                  id="readbtn"
+                >
+                  Read more
+                </button>
               </p>
             )}
         </div>
