@@ -20,6 +20,8 @@ class LoginPage(BasePage):
     PRIVACY_LINK = (By.LINK_TEXT, "Privacy")
     TERMS_LINK = (By.LINK_TEXT, "Terms")
     COOKIES_LINK = (By.LINK_TEXT, "Cookies")
+    TEST_EMAIL = "kennedi.vonrueden@yahoo.com"
+    TEST_PASSWORD = "12345678"
 
     def __init__(self, driver):
         super().__init__(driver)
