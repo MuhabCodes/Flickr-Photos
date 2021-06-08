@@ -3,23 +3,25 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import './DeleteAccount.css';
-import configData from '../config.json';
+// import configData from '../config.json';
 
 const DeleteAccount = () => {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
+  const [deleteStatus, setDeleteStatus] = useState('');
   // For not rendering of text boxes until user info gets fetched
   const userjwt = jwt(localStorage.getItem('token')); // get token from local storage to get curr user id
   const [displayname, setDisplayName] = useState('');
   useEffect(() => {
-    axios.get(`/users/${userjwt.sub}`, {
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
+    axios.get(`/people/${userjwt.userId}/info`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
-      setDisplayName(resp.data.displayname);
-      return resp.data;
+      setDisplayName(resp.data.displayName);
     }).catch((error) => {
       if (error.response.status === 401) {
         localStorage.removeItem('token'); // remove token and redirect to login if not authorized
@@ -33,14 +35,20 @@ const DeleteAccount = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    axios.delete(`/users/${userjwt.sub}`)
-      .then(() => {
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
+    axios.delete('/user/delete-account')
+      .then((resp) => {
+        console.log(resp);
         // Invoke Logout
         localStorage.removeItem('token'); // remove Current logged in user token from local storage
         // Delete
-        setTimeout(() => history.push('/login'), 100); // Redirect to login if Account Deleted
+        setDeleteStatus('Account Deleted, Redirecting to Login');
+        setTimeout(() => history.push('/login'), 2000); // Redirect to login if Account Deleted
       })
       .catch((error) => {
+        console.log(error);
         if (error.response.status === 401) {
           localStorage.removeItem('token'); // remove token and redirect to login if not authorized
           setTimeout(() => history.push('/login'), 100); // Redirect to Error page
@@ -96,6 +104,7 @@ const DeleteAccount = () => {
                 </ul>
               </div>
               <button type="button" onClick={handleDelete} className="delete-account-button" id="delete-account-button">Delete Account</button>
+              <div>{ deleteStatus }</div>
             </div>
           )}
       </div>
