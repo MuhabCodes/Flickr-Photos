@@ -209,7 +209,7 @@ function App() {
               <Photostream />
               <Footer />
             </Route>
-            <Route exact path="/profile/photostream/edit/:usreId">
+            <Route exact path="/profile/photostream/edit/:userId">
               <NavBar />
               <EditPhotostream />
               <Footer />
