@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const personSchema = new mongoose.Schema({
-  birthDate:
+  age:
   {
-    type: String,
-    required: true,
+    type: Number,
 
   },
   realName:
@@ -15,8 +14,8 @@ const personSchema = new mongoose.Schema({
   },
   dateCreated:
   {
-    type: String,
-    required: true,
+    type: Date,
+    default: Date.now(),
 
   },
   description:

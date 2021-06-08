@@ -1,3 +1,6 @@
-
-FrontEnd/src/Profile/assets/scrappy-95f0c81a.png
-node_modules
+# Backend
+node_modules/
+/secret
+*.rest
+.vscode/
+#-----------------

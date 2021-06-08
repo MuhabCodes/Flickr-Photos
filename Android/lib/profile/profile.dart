@@ -1,13 +1,14 @@
+import 'package:flickr/profile/public_tab.dart';
+import 'package:flickr/profile/showMoreVertMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './Followers.dart';
 import './about_tap.dart';
 import './camera_roll.dart';
+import './followers.dart';
 import './following.dart';
 import './stats.dart';
-import '../providers/about_provider.dart';
-import '../providers/photo_provider.dart';
+import '../providers/user_provider.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class Profile extends StatefulWidget {
@@ -17,195 +18,14 @@ class Profile extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _ProfileState extends State<Profile> {
-  bool _notification = false;
-  var aboutProvider;
-  var photoProvider;
+  var userProvider;
   int _initialIndex = 2;
 
   @override
-  void initState() {
-    aboutProvider = Provider.of<AboutProvider>(context, listen: false);
-    aboutProvider.setabout();
-    photoProvider = Provider.of<PhotoProvider>(context, listen: false);
-    photoProvider.setPhotos();
-    //photoProvider.arangePhoto();
-    super.initState();
-  }
-
-  Future<void> _showMoreVertMenue(double width) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (ctx) {
-        return Dialog(
-          insetPadding: EdgeInsets.all(0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10, top: 5),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Auto-Uploadr',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'notifications',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      onPressed: () {},
-                    ),
-                    Switch(
-                      value: _notification,
-                      onChanged: (val) => {},
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Privacy and Safety',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 20, bottom: 10),
-                    child: TextButton(
-                      child: const Text(
-                        'Use Native Video Camera',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                  Switch(value: true, onChanged: (val) {})
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Divider(
-                  height: 10,
-                  thickness: 2,
-                  color: Colors.grey[300],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Feedback',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'About',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Help',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
-                child: Divider(
-                  height: 10,
-                  thickness: 2,
-                  color: Colors.grey[300],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                color: Colors.grey[900],
-                padding: EdgeInsets.only(left: 20, bottom: 10),
-                child: TextButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  child: const Text(
-                    'Sign Out',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
-    aboutProvider = Provider.of<AboutProvider>(context, listen: true);
+    userProvider = Provider.of<UserProvider>(context, listen: true);
     var size = MediaQuery.of(context).size;
-    if (aboutProvider.status == Status.Loading) {
+    if (userProvider.status == Status.Loading) {
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(
@@ -222,6 +42,7 @@ class _ProfileState extends State<Profile> {
             headerSliverBuilder: (context, value) {
               return [
                 SliverAppBar(
+                  automaticallyImplyLeading: false,
                   backgroundColor: Colors.white,
                   primary: true,
                   pinned: true,
@@ -244,7 +65,19 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(0),
                           child: IconButton(
                             icon: Icon(Icons.more_vert),
-                            onPressed: () => _showMoreVertMenue(size.width),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.9,
+                                      child: ShowMoreVertMenu(),
+                                    );
+                                  });
+                            },
                           ),
                         ),
                       )
@@ -253,10 +86,12 @@ class _ProfileState extends State<Profile> {
                   flexibleSpace: FlexibleSpaceBar(
                     background: Container(
                       decoration: BoxDecoration(
+                        color: Colors.black,
                         image: DecorationImage(
+                          colorFilter: new ColorFilter.mode(
+                              Colors.black.withOpacity(0.3), BlendMode.dstATop),
                           //background image for profile
-                          image: NetworkImage(
-                              "https://static3.depositphotos.com/1000820/238/i/950/depositphotos_2389493-stock-photo-creative-wood-background.jpg"),
+                          image: AssetImage("lib/assets/background.jpg"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -266,17 +101,21 @@ class _ProfileState extends State<Profile> {
                           children: [
                             CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(
-                                    "https://farm4.staticflickr.com/3914/15118079089_489aa62638_b.jpg"),
+                                backgroundImage: userProvider.user.userAvatar !=
+                                        null
+                                    ? NetworkImage(userProvider.user.userAvatar)
+                                    : AssetImage('lib/assets/follower2.jpg'),
                                 // ignore: deprecated_member_use
                                 child: FlatButton(
                                   onPressed: () {},
                                   child: null,
                                 )),
                             Text(
-                              aboutProvider.about.firstName +
-                                  " " +
-                                  aboutProvider.about.lastName,
+                              userProvider.user.firstName == null
+                                  ? "Logged User"
+                                  : userProvider.user.firstName +
+                                      " " +
+                                      userProvider.user.lastName,
                               style: TextStyle(
                                   fontSize: 23,
                                   color: Colors.white,
@@ -285,7 +124,8 @@ class _ProfileState extends State<Profile> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("0",
+                                Text(
+                                    userProvider.user.followersCount.toString(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
@@ -310,7 +150,8 @@ class _ProfileState extends State<Profile> {
                                     style: TextStyle(
                                       color: Colors.white,
                                     )),
-                                Text("1",
+                                Text(
+                                    userProvider.user.followingCount.toString(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
@@ -403,7 +244,7 @@ class _ProfileState extends State<Profile> {
                 AboutTap(),
                 Stats(),
                 CameraRoll(),
-                Icon(Icons.directions_transit),
+                Public(),
                 Icon(Icons.directions_bike),
                 Icon(Icons.directions_bike),
               ],

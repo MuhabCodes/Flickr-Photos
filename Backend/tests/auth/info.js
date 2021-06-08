@@ -28,6 +28,9 @@ const activatedUser2 = {
 const newUser = {
   email: 'hello@live.com',
   password: '12345678',
+  firstName: 'seseena',
+  lastName: 'lakoocha',
+  age: '29',
 };
 
 const newPassword = '1234Hamada';
