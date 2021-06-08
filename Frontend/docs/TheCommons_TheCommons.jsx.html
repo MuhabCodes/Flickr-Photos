@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: TheCommons/TheCommons.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: TheCommons/TheCommons.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import InstitutionsImage from './InstitutionsImage.JPG';
+import './TheCommons.css';
+import NavBar from '../App/Navbar';
+import Footer from '../App/Footer';
+// This .jsx is what makes up the commons static webpage, it is composed of 4 parts.
+// The first part is an introductory block on the commons.
+// The second part is about the commons-sampler.
+// The third part is more information about the commons.
+// The fourth part is a FAQ section.
+// This webpage is available to all kinds of users whether logged in or logged out.
+/**
+ * This component displays the elements of The Commons webpage, including 4 sections: Introductory
+ *  block on the commons,the commons-sampler, more about the commons and a FAQ section.
+ * @component
+ * @function TheCommons
+ * @returns {null} - returns some texts and images.
+ */
+const TheCommons = () => (
+  &lt;div className="commons-full">
+    &lt;NavBar />
+    &lt;div className="the-commons-page">
+      &lt;div className="header">
+        &lt;img alt="" className="img-header" src="https://www.preusmuseum.no/var/plain_site/storage/images/media/images/commons_dolores2/26376-1-eng-GB/commons_dolores2.jpg" />
+      &lt;/div>
+      {/* This is the introductory section on the commons
+      */}
+      &lt;h3 className="the-commons-title">Welcome!&lt;/h3>
+      &lt;div className="intro-contain">
+        &lt;div className="institutions">
+          &lt;div className="caption">
+            &lt;p className="sentence-for-inst">
+              &lt;b>A random sprinkling of our participating institutions...&lt;/b>
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="image-of-inst">
+            &lt;img alt="" src={InstitutionsImage} />
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="intro-block">
+          &lt;div className="intro-text1">
+            &lt;p className="intro-text-parag-norm">
+              The key goal of The Commons is to share hidden treasures
+              &lt;br />
+              from
+              the world &amp;apos;s public photography archives.
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="intro-text2">
+            &lt;p className="intro-text-parag-bold">
+              &lt;b>
+                Please help make the photographs you enjoy more
+                &lt;br />
+                discoverable
+                by adding tags and leaving comments. Your
+                &lt;br />
+                contributions and
+                knowledge make these photos even
+                &lt;br />
+                richer*
+              &lt;/b>
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="list-of-links">
+            &lt;ul className="list-inst">
+              &lt;li className="participating-inst">
+                &lt;a href="./participatinginstitutes"> Participating Institutions &lt;/a>
+              &lt;/li>
+              &lt;li className="faq">
+                &lt;a href="./faq"> FAQ &lt;/a>
+              &lt;/li>
+              &lt;li className="rights-state">
+                &lt;a href="rights"> Rights Statement &lt;/a>
+              &lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      {/* This is the commons sampler section, where there are 3 photos and some text below each
+      */}
+      &lt;div className="commons-sampler">
+        &lt;h3 className="commons-sampler-title">
+          A Commons Sampler
+        &lt;/h3>
+        &lt;div className="commons-sampler-container">
+          &lt;div className="commons-sample1">
+            &lt;img src="https://live.staticflickr.com/8542/8636135413_4aa4cd88e6_m.jpg" alt="" />
+            &lt;p className="sampler-text">
+              &lt;b> XXI OCTOBER MDCCCV&lt;/b>
+              &lt;br />
+              from National Library of Ireland on The Commons
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="commons-sample2">
+            &lt;img src="https://live.staticflickr.com/2807/9391940890_0ab87407f5_m.jpg" alt="" />
+            &lt;p className="sampler-text">
+              &lt;b>  Wash and brush-up for Loco 42… &lt;/b>
+              &lt;br />
+              from National Library of Ireland on The Commons
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="commons-sample2">
+            &lt;img src="https://live.staticflickr.com/65535/51047830258_87aca072db_m.jpg" alt="" />
+            &lt;p className="sampler-text">
+              &lt;b>Creels and wheels and Peelers... &lt;/b>
+              &lt;br />
+              from National Library of Ireland on The Commons
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      {/* This is section provides more information about the commons
+      */}
+      &lt;div className="more-about-commons">
+        &lt;h3 className="more-title">More about The Commons&lt;/h3>
+        &lt;div className="more-about-commons-container">
+          &lt;div className="img-cap">
+            &lt;img src="https://combo.staticflickr.com/pw/images/en-us/commons_add_info.png" alt="" />
+            &lt;p className="caption">A new way to share photos on Flickr&lt;/p>
+          &lt;/div>
+          &lt;div className="more-about-text">
+            &lt;p className="text-more">
+              The Commons was launched on January 16 2008, when we released our pilot project
+              &lt;br />
+              in partnership with The Library of Congress. Both Flickr and the Library were
+              &lt;br />
+              overwhelmed
+              by the positive response to the project! Thank you!
+              &lt;br />
+              The program has two main objectives:
+              &lt;ol className="list-objec">
+                &lt;li className="point-one">
+                  &lt;b> To increase access &lt;/b>
+                  {' '}
+                  to publicly-held photography collections, and
+                &lt;/li>
+                &lt;li className="point-two">
+                  To provide a way for the general public to
+                  {' '}
+                  &lt;b>
+                    {' '}
+                    contribute information
+                    and knowledge.
+                  &lt;/b>
+                  &lt;br />
+                  (Then watch what happens when they do!)
+                &lt;/li>
+              &lt;/ol>
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      {/* This is a FAQ section abou the commons and their purpose
+      */}
+      &lt;div className="frequently-asked-questions">
+        &lt;h3 className="faq-title"> FAQ&lt;/h3>
+        &lt;div className=" freq-asked-content">
+          &lt;div className="faq-container1">
+            &lt;p>
+              &lt;b>
+                I work for a cultural heritage institution that would like to be a
+                part of
+                The Commons.
+                How do we do that?
+              &lt;/b>
+              &lt;br />
+              Please let us know you&amp;apos;re interested by registering here.
+              It helps a lot if you let us know some background about your institution,
+              and direct us to any online photo collections you already have.
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="faq-container2">
+            &lt;p>
+              &lt;b>How can I get involved?&lt;/b>
+              &lt;br />
+              We&amp;apos;ve already seen fantastic contribution from the Flickr membership.
+              Your tags and conversations about the content in The Commons has been wonderful!
+              The best way to get involved is to add a tag or two to the photos you see,
+              and if you happen to know anything else about the subject, by all means add a comment.
+            &lt;/p>
+          &lt;/div>
+          &lt;div className="faq-container3">
+            &lt;p>
+              &lt;b>
+                {' '}
+                What&amp;apos;s &amp;quot;no known copyright restrictions?&amp;quot;
+              &lt;/b>
+              &lt;br />
+              This new rights statement is being contained to the institutions
+              participating in The Commons,
+              at the account level.
+              It is a requirement for participation in the program that institutions may
+              rightly claim &amp;quot;no known copyright
+              restrictions&amp;quot; on the content
+              they share.
+              More information.
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      &lt;Footer />
+    &lt;/div>
+  &lt;/div>
+);
+export default TheCommons;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutBio.html">AboutBio</a></li><li><a href="AddModalShowcase.html">AddModalShowcase</a></li><li><a href="AddShowCaseButton.html">AddShowCaseButton</a></li><li><a href="Albums.html">Albums</a></li><li><a href="CameraFinder.html">CameraFinder</a></li><li><a href="Cover.html">Cover</a></li><li><a href="EditBioButton.html">EditBioButton</a></li><li><a href="Explore.html">Explore</a></li><li><a href="FaveButton.html">FaveButton</a></li><li><a href="Faves.html">Faves</a></li><li><a href="FBlogin.html">FBlogin</a></li><li><a href="Graphs.html">Graphs</a></li><li><a href="MainSearch.html">MainSearch</a></li><li><a href="MoreButton.html">MoreButton</a></li><li><a href="MostPop.html">MostPop</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="PhotoView.html">PhotoView</a></li><li><a href="PopCameras.html">PopCameras</a></li><li><a href="ProfileContainer.html">ProfileContainer</a></li><li><a href="RankTable.html">RankTable</a></li><li><a href="RecentPhotos.html">RecentPhotos</a></li><li><a href="schema.html">schema</a></li><li><a href="SearchButton.html">SearchButton</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="ShareBtn.html">ShareBtn</a></li><li><a href="Stats.html">Stats</a></li><li><a href="submitForm.html">submitForm</a></li><li><a href="SubNavBar.html">SubNavBar</a></li><li><a href="TheCommons.html">TheCommons</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CameraRoll">CameraRoll</a></li><li><a href="global.html#CancelShare">CancelShare</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#ClickMe">ClickMe</a></li><li><a href="global.html#CopyLinkShare">CopyLinkShare</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#deleteAlbum">deleteAlbum</a></li><li><a href="global.html#deleteComment">deleteComment</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#EditModel">EditModel</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#EditPhotostream">EditPhotostream</a></li><li><a href="global.html#editTag">editTag</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#ExploreNavBar">ExploreNavBar</a></li><li><a href="global.html#fav">fav</a></li><li><a href="global.html#FaveButtonSearch">FaveButtonSearch</a></li><li><a href="global.html#fetchImages">fetchImages</a></li><li><a href="global.html#follow">follow</a></li><li><a href="global.html#FollowersCard">FollowersCard</a></li><li><a href="global.html#FollowersPage">FollowersPage</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#handleComment">handleComment</a></li><li><a href="global.html#handleDelete">handleDelete</a></li><li><a href="global.html#handleImageChange">handleImageChange</a></li><li><a href="global.html#handleImageClick">handleImageClick</a></li><li><a href="global.html#handleSearchInputChanges">handleSearchInputChanges</a></li><li><a href="global.html#handleSubmit">handleSubmit</a></li><li><a href="global.html#handleUpload">handleUpload</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#loadPage">loadPage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MenuListComposition">MenuListComposition</a></li><li><a href="global.html#msToTime">msToTime</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#photoArr">photoArr</a></li><li><a href="global.html#PopoutImageModel">PopoutImageModel</a></li><li><a href="global.html#postPhoto">postPhoto</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#PrivacyModel">PrivacyModel</a></li><li><a href="global.html#renderBody">renderBody</a></li><li><a href="global.html#renderHead">renderHead</a></li><li><a href="global.html#renderPhotos">renderPhotos</a></li><li><a href="global.html#searchClick">searchClick</a></li><li><a href="global.html#Share">Share</a></li><li><a href="global.html#ShowDeleteModel">ShowDeleteModel</a></li><li><a href="global.html#ShowEditModel">ShowEditModel</a></li><li><a href="global.html#ShowPrivacyModel">ShowPrivacyModel</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#toDataUrl">toDataUrl</a></li><li><a href="global.html#unfav">unfav</a></li><li><a href="global.html#unfollow">unfollow</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 22:14:13 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
