@@ -1,5 +1,10 @@
 import React from 'react';
-
+/**
+ * This component renders the Fave button in the search page that is displayed on each fetched
+ * image.
+ * @param {function} props -takes in the ClickMe function
+ * @returns {null} -displays the fave button.
+ */
 const FaveButtonSearch = (props) => {
   const cl = props;
   const { ClickMe } = cl;
