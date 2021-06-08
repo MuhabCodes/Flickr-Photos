@@ -24,7 +24,7 @@ const CssTextField = withStyles({
 })(TextField);
 const useStyles = makeStyles(style);
 const schema = yup.object().shape({
-  password: yup.string().min(5).required(),
+  newPassword: yup.string().min(5).required(),
 });
 
 export default function ForgotPasswordVerification() {
@@ -35,17 +35,18 @@ export default function ForgotPasswordVerification() {
     resolver: yupResolver(schema),
   });
   const classes = useStyles();
-  const [password, setPassword] = useState('');
+  const [newPassword, setPassword] = useState('');
   const history = useHistory();
 
   const { resetToken } = useParams();
   const submitForm = () => {
     // history.push('/verifysignup');
     const UserInfo = {
-      password,
+      newPassword,
     };
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
     axios(`/auth/forgot-password/${resetToken}`, {
-      baseURL: 'https://api.flick.photos',
       method: 'put',
       data: UserInfo,
     }).then((resp) => {
@@ -63,7 +64,7 @@ export default function ForgotPasswordVerification() {
           </Typography>
         </div>
         <form onSubmit={handleSubmit(submitForm)}>
-          <CssTextField error={errors.password} helperText={errors.password && 'Required'} variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="New Password" />
+          <CssTextField error={errors.newPassword} helperText={errors.newPassword && 'Required'} variant="outlined" {...register('newPassword')} name="newPassword" type="password" value={newPassword} onChange={(e) => setPassword(e.target.value)} label="New Password" />
           <Button
             variant="contained"
             className={classes.buttonStylings}
