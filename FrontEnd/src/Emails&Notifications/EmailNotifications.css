@@ -1,11 +1,11 @@
-.header1 {
+.header-account-settings{
     font-family: Arial,Helvetica,sans-serif;
     font-size: 24px;
     font-weight: bold;
     padding-top: 20px;
 }
 
-.header2{
+.header-contact-email{
     font-size: 18px;
     font-family: Arial,Helvetica,sans-serif;
     color: #ff0084;
@@ -13,10 +13,10 @@
     margin-bottom: 10px;
 }
 
-hr{
+.gap-in-between{
     border-top: 2px solid rgb(230, 224, 224);
 }
-th{
+.th-default-settings{
     padding: 10px 15px 10px 10px;
     width: 30%;
     color: #000;
@@ -25,24 +25,24 @@ th{
     font-weight: bold;
     vertical-align: top;
 }
-td{
+.td-default-settings{
     padding: 10px 0;
     width: 100%;
     vertical-align: top;
     font-size: 12px;
-    /* border: 1px solid black; */
-}
-tr{
+    /* border: 1px solid black;  */
+} 
+.tr-default-settings{
     border-bottom: 1px solid rgb(230, 224, 224);
 }
-tr:first-child {
+.tr-default-settings:first-child {
     border-top: none;
   }
-tr:last-child {
+.tr-default-settings:last-child {
     border-bottom: none;
   }
 
-.header3{
+.header-emails-to-send{
     margin-top:20px;
     font-size: 18px;
     font-family: Arial,Helvetica,sans-serif;
@@ -51,7 +51,7 @@ tr:last-child {
     margin-bottom: 10px;
 
   }
-.edit1{
+.edits-default-settings{
     padding: 10px 10px 10px 0;
     width: 10%;
     text-align: right;

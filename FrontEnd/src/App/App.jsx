@@ -41,12 +41,14 @@ import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import EmailNotifications from '../Emails&Notifications/EmailNotifications';
-import configData from '../config.json';
+// import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
+import VerificationPage from '../Signup/LoadingPage';
+import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -77,17 +79,14 @@ const FBlogout = () => {
 };
 
 function App() {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     const interval = setInterval(() => {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         const decodedData = jwt(storedToken);
-        const expirationDate = decodedData.exp;
+        const expirationDate = decodedData.iat + 86400;
         const currenttime = (Date.now() / 1000);
-        console.log(expirationDate);
-        console.log(currenttime);
         // eslint-disable-next-line no-self-compare
         if (currenttime > expirationDate) {
           FBlogout();
@@ -102,9 +101,17 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
-            <Route exact path="/GetPro">
+            <Route exact path="/verification/:confirToken">
+              <VerificationPage />
+            </Route>
+            <Route exact path="/UpgradeToPro">
               <NavBar />
               <UpgradeToPro />
+              <Footer />
+            </Route>
+            <Route exact path="/uptoVerification/:proToken">
+              <NavBar />
+              <UpToProIntegration />
               <Footer />
             </Route>
             <Route exact path="/GettingStarted">
@@ -247,7 +254,7 @@ function App() {
               <Albums />
               <Footer />
             </Route>
-            <Route exact path="/ex">
+            <Route exact path="/start">
               <NavBarSP />
               <StartPage />
             </Route>

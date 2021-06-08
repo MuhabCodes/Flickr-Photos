@@ -3,33 +3,38 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
+import Post from './Post';
 import configData from '../config.json';
 
 const PostsFeed = () => {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  axios.defaults.baseURL = 'https://api.flick.photos';
+  const [posts, setPosts] = useState('');
   const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const history = useHistory();
   const userjwt = jwt(localStorage.getItem('token'));
   useEffect(() => {
-    axios.get(`/users/${userjwt.sub}`, {
+    axios.defaults.baseURL = 'https://api.flick.photos';
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    axios({
+      method: 'get',
+      url: '/photos',
     }).then((resp) => {
       setLoading(false);
-      return resp.data;
-    }).catch((error) => {
-      if (error.response.status === 401) {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        history.push('/login');
-      } else {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 100); // Redirect to Error page
-      }
+      setPosts(resp.data.photos);
+    }).catch((err) => {
+      setError(err.error);
+      console.log(err.error);
     });
   }, []);
   return (
     <div className="posts-main-container">
-      Main Page Feed
+      { error && <div>{ error }</div> }
+      { isLoading ? <div>Loading...</div> : posts && posts.map((post) => (
+        <div className="single-post" key={post.photoId}>
+          <Post post={post} />
+        </div>
+      )) }
     </div>
   );
 };

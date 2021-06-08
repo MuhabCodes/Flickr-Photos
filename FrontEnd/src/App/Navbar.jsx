@@ -20,9 +20,9 @@ const FBlogout = () => {
   FIREBASE_MESSAGING.getToken()
     .then((token) => {
       console.log(token);
-      FIREBASE_MESSAGING.deleteToken(token);// DELETING TOKEN FROM FIREBASE_MESSAGING
+      FIREBASE_MESSAGING.deleteToken();// DELETING TOKEN FROM FIREBASE_MESSAGING
     })
-    .then(() => FIREBASE_DATABASE.ref('/tokens').orderByChild('userId').equalTo(userjwt.sub)
+    .then(() => FIREBASE_DATABASE.ref('/tokens').orderByChild('userId').equalTo(userjwt.userId)
       .once('value')) // DELETING TOKEN FROM DB
     .then((snapshot) => {
       if (snapshot.val()) {

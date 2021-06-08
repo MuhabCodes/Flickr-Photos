@@ -20,6 +20,7 @@ import MenuListComposition from './AddToAlbums';
 // import configData from '../config.json';
 
 function PhotoView() {
+  axios.defaults.baseURL = 'https://api.flick.photos';
   const history = useHistory(); // useHitory to redirect the user
   const userJwt = jwt(localStorage.getItem('token'));
   const { routeId } = useParams(); // grab the id of the photo to fetch
@@ -30,22 +31,62 @@ function PhotoView() {
   const [commentText, setcommentText] = useState(''); // set photo album on input change
   const [activeStar, setActiveStar] = useState(false);
   const [followButton, setFollowButton] = useState(false);
+  const [commentsNum, setcommentsNum] = useState(0);
+  const [FavesNum, setFavesNum] = useState(0);
 
   useEffect(() => {
+    axios.defaults.baseURL = 'https://api.flick.photos';
     if (routeId) {
-      axios.get(`/photos/${routeId}`) // fetch data with specific photo id
+      axios.get(`/photos/${routeId}`) // fetch photo info with specific photo id
         .then((resp) => {
-          setData(resp.data);
-          setPhotoTags(resp.data.tags);
-          // check if it is the user's photo to set enable to true to give rights
-          if (resp.data.userId === userJwt.sub) { setEnabled(true); }
-          axios.get('/Comments') // fetch comments
+          const pass = {};
+          pass.userId = resp.data.authorId;
+          pass.title = resp.data.title;
+          pass.description = resp.data.description;
+          const d = new Date(resp.data.uploadDate);
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          pass.date = `${d.getDay()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+          pass.views = resp.data.views;
+          pass.camera = resp.data.cameraName;
+          axios.get(`/people/${pass.userId}/info`) // fetch user avtar, ispro,name
             .then((response) => {
-              setPhotoComments(response.data);
+              pass.user = response.data.displayName;
+              pass.userAvatar = response.data.userAvatar;
+              pass.isPro = response.data.isPro;
               return response.data;
-            });
-          return resp.data;
-        }).catch(() => { history.push('*'); });
+            }).catch(() => { history.push('*//'); });
+          axios.get(`/search/photos?searchWord=${pass.title}`) // fetch photo imagepath
+            .then((response) => {
+              pass.src = response.data.photosSearch.find((x) => x.photoId == routeId).imagePath;
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          setData(pass);
+          setPhotoTags(resp.data.tags);
+          axios.get(`/photos/${routeId}/favorites`) // fetch faves number
+            .then((response) => {
+              setFavesNum(response.data.photoLikers.length);
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          // check if it is the user's photo to set enable to true to give rights
+          if (pass.userId === userJwt.sub) { setEnabled(true); }
+          axios.get(`/photos/${routeId}/comments`) // fetch comments
+            .then((response) => {
+              const whole = {};
+              whole.total = response.data.total;
+              setcommentsNum(whole.total);
+              whole.temp = response.data.comments.map((row) => ({
+                id: row.commentId,
+                userName: row.author,
+                comment: row.text,
+                userId: row.authorId,
+                time: row.dateCreate,
+                commentAvatar: row.userAvatar,
+              }));
+              setPhotoComments(whole.temp);
+              return whole;
+            }).catch(() => { history.push('*//'); });
+          return pass;
+        }).catch(() => { history.push('*//'); });
     }
   }, []);
 
@@ -62,84 +103,116 @@ function PhotoView() {
       .then(() => {
         // Delete
         setTimeout(() => history.go(-1), 100); // Redirect to last page visited
-      }).catch(() => { history.push('*'); });
+      }).catch(() => { history.push('*//'); });
   };
   // follow button handle
   const follow = () => {
-    const send = {};
-    send.userFollowed = data.userId;
-    axios.post('follow', send).catch(() => { history.push('*'); });
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    console.log(send);
+    axios.post('/people/follow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/unfollow', send).catch(() => { history.push('*//'); });
+        }
+      });
   };
   const unfollow = () => {
-    const send = {};
-    send.userUnfollowed = data.userId;
-    axios.post('unfollow', send).catch(() => { history.push('*'); });
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    axios.post('/people/unfollow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/follow', send).catch(() => { history.push('*//'); });
+        }
+        history.push('*//');
+      });
   };
 
   // handle edit tag
   const editTag = (i) => {
-    setPhotoTags((currentItems) => currentItems.filter((item, index) => index !== i));
-    data.tags = tags;
-    setData(data);
-    axios.put(`/photos/${routeId}`, data).catch((error) => {
+    const toBeDeleted = {};
+    // eslint-disable-next-line no-underscore-dangle
+    toBeDeleted.tagId = tags[i]._id;
+    axios.delete(`/tags/photo/${routeId}`, data).then(() => {
+      setPhotoTags((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
       if (error.response.status === 404) {
-        setTimeout(() => history.push('*'), 100); // Redirect to Error page
-      }
+        setTimeout(() => history.push('*//'), 100); // Redirect to Error page
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
     });
   };
   // handle Fav icon
   const fav = () => {
-    const send = {};
-    send.userFav = data.userId;
-    axios.post('fav', send).catch(() => { history.push('*'); });
+    axios.post(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
   const unfav = () => {
-    const send = {};
-    send.userUnfav = data.userId;
-    axios.post('unfav', send).catch(() => { history.push('*'); });
+    axios.delete(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
 
   // handle comments
   const handleComment = (e) => {
     e.preventDefault();
     if (commentText !== '') {
-      const newComment = {};
-      newComment.comment = commentText;
-      newComment.commentAvatar = data.userAvatar;
-      newComment.userName = data.user;
-      newComment.userId = userJwt.sub;
-      axios.post('/Comments', newComment).then(() => {
+      const newComment = {
+        commentText,
+      };
+      axios.post(`/photos/${routeId}/comments`, newComment).then(() => {
         // update comments
-        axios.get('/Comments') // fetch comments
+        axios.get(`/photos/${routeId}/comments`) // fetch comments
           .then((response) => {
-            setPhotoComments(response.data);
-            return response.data;
-          });
+            const whole = {};
+            whole.total = response.data.total;
+            setcommentsNum(whole.total);
+            whole.temp = response.data.comments.map((row) => ({
+              id: row.commentId,
+              userName: row.author,
+              comment: row.text,
+              userId: row.authorId,
+              time: row.dateCreate,
+              commentAvatar: row.userAvatar,
+            }));
+            setPhotoComments(whole.temp);
+            return whole;
+          }).catch(() => { history.push('*//'); });
       }).catch((error) => {
         if (error.response.status === 404) {
-          setTimeout(() => history.push('*'), 100); // Redirect to Error page
-        }
+          setTimeout(() => history.push('*//'), 100); // Redirect to Error page
+        } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
       });
     }
   };
   // handle delete comments
   const deleteComment = (i) => {
-    const toBeDeleted = photoComments[i];
-    setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
-    axios.delete('/Comments', toBeDeleted).then(() => {
+    axios.delete(`/photos/${routeId}/comments/${photoComments[i].id}`).then(() => {
+      setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
       // update comments
-      axios.get('/Comments') // fetch comments
-        .then((response) => {
-          setPhotoComments(response.data);
-
-          return response.data;
-        });
     }).catch((error) => {
       if (error.response.status === 404) {
-        history.push('*'); // Redirect to Error page
-      }
+        history.push('*//'); // Redirect to Error page
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
     });
   };
+  // calculate time from now for comments
+  function msToTime(ds) {
+    const d = new Date();
+    const n = d.getTime();
+    const ms = n - ds;
+    const seconds = (ms / 1000).toFixed(1);
+    const minutes = (ms / (1000 * 60)).toFixed(1);
+    const hours = (ms / (1000 * 60 * 60)).toFixed(1);
+    const days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
+    if (seconds < 60) return `${Math.ceil(seconds)} Sec ago`;
+    if (minutes < 60) return `${Math.floor(minutes)} Min ago`;
+    if (hours < 24) return `${Math.floor(hours)} Hrs ago`;
+    return `${Math.floor(days)} Days ago`;
+  }
   return (data ? (
     <div>
       {/* photo container */}
@@ -152,11 +225,11 @@ function PhotoView() {
         )}
         {enabled && <MenuListComposition />}
         {!enabled && (
-        <IconButton onClick={() => setActiveStar(!activeStar)}>
+        <IconButton id="starBorderOutlined" onClick={() => setActiveStar(!activeStar)}>
           {activeStar ? (
-            <StarOutlined fontSize="large" id="starBorderOutlined" onClick={() => unfav()} />
+            <StarOutlined fontSize="large" onClick={() => unfav()} />
           ) : (
-            <StarBorderOutlined fontSize="large" id="starBorderOutlined" onClick={() => fav()} />
+            <StarBorderOutlined fontSize="large" onClick={() => fav()} />
           )}
         </IconButton>
         )}
@@ -186,6 +259,7 @@ function PhotoView() {
             {/* photo name */}
             <div id="title-conatiner">
               <h1 id="selected-photo-title">{data.title}</h1>
+              {(data.description !== '') && <h2 id="selected-photo-description">{data.description}</h2>}
             </div>
             {/* comments section */}
             {photoComments && (photoComments.map((photoComment, index) => (
@@ -197,9 +271,10 @@ function PhotoView() {
                     </span>
                     <div className="media-body">
                       <div className="row d-flex">
-                        <Link to={`/profile/photostream/${userJwt.sub}`} className="user pt-2">{photoComment.userName}</Link>
+                        <Link to={`/profile/photostream/${userJwt.sub}`} id="username-text" className="user pt-2">{photoComment.userName}</Link>
                       </div>
                       <p className="text">{photoComment.comment}</p>
+                      <p id="comment-date">{msToTime(photoComment.time)}</p>
                       {(photoComment.userId == userJwt.sub) && (
                       <IconButton id="delete-comments-button" onClick={() => deleteComment(index)}>
                         <DeleteIcon fontSize="small" />
@@ -223,7 +298,7 @@ function PhotoView() {
                   </div>
                   <br />
                   <div className="mt-2 text-right">
-                    <button className="btn btn-primary btn-sm ml-1 shadow-none" type="button" onClick={handleComment}>comment</button>
+                    <button id="comment-submit-button" className="btn btn-primary btn-sm ml-1 shadow-none" type="button" onClick={handleComment}>comment</button>
                   </div>
                 </li>
               </ul>
@@ -243,14 +318,14 @@ function PhotoView() {
 
                 <div className="stat-item">
                   <span className="count-label">
-                    {data.faves}
+                    {FavesNum}
                   </span>
                   <span className="stats-label">faves</span>
                 </div>
 
                 <div className="stat-item">
                   <span className="count-label">
-                    {data.comments}
+                    {commentsNum}
                   </span>
                   <span className="stats-label">comments</span>
                 </div>
@@ -281,10 +356,11 @@ function PhotoView() {
                     size="small"
                     variant="contained"
                     color="default"
+                    id="delete-tag-button"
                     className={classes.button}
                     endIcon={enabled && <ClearIcon fontSize="small" onClick={() => editTag(index)} />}
                   >
-                    {tag}
+                    {tag.tagText}
                   </Button>
                 ))}
               </div>
