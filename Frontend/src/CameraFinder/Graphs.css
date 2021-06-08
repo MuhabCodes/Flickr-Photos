@@ -1,0 +1,142 @@
+.content-box {
+  display: inline-block;
+  width: 540px;
+  border: 0;
+  margin: 20px;
+  margin-left: 2%;
+  align-self: auto;
+}
+
+.content-box2 {
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin: 20px;
+  margin-left: 2%;
+  align-self: auto;
+}
+
+.content-box #graph1,
+.content-box2 #graph2 {
+  float: left;
+}
+
+.title-of-graph1 {
+  text-align: left;
+}
+
+.title-of-graph2 {
+  text-align: left;
+}
+
+.title-of-graph1,
+.title-of-graph2 {
+  font-weight: bold;
+  color: #000;
+  font-size: 20px;
+}
+
+.content-box .title-of-graph1,
+.content-box2 .title-of-graph2 {
+  margin: 1%;
+}
+
+.first-bullet {
+  color: #ff43ab;
+}
+
+.second-bullet {
+  color: #fff400;
+}
+
+.third-bullet {
+  color: #14dc20;
+}
+
+.fourth-bullet {
+  color: #08bff6;
+}
+
+.fifth-bullet {
+  color: #9ac;
+}
+
+.content-box .first-bullet,
+.content-box .second-bullet,
+.content-box .third-bullet,
+.content-box .fourth-bullet,
+.content-box .fifth-bullet {
+  text-align: right;
+  margin: 1%;
+}
+
+.content-box2 .first-bullet,
+.content-box2 .second-bullet,
+.content-box2 .third-bullet,
+.content-box2 .fourth-bullet,
+.content-box2 .fifth-bullet {
+  text-align: right;
+  margin: 1%;
+}
+
+#legends-of-graph1,
+#legends-of-graph2,
+.bullet-list-graphs {
+  text-align: left;
+  margin-left: 1%;
+  font-size: 14px;
+}
+
+#legends-of-graph1,
+#legends-of-graph2 {
+  list-style-type: none;
+  padding: 0;
+}
+
+#legends-of-graph1 .brands-hyper-tags:hover,
+#about-these-graphs .brands-hyper-tags:hover,
+#legends-of-graph2 .brands-hyper-tags:hover {
+  background-color: #0063dc;
+  color: white;
+}
+
+#about-these-graphs {
+  margin-top: 1%;
+  font-size: 13px;
+  text-align: left;
+  margin-left: 2%;
+}
+
+.graphs {
+  margin-left: 8%;
+}
+
+@media screen and (max-width: 1215px) {
+  .graphs {
+    display: block;
+  }
+
+  .content-box {
+    display: block;
+    width: 540px;
+    border: 0;
+    margin: 20px;
+    margin-left: 20%;
+    align-self: auto;
+  }
+
+  .content-box2 {
+    display: inline-block;
+    width: 530px;
+    border: 0;
+    margin: 20px;
+    margin-left: 20%;
+    align-self: auto;
+  }
+
+  #legends-of-graph1,
+  #legends-of-graph2,
+  .bullet-list-graphs {
+    font-size: 13px;
+  }
+}

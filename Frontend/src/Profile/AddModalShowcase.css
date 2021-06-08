@@ -1,0 +1,346 @@
+.modal-view-scp {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  min-height: 150px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  z-index: 2002;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  max-height: inherit;
+  height: 606px;
+  top: 50%;
+  left: 50%;
+  width: 1229px;
+  margin-top: -280px;
+  margin-left: -614.5px;
+  max-width: inherit;
+  overflow: visible;
+}
+
+.close-action-modal-scp {
+  top: 20px;
+  transform: translate(1200px, 10px);
+  cursor: pointer;
+  background: url(https://combo.staticflickr.com/ap/build/images/sprites/scrappy-95f0c81a.png) -172px -137px no-repeat;
+  width: 13px;
+  height: 13px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.nav-modal-scp {
+  height: 60px;
+}
+
+.fluid-nav-modal-scp {
+  color: #212124;
+  -webkit-box-direction: normal;
+}
+
+.fluid-modal-nav-bar-scp {
+  background-color: #fff;
+  height: 60px;
+  position: relative;
+  overflow: visible;
+  box-shadow: inset 0 -2px transparent;
+  margin: 0 20px;
+}
+
+.links-nav-modal-scp {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  height: 57px;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  top: 1px;
+  user-select: none;
+}
+
+.menu-item-scp {
+  font-size: 16px;
+  user-select: none;
+  height: 100%;
+  float: left;
+  padding: 0 20px;
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
+  line-height: 59px;
+  font-weight: 600;
+  border-bottom: 3px solid #0091dc;
+}
+
+.link-item-scp {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 12px;
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 170%;
+  outline: 0;
+  opacity: 1;
+  color: #212124;
+}
+
+.link-item-scp:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.body-lines-scp {
+  border: 1px solid #cfd6d9;
+  border-width: 1px 0;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+}
+
+.content-subview-mscp {
+  min-height: 60px;
+  font-size: 14px;
+  padding: 0;
+  position: relative;
+  padding-bottom: 0;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  height: auto;
+}
+
+.photo-view-selector-mscp {
+  font-size: 14px;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.photoselector-title-bar-mscp {
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0 20px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.photo-selector-wrapper-mscp {
+  position: absolute;
+  bottom: 0;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+  padding: 18px 0 20px;
+  top: 54px;
+}
+
+.photo-selector-mscp {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  cursor: default;
+}
+
+.photo-selector-container-mscp {
+  position: relative;
+  min-height: 200px;
+}
+
+.view-photo-list-view-mscp {
+  -webkit-box-direction: normal;
+  cursor: default;
+  backface-visibility: hidden;
+  position: relative;
+  top: -8px;
+  height: 200px;
+}
+
+.photo-view-mscp {
+  cursor: default;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #fff;
+  background-size: cover;
+  display: block;
+  backface-visibility: hidden;
+  overflow: hidden;
+  width: 181px;
+  height: 182px;
+}
+
+.interaction-view-mscp {
+  transform: translate(0, 90px);
+  opacity: 0;
+}
+
+.interaction-view-mscp:hover {
+  transform: translate(0, 90px);
+  cursor: default;
+  font-size: 14px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+
+.square-mscp {
+  cursor: pointer;
+  opacity: 0;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 24px;
+  border-radius: 3px;
+  height: 20px;
+  width: 20px;
+  right: 0;
+  top: 0;
+  position: absolute;
+  margin-right: 0;
+  box-shadow: inset 0 0 0 10px #128fdc;
+}
+
+.interaction-bar-mscp {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 8px 8px;
+  z-index: 2;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -webkit-box-align: end;
+  align-items: flex-end;
+}
+
+.interaction-text-mscp {
+  -webkit-box-flex: 1;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  margin-right: 12px;
+}
+
+.photo-title-mscp {
+  text-decoration: none;
+  display: block;
+  margin: 2px 0 0;
+  text-shadow: 0 0 2px #000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  z-index: 2;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  min-height: 17px;
+}
+
+.photo-title-mscp:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.photo-owner-mscp {
+  text-decoration: none;
+  display: block;
+  margin: 2px 0 0;
+  text-shadow: 0 0 2px #000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  z-index: 2;
+  color: hsla(0, 0%, 100%, 0.7);
+  font-size: 11px;
+  transition: color 0.15s linear;
+}
+
+.photo-owner-mscp:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.title-mscp {
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1em;
+  margin: 0 40px;
+}
+
+.footer-mscp {
+  -webkit-box-direction: normal;
+  overflow: auto;
+  height: auto;
+}
+
+.buttons-mscp {
+  padding: 20px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.footer-text-container-mscp {
+  -webkit-box-direction: normal;
+}
+
+.footer-text-mscp {
+  font-size: 14px;
+}
+
+.button-container-mscp {
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+}
+
+.showcase-add-mscp {
+  transform: translate(1045px, -25px);
+  margin: 0;
+  text-transform: none;
+  appearance: button;
+  background-color: #128fdc;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  height: 29px;
+  line-height: 29px;
+  min-width: 80px;
+  font-size: 14px;
+  margin-left: 10px;
+}

@@ -1,0 +1,33 @@
+.delete-account-main {
+  max-width: 45%;
+  margin: auto;
+  text-align: center;
+}
+
+.delete-account-header {
+  padding-top: 25px;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 0.6em;
+}
+
+.delete-account-info-div {
+  color: #f33;
+  margin-top: 3em;
+  font-size: 1.3em;
+}
+
+.delete-account-name-p {
+  margin-top: 3em;
+}
+
+.display-name-delete {
+  color: black;
+}
+
+.delete-account-button {
+  color: white;
+  background-color: dodgerblue;
+  padding: 0.7em;
+  font-weight: 600;
+}

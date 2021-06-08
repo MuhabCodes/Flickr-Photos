@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="https://combo.staticflickr.com/pw/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" sizes="120x120" href="https://combo.staticflickr.com/pw/images/favicons/favicon-120.png" >
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+
+    <!-- Logo font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;600&display=swap" rel="stylesheet">
+    <!-- font awesome cdn -->
+    <script src="https://kit.fontawesome.com/ec9eea3aa2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>flickr</title>
+
+    
+    
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.6.3/firebase-messaging.js"></script>
+    <script>
+      var firebaseConfig = {
+          apiKey: "AIzaSyBhoW86v4GTGCoQJO1meS-JGDJNdBaVIjs",
+          authDomain: "notify-d4836.firebaseapp.com",
+          databaseURL: "https://notify-d4836-default-rtdb.firebaseio.com/",
+          projectId: "notify-d4836",
+          storageBucket: "notify-d4836.appspot.com",
+          messagingSenderId: "655264697952",
+          appId: "1:655264697952:web:4feeebd4172696c164bd05",
+          measurementId: "G-PQ2YH8NWKS"
+        };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const FIREBASE_MESSAGING = firebase.messaging();
+      console.log('booo');
+      FIREBASE_MESSAGING.usePublicVapidKey('BHJ6Jx3l8mZncJgAYB1ZcFo76ZGSk5DiRr52t3Zq4Vmmg F-U1gYfAreDuXjeh66xjUNrC-qDrdYrfC_OG-S3-w');
+      FIREBASE_MESSAGING.onMessage((payload) => {
+      console.log('Message received. ', payload);
+       // Update the UI to include the received message.
+      });
+    </script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
