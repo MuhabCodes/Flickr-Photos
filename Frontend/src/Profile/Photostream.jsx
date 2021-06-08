@@ -8,7 +8,13 @@ import jwt from 'jwt-decode';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './Photostream.css';
-
+/**
+ * This component renders photostream page of user that shows his public photos
+ * @component Photostream
+ * @function Photostream
+ * @example <Photostream/>
+ * @returns photostream images
+ */
 const Photostream = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

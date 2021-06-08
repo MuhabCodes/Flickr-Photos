@@ -11,6 +11,14 @@ import view from './assets/view.png';
 import fave from './assets/fav.png';
 import comm from './assets/comment.png';
 
+/**
+ * This component renders the editing page of the photostream
+ * Editing page shows the user his photos in photostream with title and description
+ * @commponent EditPhotostream
+ * @function EditPhotostream
+ * @example <EditPhotostream/>
+ * @returns edit photostream container with images in grid
+ */
 const EditPhotostream = () => {
   let translateW = 0;
   let translateH = 0;

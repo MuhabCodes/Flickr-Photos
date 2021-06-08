@@ -4,7 +4,14 @@ import axios from 'axios';
 // import jwt from 'jwt-decode';
 import './MostPop.css';
 // import images from './imagesArray';
-
+/**
+ * This component renders the most popular area where it contains the most popular photos
+ * of each user sorted from most liked to least liked
+ * @component MostPop
+ * @function MostPop
+ * @example <MostPop/>
+ * @returns most popular photos container
+ */
 const MostPop = () => {
   const { id } = useParams();
   axios.defaults.baseURL = 'http://localhost:8000';

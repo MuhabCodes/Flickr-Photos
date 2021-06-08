@@ -6,11 +6,13 @@ import jwt from 'jwt-decode';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './Faves.css';
-// The Faves.jsx is the component which helps in displaying the recent photos,
-// It includes the function 'Faves' which has a code the helps in fetching the photos from
-// a mock server. This function returns the fetched images, but not all at once,
-// but a couple at a time and the more the user scrolls down,
-// the more images are fetched and displayed.
+/**
+ * This component renders a page with user's faved images shown in a grid
+ * @component Faves
+ * @function Faves
+ * @example <Faves/>
+ * @returns faves page
+ */
 const Faves = () => {
   const { userId } = useParams();
   const userjwt = jwt(localStorage.getItem('token'));

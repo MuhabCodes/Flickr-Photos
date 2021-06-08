@@ -12,7 +12,14 @@ import UserInfo from './UserInfo';
 import './ProfileContainer.css';
 
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
-
+/**
+ * Profile container component contains all other components and renders them according
+ * to conditions whether it's the current user or different user
+ * @component ProfileContainer
+ * @function ProfileContainer
+ * @example <ProfileContainer/>
+ * @returns profile container filled with all other components
+ */
 const ProfileContainer = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

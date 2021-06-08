@@ -5,7 +5,15 @@ import jwt from 'jwt-decode';
 import defaultC from './assets/whitebg.jpg';
 import defaultA from './assets/av.jpg';
 import './Cover.css';
-
+/**
+ * This commponenet renders the cover area for each user
+ * the cover area includes cover image, avatar, user real name & display name
+ * number of followers & following, number of photos, join year and Pro status if true
+ * @component Cover
+ * @function Cover
+ * @example <Cover/>
+ * @returns cover area component
+ */
 const CoverArea = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

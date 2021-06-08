@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches a snapshot 1`] = `
+<button
+  aria-label="editingbutton"
+  className="edit-button"
+  data-testid="edit-bio"
+  id="user-edit-biobtn"
+  onClick={[Function]}
+  type="button"
+>
+  <img
+    alt=""
+    className="edit-button-img"
+    src="edit_icon.png"
+  />
+</button>
+`;

@@ -3,7 +3,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 // import jwt from 'jwt-decode';
 import './UserInfo.css';
-
+/**
+ * This component renders user's info which is email and join date
+ * @component UserInfo
+ * @function UserInfo
+ * @example <UserInfo />
+ * @returns user info container with data
+ */
 const UserInfo = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

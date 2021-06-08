@@ -4,9 +4,9 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'reactjs-popup/dist/index.css';
 // import jwt from 'jwt-decode';
-import add from './assets/add-icon.png';
 import './Showcase.css';
 import AddModalShowcase from './AddModalShowcase';
+import AddShowCaseButton from './AddShowCaseButton';
 // import images from './imagesArray';
 
 const Showcase = () => {
@@ -48,9 +48,7 @@ const Showcase = () => {
           </div>
           <Popup
             trigger={(
-              <button type="button" className="add-btn-scp">
-                <img src={add} className="add-icon-scp" alt="" />
-              </button>
+              <AddShowCaseButton />
               )}
             modal
             nested
