@@ -10,7 +10,7 @@ import './GeneralStats.css';
  * @returns stats container with user's stats
  */
 const Stats = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   // const history = useHistory();

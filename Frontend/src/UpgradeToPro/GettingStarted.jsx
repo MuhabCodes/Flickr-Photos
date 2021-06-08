@@ -36,7 +36,7 @@ const CssTextField = withStyles({
  *@return {null} an email sent to the user to upgrade his account using the link sent to his email
  */
 export default function GettingStarted() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const [email, setEmail] = useState('');
   const getPro = () => {

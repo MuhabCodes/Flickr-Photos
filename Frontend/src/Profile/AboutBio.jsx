@@ -13,7 +13,7 @@ import EditBioButton from './EditBioButton';
  * @returns bio container
  */
 const AboutBio = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   const history = useHistory();

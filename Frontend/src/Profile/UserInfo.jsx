@@ -11,7 +11,7 @@ import './UserInfo.css';
  * @returns user info container with data
  */
 const UserInfo = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   // const history = useHistory();
   const { userId } = useParams();

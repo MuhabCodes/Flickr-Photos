@@ -22,7 +22,7 @@ const Faves = () => {
   const currUser = (userId === userjwt.userId);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     if (userId) {
       axios.get(`/favorites/${userId}`, {})
         .then((resp) => {

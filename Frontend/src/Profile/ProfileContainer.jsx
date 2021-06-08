@@ -21,7 +21,7 @@ import './ProfileContainer.css';
  * @returns profile container filled with all other components
  */
 const ProfileContainer = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   // const history = useHistory();
@@ -32,7 +32,7 @@ const ProfileContainer = () => {
   const [showcase, setShowcase] = useState('');
   const currUser = (userId === userjwt.userId);
   useEffect(() => {
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     if (userId) {
       axios.get(`/people/${userId}/info/`, {
       }).then((resp) => {

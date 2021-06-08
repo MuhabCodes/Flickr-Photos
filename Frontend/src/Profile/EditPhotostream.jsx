@@ -22,7 +22,7 @@ import comm from './assets/comment.png';
 const EditPhotostream = () => {
   let translateW = 0;
   let translateH = 0;
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const [isLoading, setIsLoading] = useState(true);
   const [photos, setPhotos] = useState('');

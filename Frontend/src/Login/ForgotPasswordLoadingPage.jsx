@@ -37,7 +37,7 @@ const schema = yup.object().shape({
  */
 
 export default function ForgotPasswordVerification() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -53,7 +53,7 @@ export default function ForgotPasswordVerification() {
     const UserInfo = {
       newPassword,
     };
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.defaults.headers.common['Content-Type'] = 'application/json';
     axios(`/auth/forgot-password/${resetToken}`, {
       method: 'put',

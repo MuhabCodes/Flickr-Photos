@@ -19,7 +19,7 @@ import configData from '../config.json';
  */
 
 const Post = (props) => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
   axios.defaults.headers.authorization = localStorage.getItem('token');
   const history = useHistory();

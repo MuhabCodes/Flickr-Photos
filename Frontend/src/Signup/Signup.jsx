@@ -64,7 +64,7 @@ const schema = yup.object().shape({
  *@return {null} an email sent to the user to verify his account using the link sent to his email
  */
 export default function SignUp() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),

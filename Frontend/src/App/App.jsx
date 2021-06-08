@@ -67,7 +67,7 @@ const FBlogout = () => {
       .once('value')) // DELETING TOKEN FROM DB
     .then((snapshot) => {
       localStorage.clear();
-      window.location.href = 'http://localhost:3000/login';
+      window.location.href = 'https://api.flick.photos/login';
       if (snapshot.val()) {
         const key = Object.keys(snapshot.val())[0]; // since i ordered them above
         return FIREBASE_DATABASE.ref('/tokens').child(key).remove(); // deleting obtained key

@@ -35,7 +35,7 @@ const schema = yup.object().shape({
  */
 
 export default function VerifySignup() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const classes = useStyles();
   const [email, setEmail] = useState('');
