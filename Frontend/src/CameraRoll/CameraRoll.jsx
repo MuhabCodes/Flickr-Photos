@@ -5,6 +5,12 @@ import cameraRollContent from '../services/CameraRollContent';
 import PopoutImageModel from './PopoutImageModel';
 
 // this is the whole CameraRoll component
+/**
+ * @module
+ * @function CameraRoll
+ * @example </CameraRoll>
+ * @returns {object} - Renders all components in the CameraRoll
+ */
 function CameraRoll() {
   const [photos, setphotos] = useState([]);
   const [showModel, setshowModel] = useState(false);
@@ -17,6 +23,14 @@ function CameraRoll() {
       });
   }, []);
 
+  /**
+   * show model when clicking on an image and set image url and image id
+ * @function handleImageClick
+ * @example </handleImageClick>
+ * @param {string} image - Url of the image
+ * @param {number} imageid - id of the image
+ * @returns {void} - set image url and image id
+ */
   function handleImageClick(image, imageid) {
     setshowModel(!showModel);
     setimage(image);

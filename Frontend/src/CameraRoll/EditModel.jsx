@@ -3,6 +3,14 @@ import './EditModel.css';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
+/**
+ * Function to render edit module to allow us to edit image information
+ * @module
+ * @function EditModel
+ * @example </EditModel>
+ * @param {object} prop - have the image id to be edited
+ * @returns {null} - returns a model that allows us to edit the image clicked
+ */
 function EditModel(prop) {
   const { imageid } = prop;
   function closeModel() {
@@ -22,6 +30,14 @@ function EditModel(prop) {
       });
   }, []);
 
+  /**
+   * on submitting save changes done
+   * @module
+   * @function handleSubmit
+   * @example </handleSubmit>
+   * @param {string} e - catch the event of clicking and prevent its default action
+   * @returns {null}
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     const edit = {

@@ -4,6 +4,13 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 // this function is to render the component that edit the photo privacy
+/**
+ * @module
+ * @function PrivacyModel
+ * @example </PrivacyModel>
+ * @param {object} prop - have image id to be edited
+ * @returns {null} - returns model of changing the privacy
+ */
 function PrivacyModel(prop) {
   const { imageid } = prop;
   console.log(imageid);

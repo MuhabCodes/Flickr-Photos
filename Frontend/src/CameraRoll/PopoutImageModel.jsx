@@ -5,6 +5,13 @@ import './PopoutImageModel.css';
 import PrivacyModel from './PrivacyModel';
 
 // this function is to render popout model when clicking on an image
+/**
+ * @module
+ * @function PopoutImageModel
+ * @example </PopoutImageModel>
+ * @param {object} prop - have the image id to be edited and the image url
+ * @returns {null} - returns the model with buttons that renders other models
+ */
 function PopoutImageModel(prop) {
   const { image } = prop;
   const { imageid } = prop;
@@ -18,16 +25,34 @@ function PopoutImageModel(prop) {
   const [deleteModel, setdelete] = useState(false);
 
   // show privacy model when clicking on it by changing its state to true
+  /**
+   * show privacy model that allows to change the privacy
+   * @function ShowPrivacyModel
+   * @example </ShowPrivacyModel>
+   * @returns {null} - change state of the model
+   */
   function ShowPrivacyModel() {
     setPrivacyModel(!privacyModel);
   }
 
   // show edit model when clicking on it by changing its state to true
+  /**
+   * show edit model that allows to change the privacy
+   * @function ShowEditModel
+   * @example </ShowEditModel>
+   * @returns {null} - change state of the model
+   */
   function ShowEditModel() {
     setEditModel(!editModel);
   }
 
   // show delete model when clicking on it by changing its state to true
+  /**
+   * show delete model that allows to change the privacy
+   * @function ShowDeleteModel
+   * @example </ShowDeleteModel>
+   * @returns {null} - change state of the model
+   */
   function ShowDeleteModel() {
     setdelete(!deleteModel);
   }

@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './FollowersCard.css';
 
+/**
+ * @module
+ * @function FollowersCard
+ * @example </FollowersCard>
+ * @param {object} props - have followers info6
+ * @returns{null} - returns followers cards
+ */
 function FollowersCard(props) {
   const prop = props;
   const { followers } = prop;

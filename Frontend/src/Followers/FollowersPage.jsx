@@ -4,6 +4,13 @@ import { useParams } from 'react-router';
 import FollowersCard from './FollowersCard';
 import './FollowersPage.css';
 
+/**
+ * return list of followers for a certain user according to their id
+ * @module
+ * @function FollowersPage
+ * @example </FollowersPage>
+ * @returns {null} - returns list of followers
+ */
 function FollowersPage() {
   const { userid } = useParams();
   const [followers, setfollowers] = useState([]);
