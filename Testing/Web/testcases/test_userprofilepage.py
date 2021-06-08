@@ -103,7 +103,7 @@ class TestUserProfilePage(object):
             self.userprofilePage.send(self.userprofilePage.GALLERY_DESC_FIELD, "This is a test")
             self.userprofilePage.click(self.userprofilePage.SAVE_GALLERY_BUTTON)
             sleep(2)
-        else :
+        else:
             if self.userprofilePage.element_clickable(self.userprofilePage.PLUS_NEW_GALLERY_BUTTON):
                 self.userprofilePage.click(self.userprofilePage.PLUS_NEW_GALLERY_BUTTON)
                 sleep(2)
@@ -112,16 +112,23 @@ class TestUserProfilePage(object):
                 self.userprofilePage.click(self.userprofilePage.SAVE_GALLERY_BUTTON)
 
         sleep(2)
+        print("\nCreated new gallery")
 
     def test_delete_gallery(self, setup):
         self.userprofilePage.click(self.userprofilePage.GALLERIES_LABEL)
         sleep(2)
-        self.userprofilePage.click(self.userprofilePage.EXAMPLE_GALLERY)
-        sleep(2)
-        self.userprofilePage.click(self.userprofilePage.EDIT_GALLERY_ICON)
-        sleep(2)
-        self.userprofilePage.click(self.userprofilePage.DELETE_GALLERY_BUTTON)
-        sleep(2)
+        if self.userprofilePage.element_clickable(self.userprofilePage.EXAMPLE_GALLERY):
+            self.userprofilePage.click(self.userprofilePage.EXAMPLE_GALLERY)
+            sleep(2)
+            self.userprofilePage.click(self.userprofilePage.EDIT_GALLERY_ICON)
+            sleep(2)
+            self.userprofilePage.click(self.userprofilePage.DELETE_GALLERY_BUTTON)
+            sleep(2)
+            self.userprofilePage.click(self.userprofilePage.DELETE_CONFIRMATION_BUTTON)
+            sleep(2)
+            print("\nDeleted Gallery")
+        else:
+            print("\nNo Galleries to delete")
 
     def test_groups_label(self, setup):
         self.userprofilePage.click(self.userprofilePage.GROUPS_LABEL)
