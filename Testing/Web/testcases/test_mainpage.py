@@ -24,6 +24,7 @@ class TestMainPage(object):
         sleep(2)
         assert self.mainPage.page_url() == TestData.FLICKR_MAIL_URL
         sleep(2)
+        print("\nMail link working")
 
     def test_settings_link(self, setup):
         self.mainPage.click_profile_icon()
@@ -31,6 +32,7 @@ class TestMainPage(object):
         sleep(2)
         assert self.mainPage.page_url() == TestData.ACCOUNT_URL
         sleep(2)
+        print("\nRedirects to settings page")
 
     def test_help_link(self, setup):
         self.mainPage.click_profile_icon()
@@ -38,6 +40,7 @@ class TestMainPage(object):
         sleep(2)
         assert self.mainPage.page_url() == TestData.HELP_URL
         sleep(2)
+        print("\nHelp link is working")
 
     def test_logout_link(self, setup):
         self.mainPage.click_profile_icon()
@@ -45,6 +48,7 @@ class TestMainPage(object):
         sleep(2)
         assert self.mainPage.page_url() != TestData.MAIN_URL
         sleep(2)
+        print("\nLogout successful")
 
     def test_notification_icon(self, setup):
         self.mainPage.click(self.mainPage.NOTIFICATION_ICON)
@@ -53,6 +57,7 @@ class TestMainPage(object):
         sleep(2)
         assert self.mainPage.page_url() == TestData.RECENT_ACTIVITY_URL
         sleep(2)
+        print("\nRedirects to recent activity in notifications")
 
     def test_upload(self, setup):
         self.mainPage.click_upload_icon()
@@ -66,6 +71,7 @@ class TestMainPage(object):
         sleep(10)
         assert "photos" in self.mainPage.page_url()
         sleep(2)
+        print("\nPhoto uploaded")
 
     def test_search_photos(self, setup):
         self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
@@ -74,6 +80,7 @@ class TestMainPage(object):
         sleep(2)
         assert "search" and self.mainPage.TEXT_TO_SEARCH in self.mainPage.page_url()
         sleep(2)
+        print("\nSearch for photos")
 
     def test_search_people(self, setup):
         self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
@@ -82,6 +89,7 @@ class TestMainPage(object):
         sleep(2)
         assert "username=" + self.mainPage.TEXT_TO_SEARCH in self.mainPage.page_url()
         sleep(2)
+        print("\nSearch for people")
 
     def test_search_groups(self, setup):
         self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
@@ -90,6 +98,7 @@ class TestMainPage(object):
         sleep(2)
         assert "groups" and self.mainPage.TEXT_TO_SEARCH in self.mainPage.page_url()
         sleep(2)
+        print("\nSearch for groups")
 
     def test_fav_and_comment_photo(self, setup):
         self.mainPage.search_and_click_photo(self.mainPage.TEXT_TO_SEARCH)
@@ -100,6 +109,7 @@ class TestMainPage(object):
         self.mainPage.send(self.mainPage.COMMENT_FIELD, "Nice")
         self.mainPage.click(self.mainPage.COMMENT_BUTTON)
         sleep(2)
+        print("\nLiking and commenting on a photo after search")
 
     def test_search_people_follow(self, setup):
         self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
@@ -107,3 +117,16 @@ class TestMainPage(object):
         self.mainPage.click(self.mainPage.PEOPLE_LABEL)
         sleep(2)
         self.mainPage.click(self.mainPage.FOLLOW_BUTTON)
+        sleep(2)
+        print("\nFollowing people after search")
+
+    def test_search_group_join(self, setup):
+        self.mainPage.search(self.mainPage.TEXT_TO_SEARCH)
+        sleep(2)
+        self.mainPage.click(self.mainPage.GROUPS_LABEL)
+        sleep(2)
+        self.mainPage.click(self.mainPage.JOIN_BUTTON)
+        sleep(2)
+        self.mainPage.click(self.mainPage.JOIN_CONFIRMATION_BUTTON)
+        sleep(2)
+        print("\nJoining a group after search")
