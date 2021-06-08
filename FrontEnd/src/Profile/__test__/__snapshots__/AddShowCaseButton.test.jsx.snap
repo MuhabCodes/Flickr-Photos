@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches a snapshot 1`] = `
+<button
+  className="add-btn-scp"
+  data-testid="addsc-btn"
+  type="button"
+>
+  <img
+    alt=""
+    className="add-icon-scp"
+    src="add-icon.png"
+  />
+</button>
+`;
