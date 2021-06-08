@@ -10,6 +10,13 @@ import axios from 'axios';
 // display them on the page.
 // Note: when fetching topModels of a particular object, .map was used here because topModel
 // is an array and so that I would be able to put comma between each element in this array.
+/**
+ * This component displays the top 3 most popular camera brands along with their images,
+ * brand names and brand models.
+ * @component
+ * @function PopCameras
+ * @returns {Object} -returns the top 3 camera brands with their details.
+ */
 const PopCameras = () => {
   const [cameras, setPopCam] = useState([]); // sets the cameras fetched from the server
   const [isLoading, setLoading] = useState(true);
