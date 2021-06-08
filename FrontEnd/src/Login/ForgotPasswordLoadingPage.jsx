@@ -1,16 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import { useParams } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
-import lockicon from './lockicon.png';
+import loading from './loading.png';
 import style from './forgotpasswordStyles';
 
 const CssTextField = withStyles({
@@ -22,61 +24,55 @@ const CssTextField = withStyles({
 })(TextField);
 const useStyles = makeStyles(style);
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
+  password: yup.string().min(5).required(),
 });
 
-export default function VerifySignup() {
+export default function ForgotPasswordVerification() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  const classes = useStyles();
-  const [email, setEmail] = useState('');
-  const history = useHistory();
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
-  // when the form is submitted to go to the send email page by react router dom
+  const classes = useStyles();
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  const { resetToken } = useParams();
   const submitForm = () => {
+    // history.push('/verifysignup');
     const UserInfo = {
-      email,
+      password,
     };
-    axios('/auth/forgot-password', {
+    axios(`/auth/forgot-password/${resetToken}`, {
       baseURL: 'https://api.flick.photos',
       method: 'put',
       data: UserInfo,
     }).then((resp) => {
-      history.push('/sendemail');
-      console.log(resp);
-    }).catch((err) => {
-      console.log(err);
+      console.log(resp.data);
+      history.push('/login');
     });
   };
-
   return (
     <div className={classes.backgroundImage}>
-      <Card className={classes.root}>
+      <Card className={classes.rootloadingpage}>
         <div>
-          <img src={lockicon} className={classes.lockIcon} alt="icon" />
+          <img src={loading} className={classes.LoadingIcon} alt="icon" />
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Forgot your Flickr password?
+            Enter New Password
           </Typography>
         </div>
-        <p style={{ fontSize: '1.0rem' }}>
-          Please enter your email address below and
-          we`ll send you instructions on how to reset your password.
-        </p>
         <form onSubmit={handleSubmit(submitForm)}>
-          <CssTextField error={errors.email} helperText={errors.email && 'Required'} variant="outlined" {...register('email')} name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email Address" />
+          <CssTextField error={errors.password} helperText={errors.password && 'Required'} variant="outlined" {...register('password')} name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} label="New Password" />
           <Button
             variant="contained"
             className={classes.buttonStylings}
             disableElevation
             type="submit"
           >
-            Send Email
+            Confirm
           </Button>
         </form>
-        <p className={classes.accessEmailParag}>Can`t access your email?</p>
-
       </Card>
     </div>
   );
