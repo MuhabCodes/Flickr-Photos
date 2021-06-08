@@ -34,7 +34,7 @@ function NavBarDropDown() {
               <a href={`/Profile/About/${userjwt.userId}`}>About</a>
               <a href={`/Profile/photostream/${userjwt.userId}`}>Photostream</a>
               <a href="/Albums">Albums</a>
-              <a href="/Profile/Faves">Faves</a>
+              <a href={`/Profile/Faves/${userjwt.userId}`}>Faves</a>
               <a href="/Galleries">Galleries</a>
               <a href="/Groups">Groups</a>
               <a href={`CameraRoll/${userjwt.userId}`}>Camera Roll</a>

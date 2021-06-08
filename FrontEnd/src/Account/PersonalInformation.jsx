@@ -86,7 +86,7 @@ const PersonalInformation = () => {
                           You get 1,000 of your favorite full-resolution photos and HD videos, shown
                           with ads.
                           {' '}
-                          <Link to="/upgrade/pro">Upgrade to Pro</Link>
+                          <Link to="/upgradetopro">Upgrade to Pro</Link>
                         </p>
                       </div>
                     </div>

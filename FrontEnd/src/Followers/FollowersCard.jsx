@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './FollowersCard.css';
 
 function FollowersCard(props) {
@@ -15,7 +16,7 @@ function FollowersCard(props) {
             <h6 className="follower-name">{Follower.userName}</h6>
             <h6 className="follower-name">
               {' '}
-              <a href={`Profile/Photostream/${Follower.userId}`}>view profile</a>
+              <Link to={`../Profile/Photostream/${Follower.userId}`} replace>view profile</Link>
               {' '}
             </h6>
           </div>

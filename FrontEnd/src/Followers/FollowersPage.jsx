@@ -10,7 +10,9 @@ function FollowersPage() {
   useEffect(() => {
     axios.get(`/user/${userid}/followers`)
       .then((items) => {
-        setfollowers(items.data);
+        setfollowers(items.data.followers);
+      }).catch((err) => {
+        console.log(err);
       });
   }, []);
   console.log(followers);
