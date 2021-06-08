@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './GeneralStats.css';
-
+/**
+ * This component renders numbers of tags and faves for each user
+ * @component Stats
+ * @function Stats
+ * @example <Stats/>
+ * @returns stats container with user's stats
+ */
 const Stats = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
