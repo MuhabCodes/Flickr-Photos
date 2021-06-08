@@ -9,6 +9,7 @@ import './Post.css';
 import { AiOutlineStar, AiTwotoneStar } from 'react-icons/ai';
 import { grey } from '@material-ui/core/colors';
 import configData from '../config.json';
+import PostCommentButton from './PostCommentButton';
 
 const Post = (props) => {
   axios.defaults.baseURL = 'http://api.flick.photos';
@@ -107,9 +108,7 @@ const Post = (props) => {
       <div className="posts-bottom-container">
         <div className="posts-comment-button">
           <Link to={`/photoview/${photoId}`}>
-            <button type="button" id="post-comment-button">
-              <ChatBubbleOutlineOutlinedIcon style={{ fontSize: 18, color: grey }} />
-            </button>
+            <PostCommentButton />
           </Link>
           <div className="post-comment-count">
             { comments }
