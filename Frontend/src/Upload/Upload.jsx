@@ -8,6 +8,11 @@ import IconButton from '@material-ui/core/IconButton';
 import CancelIcon from '@material-ui/icons/Cancel';
 import toDataUrl from './ToDataUrl';
 
+/**
+ * component for user to upload photos
+ * @component
+ * <Upload/>
+ */
 function Upload() {
   const history = useHistory(); // useHitory to redirect the user
   const userjwt = jwt(localStorage.getItem('token'));
@@ -22,6 +27,12 @@ function Upload() {
     history.push('/Login');
   }
 
+  /**
+   * handling input images
+   *@function handleImageChange
+   * @param {object} e -event of input change
+   * @returns {void}
+   */
   // handle input change
   const handleImageChange = (e) => {
     if (e.target.files) {
@@ -40,11 +51,23 @@ function Upload() {
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file)); // avoid memory leak
     }
   };
+    /**
+   * cancel upload of selected files
+   *@function deleteItem
+   * @param {number} i -index of file to be deleted
+   * @returns {void}
+   */
   // cancel upload of selected files
   const deleteItem = (i) => {
     setSelectedFiles((currentItems) => currentItems.filter((item, index) => index !== i));
     setRestData((currentItems) => currentItems.filter((item, index) => index !== i));
   };
+  /**
+   * render uploaded images for preview
+   * @function renderPhotos
+   * @param {(src|Array)} source - images to be rendered for preview
+   * @returns {div} -div containing the images rendered
+   */
   // Render photos for preview
   const renderPhotos = (source) => source.map((photo, index) => (
     <div key={photo}>
@@ -79,6 +102,12 @@ function Upload() {
     }
   }, [selectedFiles]);
 
+  /**
+   * handling upload event on upload button click
+   *@function handleUpload
+   * @param {object} e -event of submit form
+   * @returns {void}
+   */
   // Handling upload event
   const handleUpload = (e) => {
     e.preventDefault();

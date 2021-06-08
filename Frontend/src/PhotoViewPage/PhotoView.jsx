@@ -17,8 +17,11 @@ import StarBorderOutlined from '@material-ui/icons/StarBorderOutlined';
 import StarOutlined from '@material-ui/icons/StarOutlined';
 import MenuListComposition from './AddToAlbums';
 
-// import configData from '../config.json';
-
+/**
+ * component for previewing specific photo
+ * @component
+ * <PhotoView/>
+ */
 function PhotoView() {
   axios.defaults.baseURL = 'https://api.flick.photos';
   const history = useHistory(); // useHitory to redirect the user
@@ -97,7 +100,12 @@ function PhotoView() {
     },
   }));
   const classes = useStyles();
-  // hanlde delete
+  /**
+   * handle delete photos
+   * @function handleDelete
+   * @returns {void}
+   */
+  // handle delete
   const handleDelete = () => {
     axios.delete(`/photos/${routeId}`)
       .then(() => {
@@ -105,6 +113,11 @@ function PhotoView() {
         setTimeout(() => history.go(-1), 100); // Redirect to last page visited
       }).catch(() => { history.push('*//'); });
   };
+    /**
+   * follow button handle
+   * @function follow
+   * @returns {void}
+   */
   // follow button handle
   const follow = () => {
     axios.defaults.headers.authorization = localStorage.getItem('token');
@@ -120,6 +133,11 @@ function PhotoView() {
         }
       });
   };
+  /**
+   * unfollow button handle
+   * @function unfollow
+   * @returns {void}
+   */
   const unfollow = () => {
     axios.defaults.headers.authorization = localStorage.getItem('token');
     const { userId } = data;
@@ -134,7 +152,12 @@ function PhotoView() {
         history.push('*//');
       });
   };
-
+  /**
+ * handle tags removal
+ * @function editTag
+ * @param {number} i  index of tag to be removed
+ * @returns {void}
+ */
   // handle edit tag
   const editTag = (i) => {
     const toBeDeleted = {};
@@ -149,13 +172,29 @@ function PhotoView() {
     });
   };
   // handle Fav icon
+    /**
+   * fav button handle
+   * @function fav
+   * @returns {void}
+   */
   const fav = () => {
     axios.post(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
+    /**
+   * unfav button handle
+   * @function unfav
+   * @returns {void}
+   */
   const unfav = () => {
     axios.delete(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
   };
 
+  /**
+   * on click add new comment if not empty
+   * @function handleComment
+   * @param {object} e -event
+   * @returns {void}
+   */
   // handle comments
   const handleComment = (e) => {
     e.preventDefault();
@@ -188,6 +227,12 @@ function PhotoView() {
       });
     }
   };
+  /**
+ * handle delete comment
+ * @function deleteComment
+ * @param {number} i  index of comment to be deleted
+ * @returns {void}
+   */
   // handle delete comments
   const deleteComment = (i) => {
     axios.delete(`/photos/${routeId}/comments/${photoComments[i].id}`).then(() => {
@@ -199,6 +244,15 @@ function PhotoView() {
       } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
     });
   };
+  /**
+   * convert from milliseconds since 1970 to human readable time
+   * @function msToTime
+   * @param {number} ds - Time milliseconds since 1970
+   * @returns {number} seconds -if less 60 seconds
+   * @returns {number} minutes -if less 60 minutes
+   * @returns {number} hours -if less 24 hours
+   * @returns {number} days -if more than 24 hours
+   */
   // calculate time from now for comments
   function msToTime(ds) {
     const d = new Date();

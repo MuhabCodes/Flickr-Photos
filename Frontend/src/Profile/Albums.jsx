@@ -8,7 +8,11 @@ import './Albums.css';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import configData from '../config.json';
-
+/**
+ * component for viewing all user albums
+ * @component
+ * <Albums/>
+ */
 function Albums() {
   axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -34,6 +38,12 @@ function Albums() {
     }
   }, []);
 
+  /**
+ * handle delete album
+ * @function deleteAlbum
+ * @param {number} i  index of album to be deleted
+ * @returns {void}
+   */
   // handle delete
   const deleteAlbum = (i) => {
     const toBeDeleted = {};
@@ -46,6 +56,12 @@ function Albums() {
       }
     });
   };
+    /**
+   * render albums for preview
+   * @function renderPhotos
+   * @param {(albums|Array)} source - albums to be rendered for preview
+   * @returns {div} -div containing the albums rendered
+   */
   // Render albums for preview
   const renderPhotos = (source) => source.map((photo, index) => (
     <div key={photo.albumCover}>
