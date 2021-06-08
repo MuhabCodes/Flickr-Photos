@@ -6,6 +6,13 @@ import './SubNavBar.css';
 // This nav exists in all subpages of 'You'. It includes all pages in the 'You'
 // Has a mapping function which gets name of items in the subnavbar from a pre-defined array
 // this array also includes the url to which we route to when a user clicks it
+/**
+ * Sub Navigation bar that appears on all users pages
+ * @component SubNavBar
+ * @function SubNavBar
+ * @example <SubNavBar/>
+ * @returns navigation bar
+ */
 const SubNavBar = () => {
   const { userId } = useParams();
   return (
