@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -82,7 +83,9 @@ const Faves = () => {
                   />
                   <span className="interaction-bar-ufv">
                     <span className="photo-title-ufv">
-                      {photo.title}
+                      <Link className="link-photoview-uph" to={`/../photoview/${photo._id}`}>
+                        {photo.title}
+                      </Link>
                     </span>
                     <span className="user-name-ufv">
                       by
