@@ -84,7 +84,7 @@ function NavBarDropDown() {
           </div>
 
           <div className="dropdown-main-nav">
-            <a href="/GetPro" className=" droplink-main-nav">Get Pro</a>
+            <a href="/upgradetopro" className=" droplink-main-nav">Get Pro</a>
           </div>
           <div>
             <a href="/Search" className=" droplink-main-nav">

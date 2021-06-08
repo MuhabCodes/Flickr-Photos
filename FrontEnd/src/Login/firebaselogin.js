@@ -1,6 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import firebase from 'firebase/app';
 import 'firebase/analytics';
+
+import('firebase/messaging');
 
 export default function FirebaseLogin() {
   const firebaseConfig = {
@@ -15,11 +18,12 @@ export default function FirebaseLogin() {
   };
   // Initialize Firebase
   console.log(firebase);
-  if (!firebase.apps.length) {
+  if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   } else {
     firebase.app(); // if already initialized, use that one
   }
   firebase.analytics();
+
   return (null);
 }

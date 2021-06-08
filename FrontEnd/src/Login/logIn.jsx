@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -16,7 +17,7 @@ import firebase from 'firebase/app';
 import jwt from 'jwt-decode';
 import style from './loginStyles';
 import icon from './flickrlogo.png';
-import configData from '../config.json';
+// import configData from '../config.json';
 // import FBlogin from './firebaselogin2';
 
 import('firebase/messaging');
@@ -47,16 +48,19 @@ const FBlogin = async () => {
   await FIREBASE_MESSAGING.getToken()
     .then((token) => {
       const userjwt = jwt(localStorage.getItem('token'));
+      localStorage.setItem('firebase', `${token}`);
       console.log('token to be save', token);
       // saving token in database
       FIREBASE_DATABASE.ref('/tokens').push({
         token,
-        userId: userjwt.sub,
+        userId: userjwt.userId,
       });
     });
 };
 
 export default function SignUp() {
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   // the passing of the scheme using the useForm from the react hook library
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -71,7 +75,7 @@ export default function SignUp() {
     const UserInfo = {
       email, password,
     };
-    axios(`${configData.SERVER_URL}/login/`, {
+    axios('/auth/login', {
       method: 'post',
       data: UserInfo,
     }).then((resp) => {
@@ -88,7 +92,8 @@ export default function SignUp() {
           console.log('User didnt give permission');
         }
       });
-      localStorage.setItem('token', `Bearer ${resp.data.accessToken}`);
+      localStorage.setItem('token', `${resp.data.token}`);
+      // console.log('token');
       history.push('/');
     });
   };
@@ -109,17 +114,24 @@ export default function SignUp() {
             className={classes.loginButton}
             disableElevation
             type="submit"
+            id="login-btn"
           >
             sign in
           </Button>
         </form>
         <Link to="/forgotpassword" className={classes.linkStyle}>Forgot Password?</Link>
         <div style={{
-          fontSize: '0.875rem', position: 'relative', alignSelf: 'center',
+          fontSize: '0.875rem',
+          position: 'relative',
+          alignSelf: 'center',
         }}
         >
           <p style={{ marginTop: '15px' }}>
-            Not a Flickr member? Sign up here.
+            Not a Flickr member?
+            {' '}
+            <Link to="/signup">
+              Sign up here.
+            </Link>
           </p>
         </div>
 

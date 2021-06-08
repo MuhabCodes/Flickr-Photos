@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { React, useEffect } from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
@@ -21,7 +22,7 @@ import Footer from './Footer';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Faves from '../Profile/Faves';
+import Faves from '../Profile/faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
@@ -40,13 +41,15 @@ import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import EmailNotifications from '../Emails&Notifications/EmailNotifications';
-import configData from '../config.json';
+// import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';
 import StartPage from '../StartPage/StartPage';
 import NavBarSP from '../StartPage/NavBarSP';
 import TheCommons from '../TheCommons/TheCommons';
+import VerificationPage from '../Signup/LoadingPage';
+import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
 
 import('firebase/messaging');
 import('firebase/database');
@@ -77,17 +80,14 @@ const FBlogout = () => {
 };
 
 function App() {
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     const interval = setInterval(() => {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         const decodedData = jwt(storedToken);
-        const expirationDate = decodedData.exp;
+        const expirationDate = decodedData.iat + 86400;
         const currenttime = (Date.now() / 1000);
-        console.log(expirationDate);
-        console.log(currenttime);
         // eslint-disable-next-line no-self-compare
         if (currenttime > expirationDate) {
           FBlogout();
@@ -102,9 +102,17 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route exact path="/verification/:confirToken">
+              <VerificationPage />
+            </Route>
             <Route exact path="/UpgradeToPro">
               <NavBar />
               <UpgradeToPro />
+              <Footer />
+            </Route>
+            <Route exact path="/uptoVerification/:proToken">
+              <NavBar />
+              <UpToProIntegration />
               <Footer />
             </Route>
             <Route exact path="/GettingStarted">
@@ -226,7 +234,7 @@ function App() {
               <FollowersPage />
               <Footer />
             </Route>
-            <Route exact path="/Notification">
+            <Route exact path="/myNotification">
               <Notification />
               <Footer />
             </Route>
@@ -250,7 +258,7 @@ function App() {
               <Albums />
               <Footer />
             </Route>
-            <Route exact path="/ex">
+            <Route exact path="/start">
               <NavBarSP />
               <StartPage />
             </Route>
