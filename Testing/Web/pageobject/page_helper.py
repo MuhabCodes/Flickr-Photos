@@ -168,12 +168,19 @@ class PageHelper(object):
     def find_element_by_el(self, locator: tuple,
                            main_element: WebElement,
                            el_name: str = "sub_element"):
+        """ return child WebElement from input parent WebElement.
+
+        :param locator: child WebElement object locator
+        :param main_element: parent WebElement
+        :param el_name: child WebElement object name
+        :return: child WebElement
+        """
         try:
             sub_element = main_element.find_element(*locator)
             if sub_element is None:
                 raise TypeError(el_name + " is None")
             return sub_element
-        except TypeError as e:
+        except (TypeError, NoSuchElementException) as e:
             traceback.print_exception(*sys.exc_info())
             raise e
 
@@ -210,7 +217,7 @@ class PageHelper(object):
                 raise IndexError(el_name + " is empty")
             return sub_element_list
         except IndexError as e:
-            traceback.print_exception(*sys.exc_info())
+            # traceback.print_exception(*sys.exc_info())
             raise e
 
     def remove_footer_banner(self):

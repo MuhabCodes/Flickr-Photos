@@ -1,0 +1,341 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.flickr"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\debug\AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+15-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
+16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+16-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+16-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->[:camera] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+17-->[:camera] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-62
+18    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+18-->[:camera] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-71
+18-->[:camera] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-68
+19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+19-->[com.google.android.exoplayer:exoplayer-core:2.12.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\efb71a39de811f8d922f386647a1ffa8\jetified-exoplayer-core-2.12.1\AndroidManifest.xml:24:5-79
+19-->[com.google.android.exoplayer:exoplayer-core:2.12.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\efb71a39de811f8d922f386647a1ffa8\jetified-exoplayer-core-2.12.1\AndroidManifest.xml:24:22-76
+20
+21    <application
+21-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:3:4-40:19
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\2e94107f30f39be366a17347c2bf100b\core-1.1.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:5:9-43
+25        android:label="flickr" >
+25-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:4:9-31
+26        <activity
+26-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:6:9-34:20
+27            android:name="com.example.flickr.MainActivity"
+27-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:7:13-41
+28            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+28-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:10:13-163
+29            android:hardwareAccelerated="true"
+29-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:11:13-47
+30            android:launchMode="singleTop"
+30-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:8:13-43
+31            android:theme="@style/LaunchTheme"
+31-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:9:13-47
+32            android:windowSoftInputMode="adjustResize" >
+32-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:12:13-55
+33
+34            <!--
+35                 Specifies an Android theme to apply to this Activity as soon as
+36                 the Android process has started. This theme is visible to the user
+37                 while the Flutter UI initializes. After that, this theme continues
+38                 to determine the Window background behind the Flutter UI.
+39            -->
+40            <meta-data
+40-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:17:13-20:17
+41                android:name="io.flutter.embedding.android.NormalTheme"
+41-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:18:15-70
+42                android:resource="@style/NormalTheme" />
+42-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:19:15-52
+43            <!--
+44                 Displays an Android View that continues showing the launch screen
+45                 Drawable until Flutter paints its first frame, then this splash
+46                 screen fades out. A splash screen is useful to avoid any visual
+47                 gap between the end of Android's launch screen and the painting of
+48                 Flutter's first frame.
+49            -->
+50            <meta-data
+50-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:26:13-29:17
+51                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+51-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:27:15-79
+52                android:resource="@drawable/launch_background" />
+52-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:28:15-61
+53
+54            <intent-filter>
+54-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:30:13-33:29
+55                <action android:name="android.intent.action.MAIN" />
+55-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:31:17-68
+55-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:31:25-66
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:32:17-76
+57-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:32:27-74
+58            </intent-filter>
+59        </activity>
+60        <!--
+61             Don't delete the meta-data below.
+62             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+63        -->
+64        <meta-data
+64-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:37:9-39:33
+65            android:name="flutterEmbedding"
+65-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:38:13-44
+66            android:value="2" />
+66-->E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\android\app\src\main\AndroidManifest.xml:39:13-30
+67
+68        <provider
+68-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+69            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+69-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+70            android:authorities="com.example.flickr.flutter.image_provider"
+70-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+71            android:exported="false"
+71-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+72            android:grantUriPermissions="true" >
+72-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+73            <meta-data
+73-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+74                android:name="android.support.FILE_PROVIDER_PATHS"
+74-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+75                android:resource="@xml/flutter_image_picker_file_paths" />
+75-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+76        </provider>
+77
+78        <activity
+78-->[:url_launcher] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+79            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+79-->[:url_launcher] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+80            android:exported="false"
+80-->[:url_launcher] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+81            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+81-->[:url_launcher] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+82
+83        <service
+83-->[:cloud_firestore] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+84            android:name="com.google.firebase.components.ComponentDiscoveryService"
+84-->[:cloud_firestore] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+85            android:directBootAware="true"
+85-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+86            android:exported="false" >
+86-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:76:13-37
+87            <meta-data
+87-->[:cloud_firestore] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+88                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+88-->[:cloud_firestore] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[:cloud_firestore] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+90            <meta-data
+90-->[:firebase_auth] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+91                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+91-->[:firebase_auth] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+92                android:value="com.google.firebase.components.ComponentRegistrar" />
+92-->[:firebase_auth] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+93            <meta-data
+93-->[:firebase_core] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+94                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+94-->[:firebase_core] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+95                android:value="com.google.firebase.components.ComponentRegistrar" />
+95-->[:firebase_core] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+96            <meta-data
+96-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:77:13-79:85
+97                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+97-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:78:17-109
+98                android:value="com.google.firebase.components.ComponentRegistrar" />
+98-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:79:17-82
+99            <meta-data
+99-->[com.google.firebase:firebase-firestore:22.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\d55061a16e2e6926a30f9a4104013135\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:20:13-22:85
+100                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+100-->[com.google.firebase:firebase-firestore:22.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\d55061a16e2e6926a30f9a4104013135\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:21:17-111
+101                android:value="com.google.firebase.components.ComponentRegistrar" />
+101-->[com.google.firebase:firebase-firestore:22.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\d55061a16e2e6926a30f9a4104013135\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:22:17-82
+102            <!--
+103                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+104                clients to use it as well, by defining this registrar in their own core/common library.
+105            -->
+106            <meta-data
+106-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+107                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+107-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+108                android:value="com.google.firebase.components.ComponentRegistrar" />
+108-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+109        </service>
+110
+111        <provider
+111-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+112            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+112-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+113            android:authorities="com.example.flickr.fishbunfileprovider"
+113-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+114            android:exported="false"
+114-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+115            android:grantUriPermissions="true" >
+115-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+116            <meta-data
+116-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+117                android:name="android.support.FILE_PROVIDER_PATHS"
+117-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+118                android:resource="@xml/provider_paths" />
+118-->[:image_picker] E:\College\SPRING 2021\CMPN203\project\Flickr-Photos\Flickr-Photos\Android\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+119        </provider>
+120
+121        <activity
+121-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+122            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+122-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+123            android:label="@string/album"
+123-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+124            android:theme="@style/FishBunTheme" />
+124-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+125        <activity
+125-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+126            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+126-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+127            android:theme="@style/FishBunTheme" />
+127-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+128        <activity
+128-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+129            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+129-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+130            android:theme="@style/DetailViewTheme" />
+130-->[com.sangcomz:FishBun:0.11.2] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+131        <activity
+131-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:27:9-44:20
+132            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+132-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:28:13-80
+133            android:excludeFromRecents="true"
+133-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:29:13-46
+134            android:exported="true"
+134-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:30:13-36
+135            android:launchMode="singleTask"
+135-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:31:13-44
+136            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+136-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:32:13-72
+137            <intent-filter>
+137-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:33:13-43:29
+138                <action android:name="android.intent.action.VIEW" />
+138-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:34:17-69
+138-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:34:25-66
+139
+140                <category android:name="android.intent.category.DEFAULT" />
+140-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:17-76
+140-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:27-73
+141                <category android:name="android.intent.category.BROWSABLE" />
+141-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:37:17-78
+141-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:37:27-75
+142
+143                <data
+143-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:39:17-42:51
+144                    android:host="firebase.auth"
+144-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:40:21-49
+145                    android:path="/"
+145-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:41:21-37
+146                    android:scheme="genericidp" />
+146-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:42:21-48
+147            </intent-filter>
+148        </activity>
+149        <activity
+149-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:45:9-62:20
+150            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+150-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:46:13-79
+151            android:excludeFromRecents="true"
+151-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:47:13-46
+152            android:exported="true"
+152-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:48:13-36
+153            android:launchMode="singleTask"
+153-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:49:13-44
+154            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+154-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:50:13-72
+155            <intent-filter>
+155-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:51:13-61:29
+156                <action android:name="android.intent.action.VIEW" />
+156-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:34:17-69
+156-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:34:25-66
+157
+158                <category android:name="android.intent.category.DEFAULT" />
+158-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:17-76
+158-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:27-73
+159                <category android:name="android.intent.category.BROWSABLE" />
+159-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:37:17-78
+159-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:37:27-75
+160
+161                <data
+161-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:39:17-42:51
+162                    android:host="firebase.auth"
+162-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:40:21-49
+163                    android:path="/"
+163-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:41:21-37
+164                    android:scheme="recaptcha" />
+164-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:42:21-48
+165            </intent-filter>
+166        </activity>
+167
+168        <service
+168-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:64:9-73:19
+169            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+169-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:65:13-101
+170            android:enabled="true"
+170-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:66:13-35
+171            android:exported="false" >
+171-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:67:13-37
+172            <intent-filter>
+172-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:68:13-72:29
+173                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+173-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:69:17-89
+173-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:69:25-86
+174
+175                <category android:name="android.intent.category.DEFAULT" />
+175-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:17-76
+175-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\b412f3c0621dc41655d20c0777a920b8\jetified-firebase-auth-20.0.1\AndroidManifest.xml:36:27-73
+176            </intent-filter>
+177        </service>
+178
+179        <activity
+179-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\3379954b54da4c690bd742f1e4b2cf6f\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+180            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+180-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\3379954b54da4c690bd742f1e4b2cf6f\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+181            android:exported="false"
+181-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\3379954b54da4c690bd742f1e4b2cf6f\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+182            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+182-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\3379954b54da4c690bd742f1e4b2cf6f\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+183
+184        <provider
+184-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+185            android:name="com.google.firebase.provider.FirebaseInitProvider"
+185-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+186            android:authorities="com.example.flickr.firebaseinitprovider"
+186-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+187            android:directBootAware="true"
+187-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+188            android:exported="false"
+188-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+189            android:initOrder="100" />
+189-->[com.google.firebase:firebase-common:19.5.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\30f8c83caed4a299c18f4b70b3137291\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+190
+191        <meta-data
+191-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\fc37094cae7bcab02e53cd05528600fd\jetified-play-services-basement-17.1.0\AndroidManifest.xml:23:9-25:69
+192            android:name="com.google.android.gms.version"
+192-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\fc37094cae7bcab02e53cd05528600fd\jetified-play-services-basement-17.1.0\AndroidManifest.xml:24:13-58
+193            android:value="@integer/google_play_services_version" />
+193-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\mostafa\.gradle\caches\transforms-2\files-2.1\fc37094cae7bcab02e53cd05528600fd\jetified-play-services-basement-17.1.0\AndroidManifest.xml:25:13-66
+194    </application>
+195
+196</manifest>

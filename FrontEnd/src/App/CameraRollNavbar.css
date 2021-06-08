@@ -1,0 +1,33 @@
+#navbar-CR{
+    background-color: #f3f5f6;
+}
+
+
+.nav-start{
+    margin-left: 100px;
+}
+
+.CameralRoll-nav-bar{
+    top: 53px;
+    width: 100%;
+   
+}
+.CameraRoll-nav-dropdown{
+color: black;
+}
+
+.navbar-icons{
+    position: fixed;
+    right: 100px;
+    display: inline-block;
+}
+
+.icons{
+    margin-left: 20px;
+    display: inline-block;
+
+}
+
+.icons a{
+    color: grey;
+}

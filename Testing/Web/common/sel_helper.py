@@ -252,6 +252,14 @@ class SelHelper(object):
         """
         return str(self.driver.current_url)
 
+    def scroll_window(self, x: int = 0):
+        """ Move windows by x pixels
+
+        :param x: number of pixels
+        """
+        script = "window.scrollBy(0," + str(x) + ")"
+        self.driver.execute_script(script, "")
+
     def scroll_to_element(self, element: WebElement):
         """ Scroll until WebElement element appears on view
 

@@ -1,0 +1,155 @@
+from time import sleep
+
+from appium import webdriver
+from appium.webdriver.webdriver import WebDriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from common.properties import PropertiesMiA1
+from pageobject.page import Page
+from pageobject.locator.locator import Locator
+from pageobject.generalmethods.general_methods import GeneralMethods
+
+
+class YouPage(Page):
+    def __init__(self, driver: WebDriver = None):
+        Page.__init__(self, driver)
+        self.general_methods = GeneralMethods(driver)
+        self.about_bio_dic = {
+            "Photo": "Photo",
+            "Description": "Description",
+            "Occupation": "Occupation",
+            "Current City": "Current City",
+            "Hometown": "Hometown",
+            "Website": "Website",
+            "Tumblr": "Tumblr",
+            "Facebook": "Facebook",
+            "Twitter": "Twitter",
+            "Instagram": "Instagram",
+            "Pinterest": "Pinterest",
+            "Email": "Email",
+            "Date Joined": "Date Joined"
+        }
+
+    def set_driver(self, driver: WebDriver):
+        self.driver = driver
+        self.general_methods.set_driver(driver)
+
+    def open_you_page(self):
+        self.general_methods.login()
+        sleep(1)
+        self.driver.find_element_by_id(Locator.nav_profile_id).click()
+
+    ####################################################
+    #                     About                        #
+    ####################################################
+
+    def open_about(self):
+        nav_list = self.driver.find_elements_by_xpath(
+            Locator.you_nav_list_xpath)
+
+        nav_list[0].click()
+
+    def get_about_bio_item(self, text: str):
+        nav_list = self.driver.find_elements_by_id(
+            Locator.you_about_bio_info_item_id)
+
+        while True:
+            for i in range(0, len(nav_list)):
+                try:
+                    nav_list = self.driver.find_elements_by_id(
+                        Locator.you_about_bio_info_item_id)
+
+                    label = nav_list[i].find_element_by_id(
+                        Locator.you_about_bio_item_label_id
+                    ).get_attribute("text")
+                    if text in label:
+                        return nav_list[i]
+                except NoSuchElementException:
+                    pass
+            self.driver.scroll(nav_list[len(nav_list) - 1], nav_list[0])
+            nav_list = self.driver.find_elements_by_id(
+                Locator.you_about_bio_info_item_id)
+
+    def check_textbox_bio_items_1(self):
+        """ Check if the text outside is the same inside"""
+        self.open_about()
+        about_bio_dic = {
+            "Description": self.about_bio_dic["Description"],
+            "Occupation": self.about_bio_dic["Occupation"],
+            "Current City": self.about_bio_dic["Current City"],
+            "Hometown": self.about_bio_dic["Hometown"],
+            "Website": self.about_bio_dic["Website"],
+            "Tumblr": self.about_bio_dic["Tumblr"],
+            "Facebook": self.about_bio_dic["Facebook"],
+            "Twitter": self.about_bio_dic["Twitter"],
+            "Instagram": self.about_bio_dic["Instagram"],
+            "Pinterest": self.about_bio_dic["Pinterest"]
+        }
+        for bio_label in about_bio_dic:
+            bio_item = self.get_about_bio_item(bio_label)
+            hint_out = bio_item.find_element_by_xpath(
+                './' + Locator.you_about_bio_item_hint_sub_xpath
+            ).get_attribute("text")
+            bio_item.click()
+
+            sleep(1)
+            hint_editbox = self.driver.find_element_by_id(
+                Locator.you_about_item_inside_text_id)
+            hint_in = self.driver.find_element_by_id(
+                Locator.you_about_item_inside_text_id).get_attribute("text")
+
+            if hint_out not in hint_in:
+                raise AssertionError("ERROR IN " + bio_label)
+
+            self.driver.find_element_by_id(
+                Locator.header_back_button_id).click()
+        return True
+
+    def check_textbox_bio_items_2(self):
+        """ Add text and check if it will appear outside. """
+        self.open_about()
+        about_bio_dic = {
+            "Description": self.about_bio_dic["Description"],
+            "Occupation": self.about_bio_dic["Occupation"],
+            "Current City": self.about_bio_dic["Current City"],
+            "Hometown": self.about_bio_dic["Hometown"],
+        }
+        for bio_label in about_bio_dic:
+            bio_item = self.get_about_bio_item(bio_label)
+            bio_item.click()
+
+            content_editbox = self.driver.find_element_by_id(
+                Locator.you_about_item_inside_text_id)
+            content_editbox.click()
+
+            content_editbox = self.driver.find_element_by_id(
+                Locator.you_about_item_inside_text_id)
+            content_editbox.clear()
+            content_editbox.send_keys(self.utils.generate_random_string(10))
+            hint_in = content_editbox.get_attribute("text")
+            self.driver.find_element_by_id(
+                Locator.you_about_item_inside_done_id).click()
+
+            bio_item = self.get_about_bio_item(bio_label)
+            hint_out = bio_item.find_element_by_xpath(
+                './' + Locator.you_about_bio_item_hint_sub_xpath
+            ).get_attribute("text")
+
+            if hint_out not in hint_in:
+                raise AssertionError("ERROR IN " + bio_label)
+        return True
+
+    ####################################################
+    #                  Camera Roll                     #
+    ####################################################
+
+    def open_camera_roll(self):
+        nav_list = self.driver.find_elements_by_xpath(
+            Locator.you_nav_list_xpath)
+
+        nav_list[2].click()
+
+    def check_roll_empty(self):
+        """ Check if there are no uploaded photos in Camera Roll. """
+        return self.general_methods.element_located(
+            By.ID, Locator.empty_page_textview_id)
