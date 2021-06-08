@@ -9,17 +9,10 @@ import './Post.css';
 import { AiOutlineStar, AiTwotoneStar } from 'react-icons/ai';
 import { grey } from '@material-ui/core/colors';
 import configData from '../config.json';
-
-/**
- * Posts Container for each post
- * @namespace HomePage.Posts
- * @example <Posts />
- * @function Posts
- * @returns The card container of each post in a users homepage
- */
+import PostCommentButton from './PostCommentButton';
 
 const Post = (props) => {
-  axios.defaults.baseURL = 'https://api.flick.photos';
+  axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
   axios.defaults.headers.authorization = localStorage.getItem('token');
   const history = useHistory();
@@ -115,9 +108,7 @@ const Post = (props) => {
       <div className="posts-bottom-container">
         <div className="posts-comment-button">
           <Link to={`/photoview/${photoId}`}>
-            <button type="button" id="post-comment-button">
-              <ChatBubbleOutlineOutlinedIcon style={{ fontSize: 18, color: grey }} />
-            </button>
+            <PostCommentButton />
           </Link>
           <div className="post-comment-count">
             { comments }
