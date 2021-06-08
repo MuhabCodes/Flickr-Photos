@@ -25,11 +25,11 @@ class TestMainPageFeedTools(object):
     def setup(self):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
-        self.helper.implicit_wait(30)
+        self.helper.implicit_wait(10)
         self.mock_methods.login()
         sleep(10)
         yield
-        self.helper.quit()
+        # self.helper.quit()
 
     # @pytest.mark.skip
     def test_filters(self, setup):
@@ -82,16 +82,77 @@ class TestMainPageFeedTools(object):
         assert self.main_page.check_poster_link()
         sleep(10)
 
-    # @pytest.mark.skip
-    def test_click_group_photo(self, setup):
+    @pytest.mark.parametrize(
+        "filter_layout",
+        [
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_COMPACT"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_MEDIUM"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_LARGE"),
+            ("FILTER_PEOPLE", "LAYOUT_COMPACT"),
+            ("FILTER_PEOPLE", "LAYOUT_MEDIUM"),
+            ("FILTER_PEOPLE", "LAYOUT_LARGE")
+        ]
+    )
+    def test_click_photo(self, setup, filter_layout):
         assert self.main_page.check_feed_empty() is True
 
-        if not self.main_page.filter_exists:
-            assert self.main_page.select_filter("FILTER_ALL_ACTIVITY")
+        if self.main_page.filter_exists:
+            assert self.main_page.select_filter(filter_layout[0])
 
         sleep(5)
         if self.main_page.layout_exists:
-            assert self.main_page.select_layout("LAYOUT_COMPACT")
+            assert self.main_page.select_layout(filter_layout[1])
 
-        sleep(10)
-        assert self.main_page.check_click_group_photo()
+        sleep(5)
+        assert self.main_page.check_click_photo()
+
+    @pytest.mark.parametrize(
+        "filter_layout",
+        [
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_COMPACT"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_MEDIUM"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_LARGE"),
+            ("FILTER_PEOPLE", "LAYOUT_COMPACT"),
+            ("FILTER_PEOPLE", "LAYOUT_MEDIUM"),
+            ("FILTER_PEOPLE", "LAYOUT_LARGE")
+        ]
+    )
+    def test_fave(self, setup, filter_layout):
+        assert self.main_page.check_feed_empty() is True
+
+        if self.main_page.filter_exists:
+            assert self.main_page.select_filter(filter_layout[0])
+
+            sleep(5)
+            if self.main_page.layout_exists:
+                assert self.main_page.select_layout(filter_layout[1])
+
+            sleep(5)
+            assert self.main_page.check_fave()
+
+    @pytest.mark.parametrize(
+        "filter_layout",
+        [
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_COMPACT"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_MEDIUM"),
+            ("FILTER_ALL_ACTIVITY", "LAYOUT_LARGE"),
+            ("FILTER_PEOPLE", "LAYOUT_COMPACT"),
+            ("FILTER_PEOPLE", "LAYOUT_MEDIUM"),
+            ("FILTER_PEOPLE", "LAYOUT_LARGE")
+        ]
+    )
+    def test_comment(self, setup, filter_layout):
+        assert self.main_page.check_feed_empty() is True
+
+        if self.main_page.filter_exists:
+            assert self.main_page.select_filter(filter_layout[0])
+
+            sleep(5)
+            if self.main_page.layout_exists:
+                assert self.main_page.select_layout(filter_layout[1])
+
+            sleep(5)
+            assert self.main_page.check_comment("Great Pic1! 1")
+
+    def test_test(self, setup):
+        assert self.main_page.test_debug()

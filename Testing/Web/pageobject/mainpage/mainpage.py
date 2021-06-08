@@ -15,6 +15,7 @@ class MainPage(Page):
     """ Class that contains methods interacting with WebElement objects in
     Main page "https://www.flickr.com/" after signing in.
     """
+
     def __init__(self, helper: SelHelper,
                  time_to_wait: float = 100,
                  filter_exists: bool = True,
@@ -114,30 +115,6 @@ class MainPage(Page):
             )
             return photo_batch_list
         except IndexError as e:
-            traceback.print_exception(*sys.exc_info())
-            raise e
-
-    def get_group_photo_link(self, batch_item: WebElement):
-        """ Return group-photo link element"""
-        try:
-            photo_card_xpath = MainPageLocator.group_photo_link_sub_xpath
-            photo_link = self.page_helper.find_element_by_el(
-                (By.XPATH, './' + photo_card_xpath),
-                batch_item,
-                "group_photo_link"
-            )
-            return photo_link
-        except TypeError as e:
-            traceback.print_exception(*sys.exc_info())
-            raise e
-
-    def get_person_photo_link(self, feed_item: WebElement):
-        """ UNDER DEVELOPEMENT. """
-        try:
-            pass
-            # photo_card_xpath =
-        except TypeError as e:
-            traceback.print_exception(*sys.exc_info())
             raise e
 
     def click_nav_dropdown_subitem(
@@ -264,6 +241,9 @@ class MainPage(Page):
         except (TimeoutException, TypeError, IndexError) as e:
             traceback.print_exception(*sys.exc_info())
             raise e
+
+    # def get_selected_layout(self):
+    #     pass
 
     def check_feed_filters(self, time_to_wait: float = None):
         """ Check if feed filters are operational.
@@ -458,26 +438,318 @@ class MainPage(Page):
             traceback.print_exception(*sys.exc_info())
             raise e
 
-    def check_click_group_photo(self, time_to_wait: float = None):
-        """ Test clicking group photo.
+    def get_photo_card_photo(self, main_element: WebElement, post_type: int):
+        """ return div[class=photo-card-photo] WebElement.
 
-        :param time_to_wait: Maximum waiting time
-        :return: boolean to check if the operation is successful
+        :param main_element: Parent element
+        :param post_type: type of post [1- Single, 2- Group]
+        :return: div[class=photo-card-photo] element
         """
+        try:
+            if post_type == 1:
+                photo_card_xpath = \
+                    MainPageLocator.people_photo_card_photo_sub_xpath
+            else:
+                photo_card_xpath = \
+                    MainPageLocator.group_photo_card_photo_sub_xpath
+
+            photo_card_photo = self.page_helper.find_element_by_el(
+                (By.XPATH, './' + photo_card_xpath),
+                main_element,
+                "photo_card_photo"
+            )
+            return photo_card_photo
+        except TypeError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
+
+    def get_photo_link(self, main_element: WebElement, post_type: int):
+        try:
+            if post_type == 1:
+                photo_link_xpath = \
+                    MainPageLocator.group_photo_link_sub_xpath
+            else:
+                photo_link_xpath = \
+                    MainPageLocator.people_photo_link_sub_xpath
+
+            photo_link = self.page_helper.find_element_by_el(
+                (By.XPATH, './' + photo_link_xpath),
+                main_element,
+                "photo_link"
+            )
+            return photo_link
+        except TypeError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
+
+    def check_click_photo(self, time_to_wait: float = None):
         if time_to_wait is None:
             time_to_wait = self.time_to_wait
+
         try:
+            feed_layout_index = 0
+            feed_item_index = 0
+            batch_item_index = 0
             feed_layout_list = self.get_feed_layout_list(time_to_wait)
+            feed_item_list = self.get_feed_item_list(
+                feed_layout_list[feed_layout_index])
 
-            feed_item_list = self.get_feed_item_list(feed_layout_list[0])
+            try:
+                batch_list = self.get_group_photo_batch_list(
+                    feed_item_list[feed_item_index])
+                photo_card_photo = self.get_photo_card_photo(
+                    batch_list[batch_item_index], 2)
+                photo_link = self.get_photo_link(
+                    photo_card_photo, 2)
 
-            batch_list = self.get_group_photo_batch_list(feed_item_list[1])
-            photo_link = self.get_group_photo_link(batch_list[1])
+            except IndexError:
+                photo_card_photo = self.get_photo_card_photo(
+                    feed_item_list[feed_item_index], 1)
+                photo_link = self.get_photo_link(photo_card_photo, 1)
 
-            # self.page_helper.remove_footer_banner()
-            self.helper.scroll_to_element(photo_link)
             photo_link.click()
             return True
         except (TimeoutException, TypeError, IndexError) as e:
             traceback.print_exception(*sys.exc_info())
             raise e
+
+    def get_engagement_list(self, main_element: WebElement, post_type: int):
+        try:
+            if post_type == 1:
+                engagement_xpath = \
+                    MainPageLocator.people_photo_engagement_sub_xpath
+            else:
+                engagement_xpath = \
+                    MainPageLocator.group_photo_engagement_sub_xpath
+
+            engagement_list = self.page_helper.find_elements_by_el(
+                (By.XPATH, './' + engagement_xpath),
+                main_element,
+                "engagement_container_list"
+            )
+            return engagement_list
+        except IndexError as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
+
+    def check_fave(self, time_to_wait: float = None):
+        if time_to_wait is None:
+            time_to_wait = self.time_to_wait
+
+        feed_layout_index = 0
+        feed_item_index = 1
+        batch_item_index = 0
+        # post_type = 2
+        try:
+            feed_layout_list = self.get_feed_layout_list(time_to_wait)
+            feed_item_list = self.get_feed_item_list(
+                feed_layout_list[feed_layout_index])
+            try:
+                batch_list = self.get_group_photo_batch_list(
+                    feed_item_list[feed_item_index])
+                self.helper.scroll_to_element(batch_list[batch_item_index])
+
+                engagement_list = self.get_engagement_list(
+                    batch_list[batch_item_index], 2)
+            except IndexError:
+                engagement_list = self.get_engagement_list(
+                    feed_item_list[feed_item_index], 1)
+
+            self.helper.scroll_to_element(engagement_list[0])
+            self.helper.scroll_window(
+                -10 * engagement_list[0].size["height"])
+
+            fave = engagement_list[0]
+            old_class = fave.get_attribute("class")
+
+            actions = self.helper.action_chains()
+            actions.move_to_element(fave).perform()
+            actions.click().perform()
+            sleep(1)
+            new_class = fave.get_attribute("class")
+
+            if "faved" in old_class and "faved" not in new_class:
+                return True
+            elif "faved" in new_class and "faved" not in old_class:
+                return True
+            return False
+        except (TimeoutException, TypeError, IndexError) as e:
+            traceback.print_exception(*sys.exc_info())
+            raise e
+
+    def check_comment(self, text: str = "good picture",
+                      time_to_wait: float = None):
+        if time_to_wait is None:
+            time_to_wait = self.time_to_wait
+
+        pass_1 = False
+        pass_2 = False
+        pass_3 = False
+
+        feed_layout_index = 0
+        feed_item_index = 0
+        batch_item_index = 0
+
+        feed_layout_list = self.get_feed_layout_list(time_to_wait)
+        feed_item_list = self.get_feed_item_list(
+            feed_layout_list[feed_layout_index])
+
+        try:
+            batch_list = self.get_group_photo_batch_list(
+                feed_item_list[feed_item_index])
+            self.helper.scroll_to_element(batch_list[batch_item_index])
+
+            engagement_list = self.get_engagement_list(
+                batch_list[batch_item_index], 2)
+
+            if "hidden" in engagement_list[1].get_attribute("class"):
+                batch_item_index = batch_item_index + 1
+
+                self.helper.scroll_to_element(batch_list[batch_item_index])
+                engagement_list = self.get_engagement_list(
+                    batch_list[batch_item_index], 2)
+
+        except IndexError:
+            engagement_list = self.get_engagement_list(
+                feed_item_list[feed_item_index], 1)
+
+        self.helper.scroll_to_element(engagement_list[1])
+        self.helper.scroll_window(
+            -10 * engagement_list[1].size["height"])
+
+        comment = engagement_list[1]
+
+        actions = self.helper.action_chains()
+        actions.move_to_element(comment).perform()
+        actions.click().perform()
+
+        self.page_helper.safe_find_element(
+            (By.XPATH, MainPageLocator.comments_section_xpath),
+            "comments_section",
+            time_to_wait
+        )
+
+        # Test Add Comment
+        comments_list = self.helper.find_elements(
+            By.XPATH, MainPageLocator.comments_xpath)
+        comments_size = len(comments_list)
+
+        self.page_helper.safe_fill_element(
+            locator=(By.XPATH, MainPageLocator.add_comment_box_xpath),
+            text=text,
+            time_to_wait=time_to_wait,
+            el_name="add_comment_box"
+        )
+
+        self.page_helper.safe_click(
+            locator=(By.XPATH, MainPageLocator.add_comment_button_xpath)
+        )
+
+        sleep(5)
+        comments_list = self.helper.find_elements(
+            By.XPATH, MainPageLocator.comments_xpath)
+        comment_reply = self.page_helper.find_element_by_el(
+            locator=(By.XPATH, './' + MainPageLocator.comment_text_sub_xpath),
+            main_element=comments_list[-1],
+            el_name="comment_text"
+        )
+        if comment_reply.text == text:
+            pass_1 = True
+
+        comment_header_button = self.page_helper.find_element_by_el(
+            locator=(
+                By.XPATH,
+                './' + MainPageLocator.comment_header_button_sub_xpath
+            ),
+            main_element=comments_list[-1],
+            el_name="comment_header_button"
+        )
+        comment_header_button.click()
+
+        # Test Edit
+        sleep(1)
+        self.page_helper.safe_click(
+            locator=(By.XPATH, MainPageLocator.comment_header_edit_xpath),
+            time_to_wait=time_to_wait,
+            el_name="comment_header_edit"
+        )
+        self.page_helper.safe_fill_element(
+            locator=(By.XPATH, MainPageLocator.add_comment_box_xpath),
+            text="test is successful",
+            time_to_wait=time_to_wait,
+            el_name="add_comment_box"
+        )
+        self.page_helper.safe_click(
+            locator=(By.XPATH, MainPageLocator.add_comment_button_xpath)
+        )
+
+        sleep(1)
+        comments_list = self.helper.find_elements(
+            By.XPATH, MainPageLocator.comments_xpath)
+        comment_reply = self.page_helper.find_element_by_el(
+            locator=(By.XPATH, './' + MainPageLocator.comment_text_sub_xpath),
+            main_element=comments_list[-1],
+            el_name="comment_text"
+        )
+        if comment_reply.text == "test is successful":
+            pass_2 = True
+
+        # Test Delete
+        sleep(1)
+        comments_list = self.helper.find_elements(
+            By.XPATH, MainPageLocator.comments_xpath)
+        comments_size = len(comments_list)
+        comment_header_button = self.page_helper.find_element_by_el(
+            locator=(
+                By.XPATH,
+                './' + MainPageLocator.comment_header_button_sub_xpath
+            ),
+            main_element=comments_list[-1],
+            el_name="comment_header_button"
+        )
+        comment_header_button.click()
+        sleep(1)
+        self.page_helper.safe_click(
+            locator=(By.XPATH, MainPageLocator.comment_header_delete_xpath),
+            time_to_wait=time_to_wait,
+            el_name="comment_header_delete"
+        )
+        comments_list = self.helper.find_elements(
+            By.XPATH, MainPageLocator.comments_xpath)
+        comments_size_new = len(comments_list)
+
+        if comments_size_new < comments_size:
+            pass_3 = True
+
+        return pass_1 and pass_2 and pass_3
+
+    def test_debug(self):
+        feed_layout_list = self.get_feed_layout_list()
+        feed_item_list = self.get_feed_item_list(
+            feed_layout_list[0])
+
+        try:
+            batch_list = self.get_group_photo_batch_list(
+                feed_item_list[0])
+            photo_card_photo = self.get_photo_card_photo(
+                batch_list[0], 2)
+            photo_link = self.get_photo_link(
+                photo_card_photo, 2)
+
+        except IndexError:
+            photo_card_photo = self.get_photo_card_photo(
+                feed_item_list[0], 1)
+            photo_link = self.get_photo_link(photo_card_photo, 1)
+
+        photo_link.click()
+
+        driver = self.helper.get_driver
+        curate = driver.find_element_by_xpath(
+            '/html/body/div[1]/div/div[2]/div/div[5]/span')
+        curate.click()
+        sleep(1)
+
+        groups_button = driver.find_element_by_xpath(
+            '/html/body/div[6]/div/div[2]/div/div/div/div[1]/ul/li[2]')
+        groups_button.click()
+        return True

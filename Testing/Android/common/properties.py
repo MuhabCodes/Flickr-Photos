@@ -8,7 +8,7 @@ class PropertiesMiA1(object):
                            ".activity.WelcomeActivity"
 
     desired_caps = {"platformName": "Android",
-                    "deviceName": "820597aa0804",
+                    "deviceName": "192.168.1.6:5555",
                     "newCommandTimeout": "1000",
                     "simpleIsVisibleCheck": True,
                     "useJSONSource": True,
@@ -16,6 +16,16 @@ class PropertiesMiA1(object):
                     "appWaitActivity": APP_WELCOME_ACTIVITY,
                     "app": APP_PATH
                     }
+    APP_PATH_2 = "E:\\College\\SPRING 2021\\CMPN203\\project" \
+                 "\\Flickr-Photos\\Flickr-Photos\\Testing" \
+                 "\\Android\\android_app\\app-release.apk"
+    desired_caps_2 = {"platformName": "Android",
+                      "deviceName": "192.168.1.6:5555",
+                      "newCommandTimeout": "1000",
+                      "simpleIsVisibleCheck": True,
+                      "useJSONSource": True,
+                      "app": APP_PATH_2
+                      }
     WIDTH = 1080
     HEIGHT = 1920
 

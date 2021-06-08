@@ -146,16 +146,14 @@ class MainPageLocator(object):
     # //div[feed-column-content]/div[feed-layout] (multiple)
     feed_layout_sub_xpath = '/div[@class="feed-layout"]'
     feed_layout_xpath = feed_column_content_xpath + feed_layout_sub_xpath
-    # feed_layout_full_xpath = 'div/div'
 
-    # //div[feed-column-content]/div[feed-layout]/div[feed_item] (multiple)
+    # ... /div[feed-layout]/div[feed_item] (multiple)
     feed_item_sub_xpath = '/div[@class="feed-item"]'
-    feed_item_xpath = feed_layout_sub_xpath + feed_item_sub_xpath
+    # feed_item_xpath = feed_layout_sub_xpath + feed_item_sub_xpath
 
-    # //div[feed-column-content]/div[feed-layout]/div[feed_item]/div
-    # /div[photo-card layout-medium]/
+    # ... /div[feed_item]/div/div[photo-card layout-medium]/
     photo_card_layout_sub_xpath = '/div/div'
-    photo_card_layout_xpath = feed_item_xpath + photo_card_layout_sub_xpath
+    # photo_card_layout_xpath = feed_item_xpath + photo_card_layout_sub_xpath
 
     # ---- Feed Post Header -----
 
@@ -181,29 +179,124 @@ class MainPageLocator(object):
         photo_card_header_left_sub_xpath +\
         '/div/div[@class="title-container"]/a'
 
-    # ---- For Groups or compact layout photos -----
+    # ---- Feed Post Footer ----
 
-    # ... /div[feed-item]/div
-    # /div[photo-card compact-large]/div[photo-card-content]
+    # //div[feed-column-content]/div[feed_layout]/div[feed-item]/div
+    # /div[photo-card layout-medium]/div[footer]
+    photo_card_footer_sub_xpath = \
+        photo_card_layout_sub_xpath + '/div[2]'
+
+    # GROUPS
+    # ======
+
+    # ... /div[photo-card layout-large]/div[photo-card-content]
     # /div[card-batch-layout]/div[card-batch-photo-item] (multiple)
     group_batch_item_sub_xpath = \
-        photo_card_layout_sub_xpath\
+        photo_card_layout_sub_xpath \
         + '/div[@class="photo-card-content"]' \
           '/div[@class="card-batch-layout"]/div'
 
     # ... /div[card-batch-photo-item]/div/div/div[photo-card-content]
-    # /div[photo-card-photo]/div[photo]/a
-    group_photo_link_sub_xpath = '/div/div/div/div/div[@class="photo"]/a'
+    # /div[photo-card-photo]
+    group_photo_card_photo_sub_xpath = '/div/div/div/div'
 
-    # ---- For Medium/Large photos ----
+    # ... /div[photo-card-photo]/div[photo]/a
+    group_photo_link_sub_xpath = '/div[@class="photo"]/a'
 
-    # ... /div[feed-item]/div
-    # /div[photo-card compact-large]/div[photo-card-content]
-    # /div[photo-card-photo]/div[photo]/a
-    photo_link_sub_xpath = \
-        photo_card_layout_xpath + \
-        '/div[@class="photo-card-content"/div/div/a]'
+    # ... /div[photo-card-photo]/div[head-overlay]
+    group_photo_head_overlay_sub_xpath = '/div[@class="head-overlay"]'
 
+    # ... /div[photo-card-photo]/div[foot-overlay]
+    group_photo_foot_overlay_sub_xpath = '/div[@class="foot-overlay"]'
+
+    # ... /div[photo-card-photo]/div[foot-overlay]/div[info-bar]
+    group_photo_info_bar_sub_xpath = \
+        group_photo_foot_overlay_sub_xpath
+
+    # ... /div[info-bar]/div[engagement-container]/div/div/span (multiple)
+    group_photo_engagement_sub_xpath = \
+        group_photo_info_bar_sub_xpath\
+        + '/div[@class="info-bar"]' \
+          '/div[@class="engagement-container"]/div/div/span'
+
+    # ---- compact layout photos-----
+
+    # ... /div[foot-overlay]/div[info-bar]/div[left-container]/a
+    group_photo_compact_name_sub_xpath = \
+        '/div/div[@class="left-container"]/a'
+
+    # ---- medium layout photos-----
+
+    # ... /div[foot-overlay]/div[info-bar]/div[left-container]/a
+    group_photo_medium_name_sub_xpath = \
+        '/div/div[@class="left-container"]/a'
+
+    # ---- large layout photos-----
+
+    # ... /div[foot-overlay]/div[details-footer]/div[details-container]/a
+    group_photo_large_name_sub_xpath = \
+        '/div[@class="details-footer"]/div[@class="details-container"]/a'
+
+    # PEOPLE
+    # ======
+
+    # ---- medium/large layout photos ----
+
+    # ... /div[photo-card layout-large]/div[photo-card-content]
+    # /div[photo-card-photo]
+    people_photo_card_photo_sub_xpath = \
+        photo_card_layout_sub_xpath + '/div[@class="photo-card-content"]/div'
+
+    # ... /div[photo-card-photo]/div[photo]/a
+    people_photo_link_sub_xpath = '/div[@class="photo"]/a'
+
+    # ... /div[photo-card layout-large]/div[foot]/div[info-bar]
+    people_photo_info_bar_sub_xpath = \
+        photo_card_layout_sub_xpath \
+        + '/div[@class="foot"]/div[@class="info-bar"]'
+
+    # ... /div[info-bar]/div[engagement-container]/div/div/span (multiple)
+    people_photo_engagement_sub_xpath = \
+        people_photo_info_bar_sub_xpath\
+        + '/div[@class="engagement-container"]/div/div/span'
+
+    # ---- compact layout photos -----
+
+    # ... /div[photo-card layout-large]/div[photo-card-content]
+    # /div[card-batch-layout]/div[card-batch-photo-item] (multiple)
+    people_batch_item_sub_xpath = '/div[@class="photo-card-content"]/div/div'
+
+    #  ... /div[card-batch-photo-item]/div/div[photo-card theme-card]
+    # /div[photo-card-content]/div[photo-card-photo]
+    photo_card_photo_compact_sub_xpath = '/div/div/div/div'
+
+    #  ... /div[photo-card-photo]/div[photo]/a
+    people_photo_compact_link_sub_xpath = \
+        photo_card_photo_compact_sub_xpath + '/div[@class="photo"]/a'
+
+    # ... /div[photo-card-photo]/div[foot-overlay]
+    people_photo_foot_overlay_sub_xpath = \
+        photo_card_photo_compact_sub_xpath + '/div[@class="foot-overlay"]'
+
+    # comments
+    ################################
+    comments_section_xpath = '//section[@class="comments-list-section"]'
+    comments_xpath = comments_section_xpath + '/div/div/ol/li'
+    comment_text_sub_xpath = \
+        '/div/div/div/div[@class="comment-content"]'
+
+    comment_header_button_sub_xpath = \
+        '/div/div/div/header/div[@class="comment-actions"]/a'
+    # comment_header_delete_xpath = '//ul[@role="menu"]/li[1]'
+    comment_header_delete_xpath = '//html/body/div[7]/div/div[2]/div/ul/li[1]'
+    comment_header_edit_xpath = '/html/body/div[7]/div/div[2]/div/ul/li[1]'
+
+    add_comment_section_xpath = '//section[@class="add-comment-section"]'
+    add_comment_box_xpath = \
+        add_comment_section_xpath + '/div/div[1]/div/div/textarea'
+
+    add_comment_button_xpath = \
+        add_comment_section_xpath + '/div/div[2]/button'
     ####################################################
     #                   Info Column                    #
     ####################################################

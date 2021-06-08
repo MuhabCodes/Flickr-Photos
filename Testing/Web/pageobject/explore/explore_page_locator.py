@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class ExploreLocator(object):
+class ExplorePageLocator(object):
     """ Class for explore locators. """
     # Sub navigation bar
     ############################
@@ -70,19 +70,31 @@ class ExploreLocator(object):
     # /div[text]/a[attribution]
     photo_poster_sub_xpath = \
         photo_interact_sub_xpath\
-        + 'div/div[@class="text"]/a[@class="attribution"]'
+        + '/div/div[@class="text"]/a[@class="attribution"]'
 
     # ... /div[view photo-list-photo-view]/div[interaction-view]
     # /div[photo-list-photo-interaction]/div[interaction-bar]/
     # /div[engagement]/span[Add to Favorites]/
     photo_fave_sub_xpath = \
         photo_interact_sub_xpath\
-        + 'div/div[@class="engagement"]/span[@aria-label="Add to Favorites"]'
+        + '/div/div[@class="engagement"]/span[1]'
 
     # ... /div[view photo-list-photo-view]/div[interaction-view]
     # /div[photo-list-photo-interaction]/div[interaction-bar]/
     # /div[engagement]/span[Add to Favorites]/span[engagement-count]
     photo_fave_count_sub_xpath = \
         photo_interact_sub_xpath\
-        + 'div/div[@class="engagement"]/span[@aria-label="Add to Favorites"]'\
-        + 'span[@class="engagement-count"]'
+        + '/div/div[@class="engagement"]/span[1]'\
+          '/span[@class="engagement-count"]'
+
+    # ... /div[view photo-list-photo-view]/div[interaction-view]
+    # /div[photo-list-photo-interaction]/div[interaction-bar]/
+    # /div[engagement]/a
+    photo_comment_sub_xpath = \
+        photo_interact_sub_xpath\
+        + '/div/div[@class="engagement"]/a'
+
+    # Photo list
+    ############################
+    comment_header_delete_xpath = '/html/body/div[6]/div/div[2]/div/ul/li[1]'
+    comment_header_edit_xpath = '/html/body/div[6]/div/div[2]/div/ul/li[2]'

@@ -23,11 +23,9 @@ class TestMainPage(object):
         )
         self.driver.implicitly_wait(30)
 
-        self.general_methods.set_driver(self.driver)
         self.main_page.set_driver(self.driver)
-
-        self.general_methods.login()
-        sleep(5)
+        self.main_page.open_mainpage()
+        # sleep(5)
 
     # @pytest.mark.skip
     def test_driver(self, setup):
@@ -49,6 +47,9 @@ class TestMainPage(object):
     # @pytest.mark.skip
     def test_tapping_fave(self, setup):
         assert self.main_page.test_tapping_fave()
+
+    def test_tapping_fave_2(self, setup):
+        assert self.main_page.test_tapping_fave_2()
 
     # @pytest.mark.skip
     def test_commenting(self, setup):

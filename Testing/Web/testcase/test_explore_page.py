@@ -6,7 +6,7 @@ import pytest
 #                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
 
 from common.sel_helper import SelHelper
-from pageobject.explore.explore import ExploreLocator, Explore
+from pageobject.explore.explore_page import ExplorePageLocator, Explore
 from pageobject.generalmethods.general_methods import GeneralMethods
 
 TIME_TO_WAIT = 30
@@ -29,9 +29,9 @@ class TestExploreLinks(object):
         self.mock_methods.login()
         sleep(3)
         self.helper.go_to(self.explore.link)
-        sleep(10)
+        sleep(5)
         yield
-        self.helper.quit()
+        # self.helper.quit()
 
     # @pytest.mark.skip
     def test_driver(self, setup):
@@ -53,3 +53,10 @@ class TestExploreLinks(object):
     def test_click_photo(self, setup):
         assert self.explore.check_click_photo_link()
         sleep(5)
+
+    def test_fave(self, setup):
+        assert self.explore.check_fave()
+        sleep(5)
+
+    def test_comment(self, setup):
+        assert self.explore.check_comment("Good Pic! 2")
