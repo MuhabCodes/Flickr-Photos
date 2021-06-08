@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from common.properties import PropertiesMiA1
 from pageobject.page import Page
-from pageobject.locator import Locator
+from pageobject.locator.locator import Locator
 
 
 class LoginPage(Page):
@@ -62,7 +62,6 @@ class LoginPage(Page):
         return True
 
     # def  check_password_field(self):
-
 
     def input_password(self, password: str = "C%D5KBSN?$w&QKv"):
         """ Enter password in login page.
@@ -183,4 +182,3 @@ if __name__ == '__main__':
     sleep(1)
     driver.hide_keyboard()
     print(driver.current_activity)
-

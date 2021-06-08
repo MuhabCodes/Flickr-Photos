@@ -5,6 +5,7 @@ from appium import webdriver
 from common.properties import PropertiesMiA1
 from pageobject.youpage.you_page import YouPage
 
+
 class TestYouPage(object):
     driver = None
     desired_caps = PropertiesMiA1.desired_caps
@@ -23,5 +24,5 @@ class TestYouPage(object):
 
     def test_driver(self, setup):
         # pass
-        self.you_page.open_about()
-        self.you_page.check_textbox_bio_items_1()
+        self.you_page.open_camera_roll()
+        self.you_page.check_roll_empty()

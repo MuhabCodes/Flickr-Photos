@@ -8,7 +8,7 @@ class PropertiesMiA1(object):
                            ".activity.WelcomeActivity"
 
     desired_caps = {"platformName": "Android",
-                    "deviceName": "192.168.1.6:5555",
+                    "deviceName": "820597aa0804",
                     "newCommandTimeout": "1000",
                     "simpleIsVisibleCheck": True,
                     "useJSONSource": True,

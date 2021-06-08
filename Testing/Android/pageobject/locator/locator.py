@@ -202,9 +202,13 @@ class Locator(object):
         camera_config_privacy_listview_xpath + '/android.widget.TextView'
 
     ####################################################
-    #                      GENERIC                     #
+    #                      GENERAL                     #
     ####################################################
     header_back_button_id = "com.flickr.android:id/fragment_header_back"
+    empty_page_textview_id = \
+        "com.flickr.android:id/fragment_profile_empty_page_title"
+    empty_page_upload_button_id = \
+        "com.flickr.android:id/fragment_profile_empty_page_button"
 
     # ---- follow button -----
     people_follow_id = "com.flickr.android:id/follow_btn_container"

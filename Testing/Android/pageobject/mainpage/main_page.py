@@ -2,13 +2,9 @@ from time import sleep
 
 from appium.webdriver.webdriver import WebDriver
 from appium.webdriver.webelement import WebElement
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from pageobject.page import Page
-from pageobject.locator import Locator
+from pageobject.locator.locator import Locator
 from pageobject.generalmethods.general_methods import GeneralMethods
 
 

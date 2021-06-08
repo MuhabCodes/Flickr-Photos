@@ -1,13 +1,12 @@
 from time import sleep
 
 from appium import webdriver
-from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.webdriver import WebDriver
 from selenium.common.exceptions import NoSuchElementException
-
+from selenium.webdriver.common.by import By
 from common.properties import PropertiesMiA1
 from pageobject.page import Page
-from pageobject.locator import Locator
+from pageobject.locator.locator import Locator
 from pageobject.generalmethods.general_methods import GeneralMethods
 
 
@@ -39,6 +38,10 @@ class YouPage(Page):
         self.general_methods.login()
         sleep(1)
         self.driver.find_element_by_id(Locator.nav_profile_id).click()
+
+    ####################################################
+    #                     About                        #
+    ####################################################
 
     def open_about(self):
         nav_list = self.driver.find_elements_by_xpath(
@@ -84,14 +87,9 @@ class YouPage(Page):
         }
         for bio_label in about_bio_dic:
             bio_item = self.get_about_bio_item(bio_label)
-            print("\n-------------------\n" + bio_label)
-            # hint_out = bio_item.find_element_by_id(
-            #     Locator.you_about_bio_item_hint_id).get_attribute("text")
             hint_out = bio_item.find_element_by_xpath(
                 './' + Locator.you_about_bio_item_hint_sub_xpath
             ).get_attribute("text")
-            print(bio_label)
-            print("-------------------")
             bio_item.click()
 
             sleep(1)
@@ -101,11 +99,11 @@ class YouPage(Page):
                 Locator.you_about_item_inside_text_id).get_attribute("text")
 
             if hint_out not in hint_in:
-                # raise AssertionError("ERROR IN " + bio_label)
-                raise AssertionError(hint_in + "|" + hint_out)
+                raise AssertionError("ERROR IN " + bio_label)
 
             self.driver.find_element_by_id(
                 Locator.header_back_button_id).click()
+        return True
 
     def check_textbox_bio_items_2(self):
         """ Add text and check if it will appear outside. """
@@ -138,9 +136,23 @@ class YouPage(Page):
             ).get_attribute("text")
 
             if hint_out not in hint_in:
-                # raise AssertionError("ERROR IN " + bio_label)
-                raise AssertionError(hint_in + "|" + hint_out)
+                raise AssertionError("ERROR IN " + bio_label)
         return True
+
+    ####################################################
+    #                  Camera Roll                     #
+    ####################################################
+
+    def open_camera_roll(self):
+        nav_list = self.driver.find_elements_by_xpath(
+            Locator.you_nav_list_xpath)
+
+        nav_list[2].click()
+
+    def check_roll_empty(self):
+        """ Check if there are no uploaded photos in Camera Roll. """
+        return self.general_methods.element_located(
+            By.ID, Locator.empty_page_textview_id)
 
 
 if __name__ == '__main__':

@@ -28,12 +28,17 @@ class TestCameraPage(object):
         pass
 
     def test_upload_photo(self, setup):
-        self.camera_page.check_upload_photo_only(1)
+        photo_info = {
+            "title": self.utils.generate_random_string(),
+            "description": self.utils.generate_time_string(),
+            "privacy": 1
+        }
+        self.camera_page.check_upload_photo_only(1, photo_info)
 
     def test_capture_photo(self, setup):
 
         photo_info = {
-            "title": self.utils.generate_time_string(),
+            "title": self.utils.generate_random_string(),
             "description": self.utils.generate_time_string(),
             "privacy": 1
         }

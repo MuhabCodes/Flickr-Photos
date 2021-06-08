@@ -1,6 +1,5 @@
 from time import sleep
 
-from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
 from appium.webdriver.webelement import WebElement
 from appium.webdriver.common.touch_action import TouchAction
@@ -9,8 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from pageobject.page import Page
-from pageobject.locator import Locator
-from pageobject.loginpage.login_page import LoginPage
+from pageobject.locator.locator import Locator
 
 
 class GeneralMethods(Page):
@@ -182,6 +180,20 @@ class GeneralMethods(Page):
         name = self.driver.find_element_by_id(
             Locator.profile_name_id).get_attribute("text")
         return name
+
+    def upload_photo(self, index: int = 0, num_of_img: int = 1):
+        # self.driver.find_element_by_id(Locator.camera_gallery_btn_id).click()
+        self.driver.find_element_by_xpath(
+            Locator.upload_download_dir_xpath).click()
+
+        item_list = self.driver.find_elements_by_xpath(
+            Locator.upload_folder_framelayout_xpath)
+        for i in range(0, num_of_img):
+            item_list[index + i].click()
+
+        self.driver.find_element_by_id(Locator.upload_done_btn_id).click()
+        self.driver.find_element_by_id(Locator.camera_next_btn_id).click()
+        return True
 
     def open_roll_latest_photo(self, frame_intex: int = 0):
         roll_framelayout_list = self.driver.find_elements_by_xpath(

@@ -1,16 +1,10 @@
 from time import sleep
 
-from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
-from appium.webdriver.webelement import WebElement
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
-from common.properties import PropertiesMiA1
 from pageobject.page import Page
-from pageobject.locator import Locator
+from pageobject.locator.locator import Locator
 from pageobject.generalmethods.general_methods import GeneralMethods
 
 
@@ -65,17 +59,7 @@ class CameraPage(Page):
 
     def upload_photo(self, index: int = 0, num_of_img: int = 1):
         self.driver.find_element_by_id(Locator.camera_gallery_btn_id).click()
-        self.driver.find_element_by_xpath(
-            Locator.upload_download_dir_xpath).click()
-
-        item_list = self.driver.find_elements_by_xpath(
-            Locator.upload_folder_framelayout_xpath)
-        for i in range(0, num_of_img):
-            item_list[index + i].click()
-
-        self.driver.find_element_by_id(Locator.upload_done_btn_id).click()
-        self.driver.find_element_by_id(Locator.camera_next_btn_id).click()
-        return True
+        self.general_methods.upload_photo(index, num_of_img)
 
     def capture_photo(self):
         flash = self.driver.find_element_by_id(
@@ -95,7 +79,7 @@ class CameraPage(Page):
         """ Check uploading/capturing a photo
 
         :param op: operation type (1- upload, 2- capture)
-        :param photo_info: name, discription and title of the photo
+        :param photo_info: name, description and title of the photo
         :return: boolean to check if the operation is successful
         """
         if photo_info is None:
@@ -119,6 +103,7 @@ class CameraPage(Page):
 
         sleep(20)
         self.general_methods.open_roll_latest_photo(frame_index)
+        sleep(1)
         self.general_methods.tap_roll_photo_info()
 
         photo_title = self.driver.find_element_by_id(

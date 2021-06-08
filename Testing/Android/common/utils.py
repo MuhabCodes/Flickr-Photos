@@ -2,6 +2,7 @@ from datetime import datetime
 import random
 import string
 
+
 class Utils(object):
     """ Class containing other non-testing related general methods"""
 
