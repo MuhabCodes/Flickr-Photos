@@ -69,42 +69,15 @@ const MainSearch = () => {
     setSearch(e.target.value);
   };
   // This function toggles the fav button on each image in the results by setting the src url
-  // function ClickMe(e) {
-  //   if (userjwt) {
-  //     if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
-  //       e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
-  //       const handleFave = (e) => {
-  //         if (!isFaved) {
-  //           axios.post(`/favorites/${photoId}`)
-  //             .then(() => {
-  //               setIsFaved(true);
-  //             })
-  //             .catch((error) => {
-  //               if (error.response.status === 401) {
-  //                 localStorage.removeItem('token');
-  //                 history.push('/login'); // If unauth error then redirect
-  //  to login and clear token
-  //               }
-  //             });
-  //         } else {
-  //           axios.delete(`/favorites/${photoId}`)
-  //             .then(() => {
-  //               setIsFaved(false);
-  //             })
-  //             .catch((error) => {
-  //               if (error.response.status === 401) {
-  //                 localStorage.removeItem('token');
-  //                 history.push('/login'); // If unauth error then redirec
-  // t to login and clear token
-  //               }
-  //             });
-  //         }
-  //       };
-  //     } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
-  //       e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
-  //     }
-  //   }
-  // }
+  function ClickMe(e) {
+    if (userjwt) {
+      if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
+        e.target.setAttribute('src', 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png');
+      } else if (e.target.getAttribute('src') === 'https://img.icons8.com/ios-filled/25/ffffff/star--v1.png') {
+        e.target.setAttribute('src', 'https://img.icons8.com/android/24/ffffff/star.png');
+      }
+    }
+  }
   const searchData = fetchImages();
   return (
     <div className="search-page">
@@ -146,7 +119,7 @@ const MainSearch = () => {
                       {photo.user}
                     </span>
                     <span className="faves-search">
-                      <FaveButtonSearch stateImages={stateImages} />
+                      <FaveButtonSearch ClickMe={ClickMe} />
                       <span
                         value={photo.favs}
                         className="fav-count
