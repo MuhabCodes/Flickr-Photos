@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+   * button Add to album
+   * @function MenuListComposition
+   */
 export default function MenuListComposition() {
   const history = useHistory(); // useHitory to redirect the user
   const userJwt = jwt(localStorage.getItem('token'));
@@ -38,6 +42,11 @@ export default function MenuListComposition() {
         }).catch(() => { history.push('*'); });
     }
   }, []);
+  /**
+   * post photo to album
+   * @function postPhoto
+   * @returns {void}
+   */
   const postPhoto = (i) => {
     const albumData = {};
     albumData.albumId = albums[i].albumId;
