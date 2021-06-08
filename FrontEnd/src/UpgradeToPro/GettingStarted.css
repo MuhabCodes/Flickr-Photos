@@ -1,4 +1,4 @@
-.backgroundimg {
+.backgroundimg-getting-started {
     background-image: url(./uptopro.jpg);
     position: absolute;
     top: 0;
@@ -17,7 +17,7 @@
     font-family: 'Inter', sans-serif;
   }
 
-  .root{
+  .card-root{
     display: flex;
     flex-Direction: column;
     /* align-Items: center; */

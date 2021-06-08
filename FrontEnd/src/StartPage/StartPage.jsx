@@ -9,10 +9,10 @@ export default function StartPage() {
   return (
     <div>
       <Backgroundslide />
-      <div className="div1">
+      <div className="div-find-inspire">
         Find your inspiration.
       </div>
-      <div className="div2">
+      <div className="div-join-flickr">
         {' '}
         Join the Flickr community, home to tens of
         billions of photos and 2 million groups.

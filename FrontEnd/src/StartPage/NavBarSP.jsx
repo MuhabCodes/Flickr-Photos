@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './NavBarSP.css';
 import { useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
@@ -44,14 +43,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
   },
-  button1: {
+  buttonLogin: {
     padding: '5px 25px',
     fontSize: '14px',
     marginLeft: '8rem',
     marginRight: '0.5rem',
     color: 'white',
   },
-  button2: {
+  buttonSignup: {
     padding: '5px 25px',
     backgroundColor: 'white',
     fontSize: '14px',
@@ -59,6 +58,16 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   navbarheader: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: '1.6rem',
+    paddingTop: '2px',
+    marginLeft: '1rem',
+    marginRight: '8rem',
+  },
+  navbarcolor: {
+    backgroundColor: 'rgba(0, 0, 0, 0.164)',
+  },
+  positionIcon: {
     fontFamily: '"Inter", sans-serif',
     fontSize: '1.6rem',
     paddingTop: '2px',
@@ -79,16 +88,15 @@ function NavBar() {
   };
   const classes = useStyles();
   return (
-    <Navbar collapseOnSelect sticky="top" expand="md">
+    <Navbar collapseOnSelect sticky="top" expand="md" className={classes.navbarcolor}>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      <Navbar.Brand href="/">
+      <Navbar.Brand className={classes.positionIcon} href="/">
         <img
           alt=""
           src="flickr.png"
           width="30"
           height="30"
-          className="d-inline-block align-top"
         />
         {' '}
         flickr
@@ -106,8 +114,8 @@ function NavBar() {
           inputProps={{ 'aria-label': 'search' }}
         />
       </div>
-      <Button onClick={routeLogin} className={classes.button1}>Login</Button>
-      <Button onClick={routeSignup} className={classes.button2}>SignUp</Button>
+      <Button onClick={routeLogin} className={classes.buttonLogin}>Login</Button>
+      <Button onClick={routeSignup} className={classes.buttonSignup}>SignUp</Button>
 
     </Navbar>
   );

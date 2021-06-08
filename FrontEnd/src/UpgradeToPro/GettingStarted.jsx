@@ -46,12 +46,12 @@ export default function GettingStarted() {
 
   return (
     <div>
-      <div className="backgroundimg">
+      <div className="backgroundimg-getting-started">
         <p>
           flickr
           <span>pro</span>
         </p>
-        <Card className="root">
+        <Card className="card-root">
           <form>
             <CssTextField
               name="email"

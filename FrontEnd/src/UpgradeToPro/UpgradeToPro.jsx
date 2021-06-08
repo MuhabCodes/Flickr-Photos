@@ -39,12 +39,12 @@ export default function UpgradeToPro() {
   };
   return (
     <div>
-      <div className="backgroundimg">
+      <div className="backgroundimg-uptopro">
         <p>
           flickr
           <span>pro</span>
         </p>
-        <p className="first">Advanced stats, ad-free browsing, automatic photo uploads, and more.</p>
+        <p className="first-paragraph">Advanced stats, ad-free browsing, automatic photo uploads, and more.</p>
         <form onSubmit={handleSubmit}>
           <Button
             variant="contained"
