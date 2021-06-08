@@ -8,7 +8,7 @@ import './ChangePassword.css';
 import configData from '../config.json';
 
 const ChangePassword = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
@@ -22,7 +22,7 @@ const ChangePassword = () => {
     const ProfileInfo = {
       oldPassword, newPassword,
     };
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.defaults.headers.common['Content-Type'] = 'application/json';
     axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
     axios.put('/auth/change-password', ProfileInfo)

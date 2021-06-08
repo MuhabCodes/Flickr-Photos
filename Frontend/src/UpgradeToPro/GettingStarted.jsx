@@ -28,7 +28,7 @@ const CssTextField = withStyles({
 // });
 
 export default function GettingStarted() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const [email, setEmail] = useState('');
   const getPro = () => {

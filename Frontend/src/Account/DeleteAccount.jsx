@@ -15,7 +15,7 @@ const DeleteAccount = () => {
   const userjwt = jwt(localStorage.getItem('token')); // get token from local storage to get curr user id
   const [displayname, setDisplayName] = useState('');
   useEffect(() => {
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.defaults.headers.common['Content-Type'] = 'application/json';
     axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
     axios.get(`/people/${userjwt.userId}/info`, {
@@ -35,7 +35,7 @@ const DeleteAccount = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.defaults.headers.common['Content-Type'] = 'application/json';
     axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
     axios.delete('/user/delete-account')

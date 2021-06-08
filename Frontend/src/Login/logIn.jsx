@@ -59,7 +59,7 @@ const FBlogin = async () => {
 };
 
 export default function SignUp() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   // the passing of the scheme using the useForm from the react hook library
   const { register, handleSubmit, formState: { errors } } = useForm({

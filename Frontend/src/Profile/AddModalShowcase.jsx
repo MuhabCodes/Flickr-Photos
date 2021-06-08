@@ -6,7 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import './AddModalShowcase.css';
 
 const AddModalShowcase = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const history = useHistory();
   const [photos, setRecPhotos] = useState([]);
@@ -28,7 +28,7 @@ const AddModalShowcase = () => {
   function handleDelete(photoId) {
     const sendVal = { photoId };
     axios.defaults.headers.authorization = localStorage.getItem('token');
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     axios.delete(`/people/${userId}/showcase`, sendVal)
       .then(() => {
         history.go(0);
@@ -38,7 +38,7 @@ const AddModalShowcase = () => {
   }
   function handleSubmit(photoId) {
     axios.defaults.headers.authorization = localStorage.getItem('token');
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     const sendVal = { photoId };
     axios.post(`/people/${userId}/showcase`, sendVal)
       .then(() => {

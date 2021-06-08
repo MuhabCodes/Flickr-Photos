@@ -14,7 +14,7 @@ import './ProfileContainer.css';
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
 
 const ProfileContainer = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   // const history = useHistory();
@@ -25,7 +25,7 @@ const ProfileContainer = () => {
   const [showcase, setShowcase] = useState('');
   const currUser = (userId === userjwt.userId);
   useEffect(() => {
-    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.baseURL = 'https://api.flick.photos';
     if (userId) {
       axios.get(`/people/${userId}/info/`, {
       }).then((resp) => {

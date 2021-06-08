@@ -5,7 +5,7 @@ import axios from 'axios';
 import './UserInfo.css';
 
 const UserInfo = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   // const history = useHistory();
   const { userId } = useParams();
