@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -33,7 +33,7 @@ const useStyles = makeStyles(style);
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  password: yup.string().min(5).required(),
+  password: yup.string().min(12).required(),
   // age: yup.required,
   email: yup.string().email().required(),
 });
@@ -100,7 +100,9 @@ export default function SignUp() {
         </div>
         <div className={classes.alreadymemberDiv}>
           <p>
-            Already a Flickr member? Log in here
+            Already a Flickr member?
+            {' '}
+            <Link to="/login">Log in here</Link>
           </p>
         </div>
 

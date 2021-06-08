@@ -9,7 +9,7 @@ import firebase from 'firebase/app';
 import CameraFinder from '../CameraFinder/CameraFinder';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
-import AppBar from '../Signup/flickrbar';
+import AppBar from '../Login/flickrbar';
 import VerifySignup from '../Signup/VerifySignup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
