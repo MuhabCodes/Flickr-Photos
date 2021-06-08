@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -17,6 +17,7 @@ import style from './signupStyles';
 // import configData from '../config.json';
 
 // Styles Added to The inputs
+
 const CssTextField = withStyles({
   root: {
     // margin: 10,
@@ -29,7 +30,19 @@ const CssTextField = withStyles({
 })(TextField);
 // the card styles
 const useStyles = makeStyles(style);
-
+/**
+ * Function Signup to register on the site
+ * @component
+ * @function schema
+ * @example
+ *<schema/>
+ *@param {string} firstName - First Name of the user
+ *@param {string} lastName - Last Name of the user
+ *@param {number} age - age of the user
+ *@param {string} email - Email needed from the user to sign up
+ *@param {string} password - the correct password needed
+ *@return {null} data validated according to given criteria
+ */
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
@@ -37,7 +50,19 @@ const schema = yup.object().shape({
   // age: yup.required,
   email: yup.string().email().required(),
 });
-
+  /**
+ * Function Signup to register on the site
+ * @module
+ * @function SignUp
+ * @example
+ *<SignUp/>
+ *@param {string} firstName - First Name of the user
+ *@param {string} lastName - Last Name of the user
+ *@param {number} age - age of the user
+ *@param {string} email - Email needed from the user to sign up
+ *@param {string} password - the correct password needed
+ *@return {null} an email sent to the user to verify his account using the link sent to his email
+ */
 export default function SignUp() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -47,13 +72,14 @@ export default function SignUp() {
   const classes = useStyles();
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
+
   const [firstName, setFName] = useState('');
   const [lastName, setLName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isPro = useState('false');
-  // const history = useHistory();
+  const history = useHistory();
   const submitForm = () => {
     // history.push('/verifysignup');
     const UserInfo = {
@@ -64,7 +90,7 @@ export default function SignUp() {
       data: UserInfo,
     }).then((resp) => {
       console.log(resp.data);
-      // history.push('/');
+      history.push('/verifysignup');
     });
   };
 

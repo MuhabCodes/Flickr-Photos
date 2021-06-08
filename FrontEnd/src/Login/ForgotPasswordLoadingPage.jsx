@@ -27,6 +27,15 @@ const schema = yup.object().shape({
   newPassword: yup.string().min(5).required(),
 });
 
+/**
+ * Function Signup to register on the site
+ * @module
+ * @function ForgotPasswordVerification
+ * @example <ForgotPasswordVerification/>
+ * @param {string} newPassword - newPassword of the user
+ * @return {null} redirect to the login page to enter with the newpassword reseted
+ */
+
 export default function ForgotPasswordVerification() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

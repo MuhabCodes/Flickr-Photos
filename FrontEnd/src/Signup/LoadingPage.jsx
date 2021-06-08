@@ -9,6 +9,13 @@ import loading from './loading.png';
 import style from './LoadingPageStyles';
 
 const useStyles = makeStyles(style);
+/**
+ * Function Signup to register on the site
+ * @module
+ * @function VerificationPage
+ * @example <VerificationPage/>
+ * @return {string} confirmation token to be sent to server to verify account on the database
+ */
 
 export default function VerificationPage() {
   axios.defaults.baseURL = 'http://api.flick.photos';
