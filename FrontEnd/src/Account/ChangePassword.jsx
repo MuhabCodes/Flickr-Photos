@@ -10,7 +10,7 @@ import configData from '../config.json';
 const ChangePassword = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
   const history = useHistory();
   // the use of the use state and set state functions
   // to save the changes made in each of this inputs
@@ -22,7 +22,10 @@ const ChangePassword = () => {
     const ProfileInfo = {
       oldPassword, newPassword,
     };
-    axios.post('/auth/change-password', ProfileInfo)
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
+    axios.put('/auth/change-password', ProfileInfo)
       .then(() => {
         setChangeStatus('Password Changed Successfully, Redirecting to account...');
         setTimeout(() => history.push('/account'), 2000); // Redirect to Error page
@@ -31,11 +34,11 @@ const ChangePassword = () => {
           localStorage.removeItem('token');
           history.push('/login'); // If unauth error then redirect to login and clear token
         } else if (err.response.status === 422) {
-          setChangeStatus(0);
           setChangeStatus('Current Password is not correct');
         } else if (err.response.status === 404) {
           setChangeStatus('User with this password doesnt exist');
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        } else if (err.response.status === 500) {
+          setChangeStatus('Internal Server Error');
         }
       });
   };

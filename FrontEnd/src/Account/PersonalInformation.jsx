@@ -4,14 +4,13 @@ import './PersonalInformation.css';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
-import configData from '../config.json';
 
 const PersonalInformation = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
-  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
   // For not rendering of text boxes until user info gets fetched
   // Headers for storing the token (Will be taken from local storage)
   const userjwt = jwt(localStorage.getItem('token'));
@@ -20,17 +19,17 @@ const PersonalInformation = () => {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const [displayname, setDisplayName] = useState('');
-  const [avatar] = 'https://images.unsplash.com/photo-1584891800774-6f8c93265d8a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGF2YXRhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
+  const [avatar, setAvatar] = useState('');
   useEffect(() => {
-    axios.get(`/users/${userjwt.sub}`, {
+    axios.get(`/people/${userjwt.userId}/info`, {
     }).then((resp) => {
       setLoading(false);
-      setFirstName(resp.data.firstname);
-      setLastName(resp.data.lastname);
-      setDisplayName(resp.data.displayname);
-      setIsPro(resp.data.ispro);
+      setFirstName(resp.data.firstName);
+      setLastName(resp.data.lastName);
+      setDisplayName(resp.data.displayName);
+      setIsPro(resp.data.isPro);
       setEmail(resp.data.email);
-      return resp.data;
+      setAvatar(resp.data.urlCover);
     }).catch((error) => {
       if (error.response.status === 401) {
         localStorage.removeItem('token'); // remove token and redirect to login if not authorized
