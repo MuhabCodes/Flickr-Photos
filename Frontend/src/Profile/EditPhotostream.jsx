@@ -30,7 +30,7 @@ const EditPhotostream = () => {
 
   useEffect(() => {
     if (userId) {
-      axios.get(`/people/${userId}/photos/public`)
+      axios.get(`/people/${userId}/photos/public`, {})
         .then((resp) => {
           setIsLoading(false);
           setPhotos(resp.data);
