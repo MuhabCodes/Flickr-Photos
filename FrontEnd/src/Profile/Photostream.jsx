@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link, useParams } from 'react-router-dom';
@@ -121,12 +122,9 @@ const Photostream = () => {
                     />
                     <span className="interaction-bar-uph" style={{ visibility: 'hidden' }}>
                       <span className="title-photo-uph">
-                        {photo.title}
-                      </span>
-                      <span className="user-name-photo-uph">
-                        by
-                        {' '}
-                        {photo.user}
+                        <Link className="link-photoview-uph" to={`/../photoview/${photo._id}`}>
+                          {photo.title}
+                        </Link>
                       </span>
                       <span className="faves-view-uph">
                         <button className="fav-btn-uph" type="button" id="faveButton" key={photo.secret} onClick={ClickMe}>

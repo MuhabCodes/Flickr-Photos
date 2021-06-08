@@ -308,3 +308,13 @@
   opacity: 1;
   font-weight: bold;
 }
+
+.link-photoview-uph {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link-photoview-uph:hover {
+  text-decoration: none;
+  color: #fff;
+}
