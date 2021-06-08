@@ -11,7 +11,7 @@ import style from './IntegrationStyles';
 const useStyles = makeStyles(style);
 
 export default function UpToProPage() {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const history = useHistory();
   const classes = useStyles();

@@ -10,7 +10,7 @@ const HomePage = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [currLoggedInFollowing, setCurrLoggedInFollowing] = useState('');
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios
   axios.defaults.headers.authorization = localStorage.getItem('token');
   // For not rendering of text boxes until user info gets fetched

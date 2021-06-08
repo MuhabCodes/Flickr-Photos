@@ -8,7 +8,7 @@ import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
 const PersonalInformation = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
   // For not rendering of text boxes until user info gets fetched

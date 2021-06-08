@@ -11,7 +11,7 @@ const useStyles = makeStyles(style);
 
 export default function VerifySignup() {
   const classes = useStyles();
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const resend = () => {
     axios('/auth/forgot-password', {

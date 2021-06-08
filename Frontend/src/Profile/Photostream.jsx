@@ -10,7 +10,7 @@ import 'react-dropdown/style.css';
 import './Photostream.css';
 
 const Photostream = () => {
-  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.baseURL = 'https://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   const [choice, setChoice] = useState('Date uploaded');
