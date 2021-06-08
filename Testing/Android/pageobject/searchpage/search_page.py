@@ -177,31 +177,3 @@ class SearchPage(Page):
 
     def check_search(self, text: str = "sss"):
         pass
-
-
-if __name__ == '__main__':
-    link = "http://localhost:4723/wd/hub"
-    driver = webdriver.Remote(
-        command_executor=link,
-        desired_capabilities=PropertiesMiA1.desired_caps
-    )
-    driver.implicitly_wait(5)
-    search_page = SearchPage(driver)
-    search_page.open_search_page()
-
-    search_page.search("sss", 3)
-    print(search_page.check_group_name(0))
-    # SUCCESS
-    # searchpage.open_interesting_photo()
-
-    # SUCCESS
-    # searchpage.search("sss", 2)
-    # print(searchpage.check_people_name(0))
-
-    # SUCCESS
-    # searchpage.search("sss", 2)
-    # print(searchpage.check_people_follow(0))
-
-    # SUCCESS
-    # searchpage.search("sss", 1)
-    # searchpage.open_photo()

@@ -40,7 +40,7 @@ class TestLoginPagePhoto(object):
         self.login_page.open_signup_page()
         self.login_page.signup_fill_empty_all(1)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_driver(self, setup):
         pass
 
@@ -68,3 +68,11 @@ class TestLoginPagePhoto(object):
     @pytest.mark.skip
     def test_signup_invalid_password(self, setup):
         self.login_page.open_signup_page()
+
+    def test_signup_new(self, setup):
+        self.login_page.open_signup_page()
+        self.login_page.check_signup_new()
+
+    def test_signup_already(self, setup):
+        self.login_page.open_signup_page()
+        self.login_page.check_signup_already()

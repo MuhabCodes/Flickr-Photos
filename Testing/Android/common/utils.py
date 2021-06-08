@@ -20,3 +20,7 @@ class Utils(object):
         # printing letters
         letters = string.ascii_letters
         return ''.join(random.choice(letters) for i in range(size))
+
+    def generate_random_email(self):
+        email = self.generate_random_string(9) + "@gmail.com"
+        return email

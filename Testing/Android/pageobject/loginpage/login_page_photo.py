@@ -26,8 +26,15 @@ class LoginPage(Page):
         self.edittext_valid_value = [
             "Mostafa",
             "Mohamed",
-            "18",
-            "ayhabal@gmail.com",
+            "23",
+            "sasasabry290@gmail.com",
+            "1234567890123"
+        ]
+        self.edittext_valid_random_value = [
+            "Mostafa",
+            "Mohamed",
+            "23",
+            self.utils.generate_random_email(),
             "1234567890123"
         ]
 
@@ -158,3 +165,37 @@ class LoginPage(Page):
                 "REQUIRED NOT VISIBLE FOR : "
                 + self.edittext_name_list[edittext_i]
             )
+
+    def signup_all_valid(self, valid_value_list: list):
+        self.signup_scroll(1)
+        edittext_list = self.driver.find_elements_by_xpath(
+            Locator.signup_edittext_xpath)
+
+        self.signup_fill_edittext(
+            edittext_list[0], valid_value_list[0])
+        self.signup_fill_edittext(
+            edittext_list[1], valid_value_list[1])
+        self.signup_fill_edittext(
+            edittext_list[2], valid_value_list[2])
+        self.signup_fill_edittext(
+            edittext_list[3], valid_value_list[3])
+        self.signup_fill_edittext(
+            edittext_list[4], valid_value_list[4])
+
+        self.driver.find_element_by_accessibility_id(
+            Locator.signup_button_accessibility_id).click()
+
+    def check_signup_already(self):
+        self.signup_all_valid(self.edittext_valid_value)
+
+        sleep(1)
+        if not self.element_located(By.XPATH, Locator.signup_edittext_xpath):
+            raise AssertionError("ERROR IN ALREADY SIGNUP")
+
+    def check_signup_new(self):
+        self.signup_all_valid(self.edittext_valid_random_value)
+
+        sleep(1)
+        if not self.element_located(
+                By.XPATH, Locator.signup_confirm_button_xpath):
+            raise AssertionError("ERROR IN NEW SIGNUP")

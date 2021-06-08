@@ -132,18 +132,6 @@ class MainPage(Page):
             '.' + Locator.post_xpath)
         self.tap_feed_photo(post_list[0], 10, 10)
 
-        # comment_count = self.get_comments_count()
-
-        # self.tap_comments()
         self.general_methods.tap_comments()
-        # self.send_comment("Great photo")
         self.general_methods.send_comment("Great Photo")
         return True
-        # sleep(1)
-        #
-        # self.exit_comments()
-        #
-        # sleep(3)
-        # new_comment_count = self.get_comments_count()
-        #
-        # return comment_count != new_comment_count

@@ -153,14 +153,3 @@ class YouPage(Page):
         """ Check if there are no uploaded photos in Camera Roll. """
         return self.general_methods.element_located(
             By.ID, Locator.empty_page_textview_id)
-
-
-if __name__ == '__main__':
-    link = "http://localhost:4723/wd/hub"
-    driver = webdriver.Remote(
-        command_executor=link,
-        desired_capabilities=PropertiesMiA1.desired_caps
-    )
-    driver.implicitly_wait(5)
-    you_page = YouPage(driver)
-    you_page.open_you_page()

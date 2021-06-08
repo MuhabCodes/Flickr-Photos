@@ -24,3 +24,9 @@ class Locator(object):
     signup_invalid_email_accessibility_id = "please enter email correctly"
     signup_view_password_sub_xpath = "/android.widget.Button"
     signup_button_accessibility_id = "Sign up"
+
+    signup_confirm_button_accessibility_id = "Resend email"
+    signup_confirm_button_xpath = \
+        '//android.widget.Button[@content-desc="'\
+        + signup_confirm_button_accessibility_id\
+        + '"]'

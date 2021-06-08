@@ -32,7 +32,6 @@ class PropertiesMiA1(object):
 
 class PropertiesNox(object):
     APP_PATH = "E:\\Downloads\\flickr-4-16-3.apk"
-    APP_PATH = "E:\\Downloads\\flickr-4-16-3.apk"
     APP_PACKAGE = "com.flickr.android"
     APP_WELCOME_ACTIVITY = "com.yahoo.mobile.client.android.flickr" \
                            ".activity.WelcomeActivity"
