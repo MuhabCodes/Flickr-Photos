@@ -1,5 +1,10 @@
 import React from 'react';
-
+/**
+ * This component renders the search button.
+ * @component
+ * @function SearchButton
+ * @returns {null} -displays the search button.
+ */
 const SearchButton = () => (
   <div className="search-but">
     <button type="submit" id="search-button-btn" data-testid="search-button-test">
