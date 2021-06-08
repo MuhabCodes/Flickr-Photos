@@ -115,14 +115,14 @@ const PersonalInformation = () => {
                         Password
                       </div>
                       <p className="content-membership-paragraph">
-                        <Link to="/change-password">Edit your password</Link>
+                        <Link to="/change-password" id="link-to-edit-pw">Edit your password</Link>
                       </p>
                     </div>
                   </div>
                   <div className="content-personal-information-footer">
                     You can also
                     {' '}
-                    <Link to="/account/delete">delete your flickr account</Link>
+                    <Link to="/account/delete" id="link-to-delete-account">delete your flickr account</Link>
                   </div>
                 </div>
               </div>

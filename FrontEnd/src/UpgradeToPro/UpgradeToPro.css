@@ -18,10 +18,9 @@
 }
 
 .first-paragraph {
-font-size: 28px;
-color: aliceblue;
-font-family: 'proxima-nova', sans-serif;
-font-style: normal;
-font-weight: 100;
-
+  font-size: 28px;
+  color: aliceblue;
+  font-family: 'proxima-nova', sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }

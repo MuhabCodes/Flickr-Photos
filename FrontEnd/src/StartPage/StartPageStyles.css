@@ -1,5 +1,5 @@
 
-.div-find-inspire{
+.div-find-inspire {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,7 @@
   margin-top: 235px;
   font-size: 56px;
   color: aliceblue;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .div-join-flickr {
@@ -20,5 +20,5 @@
   margin-top: 15px;
   font-size: 34px;
   color: aliceblue;
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
