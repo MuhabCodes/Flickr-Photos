@@ -134,7 +134,6 @@ function App() {
               <Footer />
             </Route>
             <Route exact path="/CameraFinder">
-              <NavBar />
               <CameraFinder />
             </Route>
             <Route exact path="/TheCommons">
