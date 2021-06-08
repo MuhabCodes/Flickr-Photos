@@ -12,7 +12,13 @@ import FaveButton from './ExploreFaveButton';
 // Furthermore, if the user logged in, he can see each photo's details
 // (username, image's title, fav button, fav count and comment count)
 // Meanwhile, if the user is a guest (not logged in), he cannot see these details.
-
+/**
+ * This is a component that displays the recent images, including their titles, username,
+ * fave button, fave count, comment count and comment symbol.
+ * @component
+ * @function RecentPhotos
+ * @returns {Object} - returns objects(images fetched from the server).
+ */
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]); // sets the images fetched
   const [isLoading, setLoading] = useState(true); // for loading purpose
@@ -21,6 +27,12 @@ const RecentPhotos = () => {
   // images details accordingly.
   axios.defaults.baseURL = 'http://localhost:8000';
   let userjwt = [];
+  /**
+   * This function loads page according to the type of user(logged in or guest).
+   * @function loadPage
+   * @return {null} -if user logged in, this function displays some items on each image on hover,
+   * otherwise, displays nothing but the image.
+   */
   function loadPage() {
     if (localStorage.getItem('token')) {
       userjwt = jwt(localStorage.getItem('token'));
@@ -41,8 +53,19 @@ const RecentPhotos = () => {
   }, []);
   // The following changes the photos(objects) to array that can be used by the .map
   // function in the return block.
+  /**
+   * This function returns an array from object photos
+   * @function photoArr
+   * @return {string} -change from objects to array.
+   */
   const photoArr = Array.from(photos);
   // The following function toggles the fave icon on click
+  /**
+   * This function toggles the fave button on click.
+   * @function ClickMe
+   * @param {*} e -- takes an event as a parameter
+   * @return {null} -toggles the image of the fave button on click.
+   */
   function ClickMe(e) {
     if (userjwt) {
       if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
