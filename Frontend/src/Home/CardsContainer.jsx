@@ -1,6 +1,14 @@
 import React from 'react';
 import PeopleCard from './PeopleCard';
 
+/**
+ * People cards to follow container
+ * @namespace HomePage.CardsContainer
+ * @example <CardsContainer />
+ * @function CardsContainer
+ * @returns CardsContainer of home page
+ */
+
 const CardsContainer = (props) => {
   const prop = props;
   let { Profiles } = prop;

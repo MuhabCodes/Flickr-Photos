@@ -2,6 +2,14 @@ import React from 'react';
 import './SideBar.css';
 import SingleGroupCard from './SingleGroupCard';
 
+/**
+ * Group Recommendations in sidebar
+ * @namespace HomePage.GroupsForYou
+ * @example <GroupsForYou />
+ * @function GroupsForYou
+ * @returns GroupsForYou of home page sidebar
+ */
+
 const GroupsForYou = (props) => {
   const prop = props;
   let { Groups } = prop;

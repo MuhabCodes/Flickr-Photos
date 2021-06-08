@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Account/EditPersonalInfo.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Account/EditPersonalInfo.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { React, useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import './EditProfileInfo.css';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import configData from '../config.json';
+
+/**
+ * Component to change names and gender of logged in user
+ * @namespace Account.EditPersonalInfo
+ * @example &lt;EditPersonalInfo />
+ * @function EditPersonalInfo
+ * @returns Page of user to change names and gender
+ */
+
+const EditPersonalInfo = () => {
+  const history = useHistory();
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  const [isLoading, setLoading] = useState(true);
+  // For not rendering of text boxes until user info gets fetched
+  const userjwt = jwt(localStorage.getItem('token'));
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [displayname, setDisplayName] = useState('');
+  const [gender, setGender] = useState('');
+  useEffect(() => {
+    axios.get(`/users/${userjwt.sub}`)
+      .then((resp) => {
+        setLoading(false);
+        setFirstName(resp.data.firstname);
+        setLastName(resp.data.lastname);
+        setDisplayName(resp.data.displayname);
+        setGender(resp.data.gender);
+        return resp.data;
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          history.push('/login');
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+        }
+      });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const ProfileInfo = {
+      firstname, lastname, displayname, gender,
+    };
+    console.log(ProfileInfo);
+    console.log(userjwt.sub);
+    axios.patch(`/users/${userjwt.sub}`, ProfileInfo)
+      .then(() => {
+        history.push('/account');
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+        } else if (error.response.status === 404) {
+          setTimeout(() => history.push('*'), 100); // Redirect to Error page
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+          setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+        }
+      });
+  };
+  return (
+    &lt;div>
+      &lt;div className="edit-your-profile-main-container">
+        {isLoading ? &lt;div>Loading...&lt;/div>
+          : (
+            &lt;div className="main-edit-profile-after-loading">
+              &lt;h1 className="edit-your-profile-title">
+                &lt;Link to="/account">
+                  Your account
+                &lt;/Link>
+                {' '}
+                / Edit your profile
+              &lt;/h1>
+              &lt;form onSubmit={handleSubmit} className="edit-profile-info-form">
+                &lt;h3 className="edit-your-profile-mini-form-header">Basic bits&lt;/h3>
+                &lt;div className="edit-basic-bits-container">
+                  &lt;label htmlFor="edit-first-name-text-box" className="edit-your-profile-labels">
+                    &lt;div className="edit-your-profile-label-text">
+                      First Name:
+                    &lt;/div>
+                    &lt;input
+                      id="edit-first-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
+                      required
+                      value={firstname}
+                      placeholder={firstname}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  &lt;/label>
+                  &lt;label htmlFor="edit-last-name-text-box" className="edit-your-profile-labels">
+                    &lt;div className="edit-your-profile-label-text">
+                      Last Name:
+                    &lt;/div>
+                    &lt;input
+                      id="edit-last-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
+                      required
+                      value={lastname}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  &lt;/label>
+                  &lt;label htmlFor="edit-display-name-text-box" className="edit-your-profile-labels">
+                    &lt;div className="edit-your-profile-label-text">
+                      Display Name:
+                    &lt;/div>
+                    &lt;input
+                      id="edit-display-name-text-box"
+                      className="edit-name-text-box"
+                      type="text"
+                      required
+                      value={displayname}
+                      onChange={(e) => setDisplayName(e.target.value)}
+                    />
+                  &lt;/label>
+                  {/* Here we start adding radio buttons for gender */}
+                  &lt;div className="gender-radio-buttons-container">
+                    &lt;h3 className="gender-title">Gender:&lt;/h3>
+                    &lt;label htmlFor="edit-gender-male-radio" className="edit-your-profile-radio-labels">
+                      &lt;input
+                        id="edit-gender-male-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Male"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      &lt;div className="edit-your-profile-label-radio">
+                        Male
+                      &lt;/div>
+                    &lt;/label>
+                    &lt;label htmlFor="edit-gender-female-radio" className="edit-your-profile-radio-labels">
+                      &lt;input
+                        id="edit-gender-female-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Female"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      &lt;div className="edit-your-profile-label-radio">
+                        Female
+                      &lt;/div>
+                    &lt;/label>
+                    &lt;label htmlFor="edit-gender-rather-radio" className="edit-your-profile-radio-labels">
+                      &lt;input
+                        id="edit-gender-rather-radio"
+                        className="edit-gender-radio"
+                        name="gender"
+                        type="radio"
+                        required
+                        value="Rather not say"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      />
+                      &lt;div className="edit-your-profile-label-radio">
+                        Rather not say
+                      &lt;/div>
+                    &lt;/label>
+                  &lt;/div>
+                &lt;/div>
+                &lt;button className="submit-profile-info" type="submit" id="edit-personal-info-btn">Save&lt;/button>
+              &lt;/form>
+            &lt;/div>
+          )}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default EditPersonalInfo;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FBlogin.html">FBlogin</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:54:16 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

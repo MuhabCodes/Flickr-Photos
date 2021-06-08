@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "better-docs": "^2.3.2",
     "bootstrap": "^4.6.0",
     "clsx": "^1.1.1",
     "faker": "^5.5.3",
@@ -48,7 +49,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json --port 5000"
+    "server": "json-server --watch db.json --port 5000",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [

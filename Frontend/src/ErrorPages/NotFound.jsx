@@ -4,6 +4,14 @@ import NotFoundExplore from './NotFoundExplore';
 import useFetch from '../useFetch';
 import configData from '../config.json';
 
+/**
+ * Not found page
+ * @namespace ErrorPage.NotFound
+ * @example <NotFound />
+ * @function NotFound
+ * @returns Page of the 404 error (not found)
+ */
+
 const NotFound = () => {
   const { data: images, isPending, error } = useFetch(`${configData.SERVER_URL}/photosExplore`);
   return (

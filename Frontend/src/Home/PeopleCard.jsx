@@ -7,6 +7,14 @@ import './PeopleCard.css';
 import { Link, useHistory } from 'react-router-dom';
 import configData from '../config.json';
 
+/**
+ * Single people card to follow
+ * @namespace HomePage.CardsContainer.PeopleCard
+ * @example <PeopleCard />
+ * @function PeopleCard
+ * @returns PeopleCard of home page
+ */
+
 const PeopleCard = (props) => {
   const [isFollowed, setIsFollowed] = useState(false);
   const history = useHistory();

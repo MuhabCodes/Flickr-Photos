@@ -5,6 +5,14 @@ import jwt from 'jwt-decode';
 import './DeleteAccount.css';
 // import configData from '../config.json';
 
+/**
+ * Component to delete user account totally from the website
+ * @namespace Account.DeleteAccount
+ * @example <DeleteAccount />
+ * @function DeleteAccount
+ * @returns Page of user to delete account
+ */
+
 const DeleteAccount = () => {
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios

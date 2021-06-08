@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App/App.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App/App.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable import/no-extraneous-dependencies */
+import { React, useEffect } from 'react';
+import {
+  BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import firebase from 'firebase/app';
+import CameraFinder from '../CameraFinder/CameraFinder';
+import NotFound from '../ErrorPages/NotFound';
+import SignUp from '../Signup/Signup';
+import AppBar from '../Login/flickrbar';
+import ForgotPasswordVerification from '../Login/ForgotPasswordLoadingPage';
+import VerifySignup from '../Signup/VerifySignup';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from '../Login/logIn';
+import ForgotPassword from '../Login/forgotPassword';
+import SendEmail from '../Login/SendEmail';
+import HomePage from '../Home/HomePage';
+import CameraRoll from '../CameraRoll/CameraRoll';
+import Footer from './Footer';
+import CoverArea from '../Profile/Cover';
+import SubNavBar from '../Profile/SubNavBar';
+import ProfileContainer from '../Profile/ProfileContainer';
+import Faves from '../Profile/Faves';
+import GroupMembers from './GroupMembers';
+import NavBar from './Navbar';
+import Explore from '../RecentPhotos/Explore';
+import About from '../AboutPage/About';
+import SearchPage from '../Search/SearchPage';
+import Photostream from '../Profile/Photostream';
+import EditPhotostream from '../Profile/EditPhotostream';
+import PersonalInformation from '../Account/PersonalInformation';
+import EditPersonalInfo from '../Account/EditPersonalInfo';
+import DeleteAccount from '../Account/DeleteAccount';
+import ChangePassword from '../Account/ChangePassword';
+import FollowersPage from '../Followers/FollowersPage';
+import Notification from '../Notification/Notification';
+import UpgradeToPro from '../UpgradeToPro/UpgradeToPro';
+import GettingStarted from '../UpgradeToPro/GettingStarted';
+import Upload from '../Upload/Upload';
+import PhotoView from '../PhotoViewPage/PhotoView';
+import EmailNotifications from '../Emails&amp;Notifications/EmailNotifications';
+import Albums from '../Profile/Albums';
+import PrivacyPermissions from '../Privacy&amp;Permissions/PrivacyPermissions';
+import FirebaseLogin from '../Login/firebaselogin';
+import StartPage from '../StartPage/StartPage';
+import NavBarSP from '../StartPage/NavBarSP';
+import TheCommons from '../TheCommons/TheCommons';
+import VerificationPage from '../Signup/LoadingPage';
+import UpToProIntegration from '../UpgradeToPro/UpToProIntegration';
+
+import('firebase/messaging');
+import('firebase/database');
+
+const FBlogout = () => {
+  const FIREBASE_MESSAGING = firebase.messaging();
+  const FIREBASE_DATABASE = firebase.database();
+  const userjwt = jwt(localStorage.getItem('token'));
+  FIREBASE_MESSAGING.getToken()
+    .then((token) => {
+      console.log(token);
+      FIREBASE_MESSAGING.deleteToken(token);// DELETING TOKEN FROM FIREBASE_MESSAGING
+    })
+    .then(() => FIREBASE_DATABASE.ref('/tokens').orderByChild('userId').equalTo(userjwt.sub)
+      .once('value')) // DELETING TOKEN FROM DB
+    .then((snapshot) => {
+      localStorage.clear();
+      window.location.href = 'http://localhost:3000/login';
+      if (snapshot.val()) {
+        const key = Object.keys(snapshot.val())[0]; // since i ordered them above
+        return FIREBASE_DATABASE.ref('/tokens').child(key).remove(); // deleting obtained key
+      }
+      return null;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+/**
+ * First Called component and called in every dom render, has all the components of the project
+ * @namespace App
+ * @example &lt;App />
+ * @function App
+ * @returns The whole react app routes and responsible for all the routing of the application
+ */
+
+function App() {
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        const decodedData = jwt(storedToken);
+        const expirationDate = decodedData.iat + 86400;
+        const currenttime = (Date.now() / 1000);
+        // eslint-disable-next-line no-self-compare
+        if (currenttime > expirationDate) {
+          FBlogout();
+        }
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return (
+    &lt;div className="flickr-main">
+      &lt;FirebaseLogin />
+      &lt;Router>
+        &lt;div className="app">
+          &lt;Switch>
+            &lt;Route exact path="/verification/:confirToken">
+              &lt;VerificationPage />
+            &lt;/Route>
+            &lt;Route exact path="/auth/forgot-password/:resetToken">
+              &lt;ForgotPasswordVerification />
+            &lt;/Route>
+            &lt;Route exact path="/UpgradeToPro">
+              &lt;NavBar />
+              &lt;UpgradeToPro />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/uptoVerification/:proToken">
+              &lt;NavBar />
+              &lt;UpToProIntegration />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/GettingStarted">
+              &lt;NavBar />
+              &lt;GettingStarted />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/account/privacy">
+              &lt;NavBar />
+              &lt;PrivacyPermissions />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/account/email">
+              &lt;NavBar />
+              &lt;EmailNotifications />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/CameraFinder">
+              &lt;CameraFinder />
+            &lt;/Route>
+            &lt;Route exact path="/TheCommons">
+              &lt;TheCommons />
+            &lt;/Route>
+            &lt;Route exact path="/account">
+              &lt;NavBar />
+              &lt;PersonalInformation />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/account/delete">
+              &lt;NavBar />
+              &lt;DeleteAccount />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/account/edit-profile">
+              &lt;NavBar />
+              &lt;EditPersonalInfo />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/change-password">
+              &lt;NavBar />
+              &lt;ChangePassword />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/SignUp">
+              &lt;AppBar />
+              &lt;SignUp />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/VerifySignup">
+              &lt;VerifySignup />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/Login">
+              &lt;AppBar />
+              &lt;Login />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/ForgotPassword">
+              &lt;AppBar />
+              &lt;ForgotPassword />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/SendEmail">
+              &lt;AppBar />
+              &lt;SendEmail />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/">
+              &lt;NavBar />
+              &lt;HomePage />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/Profile/About/:userId">
+              &lt;NavBar />
+              &lt;CoverArea />
+              &lt;SubNavBar />
+              &lt;ProfileContainer />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/Profile/Faves/:userId">
+              &lt;NavBar />
+              &lt;CoverArea />
+              &lt;SubNavBar />
+              &lt;Faves />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/Profile/Photostream/:userId">
+              &lt;NavBar />
+              &lt;CoverArea />
+              &lt;SubNavBar />
+              &lt;Photostream />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/profile/photostream/edit/:usreId">
+              &lt;NavBar />
+              &lt;EditPhotostream />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route path="/CameraRoll/:userId">
+              &lt;NavBar />
+              &lt;CoverArea />
+              &lt;SubNavBar />
+              &lt;CameraRoll />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route path="/groups/members/">
+              &lt;GroupMembers />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/Explore">
+              &lt;Explore />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/about">
+              &lt;About />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/followers/:userid">
+              &lt;NavBar />
+              &lt;FollowersPage />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/myNotification">
+              &lt;NavBar />
+              &lt;Notification />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/photos/upload">
+              &lt;NavBar />
+              &lt;Upload />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/photoview/:routeId">
+              &lt;NavBar />
+              &lt;PhotoView />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route path="/search">
+              &lt;SearchPage />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route path="/Profile/albums/:userId">
+              &lt;NavBar />
+              &lt;CoverArea />
+              &lt;SubNavBar />
+              &lt;Albums />
+              &lt;Footer />
+            &lt;/Route>
+            &lt;Route exact path="/start">
+              &lt;NavBarSP />
+              &lt;StartPage />
+            &lt;/Route>
+            &lt;Route path="*">
+              { /* path for all pages that don't exist */}
+              &lt;NavBar />
+              &lt;NotFound />
+              &lt;Footer />
+            &lt;/Route>
+          &lt;/Switch>
+        &lt;/div>
+      &lt;/Router>
+    &lt;/div>
+  );
+}
+
+export default App;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FBlogin.html">FBlogin</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:54:16 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

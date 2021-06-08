@@ -5,6 +5,14 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import configData from '../config.json';
 
+/**
+ * Component to change names and gender of logged in user
+ * @namespace Account.EditPersonalInfo
+ * @example <EditPersonalInfo />
+ * @function EditPersonalInfo
+ * @returns Page of user to change names and gender
+ */
+
 const EditPersonalInfo = () => {
   const history = useHistory();
   axios.defaults.baseURL = `${configData.SERVER_URL}`;

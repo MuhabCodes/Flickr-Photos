@@ -10,6 +10,14 @@ import { AiOutlineStar, AiTwotoneStar } from 'react-icons/ai';
 import { grey } from '@material-ui/core/colors';
 import configData from '../config.json';
 
+/**
+ * Posts Container for each post
+ * @namespace HomePage.Posts
+ * @example <Posts />
+ * @function Posts
+ * @returns The card container of each post in a users homepage
+ */
+
 const Post = (props) => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json'; // Applying global default settings from axios

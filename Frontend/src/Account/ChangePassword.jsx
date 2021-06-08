@@ -7,6 +7,14 @@ import { useHistory } from 'react-router-dom';
 import './ChangePassword.css';
 import configData from '../config.json';
 
+/**
+ * Change Password of current logged in account
+ * @namespace Account.ChangePassword
+ * @example <ChangePassword />
+ * @function ChangePassword
+ * @returns The change password form to submit
+ */
+
 const ChangePassword = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
