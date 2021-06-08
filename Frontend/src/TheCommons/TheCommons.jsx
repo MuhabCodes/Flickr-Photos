@@ -9,6 +9,13 @@ import Footer from '../App/Footer';
 // The third part is more information about the commons.
 // The fourth part is a FAQ section.
 // This webpage is available to all kinds of users whether logged in or logged out.
+/**
+ * This component displays the elements of The Commons webpage, including 4 sections: Introductory
+ *  block on the commons,the commons-sampler, more about the commons and a FAQ section.
+ * @component
+ * @function TheCommons
+ * @returns {null} - returns some texts and images.
+ */
 const TheCommons = () => (
   <div className="commons-full">
     <NavBar />

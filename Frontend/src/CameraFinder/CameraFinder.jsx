@@ -14,7 +14,13 @@ import Footer from '../App/Footer';
 // * The Rank Table which includes all the brands and displays details such as
 // Brand, Top Models, Model Types.
 // This page is available to all kinds of users (logged or guests).
-
+/**
+ * This function renders the components that make up the CameraFinder webpage including
+ * most popular camera devices, graphs and a table showing all camera brands flickr knows about.
+ * @component
+ * @function CameraFinder
+ * @return {null} - returns the components to be displayed in the webpage
+ */
 const CameraFinder = () => (
   <div className="camera-finder">
     <NavBar />

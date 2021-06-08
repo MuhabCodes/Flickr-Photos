@@ -16,7 +16,14 @@ import FaveButtonSearch from './SearchFaveButton';
 // The search can be used by both users and guests, however guests are not allowed to
 // see any details on the image or use the fav functionality,
 // this option is limited only to the users logged in by their accounts.
-
+/**
+ * This is the search component where the images are searched for by title/description
+ * according the user's search word he has written in the search bar. It contains the search
+ * bar and the images to be fetched when searching.
+ * @component
+ * @function MainSearch
+ * @returns {Object} -returns objects (images fetched from the server that matches search word)
+ */
 const MainSearch = () => {
   const [search, setSearch] = useState([]);// To set the title entered by the user
   const history = useHistory(); // useHistory is used to manipulate the url
@@ -28,6 +35,12 @@ const MainSearch = () => {
   axios.defaults.headers.Authorization = localStorage.getItem('token');
   // The following function loadPage is used to check if token exists,
   // and displays the image's details on hovering for the logged in user and none for the guest.
+  /**
+   * This function loads page according to the type of user(logged in or guest).
+   * @function loadPage
+   * @return {null} -if user logged in, this function displays some items on each image on hover,
+   * otherwise, displays nothing but the image.
+   */
   let userjwt = [];
   function loadPage() {
     if (localStorage.getItem('token')) {
@@ -37,6 +50,11 @@ const MainSearch = () => {
   }
   console.log(userjwt);
   // fetchImages is the function that handles the fetching process
+  /**
+   * This function fetches the images that satisfy the search word from the api.
+   * @function fetchImages
+   * @returns {Object} -returns the images as objects
+   */
   function fetchImages() {
     // useEffect helps us fetch the photos from our api.
     useEffect(() => {
@@ -55,6 +73,13 @@ const MainSearch = () => {
   }
   // function searchClick: on clicking on the search button, the images will be fetched and the url
   // will be changed to match the results' title
+  /**
+   * On clicking on the search button, the images that satisfy the search word will be fetched
+   * and the url will be changed and the images will appear.
+   * @function searchClick
+   * @param {*} e - takes an event as a parameter.
+   * @returns {string} -returns the search word
+   */
   const searchClick = (e) => {
     e.preventDefault();
     history.push(`/search?searchWord=${search}`);
@@ -63,12 +88,25 @@ const MainSearch = () => {
   };
   // handleSearchInputChanges sets the title entered by user in the search box
   // and sets it using setSearch
+  /**
+   * handleSearchInputChanges sets the search word entered by user in the search box
+   * using setSearch.
+   * @function handleSearchInputChanges
+   * @param {*} e - takes an event as a parameter.
+   * @returns {null} -sets the search word.
+   */
   const handleSearchInputChanges = (e) => {
     e.preventDefault();
     document.getElementById('img-div').style.display = 'none';
     setSearch(e.target.value);
   };
   // This function toggles the fav button on each image in the results by setting the src url
+  /**
+   * This function toggles the fave button on click.
+   * @function ClickMe
+   * @param {*} e -- takes an event as a parameter
+   * @return {null} -toggles the image of the fave button on click.
+   */
   function ClickMe(e) {
     if (userjwt) {
       if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {

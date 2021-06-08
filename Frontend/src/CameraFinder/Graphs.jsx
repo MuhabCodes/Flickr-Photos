@@ -1,6 +1,13 @@
 import React from 'react';
 import './Graphs.css';
 // This file includes the graphs of popular point & shoot cameras and popular cameraphones
+/**
+ *This component displays two static graphs to show statistics for popular point & shoot cameras
+ as well as most popular cameraphones. Their legends are displayed for each graph.
+ *@component
+ *@function Graphs
+ *@returns {null} -return the graphs as images, their legends and the title of each graph.
+ */
 const Graphs = () => (
   <div className="graphs">
     <div className="content-box">

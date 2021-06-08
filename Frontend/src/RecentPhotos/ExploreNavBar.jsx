@@ -11,6 +11,12 @@ $(document).ready(() => {
   $('.dropdown-toggle').dropdown();
 });
 // This is the ExpNavBar function which returns the html tags to make up the navbar
+/**
+ * This component renders the explore nav bar, including Explore link, as well as More button
+ * which is a dropdown list that contains links to CameraFinder and The Commons.
+ * @function ExploreNavBar
+ * @returns {null} -returns links in the explore nav bar.
+ */
 function ExploreNavBar() {
   return (
     <nav className="expnav">
