@@ -10,6 +10,12 @@ import axios from 'axios';
 // 3- In the return statement, both functions mentioned above are called
 // and hence the table is displayed.
 // Reference used: https://codesandbox.io/s/cranky-faraday-pogb0?file=/src/components/MoviesTable.js
+/**
+ * This component displays all the camera brands flickr knows about.
+ * @component
+ * @function RankTable
+ * @returns {Object} -returns all the camera brands and their details.
+ */
 const RankTable = () => {
   const [cameras, setPopCam] = useState([]); // sets the cameras fetched from the server
   const [isLoading, setLoading] = useState(true);
@@ -29,6 +35,11 @@ const RankTable = () => {
         console.log(err);
       });
   }, []);
+  /**
+   * This function renders the headers of the table.
+   * @function renderHead
+   * @returns {null} -displays the header of the table.
+   */
   function renderHead() {
     return (
       <thead id="table-head">
@@ -42,6 +53,11 @@ const RankTable = () => {
       </thead>
     );
   }
+  /**
+   * This function renders the body of table.
+   * @function renderBody
+   * @returns {Object} - shows all the camera brands as a table.
+   */
   function renderBody() {
     return (
       <tbody id="table-body">
