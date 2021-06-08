@@ -43,6 +43,7 @@ class UserProfilePage(BasePage):
     EXAMPLE_GALLERY = (By.XPATH, '/html/body/div[1]/div/div[4]/div[2]/div[1]/div/div[1]/a')
     EDIT_GALLERY_ICON = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[2]/a[1]')
     DELETE_GALLERY_BUTTON = (By.XPATH, '/html/body/div[6]/div/div/div/div/div[1]/div[4]/a')
+    DELETE_CONFIRMATION_BUTTON = (By.XPATH, '/html/body/div[6]/div/div/div/div/div[2]/div/button[2]')
 
     def __init__(self, driver):
         super().__init__(driver)
