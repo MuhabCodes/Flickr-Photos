@@ -20,6 +20,7 @@ import MenuListComposition from './AddToAlbums';
 // import configData from '../config.json';
 
 function PhotoView() {
+  axios.defaults.baseURL = 'https://api.flick.photos';
   const history = useHistory(); // useHitory to redirect the user
   const userJwt = jwt(localStorage.getItem('token'));
   const { routeId } = useParams(); // grab the id of the photo to fetch
@@ -34,8 +35,9 @@ function PhotoView() {
   const [FavesNum, setFavesNum] = useState(0);
 
   useEffect(() => {
+    axios.defaults.baseURL = 'https://api.flick.photos';
     if (routeId) {
-      axios.get(`/photos/${routeId}/info`) // fetch photo info with specific photo id
+      axios.get(`/photos/${routeId}`) // fetch photo info with specific photo id
         .then((resp) => {
           const pass = {};
           pass.userId = resp.data.authorId;
@@ -53,7 +55,7 @@ function PhotoView() {
               pass.isPro = response.data.isPro;
               return response.data;
             }).catch(() => { history.push('*//'); });
-          axios.get('/search/photos') // fetch photo imagepath
+          axios.get(`/search/photos?searchWord=${pass.title}`) // fetch photo imagepath
             .then((response) => {
               pass.src = response.data.photosSearch.find((x) => x.photoId == routeId).imagePath;
               return response.data;
@@ -105,14 +107,32 @@ function PhotoView() {
   };
   // follow button handle
   const follow = () => {
-    const send = {};
-    send.userFollowed = data.userId;
-    axios.post('/people/follow', send).catch(() => { history.push('*//'); });
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    console.log(send);
+    axios.post('/people/follow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/unfollow', send).catch(() => { history.push('*//'); });
+        }
+      });
   };
   const unfollow = () => {
-    const send = {};
-    send.userUnfollowed = data.userId;
-    axios.post('/people/unfollow', send).catch(() => { history.push('*//'); });
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    axios.post('/people/unfollow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/follow', send).catch(() => { history.push('*//'); });
+        }
+        history.push('*//');
+      });
   };
 
   // handle edit tag
@@ -140,9 +160,10 @@ function PhotoView() {
   const handleComment = (e) => {
     e.preventDefault();
     if (commentText !== '') {
-      const newComment = {};
-      newComment.comment = commentText;
-      axios.post(`/photos/${routeId}/comments/`, newComment).then(() => {
+      const newComment = {
+        commentText,
+      };
+      axios.post(`/photos/${routeId}/comments`, newComment).then(() => {
         // update comments
         axios.get(`/photos/${routeId}/comments`) // fetch comments
           .then((response) => {
