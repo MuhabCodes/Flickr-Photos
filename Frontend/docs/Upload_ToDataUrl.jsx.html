@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Home/CardsContainer.jsx</title>
+    <title>JSDoc: Source: Upload/ToDataUrl.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Home/CardsContainer.jsx</h1>
+    <h1 class="page-title">Source: Upload/ToDataUrl.jsx</h1>
 
     
 
@@ -26,34 +26,22 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import PeopleCard from './PeopleCard';
-
+            <pre class="prettyprint source linenums"><code>// convert from image to base 64 to store the image
 /**
- * People cards to follow container
- * @namespace HomePage.CardsContainer
- * @example &lt;CardsContainer />
- * @function CardsContainer
- * @returns CardsContainer of home page
- */
-
-const CardsContainer = (props) => {
-  const prop = props;
-  let { Profiles } = prop;
-  Profiles = Profiles.slice(0, 4); /* Only Show 4 profiles */
-  // console.log(Profiles);
-  return (
-    &lt;div className="cards-container">
-      { Profiles.map((Profile) => (
-        &lt;div className="single-card" key={Profile.id}>
-          &lt;PeopleCard Profile={Profile} />
-        &lt;/div>
-      )) }
-    &lt;/div>
-  );
-};
-
-export default CardsContainer;
+   * convert from image to base 64 to store the image
+   * @function toDataUrl
+   * @param {string} url - url to convert
+   * @returns {string} -base64
+   */
+const toDataUrl = (url) => fetch(url)
+  .then((response) => response.blob())
+  .then((blob) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  }));
+export default toDataUrl;
 </code></pre>
         </article>
     </section>

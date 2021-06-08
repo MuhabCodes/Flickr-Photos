@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PhotoViewPage/AddToAlbums.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PhotoViewPage/AddToAlbums.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router';
+import Button from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  paper: {
+    marginRight: theme.spacing(2),
+  },
+}));
+
+/**
+   * button Add to album
+   * @function MenuListComposition
+   */
+export default function MenuListComposition() {
+  const history = useHistory(); // useHitory to redirect the user
+  const userJwt = jwt(localStorage.getItem('token'));
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+  const [albums, setAlbums] = useState(null);
+  const { routeId } = useParams(); // grab the id of the photo to post
+  useEffect(() => {
+    if (userJwt !== '') {
+      axios.get('/userAlbums') // fetch albums // use : `/users/${userJwt.sub}/albums` to merge with backend
+        .then((resp) => {
+          setAlbums(resp.data);
+          return resp.data;
+        }).catch(() => { history.push('*'); });
+    }
+  }, []);
+  /**
+   * post photo to album
+   * @function postPhoto
+   * @returns {void}
+   */
+  const postPhoto = (i) => {
+    const albumData = {};
+    albumData.albumId = albums[i].albumId;
+    albumData.photoId = routeId;
+    // use `/albums/${albumData.albumId}/photos`
+    axios.post('albumsPhotos', albumData).then(() => {
+      setAlbums((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
+      if (error.response.status === 404) {
+        setTimeout(() => history.push('*'), 100); // Redirect to Error page
+      }
+    });
+  };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current &amp;&amp; anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true &amp;&amp; open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
+  return (
+    &lt;div className={classes.root}>
+      &lt;div>
+        &lt;Button
+          ref={anchorRef}
+          aria-controls={open ? 'menu-list-grow' : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+          style={{
+            color: '#ffffff', fontSize: '43px', position: 'absolute', right: '32px', bottom: '-25px',
+          }}
+        >
+          +
+        &lt;/Button>
+        &lt;Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+          {({ TransitionProps, placement }) => (
+            &lt;Grow
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...TransitionProps}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+              &lt;Paper>
+                &lt;ClickAwayListener onClickAway={handleClose}>
+                  &lt;MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    &lt;MenuItem disabled>Add to Albums&lt;/MenuItem>
+                    {albums &amp;&amp; albums.map((album, index) => (
+                      &lt;MenuItem
+                        key={album.albumId}
+                        onClick={() => postPhoto(index)}
+                      >
+                        {album.albumTitle}
+                      &lt;/MenuItem>
+                    ))}
+                  &lt;/MenuList>
+                &lt;/ClickAwayListener>
+              &lt;/Paper>
+            &lt;/Grow>
+          )}
+        &lt;/Popper>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Albums.html">Albums</a></li><li><a href="FBlogin.html">FBlogin</a></li><li><a href="PhotoView.html">PhotoView</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li><li><a href="Upload.html">Upload</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#deleteAlbum">deleteAlbum</a></li><li><a href="global.html#deleteComment">deleteComment</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#editTag">editTag</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#fav">fav</a></li><li><a href="global.html#follow">follow</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#handleComment">handleComment</a></li><li><a href="global.html#handleDelete">handleDelete</a></li><li><a href="global.html#handleImageChange">handleImageChange</a></li><li><a href="global.html#handleUpload">handleUpload</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MenuListComposition">MenuListComposition</a></li><li><a href="global.html#msToTime">msToTime</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#postPhoto">postPhoto</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#renderPhotos">renderPhotos</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#toDataUrl">toDataUrl</a></li><li><a href="global.html#unfav">unfav</a></li><li><a href="global.html#unfollow">unfollow</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:59:30 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

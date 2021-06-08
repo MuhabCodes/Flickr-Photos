@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Upload/Upload.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Upload/Upload.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Upload.css';
+import { Link, useHistory } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import CancelIcon from '@material-ui/icons/Cancel';
+import toDataUrl from './ToDataUrl';
+
+/**
+ * component for user to upload photos
+ * @component
+ * &lt;Upload/>
+ */
+function Upload() {
+  const history = useHistory(); // useHitory to redirect the user
+  const userjwt = jwt(localStorage.getItem('token'));
+  const [selectedFiles, setSelectedFiles] = useState([]); // images state (intially empty)
+  const [restData, setRestData] = useState([]); // rest File data
+  const [photoTag, setPhotoTag] = useState(''); // set photo tags on input change
+  const [photoDescription, setPhotoDescription] = useState(''); // set photo Descriptionon input change
+  const [photoPrivacy, setPhotoPrivacy] = useState('public'); // set privacy on change (default public)
+  const imgElement = React.useRef(null); // to get image dimensions
+
+  if (userjwt === '') {
+    history.push('/Login');
+  }
+
+  /**
+   * handling input images
+   *@function handleImageChange
+   * @param {object} e -event of input change
+   * @returns {void}
+   */
+  // handle input change
+  const handleImageChange = (e) => {
+    if (e.target.files) {
+      const restDataArray = [];
+      Array.from(e.target.files).forEach((file) => {
+        const data = {};
+        data.fileName = file.name; // get the file name
+        data.fileDate = new Date(); // get the photo upload date
+        data.fileCapture = file.lastModifiedDate;
+        restDataArray.push(data);
+      });
+      setRestData((prevData) => prevData.concat(restDataArray)); // merge arrays
+
+      const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
+      setSelectedFiles((prevImages) => prevImages.concat(filesArray)); // merge arrays
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file)); // avoid memory leak
+    }
+  };
+    /**
+   * cancel upload of selected files
+   *@function deleteItem
+   * @param {number} i -index of file to be deleted
+   * @returns {void}
+   */
+  // cancel upload of selected files
+  const deleteItem = (i) => {
+    setSelectedFiles((currentItems) => currentItems.filter((item, index) => index !== i));
+    setRestData((currentItems) => currentItems.filter((item, index) => index !== i));
+  };
+  /**
+   * render uploaded images for preview
+   * @function renderPhotos
+   * @param {(src|Array)} source - images to be rendered for preview
+   * @returns {div} -div containing the images rendered
+   */
+  // Render photos for preview
+  const renderPhotos = (source) => source.map((photo, index) => (
+    &lt;div key={photo}>
+      &lt;img
+        id="added-photos"
+        src={photo}
+        alt=""
+        ref={imgElement}
+        onLoad={() => {
+          restData[index].photoWidth = imgElement.current.naturalWidth; // get image width &amp; height
+          restData[index].photoHeight = imgElement.current.naturalHeight;
+        }}
+      />
+      {' '}
+      {/* cancel button */}
+      &lt;IconButton id="cancel-button" color="secondary" onClick={() => deleteItem(index)}>
+        &lt;CancelIcon fontSize="small" />
+      &lt;/IconButton>
+    &lt;/div>
+  ));
+
+  // button state and empty state whether it's disabled or enabled
+  const [enabled, setEnabled] = useState(false);
+
+  // using useEffect we can detect if user uploaded any file,
+  // so enable upload button and hide empty state
+  useEffect(() => {
+    if (selectedFiles.length === 0) {
+      setEnabled(false);
+    } else {
+      setEnabled(true);
+    }
+  }, [selectedFiles]);
+
+  /**
+   * handling upload event on upload button click
+   *@function handleUpload
+   * @param {object} e -event of submit form
+   * @returns {void}
+   */
+  // Handling upload event
+  const handleUpload = (e) => {
+    e.preventDefault();
+    if (userjwt === '') {
+      history.push('/Login');
+    }
+    if (document.getElementById('enabled-button')) {
+      const uploadButton = document.getElementById('enabled-button');
+      uploadButton.id = 'disabled-button'; // set the upload to disabled
+    }
+    if (selectedFiles.length > 0) {
+      selectedFiles.forEach((selectedFile, index) => {
+        const data = {}; // create data object
+        data.title = restData[index].fileName; // set photo name
+        data.uploadDate = restData[index].fileDate; // set photo upload date
+        data.captureDate = restData[index].fileCapture; // set photo Capture date
+        data.width = restData[index].photoWidth;
+        data.height = restData[index].photoHeight;
+        data.user = userjwt.sub;
+        data.tags = photoTag;
+        data.description = photoDescription;
+        if (photoPrivacy === 'public') {
+          data.isPublic = true;
+        } else { data.isPublic = false; }
+        toDataUrl(selectedFile)
+          .then((dataUrl) => {
+            data.photo = dataUrl; // set image src
+            axios.post('/photos/64', data)
+              .then(() => {
+                history.push(`/profile/photostream/${userjwt.sub}`); // redirect to photostream after upload
+              }).catch(() => { history.push('*'); });
+          });
+      });
+    }
+  };
+
+  return (
+    &lt;div>
+      &lt;div id="upload-nav">
+        &lt;div id="buttons">
+          &lt;div id="upload-photo">
+            {/* Upload button (intially disabled ) */}
+            {enabled ? &lt;button id="enabled-button" type="submit" form="a-form" onClick={handleUpload}> Upload &lt;/button> : &lt;input id="disabled-button" type="button" value="Upload" /> }
+          &lt;/div>
+          &lt;form id="a-form" action="../Explore" method="post">
+            {/* Add photos button */}
+            &lt;div id="add-photo">
+              &lt;button type="button" id="add-photo-button" title="Select files to upload">
+                &lt;span id="icon-plus">+&lt;/span>
+                {' '}
+                Add
+              &lt;/button>
+              &lt;label htmlFor="add-files" id="custom-file-upload">
+                &lt;input type="file" id="add-files" multiple accept="image/*,video/*,.m4v,.mkv,.m2ts,.ogg,.3gp,.mp4" onChange={handleImageChange} />
+                Add
+              &lt;/label>
+            &lt;/div>
+          &lt;/form>
+        &lt;/div>
+      &lt;/div>
+      &lt;div id="working-area-container">
+        {/* No photos added state */}
+        &lt;div
+          id="empty-state"
+          style={{
+            visibility: enabled ? 'hidden' : 'visible',
+          }}
+        >
+          &lt;p id="upload-limit">
+            You can upload 1000 more photos and videos.
+          &lt;/p>
+          &lt;button type="button" className="btn btn-primary" onClick={() => { document.getElementById('add-files').click(); }}>Choose photos and videos to upload&lt;/button>
+          &lt;br />
+          &lt;br />
+          &lt;Link to="/Account/Upgrade/Pro" id="upgrade-pro-upload">
+            {/* Redirects to get pro */}
+            Get pro for unlimited downloads
+          &lt;/Link>
+        &lt;/div>
+        {/* photos added state */}
+        &lt;div id="result">
+          {renderPhotos(selectedFiles)}
+        &lt;/div>
+        {/* photos edit panel */}
+        &lt;div
+          id="edit-panel"
+          style={{
+            visibility: enabled ? 'visible' : 'hidden',
+          }}
+        >
+          &lt;h3 id="edit-panel-title">Editing photos:&lt;/h3>
+          &lt;div id="edit-panel-list">
+            &lt;ul id="edit-options">
+              &lt;li id="edit-option">
+                &lt;h4 id="edit-option-title">Add tags&lt;/h4>
+                &lt;input type="text" name="tag" id="edit-input-tags" placeholder="Separate tags with a space" onChange={(event) => setPhotoTag(event.target.value)} />
+              &lt;/li>
+              &lt;li id="edit-option">
+                &lt;h4 id="edit-option-title">Add description&lt;/h4>
+                &lt;input type="text" name="description" id="edit-input-description" placeholder="Type your description" onChange={(event) => setPhotoDescription(event.target.value)} />
+              &lt;/li>
+              &lt;li id="edit-option">
+                &lt;h4 id="edit-option-title">Privacy&lt;/h4>
+                &lt;label htmlFor="private">
+                  &lt;input type="radio" id="private" name="privacy" value="private" onClick={() => setPhotoPrivacy('private')} />
+                  {' '}
+                  Private
+                &lt;/label>
+                &lt;br />
+                &lt;label htmlFor="public">
+                  &lt;input type="radio" id="public" name="privacy" value="public" defaultChecked onClick={() => setPhotoPrivacy('public')} />
+                  {' '}
+                  Public
+                &lt;/label>
+              &lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+
+export default Upload;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Albums.html">Albums</a></li><li><a href="FBlogin.html">FBlogin</a></li><li><a href="PhotoView.html">PhotoView</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li><li><a href="Upload.html">Upload</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#deleteAlbum">deleteAlbum</a></li><li><a href="global.html#deleteComment">deleteComment</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#editTag">editTag</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#fav">fav</a></li><li><a href="global.html#follow">follow</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#handleComment">handleComment</a></li><li><a href="global.html#handleDelete">handleDelete</a></li><li><a href="global.html#handleImageChange">handleImageChange</a></li><li><a href="global.html#handleUpload">handleUpload</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MenuListComposition">MenuListComposition</a></li><li><a href="global.html#msToTime">msToTime</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#postPhoto">postPhoto</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#renderPhotos">renderPhotos</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#toDataUrl">toDataUrl</a></li><li><a href="global.html#unfav">unfav</a></li><li><a href="global.html#unfollow">unfollow</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:59:30 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

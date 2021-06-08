@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Home/CardsContainer.jsx</title>
+    <title>JSDoc: Source: Profile/Albums.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Home/CardsContainer.jsx</h1>
+    <h1 class="page-title">Source: Profile/Albums.jsx</h1>
 
     
 
@@ -26,34 +26,101 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import PeopleCard from './PeopleCard';
-
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Albums.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import configData from '../config.json';
 /**
- * People cards to follow container
- * @namespace HomePage.CardsContainer
- * @example &lt;CardsContainer />
- * @function CardsContainer
- * @returns CardsContainer of home page
+ * component for viewing all user albums
+ * @component
+ * &lt;Albums/>
  */
+function Albums() {
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  const history = useHistory(); // useHitory to redirect the user
+  const userjwt = jwt(localStorage.getItem('token'));
+  // eslint-disable-next-line no-unused-vars
+  const [enabled, setEnabled] = useState(false); // check if user
+  const { userId } = useParams(); // grab the id of the photo to fetch
+  const [data, setData] = useState(null);
+  const [albumsData, setAlbumsData] = useState(null);
+  useEffect(() => {
+    if (userId) {
+      axios.get(`/albums/${userId}`) // fetch data with specific album
+        .then((resp) => {
+          setData(resp.data);
+          setAlbumsData(resp.data.userAlbums);
+          // check if it is the user's album to set enable to true to give rights
+          // eslint-disable-next-line eqeqeq
+          if (resp.data.userId == userjwt.sub) { setEnabled(true); }
+          return resp.data;
+        }).catch(() => { history.push('*'); });
+    }
+  }, []);
 
-const CardsContainer = (props) => {
-  const prop = props;
-  let { Profiles } = prop;
-  Profiles = Profiles.slice(0, 4); /* Only Show 4 profiles */
-  // console.log(Profiles);
-  return (
-    &lt;div className="cards-container">
-      { Profiles.map((Profile) => (
-        &lt;div className="single-card" key={Profile.id}>
-          &lt;PeopleCard Profile={Profile} />
-        &lt;/div>
-      )) }
+  /**
+ * handle delete album
+ * @function deleteAlbum
+ * @param {number} i  index of album to be deleted
+ * @returns {void}
+   */
+  // handle delete
+  const deleteAlbum = (i) => {
+    const toBeDeleted = {};
+    toBeDeleted.albumId = albumsData[i].albumId;
+    axios.delete(`/albums/${userId}`, toBeDeleted).then(() => {
+      setAlbumsData((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
+      if (error.response.status === 404) {
+        history.push('*'); // Redirect to Error page
+      }
+    });
+  };
+    /**
+   * render albums for preview
+   * @function renderPhotos
+   * @param {(albums|Array)} source - albums to be rendered for preview
+   * @returns {div} -div containing the albums rendered
+   */
+  // Render albums for preview
+  const renderPhotos = (source) => source.map((photo, index) => (
+    &lt;div key={photo.albumCover}>
+
+      &lt;div id="album-container">
+        &lt;img
+          id="album-added-photos"
+          src={photo.albumCover}
+          alt=""
+        />
+        &lt;Link id="album-title" to="*">{photo.albumTitle}&lt;/Link>
+        &lt;span id="photo-number">
+          {photo.albumphotos.length}
+          {' '}
+          photos
+        &lt;/span>
+        {(userId === userjwt.sub) &amp;&amp; (
+        &lt;IconButton id="delete-albums-button" onClick={() => deleteAlbum(index)}>
+          &lt;DeleteIcon fontSize="small" />
+        &lt;/IconButton>
+        )}
+      &lt;/div>
     &lt;/div>
-  );
-};
+  ));
 
-export default CardsContainer;
+  return (data ? (
+    &lt;div id="result-albums">{albumsData &amp;&amp; renderPhotos(albumsData)}&lt;/div>) : &lt;div>loading...&lt;/div>
+  );
+}
+
+export default Albums;
 </code></pre>
         </article>
     </section>

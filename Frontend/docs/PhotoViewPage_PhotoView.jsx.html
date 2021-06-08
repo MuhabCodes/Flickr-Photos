@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PhotoViewPage/PhotoView.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PhotoViewPage/PhotoView.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable eqeqeq */
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './PhotoView.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import Button from '@material-ui/core/Button';
+import ClearIcon from '@material-ui/icons/Clear';
+import { makeStyles } from '@material-ui/core/styles';
+import StarBorderOutlined from '@material-ui/icons/StarBorderOutlined';
+import StarOutlined from '@material-ui/icons/StarOutlined';
+import MenuListComposition from './AddToAlbums';
+
+/**
+ * component for previewing specific photo
+ * @component
+ * &lt;PhotoView/>
+ */
+function PhotoView() {
+  axios.defaults.baseURL = 'https://api.flick.photos';
+  const history = useHistory(); // useHitory to redirect the user
+  const userJwt = jwt(localStorage.getItem('token'));
+  const { routeId } = useParams(); // grab the id of the photo to fetch
+  const [enabled, setEnabled] = useState(false); // check if user
+  const [data, setData] = useState(null);
+  const [tags, setPhotoTags] = useState(null);
+  const [photoComments, setPhotoComments] = useState(null);
+  const [commentText, setcommentText] = useState(''); // set photo album on input change
+  const [activeStar, setActiveStar] = useState(false);
+  const [followButton, setFollowButton] = useState(false);
+  const [commentsNum, setcommentsNum] = useState(0);
+  const [FavesNum, setFavesNum] = useState(0);
+
+  useEffect(() => {
+    axios.defaults.baseURL = 'https://api.flick.photos';
+    if (routeId) {
+      axios.get(`/photos/${routeId}`) // fetch photo info with specific photo id
+        .then((resp) => {
+          const pass = {};
+          pass.userId = resp.data.authorId;
+          pass.title = resp.data.title;
+          pass.description = resp.data.description;
+          const d = new Date(resp.data.uploadDate);
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          pass.date = `${d.getDay()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+          pass.views = resp.data.views;
+          pass.camera = resp.data.cameraName;
+          axios.get(`/people/${pass.userId}/info`) // fetch user avtar, ispro,name
+            .then((response) => {
+              pass.user = response.data.displayName;
+              pass.userAvatar = response.data.userAvatar;
+              pass.isPro = response.data.isPro;
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          axios.get(`/search/photos?searchWord=${pass.title}`) // fetch photo imagepath
+            .then((response) => {
+              pass.src = response.data.photosSearch.find((x) => x.photoId == routeId).imagePath;
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          setData(pass);
+          setPhotoTags(resp.data.tags);
+          axios.get(`/photos/${routeId}/favorites`) // fetch faves number
+            .then((response) => {
+              setFavesNum(response.data.photoLikers.length);
+              return response.data;
+            }).catch(() => { history.push('*//'); });
+          // check if it is the user's photo to set enable to true to give rights
+          if (pass.userId === userJwt.sub) { setEnabled(true); }
+          axios.get(`/photos/${routeId}/comments`) // fetch comments
+            .then((response) => {
+              const whole = {};
+              whole.total = response.data.total;
+              setcommentsNum(whole.total);
+              whole.temp = response.data.comments.map((row) => ({
+                id: row.commentId,
+                userName: row.author,
+                comment: row.text,
+                userId: row.authorId,
+                time: row.dateCreate,
+                commentAvatar: row.userAvatar,
+              }));
+              setPhotoComments(whole.temp);
+              return whole;
+            }).catch(() => { history.push('*//'); });
+          return pass;
+        }).catch(() => { history.push('*//'); });
+    }
+  }, []);
+
+  // for material ui icons to work
+  const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
+  const classes = useStyles();
+  /**
+   * handle delete photos
+   * @function handleDelete
+   * @returns {void}
+   */
+  // handle delete
+  const handleDelete = () => {
+    axios.delete(`/photos/${routeId}`)
+      .then(() => {
+        // Delete
+        setTimeout(() => history.go(-1), 100); // Redirect to last page visited
+      }).catch(() => { history.push('*//'); });
+  };
+    /**
+   * follow button handle
+   * @function follow
+   * @returns {void}
+   */
+  // follow button handle
+  const follow = () => {
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    console.log(send);
+    axios.post('/people/follow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/unfollow', send).catch(() => { history.push('*//'); });
+        }
+      });
+  };
+  /**
+   * unfollow button handle
+   * @function unfollow
+   * @returns {void}
+   */
+  const unfollow = () => {
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    const { userId } = data;
+    const send = {
+      userId,
+    };
+    axios.post('/people/unfollow', send)
+      .catch((error) => {
+        if (error.response.status === 403) {
+          axios.post('/people/follow', send).catch(() => { history.push('*//'); });
+        }
+        history.push('*//');
+      });
+  };
+  /**
+ * handle tags removal
+ * @function editTag
+ * @param {number} i  index of tag to be removed
+ * @returns {void}
+ */
+  // handle edit tag
+  const editTag = (i) => {
+    const toBeDeleted = {};
+    // eslint-disable-next-line no-underscore-dangle
+    toBeDeleted.tagId = tags[i]._id;
+    axios.delete(`/tags/photo/${routeId}`, data).then(() => {
+      setPhotoTags((currentItems) => currentItems.filter((item, index) => index !== i));
+    }).catch((error) => {
+      if (error.response.status === 404) {
+        setTimeout(() => history.push('*//'), 100); // Redirect to Error page
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
+    });
+  };
+  // handle Fav icon
+    /**
+   * fav button handle
+   * @function fav
+   * @returns {void}
+   */
+  const fav = () => {
+    axios.post(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
+  };
+    /**
+   * unfav button handle
+   * @function unfav
+   * @returns {void}
+   */
+  const unfav = () => {
+    axios.delete(`/favorites/${routeId}`).catch(() => { history.push('*//'); });
+  };
+
+  /**
+   * on click add new comment if not empty
+   * @function handleComment
+   * @param {object} e -event
+   * @returns {void}
+   */
+  // handle comments
+  const handleComment = (e) => {
+    e.preventDefault();
+    if (commentText !== '') {
+      const newComment = {
+        commentText,
+      };
+      axios.post(`/photos/${routeId}/comments`, newComment).then(() => {
+        // update comments
+        axios.get(`/photos/${routeId}/comments`) // fetch comments
+          .then((response) => {
+            const whole = {};
+            whole.total = response.data.total;
+            setcommentsNum(whole.total);
+            whole.temp = response.data.comments.map((row) => ({
+              id: row.commentId,
+              userName: row.author,
+              comment: row.text,
+              userId: row.authorId,
+              time: row.dateCreate,
+              commentAvatar: row.userAvatar,
+            }));
+            setPhotoComments(whole.temp);
+            return whole;
+          }).catch(() => { history.push('*//'); });
+      }).catch((error) => {
+        if (error.statusCode === 404) {
+          setTimeout(() => history.push('*//'), 100); // Redirect to Error page
+        } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
+      });
+    }
+  };
+  /**
+ * handle delete comment
+ * @function deleteComment
+ * @param {number} i  index of comment to be deleted
+ * @returns {void}
+   */
+  // handle delete comments
+  const deleteComment = (i) => {
+    axios.delete(`/photos/${routeId}/comments/${photoComments[i].id}`).then(() => {
+      setPhotoComments((currentItems) => currentItems.filter((item, index) => index !== i));
+      // update comments
+    }).catch((error) => {
+      if (error.response.status === 404) {
+        history.push('*//'); // Redirect to Error page
+      } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
+    });
+  };
+  /**
+   * convert from milliseconds since 1970 to human readable time
+   * @function msToTime
+   * @param {number} ds - Time milliseconds since 1970
+   * @returns {number} seconds -if less 60 seconds
+   * @returns {number} minutes -if less 60 minutes
+   * @returns {number} hours -if less 24 hours
+   * @returns {number} days -if more than 24 hours
+   */
+  // calculate time from now for comments
+  function msToTime(ds) {
+    const d = new Date();
+    const n = d.getTime();
+    const ms = n - ds;
+    const seconds = (ms / 1000).toFixed(1);
+    const minutes = (ms / (1000 * 60)).toFixed(1);
+    const hours = (ms / (1000 * 60 * 60)).toFixed(1);
+    const days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
+    if (seconds &lt; 60) return `${Math.ceil(seconds)} Sec ago`;
+    if (minutes &lt; 60) return `${Math.floor(minutes)} Min ago`;
+    if (hours &lt; 24) return `${Math.floor(hours)} Hrs ago`;
+    return `${Math.floor(days)} Days ago`;
+  }
+  return (data ? (
+    &lt;div>
+      {/* photo container */}
+      &lt;div id="photo-large-container">
+        &lt;img id="photo" src={data.src} alt={data.title} />
+        {enabled &amp;&amp; (
+        &lt;IconButton id="delete-button" onClick={handleDelete}>
+          &lt;DeleteIcon fontSize="large" />
+        &lt;/IconButton>
+        )}
+        {enabled &amp;&amp; &lt;MenuListComposition />}
+        {!enabled &amp;&amp; (
+        &lt;IconButton id="starBorderOutlined" onClick={() => setActiveStar(!activeStar)}>
+          {activeStar ? (
+            &lt;StarOutlined fontSize="large" onClick={() => unfav()} />
+          ) : (
+            &lt;StarBorderOutlined fontSize="large" onClick={() => fav()} />
+          )}
+        &lt;/IconButton>
+        )}
+        &lt;IconButton id="back-button" onClick={() => history.go(-1)}>
+          &lt;ArrowBackIcon fontSize="inherit" />
+        &lt;/IconButton>
+      &lt;/div>
+      &lt;div id="below-photo">
+        &lt;div id="below-photo-container">
+          &lt;div id="left-container">
+            {/* profile info container */}
+            &lt;div id="profile-details">
+              &lt;div id="person-avatar" style={{ backgroundImage: `url(${data.userAvatar})` }} />
+              &lt;div id="person-info">
+                &lt;Link to={`/profile/photostream/${data.userId}`} id="person-name">{data.user}&lt;/Link>
+                {/* Checking if the member is pro to display the logo */}
+                {data.isPro &amp;&amp; (
+                &lt;Link to="/account/upgrade/pro" id="member-pro">
+                  &lt;img src="https://i.imgur.com/c0Kf8Rt.jpg" alt="pro" width="17" height="10" />
+                &lt;/Link>
+                )}
+                {/* Checking if the member is owner of the photo to hide the follow button */}
+                {!enabled &amp;&amp; !followButton &amp;&amp; &lt;button type="button" id="author-follow-button" className="btn btn-primary" onClick={() => { setFollowButton(!followButton); follow(); }}>+ Follow&lt;/button>}
+                {!enabled &amp;&amp; followButton &amp;&amp; &lt;button type="button" id="author-follow-button" className="btn btn-primary" onClick={() => { setFollowButton(!followButton); unfollow(); }}>Following&lt;/button>}
+              &lt;/div>
+            &lt;/div>
+            {/* photo name */}
+            &lt;div id="title-conatiner">
+              &lt;h1 id="selected-photo-title">{data.title}&lt;/h1>
+              {(data.description !== '') &amp;&amp; &lt;h2 id="selected-photo-description">{data.description}&lt;/h2>}
+            &lt;/div>
+            {/* comments section */}
+            {photoComments &amp;&amp; (photoComments.map((photoComment, index) => (
+              &lt;div key={photoComment.id} id="comments-section">
+                &lt;ul className="list-unstyled">
+                  &lt;li className="media">
+                    &lt;span className="round pt-2">
+                      &lt;img id="comment-avatar" src={photoComment.commentAvatar} className="align-self-start mr-3" alt="" />
+                    &lt;/span>
+                    &lt;div className="media-body">
+                      &lt;div className="row d-flex">
+                        &lt;Link to={`/profile/photostream/${userJwt.sub}`} id="username-text" className="user pt-2">{photoComment.userName}&lt;/Link>
+                      &lt;/div>
+                      &lt;p className="text">{photoComment.comment}&lt;/p>
+                      &lt;p id="comment-date">{msToTime(photoComment.time)}&lt;/p>
+                      {(photoComment.userId == userJwt.sub) &amp;&amp; (
+                      &lt;IconButton id="delete-comments-button" onClick={() => deleteComment(index)}>
+                        &lt;DeleteIcon fontSize="small" />
+                      &lt;/IconButton>
+                      )}
+                    &lt;/div>
+                  &lt;/li>
+                &lt;/ul>
+              &lt;/div>
+            )))}
+            {/* comments box */}
+            {(userJwt !== '') &amp;&amp; (
+            &lt;div>
+              &lt;ul className="list-unstyled">
+                &lt;li className="media">
+                  &lt;span className="round pt-2">
+                    &lt;img id="comment-avatar" src={data.userAvatar} className="align-self-start mr-3" alt="" />
+                  &lt;/span>
+                  &lt;div className="d-flex flex-row align-items-start">
+                    &lt;textarea className="form-control ml-1 shadow-none textarea" onChange={(event) => setcommentText(event.target.value)} />
+                  &lt;/div>
+                  &lt;br />
+                  &lt;div className="mt-2 text-right">
+                    &lt;button id="comment-submit-button" className="btn btn-primary btn-sm ml-1 shadow-none" type="button" onClick={handleComment}>comment&lt;/button>
+                  &lt;/div>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+            )}
+          &lt;/div>
+          &lt;div id="right-container">
+            &lt;div id="right-container-content">
+              {/* photo stats */}
+              &lt;div id="stats">
+                &lt;div className="stat-item">
+                  &lt;span className="count-label">
+                    {data.views}
+                  &lt;/span>
+                  &lt;span className="stats-label">views&lt;/span>
+                &lt;/div>
+
+                &lt;div className="stat-item">
+                  &lt;span className="count-label">
+                    {FavesNum}
+                  &lt;/span>
+                  &lt;span className="stats-label">faves&lt;/span>
+                &lt;/div>
+
+                &lt;div className="stat-item">
+                  &lt;span className="count-label">
+                    {commentsNum}
+                  &lt;/span>
+                  &lt;span className="stats-label">comments&lt;/span>
+                &lt;/div>
+                &lt;div id="date-camera-container">
+                  &lt;div id="selected-photo-date">
+                    &lt;span id="date">
+                      Taken on
+                      {' '}
+                      {data.date}
+                    &lt;/span>
+                  &lt;/div>
+                  &lt;div id="selected-photo-camera">
+                    &lt;PhotoCameraIcon fontSize="large" />
+                    &lt;span>{data.camera}&lt;/span>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            {/* photo tags */}
+            &lt;div id="photo-tags">
+              &lt;div id="tags-container">
+                &lt;h5 id="tags-title">
+                  Tags
+                &lt;/h5>
+                {tags &amp;&amp; tags.map((tag, index) => (
+                  &lt;Button
+                    key={tags[index]}
+                    size="small"
+                    variant="contained"
+                    color="default"
+                    id="delete-tag-button"
+                    className={classes.button}
+                    endIcon={enabled &amp;&amp; &lt;ClearIcon fontSize="small" onClick={() => editTag(index)} />}
+                  >
+                    {tag.tagText}
+                  &lt;/Button>
+                ))}
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  ) : &lt;div>Loading...&lt;/div>);
+}
+export default PhotoView;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Albums.html">Albums</a></li><li><a href="FBlogin.html">FBlogin</a></li><li><a href="PhotoView.html">PhotoView</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li><li><a href="Upload.html">Upload</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#deleteAlbum">deleteAlbum</a></li><li><a href="global.html#deleteComment">deleteComment</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#editTag">editTag</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#fav">fav</a></li><li><a href="global.html#follow">follow</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#handleComment">handleComment</a></li><li><a href="global.html#handleDelete">handleDelete</a></li><li><a href="global.html#handleImageChange">handleImageChange</a></li><li><a href="global.html#handleUpload">handleUpload</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MenuListComposition">MenuListComposition</a></li><li><a href="global.html#msToTime">msToTime</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#postPhoto">postPhoto</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#renderPhotos">renderPhotos</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#toDataUrl">toDataUrl</a></li><li><a href="global.html#unfav">unfav</a></li><li><a href="global.html#unfollow">unfollow</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:59:30 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
