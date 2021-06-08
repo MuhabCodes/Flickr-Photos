@@ -7,7 +7,7 @@ import './SubNavBar.css';
 // Has a mapping function which gets name of items in the subnavbar from a pre-defined array
 // this array also includes the url to which we route to when a user clicks it
 const SubNavBar = () => {
-  const { id } = useParams();
+  const { userId } = useParams();
   return (
     <div className="navbar-up">
       <div className="fluid-sub-nav-up">
@@ -25,7 +25,7 @@ const SubNavBar = () => {
                     idval = 'activeurl-up'; // has constant blue border under the page we're in
                   } return (
                     <li key={item.key} className="subnav-list-up">
-                      <Link to={`${item.url}/${id}`} className="subnav-title-up" id={idval}>{item.title}</Link>
+                      <Link to={`${item.url}/${userId}`} className="subnav-title-up" id={idval}>{item.title}</Link>
                     </li>
                   );
                 })}

@@ -181,28 +181,28 @@ function App() {
               <HomePage />
               <Footer />
             </Route>
-            <Route exact path="/Profile/About/:id">
+            <Route exact path="/Profile/About/:userId">
               <NavBar />
               <CoverArea />
               <SubNavBar />
               <ProfileContainer />
               <Footer />
             </Route>
-            <Route exact path="/Profile/Faves/:id">
+            <Route exact path="/Profile/Faves/:userId">
               <NavBar />
               <CoverArea />
               <SubNavBar />
               <Faves />
               <Footer />
             </Route>
-            <Route exact path="/Profile/Photostream/:id">
+            <Route exact path="/Profile/Photostream/:userId">
               <NavBar />
               <CoverArea />
               <SubNavBar />
               <Photostream />
               <Footer />
             </Route>
-            <Route exact path="/profile/photostream/edit/:id">
+            <Route exact path="/profile/photostream/edit/:usreId">
               <NavBar />
               <EditPhotostream />
               <Footer />
