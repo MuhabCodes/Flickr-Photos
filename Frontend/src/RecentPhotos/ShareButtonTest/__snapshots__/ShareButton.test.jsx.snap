@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches a snapshot 1`] = `
+<div
+  className="share-container"
+>
+  <button
+    className="share-button"
+    data-testid="share-test"
+    id="share-link-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt=""
+      className="share-button-img"
+      src="https://img.icons8.com/ios/50/000000/forward-arrow.png"
+    />
+    Share
+  </button>
+  <div
+    className="share-link"
+    id="share-area"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="share-actions"
+    >
+      <button
+        className="cancel-share"
+        id="share-cancelbtn"
+        onClick={[Function]}
+        type="button"
+      >
+        X
+      </button>
+    </div>
+    <textarea
+      id="exp-link"
+      name="exploreLink"
+      readOnly="https://flick.photos/Explore"
+      value="https://flick.photos/Explore"
+    >
+       
+    </textarea>
+    <button
+      id="copy-link-button"
+      onClick={[Function]}
+      type="button"
+    >
+      Copy text
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,81 @@
+.rank-table {
+  margin-left: 10%;
+  border-collapse: collapse;
+  text-indent: initial;
+  width: 73%;
+  text-align: left;
+  border-spacing: 10px;
+}
+
+.table-cell {
+  padding: 10px;
+  font-size: 13px;
+}
+
+#table-body {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.rank-table .table-header-th {
+  padding: 4px 12px;
+  background: #f3f3f3;
+  border-left: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #666;
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: left;
+}
+
+.table-header-th:first-child,
+.table-cell:first-child {
+  text-align: center;
+}
+
+.table-row:nth-child(1),
+.table-row:nth-child(2),
+.table-row:nth-child(3) {
+  font-weight: bold;
+}
+
+.table-row:nth-child(2n) {
+  border-top: 1px solid #f3f3f3;
+  background-color: whitesmoke;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.table-row:hover {
+  background-color: #e0e0e0;
+}
+
+.table-header-th .camera-table:hover,
+.table-cell .camera-table:hover {
+  background-color: #0063dc;
+  color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .rank-table {
+    overflow-x: auto;
+    margin-left: 7%;
+    min-width: 70%;
+  }
+
+  .table-cell {
+    font-size: 11px;
+  }
+
+  #table-body {
+    min-width: 33%;
+  }
+
+  .rank-table .table-header-th {
+    min-width: 70%;
+    font-size: 13px;
+  }
+}

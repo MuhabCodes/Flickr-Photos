@@ -1,0 +1,320 @@
+.photostream-container-uph {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  opacity: 1 !important;
+}
+
+.magic-tools-uph {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  margin-top: -20px;
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+
+.magic-toolbar-uph {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  position: relative;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.secondary-tools-container-uph {
+  height: 50px;
+}
+
+.edit-link-uph {
+  outline-width: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 100%;
+  float: right;
+  color: #737b80;
+}
+
+.edit-icon-uph {
+  cursor: pointer;
+  color: #737b80;
+  background: url(https://combo.staticflickr.com/ap/build/images/sprites/icons-32dc0fa1.png) -315px -174px no-repeat;
+  width: 18px;
+  height: 18px;
+  transform: translate(-10px, 10px);
+  display: inline-block;
+}
+
+.empty-photostream-uph {
+  outline-width: 0;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1 !important;
+}
+
+.flickr-empty-bg-uph {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  top: 50px;
+}
+
+.flickr-empty-bg-uph-user {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.actual-bg-uph {
+  pointer-events: none;
+  min-height: 445px;
+  user-select: none;
+  height: 100%;
+  background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/photostream3.jpg);
+  background-size: 100%;
+  background-position: 50% 0;
+  background-repeat: repeat-y;
+}
+
+.wrap-disp-uph {
+  padding-top: 0;
+  height: 100%;
+  min-height: 445px;
+}
+
+.empty-text-disp-uph {
+  text-align: center;
+  margin: 1em 0;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.empty-photostream-user-uph {
+  text-align: center;
+  height: 100%;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1 !important;
+}
+
+.limited-width-uph {
+  margin: 1em 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  width: auto;
+  max-width: 700px;
+  padding: 0 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-cameraroll-uph {
+  background-color: #128fdc;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  height: 36px;
+  line-height: 36px;
+  min-width: 100px;
+}
+
+.btn-cameraroll-uph:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.photostream-area-uph {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  min-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+.photo-grid-uph {
+  position: initial;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.photo-container-uph {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  padding: 2px;
+  min-width: fit-content;
+}
+
+.single-photo-uph {
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 380px;
+  padding: 2px;
+}
+
+.interaction-bar-uph .title-photo-uph {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 8%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.photo-container-uph:hover {
+  cursor: pointer;
+}
+
+.photo-container-uph:hover .interaction-bar-uph .title-photo-uph {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-uph .user-name-photo-uph {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.photo-container-uph:hover .user-name-photo-uph {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-uph .fav-btn-uph {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: transparent;
+  z-index: 9999;
+}
+
+.photo-container-uph:hover .fav-btn-uph {
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-uph .faves-view-uph {
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.photo-container-uph:hover .faves-view-uph {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-uph .comments-view-uph {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.photo-container-uph:hover .comments-view-uph {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  right: 15%;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.link-photoview-uph {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link-photoview-uph:hover {
+  text-decoration: none;
+  color: #fff;
+}

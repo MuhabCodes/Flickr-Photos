@@ -1,0 +1,153 @@
+#search-bar {
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+#img-div {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  min-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1;
+  margin-top: 5%;
+}
+
+.image-grid-search {
+  position: initial;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.image-container-search {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  padding: 2px;
+  min-width: fit-content;
+}
+
+.single-image-search {
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 380px;
+  padding: 2px;
+}
+
+.text-area-search .title-search {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 8%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.image-container-search:hover {
+  cursor: pointer;
+}
+
+.image-container-search:hover .text-area-search .title-search {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container-search .user-name-search {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.image-container-search:hover .user-name-search {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container-search .fav-btn-search {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: transparent;
+  z-index: 9999;
+}
+
+.image-container-search:hover .fav-btn-search {
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container-search .faves-search {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.image-container-search:hover .faves-search {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.image-container-search .comments-search {
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.image-container-search:hover .comments-search {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}

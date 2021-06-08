@@ -1,0 +1,14 @@
+{
+    "/group": "/Group",
+    "/group/:id": "/Group/:id",
+    "/photos": "/photos",
+    "/photos/:id": "/photos/:id",
+    "/albums": "/albums",
+    "/albums/:id": "/albums/:id",
+    "users": 644,
+    "users/:id":644,
+    "photos":666,
+    "people/:userId/photos":644,
+    "/notifications/myNotification": "/myNotification",
+    "/user/:userId/followers": "/followers"
+}

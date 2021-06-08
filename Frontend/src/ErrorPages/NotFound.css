@@ -1,0 +1,118 @@
+/* main page container */
+.main-error-page {
+  background-color: #f3f5f6;
+}
+
+.main-404-container {
+  height: 100%;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* Container of all upper text but not images */
+.upper-404-container {
+  text-align: center;
+  margin: 4em 0;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
+
+.lower-404-container {
+  text-align: center;
+}
+
+/* Styling for h2 inside the upper container */
+.h2-404 {
+  line-height: 38px;
+  font-size: 3em;
+  color: #898989;
+  margin-bottom: 2rem;
+  font-weight: 300 !important;
+}
+
+/* Styling for h3 inside the upper container */
+.h3-404 {
+  font-weight: 400;
+  font-size: 1.4em;
+}
+
+/* Styling for p inside the upper container */
+.paragraph-404 {
+  font-size: 0.9em;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
+
+/* Container of all images which controls how they are displayed */
+.images-container-404 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Styling for each single image inside image container */
+.image-404-style {
+  flex: 1;
+  object-fit: cover;
+  max-height: 15em;
+  margin-bottom: 0.2em;
+  margin-right: 0.2em;
+}
+
+.view-more-button-link {
+  align-self: center;
+}
+
+/* Styling for button which goes to explore */
+.view-more-button {
+  outline-width: 0;
+  background-color: #128fdc;
+  color: #fff;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: top;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-bottom: 2em;
+}
+
+.link-img-container-404 {
+  display: contents;
+}
+
+.explore-button {
+  align-self: center;
+  display: inline-block;
+  text-align: center;
+  align-content: center;
+}
+
+/* Mobile responsivness fix */
+@media only screen and (max-width: 768px) {
+  .image-404-style {
+    min-width: 200px;
+  }
+
+  .main-404-container {
+    max-width: 100%;
+  }
+
+  .link-img-container-404 {
+    width: 100%;
+  }
+}

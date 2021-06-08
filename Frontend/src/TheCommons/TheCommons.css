@@ -1,0 +1,193 @@
+.the-commons-page {
+  margin-left: 20%;
+  margin-right: 20%;
+  max-width: 801px;
+}
+
+.header {
+  display: block;
+  align-content: center;
+  position: relative;
+}
+
+.the-commons-title,
+.commons-sampler-title,
+.more-title,
+.faq-title {
+  color: #ff0084;
+  font-weight: normal;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 10px;
+}
+
+.intro-contain,
+.more-about-commons-container {
+  display: flex;
+}
+
+.intro-block,
+.more-about-text {
+  position: absolute;
+  font-size: 14px;
+}
+
+.list-inst {
+  list-style: none;
+  margin-left: -10%;
+}
+
+.institutions {
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin-left: 45%;
+  align-self: auto;
+  margin-top: 0%;
+}
+
+.image-of-inst {
+  margin-left: 7%;
+}
+
+.sentence-for-inst {
+  font-size: small;
+  margin-left: 7%;
+}
+
+.commons-sampler-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 2%;
+  font-size: 12px;
+  padding-left: 3%;
+}
+
+.commons-sample1,
+.commons-sample2,
+.commons-sample3 {
+  width: 40%;
+  margin-left: 0%;
+  padding-right: 5%;
+}
+
+.sampler-text {
+  text-align: center;
+}
+
+.more-about-commons-container {
+  margin-top: 2%;
+  font-size: 12px;
+  margin-bottom: 4%;
+}
+
+.img-cap {
+  display: inline-block;
+  width: 530px;
+  border: 0;
+  margin-left: 71%;
+  align-self: auto;
+  font-size: xx-small;
+  color: rgb(134, 132, 132);
+}
+
+.freq-asked-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 2%;
+  font-size: 12px;
+  text-align: left;
+  padding-right: 7%;
+  padding-left: 3%;
+}
+
+.faq-container1,
+.faq-container2,
+.faq-container3 {
+  width: 40%;
+  text-align: left;
+  margin-left: -3%;
+  padding-right: 5%;
+}
+
+@media screen and (max-width: 1272px) {
+  .header {
+    width: fit-content;
+    margin-left: -5%;
+  }
+
+  .the-commons-page {
+    margin-left: 5%;
+  }
+
+  .commons-sampler-container {
+    flex-direction: column;
+    flex-grow: column wrap;
+    height: auto;
+    align-items: left;
+  }
+
+  .commons-sample1,
+  .commons-sample2,
+  .commons-sample3 {
+    flex-basis: 100px;
+    justify-content: space-between;
+    height: 20%;
+    margin-top: 0;
+    align-items: left;
+  }
+
+  .sampler-text {
+    text-align: left;
+    vertical-align: bottom;
+    position: relative;
+    top: 100%;
+    width: max-content;
+  }
+
+  .intro-contain {
+    display: flex;
+    flex-direction: column;
+    flex-grow: column wrap;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .intro-block {
+    text-align: left;
+    vertical-align: bottom;
+    position: relative;
+    top: 100%;
+  }
+
+  .institutions {
+    /* flex-basis: 100px; */
+    height: 20%;
+    margin-top: 0;
+    margin-left: -7%;
+  }
+
+  .more-about-commons-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: column wrap;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .img-cap {
+    height: 20%;
+    margin-top: 0;
+    margin-left: 0%;
+    align-items: left;
+  }
+
+  .more-about-text {
+    text-align: left;
+    vertical-align: bottom;
+    position: relative;
+    top: 100%;
+  }
+}

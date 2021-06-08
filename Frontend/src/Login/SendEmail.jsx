@@ -1,0 +1,53 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
+import msgicon from './msgicon.png';
+import style from './sendemailStyles';
+
+const useStyles = makeStyles(style);
+
+export default function VerifySignup() {
+  const classes = useStyles();
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  const resend = () => {
+    axios('/auth/forgot-password', {
+      baseURL: 'https://api.flick.photos',
+      method: 'put',
+    }).then((resp) => {
+      console.log(resp);
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+  return (
+    <div className={classes.backgroundImage}>
+      <Card className={classes.root}>
+        <div>
+          <img src={msgicon} className={classes.msgIcon} alt="icon" />
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            Check your inbox
+          </Typography>
+        </div>
+        <p className={classes.sentParagraph}>
+          We sent a verification link to `email` Please check
+          your email for the next step.
+        </p>
+        <Button
+          variant="contained"
+          className={classes.resendButton}
+          onClick={resend}
+          disableElevation
+          type="submit"
+        >
+          Resend Email
+        </Button>
+        <p className={classes.paragraphStyle}>Can`t access your email?</p>
+
+      </Card>
+    </div>
+  );
+}
