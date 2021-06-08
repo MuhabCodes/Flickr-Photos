@@ -15,9 +15,11 @@ import FaveButton from './ExploreFaveButton';
 
 const RecentPhotos = () => {
   const [photos, setRecPhotos] = useState([]); // sets the images fetched
-  const [loading, setLoading] = useState(false); // for loading purpose
+  const [isLoading, setLoading] = useState(true); // for loading purpose
+  const [error, setError] = useState(null);
   // The following loadPage function, checks if the user is a guest or logged in and displays
   // images details accordingly.
+  axios.defaults.baseURL = 'http://localhost:8000';
   let userjwt = [];
   function loadPage() {
     if (localStorage.getItem('token')) {
@@ -27,10 +29,14 @@ const RecentPhotos = () => {
   }
   // useEffect helps us fetch the photos from the server.
   useEffect(() => {
+    axios.defaults.baseURL = 'http://localhost:8000';
     axios.get('/photosExplore?_sort=dateUploaded&_order=desc')
       .then((resp) => {
         setLoading(false);
         setRecPhotos(resp.data);
+      }).catch((err) => {
+        setError(err.response);
+        console.log(err);
       });
   }, []);
   // The following changes the photos(objects) to array that can be used by the .map
@@ -48,9 +54,9 @@ const RecentPhotos = () => {
   }
 
   // The following if condition checks if no images are in photos (fetched), display loading.
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
+  // if (loading) {
+  //   return <h1>Loading</h1>;
+  // }
   // The following part returns the fetched images.
   // The lazy load Image component is used to display the images but not all at once,
   // when the user scrolls down more images are fetched to be displayed.
@@ -59,7 +65,8 @@ const RecentPhotos = () => {
   return (
     <div className="recent-photos">
       <div className="image-grid">
-        {photoArr.map((photo) => (
+        {error && <div>{error}</div>}
+        {isLoading ? <div> Loading </div> : (photoArr.map((photo) => (
           <div className="image-container">
             <LazyLoadImage
               className="single-image"
@@ -98,7 +105,7 @@ const RecentPhotos = () => {
             </span>
 
           </div>
-        ))}
+        )))}
         <div />
       </div>
     </div>
