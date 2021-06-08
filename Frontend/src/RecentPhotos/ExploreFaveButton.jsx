@@ -1,5 +1,12 @@
 import React from 'react';
-
+/**
+ * This component renders the fave button that appears on every image in the recent photos.
+ * @component
+ * @function FaveButton
+ * @param {function} props --this function takes in ClickMe function that changes the button's
+ * appearance on click.
+ * @returns {null} -displays the fave button on each image fetched.
+ */
 const FaveButton = (props) => {
   const cl = props;
   const { ClickMe } = cl;
