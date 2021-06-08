@@ -29,15 +29,15 @@ function NavBarDropDown() {
             <NavDropdown.Item href="#action/3.10">Organize</NavDropdown.Item>
           </NavDropdown> */}
           <div className="dropdown-main-nav">
-            <a href={`/Profile/About/${userjwt.sub}`} className="droplink-main-nav">You</a>
+            <a href={`/Profile/About/${userjwt.userId}`} className="droplink-main-nav">You</a>
             <div className="dropdown-content">
-              <a href={`/Profile/About/${userjwt.sub}`}>About</a>
-              <a href={`/Profile/photostream/${userjwt.sub}`}>Photostream</a>
+              <a href={`/Profile/About/${userjwt.userId}`}>About</a>
+              <a href={`/Profile/photostream/${userjwt.userId}`}>Photostream</a>
               <a href="/Albums">Albums</a>
               <a href="/Profile/Faves">Faves</a>
               <a href="/Galleries">Galleries</a>
               <a href="/Groups">Groups</a>
-              <a href={`CameraRoll/${userjwt.sub}`}>Camera Roll</a>
+              <a href={`CameraRoll/${userjwt.userId}`}>Camera Roll</a>
               <a href="/Notifications">Recent</a>
               <a href="/People">People</a>
               <a href="/Organize">Organize</a>

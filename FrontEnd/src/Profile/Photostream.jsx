@@ -9,13 +9,14 @@ import 'react-dropdown/style.css';
 import './Photostream.css';
 
 const Photostream = () => {
-  // let prevWidth = 0;
-  const { id } = useParams();
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  const { userId } = useParams();
   const [choice, setChoice] = useState('Date uploaded');
   const [photos, setRecPhotos] = useState([]);
   const [isloading, setLoading] = useState(true);
   const loggedUser = jwt(localStorage.getItem('token'));
-  const currUser = (id === loggedUser.sub);
+  const currUser = (userId === loggedUser.userId);
   let userjwt = [];
   function loadPage() {
     if (localStorage.getItem('token')) {
@@ -40,13 +41,15 @@ const Photostream = () => {
     }
   }
   useEffect(() => {
-    axios.get(`/userPhotostream/${id}`, {})
-      .then((resp) => {
-        setLoading(false);
-        setRecPhotos(resp.data.photoArray);
+    if (userId) {
+      axios.get(`/people/${userId}/photos/public`, {})
+        .then((resp) => {
+          setLoading(false);
+          setRecPhotos(resp.data);
         // setFaveCounts(resp.data.favs);
-      });
-  }, []);
+        });
+    }
+  }, [userId]);
   const photoArr = Array.from(photos);
   const items = [
     'Date uploaded', 'Date taken',
@@ -81,7 +84,7 @@ const Photostream = () => {
                 <div className="secondary-tools-container-uph">
                   {currUser && (
                   <div className="edit-button-uph">
-                    <Link to={`/profile/photostream/edit/${id}`} className="edit-link-uph">
+                    <Link to={`/profile/photostream/edit/${userId}`} className="edit-link-uph">
                       <span className="edit-icon-uph" />
                     </Link>
                   </div>
@@ -111,9 +114,9 @@ const Photostream = () => {
                   <div className="photo-container-uph">
                     <LazyLoadImage
                       className="single-photo-uph"
-                      src={photo.imagePath}
+                      src={photo.imageUrl}
                       alt=""
-                      key={photo.photoId}
+                      key={photo.secret}
                       onLoad={loadPage}
                     />
                     <span className="interaction-bar-uph" style={{ visibility: 'hidden' }}>
@@ -126,20 +129,19 @@ const Photostream = () => {
                         {photo.user}
                       </span>
                       <span className="faves-view-uph">
-                        <button className="fav-btn-uph" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                        <button className="fav-btn-uph" type="button" id="faveButton" key={photo.secret} onClick={ClickMe}>
                           <img
                             className="star"
                             src="https://img.icons8.com/android/24/ffffff/star.png"
                             alt="favIcon"
                           />
                         </button>
-                        <span className="fav-count" id="favNum" key={photo.photoId}>
+                        <span className="fav-count" id="favNum" key={photo.secret}>
                           {photo.favs}
                         </span>
                       </span>
                       <span className="comments-view-uph">
                         <img className="comment-icon" src="https://img.icons8.com/ios/50/ffffff/topic.png" alt="commentIcon" width="25px" height="25px" />
-                        {photo.comments}
                       </span>
                     </span>
 

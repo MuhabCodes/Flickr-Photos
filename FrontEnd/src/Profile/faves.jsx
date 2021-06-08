@@ -11,21 +11,24 @@ import './Faves.css';
 // but a couple at a time and the more the user scrolls down,
 // the more images are fetched and displayed.
 const Faves = () => {
-  const { id } = useParams();
+  const { userId } = useParams();
   const userjwt = jwt(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
   const [photos, setRecPhotos] = useState([]);
   const [toggled, setToggle] = useState(false);
-  const currUser = (id === userjwt.sub);
+  const currUser = (userId === userjwt.userId);
   // useEffect helps us fetch the photos from the mock server.
   useEffect(() => {
-    axios.get(`/Photostream/${id}`, {})
-      .then((resp) => {
-        setLoading(false);
-        setRecPhotos(resp.data.photoArray);
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    if (userId) {
+      axios.get(`/favorites/${userId}`, {})
+        .then((resp) => {
+          setLoading(false);
+          setRecPhotos(resp.data.photo);
         // setFaveCounts(resp.data.favs);
-      });
-  }, []);
+        });
+    }
+  }, [userId]);
   const photoArr = Array.from(photos);
   function ClickMe(e) {
     if (e.target.getAttribute('src') === 'https://img.icons8.com/android/24/ffffff/star.png') {
@@ -73,7 +76,7 @@ const Faves = () => {
                 <div className="photo-container-ufv">
                   <LazyLoadImage
                     className="single-photo-ufv"
-                    src={photo.imagePath}
+                    src={photo.imageUrl}
                     alt=""
                     key={photo.photoId}
                   />
@@ -84,10 +87,10 @@ const Faves = () => {
                     <span className="user-name-ufv">
                       by
                       {' '}
-                      {photo.user}
+                      {photo.user.displayName}
                     </span>
                     <span className="faves-view-ufv">
-                      <button className="fav-btn-ufv" type="button" id="faveButton" key={photo.photoId} onClick={ClickMe}>
+                      <button className="fav-btn-ufv" type="button" id="faveButton" key={photo.secret} onClick={ClickMe}>
                         {currUser ? (
                           <img
                             className="star"

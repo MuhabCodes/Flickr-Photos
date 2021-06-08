@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 // import SubNavBar from './SubNavBar';
@@ -7,39 +7,44 @@ import AboutBio from './AboutBio';
 import Stats from './GeneralStats';
 import Showcase from './Showcase';
 import UserInfo from './UserInfo';
-import MostPop from './MostPop';
+// import MostPop from './MostPop';
 // import TestimonialsArea from './Testimonials';
 import './ProfileContainer.css';
 
 // const { data, isPending, Error } = useFetch('http://localhost:8000/aboutbio');
 
 const ProfileContainer = () => {
-  const { id } = useParams();
-  const history = useHistory();
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  const { userId } = useParams();
+  // const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [bio, setBio] = useState('');
-  const [mostPop, setMostPop] = useState('');
+  // const [mostPop, setMostPop] = useState('');
   const [showcase, setShowcase] = useState('');
-  const currUser = (id === userjwt.sub);
+  const currUser = (userId === userjwt.userId);
   useEffect(() => {
-    axios.get(`/Userinfo/${id}`, {
-    }).then((resp) => {
-      setLoading(false); // set loading to false as it is dont and fetched data
-      setMostPop(resp.data.mostPopPhotos);
-      setBio(resp.data.bio);
-      setShowcase(resp.data.showcasePhotos);
-      return resp.data;
-    }).catch((error) => {
-      if (error.response.status === 401) {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        history.push('/login');
-      } else {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
-      }
-    });
-  }, []);
+    axios.defaults.baseURL = 'http://api.flick.photos';
+    if (userId) {
+      axios.get(`/people/${userId}/info/`, {
+      }).then((resp) => {
+        setLoading(false); // set loading to false as it is dont and fetched data
+        // setMostPop(resp.data.mostPopPhotos);
+        setShowcase(resp.data.showCase);
+        setBio(resp.data.person.description);
+        return resp.data;
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // history.push('/login');
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
+      });
+    }
+  }, [userId]);
   return (
     <div>
       {!isLoading && (
@@ -53,7 +58,7 @@ const ProfileContainer = () => {
             <Stats />
           </div>
         </div>
-        {((currUser && mostPop.length === 0) || (mostPop.length !== 0)) && <MostPop />}
+        {/* {((currUser && mostPop.length === 0) || (mostPop.length !== 0)) && <MostPop />} */}
       </div>
       )}
     </div>

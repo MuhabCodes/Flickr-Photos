@@ -6,7 +6,7 @@ import edit from './assets/edit_icon.png';
 import './AboutBio.css';
 
 const AboutBio = () => {
-  axios.defaults.baseURL = 'api.flick.photos';
+  axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   const { userId } = useParams();
   const history = useHistory();
@@ -15,24 +15,24 @@ const AboutBio = () => {
   const [text, setText] = useState('');
   const currUser = (userId === userjwt.userId);
   useEffect(() => {
-    axios.get(`/people/${userId}/info/`, {
-    }).then((resp) => {
-      setLoading(false); // set loading to false as it is dont and fetched data
-      resp.data.person.map((item) => {
-        if (item.description === null) setText('Write a little about yourself');
+    if (userId) {
+      axios.get(`/people/${userId}/info/`, {
+      }).then((resp) => {
+        setLoading(false); // set loading to false as it is dont and fetched data
+        setText(resp.data.person.description);
+        if (resp.data.description === null) setText('Write a little about yourself');
         return resp.data;
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // history.push('/login');
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
       });
-      return resp.data;
-    }).catch((error) => {
-      if (error.response.status === 401) {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        history.push('/login');
-      } else {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
-      }
-    });
-  }, []);
+    }
+  }, [userId]);
   function Read() {
     //  Read function that checks whether user wants to read more or read less
     const dots = document.getElementById('dots');
@@ -52,7 +52,7 @@ const AboutBio = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const add = document.getElementById('usertextarea').value;
-    axios.patch(`/Userinfo/${userjwt.sub}`, { bio: add })
+    axios.patch(`/Userinfo/${userjwt.userId}`, { bio: add })
       .then(() => {
         history.push(`/Profile/About/${userId}`);
       }).catch((error) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'reactjs-popup/dist/index.css';
 // import jwt from 'jwt-decode';
@@ -10,28 +10,32 @@ import AddModalShowcase from './AddModalShowcase';
 // import images from './imagesArray';
 
 const Showcase = () => {
-  const history = useHistory();
-  const { id } = useParams();
+  // const history = useHistory();
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  const { userId } = useParams();
   const [isLoading, setLoading] = useState(true);
   // const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [showCase, setShowCase] = useState('');
 
   useEffect(() => {
-    axios.get(`/Userinfo/${id}`, {
-    }).then((resp) => {
-      setLoading(false); // set loading to false as it is dont and fetched data
-      setShowCase(resp.data.showcasePhotos);
-      return resp.data;
-    }).catch((error) => {
-      if (error.response.status === 401) {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        history.push('/login');
-      } else {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
-      }
-    });
-  }, []);
+    if (userId) {
+      axios.get(`/people/${userId}/info/`, {
+      }).then((resp) => {
+        setLoading(false); // set loading to false as it is dont and fetched data
+        setShowCase(resp.data.showCase);
+        return resp.data;
+      }).catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // history.push('/login');
+        } else {
+          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        }
+      });
+    }
+  }, [userId]);
   return (
     <div className="container-fluid">
       {!isLoading && (
@@ -56,7 +60,7 @@ const Showcase = () => {
           { showCase && Object.keys(showCase).length !== 0 ? (
             <div className="showcase-container-scp" id="user-sc-full">
               {showCase.map((image) => (
-                <img className="grid-item-scp" src={image.imagePath} alt="" />
+                <img className="grid-item-scp" src={image.imageUrl} alt="" />
               ))}
             </div>
           )

@@ -54,8 +54,8 @@ const AddModalShowcase = () => {
                             <div className="square-mscp" />
                             <div className="interaction-bar-mscp">
                               <div className="interaction-text-mscp">
-                                <Link className="photo-title-mscp" to="/photo">av</Link>
-                                <Link className="photo-owner-mscp" to="/user">by bkah blah</Link>
+                                <Link className="photo-title-mscp" to="/photo">{image.title}</Link>
+                                <Link className="photo-owner-mscp" to="/user">{image.user}</Link>
                               </div>
                             </div>
                           </div>
@@ -75,9 +75,7 @@ const AddModalShowcase = () => {
             <div className="footer-text-mscp">
               Choose a photo
             </div>
-            <div className="button-container-mscp">
-              <button className="showcase-add-mscp" type="button">Select photo</button>
-            </div>
+
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 // import jwt from 'jwt-decode';
 import './MostPop.css';
@@ -7,12 +7,15 @@ import './MostPop.css';
 
 const MostPop = () => {
   const { id } = useParams();
-  const history = useHistory();
+  axios.defaults.baseURL = 'http://localhost:8000';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  // const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   // const userjwt = jwt(localStorage.getItem('token')); // getting token from local storage
   const [mostPop, setMostPop] = useState('');
 
   useEffect(() => {
+    axios.defaults.baseURL = 'http://localhost:8000';
     axios.get(`/Userinfo/${id}`, {
     }).then((resp) => {
       setLoading(false); // set loading to false as it is dont and fetched data
@@ -20,11 +23,11 @@ const MostPop = () => {
       return resp.data;
     }).catch((error) => {
       if (error.response.status === 401) {
-        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        history.push('/login');
+        // localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        // history.push('/login');
       } else {
         localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-        setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
+        // setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
       }
     });
   }, []);
