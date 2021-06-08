@@ -116,7 +116,3 @@ class CameraPage(Page):
         if photo_title == title and photo_descrip == description:
             return True
         return False
-
-
-if __name__ == '__main__':
-    pass

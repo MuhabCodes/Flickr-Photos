@@ -1,13 +1,11 @@
 from time import sleep
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
 from appium.webdriver.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from common.properties import PropertiesMiA1
 from pageobject.page import Page
 from pageobject.locator.locator_photo import Locator
 
@@ -142,7 +140,7 @@ class LoginPage(Page):
 
         if self.required_visible(edittext_list[edittext_i]):
             raise AssertionError(
-                "REQUIRED VISIBILE FOR: " + self.edittext_name_list[
+                "REQUIRED VISIBLE FOR: " + self.edittext_name_list[
                     edittext_i])
         self.signup_fill_edittext(edittext_list[edittext_i], "")
 
@@ -199,3 +197,33 @@ class LoginPage(Page):
         if not self.element_located(
                 By.XPATH, Locator.signup_confirm_button_xpath):
             raise AssertionError("ERROR IN NEW SIGNUP")
+
+    def check_signup_show_password(self):
+        pass_1 = False
+        pass_2 = False
+        password = "afafasgasasggag"
+
+        edittext_list = self.driver.find_elements_by_xpath(
+            Locator.signup_edittext_xpath)
+        self.signup_fill_edittext(edittext_list[4], password)
+
+        show_password = edittext_list[4].find_element_by_xpath(
+            './' + Locator.signup_show_password_button_sub_xpath
+        )
+        password_string = edittext_list[4].get_attribute("text")
+        password_string = password_string[:-10]
+
+        if password_string != password:
+            pass_1 = True
+
+        show_password.click()
+        sleep(1)
+        password_string = edittext_list[4].get_attribute("text")
+        password_string = password_string[:-10]
+
+        if password_string == password:
+            pass_2 = True
+
+        self.signup_fill_edittext(edittext_list[4], "")
+        self.signup_scroll(1)
+        return pass_1 and pass_2

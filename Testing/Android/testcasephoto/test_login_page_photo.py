@@ -1,12 +1,9 @@
 from time import sleep
 
 import pytest
-from selenium.common.exceptions import NoSuchElementException
 from appium import webdriver
-from appium.webdriver.webelement import WebElement
 from common.properties import PropertiesMiA1
 from pageobject.loginpage.login_page_photo import LoginPage
-from pageobject.locator.locator_photo import Locator
 
 
 class TestLoginPagePhoto(object):
@@ -64,6 +61,9 @@ class TestLoginPagePhoto(object):
                           edittext_i, edittext_text):
         self.login_page.check_signup_valid_entry(
             edittext_i, edittext_text)
+
+    def test_show_password(self, setup_signup_pos):
+        assert self.login_page.check_signup_show_password()
 
     @pytest.mark.skip
     def test_signup_invalid_password(self, setup):

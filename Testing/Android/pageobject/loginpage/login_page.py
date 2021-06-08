@@ -1,11 +1,9 @@
 from time import sleep
 
-from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from common.properties import PropertiesMiA1
 from pageobject.page import Page
 from pageobject.locator.locator import Locator
 
