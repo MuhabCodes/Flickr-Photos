@@ -5,6 +5,14 @@ import axios from 'axios';
 import Checkbox from '@material-ui/core/Checkbox';
 import './AddModalShowcase.css';
 
+/**
+ * This component is a pop-up that appears when user clicks on add to showcase
+ * it views photos from photostream of user to be able to add it to his showcase
+ * @component AddModalShowcase
+ * @function AddModalShowcase
+ * @example <AddModalShowcase/>
+ * @returns pop-up container with photostream photos
+ */
 const AddModalShowcase = () => {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
