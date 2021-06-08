@@ -17,12 +17,12 @@ function Albums() {
   const userjwt = jwt(localStorage.getItem('token'));
   // eslint-disable-next-line no-unused-vars
   const [enabled, setEnabled] = useState(false); // check if user
-  const { id } = useParams(); // grab the id of the photo to fetch
+  const { userId } = useParams(); // grab the id of the photo to fetch
   const [data, setData] = useState(null);
   const [albumsData, setAlbumsData] = useState(null);
   useEffect(() => {
-    if (id) {
-      axios.get(`/albums/${id}`) // fetch data with specific album
+    if (userId) {
+      axios.get(`/albums/${userId}`) // fetch data with specific album
         .then((resp) => {
           setData(resp.data);
           setAlbumsData(resp.data.userAlbums);
@@ -38,7 +38,7 @@ function Albums() {
   const deleteAlbum = (i) => {
     const toBeDeleted = {};
     toBeDeleted.albumId = albumsData[i].albumId;
-    axios.delete(`/albums/${id}`, toBeDeleted).then(() => {
+    axios.delete(`/albums/${userId}`, toBeDeleted).then(() => {
       setAlbumsData((currentItems) => currentItems.filter((item, index) => index !== i));
     }).catch((error) => {
       if (error.response.status === 404) {
@@ -62,7 +62,7 @@ function Albums() {
           {' '}
           photos
         </span>
-        {(id === userjwt.sub) && (
+        {(userId === userjwt.sub) && (
         <IconButton id="delete-albums-button" onClick={() => deleteAlbum(index)}>
           <DeleteIcon fontSize="small" />
         </IconButton>

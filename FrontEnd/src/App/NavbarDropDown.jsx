@@ -33,7 +33,7 @@ function NavBarDropDown() {
             <div className="dropdown-content">
               <a href={`/Profile/About/${userjwt.userId}`}>About</a>
               <a href={`/Profile/photostream/${userjwt.userId}`}>Photostream</a>
-              <a href="/Albums">Albums</a>
+              <a href={`/Profile/Albums/${userjwt.userId}`}>Albums</a>
               <a href={`/Profile/Faves/${userjwt.userId}`}>Faves</a>
               <a href="/Galleries">Galleries</a>
               <a href="/Groups">Groups</a>

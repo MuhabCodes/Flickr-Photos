@@ -134,6 +134,7 @@ function App() {
               <Footer />
             </Route>
             <Route exact path="/CameraFinder">
+              <NavBar />
               <CameraFinder />
             </Route>
             <Route exact path="/TheCommons">
@@ -214,7 +215,7 @@ function App() {
               <EditPhotostream />
               <Footer />
             </Route>
-            <Route path="/CameraRoll/:id">
+            <Route path="/CameraRoll/:userId">
               <NavBar />
               <CoverArea />
               <SubNavBar />
@@ -234,14 +235,17 @@ function App() {
               <Footer />
             </Route>
             <Route exact path="/followers/:userid">
+              <NavBar />
               <FollowersPage />
               <Footer />
             </Route>
             <Route exact path="/myNotification">
+              <NavBar />
               <Notification />
               <Footer />
             </Route>
             <Route exact path="/photos/upload">
+              <NavBar />
               <Upload />
               <Footer />
             </Route>
@@ -254,7 +258,7 @@ function App() {
               <SearchPage />
               <Footer />
             </Route>
-            <Route path="/Profile/albums/:id">
+            <Route path="/Profile/albums/:userId">
               <NavBar />
               <CoverArea />
               <SubNavBar />
@@ -267,6 +271,7 @@ function App() {
             </Route>
             <Route path="*">
               { /* path for all pages that don't exist */}
+              <NavBar />
               <NotFound />
               <Footer />
             </Route>
