@@ -275,7 +275,6 @@ function App() {
               <NotFound />
               <Footer />
             </Route>
-
           </Switch>
         </div>
       </Router>
