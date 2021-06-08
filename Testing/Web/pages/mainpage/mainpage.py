@@ -37,6 +37,8 @@ class MainPage(BasePage):
     ADD_TO_GALLERY = (By.XPATH, '//li[contains(@class, "tab-item") and contains(@class, "gallery-tab")]')
     ADD_TO_GROUP = (By.XPATH, '//li[contains(@class, "tab-item") and contains(@class, "group-tab")]')
     FOLLOW_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[3]/div/div[2]/div/div[1]/div[2]/div/button')
+    JOIN_BUTTON = (By.XPATH, '/html/body/div[1]/div/div[4]/div/div[2]/div/div[1]/div[2]')
+    JOIN_CONFIRMATION_BUTTON = (By.XPATH, '/html/body/div[8]/div/div[4]/div/div[2]/button[2]')
 
     def __init__(self, driver):
         super().__init__(driver)
