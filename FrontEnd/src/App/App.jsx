@@ -22,7 +22,7 @@ import Footer from './Footer';
 import CoverArea from '../Profile/Cover';
 import SubNavBar from '../Profile/SubNavBar';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Faves from '../Profile/faves';
+import Faves from '../Profile/Faves';
 import GroupMembers from './GroupMembers';
 import NavBar from './Navbar';
 import Explore from '../RecentPhotos/Explore';
