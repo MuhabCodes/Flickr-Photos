@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/SideBar.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,48 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/SideBar.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './SideBar.css';
+import ExploreCard from './ExploreCard';
+import GroupsForYou from './GroupsForYou';
+import useFetch from '../useFetch';
+import configData from '../config.json';
 
+/**
+ * HomePage sidebar that has explore photos and different groups recommended
+ * @namespace HomePage.SideBar
+ * @example &lt;SideBar />
+ * @function SideBar
+ * @returns SideBar of home page
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const SideBar = () => {
+  const { data: ExplorePhotos, isPending, error } = useFetch(`${configData.SERVER_URL}/photosExplore`);
+  const { data: Groups, isPendingGroups, errorGroups } = useFetch(`${configData.SERVER_URL}/Groups`);
+  return (
+    &lt;div className="side-bar-main">
+      { error &amp;&amp; &lt;div>{ error }&lt;/div>}
+      { isPending &amp;&amp; &lt;div>Loading&lt;/div>}
+      {ExplorePhotos &amp;&amp; &lt;ExploreCard ExplorePhotos={ExplorePhotos} />}
+      { errorGroups &amp;&amp; &lt;div>{ error }&lt;/div>}
+      { isPendingGroups &amp;&amp; &lt;div>Loading&lt;/div>}
+      {Groups &amp;&amp; &lt;GroupsForYou Groups={Groups} /> }
+    &lt;/div>
+  );
+};
+export default SideBar;
+</code></pre>
+        </article>
+    </section>
 
 
 

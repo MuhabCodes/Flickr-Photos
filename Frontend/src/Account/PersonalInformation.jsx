@@ -5,6 +5,14 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
 
+/**
+ * Main Account Component has links to change password, edit user info and delete account
+ * @namespace Account
+ * @example <PersonalInformation />
+ * @function PersonalInformation
+ * @returns Page of user to manage account
+ */
+
 const PersonalInformation = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);

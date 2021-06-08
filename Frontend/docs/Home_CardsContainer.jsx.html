@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/CardsContainer.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,46 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/CardsContainer.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import PeopleCard from './PeopleCard';
 
+/**
+ * People cards to follow container
+ * @namespace HomePage.CardsContainer
+ * @example &lt;CardsContainer />
+ * @function CardsContainer
+ * @returns CardsContainer of home page
+ */
 
-    <h3> </h3>
+const CardsContainer = (props) => {
+  const prop = props;
+  let { Profiles } = prop;
+  Profiles = Profiles.slice(0, 4); /* Only Show 4 profiles */
+  // console.log(Profiles);
+  return (
+    &lt;div className="cards-container">
+      { Profiles.map((Profile) => (
+        &lt;div className="single-card" key={Profile.id}>
+          &lt;PeopleCard Profile={Profile} />
+        &lt;/div>
+      )) }
+    &lt;/div>
+  );
+};
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default CardsContainer;
+</code></pre>
+        </article>
+    </section>
 
 
 

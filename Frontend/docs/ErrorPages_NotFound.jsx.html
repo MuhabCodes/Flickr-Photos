@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: ErrorPages/NotFound.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,60 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: ErrorPages/NotFound.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './NotFound.css';
+import NotFoundExplore from './NotFoundExplore';
+import useFetch from '../useFetch';
+import configData from '../config.json';
 
+/**
+ * Not found page
+ * @namespace ErrorPage.NotFound
+ * @example &lt;NotFound />
+ * @function NotFound
+ * @returns Page of the 404 error (not found)
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const NotFound = () => {
+  const { data: images, isPending, error } = useFetch(`${configData.SERVER_URL}/photosExplore`);
+  return (
+    &lt;div className="main-error-page">
+      &lt;div className="main-404-container">
+        &lt;div className="upper-404-container">
+          { /* container of all text (Error Code and paragraph) */ }
+          &lt;h2 className="h2-404">
+            404
+          &lt;/h2>
+          &lt;h3 className="h3-404">
+            This is not the page you&amp;#39;re looking for.
+          &lt;/h3>
+          &lt;p className="paragraph-404">
+            It appears the page you seek doesn’t exist.
+            &lt;br />
+            Here are some of today’s best photos instead:
+          &lt;/p>
+        &lt;/div>
+        {/* Copied from net ninja react tutorial */}
+        { error &amp;&amp; &lt;div>{ error }&lt;/div>}
+        { isPending &amp;&amp; &lt;div>Loading&lt;/div>}
+        { images &amp;&amp; &lt;NotFoundExplore images={images} /> }
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default NotFound;
+</code></pre>
+        </article>
+    </section>
 
 
 

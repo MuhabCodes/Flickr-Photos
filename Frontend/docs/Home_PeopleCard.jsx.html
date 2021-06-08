@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Home/PeopleCard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Home/PeopleCard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable no-unused-vars */
+
+import { React, useState } from 'react';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import './PeopleCard.css';
+import { Link, useHistory } from 'react-router-dom';
+import configData from '../config.json';
+
+/**
+ * Single people card to follow
+ * @namespace HomePage.CardsContainer.PeopleCard
+ * @example &lt;PeopleCard />
+ * @function PeopleCard
+ * @returns PeopleCard of home page
+ */
+
+const PeopleCard = (props) => {
+  const [isFollowed, setIsFollowed] = useState(false);
+  const history = useHistory();
+  const prop = props;
+  const { Profile } = prop;
+  const name = Profile.displayName;
+  const { avatar } = Profile;
+  const { uName } = Profile;
+  const bgImage = Profile.coverPhoto;
+  const Pro = Profile.isPro;
+  const { userId } = Profile;
+  const { id } = Profile;
+  axios.defaults.baseURL = `${configData.SERVER_URL}`;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  // For not rendering of text boxes until user info gets fetched
+  const userjwt = jwt(localStorage.getItem('token'));
+  const handleClick = ((e) => {
+    const idToFollow = id;
+    e.preventDefault();
+    if (!isFollowed) {
+      axios.post('/follow', id) // No doc so we assume that we send id to follow in body
+        .then(() => {
+          setIsFollowed(true);
+        }).catch((error) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+            setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+          } else if (error.response.status === 404) {
+            setTimeout(() => history.push('*'), 100); // Redirect to Error page
+          }
+        });
+    } else if (isFollowed) {
+      axios.post('/unfollow', id) // No doc so we assume that we send id to unfollow in body
+        .then(() => {
+          setIsFollowed(false);
+        }).catch((error) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+            setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+          } else if (error.response.status === 404) {
+            setTimeout(() => history.push('*'), 100); // Redirect to Error page
+          }
+        });
+    }
+  });
+  return (
+    &lt;div className="people-card">
+      &lt;div className="upper-container">
+        {/* Container for image of profiles */}
+        &lt;Link to={`/Profile/PhotoStream/${userId}`}>
+          {/* Redirects to profile */}
+          &lt;div className="card-img-container">
+            &lt;img className="card-img" src={bgImage} alt="" />
+          &lt;/div>
+        &lt;/Link>
+      &lt;/div>
+      &lt;div className="lower-container">
+        &lt;div className="lower-container-left">
+          {/* Contaianer for avatar and names of profiles */}
+          &lt;div className="avatar-img-container">
+            &lt;Link to={`/Profile/PhotoStream/${userId}`}>
+              &lt;img src={avatar} alt="" className="avatar-img" />
+            &lt;/Link>
+          &lt;/div>
+          &lt;div className="profile-names">
+            &lt;Link to={`/Profile/PhotoStream/${userId}`}>
+              &lt;div className="display-name">
+                { name }
+              &lt;/div>
+            &lt;/Link>
+            &lt;div className="user-name">
+              { uName }
+            &lt;/div>
+            {Pro ? &lt;div className="pro-status-div">Pro&lt;/div> : null}
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="lower-container-right">
+          &lt;button className="btn btn-primary btn-sm" id="people-card-follow-btn" type="button" onClick={handleClick}>
+            { isFollowed ? 'Followed' : 'Follow' }
+          &lt;/button>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default PeopleCard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FBlogin.html">FBlogin</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:54:16 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

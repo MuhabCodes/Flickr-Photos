@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/PostsFeed.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,67 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/PostsFeed.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable no-unused-vars */
+import { React, useState, useEffect } from 'react';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import { useHistory } from 'react-router-dom';
+import Post from './Post';
+import configData from '../config.json';
 
+/**
+ * Posts Feed Container for individual posts
+ * @namespace HomePage.PostsFeed
+ * @example &lt;PostsFeed />
+ * @function PostsFeed
+ * @returns The Feed of the user with each photo mapped in a post container
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const PostsFeed = () => {
+  axios.defaults.baseURL = 'https://api.flick.photos';
+  const [posts, setPosts] = useState('');
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const history = useHistory();
+  const userjwt = jwt(localStorage.getItem('token'));
+  useEffect(() => {
+    axios.defaults.baseURL = 'https://api.flick.photos';
+    axios.defaults.headers.authorization = localStorage.getItem('token');
+    axios({
+      method: 'get',
+      url: '/photos',
+    }).then((resp) => {
+      setLoading(false);
+      setPosts(resp.data.photos);
+    }).catch((err) => {
+      setError(err.error);
+      console.log(err.error);
+    });
+  }, []);
+  return (
+    &lt;div className="posts-main-container">
+      { error &amp;&amp; &lt;div>{ error }&lt;/div> }
+      { isLoading ? &lt;div>Loading...&lt;/div> : posts &amp;&amp; posts.map((post) => (
+        &lt;div className="single-post" key={post.photoId}>
+          &lt;Post post={post} />
+        &lt;/div>
+      )) }
+    &lt;/div>
+  );
+};
+export default PostsFeed;
+</code></pre>
+        </article>
+    </section>
 
 
 

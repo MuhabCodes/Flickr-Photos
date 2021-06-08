@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/GroupsForYou.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,52 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/GroupsForYou.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './SideBar.css';
+import SingleGroupCard from './SingleGroupCard';
 
+/**
+ * Group Recommendations in sidebar
+ * @namespace HomePage.GroupsForYou
+ * @example &lt;GroupsForYou />
+ * @function GroupsForYou
+ * @returns GroupsForYou of home page sidebar
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const GroupsForYou = (props) => {
+  const prop = props;
+  let { Groups } = prop;
+  Groups = Groups.slice(0, 2);
+  return (
+    &lt;div className="groups-for-you-container">
+      &lt;h6 className="side-bar-card-title">
+        Groups for you
+      &lt;/h6>
+      &lt;div className="groups-recommendations-container">
+        { Groups.map((Group) => (
+          &lt;div className="group-row" key={Group.id}>
+            &lt;div className="single-group-card">
+              &lt;SingleGroupCard Group={Group} />
+            &lt;/div>
+          &lt;/div>
+        ))}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default GroupsForYou;
+</code></pre>
+        </article>
+    </section>
 
 
 

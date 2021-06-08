@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/SingleGroupCard.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,59 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/SingleGroupCard.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './SideBar.css';
+import { Link } from 'react-router-dom';
 
+/**
+ * Single Group Card Recommendation
+ * @namespace HomePage.GroupsForYou.SingleGroupCard
+ * @example &lt;SingleGroupCard />
+ * @function SingleGroupCard
+ * @returns SingleGroupCard of home page sidebar
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const SingleGroupCard = (props) => {
+  const prop = props;
+  const { Group } = prop;
+  let photos = Group.pool;
+  photos = photos.slice(0, 4);
+  return (
+    &lt;div className="group-rec-card">
+      &lt;div className="group-card-upper-container">
+        &lt;div className="group-avatar-container">
+          &lt;img className="group-avatar-container-img" src={Group.avatar} alt="" />
+        &lt;/div>
+        &lt;div className="group-name">
+          {Group.groupName}
+        &lt;/div>
+        &lt;div className="join-button">
+          &lt;button className="join-btn" id="join-group-button" type="button">Join&lt;/button>
+        &lt;/div>
+      &lt;/div>
+      &lt;div className="group-card-lower-container">
+        {photos.map((photo) => (
+          &lt;Link className="group-card-lower-container-link" to="POOLPHOTOURLHERE" key={photo.id}>
+            &lt;img className="group-card-lower-container-img" src={photo.imageURL} alt="" />
+          &lt;/Link>
+        ))}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default SingleGroupCard;
+</code></pre>
+        </article>
+    </section>
 
 
 

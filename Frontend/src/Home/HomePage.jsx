@@ -5,7 +5,13 @@ import jwt from 'jwt-decode';
 import SideBar from './SideBar';
 import PostsFeed from './PostsFeed';
 import './HomePage.css';
-
+/**
+ * HomePage main Component
+ * @namespace HomePage
+ * @returns Container for HomePage Posts
+ * @example <HomePage />
+ * @function HomePage
+ */
 const HomePage = () => {
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);

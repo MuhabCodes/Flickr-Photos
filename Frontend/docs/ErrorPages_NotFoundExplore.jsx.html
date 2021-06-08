@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: ErrorPages/NotFoundExplore.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,55 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: ErrorPages/NotFoundExplore.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Link } from 'react-router-dom';
+import React from 'react';
+import './NotFound.css';
 
+/**
+ * Not found page explore module
+ * @namespace ErrorPage.NotFoundExplore
+ * @module
+ * @example &lt;NotFoundExplore />
+ * @function NotFoundExplore
+ * @returns The explore photos module of 404 page
+ */
 
-    <h3> </h3>
+const NotFoundExplore = (props) => {
+  const prop = props;
+  let { images } = prop;
+  images = images.slice(0, 18); // Limit photos to just 18
+  return (
+    &lt;div className="lower-404-container">
+      { /* container of all images */}
+      &lt;div className="images-container-404">
+        { images.map((image) => (
+          &lt;Link className="link-img-container-404" to="imgURLHERE">
+            &lt;img key={image.photoId} src={image.imagePath} alt="" className="image-404-style" />
+          &lt;/Link>
+        ))}
+      &lt;/div>
+      &lt;div className="explore-button">
+        &lt;Link className="view-more-button-link" to="Explore">
+          &lt;button className="view-more-button" type="button">View more photos&lt;/button>
+        &lt;/Link>
+      &lt;/div>
+    &lt;/div>
+  );
+};
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default NotFoundExplore;
+</code></pre>
+        </article>
+    </section>
 
 
 

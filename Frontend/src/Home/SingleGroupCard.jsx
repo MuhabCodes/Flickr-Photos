@@ -2,6 +2,14 @@ import React from 'react';
 import './SideBar.css';
 import { Link } from 'react-router-dom';
 
+/**
+ * Single Group Card Recommendation
+ * @namespace HomePage.GroupsForYou.SingleGroupCard
+ * @example <SingleGroupCard />
+ * @function SingleGroupCard
+ * @returns SingleGroupCard of home page sidebar
+ */
+
 const SingleGroupCard = (props) => {
   const prop = props;
   const { Group } = prop;

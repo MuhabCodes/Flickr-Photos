@@ -79,6 +79,14 @@ const FBlogout = () => {
     });
 };
 
+/**
+ * First Called component and called in every dom render, has all the components of the project
+ * @namespace App
+ * @example <App />
+ * @function App
+ * @returns The whole react app routes and responsible for all the routing of the application
+ */
+
 function App() {
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {

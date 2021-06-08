@@ -6,6 +6,14 @@ import { useHistory } from 'react-router-dom';
 import Post from './Post';
 import configData from '../config.json';
 
+/**
+ * Posts Feed Container for individual posts
+ * @namespace HomePage.PostsFeed
+ * @example <PostsFeed />
+ * @function PostsFeed
+ * @returns The Feed of the user with each photo mapped in a post container
+ */
+
 const PostsFeed = () => {
   axios.defaults.baseURL = 'https://api.flick.photos';
   const [posts, setPosts] = useState('');

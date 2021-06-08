@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Home/ExploreCard.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Home/ExploreCard.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './SideBar.css';
+import { Link } from 'react-router-dom';
 
+/**
+ * ExploreCard of recent photos of website
+ * @namespace HomePage.SideBar.ExploreCard
+ * @example &lt;ExploreCard />
+ * @function ExploreCard
+ * @returns ExploreCard of home page sidebar
+ */
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const ExploreCard = (props) => {
+  const prop = props;
+  let { ExplorePhotos } = prop;
+  ExplorePhotos = ExplorePhotos.slice(0, 8);
+  return (
+    &lt;div className="explore-card-main">
+      &lt;h6 className="side-bar-card-title">
+        Explore popular photos
+      &lt;/h6>
+      &lt;div className="images-container-explore-card">
+        {ExplorePhotos.map((Photo) => (
+          &lt;Link className="images-container-explore-card-link" key={Photo.photoId} to={`/photoview/${Photo.photoId}`}>
+            &lt;img className="images-container-explore-card-img" src={Photo.imagePath} alt="" />
+          &lt;/Link>
+        ))}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default ExploreCard;
+</code></pre>
+        </article>
+    </section>
 
 
 

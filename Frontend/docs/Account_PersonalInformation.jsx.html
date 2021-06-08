@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Account/PersonalInformation.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Account/PersonalInformation.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { React, useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import './PersonalInformation.css';
+import axios from 'axios';
+import jwt from 'jwt-decode';
+import SubNavBarPersonalInformation from './SubNavBarPersonalInformation';
+
+/**
+ * Main Account Component has links to change password, edit user info and delete account
+ * @namespace Account
+ * @example &lt;PersonalInformation />
+ * @function PersonalInformation
+ * @returns Page of user to manage account
+ */
+
+const PersonalInformation = () => {
+  const history = useHistory();
+  const [isLoading, setLoading] = useState(true);
+  axios.defaults.baseURL = 'http://api.flick.photos';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common.authorization = localStorage.getItem('token'); // Applying global default settings from axios
+  // For not rendering of text boxes until user info gets fetched
+  // Headers for storing the token (Will be taken from local storage)
+  const userjwt = jwt(localStorage.getItem('token'));
+  const [ispro, setIsPro] = useState(false);
+  const [email, setEmail] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [displayname, setDisplayName] = useState('');
+  const [avatar, setAvatar] = useState('');
+  useEffect(() => {
+    axios.get(`/people/${userjwt.userId}/info`, {
+    }).then((resp) => {
+      setLoading(false);
+      setFirstName(resp.data.firstName);
+      setLastName(resp.data.lastName);
+      setDisplayName(resp.data.displayName);
+      setIsPro(resp.data.isPro);
+      setEmail(resp.data.email);
+      setAvatar(resp.data.urlCover);
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        history.push('/login');
+      } else {
+        localStorage.removeItem('token'); // remove token and redirect to login if not authorized
+        setTimeout(() => history.push('/login'), 100); // Redirect to Error page
+      }
+    });
+  }, []);
+  return (
+    &lt;div>
+      &lt;div className="container-personal-information">
+        &lt;div className="container-sub-nav-bar-account-settings">
+          &lt;SubNavBarPersonalInformation />
+        &lt;/div>
+        {isLoading ? &lt;div>Loading...&lt;/div> : (
+          &lt;div className="main-personal-info-container">
+            &lt;div className="personal-info-left-column">
+              &lt;div className="personal-information-box">
+                &lt;div className="personal-information-box-title">
+                  Membership Status
+                &lt;/div>
+                &lt;div className="personal-information-box-content">
+                  {ispro ? (
+                    &lt;div className="personal-information-content-container">
+                      &lt;div className="logo-membership-status-div">
+                        &lt;p className="logo-membership-status-p">
+                          5k
+                        &lt;/p>
+                      &lt;/div>
+                      &lt;div className="content-membership-status-divs">
+                        &lt;div className="content-membership-subtitle">
+                          You have a Flickr Pro account.
+                        &lt;/div>
+                        &lt;p className="content-membership-paragraph">
+                          You get 5,000 of your favorite full-resolution photos and HD videos, shown
+                          without ads.
+                        &lt;/p>
+                      &lt;/div>
+                    &lt;/div>
+                  ) : (
+                    &lt;div className="personal-information-content-container">
+                      &lt;div className="logo-membership-status-div">
+                        &lt;p className="logo-membership-status-p">
+                          1k
+                        &lt;/p>
+                      &lt;/div>
+                      &lt;div className="content-membership-status-divs">
+                        &lt;div className="content-membership-subtitle">
+                          You have a Flickr Free account.
+                        &lt;/div>
+                        &lt;p className="content-membership-paragraph">
+                          You get 1,000 of your favorite full-resolution photos and HD videos, shown
+                          with ads.
+                          {' '}
+                          &lt;Link to="/upgradetopro">Upgrade to Pro&lt;/Link>
+                        &lt;/p>
+                      &lt;/div>
+                    &lt;/div>
+                  )}
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+
+            &lt;div className="personal-info-right-column">
+              &lt;div className="personal-information-box">
+                &lt;div className="personal-information-box-title">
+                  Account
+                &lt;/div>
+                &lt;div className="personal-information-box-content">
+                  &lt;div className="personal-information-content-container">
+                    &lt;div className="content-membership-status-divs">
+                      &lt;div className="content-personal-info-subtitle">
+                        Login email
+                      &lt;/div>
+                      &lt;p className="content-personal-information-paragraph">
+                        { email }
+                      &lt;/p>
+                    &lt;/div>
+                    &lt;div className="content-membership-status-divs">
+                      &lt;div className="content-personal-info-subtitle">
+                        Password
+                      &lt;/div>
+                      &lt;p className="content-membership-paragraph">
+                        &lt;Link to="/change-password" id="link-to-edit-pw">Edit your password&lt;/Link>
+                      &lt;/p>
+                    &lt;/div>
+                  &lt;/div>
+                  &lt;div className="content-personal-information-footer">
+                    You can also
+                    {' '}
+                    &lt;Link to="/account/delete" id="link-to-delete-account">delete your flickr account&lt;/Link>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+              &lt;div className="personal-information-box">
+                &lt;div className="personal-information-box-title">
+                  Profile
+                &lt;/div>
+                &lt;div className="personal-information-box-content">
+                  &lt;div className="personal-information-content-container">
+                    &lt;div className="personal-information-avatar-container">
+                      &lt;img src={avatar} alt="User Avatar" className="personal-information-avatar-img" />
+                    &lt;/div>
+                    &lt;div className="content-membership-status-divs">
+                      &lt;p className="content-personal-information-paragraph">
+                        Your real name is
+                        {' '}
+                        &lt;b>{ firstname }&lt;/b>
+                        {' '}
+                        &lt;b>{ lastname }&lt;/b>
+                        .
+                        {' '}
+                        &lt;Link to="/account/edit-profile">Change&lt;/Link>
+                      &lt;/p>
+                      &lt;p className="content-personal-information-paragraph">
+                        Your display name is
+                        {' '}
+                        &lt;b>{ displayname }&lt;/b>
+                        .
+                        {' '}
+                        &lt;Link to="/account/edit-profile">Change&lt;/Link>
+                      &lt;/p>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        )}
+
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default PersonalInformation;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FBlogin.html">FBlogin</a></li><li><a href="schema.html">schema</a></li><li><a href="submitForm.html">submitForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CardsContainer">CardsContainer</a></li><li><a href="global.html#ChangePassword">ChangePassword</a></li><li><a href="global.html#DeleteAccount">DeleteAccount</a></li><li><a href="global.html#EditPersonalInfo">EditPersonalInfo</a></li><li><a href="global.html#ExploreCard">ExploreCard</a></li><li><a href="global.html#ForgotPasswordVerification">ForgotPasswordVerification</a></li><li><a href="global.html#GettingStarted">GettingStarted</a></li><li><a href="global.html#GroupsForYou">GroupsForYou</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#NotFoundExplore">NotFoundExplore</a></li><li><a href="global.html#PeopleCard">PeopleCard</a></li><li><a href="global.html#PersonalInformation">PersonalInformation</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#PostsFeed">PostsFeed</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#SingleGroupCard">SingleGroupCard</a></li><li><a href="global.html#VerificationPage">VerificationPage</a></li><li><a href="global.html#VerifySignup">VerifySignup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 20:54:16 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

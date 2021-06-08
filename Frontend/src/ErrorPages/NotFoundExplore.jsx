@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import './NotFound.css';
 
+/**
+ * Not found page explore module
+ * @namespace ErrorPage.NotFoundExplore
+ * @module
+ * @example <NotFoundExplore />
+ * @function NotFoundExplore
+ * @returns The explore photos module of 404 page
+ */
+
 const NotFoundExplore = (props) => {
   const prop = props;
   let { images } = prop;
