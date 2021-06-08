@@ -3,14 +3,10 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode';
 import SideBar from './SideBar';
-import useFetch from '../useFetch';
-import CardsContainer from './CardsContainer';
 import PostsFeed from './PostsFeed';
 import './HomePage.css';
-import configData from '../config.json';
 
 const HomePage = () => {
-  const { data: Profiles, isPending, error } = useFetch(`${configData.SERVER_URL}/getpeopletofollow`);
   const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [currLoggedInFollowing, setCurrLoggedInFollowing] = useState('');
@@ -65,12 +61,7 @@ const HomePage = () => {
                 </div>
                 <div className="feed-people-to-follow">
                   <p className="people-to-follow-p">People to follow</p>
-                  {/* Display Error in div and don't load Component */}
-                  { error && <div>{ error }</div>}
-                  {/* Shows a loading text until fetch fetches data */}
-                  { (isPending || isLoading) && <div>Loading</div>}
-                  {/* Don't call component until data is fetched */}
-                  {Profiles && <CardsContainer Profiles={Profiles} />}
+                  <h3>Follow People to get posts</h3>
                 </div>
               </div>
             ) : (
