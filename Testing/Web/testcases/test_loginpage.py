@@ -16,10 +16,6 @@ class TestLogin(object):
         yield
         self.loginPage.driver.quit()
 
-    def test_is_email_field_enabled(self, setup):
-        assert self.loginPage.element_clickable(self.loginPage.EMAIL_FIELD)
-        print("\nEmail field is enabled")
-
     def test_signup_link(self, setup):
         if self.loginPage.element_clickable(self.loginPage.SIGNUP_LINK):
             self.loginPage.click_signup_link()
