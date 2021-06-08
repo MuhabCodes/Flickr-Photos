@@ -71,23 +71,44 @@ const CoverArea = () => {
     if (followingArr.indexOf(userId) > -1) {
       const ind = followingArr.indexOf(userId);
       followingArr.splice(ind);
+      axios.defaults.headers.authorization = localStorage.getItem('token');
+      const send = {
+        userId,
+      };
+      axios.post('/people/follow', send)
+        .then(() => {
+          console.log('follow');
+        })
+        .catch((error) => {
+          if (error.response.status === 403) {
+            axios.post('/people/unfollow', send)
+              .then(() => {
+                console.log('unfollow');
+              })
+              .catch(() => { history.push('*//'); });
+          }
+        });
     } else {
       followingArr.push(userId);
+      axios.defaults.headers.authorization = localStorage.getItem('token');
+      const send = {
+        userId,
+      };
+      axios.post('/people/unfollow', send)
+        .then(() => {
+          console.log('unfollow');
+        })
+        .catch((error) => {
+          if (error.response.status === 403) {
+            axios.post('/people/follow', send)
+              .then(() => {
+                console.log('unfollow');
+              })
+              .catch(() => { history.push('*//'); });
+          }
+          history.push('*//');
+        });
     }
-    axios.patch(`/Userinfo/${userjwt.userId}`, { followingList: followingArr })
-      .then(() => {
-        history.push(0);
-      }).catch((error) => {
-        if (error.response.status === 401) {
-          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
-        } else if (error.response.status === 404) {
-          setTimeout(() => history.push('*'), 2000); // Redirect to Error page
-        } else {
-          localStorage.removeItem('token'); // remove token and redirect to login if not authorized
-          setTimeout(() => history.push('/login'), 2000); // Redirect to Error page
-        }
-      });
   };
   return (
     <div className="container-fluid">
