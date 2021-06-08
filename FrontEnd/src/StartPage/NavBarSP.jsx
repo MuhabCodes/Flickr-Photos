@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -101,18 +102,11 @@ function NavBar() {
         {' '}
         flickr
       </Navbar.Brand>
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
-        <InputBase
-          placeholder="Photos, people, or groups"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ 'aria-label': 'search' }}
-        />
+      <div>
+        <a href="/Search" className=" droplink-main-nav">
+          Search
+          <img src="https://img.icons8.com/ios/20/ffffff/search--v1.png" alt="" />
+        </a>
       </div>
       <Button onClick={routeLogin} className={classes.buttonLogin}>Login</Button>
       <Button onClick={routeSignup} className={classes.buttonSignup}>SignUp</Button>
