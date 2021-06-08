@@ -26,7 +26,15 @@ const CssTextField = withStyles({
 // const { register, handleSubmit, formState: { errors } } = useForm({
 //   resolver: yupResolver(schema),
 // });
-
+/**
+ * Function Signup to register on the site
+ * @module
+ * @function GettingStarted
+ * @example <GettingStarted/>
+ * @param {string} email - email of the user needs his account to upgraded
+ * @param {object} subscribe -button clicked to send his request to be a pro account
+ *@return {null} an email sent to the user to upgrade his account using the link sent to his email
+ */
 export default function GettingStarted() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';

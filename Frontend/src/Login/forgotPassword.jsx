@@ -24,6 +24,15 @@ const useStyles = makeStyles(style);
 const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
+/**
+ * Function Signup to register on the site
+ * @module
+ * @function VerifySignup
+ * @example <VerifySignup/>
+ * @param {string} email - email to be verified
+ * @param {object} submit - button to be clicked to handle the event
+ * @return {null} a link sent to your mail to redirect you to change your password
+ */
 
 export default function VerifySignup() {
   axios.defaults.baseURL = 'http://api.flick.photos';

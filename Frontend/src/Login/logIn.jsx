@@ -36,10 +36,27 @@ const CssTextField = withStyles({
 const useStyles = makeStyles(style);
 
 // the schema of the inputs needed to be validated
+/**
+ * Function Login to enter the site
+ * @component
+ * @function schema
+ * @example <schema/>
+ * @param {string} email - Email needed from the user to sign in
+ * @param {string} password - the correct password needed
+ * @returns {null} - validate the data given according to a given criteria
+ */
 const schema = yup.object().shape({
   password: yup.string().min(5).required(),
   email: yup.string().email().required(),
 });
+/**
+ * Function Login to enter the site
+ * @component
+ * @function FBlogin
+ * @example <FBlogin/>
+ * @param {string} token - token to be sent to the firebase
+ * @returns {null} - token used to know whether user is logged in/out
+ */
 const FBlogin = async () => {
   const FIREBASE_MESSAGING = firebase.messaging();
   const FIREBASE_DATABASE = firebase.database();
@@ -58,7 +75,16 @@ const FBlogin = async () => {
     });
 };
 
-export default function SignUp() {
+/**
+ * Function Login to enter the site
+ * @module
+ * @function Login
+ * @example <Login/>
+ * @param {string} email - Email needed from the user to sign in
+ * @param {string} password - the correct password needed
+ * @returns {string} token - returns back a token to beidentify the user to display his data
+ */
+export default function Login() {
   axios.defaults.baseURL = 'http://api.flick.photos';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   // the passing of the scheme using the useForm from the react hook library
@@ -71,6 +97,15 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+  /**
+ * Function Login to enter the site
+ * @component
+ * @function submitForm
+ * @example <submitForm/>
+ * @param {string} email - Email needed from the user to sign in
+ * @param {string} password - the correct password needed
+ * @returns {null} - send data to server,to use it for notifications if they are valid
+ */
   const submitForm = () => {
     const UserInfo = {
       email, password,
