@@ -48,7 +48,7 @@ class TestLogin(object):
 
     def test_login1(self, setup):
         print("\nCorrect email and pass")
-        self.loginPage.log_in("kennedi.vonrueden@yahoo.com", "12345678")
+        self.loginPage.log_in(self.loginPage.TEST_EMAIL, self.loginPage.TEST_PASSWORD)
         sleep(5)
         assert self.loginPage.page_url() == TestData.MAIN_URL
 
