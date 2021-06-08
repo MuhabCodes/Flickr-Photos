@@ -41,7 +41,6 @@ import GettingStarted from '../UpgradeToPro/GettingStarted';
 import Upload from '../Upload/Upload';
 import PhotoView from '../PhotoViewPage/PhotoView';
 import EmailNotifications from '../Emails&Notifications/EmailNotifications';
-// import configData from '../config.json';
 import Albums from '../Profile/Albums';
 import PrivacyPermissions from '../Privacy&Permissions/PrivacyPermissions';
 import FirebaseLogin from '../Login/firebaselogin';

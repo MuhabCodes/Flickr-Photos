@@ -182,7 +182,7 @@ function PhotoView() {
             return whole;
           }).catch(() => { history.push('*//'); });
       }).catch((error) => {
-        if (error.response.status === 404) {
+        if (error.statusCode === 404) {
           setTimeout(() => history.push('*//'), 100); // Redirect to Error page
         } else { setTimeout(() => history.push('*//'), 1000); } // Redirect to Error page
       });
