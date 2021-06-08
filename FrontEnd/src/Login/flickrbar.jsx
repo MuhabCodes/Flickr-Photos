@@ -1,29 +1,37 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import icon from './flickrlogo.png';
-import style from './flickrbarStyles';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar } from 'react-bootstrap';
 
-const useStyles = makeStyles(style);
+const useStyles = makeStyles(() => ({
+  ColorOfNavbar: {
+    backgroundColor: 'rgb(0, 0, 0)',
+  },
+  IconPositionUp: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: '1.6rem',
+    paddingTop: '2px',
+    marginLeft: '1rem',
+    marginRight: '8rem',
+  },
+}));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
   return (
-    <div>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <img src={icon} className={classes.flickrIcon} alt="icon" />
-          <Typography
-            id="typography"
-            variant="h6"
-            className={classes.textStyles}
-          >
-            flickr
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Navbar collapseOnSelect sticky="top" expand="md" className={classes.ColorOfNavbar}>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+      <Navbar.Brand className={classes.IconPositionUp} href="/">
+        <img
+          alt=""
+          src="flickr.png"
+          width="30"
+          height="30"
+        />
+        {' '}
+        flickr
+      </Navbar.Brand>
+    </Navbar>
   );
 }

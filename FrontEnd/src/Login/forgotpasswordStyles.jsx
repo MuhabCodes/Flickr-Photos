@@ -11,6 +11,16 @@ const fpasswordStyles = () => ({
     maxWidth: '22rem',
     height: '24rem',
   },
+  rootloadingpage: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: 150,
+    padding: 20,
+    minWidth: '22rem',
+    maxWidth: '22rem',
+    height: '15rem',
+  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
@@ -53,6 +63,9 @@ const fpasswordStyles = () => ({
   },
   accessEmailParag: {
     fontSize: '14px', position: 'relative', bottom: '-15px',
+  },
+  LoadingIcon: {
+    marginLeft: 140, width: '9%', justifyContent: 'center', alignSelf: 'center',
   },
 });
 

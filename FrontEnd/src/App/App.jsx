@@ -9,7 +9,8 @@ import firebase from 'firebase/app';
 import CameraFinder from '../CameraFinder/CameraFinder';
 import NotFound from '../ErrorPages/NotFound';
 import SignUp from '../Signup/Signup';
-import AppBar from '../Signup/flickrbar';
+import AppBar from '../Login/flickrbar';
+import ForgotPasswordVerification from '../Login/ForgotPasswordLoadingPage';
 import VerifySignup from '../Signup/VerifySignup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -103,6 +104,9 @@ function App() {
           <Switch>
             <Route exact path="/verification/:confirToken">
               <VerificationPage />
+            </Route>
+            <Route exact path="/auth/forgot-password/:resetToken">
+              <ForgotPasswordVerification />
             </Route>
             <Route exact path="/UpgradeToPro">
               <NavBar />
