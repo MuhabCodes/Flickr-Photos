@@ -1,15 +1,23 @@
+import sys
 from time import sleep
 import pytest
 
-from common.selhelper import SelHelper
+# sys.path.append("E:\College\SPRING 2021\\CMPN203\\"
+#                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
+
+from common.sel_helper import SelHelper
 from pageobject.explore.explore import ExploreLocator, Explore
-from pageobject.mockmethods.mockmethods import MockMethods
+from pageobject.generalmethods.general_methods import GeneralMethods
+
+TIME_TO_WAIT = 30
+FILTER_EXISTS = False
+LAYOUT_EXISTS = True
 
 
 class TestExploreLinks(object):
     helper = SelHelper()
-    explore = Explore(helper)
-    mock_methods = MockMethods(helper)
+    explore = Explore(helper, TIME_TO_WAIT, FILTER_EXISTS, LAYOUT_EXISTS)
+    mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = explore.LOCATOR_LIST
     driver = None
 
@@ -18,7 +26,7 @@ class TestExploreLinks(object):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
         self.helper.implicit_wait(30)
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
         sleep(3)
         self.helper.go_to(self.explore.link)
         sleep(10)
@@ -35,6 +43,9 @@ class TestExploreLinks(object):
 
     # @pytest.mark.skip
     def test_layout(self, setup):
+        if not self.explore.layout_exists:
+            pytest.skip("explore doesn't have layout selection")
+
         assert self.explore.select_layout("LAYOUT_STORY")
         sleep(5)
 

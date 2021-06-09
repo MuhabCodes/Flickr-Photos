@@ -5,18 +5,22 @@ from time import sleep
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from pageobject.page import Page
 from pageobject.links import Links
-from pageobject.explore.explorelocator import ExploreLocator
+from pageobject.explore.explore_locator import ExploreLocator
 
 
 class Explore(Page):
     """ Class that contains methods interacting with WebElement objects in
     Explore page.
     """
-    def __init__(self, helper:  SelHelper, time_to_wait: float = 100):
-        Page.__init__(self, helper, time_to_wait)
+    def __init__(self, helper:  SelHelper,
+                 time_to_wait: float = 100,
+                 filter_exists: bool = True,
+                 layout_exists: bool = True):
+        Page.__init__(self, helper, time_to_wait,
+                      filter_exists, layout_exists)
         self.LOCATOR_LIST = self.utils.get_locators_list(ExploreLocator)
         self.link = Links.EXPLORE_URL
         self.title = "Explore | Flickr"

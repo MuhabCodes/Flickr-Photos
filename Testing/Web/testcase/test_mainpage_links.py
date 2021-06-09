@@ -1,15 +1,20 @@
+import sys
 from time import sleep
 import pytest
 
-from common.selhelper import SelHelper
+# sys.path.append("E:\College\SPRING 2021\\CMPN203\\"
+#                 "project\\Flickr-Photos\\Flickr-Photos\\Testing\\Web")
+
+
+from common.sel_helper import SelHelper
 from pageobject.mainpage.mainpage import MainPage, MainPageLocator
-from pageobject.mockmethods.mockmethods import MockMethods
+from pageobject.generalmethods.general_methods import GeneralMethods
 
 
 class TestMainPageLinks(object):
     helper = SelHelper()
     main_page = MainPage(helper)
-    mock_methods = MockMethods(helper)
+    mock_methods = GeneralMethods(helper)
     LOCATOR_LIST = main_page.LOCATOR_LIST
     driver = None
 
@@ -18,7 +23,7 @@ class TestMainPageLinks(object):
         driver = self.helper.init_chrome_driver()
         driver.maximize_window()
         self.helper.implicit_wait(30)
-        self.mock_methods.mock_login()
+        self.mock_methods.login()
         sleep(10)
         yield
         self.helper.quit()

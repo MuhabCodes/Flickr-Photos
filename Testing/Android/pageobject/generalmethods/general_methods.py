@@ -15,13 +15,13 @@ class MockMethodsLocator(object):
 
 
 class MockMethods(Page):
-    """ Class contains mocking behaviour methods. """
+    """ Class contains general methods. """
     def __init__(self, driver: WebDriver = None):
         Page.__init__(self, driver)
 
-    def mock_login(self, email: str = "sasasabry290@gmail.com",
-                   password: str = "C%D5KBSN?$w&QKv"):
-        """ Mock login process
+    def login(self, email: str = "sasasabry290@gmail.com",
+              password: str = "C%D5KBSN?$w&QKv"):
+        """ log in flickr using input credentials.
 
         :param email: Flickr Account email
         :param password: Flickr Account password
@@ -50,3 +50,4 @@ class MockMethods(Page):
             MockMethodsLocator.proceed_button_xpath).click()
 
         self.driver.switch_to.context('NATIVE_APP')
+        self.driver.contexts

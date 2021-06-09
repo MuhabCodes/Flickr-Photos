@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.webdriver.common.by import By
-from common.selhelper import SelHelper
+from common.sel_helper import SelHelper
 from common.utils import Utils
 
 
