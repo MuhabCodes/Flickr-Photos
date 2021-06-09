@@ -1,16 +1,20 @@
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/new_post_provider.dart';
 
+// ignore: must_be_immutable
 class PrivacyButton extends StatefulWidget {
   var choice = "Public";
-  PrivacyButton();
+  String privacy = "Public";
+  PrivacyButton(this.privacy);
   @override
   _PrivacyButtonState createState() => _PrivacyButtonState();
 }
 
 class _PrivacyButtonState extends State<PrivacyButton> {
-  void setPrivacy(BuildContext context, String choice) async {   //Set privacy option
+  void setPrivacy(BuildContext context, String choice) async {
     widget.choice = choice;
+    widget.privacy = choice;
     this.setState(() {});
     Navigator.of(context).pop();
   }
@@ -76,6 +80,8 @@ class _PrivacyButtonState extends State<PrivacyButton> {
 
   @override
   Widget build(BuildContext context) {
+    var newPostProvider = Provider.of<NewPostProvider>(context, listen: true);
+    newPostProvider.setPrivacy(widget.choice);
     return ConstrainedBox(
         constraints: const BoxConstraints(
           minWidth: double.infinity,
@@ -84,27 +90,20 @@ class _PrivacyButtonState extends State<PrivacyButton> {
           maxHeight: double.infinity,
         ),
         child: Container(
-          child: Card(
-            child: ListTile(
-              leading: Icon(Icons.lock_open),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                    child: Text(
-                      widget.choice,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    onPressed: () {
-                      showChoiceDialog(context);
-                    },
-                  ),
-                ],
+          decoration: BoxDecoration(),
+          child: ListTile(
+            leading: Icon(Icons.lock_open),
+            title: Text(
+              newPostProvider.privacy,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w700,
               ),
             ),
+            onTap: () {
+              newPostProvider.setPrivacy(widget.choice);
+              showChoiceDialog(context);
+            },
           ),
         ));
   }

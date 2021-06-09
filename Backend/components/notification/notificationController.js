@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 const { getNotifications } = require('./notificationDAL');
 
 exports.getMyNotifications = async (req, res) => {

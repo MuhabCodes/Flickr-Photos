@@ -14,7 +14,7 @@ module.exports = {
 
     let index = -1;
     for (let i = 0; i < foundAlbum[0].photos.length; i++) {
-      if (foundAlbum[0].photos[i]._id == photoId) {
+      if (foundAlbum[0].photos[i]._id === photoId) {
         index = i;
         break;
       }
@@ -40,6 +40,7 @@ module.exports = {
     return foundAlbum[0].save();
   },
   async fetchUserAlbums(authorId) {
-    return await Album.find({ authorId });
+    const album = await Album.find({ authorId });
+    return album;
   },
 };

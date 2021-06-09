@@ -1,10 +1,10 @@
 const userDAL = require('./userDAL');
-const { decryptAuthToken, decryptProToken } = require('../auth/Services/decryptToken');
-const { sendProEmail } = require('../auth/Services/sendEmail');
-const { checkFollowing } = require('./Services/checkFollow');
-const { deleteAccountServ } = require('./Services/deleteAccount');
-const { getFollowersServ } = require('./Services/getFollowers');
-const { photoByUser, inShowCase } = require('./Services/photoByUser');
+const { decryptAuthToken, decryptProToken } = require('../auth/services/decryptToken');
+const { sendProEmail } = require('../auth/services/sendEmail');
+const { checkFollowing } = require('./services/checkFollow');
+const { deleteAccountServ } = require('./services/deleteAccount');
+const { getFollowersServ } = require('./services/getFollowers');
+const { photoByUser, inShowCase } = require('./services/photoByUser');
 const tagDAL = require('../tags/tagsDAL');
 const favouriteDAL = require('../favorites/favoritesDAL');
 

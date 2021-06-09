@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const personDAL = require('./personDAL');
 const userDAL = require('../user/userDAL');
-const { decryptAuthToken } = require('../auth/Services/decryptToken');
+const { decryptAuthToken } = require('../auth/services/decryptToken');
 
 exports.getProfile = async function getProfile(req, res) {
   const user = req.params.userId;

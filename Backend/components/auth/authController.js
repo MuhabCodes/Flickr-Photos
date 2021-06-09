@@ -1,10 +1,10 @@
 const { join } = require('path');
 const userDAL = require('../user/userDAL');
-const { verifyPassword } = require('./Services/verifyPassword');
-const { sendConfirmationEmail, sendResetPasswordEmail } = require('./Services/sendEmail.js');
-const { decryptConfirmationToken, decryptResetPasswordToken, decryptAuthToken } = require('./Services/decryptToken');
-const { signInGoogleServ } = require('./Services/signInGoogle');
-const { changePasswordServ } = require('./Services/changePassword');
+const { verifyPassword } = require('./services/verifyPassword');
+const { sendConfirmationEmail, sendResetPasswordEmail } = require('./services/sendEmail.js');
+const { decryptConfirmationToken, decryptResetPasswordToken, decryptAuthToken } = require('./services/decryptToken');
+const { signInGoogleServ } = require('./services/signInGoogle');
+const { changePasswordServ } = require('./services/changePassword');
 require('dotenv').config({ path: join(__dirname, '/../../secret/', '.env') });
 
 exports.login = async function loginUser(req, res) {

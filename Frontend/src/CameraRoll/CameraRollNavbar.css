@@ -1,0 +1,23 @@
+#navbar-CR {
+  background-color: #f3f5f6;
+  position: relative;
+}
+
+.nav-start {
+  margin-left: 100px;
+}
+
+.navbar-icons {
+  position: fixed;
+  right: 100px;
+  display: inline-block;
+}
+
+.icons {
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.icons a {
+  color: grey;
+}

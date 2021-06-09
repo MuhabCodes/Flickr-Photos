@@ -1,9 +1,9 @@
 /**
  *
- * @api {GET} /photos/home getHome
+ * @api {GET} /photos/ getHome
  * @apiDescription Returns a list of the latest public photos uploaded to flickr by the followers.
  * @apiGroup photos
- * @apiVersion  0.1.0
+ * @apiVersion  0.1.1
  *
  * 
  *

@@ -1,0 +1,197 @@
+.empty-fav-ufv {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1 !important;
+}
+
+.empty-bg-ufv {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  top: 55px;
+}
+
+.actual-bg-ufv {
+  pointer-events: none;
+  user-select: none;
+  height: 100%;
+  min-height: 425px;
+  background-image: url(https://combo.staticflickr.com/ap/build/images/emptypages/faves-view-ufv3.jpg);
+  background-size: 100%;
+  background-position: 50% 0;
+  background-repeat: repeat-y;
+}
+
+.wrap-empty-ufv {
+  padding-top: 0;
+  height: 100%;
+  min-height: 453px;
+}
+
+.empty-text-ufv {
+  margin: 1em 0;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.faves-view-ufv-area-ufv {
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #212124;
+  min-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+.photo-grid-ufv {
+  position: initial;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.photo-container-ufv {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  padding: 2px;
+  min-width: fit-content;
+}
+
+.single-photo-ufv {
+  float: left;
+  object-fit: cover;
+  flex-grow: 1;
+  min-width: 350px;
+  height: 380px;
+  padding: 2px;
+}
+
+.interaction-bar-ufv .photo-title-ufv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 8%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.photo-container-ufv:hover {
+  cursor: pointer;
+}
+
+.photo-container-ufv:hover .interaction-bar-ufv .photo-title-ufv {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-ufv .user-name-ufv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  font-size: medium;
+}
+
+.photo-container-ufv:hover .user-name-ufv {
+  min-width: 150px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-ufv .fav-btn-ufv {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: transparent;
+  z-index: 9999;
+}
+
+.photo-container-ufv:hover .fav-btn-ufv {
+  background-color: transparent;
+  border: 0;
+  z-index: 9999;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-ufv .faves-view-ufv {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.photo-container-ufv:hover .faves-view-ufv {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.photo-container-ufv .comments-view-ufv {
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  background: transparent;
+  color: white;
+  margin-bottom: 3.5%;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.photo-container-ufv:hover .comments-view-ufv {
+  min-width: 0;
+  padding: 8px 15px;
+  visibility: visible;
+  left: 80%;
+  opacity: 1;
+  font-weight: bold;
+}

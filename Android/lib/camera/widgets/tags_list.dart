@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../models/tag.dart';
 
-
 class TagsList extends StatelessWidget {
   final List<Tag> tagsList;
   final Function removeTag;
-  TagsList(this.tagsList, this.removeTag);
+  final List<Tag> providerTagsList;
+  TagsList(this.tagsList, this.removeTag, this.providerTagsList);
   @override
   Widget build(BuildContext context) {
     return Column(
