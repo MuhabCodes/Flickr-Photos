@@ -1,5 +1,4 @@
-///[InfoImageFullscreen] class which displays a given image with zoom in and out feature and
-///like comment feature
+///[InfoImageFullscreen] class which displays info of a certain photo
 import 'package:flickr/models/global.dart';
 import 'package:flickr/models/post.dart';
 import 'package:flickr/models/user.dart';
@@ -47,6 +46,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                ///This part draws the title row if it wasn't null
                 _myPhoto.title == null
                     ? Container()
                     : Text(
@@ -87,6 +87,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                         child: Text(_photoUser.website, style: textStyleInfo),
                       ),*/
                 //=============================================================
+                ///This part draws the Taken By row if it wasn't null
                 SizedBox(
                   height: _post.postUsername == null ? 0 : 30,
                 ),
@@ -102,6 +103,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                         child: Text(_post.postUsername, style: textStyleInfo),
                       ),
                 //=============================================================
+                ///This part draws the Date Taken row if it wasn't null
                 SizedBox(
                   height: _myPhoto.captureDate == null ? 0 : 30,
                 ),
@@ -118,6 +120,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                             style: textStyleInfo),
                       ),
                 //=============================================================
+                ///This part draws the tags row if it wasn't null
                 //Tags
                 SizedBox(
                   height: _myPhoto.tags == null ? 0 : 30,
@@ -204,6 +207,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                       ),
 
                 //=============================================================
+                ///This part draws the License row if it wasn't null
                 SizedBox(
                   height: 30,
                 ),
@@ -224,6 +228,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                   ),
                 ),
                 //==============================================================
+                ///This part draws the More row if it wasn't null
                 SizedBox(
                   height: 30,
                 ),
@@ -295,6 +300,7 @@ class InfoImageFullscreenState extends State<InfoImageFullscreen> {
                   ),
                 ),
                 //===============================================================
+                ///This part draws the Report Abuse row if it wasn't null
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
